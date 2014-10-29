@@ -1,0 +1,1158 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>type_traits</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>型特性</h1>
+<p><a href="http://www.boost.org/doc/libs/release/libs/type_traits/doc/html/index.html" target="_blank">Boost Type Traits Library</a>では、型がどういった特徴を持っているかを判定するメタ関数が多く提供されている。</p>
+<h2>インデックス</h2>
+<ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#type-category">型の分類</a><ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-array">配列型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-class">クラスかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-complex"><code><span style="color: #000">std::complex</span></code>型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-enum"><code><span style="color: #000">enum</span></code>型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-floating-point">浮動小数点数型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-function">関数型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-integral">整数型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-function">メンバ関数ポインタかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-object">メンバ変数ポインタかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-pointer">ポインタかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-lvalue-reference">左辺値参照かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-rvalue-reference">右辺値参照かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-union">共用体かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-void"><code><span style="color: #000">void</span></code>かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-arithmetic">算術型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-compound">複合型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-fundamental">基本型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-pointer">メンバポインタかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-object">オブジェクト型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-reference">参照型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-scalar">スカラ型かどうかを判定する</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#general-type-properties">型の性質</a><ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#alignment-of">アライメントを取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-new-operator"><code><span style="color: #000">new</span></code>演算子を持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-nothrow-assign">例外を投げない代入演算子を持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-nothrow-constructor">例外を投げないコンストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-nothrow-copy-constructor">例外を投げないコピーコンストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-trivial-assign">自明な代入演算子を持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-trivial-constructor">自明なコンストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-trivial-copy-constructor">自明なコピーコンストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-trivial-destructor">自明なデストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#has-virtual-destructor">仮想デストラクタを持っている型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-abstract">抽象型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-const"><code><span style="color: #000">const</span></code>修飾された型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-empty">空クラスかどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-stateless"><code><span style="color: #000">stateless</span></code>型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-pod">POD型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-polymorphic">多相的に振る舞う型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-signed">符号付き整数型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-unsigned">符号なし整数型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-volatile"><code><span style="color: #000">volatile</span></code>修飾された型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#extent">配列のN次元目の要素数を取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#rank">配列の次元数を取得する</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#relationships-between-two-types">2つの型の関係性</a><ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-base-of">継承関係にある型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-virtual-base-of">仮想継承の関係にある型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-convertible">変換可能な型かどうかを判定する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-same">2つの型が同じかを判定する</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#transform-type-to-another">型の変換する</a><ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-const"><code><span style="color: #000">const</span></code>修飾を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-volatile"><code><span style="color: #000">volatile</span></code>修飾を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-cv"><code><span style="color: #000">const volatile</span></code>修飾を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-lvalue-reference">左辺値参照を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-rvalue-reference">右辺値参照を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-reference">参照を付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#add-pointer">ポインタを付加する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#conditional">条件によって型を選択する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#common-type">共通の型を取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#decay">推論される型の取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#floating-point-promotion">浮動小数点数型を昇格する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#integral-promotion">整数型を昇格する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#promote">型を昇格する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#make-signed">符号なし型から符号あり型に変換する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#make-unsigned">符号あり型から符号なし型に変換する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-extent">配列の次元を削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-all-extents">配列の次元を全て削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-const"><code><span style="color: #000">const</span></code>修飾を削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-volatile"><code><span style="color: #000">volatile</span></code>修飾を削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-cv"><code><span style="color: #000">const volatile</span></code>修飾を削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-pointer">ポインタを削除する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#remove-reference">参照を削除する</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#synthesizing-types-with-specific-alignments">特定アライメントを持った型の合成</a><ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#type-with-alignment">特定のアライメントを持つ型の取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#aligned-storage">適切にアライメントされた型を作成する</a></li>
+</ul>
+</li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/type-category" name="type-category">型の分類を判定する</a></h3>
+<h3><a href="http://boostjp.github.io/tips/is-array" name="is-array">配列型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_array&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_array.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_array&lt;int[2]&gt;::value == true
+is_array&lt;char[2][3]&gt;::type == true
+is_array&lt;double[]&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-class" name="is-class">クラスかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_class&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_class.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class MyClass;
+
+is_class&lt;MyClass&gt;::value == true
+is_class&lt;MyClass const&gt;::value == true
+is_class&lt;MyClass&amp;&gt;::value == false
+is_class&lt;MyClass*&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-complex" name="is-complex">std::complex型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_complex&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：
+- <code><span style="color: #000">&lt;boost/type_traits/is_complex.hpp&gt;</span></code>
+- <code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></p>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_complex&lt;std::complex&lt;T&gt; &gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-enum" name="is-enum"><code><span style="color: #000">enum</span></code>型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_enum&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_enum.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">enum my_enum { one, two };
+
+is_enum&lt;my_enum&gt;::value == true
+is_enum&lt;my_enum const&gt;::type == true
+is_enum&lt;my_enum&amp;&gt;::value == false
+is_enum&lt;my_enum*&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-floating-point" name="is-floating-point">浮動小数点数型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_floating_point&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_floating_point.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_floating_point&lt;float&gt;::value == true
+is_floating_point&lt;double&gt;::value == true
+is_floating_point&lt;long double&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-function" name="is-function">関数型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_function&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_function.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_function&lt;int (void)&gt;::value == true
+is_function&lt;long (double, int)&gt;::value == true
+
+is_function&lt;long (*)(double, int)&gt;::value == false // 関数型ではなく関数へのポインタ
+is_function&lt;long (&amp;)(double, int)&gt;::value == false // 関数型ではなく関数への参照
+
+is_function&lt;long (MyClass::*)(double, int)&gt;::value == false // メンバ関数へのポインタ</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-integral" name="is-integral">整数型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_integral&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_integral.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_integral&lt;int&gt;::value == true
+is_integral&lt;const char&gt;::value == true
+is_integral&lt;long&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-member-function" name="is-member-function">メンバ関数ポインタかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_member_function&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_member_function.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_member_function_pointer&lt;int (MyClass::*)(void)&gt;::value == true
+is_member_function_pointer&lt;int (MyClass::*)(char)&gt;::value == true
+is_member_function_pointer&lt;int (MyClass::*)(void)const&gt;::value == true
+is_member_function_pointer&lt;int (MyClass::*)&gt;::value == false // データメンバへのポインタ</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-member-object" name="is-member-object">メンバ変数ポインタかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_member_object&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_member_object.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_member_object_pointer&lt;int (MyClass::*)&gt;::value == true
+is_member_object_pointer&lt;double (MyClass::*)&gt;::value == true
+is_member_object_pointer&lt;const int (MyClass::*)&gt;::value == true
+is_member_object_pointer&lt;int (MyClass::*)(void)&gt;::value == false // メンバ関数ポインタ</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-pointer" name="is-pointer">ポインタかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_pointer&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_pointer.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_pointer&lt;int*&gt;::value == true
+is_pointer&lt;char* const&gt;::type == true
+is_pointer&lt;int (*)(long)&gt;::value == true
+is_pointer&lt;int (MyClass::*)(long)&gt;::value == false
+is_pointer&lt;int (MyClass::*)&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-lvalue-reference" name="is-lvalue-reference">左辺値参照かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_lvalue_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_lvalue_reference.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_lvalue_reference&lt;int&amp;&gt;::value == true
+is_lvalue_reference&lt;int const&amp;&gt;::value == true
+is_lvalue_reference&lt;int const&amp;&amp;&gt;::value == false
+is_lvalue_reference&lt;int (&amp;)(long)&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-rvalue-reference" name="is-rvalue-reference">右辺値参照かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_rvalue_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：
+- <code><span style="color: #000">&lt;boost/type_traits/is_rvalue_reference.hpp&gt;</span></code>
+- <code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></p>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_rvalue_reference&lt;int&amp;&amp;&gt;::value == true
+is_rvalue_reference&lt;int const&amp;&amp;&gt;::value == true
+is_rvalue_reference&lt;int const&amp;&gt;::value == false
+is_rvalue_reference&lt;int (&amp;&amp;)(long)&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-union" name="is-union">共用体かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_union&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_union.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_union&lt;void&gt;::value == true
+is_union&lt;const void&gt;::value == true
+is_union&lt;void*&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-void" name="is-void">voidかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_void&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_void.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_void&lt;void&gt;::value == true
+is_void&lt;const void&gt;::value == true
+is_void&lt;void*&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-arithmetic" name="is-arithmetic">算術型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_arithmetic&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_arithmetic.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>算術型は以下を含む：</p>
+<ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-integral">整数型(<code><span style="color: #000">is_integral</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-floating-point">浮動小数点数型(<code><span style="color: #000">is_floating_point</span></code>)</a></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_arithmetic&lt;int&gt;::value == true
+is_arithmetic&lt;char&gt;::value == true
+is_arithmetic&lt;double&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-compound" name="is-compound">複合型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_compound&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_compound.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>複合型は、<a href="http://boostjp.github.io/tips/type_traits.html#is-fundamental">基本型(<code><span style="color: #000">is_fundamental</span></code>)</a>以外の型である。</p>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_compound&lt;MyClass&gt;::value == true
+is_compound&lt;MyEnum&gt;::value == true
+is_compound&lt;int*&gt;::value == true
+is_compound&lt;int&amp;&gt;::value == true
+is_compound&lt;int&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-fundamental" name="is-fundamental">基本型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_fundamental&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_fundamental.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>基本型は以下を含む：</p>
+<ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-integral">整数型(<code><span style="color: #000">is_integral</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-floating-point">浮動小数点数型(<code><span style="color: #000">is_floating_point</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-void"><code><span style="color: #000">void</span></code>型(<code><span style="color: #000">is_void</span></code>)</a></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_fundamental&lt;int)&gt;::value == true
+is_fundamental&lt;double const&gt;::value == true
+is_fundamental&lt;void&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-member-pointer" name="is-member-pointer">メンバポインタかどうかの判定</a></h3>
+<p><code><span style="color: #000">boost::is_member_pointer&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_member_pointer.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>メンバポインタは以下を含む：</p>
+<ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-function">メンバ関数ポインタ(<code><span style="color: #000">is_member_function</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-object">メンバ変数ポインタ(<code><span style="color: #000">is_member_object</span></code>)</a></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_member_pointer&lt;int (MyClass::*)&gt;::value == true
+is_member_pointer&lt;int (MyClass::*)(char)&gt;::value == true
+is_member_pointer&lt;int (MyClass::*)(void)const&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-object" name="is-object">オブジェクト型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_object&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：
+- <code><span style="color: #000">&lt;boost/type_traits/is_object.hpp&gt;</span></code>
+- <code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></p>
+<p>オブジェクト型は、参照、<code><span style="color: #000">void</span></code>、関数型以外の型である。</p>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_object&lt;int&gt;::value == true
+is_object&lt;int*&gt;::value == true
+is_object&lt;int (*)(void)&gt;::value == true
+is_object&lt;int (MyClass::*)(void)const&gt;::value == true
+is_object&lt;int &amp;&gt;::value == false // 参照型はオブジェクトではない
+is_object&lt;int (double)&gt;::value == false // 参照型はオブジェクトではない
+is_object&lt;const void&gt;::value == false // void型はオブジェクトではない</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-reference" name="is-reference">参照型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_referece&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_reference.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>参照型は、左辺値参照と右辺値参照を含む型である。</p>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_reference&lt;int&amp;&gt;:: == true
+is_reference&lt;int const&amp;&gt;::value == true
+is_reference&lt;int const&amp;&amp;&gt;::value == true
+is_reference&lt;int (&amp;)(long)&gt;::value == true // 関数への参照</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-scalar" name="is-scalar">スカラ型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_scalar&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_scalar.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>スカラ型は以下を含む：</p>
+<ul>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-integral">整数型(<code><span style="color: #000">is_integral</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-floating-point">浮動小数点数型(<code><span style="color: #000">is_floating_point</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-enum">列挙型(<code><span style="color: #000">is_enum</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-pointer">ポインタ型(<code><span style="color: #000">is_pointer</span></code>)</a></li>
+<li><a href="http://boostjp.github.io/tips/type_traits.html#is-member-pointer">メンバポインタ型(<code><span style="color: #000">is_member_pointer</span></code>)</a></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_scalar&lt;int*&gt;::value == true
+is_scalar&lt;int&gt;::value == true
+is_scalar&lt;double&gt;::value == true
+is_scalar&lt;int (*)(long)&gt;::value == true
+is_scalar&lt;int (MyClass::*)(long)&gt;::value == true
+is_scalar&lt;int (MyClass::*)&gt;::value == true</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/general-type-properties" name="general-type-properties">型の性質</a></h2>
+<h3><a href="http://boostjp.github.io/tips/alignment-of" name="alignment-of">アライメントを取得する</a></h3>
+<p><code><span style="color: #000">boost::alignment_of&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/alignment_of.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">const std::size_t a = alignment_of&lt;int&gt;::value;</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-new-operator" name="has-new-operator">new演算子を持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_new_operator&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_new_operator.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class A { void* operator new(std::size_t); };
+class B { void* operator new(std::size_t, const std::nothrow&amp;); };
+class C { void* operator new(std::size_t, void*); };
+class D { void* operator new[](std::size_t); };
+class E { void* operator new[](std::size_t, const std::nothrow&amp;); };
+class F { void* operator new[](std::size_t, void*); };
+
+has_new_operator&lt;A&gt;::value == true
+has_new_operator&lt;B&gt;::value == true
+has_new_operator&lt;C&gt;::value == true
+has_new_operator&lt;D&gt;::value == true
+has_new_operator&lt;E&gt;::value == true
+has_new_operator&lt;F&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-nothrow-assign" name="has-nothrow-assign">例外を投げない代入演算子を持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_nothrow_assign&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_nothrow_assign.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/has-nothrow-constructor" name="has-nothrow-constructor">例外を投げないコンストラクタを持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_nothrow_constructor&lt;T&gt;</span></code>もしくは<code><span style="color: #000">boost::has_nothrow_default_constructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_nothrow_constructor.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/has-nothrow-copy-constructor" name="has-nothrow-copy-constructor">例外を投げないコピーコンストラクタを持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_nothrow_copy&lt;T&gt;</span></code>もしくは<code><span style="color: #000">boost::has_nothrow_copy_constructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_nothrow_copy.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_nothrow_copy_constructor.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/has-trivial-assign" name="has-trivial-assign">自明な代入演算子を持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_trivial_assign&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_trivial_assign.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">has_trivial_assign&lt;int&gt;::value == true
+has_trivial_assign&lt;char*&gt;::value == true
+has_trivial_assign&lt;int (*)(long)&gt;::value == true
+has_trivial_assign&lt;MyClass&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-trivial-constructor" name="has-trivial-constructor">自明なコンストラクタを持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_trivial_constructor&lt;T&gt;</span></code>もしくは<code><span style="color: #000">boost::has_trivial_default_constructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_trivial_constructor.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">has_trivial_constructor&lt;int&gt;::value == true
+has_trivial_constructor&lt;char*&gt;::value == true
+has_trivial_constructor&lt;int (*)(long)&gt;::value == true
+has_trivial_constructor&lt;MyClass&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-trivial-copy-constructor" name="has-trivial-copy-constructor">自明なコピーコンストラクタを持っている型か判定する</a></h3>
+<p><code><span style="color: #000">boost::has_trivial_copy&lt;T&gt;</span></code>もしくは<code><span style="color: #000">boost::has_trivial_copy_constructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_trivial_copy.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">has_trivial_copy&lt;int&gt;::value == true
+has_trivial_copy&lt;char*&gt;::value == true
+has_trivial_copy&lt;int (*)(long)&gt;::value == true
+has_trivial_copy&lt;MyClass&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-trivial-destructor" name="has-trivial-destructor">自明なデストラクタを持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_trivial_destructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_trivial_destructor.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">has_trivial_destructor&lt;int&gt;::value == true
+has_trivial_destructor&lt;char*&gt;::value == true
+has_trivial_destructor&lt;int (*)(long)&gt;::value == true
+has_trivial_destructor&lt;MyClass&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/has-virtual-destructor" name="has-virtual-destructor">仮想デストラクタを持っている型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::has_virtual_destructor&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/has_virtual_destructor.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/is-abstract" name="is-abstract">抽象型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_abstract&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_abstract.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class abc{ virtual ~abc() = 0; }; 
+
+is_abstract&lt;abc&gt;::value == true
+is_abstract&lt;abc const&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-const" name="is-const">const修飾された型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_const&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_const.hpp&gt;</span></code></li>
+<li>`&lt;boost/type_traits.hpp&gt;@</li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_const&lt;int const&gt;::value == true
+is_const&lt;int const volatile&gt;::value == true
+is_const&lt;int* const&gt;::value == true
+is_const&lt;int const*&gt;::value == false
+is_const&lt;int const&amp;&gt;::value == false
+is_const&lt;int&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-empty" name="is-empty">空クラスかどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_empty&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>継承してもサイズが増えない型なら<code><span style="color: #000">true</span></code>。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_empty.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">struct empty_class {}; 
+
+is_empty&lt;empty_class&gt;::value == true
+is_empty&lt;empty_class const&gt;::value == true
+is_empty&lt;empty_class&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-stateless" name="is-stateless">stateless型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_stateless&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>ストレージを持たず、コンストラクタとデストラクタが自明な型なら<code><span style="color: #000">true</span></code>。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_stateless.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<h3><a href="http://boostjp.github.io/tips/is-pod" name="is-pod">POD型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_pod&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/is_pod.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_pod&lt;int&gt;::value == true
+is_pod&lt;char*&gt;::value == true
+is_pod&lt;int (*)(long)&gt;::value == true
+is_pod&lt;MyClass&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-polymorphic" name="is-polymorphic">多相的に振る舞う型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_polymorphic&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_polymorphic.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class poly{ virtual ~poly(); };
+
+is_polymorphic&lt;poly&gt;::value == true
+is_polymorphic&lt;poly const&gt;::value == true
+is_polymorphic&lt;poly&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-signed" name="is-signed">符号付き整数型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_signed&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_signed.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_signed&lt;int&gt;::value == true
+is_signed&lt;int const volatile&gt;::value == true
+is_signed&lt;unsigned int&gt;::value == false
+is_signed&lt;myclass&gt;::value == false
+is_signed&lt;char&gt;::valueは、charの符号性質に依存する
+is_signed&lt;long long&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-unsigned" name="is-unsigned">符号なし整数型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_unsigned&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_unsigned.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_unsigned&lt;unsigned int&gt;::value == true
+is_unsigned&lt;unsigned int const volatile&gt;::value == true
+is_unsigned&lt;int&gt;::value == false
+is_unsigned&lt;myclass&gt;::value == false
+is_unsigned&lt;char&gt;::valueは、charの符号性質に依存する
+is_unsigned&lt;unsigned long long&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-volatile" name="is-volatile">volatile修飾された型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_volatile&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_volatile.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_volatile&lt;volatile int&gt;::value == true
+is_volatile&lt;const volatile int&gt;::value == true
+is_volatile&lt;int* volatile&gt;::value == true
+is_volatile&lt;int volatile*&gt;::value == false</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/extent" name="extent">配列のN次元目の要素数を取得する</a></h3>
+<p><code><span style="color: #000">boost::extent&lt;T&gt;</span></code>もしくは<code><span style="color: #000">boost::extent&lt;T, N&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/extent.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">extent&lt;int[1]&gt;::value == 1
+extent&lt;double[2][3][4], 0&gt;::value == 2
+extent&lt;double[2][3][4], 1&gt;::value
+extent&lt;double[2][3][4], 3&gt;::value == 4
+extent&lt;int[][2]&gt;::value == 0
+extent&lt;int[][2], 1&gt;::value == 2
+extent&lt;int*&gt;::value == 0
+extent&lt;boost::array&lt;int, 3&gt; &gt;::value == 0</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/rank" name="rank">配列の次元数を取得する</a></h3>
+<p><code><span style="color: #000">boost::rank&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/rank.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">rank&lt;int[]&gt;::value == 1
+rank&lt;double[2][3][4]&gt;::value == 3
+rank&lt;int[1]&gt;::value == 1
+rank&lt;int[][2]&gt;::value == 2
+rank&lt;int*&gt;::value == 0
+rank&lt;boost::array&lt;int, 3&gt; &gt;::value == 0</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/relationships-between-two-types" name="relationships-between-two-types">2つの型の関係性</a></h2>
+<h3><a href="http://boostjp.github.io/tips/is-base-of" name="is-base-of">継承関係にある型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_base_of&lt;Base, Derived&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_base_of.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class Base{};
+class Derived : public Base{}; 
+
+is_base_of&lt;Base, Derived&gt;::value == true
+is_base_of&lt;Base, Base&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-virtual-base-of" name="is-virtual-base-of">仮想継承の関係にある型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_virtual_base_of&lt;Base, Derived&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_virtual_base_of.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class Base{};
+class Derived : public virtual Base{}; 
+
+is_virtual_base_of&lt;Base, Derived&gt;::value == true
+is_virtual_base_of&lt;Base, Base&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-convertible" name="is-convertible">変換可能な型かどうかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_convertible&lt;From, To&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_convertible.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_convertible&lt;int, double&gt;::value == true
+is_convertible&lt;const int, double&gt;::value == true
+is_convertible&lt;int* const, int*&gt;::value == true
+is_convertible&lt;int const*, int*&gt;::value == false // const_castが必要
+is_convertible&lt;int const&amp;, long&gt;::value == true
+is_convertible&lt;int, int&gt;::value == true</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/is-same" name="is-same">2つの型が同じかを判定する</a></h3>
+<p><code><span style="color: #000">boost::is_same&lt;T, U&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/is_same.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">is_same&lt;int, int&gt;::value == true
+is_same&lt;int const, int&gt;::value == false
+is_same&lt;int&amp;, int&gt;::value == false</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/transform-type-to-another" name="transform-type-to-another">型の変換する</a></h2>
+<h3><a href="http://boostjp.github.io/tips/add-const" name="add-const">const修飾を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_const&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T const</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_const.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_const&lt;int&gt;::type       : int const
+add_const&lt;int&amp;&gt;::type      : int&amp;
+add_const&lt;int*&gt;::type      : int* const
+add_const&lt;int const&gt;::type : int const</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-volatile" name="add-volatile">volatile修飾を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_volatile&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T volatile</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_volatile.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_volatile&lt;int&gt;::type : int volatile
+add_volatile&lt;int&amp;&gt;::type : int&amp;
+add_volatile&lt;int*&gt;::type : int* volatile
+add_volatile&lt;int const&gt;::type : int const volatile</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-cv" name="add-cv">const volatile修飾を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_cv&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T const volatile</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_cv.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_cv&lt;int&gt;::type       : int const volatile
+add_cv&lt;int&amp;&gt;::type      : int&amp;
+add_cv&lt;int*&gt;::type      : int* const volatile
+add_cv&lt;int const&gt;::type : int const volatile</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-lvalue-reference" name="add-lvalue-reference">左辺値参照を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_lvalue_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T&amp;</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_lvalue_reference.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_lvalue_reference&lt;int&gt;::type        : int&amp;
+add_lvalue_reference&lt;int const&amp;&gt;::type : int const&amp;
+add_lvalue_reference&lt;int*&gt;::type       : int*&amp;
+add_lvalue_reference&lt;int*&amp;&gt;::type      : int*&amp;
+add_lvalue_reference&lt;int&amp;&amp;&gt;::type      : int&amp;
+add_lvalue_reference&lt;void&gt;::type       : void</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-rvalue-reference" name="add-rvalue-reference">右辺値参照を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_rvalue_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T&amp;&amp;</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_rvalue_reference.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code>例：</li>
+</ul>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_rvalue_reference&lt;int&gt;::type        : int&amp;&amp;
+add_rvalue_reference&lt;int const&amp;&gt;::type : int const&amp;
+add_rvalue_reference&lt;int*&gt;::type       : int*&amp;&amp;
+add_rvalue_reference&lt;int*&amp;&gt;::type      : int*&amp;
+add_rvalue_reference&lt;int&amp;&amp;&gt;::type      : int&amp;&amp;
+add_rvalue_reference&lt;void&gt;::type       : void</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-reference" name="add-reference">参照を付加する</a></h3>
+<p><code><span style="color: #000">boost::add_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T&amp;</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_reference.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_reference&lt;int&gt;::type        : int&amp;
+add_reference&lt;int const&amp;&gt;::type : int const&amp;
+add_reference&lt;int*&gt;::type       : int*&amp;
+add_reference&lt;int*&amp;&gt;::type      : int*&amp;</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/add-pointer" name="add-pointer">ポインタを付加する</a></h3>
+<p><code><span style="color: #000">boost::add_pointer&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">T*</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/add_pointer.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">add_pointer&lt;int&gt;::type        : int*
+add_pointer&lt;int const&amp;&gt;::type : int const*
+add_pointer&lt;int*&gt;::type       : int**
+add_pointer&lt;int*&amp;&gt;::type      : int**</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/conditional" name="conditional">条件によって型を選択する</a></h3>
+<p><code><span style="color: #000">boost::conditional&lt;Cond, Then, Else&gt;</span></code>メタ関数を使用する。</p>
+<p>コンパイル時条件<code><span style="color: #000">Cond</span></code>が<code><span style="color: #000">true</span></code>の場合は<code><span style="color: #000">Then</span></code>型を返し、それ以外の場合は<code><span style="color: #000">Else</span></code>型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/conditional.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">conditional&lt;true, int, char&gt;::type  : int
+conditional&lt;false, int, char&gt;::type : char</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/common-type" name="common-type">共通の型を取得する</a></h3>
+<p><code><span style="color: #000">boost::common_type&lt;T...&gt;</span></code>メタ関数を使用する。</p>
+<p>複数の型から、共通に変換可能な型を推定して返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/common_type.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template &lt;class ...T&gt;
+typename common_type&lt;T...&gt;::type min(T... t);</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/decay" name="decay">推論される型の取得する</a></h3>
+<p><code><span style="color: #000">boost::decay&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>以下のような関数テンプレートによって推論される型を取得する。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class T&gt; void f(T x);</span></code></pre>
+
+インクルード：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/type_traits/decay.hpp&gt;</span></code></li>
+<li><code><span style="color: #000">&lt;boost/type_traits.hpp&gt;</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">decay&lt;int[2][3]&gt;::type      : int[3]*
+decay&lt;int(&amp;)[2]&gt;::type      : int*
+decay&lt;int(&amp;)(double)&gt;::type : int(*)(double)
+int(*)(double)              : int(*)(double)
+int(double)                 : int(*)(double)</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/floating-point-promotion" name="floating-point-promotion">浮動小数点数型を昇格する</a></h3>
+<p><code><span style="color: #000">booost::floating_point_promotion&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">float</span></code>を<code><span style="color: #000">double</span></code>、<code><span style="color: #000">double</span></code>を<code><span style="color: #000">long double</span></code>に昇格。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/floating_point_promotion.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">floating_point_promotion&lt;float const&gt;::type : double const
+floating_point_promotion&lt;float&amp;&gt;::type      : float&amp;
+floating_point_promotion&lt;short&gt;::type       : short</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/integral-promotion" name="integral-promotion">整数型を昇格する</a></h3>
+<p><code><span style="color: #000">boost::integral_promotion&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">short</span></code>を<code><span style="color: #000">int</span></code>、<code><span style="color: #000">int</span></code>を<code><span style="color: #000">long</span></code>に、といった昇格を行う。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/integral_promotion.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">integral_promotion&lt;short const&gt;::type                 : int const
+integral_promotion&lt;short&amp;&gt;::type                      : short&amp;
+integral_promotion&lt;enum std::float_round_style&gt;::type : int</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/promote" name="promote">型を昇格する</a></h3>
+<p><code><span style="color: #000">boost::promote&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>整数型もしくは浮動小数点数型を昇格。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/promote.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">promote&lt;short volatile&gt;::type : int volatile
+promote&lt;float const&gt;::type    : double const
+promote&lt;short&amp;&gt;::type         : short&amp;</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/make-signed" name="make-signed">符号なし型から符号あり型に変換する</a></h3>
+<p><code><span style="color: #000">boost::make_signed&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/make_signed.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">make_signed&lt;int&gt;::type                      : int
+make_signed&lt;unsigned int const&gt;::type       : int const
+make_signed&lt;const unsigned long long&gt;::type : const long long
+make_signed&lt;my_enum&gt;::type                  : enumと同じ幅を持つ符号付き整数型
+make_signed&lt;wchar_t&gt;::type                  : wchar_tと同じ幅を持つ符号付き整数型</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/make-unsigned" name="make-unsigned">符号あり型から符号なし型に変換する</a></h3>
+<p><code><span style="color: #000">boost::make_unsigned&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/make_unsigned.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">make_unsigned&lt;int&gt;::type                      : unsigned int
+make_unsigned&lt;unsigned int const&gt;::type       : unsigned int const
+make_unsigned&lt;const unsigned long long&gt;::type : const unsigned long long
+make_unsigned&lt;my_enum&gt;::type                  : enumと同じ幅を持つ符号なし整数型
+make_unsigned&lt;wchar_t&gt;::type                  : wchar_tと同じ幅を持つ符号なし整数型</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-extent" name="remove-extent">配列の次元を削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_extent&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_extent.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_extent&lt;int&gt;::type          : int
+remove_extent&lt;int const[2]&gt;::type : int const
+remove_extent&lt;int[2][4]&gt;::type    : int[4]
+remove_extent&lt;int[][2]&gt;::type     : int[2]
+remove_extent&lt;int const*&gt;::type   : int const*</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-all-extents" name="remove-all-extents">配列の次元を全て削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_all_extents&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_all_extents.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_all_extents&lt;int&gt;::type          : int
+remove_all_extents&lt;int const[2]&gt;::type : int const
+remove_all_extents&lt;int[][2]&gt;::type     : int
+remove_all_extents&lt;int[2][3][4]&gt;::type : int
+remove_all_extents&lt;int const*&gt;::type   : int const*</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-const" name="remove-const">const修飾を削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_const&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_const.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_const&lt;int&gt;::type : int
+remove_const&lt;int const&gt;::type : int
+remove_const&lt;int const volatile&gt;::type : int volatile
+remove_const&lt;int const&amp;&gt;::type : int const&amp;
+remove_const&lt;int const*&gt;::type : int const*</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-volatile" name="remove-volatile">volatile修飾を削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_volatile&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_volatile.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_volatile&lt;int&gt;::type                : int
+remove_volatile&lt;int volatile&gt;::type       : int
+remove_volatile&lt;int const volatile&gt;::type : int const
+remove_volatile&lt;int volatile&amp;&gt;::type      : int volatile&amp;
+remove_volatile&lt;int volatile*&gt;::type      : int volatile*</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-cv" name="remove-cv">const volatile修飾を削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_cv&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_cv.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_cv&lt;int&gt;::type                : int
+remove_cv&lt;int const&gt;::type          : int
+remove_cv&lt;int const volatile&gt;::type : int
+remove_cv&lt;int const&amp;&gt;::type         : int const&amp;
+remove_cv&lt;int const*&gt;::type         : int const*</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-pointer" name="remove-pointer">ポインタを削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_pointer&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_pointer.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_pointer&lt;int&gt;::type         : int
+remove_pointer&lt;int const*&gt;::type  : int const
+remove_pointer&lt;int const**&gt;::type : int const*
+remove_pointer&lt;int&amp;&gt;::type        : int&amp;
+remove_pointer&lt;int*&amp;&gt;::type       : int*&amp;</span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/tips/remove-reference" name="remove-reference">参照を削除する</a></h3>
+<p><code><span style="color: #000">boost::remove_reference&lt;T&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/remove_reference.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">remove_reference&lt;int&gt;::type        : int
+remove_reference&lt;int const&amp;&gt;::type : int const
+remove_reference&lt;int&amp;&amp;&gt;::type      : int
+remove_reference&lt;int*&gt;::type       : int*
+remove_reference&lt;int*&amp;&gt;::type      : int*</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/synthesizing-types-with-specific-alignments" name="synthesizing-types-with-specific-alignments">特定アライメントを持った型の合成</a></h2>
+<h3><a href="http://boostjp.github.io/tips/type-with-alignment" name="type-with-alignment">特定のアライメントを持つ型の取得する</a></h3>
+<p><code><span style="color: #000">boost::type_with_alignment&lt;Align&gt;</span></code>メタ関数を使用する。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/type_with_alignment.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/type_traits/alignment_of.hpp&gt;
+#include &lt;boost/type_traits/type_with_alignment.hpp&gt;
+
+int main()
+{
+    std::cout &lt;&lt; typeid(
+        boost::type_with_alignment&lt;
+            boost::alignment_of&lt;char&gt;::value
+        &gt;::type
+    ).name() &lt;&lt; std::endl;
+}</span></code></pre>
+
+実行結果：</p>
+<p><pre><code><span style="color: #000">union boost::detail::lower_alignment&lt;1&gt;
+</span></code></pre></p>
+<h3><a href="http://boostjp.github.io/tips/aligned-storage" name="aligned-storage">適切にアライメントされた型を作成する</a></h3>
+<p><code><span style="color: #000">boost::aligned_storage&lt;Len, Align&gt;</span></code>メタ関数を使用する。</p>
+<p><code><span style="color: #000">Align</span></code>アライメント、<code><span style="color: #000">Len</span></code>サイズのPOD型を返す。</p>
+<p>インクルード：</p>
+<ul>
+<li><code><span style="color: #000">boost/type_traits/aligned_storage.hpp</span></code></li>
+<li><code><span style="color: #000">boost/type_traits.hpp</span></code></li>
+</ul>
+<p>例：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">// via http://d.hatena.ne.jp/Cryolite/20051102#p1
+
+template&lt;class T&gt;
+class scoped_destroy : boost::noncopyable
+{
+public:
+    explicit scoped_destroy(T* p) : ptr_(p) {}
+    ~scoped_destroy(){ptr_-&gt;~T();}
+    T&amp; operator*()const{return *ptr_;}
+    T* operator-&gt;()const{return ptr_;}
+    T* get()const{return ptr_;}
+private:
+    T* ptr_;
+};
+
+int main()
+{
+    boost::aligned_storage&lt;
+        sizeof(MyClass), boost::alignment_of&lt;MyClass&gt;::value
+    &gt;::type buf;
+
+    scoped_destroy&lt;MyClass&gt; p(::new (static_cast&lt;void*&gt;(&amp;buf)) MyClass());
+
+    ... // p.get(), p-&gt;(), *p を用いて構築したオブジェクトを利用する
+
+    // ここで明示的なデストラクタの呼び出しは不要
+}</span></code></pre>
+</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>

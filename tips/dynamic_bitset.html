@@ -1,0 +1,295 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>dynamic_bitset</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>サイズを動的に変更できるビット集合</h1>
+<p>サイズ固定のビット集合である<code><span style="color: #000">std::bitset</span></code> に対して、<code><span style="color: #000">boost::dynamic_bitset</span></code> はサイズを実行時に変更できるビット集合である。</p>
+<h2>インデックス</h2>
+<ul>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#resize">サイズを指定する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#nth-bit">ビットの値を設定する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#count-one">1の数を数える</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#test-bit">ビットの値を検査する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#string-conversion">文字列との相互変換</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#flip">ビットの値を反転する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#set">集合演算</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#is-subset-of">2つの集合の包含関係を調べる</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#each-one-bits">1が立っているインデックスを走査する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_bitset.html#customize-data-size">データサイズをカスタマイズする</a></li>
+</ul>
+<h1><a href="http://boostjp.github.io/tips/resize" name="resize">サイズを指定する</a></h1>
+<p>コンストラクタ、もしくはメンバ関数<code><span style="color: #000">resize()</span></code>でビット集合のサイズを指定できる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">bs(3)</span>;  // サイズ3のビット集合(デフォルト値は全てのビットが0)
+    assert(bs.size() == 3); 
+    cout &lt;&lt; bs &lt;&lt; endl;   // -&gt; 000
+
+    bs.<span style="color:#ff0000">resize(5)</span>;         // サイズを5に変更
+    assert(bs.size() == 5);
+    cout &lt;&lt; bs &lt;&lt; endl;   // -&gt; 00000
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;cassert&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; </span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/nth-bit" name="nth-bit">ビットの値を設定する</a></h2>
+<p>メンバ関数<code><span style="color: #000">set</span></code>/<code><span style="color: #000">reset</span></code>、<code><span style="color: #000">[ ]</span></code>演算子でビットの値を設定できる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">set(0)</span>;             // メンバ関数setで0ビット目を1にする
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00001
+    bs.<span style="color:#ff0000">set(1).set(2)</span>;      // setやresetは*thisを返すので、メソッドチェーン形式で記述可能
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00111
+    bs.<span style="color:#ff0000">set(2, false)</span>;      // setの第2引数にはboolを指定可能
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00011
+    bs.<span style="color:#ff0000">set()</span>;              // 引数なしのsetは全てのビットを1にする
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 11111
+    bs.<span style="color:#ff0000">reset(0)</span>;           // メンバ関数resetで0ビット目を0にする
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 11110
+    bs.<span style="color:#ff0000">reset()</span>;            // 引数なしのresetは全てのビットを0にする
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00000
+    bs[0] = true;          // []演算子で0ビット目を1にする
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00001
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; bs(5);
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 00000
+    bs.</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/count-one" name="count-one">1の数を数える</a></h2>
+<p>メンバ関数<code><span style="color: #000">count()</span></code>を使う</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">count()</span> == 0);
+    bs.set();    // -&gt; 111
+    assert(bs.<span style="color:#ff0000">count()</span> == 3);
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;cassert&gt;
+
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; bs(3); // -&gt; 000
+    assert(bs.</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/test-bit" name="test-bit">ビットの値を検査する</a></h2>
+<p>特定のビットが1かを調べるにはメンバ関数<code><span style="color: #000">test()</span></code>もしくは<code><span style="color: #000">[ ]</span></code>演算子を使う。</p>
+<p>1のビットがあるかどうかを調べるにはメンバ関数<code><span style="color: #000">any()</span></code>, <code><span style="color: #000">none()</span></code>を使う。</p>
+<p>すべてのビットが1かどうかを調べるにはメンバ関数<code><span style="color: #000">count()</span></code>と<code><span style="color: #000">size()</span></code>を組み合わせて使う。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">none()</span>);     
+
+    // 特定のビットが1か調べる
+    bs[0] = true;   // -&gt; 001
+    assert(bs[0]);
+    assert(bs.<span style="color:#ff0000">test(0)</span>);
+
+    // 1のビットがあるか調べる
+    assert(bs.<span style="color:#ff0000">any()</span>);
+
+    // すべてのビットが1か調べる    
+    bs.set();  // -&gt; 111
+    assert(<span style="color:#ff0000">bs.count() == bs.size()</span>);   
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;cassert&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    // すべてのビットが0か調べる
+    boost::dynamic_bitset&lt;&gt; bs(3);  // -&gt; 000
+    assert(bs.</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/string-conversion" name="string-conversion">文字列との相互変換</a></h2>
+<p><code><span style="color: #000">boost::dynamic_bitset</span></code>クラスでは演算子<code><span style="color: #000">&lt;&lt;</span></code>および<code><span style="color: #000">&gt;&gt;</span></code>がオーバーロードされているため、<code><span style="color: #000">istream</span></code>/<code><span style="color: #000">ostream</span></code>を通して文字列との相互変換が可能である。</p>
+<p>文字列からビット集合への変換は、コンストラクタに文字列を渡すことでも生成できる。</p>
+<p>ビット集合から文字列への変換は、<code><span style="color: #000">boost::to_string()</span></code>関数を使用することもできる。</p>
+<p>文字列は<code><span style="color: #000">'0'</span></code>か<code><span style="color: #000">'1'</span></code>のみから構成される必要があり、文字列の右端がインデックス<code><span style="color: #000">0</span></code>に対応することに注意。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">bs(std::string("01"))</span>;  // コンストラクタに文字列を渡す
+    assert(bs[0]);
+    assert(!bs[1]);
+    // dynamic_bitset → std::stirng
+    std::string str;
+    boost::<span style="color:#ff0000">to_string(bs, str)</span>;  // to_string 関数による変換
+
+    // 演算子&lt;&lt;, &gt;&gt; がオーバーロードされているため、boost::lexical_castによる変換も出来る
+    dynamic_bitset&lt;&gt; bs2 = <span style="color:#ff0000">lexical_cast&lt;dynamic_bitset&lt;&gt; &gt;("01");</span>
+    std::string str2 = <span style="color:#ff0000">lexical_cast&lt;std::string&gt;(bs2);</span>
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;boost/lexical_cast.hpp&gt;
+
+int main()
+{
+    using boost::dynamic_bitset;
+    using boost::lexical_cast;
+
+    // std::string → dynamic_bitset
+    dynamic_bitset&lt;&gt; </span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/flip" name="flip">ビットの値を反転する</a></h2>
+<p>メンバ関数<code><span style="color: #000">flip()</span></code>でビットの値を反転できる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">flip(0)</span>;            // メンバ関数flipで0ビット目を反転
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 001
+    bs.<span style="color:#ff0000">flip()</span>;             // 引数なしのflipは全てのビットを反転させる
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 110
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; bs(3);
+    cout &lt;&lt; bs &lt;&lt; endl;    // -&gt; 000
+    bs.</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/set" name="set">集合演算</a></h2>
+<p>各種演算子(<code><span style="color: #000">&amp;</span></code>, <code><span style="color: #000">|</span></code>, <code><span style="color: #000">^</span></code>, <code><span style="color: #000">~</span></code>,　<code><span style="color: #000">-</span></code>)およびその代入版(<code><span style="color: #000">&amp;=</span></code>, <code><span style="color: #000">|=</span></code>, <code><span style="color: #000">^=</span></code>, <code><span style="color: #000">-=</span></code>)によるビット毎の論理演算により、集合演算ができる。</p>
+<p>ただし、2項演算子の引数のサイズは等しくなければならない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">~bs1</span>;        // -&gt; 1100    ビット毎の否定 = 補集合
+    <span style="color:#ff0000">bs1 &amp; bs2</span>;   // -&gt; 0001    ビット毎の論理積 = 積集合
+    <span style="color:#ff0000">bs1 | bs2</span>;   // -&gt; 0111    ビット毎の論理和 = 和集合
+    <span style="color:#ff0000">bs1 ^ bs2</span>;   // -&gt; 0110    ビット毎の排他的論理和 = 対称差
+    <span style="color:#ff0000">bs1 - bs2</span>;   // -&gt; 0010    差集合
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; bs1(4), bs2(4);
+    bs1.set(0).set(1);    // -&gt; 0011
+    bs2.set(0).set(2);    // -&gt; 0101
+
+    </span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/is-subset-of" name="is-subset-of">2つの集合の包含関係を調べる</a></h2>
+<p>ビット集合A, Bがある時、AがBの部分集合（A ⊆ B)かを調べるには、メンバ関数<code><span style="color: #000">is_subset_of()</span></code>を使う。</p>
+<p>同様に、AがBの真部分集合（A ⊂ B）かを調べるには、メンバ関数<code><span style="color: #000">is_proper_subset_of</span></code>を、AとBが交差する（すなわち、AとBの積集合が空集合でない）かを調べるには、メンバ関数<code><span style="color: #000">intersects()</span></code>をそれぞれ使う。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">A.is_subset_of(A)</span>);  // AはA自身の部分集合
+    assert(<span style="color:#ff0000">!A.is_proper_subset_of(A)</span>);   // AはA自身の真部分集合ではない
+    assert(<span style="color:#ff0000">A.is_proper_subset_of(B)</span>);    // AはBの真部分集合
+    assert(<span style="color:#ff0000">A.intersects(B)</span>);    // AはBと交差する
+    assert(<span style="color:#ff0000">!B.intersects(C)</span>);   // BはCと交差しない    
+}<span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;cassert&gt;
+
+int main()
+{
+
+    boost::dynamic_bitset&lt;&gt; A(4), B(4), C(4);
+    A.set(0);           // -&gt; 0001
+    B.set(0).set(1);    // -&gt; 0011
+    C.set(2).set(3);    // -&gt; 1100
+
+    assert(</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/each-one-bits" name="each-one-bits">1が立っているインデックスを走査する</a></h2>
+<p>メンバ関数<code><span style="color: #000">find_first()</span></code>と<code><span style="color: #000">find_next()</span></code>を組み合わせて、<code><span style="color: #000">1</span></code>が立っているインデックスを走査できる。 </p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">boost::dynamic_bitset&lt;&gt;::size_type pos = bs.find_first();</span>
+        <span style="color:#ff0000">pos != bs.npos;</span>
+        <span style="color:#ff0000">pos = bs.find_next(pos)</span>)
+    {
+        std::cout &lt;&lt; pos &lt;&lt; std::endl;
+    }
+} <span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;iostream&gt;
+
+int main()
+{
+    boost::dynamic_bitset&lt;&gt; bs(100);
+    bs.set(10).set(20);
+
+    // 1の立っているインデックスを走査
+    for(</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">10
+20
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/customize-data-size" name="customize-data-size">データサイズをカスタマイズする</a></h2>
+<p><code><span style="color: #000">boost::dynamic_bitset</span></code>は、第1テンプレート引数の<code><span style="color: #000">Block</span></code>型の<code><span style="color: #000">std::vector</span></code>でビット列を管理する。</p>
+<p><code><span style="color: #000">Block</span></code>のデフォルト値は<code><span style="color: #000">unsigned long</span></code>であるが、別の型を指定することでデータサイズをカスタマイズできる。</p>
+<p>ただし、<code><span style="color: #000">Block</span></code>は符号なし整数型でなければならない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">unsigned short</span>に変更
+static_assert(dynamic_bitset&lt;<span style="color:#ff0000">unsigned short</span>&gt;::bits_per_block == sizeof(<span style="color:#ff0000">unsigned short</span>)*8, "");  <span style="color: #000">#include &lt;boost/dynamic_bitset.hpp&gt;
+#include &lt;cassert&gt;
+
+using boost::dynamic_bitset;
+
+// デフォルトはunsigned long
+static_assert(dynamic_bitset&lt;&gt;::bits_per_block == sizeof(unsigned long)*8, "");
+// </span></code></pre>
+
+</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>dynamic_assert</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>実行時アサート</h1>
+<p>実行時アサートには、<code><span style="color: #000">BOOST_ASSERT</span></code>マクロ、もしくは<code><span style="color: #000">BOOST_ASSERT_MSG</span></code>マクロを使用する。これらのマクロは、<a href="http://www.boost.org/doc/libs/release/libs/utility/assert.html" target="_blank"><code><span style="color: #000">&lt;boost/assert.hpp&gt;</span></code></a>ヘッダで定義される。</p>
+<h2>インデックス</h2>
+<ul>
+<li><a href="http://boostjp.github.io/tips/dynamic_assert.html#assertion-expression">式を検証する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message">メッセージ付きで式を検証する</a></li>
+<li><a href="http://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior">検証失敗時の動作をカスタマイズする</a></li>
+</ul>
+<h2><a href="http://boostjp.github.io/tips/assertion-expression" name="assertion-expression">式を検証する</a></h2>
+<p>式を検証するには、<code><span style="color: #000">BOOST_ASSERT</span></code>マクロを使用する。このマクロは引数として条件式をとる。条件式が<code><span style="color: #000">true</span></code>に評価される場合は検証成功となり、<code><span style="color: #000">false</span></code>の場合は検証失敗と見なされる。</p>
+<p>検証失敗時は、プログラムが異常終了する。</p>
+<p>デフォルトでは、<code><span style="color: #000">NDEBUG</span></code>が<code><span style="color: #000">#define</span></code>されていない場合(デバッグモード)のみ検証が行われる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">BOOST_ASSERT</span>(1 == 1);
+
+    // 検証に失敗するケース
+    <span style="color:#ff0000">BOOST_ASSERT</span>(1 != 1);
+}<span style="color: #000">#include &lt;boost/assert.hpp&gt;
+
+int main()
+{
+    // 検証に成功するケース
+    </span></code></pre>
+
+出力例：</p>
+<p><pre><code><span style="color: #000">This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+Assertion failed!
+
+Program: main.exe
+File: main.cpp, Line 9
+
+Expression: 1 != 1
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/assertion-with-message" name="assertion-with-message">メッセージ付きで式を検証する</a></h2>
+<p>検証失敗時にコンパイルエラーにエラーメッセージを出力するには、<code><span style="color: #000">BOOST_ASSERT_MSG</span></code>マクロを使用する。基本的な使い方は<code><span style="color: #000">BOOST_ASSERT</span></code>と同様で、第2引数にメッセージの文字列を取る。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">BOOST_ASSERT_MSG</span>(argc &gt; 1, "you must specify at least one option");
+}<span style="color: #000">#include &lt;boost/assert.hpp&gt;
+
+int main(int argc, char* argv[])
+{
+    </span></code></pre>
+
+また、式を評価する必要が無く、該当箇所を通過した場合に単にデバッグ用途で無条件に落としたい場合、文字列を示すポインタの評価結果は常に真になることを利用して、イディオム的に以下のような書き方もできる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">BOOST_ASSERT</span>(!"unknown extra option specified");
+    }
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/assert.hpp&gt;
+
+int main(int argc, char* argv[])
+{
+    if (argc == 1 + 1) {
+        std::cout &lt;&lt; "option 1: " &lt;&lt; argv[1] &lt;&lt; std::endl;
+    } else {
+        </span></code></pre>
+
+これは<code><span style="color: #000">NDEBUG</span></code>が<code><span style="color: #000">#define</span></code>されているビルド（リリースビルド）では暗黙のうちに通過してしまいバグの原因となるので、あくまで簡易的なデバッグ用途に留めるべきである。</p>
+<h2><a href="http://boostjp.github.io/tips/customize-fail-behavior" name="customize-fail-behavior">検証失敗時の動作をカスタマイズする</a></h2>
+<p><code><span style="color: #000">BOOST_ASSERT</span></code>での検証失敗時の動作をカスタマイズしたい場合は、以下の方法をとる：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/assert.hpp&gt;</span></code>ヘッダをインクルードする前に、<code><span style="color: #000">BOOST_ENABLE_ASSERT_HANDLER</span></code>を<code><span style="color: #000">#define</span></code>する</li>
+<li><code><span style="color: #000">boost</span></code>名前空間に<code><span style="color: #000">assertion_failed()</span></code>関数を定義する</li>
+</ul>
+<p>この方法をとることによって、検証失敗時に、自分で定義した<code><span style="color: #000">assertion_failed()</span></code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p>
+<ul>
+<li>文字列化された式</li>
+<li>関数名(形式は環境依存)</li>
+<li>ファイル名(<code><span style="color: #000">__FILE__</span></code>)</li>
+<li>行番号(<code><span style="color: #000">__LINE__</span></code>)</li>
+</ul>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">BOOST_ENABLE_ASSERT_HANDLER</span>
+#include &lt;boost/assert.hpp&gt;
+#include &lt;fstream&gt;
+#include &lt;cstdlib&gt;
+
+namespace boost {
+    void <span style="color:#ff0000">assertion_failed</span>(const char* expr, const char* function, const char* file, long line)
+    {
+        // ログに出力して、アプリケーションを異常終了させる
+        std::ofstream log("log.txt", std::ios::out | std::ios::app);
+        log &lt;&lt; "Expression : " &lt;&lt; expr &lt;&lt; '\n'
+            &lt;&lt; "Function : " &lt;&lt; function &lt;&lt; '\n'
+            &lt;&lt; "File : " &lt;&lt; file &lt;&lt; '\n'
+            &lt;&lt; "Line : " &lt;&lt; line &lt;&lt; std::endl;
+        std::abort();
+    }
+}
+
+int main()
+{
+    BOOST_ASSERT(1 == 2);
+}<span style="color: #000">#define </span></code></pre>
+
+出力例：</p>
+<p><pre><code><span style="color: #000">This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+</span></code></pre>
+log.txt：</p>
+<p><pre><code><span style="color: #000">Expression : 1 == 2
+Function : int main()
+File : C:\language\cpp\main.cpp
+Line : 21
+</span></code></pre>
+<code><span style="color: #000">BOOST_ASSERT_MSG</span></code>の場合は、以下のようにする：</p>
+<ul>
+<li><code><span style="color: #000">&lt;boost/assert.hpp&gt;</span></code>ヘッダをインクルードする前に、<code><span style="color: #000">BOOST_ENABLE_ASSERT_HANDLER</span></code>を<code><span style="color: #000">#define</span></code>する</li>
+<li><code><span style="color: #000">boost</span></code>名前空間に<code><span style="color: #000">assertion_failed_msg()</span></code>関数を定義する</li>
+</ul>
+<p>これによって、<code><span style="color: #000">BOOST_ASSERT_MSG</span></code>での検証失敗時に、自分で定義した<code><span style="color: #000">assertion_failed_msg()</span></code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p>
+<ul>
+<li>文字列化された式</li>
+<li>メッセージ</li>
+<li>関数名(形式は環境依存)</li>
+<li>ファイル名(<code><span style="color: #000">__FILE__</span></code>)</li>
+<li>行番号(<code><span style="color: #000">__LINE__</span></code>)</li>
+</ul>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">BOOST_ENABLE_ASSERT_HANDLER</span>
+#include &lt;boost/assert.hpp&gt;
+#include &lt;fstream&gt;
+#include &lt;cstdlib&gt;
+
+namespace boost {
+    void <span style="color:#ff0000">assertion_failed_msg</span>(const char* expr, const char* msg, const char* function,
+                              const char* file, long line)
+    {
+        // ログに出力して、アプリケーションを異常終了させる
+        std::ofstream log("log.txt", std::ios::out | std::ios::app);
+        log &lt;&lt; "Expression : " &lt;&lt; expr &lt;&lt; '\n'
+            &lt;&lt; "Message : " &lt;&lt; msg &lt;&lt; '\n'
+            &lt;&lt; "Function : " &lt;&lt; function &lt;&lt; '\n'
+            &lt;&lt; "File : " &lt;&lt; file &lt;&lt; '\n'
+            &lt;&lt; "Line : " &lt;&lt; line &lt;&lt; std::endl;
+        std::abort();
+    }
+}
+
+int main()
+{
+    BOOST_ASSERT_MSG(1 == 2, "1 is not 2");
+}<span style="color: #000">#define </span></code></pre>
+
+出力例：</p>
+<p><pre><code><span style="color: #000">This application has requested the Runtime to terminate it in an unusual way.
+Please contact the application's support team for more information.
+</span></code></pre>
+log.txt：</p>
+<p><pre><code><span style="color: #000">Expression : 1 == 2
+Message : 1 is not 2
+Function : int main()
+File : C:\language\cpp\main.cpp
+Line : 22
+</span></code></pre>
+documented boost version is 1.52.0</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>

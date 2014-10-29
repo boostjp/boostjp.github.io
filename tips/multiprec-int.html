@@ -1,0 +1,747 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>multiprec-int</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>多倍長整数</h1>
+<p>多倍長整数を使用するには、<a href="http://www.boost.org/libs/multiprecision/" target="_blank">Boost Multiprecision Library</a>を使用する。</p>
+<h2>インデックス</h2>
+<ul>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#basic-usage">基本的な使い方</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#variation">多倍長整数の種類</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#from-string">文字列からの変換</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#to-string">文字列への変換</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#convert-integer">異なる大きさの整数間で型変換する</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#min">最小値を取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#max">最大値を取得する</a></li>
+<li><a href="http://boostjp.github.io/tips/multiprec-int.html#is-bounded">有限かどうかを判定する</a></li>
+<li>[サポートされている数学関数一覧]</li>
+</ul>
+<h2><a href="http://boostjp.github.io/tips/basic-usage" name="basic-usage">基本的な使い方</a></h2>
+<p>ここでは、Boost.Multiprecisionから提供される多倍長整数の、基本的な使い方を示す。</p>
+<p>以下は、任意精度の符号あり多倍長整数である<a href="http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html" target="_blank"><code><span style="color: #000">boost::multiprecision::cpp_int</span></code></a>クラスを使用して、100の階乗を求めるプログラムである。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">cpp_int</span>.hpp&gt;
+
+namespace mp = boost::multiprecision;
+
+int main()
+{
+    mp::<span style="color:#ff0000">cpp_int</span> x = 1;
+
+    for (unsigned int i = 1; i &lt;= 100; ++i)
+       x *= i;
+
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+</span></code></pre>
+<code><span style="color: #000">cpp_int</span></code>は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、任意精度の多倍長整数である。この型は、メモリが許す限り無限の桁数を扱える。Boost.Multiprecisionが提供する全ての機能は、<code><span style="color: #000">boost::multiprecision</span></code>名前空間以下で定義される。</p>
+<p>Boost.Multiprecisionの多倍長整数は、組み込みの整数型と同じ演算をサポートする。</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>式</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">a + b;</span></code><br /> <code><span style="color: #000">a += b;</span></code></td>
+<td>加算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a - b;</span></code><br /> <code><span style="color: #000">a -= b;</span></code></td>
+<td>減算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a * b;</span></code><br /> <code><span style="color: #000">a *= b;</span></code></td>
+<td>乗算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a / b;</span></code><br /> <code><span style="color: #000">a /= b;</span></code></td>
+<td>除算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a % b;</span></code><br /> <code><span style="color: #000">a %= b;</span></code></td>
+<td>剰余算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">+a;</span></code></td>
+<td>符号をプラスにする</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">-a;</span></code></td>
+<td>符号をマイナスにする</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a++;</span></code><br /> <code><span style="color: #000">++a;</span></code></td>
+<td>インクリメント</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a--;</span></code><br /> <code><span style="color: #000">--a;</span></code></td>
+<td>デクリメント</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &amp; b;</span></code><br /> <code><span style="color: #000">a &amp;= b;</span></code></td>
+<td>ビットAND</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a | b;</span></code><br /> <code><span style="color: #000">a |= b;</span></code></td>
+<td>ビットOR</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a ^ b;</span></code><br /> <code><span style="color: #000">a ^= b;</span></code></td>
+<td>ビットXOR</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &lt;&lt; b;</span></code><br /> <code><span style="color: #000">a &lt;&lt;= b;</span></code></td>
+<td>左ビットシフト</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &gt;&gt; b;</span></code><br /> <code><span style="color: #000">a &gt;&gt;= b;</span></code></td>
+<td>右ビットシフト</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a == b;</span></code></td>
+<td>等値比較</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a != b;</span></code></td>
+<td>非等値比較</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &lt; b;</span></code></td>
+<td><code><span style="color: #000">a</span></code>が<code><span style="color: #000">b</span></code>より小さいかの判定</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &lt;= b;</span></code></td>
+<td><code><span style="color: #000">a</span></code>が<code><span style="color: #000">b</span></code>以下かの判定</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &gt; b;</span></code></td>
+<td><code><span style="color: #000">a</span></code>が<code><span style="color: #000">b</span></code>より大きいかの判定</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a &gt;= b;</span></code></td>
+<td><code><span style="color: #000">a</span></code>が<code><span style="color: #000">b</span></code>以上かの判定</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">os &lt;&lt; a;</span></code></td>
+<td>ストリームへの出力</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">is &gt;&gt; a;</span></code></td>
+<td>ストリームからの入力</td>
+</tr>
+</tbody>
+</table>
+<h2><a href="http://boostjp.github.io/tips/variation" name="variation">多倍長整数の種類</a></h2>
+<p>以下に、Boost.Multiprecisionから提供される多倍長整数の種類を示す。</p>
+<p><strong><a href="http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html" target="_blank">Boost Multiprecision独自実装の多倍長整数</a></strong></p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/multiprecision/cpp_int.hpp&gt;</span></code></pre>
+
+符号付きチェックなし整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">cpp_int</span></code></td>
+<td>任意精度の符号付き多倍長整数。 メモリが許す限り、無限の桁数を扱える。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">int128_t</span></code></td>
+<td>128ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">int256_t</span></code></td>
+<td>256ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">int512_t</span></code></td>
+<td>512ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">int1024_t</span></code></td>
+<td>1024ビット精度の符号付き整数。</td>
+</tr>
+</tbody>
+</table>
+<p>符号なしチェックなし整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">uint128_t</span></code></td>
+<td>128ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">uint256_t</span></code></td>
+<td>256ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">uint512_t</span></code></td>
+<td>512ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">uint1024_t</span></code></td>
+<td>1024ビット精度の符号なし整数。</td>
+</tr>
+</tbody>
+</table>
+<p>符号付きチェック付き整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">checked_cpp_int</span></code></td>
+<td>任意精度の符号付き多倍長整数。 メモリが許す限り、無限の精度を扱える。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_int128_t</span></code></td>
+<td>128ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_int256_t</span></code></td>
+<td>256ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_int512_t</span></code></td>
+<td>512ビット精度の符号付き整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_int1024_t</span></code></td>
+<td>1024ビット精度の符号付き整数。</td>
+</tr>
+</tbody>
+</table>
+<p>符号なしチェック付き整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">checked_uint128_t</span></code></td>
+<td>128ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">cheked_uint256_t</span></code></td>
+<td>256ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_uint512_t</span></code></td>
+<td>512ビット精度の符号なし整数。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">checked_uint1024_t</span></code></td>
+<td>1024ビット精度の符号なし整数。</td>
+</tr>
+</tbody>
+</table>
+<p>チェック付き整数は、値が不正になる演算を行った際に例外を送出する。</p>
+<p>チェックなし整数が送出する例外：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>条件</th>
+<th>送出する例外</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ゼロ割り時</td>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/stdexcept" target="_blank"><code><span style="color: #000">std::overflow_error</span></code></a>例外が送出される</td>
+</tr>
+</tbody>
+</table>
+<p>チェック付き整数が送出する例外：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>条件</th>
+<th>送出する例外</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ゼロ割り時</td>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/stdexcept" target="_blank"><code><span style="color: #000">std::overflow_error</span></code></a>例外が送出される</td>
+</tr>
+<tr>
+<td>符号なしなのにマイナス値になった</td>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/stdexcept" target="_blank"><code><span style="color: #000">std::range_error</span></code></a>例外が送出される</td>
+</tr>
+<tr>
+<td>オーバーフロー時</td>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/stdexcept" target="_blank"><code><span style="color: #000">std::overflow_error</span></code></a>例外が送出される</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a href="http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/gmp_int.html" target="_blank">GMPバックエンドの多倍長整数</a></strong></p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/multiprecision/gmp.hpp&gt;</span></code></pre>
+
+符号ありチェックなし整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">mpz_int</span></code></td>
+<td>任意精度の符号付き多倍長整数</td>
+</tr>
+</tbody>
+</table>
+<p><strong><a href="http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/tom_int.html" target="_blank">libtommathバックエンドの多倍長整数</a></strong></p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/multiprecision/tommath.hpp&gt;</span></code></pre>
+
+符号ありチェックなし整数：</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">tom_int</span></code></td>
+<td>任意精度の符号付き多倍長整数</td>
+</tr>
+</tbody>
+</table>
+<h2><a href="http://boostjp.github.io/tips/from-string" name="from-string">文字列からの変換</a></h2>
+<p>文字列から多倍長整数に変換するには、<code><span style="color: #000">explicit</span></code>な変換コンストラクタ、もしくは<code><span style="color: #000">assign()</span></code>メンバ関数を使用する。</p>
+<p>文字列は、<code><span style="color: #000">char</span></code>配列および<a href="https://sites.google.com/site/cpprefjp/reference/string/basic_string" target="_blank"><code><span style="color: #000">std::string</span></code></a>を受け取ることができる。</p>
+<p><strong>コンストラクタで文字列から変換</strong></p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;iostream&gt;
+#include &lt;string&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+using namespace boost::multiprecision;
+
+int main()
+{
+    cpp_int x("123");              // char配列から変換
+    cpp_int y(std::string("456")); // std::stringから変換
+
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout &lt;&lt; y &lt;&lt; std::endl;
+}</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">123
+456
+</span></code></pre></p>
+<p><strong><code><span style="color: #000">assign()</span></code>メンバ関数で文字列から変換</strong></p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+using namespace boost::multiprecision;
+
+int main()
+{
+    cpp_int x;
+    x.assign("123");
+
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+}</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">123
+</span></code></pre>
+変換できない文字列が渡された場合は、<a href="https://sites.google.com/site/cpprefjp/reference/stdexcept" target="_blank"><code><span style="color: #000">std::runtime_error</span></code></a>例外が送出される。</p>
+<h2><a href="http://boostjp.github.io/tips/to-string" name="to-string">文字列への変換</a></h2>
+<p>文字列への変換には、<code><span style="color: #000">str()</span></code>メンバ関数を使用する。この関数は、<code><span style="color: #000">std::string</span></code>型で多倍長整数の文字列表現を返す。</p>
+<p>デフォルトでは10進数表現の文字列が返されるが、以下の引数を設定することで、精度と基数、その他出力方法を選択できる。</p>
+<ul>
+<li>第1引数： 出力する精度。整数では単に無視されるので、0を指定すればよい。</li>
+<li>第2引数： 出力フラグ。基数の選択。</li>
+</ul>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">str</span>();
+        std::cout &lt;&lt; s &lt;&lt; std::endl;
+    }
+    // 8進数
+    {
+        const std::string s = x.<span style="color:#ff0000">str</span>(0, std::ios_base::oct);
+        std::cout &lt;&lt; s &lt;&lt; std::endl;
+    }
+    // 16進数
+    {
+        const std::string s = x.<span style="color:#ff0000">str</span>(0, std::ios_base::hex);
+        std::cout &lt;&lt; s &lt;&lt; std::endl;
+    }
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+using boost::multiprecision::cpp_int;
+
+int main()
+{
+    cpp_int x = 123;
+
+    // 10進数
+    {
+        const std::string s = x.</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">123
+173
+7B
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/convert-integer" name="convert-integer">異なる大きさの整数間で型変換する</a></h2>
+<p>Boost.Multiprecisionの多倍長整数は、異なる精度間での変換をサポートしている。</p>
+<p><strong>小さい整数型から大きい整数型への変換</strong></p>
+<p><code><span style="color: #000">int</span></code>や<code><span style="color: #000">long</span></code>型といった組み込みの整数型から、<code><span style="color: #000">int128_t</span></code>や<code><span style="color: #000">cpp_int</span></code>といった多倍長整数への暗黙変換が可能である。</p>
+<p>また、<code><span style="color: #000">int128_t</span></code>から<code><span style="color: #000">int256</span></code>へ、といったより大きい精度への暗黙変換が可能である。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+using namespace boost::multiprecision;
+
+int main()
+{
+    // intからint128_tへの暗黙変換
+    int i = 3;
+    int128_t i128 = i; // OK
+
+    // int128_tからint256_tへの暗黙変換
+    int256_t i256 = i128; // OK
+}</span></code></pre>
+</p>
+<p><strong>大きい精度から小さい精度への変換</strong></p>
+<p>小さい精度への変換は、データが失われる可能性があるため、暗黙の型変換はサポートしない。</p>
+<p>明示的な型変換を使用する場合のみ変換可能である。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+using namespace boost::multiprecision;
+
+int main()
+{
+    int256_t i256 = 3;
+
+//  int128_t i128 = i256; // コンパイルエラー！変換できない
+    int128_t i128 = static_cast&lt;int128_t&gt;(i256); // OK
+}</span></code></pre>
+</p>
+<h2><a href="http://boostjp.github.io/tips/min" name="min">最小値を取得する</a></h2>
+<p>多倍長整数の最小値を取得するには、<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits" target="_blank"><code><span style="color: #000">std::numeric_limits</span></code></a>クラスの<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/min" target="_blank"><code><span style="color: #000">min()</span></code></a>静的メンバ関数を使用する。</p>
+<p>任意精度整数である<code><span style="color: #000">cpp_int</span></code>は無限の桁数を持つため、最小値は取得できなかったものとして、0を返す。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">min</span>();  // 任意精度
+    mp::int128_t y = std::numeric_limits&lt;mp::int128_t&gt;::<span style="color:#ff0000">min</span>(); // 固定精度
+
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout &lt;&lt; y &lt;&lt; std::endl;
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+namespace mp = boost::multiprecision;
+
+int main()
+{
+    mp::cpp_int  x = std::numeric_limits&lt;mp::cpp_int&gt;::</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">0
+-340282366920938463463374607431768211455
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/max" name="max">最大値を取得する</a></h2>
+<p>多倍長整数の最大値を取得するには、<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits" target="_blank"><code><span style="color: #000">std::numeric_limits</span></code></a>クラスの<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/max" target="_blank"><code><span style="color: #000">max()</span></code></a>静的メンバ関数を使用する。</p>
+<p>任意精度整数である<code><span style="color: #000">cpp_int</span></code>は無限の桁数を持つため、最大値は取得できなかったものとして、0を返す。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">max</span>();  // 任意精度
+    mp::int128_t y = std::numeric_limits&lt;mp::int128_t&gt;::<span style="color:#ff0000">max</span>(); // 固定精度
+
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout &lt;&lt; y &lt;&lt; std::endl;
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+namespace mp = boost::multiprecision;
+
+int main()
+{
+    mp::cpp_int  x = std::numeric_limits&lt;mp::cpp_int&gt;::</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">0
+340282366920938463463374607431768211455
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/is-bounded" name="is-bounded">有限かどうかを判定する</a></h2>
+<p>多倍長整数型の表す値が有限かどうかを判定するには、<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits" target="_blank"><code><span style="color: #000">std::numeric_limits</span></code></a>クラスの<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/is_bounded" target="_blank"><code><span style="color: #000">is_bounded</span></code></a>定数を取得する。</p>
+<p><a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/is_bounded" target="_blank"><code><span style="color: #000">is_bounded</span></code></a>は<code><span style="color: #000">bool</span></code>型で定義され、有限であれば<code><span style="color: #000">true</span></code>、無限であれば<code><span style="color: #000">false</span></code>が設定される。</p>
+<p>任意精度整数である<code><span style="color: #000">cpp_int</span></code>は無限の桁数を持つため、<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/is_bounded" target="_blank"><code><span style="color: #000">is_bounded</span></code></a>は<code><span style="color: #000">false</span></code>となる。</p>
+<p>固定精度整数の<code><span style="color: #000">int128_t</span></code>、<code><span style="color: #000">int256_t</span></code>といった型の場合、<a href="https://sites.google.com/site/cpprefjp/reference/limits/numeric_limits/is_bounded" target="_blank"><code><span style="color: #000">is_bounded</span></code></a>は<code><span style="color: #000">true</span></code>となる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">is_bounded</span>;  // 任意精度
+    constexpr bool y = std::numeric_limits&lt;mp::int128_t&gt;::<span style="color:#ff0000">is_bounded</span>; // 固定精度
+
+    std::cout &lt;&lt; std::boolalpha;
+    std::cout &lt;&lt; x &lt;&lt; std::endl;
+    std::cout &lt;&lt; y &lt;&lt; std::endl;
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/multiprecision/cpp_int.hpp&gt;
+
+namespace mp = boost::multiprecision;
+
+int main()
+{
+    constexpr bool x = std::numeric_limits&lt;mp::cpp_int&gt;::</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">false
+true
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/math-functions" name="math-functions">サポートされている数学関数一覧</a></h2>
+<p><strong>標準関数サポート</strong></p>
+<p>標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長整数でも使用できる。</p>
+<p>これらの関数は、<code><span style="color: #000">boost::multiprecision</span></code>名前空間で定義される。</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>関数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">T abs(T x);</span></code><br /> <a href="https://sites.google.com/site/cpprefjp/reference/cmath/fabs" target="_blank"><code><span style="color: #000">T fabs(T x);</span></code></a></td>
+<td>絶対値</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/sqrt" target="_blank"><code><span style="color: #000">T sqrt(T x);</span></code></a></td>
+<td>平方根</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T floor(T x);</span></code></td>
+<td>床関数（引数より大きくない最近傍の整数）</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T ceil(T x);</span></code></td>
+<td>天井関数（引数より小さくない最近傍の整数）</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T trunc(T x);</span></code><br /> <code><span style="color: #000">T itrunc(T x);</span></code><br /> <code><span style="color: #000">T ltrunc(T x);</span></code><br /> <code><span style="color: #000">T lltrunc(T x);</span></code></td>
+<td>ゼロ方向への丸め</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T round(T x);</span></code><br /> <code><span style="color: #000">T lround(T x);</span></code><br /> <code><span style="color: #000">T llround(T x);</span></code></td>
+<td>四捨五入による丸め</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/exp" target="_blank"><code><span style="color: #000">T exp(T x);</span></code></a></td>
+<td>e (ネイピア数) を底とする指数関数</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/log" target="_blank"><code><span style="color: #000">T log(T x);</span></code></a></td>
+<td>e (ネイピア数) を底とする自然対数</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/log10" target="_blank"><code><span style="color: #000">T log10(T x);</span></code></a></td>
+<td>10 を底とする常用対数</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/cos" target="_blank"><code><span style="color: #000">T cos(T x);</span></code></a></td>
+<td>余弦関数（コサイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/sin" target="_blank"><code><span style="color: #000">T sin(T x);</span></code></a></td>
+<td>正弦関数（サイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/tan" target="_blank"><code><span style="color: #000">T tan(T x);</span></code></a></td>
+<td>正接関数（タンジェント）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/acos" target="_blank"><code><span style="color: #000">T acos(T x);</span></code></a></td>
+<td>逆余弦関数（アークコサイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/asin" target="_blank"><code><span style="color: #000">T asin(T x);</span></code></a></td>
+<td>逆正弦関数（アークサイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/atan" target="_blank"><code><span style="color: #000">T atan(T x);</span></code></a></td>
+<td>逆正接関数（アークタンジェント）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/cosh" target="_blank"><code><span style="color: #000">T cosh(T x);</span></code></a></td>
+<td>双曲線余弦関数（ハイパボリックコサイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/sinh" target="_blank"><code><span style="color: #000">T sinh(T x);</span></code></a></td>
+<td>双曲線正弦関数（ハイパボリックサイン）</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/tanh" target="_blank"><code><span style="color: #000">T tanh(T x);</span></code></a></td>
+<td>双曲線正接関数（ハイパボリックタンジェント）</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T ldexp(T x, int);</span></code></td>
+<td>2 の冪乗との乗算</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T frexp(T x, int*);</span></code></td>
+<td>仮数部と 2 の冪乗への分解</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/pow" target="_blank"><code><span style="color: #000">T pow(T x, T y);</span></code></a></td>
+<td>冪乗</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T fmod(T x, T y);</span></code></td>
+<td>浮動小数点剰余</td>
+</tr>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/atan2" target="_blank"><code><span style="color: #000">T atan2(T x, T y);</span></code></a></td>
+<td>対辺と隣辺からの逆正接関数（アークタンジェント）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>整数に特化した数学関数サポート</strong></p>
+<p>以下の関数は、Boost.Multiprecisionで整数演算に特化したものとして、<code><span style="color: #000">boost::multiprecision</span></code>名前空間で定義される。</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>関数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://sites.google.com/site/cpprefjp/reference/cmath/pow" target="_blank"><code><span style="color: #000">T pow(T x, unsigned int y);</span></code></a></td>
+<td>冪乗</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T powm(T b, T p, T m);</span></code></td>
+<td>冪剰余</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">void divide_qr(T x, y, T&amp; q, T&amp; r);</span></code></td>
+<td>除算と剰余算を同時に行う</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">template &lt;class Integer&gt;</span></code><br /> <code><span style="color: #000">Integer integer_modulus(T x, Integer val);</span></code></td>
+<td>剰余の絶対値</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">unsigned int lsb(T x);</span></code></td>
+<td>1に設定されている最下位ビットのインデックスを取得する</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">bool bit_test(T val, unsigned index);</span></code></td>
+<td>指定されたインデックスのビットが1に設定されているかを判定する</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T&amp; bit_set(T&amp; val, unsigned index);</span></code></td>
+<td>指定されたインデックスのビットを1に設定する</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T&amp; bit_unset(T&amp; val, unsigned index);</span></code></td>
+<td>指定されたインデックスのビットを0に設定する</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">T&amp; bit_flip(T&amp; val, unsigned index);</span></code></td>
+<td>指定されたインデックスのビットを反転する</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">template &lt;class Engine&gt;</span></code><br /> <code><span style="color: #000">bool miller_rabin_test(T n, unsigned trials, Engine&amp; gen);</span></code><br /> <code><span style="color: #000">bool miller_rabin_test(T n, unsigned trials);</span></code></td>
+<td>ミラー・ラビン素数判定<br /> 参照： <a href="http://d.hatena.ne.jp/faith_and_brave/20130222/1361516978" target="_blank">Boost.Multiprecision ミラー・ラビン法による素数判定 - Faith and Brave - C++で遊ぼう</a></td>
+</tr>
+</tbody>
+</table>
+<p>参照： <a href="http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/ref/number.html#boost_multiprecision.ref.number.integer_functions" target="_blank">Integer functions - Boost Multiprecision Library</a></p>
+<p>documented boost version is 1.53.0</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>

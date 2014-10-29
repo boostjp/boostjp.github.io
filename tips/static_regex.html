@@ -1,0 +1,606 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>static_regex</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>静的な正規表現</h1>
+<p>正規表現には、<a href="http://www.boost.org/doc/libs/release/doc/html/xpressive.html" target="_blank">Boost Xpressive Library</a>を使用する。</p>
+<p>ここでは、静的な正規表現の使い方を解説していく。</p>
+<p>日本語リファレンス：</p>
+<ul>
+<li><a href="http://alpha.sourceforge.jp/devel/boost.xpressive_ja.pdf" target="_blank">http://alpha.sourceforge.jp/devel/boost.xpressive_ja.pdf</a></li>
+</ul>
+<h2>インデックス</h2>
+<ul>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#static-regex">静的な正規表現とは</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#basic-usage">基本的な使い方</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#dynamic-static-table">動的と静的の正規表現対応表</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#regex-match">文字列全体が正規表現にマッチするか調べる</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#regex-search">文字列が正規表現にマッチする部分文字列を含むか調べる</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#regex-replace">正規表現にマッチした部分文字列をすべて置換する</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#match-action">マッチ時に任意のアクションを行う</a></li>
+<li><a href="http://boostjp.github.io/tips/static_regex.html#conditional-match">マッチ条件を指定する</a></li>
+</ul>
+<h2><a href="http://boostjp.github.io/tips/static-regex" name="static-regex">静的な正規表現とは</a></h2>
+<p>ここで言う「静的な正規表現」とは、コンパイル時に正規表現を組み上げるということである。</p>
+<p>式テンプレートを活用し、正規表現の正当性チェックがコンパイル時に行われる。</p>
+<h2><a href="http://boostjp.github.io/tips/basic-usage" name="basic-usage">基本的な使い方</a></h2>
+<p>静的な正規表現の基本的な使い方を解説する。まず、<code><span style="color: #000">"Hello World!"</span></code>という文字列から<code><span style="color: #000">"Hello"</span></code>と<code><span style="color: #000">"World"</span></code>という単語を抽出するコードは以下のようになる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string hello = "Hello World!";
+
+    sregex rex = (s1= +_w) &gt;&gt; ' ' &gt;&gt; (s2= +_w) &gt;&gt; '!';
+    smatch what;
+    if (regex_match(hello, what, rex)) {
+        std::cout &lt;&lt; what[0] &lt;&lt; std::endl; // マッチ全体
+        std::cout &lt;&lt; what[1] &lt;&lt; std::endl; // 1 番目の捕捉
+        std::cout &lt;&lt; what[2] &lt;&lt; std::endl; // 2 番目の捕捉
+    }
+}</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">Hello World!
+Hello
+World
+</span></code></pre>
+正規表現は以下のように記述している：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">(s1= +_w) &gt;&gt; ' ' &gt;&gt; (s2= +_w) &gt;&gt; '!'</span></code></pre>
+</p>
+<p>これは、動的な正規表現では以下の記述に相当する：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">"(\\w+) (\\w+)!"</span></code></pre>
+</p>
+<p>静的な正規表現は、文字列ではなくC++の式で記述する。この方法をとることによる制限はいくつかある：</p>
+<ul>
+<li>「後続」を表すために<code><span style="color: #000">&gt;&gt;</span></code>演算子を使用する必要がある</li>
+<li>「1回以上の繰り返し」を意味する<code><span style="color: #000">+</span></code>が前置である必要がある</li>
+</ul>
+<h2><a href="http://boostjp.github.io/tips/dynamic-static-table" name="dynamic-static-table">動的と静的の正規表現対応表</a></h2>
+<p>ここでは、Boost.Xpressiveが提供する静的な正規表現と、通常の動的正規表現との対応表を紹介する。ここでは、動的正規表現としてPerl構文を例とする。</p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>Perl</th>
+<th>静的Xpressive</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">.</span></code></td>
+<td><code><span style="color: #000">_</span></code></td>
+<td>任意の1文字（Perlの<code><span style="color: #000">/s</span></code>修飾子が使われているとして）</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">ab</span></code></td>
+<td><code><span style="color: #000">a &gt;&gt; b</span></code></td>
+<td><code><span style="color: #000">a</span></code>および<code><span style="color: #000">b</span></code>部分式の結合</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a|b</span></code></td>
+<td><code><span style="color: #000">a | b</span></code></td>
+<td><code><span style="color: #000">a</span></code>および<code><span style="color: #000">b</span></code>部分式の選択</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(a)</span></code></td>
+<td><code><span style="color: #000">(s1= a)</span></code></td>
+<td>後方参照のグループ化と捕捉</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?:a)</span></code></td>
+<td><code><span style="color: #000">(a)</span></code></td>
+<td>後方参照の捕捉を伴わないグループ化</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\1</span></code></td>
+<td><code><span style="color: #000">s1</span></code></td>
+<td>以前捕捉した後方参照</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a*</span></code></td>
+<td><code><span style="color: #000">*a</span></code></td>
+<td>0回以上の貪欲な繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a+</span></code></td>
+<td><code><span style="color: #000">+a</span></code></td>
+<td>1回以上の貪欲な繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a?</span></code></td>
+<td><code><span style="color: #000">!a</span></code></td>
+<td>0回か1回の貪欲な繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a{n,m}</span></code></td>
+<td><code><span style="color: #000">repeat&lt;n,m&gt;(a)</span></code></td>
+<td><code><span style="color: #000">n</span></code>回以上<code><span style="color: #000">m</span></code>回以下の貪欲な繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a*?</span></code></td>
+<td><code><span style="color: #000">-*a</span></code></td>
+<td>0回以上の貪欲でない繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a+?</span></code></td>
+<td><code><span style="color: #000">-+a</span></code></td>
+<td>1回以上の貪欲でない繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a??</span></code></td>
+<td><code><span style="color: #000">-!a</span></code></td>
+<td>1回以上の貪欲でない繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">a{n,m}?</span></code></td>
+<td><code><span style="color: #000">-repeat&lt;n,m&gt;(a)</span></code></td>
+<td><code><span style="color: #000">n</span></code>回以上<code><span style="color: #000">m</span></code>回以下の貪欲でない繰り返し</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">^</span></code></td>
+<td><code><span style="color: #000">bos</span></code></td>
+<td>シーケンスの先頭を表す表明</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">$</span></code></td>
+<td><code><span style="color: #000">eos</span></code></td>
+<td>シーケンスの終端を表す表明</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\b</span></code></td>
+<td><code><span style="color: #000">_b</span></code></td>
+<td>単語境界の表明</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\B</span></code></td>
+<td><code><span style="color: #000">~_b</span></code></td>
+<td>単語境界以外の表明</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\n</span></code></td>
+<td><code><span style="color: #000">_n</span></code></td>
+<td>リテラルの改行</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">.</span></code></td>
+<td><code><span style="color: #000">~_n</span></code></td>
+<td>リテラルの改行以外の任意の1文字（Perlの<code><span style="color: #000">/s</span></code>修飾子が使われていないとして）</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\r?\n|\r</span></code></td>
+<td><code><span style="color: #000">_ln</span></code></td>
+<td>論理改行</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[^\r\n]</span></code></td>
+<td><code><span style="color: #000">~_ln</span></code></td>
+<td>論理改行以外の任意の1文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\w</span></code></td>
+<td><code><span style="color: #000">_w</span></code></td>
+<td>単語構成文字。<code><span style="color: #000">set[alnum | '_']</span></code>と同じ</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\W</span></code></td>
+<td><code><span style="color: #000">~_w</span></code></td>
+<td>単語構成文字以外。<code><span style="color: #000">~set[alnum |'_']</span></code>と同じ</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\d</span></code></td>
+<td><code><span style="color: #000">_d</span></code></td>
+<td>数字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\D</span></code></td>
+<td><code><span style="color: #000">~_d</span></code></td>
+<td>数字以外</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\s</span></code></td>
+<td><code><span style="color: #000">_s</span></code></td>
+<td>空白類文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">\S</span></code></td>
+<td><code><span style="color: #000">~_s</span></code></td>
+<td>空白類文字以外</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:alnum:]</span></code></td>
+<td><code><span style="color: #000">alnum</span></code></td>
+<td>アルファベットおよび数値文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:alpha:]</span></code></td>
+<td><code><span style="color: #000">alpha</span></code></td>
+<td>アルファベット文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:blank:]</span></code></td>
+<td><code><span style="color: #000">blank</span></code></td>
+<td>水平空白文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:cntrl:]</span></code></td>
+<td><code><span style="color: #000">cntrl</span></code></td>
+<td>制御文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:digit:]</span></code></td>
+<td><code><span style="color: #000">digit</span></code></td>
+<td>数字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:graph:]</span></code></td>
+<td><code><span style="color: #000">graph</span></code></td>
+<td>グラフィカルな文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:lower:]</span></code></td>
+<td><code><span style="color: #000">lower</span></code></td>
+<td>小文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:print:]</span></code></td>
+<td><code><span style="color: #000">print</span></code></td>
+<td>印字可能な文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:punct:]</span></code></td>
+<td><code><span style="color: #000">punct</span></code></td>
+<td>区切り文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:space:]</span></code></td>
+<td><code><span style="color: #000">space</span></code></td>
+<td>空白類文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:upper:]</span></code></td>
+<td><code><span style="color: #000">upper</span></code></td>
+<td>大文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[:xdigit:]</span></code></td>
+<td><code><span style="color: #000">xdigit</span></code></td>
+<td>16進数字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[0-9]</span></code></td>
+<td><code><span style="color: #000">range('0','9')</span></code></td>
+<td><code><span style="color: #000">'0'</span></code>から<code><span style="color: #000">'9'</span></code>の範囲の文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[abc]</span></code></td>
+<td><code><span style="color: #000">as_xpr('a') | 'b' | 'c'</span></code></td>
+<td><code><span style="color: #000">'a'</span></code>、<code><span style="color: #000">'b'</span></code>、または<code><span style="color: #000">'c'</span></code>のいずれかの文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[abc]</span></code></td>
+<td><code><span style="color: #000">(set= 'a','b','c')</span></code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[0-9abc]</span></code></td>
+<td><code><span style="color: #000">set[ range('0','9') | 'a' | 'b' | 'c' ]</span></code></td>
+<td><code><span style="color: #000">'a'</span></code>、<code><span style="color: #000">'b'</span></code>、または<code><span style="color: #000">'c'</span></code>のいずれか、または<code><span style="color: #000">'0'</span></code>から<code><span style="color: #000">'9'</span></code>の範囲の文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[0-9abc]</span></code></td>
+<td><code><span style="color: #000">set[ range('0','9') | (set= 'a','b','c') ]</span></code></td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">[^abc]</span></code></td>
+<td><code><span style="color: #000">~(set= 'a','b','c')</span></code></td>
+<td><code><span style="color: #000">'a'</span></code>、<code><span style="color: #000">'b'</span></code>、または<code><span style="color: #000">'c'</span></code>のいずれでもない文字</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?i:stuff)</span></code></td>
+<td><code><span style="color: #000">icase(stuff)</span></code></td>
+<td><code><span style="color: #000">stuff</span></code>の大文字小文字を区別しないマッチを行う</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?&gt;stuff)</span></code></td>
+<td><code><span style="color: #000">keep(stuff)</span></code></td>
+<td>独立部分式。<code><span style="color: #000">stuff</span></code>のマッチを行いバックトラックを切る。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?=stuff)</span></code></td>
+<td><code><span style="color: #000">before(stuff)</span></code></td>
+<td>肯定先読み表明。<code><span style="color: #000">stuff</span></code>の前にマッチするが、<code><span style="color: #000">stuff</span></code>自身はマッチに含まない。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?!stuff)</span></code></td>
+<td><code><span style="color: #000">~before(stuff)</span></code></td>
+<td>否定先読み表明。<code><span style="color: #000">stuff</span></code>の前以外にマッチ。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?&lt;=stuff)</span></code></td>
+<td><code><span style="color: #000">after(stuff)</span></code></td>
+<td>肯定後読み表明。<code><span style="color: #000">stuff</span></code>の後にマッチするが<code><span style="color: #000">stuff</span></code>自身はマッチに含まない（<code><span style="color: #000">stuff</span></code>は固定長でなければならない）。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?&lt;!stuff)</span></code></td>
+<td><code><span style="color: #000">~after(stuff)</span></code></td>
+<td>否定後読み表明</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?P&lt;name&gt;stuff)</span></code></td>
+<td><code><span style="color: #000">mark_tag name(n);</span></code><br /> <code><span style="color: #000">...</span></code><br /> <code><span style="color: #000">(name= stuff)</span></code></td>
+<td>名前付きの補足を作成</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">(?P=name)</span></code></td>
+<td><code><span style="color: #000">mark_tag name(n);</span></code><br /> <code><span style="color: #000">...</span></code><br /> <code><span style="color: #000">name</span></code></td>
+<td>作成した名前付き捕捉への後方参照</td>
+</tr>
+</tbody>
+</table>
+<h2><a href="http://boostjp.github.io/tips/regex-match" name="regex-match">文字列全体が正規表現にマッチするか調べる</a></h2>
+<p>文字列全体が正規表現にマッチするか調べるには、<a href="http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_match.html" target="_blank"><code><span style="color: #000">boost::xpressive::regex_match()</span></code></a>関数を使用する。</p>
+<p>この関数は、マッチに成功したら<code><span style="color: #000">true</span></code>を返し、そうでなければ<code><span style="color: #000">false</span></code>を返す。この関数が成功するのは、文字列全体の先頭から終端までが正規表現にマッチする場合である。</p>
+<p>この関数に<a href="http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type" target="_blank"><code><span style="color: #000">boost::xpressive::smatch</span></code></a>オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。</p>
+<p>「<a href="http://boostjp.github.io/tips/static_regex.html#basic-usage">基本的な使い方</a>」で示したコードと同じだが、再掲する。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">regex_match</span>(hello, what, rex)) {
+        std::cout &lt;&lt; what[0] &lt;&lt; std::endl; // マッチ全体
+        std::cout &lt;&lt; what[1] &lt;&lt; std::endl; // 1 番目の捕捉
+        std::cout &lt;&lt; what[2] &lt;&lt; std::endl; // 2 番目の捕捉
+    }
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string hello = "Hello World!";
+
+    sregex rex = (s1= +_w) &gt;&gt; ' ' &gt;&gt; (s2= +_w) &gt;&gt; '!';
+    smatch what;
+    if (</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">Hello World!
+Hello
+World
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/regex-search" name="regex-search">文字列が正規表現にマッチする部分文字列を含むか調べる</a></h2>
+<p>文字列が正規表現にマッチする部分文字列を含むか調べるには、<a href="http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_search.html" target="_blank"><code><span style="color: #000">boost::xpressive::regex_search()</span></code></a>関数を使用する。</p>
+<p>この関数は、マッチする部分文字列が見つかったら<code><span style="color: #000">true</span></code>、そうでなければ<code><span style="color: #000">false</span></code>を返す。対象となる文字列の次の引数として<a href="http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type" target="_blank"><code><span style="color: #000">boost::xpressive::smatch</span></code></a>オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">regex_search</span>(str, what, date)) {
+        std::cout &lt;&lt; what[0]     &lt;&lt; '\n'; // マッチ全体
+        std::cout &lt;&lt; what[year]  &lt;&lt; '\n'; // 年
+        std::cout &lt;&lt; what[month] &lt;&lt; '\n'; // 月
+        std::cout &lt;&lt; what[day]   &lt;&lt; '\n'; // 日
+        std::cout &lt;&lt; what[delim] &lt;&lt; '\n'; // 区切り
+    }
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string str = "私は1973/5/30の午前7時に生まれた。";
+
+    // s1、s2、...よりも意味のある名前でカスタムのmark_tagsを定義する
+    mark_tag day(1), month(2), year(3), delim(4);
+
+    // この正規表現は日付を検索する
+    sregex date = (year=  repeat&lt;1,4&gt;(_d))          // 先頭に年があり...
+               &gt;&gt; (delim= (set= '/','-'))           // その後ろに区切りがあり ...
+               &gt;&gt; (month= repeat&lt;1,2&gt;(_d)) &gt;&gt; delim // さらに後ろに月と、同じ区切りがあり ...
+               &gt;&gt; (day=   repeat&lt;1,2&gt;(_d));         // 最後に日がある。
+
+    smatch what;
+    if (</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">1973/5/30
+1973
+5
+30
+/
+</span></code></pre>
+この例では、カスタムの<a href="http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/mark_tag.html" target="_blank"><code><span style="color: #000">mark_tag</span></code></a>を使ってパターンを読みやすくしている。後で<a href="http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/mark_tag.html" target="_blank"><code><span style="color: #000">mark_tag</span></code></a>を<a href="http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type" target="_blank">boost::xpressive::smatch</a>の添字に使っている。</p>
+<h2><a href="http://boostjp.github.io/tips/regex-replace" name="regex-replace">正規表現にマッチした部分文字列をすべて置換する</a></h2>
+<p>正規表現にマッチした部分文字列をすべて置換するには、<a href="http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_replace.html" target="_blank"><code><span style="color: #000">boost::xpressive::regex_replace()</span></code></a>関数を使用する。</p>
+<p>この関数は、以下の引数をとる：</p>
+<ul>
+<li>第1引数 ： 対象文字列</li>
+<li>第2引数 ： 正規表現</li>
+<li>第3引数 ： 置き換え規則</li>
+</ul>
+<p>戻り値として、置き換え後の新たな文字列が返される。</p>
+<p>ここでは、日付にマッチする正規表現を書き、マッチした部分を<code><span style="color: #000">&lt;date&gt;</span></code>タグで囲む、ということをしている。<code><span style="color: #000">"$&amp;"</span></code>はマッチした全体の部分文字列を表す。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string str = "私は1973/5/30の午前7時に生まれた。";
+
+    sregex date = repeat&lt;1,4&gt;(_d)
+               &gt;&gt; as_xpr('/')
+               &gt;&gt; repeat&lt;1,2&gt;(_d)
+               &gt;&gt; as_xpr('/')
+               &gt;&gt; repeat&lt;1,2&gt;(_d);
+
+    std::string format = "&lt;date&gt;$&amp;&lt;/date&gt;";
+
+    str = regex_replace(str, date, format);
+    std::cout &lt;&lt; str &lt;&lt; std::endl;
+}</span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">私は&lt;date&gt;1973/5/30&lt;/date&gt;の午前7時に生まれた。
+</span></code></pre></p>
+<h2><a href="http://boostjp.github.io/tips/match-action" name="match-action">マッチ時に任意のアクションを行う</a></h2>
+<p>マッチ時に任意のアクションを行うには、「<a href="http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.semantic_actions_and_user_defined_assertions" target="_blank">セマンティックアクション</a>」という機能を使用する。</p>
+<p>セマンティックアクションには、各部分式の後ろに <code><span style="color: #000">[ ... ]</span></code> という形式で記述する。</p>
+<p>以下は、日付が含まれる文章から、年、月、日を抽出し、各要素を変数に代入する処理である：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">ref(year) = as&lt;int&gt;(_)</span> ]
+               &gt;&gt; as_xpr('/')
+               &gt;&gt; repeat&lt;1,2&gt;(_d)[ ref(month) = as&lt;int&gt;(_) ]
+               &gt;&gt; as_xpr('/')
+               &gt;&gt; repeat&lt;1,2&gt;(_d)[ ref(day) = as&lt;int&gt;(_) ];
+
+    if (!regex_search(str, date)) {
+        std::cout &lt;&lt; "match failed" &lt;&lt; std::endl;
+        return 1;
+    }
+
+    std::cout &lt;&lt; year &lt;&lt; std::endl;
+    std::cout &lt;&lt; month &lt;&lt; std::endl;
+    std::cout &lt;&lt; day &lt;&lt; std::endl;
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+#include &lt;boost/xpressive/regex_actions.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string str = "私は1973/5/30の午前7時に生まれた。";
+
+    int year = 0;
+    int month = 0;
+    int day = 0;
+
+    // この正規表現は日付を検索する
+    sregex date = repeat&lt;1,4&gt;(_d)[ </span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">1973
+5
+30
+</span></code></pre>
+<code><span style="color: #000">ref()</span></code>は、変数を参照するための関数である。<code><span style="color: #000">ref()</span></code>でラップせずに変数を記述すると、正規表現を定義した段階での変数の値が使用されてしまう。</p>
+<p><code><span style="color: #000">as&lt;T&gt;()</span></code>は、マッチした値を任意の型に変換するための関数である。</p>
+<p>その引数として渡している <code><span style="color: #000">_</span></code> は「プレースホルダー」と呼ばれる特殊な値で、マッチした値で置き換えられる。</p>
+<h2><a href="http://boostjp.github.io/tips/conditional-match" name="conditional-match">マッチ条件を指定する</a></h2>
+<p>整数や文字といったパターンにマッチした後、より詳細な値チェックが通ったらマッチ成功と見なす方法として、セマンティックアクションでの<code><span style="color: #000">check()</span></code>関数が提供されている。</p>
+<p>以下は、日付の値チェックをする例である：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color:#ff0000">check</span>(as&lt;int&gt;(_) &gt;= 1970) ]
+               &gt;&gt; (delim= (set= '/','-'))
+               &gt;&gt; (month= repeat&lt;1,2&gt;(_d)) [ <span style="color:#ff0000">check</span>(as&lt;int&gt;(_) &gt;= 1 &amp;&amp;
+                                                   as&lt;int&gt;(_) &lt;= 12) ]
+               &gt;&gt; delim
+               &gt;&gt; (day=   repeat&lt;1,2&gt;(_d)) [ <span style="color:#ff0000">check</span>(as&lt;int&gt;(_) &gt;= 1 &amp;&amp;
+                                                   as&lt;int&gt;(_) &lt;= 31) ];
+
+    smatch what;
+    if (regex_search(str, what, date)) {
+        std::cout &lt;&lt; what[0]     &lt;&lt; std::endl; // マッチ全体
+        std::cout &lt;&lt; what[year]  &lt;&lt; std::endl; // 年
+        std::cout &lt;&lt; what[month] &lt;&lt; std::endl; // 月
+        std::cout &lt;&lt; what[day]   &lt;&lt; std::endl; // 日
+        std::cout &lt;&lt; what[delim] &lt;&lt; std::endl; // 区切り
+    }
+    else {
+        std::cout &lt;&lt; "match failed" &lt;&lt; std::endl;
+    }
+}<span style="color: #000">#include &lt;iostream&gt;
+#include &lt;boost/xpressive/xpressive.hpp&gt;
+#include &lt;boost/xpressive/regex_actions.hpp&gt;
+
+using namespace boost::xpressive;
+
+int main()
+{
+    std::string str = "私は1973/5/30の午前7時に生まれた。";
+
+    mark_tag day(1), month(2), year(3), delim(4);
+
+    sregex date = (year=  repeat&lt;1,4&gt;(_d)) [ </span></code></pre>
+
+出力：</p>
+<p><pre><code><span style="color: #000">1973/5/30
+1973
+5
+30
+/
+</span></code></pre>
+この場合、年、月、日が範囲外の値だったらマッチ失敗と見なされる。</p>
+<p>documentation version is 1.52.0</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>

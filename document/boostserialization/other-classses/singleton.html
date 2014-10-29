@@ -1,0 +1,172 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>singleton</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/archive.html">archive</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/communities.html">communities</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/document.html">document</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/index.html">index</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/tips.html">tips</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/version.html">version</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/project-updates/autoindextsurugacaizesareta.html">autoindextsurugacaizesareta</a></li><li><a href="/project-updates/boost1450ririsu.html">boost1450ririsu</a></li><li><a href="/project-updates/boost1460ririsu.html">boost1460ririsu</a></li><li><a href="/project-updates/boost1461ririsu.html">boost1461ririsu</a></li><li><a href="/project-updates/boost1470ririsu.html">boost1470ririsu</a></li><li><a href="/project-updates/boost1480ririsu.html">boost1480ririsu</a></li><li><a href="/project-updates/boost1490beta1ririsu.html">boost1490beta1ririsu</a></li><li><a href="/project-updates/boost1500ririsu.html">boost1500ririsu</a></li><li><a href="/project-updates/boost1510ririsu.html">boost1510ririsu</a></li><li><a href="/project-updates/boost1520ririsu.html">boost1520ririsu</a></li><li><a href="/project-updates/boost1530ririsu.html">boost1530ririsu</a></li><li><a href="/project-updates/boost1540ririsu.html">boost1540ririsu</a></li><li><a href="/project-updates/boost1550ririsu.html">boost1550ririsu</a></li><li><a href="/project-updates/boostalgorithmisaccepted.html">boostalgorithmisaccepted</a></li><li><a href="/project-updates/boostaligngatiaojianfukidecaizesareta.html">boostaligngatiaojianfukidecaizesareta</a></li><li><a href="/project-updates/boostassignv2garijekutosareta.html">boostassignv2garijekutosareta</a></li><li><a href="/project-updates/boostatomicgacaizesareta.html">boostatomicgacaizesareta</a></li><li><a href="/project-updates/boostbenkyoukai4nopejiwosakusei.html">boostbenkyoukai4nopejiwosakusei</a></li><li><a href="/project-updates/boostbounenkai2010noboshuupejiwosakusei.html">boostbounenkai2010noboshuupejiwosakusei</a></li><li><a href="/project-updates/boostchronogasaitakusareta.html">boostchronogasaitakusareta</a></li><li><a href="/project-updates/boostchrononorebyukaishi.html">boostchrononorebyukaishi</a></li><li><a href="/project-updates/boostcontainergacaizesareta.html">boostcontainergacaizesareta</a></li><li><a href="/project-updates/boostcontractgacaizesareta.html">boostcontractgacaizesareta</a></li><li><a href="/project-updates/boostcoroutinegacaizesareta.html">boostcoroutinegacaizesareta</a></li><li><a href="/project-updates/boostendianhatiaojianfukicaize.html">boostendianhatiaojianfukicaize</a></li><li><a href="/project-updates/boostgiliotoolboxkakuchougasaitakusareta.html">boostgiliotoolboxkakuchougasaitakusareta</a></li><li><a href="/project-updates/boostlocalelibrarygasaitakusareta.html">boostlocalelibrarygasaitakusareta</a></li><li><a href="/project-updates/boostlockfreegacaizesareta.html">boostlockfreegacaizesareta</a></li><li><a href="/project-updates/boostmianqianghui11dongjingwokaicui.html">boostmianqianghui11dongjingwokaicui</a></li><li><a href="/project-updates/boostmianqianghui12dabanwokaicui.html">boostmianqianghui12dabanwokaicui</a></li><li><a href="/project-updates/boostmianqianghui13xiantaiwokaicui.html">boostmianqianghui13xiantaiwokaicui</a></li><li><a href="/project-updates/boostmianqianghui14dongjinggakaicuisaremasu.html">boostmianqianghui14dongjinggakaicuisaremasu</a></li><li><a href="/project-updates/boostmianqianghui6zhahuangwokaicuishimashita.html">boostmianqianghui6zhahuangwokaicuishimashita</a></li><li><a href="/project-updates/boostmovegasaitakusareta.html">boostmovegasaitakusareta</a></li><li><a href="/project-updates/boostmultiprecisiongacaizesareta.html">boostmultiprecisiongacaizesareta</a></li><li><a href="/project-updates/boostodeintgacaizesareta.html">boostodeintgacaizesareta</a></li><li><a href="/project-updates/boostphoenixv3norebyushuuryou.html">boostphoenixv3norebyushuuryou</a></li><li><a href="/project-updates/boostregexnonihongoyakudokyumentowotsuika.html">boostregexnonihongoyakudokyumentowotsuika</a></li><li><a href="/project-updates/boostttigacaizesareta.html">boostttigacaizesareta</a></li><li><a href="/project-updates/boosttypeerasuregacaizesareta.html">boosttypeerasuregacaizesareta</a></li><li><a href="/project-updates/boostxintgarijekutosareta.html">boostxintgarijekutosareta</a></li><li><a href="/project-updates/boostxpressivenonihongodokyumentowotsuika.html">boostxpressivenonihongodokyumentowotsuika</a></li><li><a href="/project-updates/saitokoukai.html">saitokoukai</a></li><li><a href="/project-updates/typetraitsextensiongasaitakusareta.html">typetraitsextensiongasaitakusareta</a></li><li><a href="/project-updates/wuti.html">wuti</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/xml.html">xml</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>singleton</h1>
+<h2>Motivation</h2>
+<p>serializationライブラリは、いくつかの静的変数とテーブルが存在し、それが実行時のタイプに関連する情報を格納することに基づいています。 たとえば、exportされた名前とタイプを関連づけるテーブルや、基底クラスと派生クラスとを関連づけるテーブルです。 これらの変数の生成と破棄、そして利用においては、以下に示す問題の考慮が必要です。</p>
+<ul>
+<li>いくつかの静的なデータ変数と定数は、他の要素を参照します。初期化の順序は任意ではだめで、適切な順序でなければなりません。</li>
+<li>多くの静的変数は、明示的に参照されることがなく、特別な予防措置を講じない限り、最適化によって取り除かれてしまいます。</li>
+<li>これらの変数の多くはテンプレートで作られます。そして、それらがインスタンス化されることを確実にする配慮が必要です。</li>
+<li>マルチスレッドシステムでは、これら静的変数に別々のスレッドから並行的にアクセスすることが可能です。これは、予測不可能な振る舞いでレースコンディションを生み出します。</li>
+</ul>
+<p>この<code><span style="color: #000">singleton</span></code>クラスは上記問題を解決します。</p>
+<h2>Features</h2>
+<p>この<code><span style="color: #000">singleton</span></code>実装は、以下の特徴を持ちます。</p>
+<ul>
+<li>あらゆるインスタンスがそれにアクセスが試みられる前に構築されます。</li>
+<li>あらゆるクラステンプレートのインスタンスが、インスタンス化されることを保証します。</li>
+<li>インスタンスが明示的に参照されるかどうかにかかわらず、リリースモードでビルドした際も最適化で消去され宇ことはありません。</li>
+<li>すべてのインスタンスがmain関数が呼び出される前に、プログラム内で参照される際に構築されます。マルチタスクシステムにおいて、あらゆるインスタンスの生成の間、レースコンディションが発生しないことを保証します。この保証をするためにスレッドのロックは必要ありません。</li>
+<li>上記は、どんなconstインスタンスでも、プログラム全体でスレッドセーフであることを意味します。もう一度言いますが、スレッドのロックは必要ありません。</li>
+<li>mutableなインスタンスが作られ、<code><span style="color: #000">main</span></code>関数がマルチスレッドシステムで呼び出されたあとに変更されるならば、レースコンディションが発生する可能性があります。serializationライブラリでは、mutableな<code><span style="color: #000">singleton</span></code>が必要となるわずかな場所において、<code><span style="color: #000">main</span></code>関数が呼び出されたあとに、それが変更されないように注意します。より一般的な目的のため、この<code><span style="color: #000">singleton</span></code>上でロックを行うスレッドを簡単に実装することができましたが、serializationライブラリがそれを必要としなかったので、実装しませんでした。</li>
+</ul>
+<h2>Class Interface</h2>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">namespace boost {
+namespace serialization {
+
+template
+class singleton : public boost::noncopyable
+{
+public:
+ static const T &amp; get_const_instance();
+ static T &amp; get_mutable_instance();
+};
+
+} // namespace serialization 
+} // namespace boost</span></code></pre>
+</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">static const T &amp; get_const_instance();</span></code></pre>
+
+このタイプの<code><span style="color: #000">singleton</span></code>への<code><span style="color: #000">const</span></code>参照を返します。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">static T &amp; get_mutable_instance();</span></code></pre>
+
+このタイプの<code><span style="color: #000">singleton</span></code>へのmutable参照を返します。</p>
+<h2>Requirements</h2>
+<p><code><span style="color: #000">singleton&lt;T&gt;</span></code>として使えるように、型<code><span style="color: #000">T</span></code>はdefault constructibleでなければなりません。</p>
+<p>それ(<code><span style="color: #000">T</span></code>?)は静的変数を持っているかもしれませんが、静的変数を必要としません。</p>
+<blockquote>
+<p>It doesn't require static variables -though it may have them.</p>
+</blockquote>
+<p>ライブラリが、<code><span style="color: #000">singleton&lt;T&gt;</span></code>の唯一のインスタンスへのすべてのアクセスが、上記静的インターフェースを介して行われるため、<code><span style="color: #000">T</span></code>の一般的なメンバ関数は、機能的には、静的メンバ関数と同等となります。</p>
+<h2>Examples</h2>
+<p>このクラステンプレートには少なくとも2つの異なる使用法があります。 これらは両方ともserializationライブラリで用いられています。 最初の利用方法を、下記のコードを含むextended_type_info.cppから抜粋します。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">typedef std::set ktmap;
+...
+void
+extended_type_info::key_register(const char *key) {
+ ...
+    result = singleton::get_mutable_instance().insert(this);
+ ...
+}</span></code></pre>
+
+プログラムのどこからでも<code><span style="color: #000">singleton</span></code>のインスタンスを参照することで、その型(この例ではktmap)の唯一のインスタンスがプログラムを通して存在することを保証します。 他に宣言や定義は必要ありません。</p>
+<p>2つめの利用方法は、型の基底クラスの1つとして<code><span style="color: #000">singleton&lt;T&gt;</span></code>を用います。 extended_type_info_typeid.hppから単純化した抜粋を示します。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class T&gt;
+class extended_type_info_typeid :
+ public detail::extended_type_info_typeid_0,
+ public singleton&lt;extended_type_info_typeid&lt;const T&gt; &gt;
+{
+ friend class singleton&lt;extended_type_info_typeid&lt;const T&gt; &gt;;
+private:
+ // private constructor to inhibit any existence other than the 
+ // static one.  Note: not all compilers support this !!!
+    extended_type_info_typeid() :
+        detail::extended_type_info_typeid_0()
+ {
+        type_register(typeid(T));
+ }
+ ~extended_type_info_typeid(){}
+ ...
+};</span></code></pre>
+
+この利用法は、以下のより自然なシンタックスが利用可能です。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">extended_type_info_typeid&lt;T&gt;::get_const_instance()</span></code></pre>
+
+どこでも上記の文を1つ以上プログラムに含むならば、唯一のインスタンスが生成され、参照されることを保証します。</p>
+<h2>Multi-Threading</h2>
+<p>この<code><span style="color: #000">singleton</span></code>は、次の単純なルールにしたがうことで、マルチスレッドアプリケーションから安全に使うことができます。</p>
+<p>複数のスレッドが走っているとき、<code><span style="color: #000">get_mutable_instance</span></code>を呼び出さないこと!</p>
+<p>serializationライブラリで利用されるすべての<code><span style="color: #000">singleton</span></code>はこのルールに従います。</p>
+<p>ミスによるこのルール違反を発見するのを助けるために、lock/unlock機能が存在します。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">boost::serialization::global_lock::get_mutable_instance().lock();
+boost::serialization::global_lock::get_mutable_instance().unlock();</span></code></pre>
+
+プログラムをデバッグ用にコンパイルしている間、ライブラリが"locked"状態での<code><span style="color: #000">get_mutable_instance()</span></code>の呼び出しはassertionとしてトラップされます。</p>
+<p><code><span style="color: #000">main</span></code>関数が呼び出される前に、静的変数の変更を許可するためのgloal_lock状態は"unlocked"で初期化されます。</p>
+<p>すべてのserializationテストはプログラムの開始時に<code><span style="color: #000">lock()</span></code>を呼び出します。</p>
+<p>リリースモードでコンパイルされるプログラムでは、これらの関数は何の影響も与えません。</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>
