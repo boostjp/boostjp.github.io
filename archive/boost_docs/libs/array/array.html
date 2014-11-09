@@ -1,0 +1,288 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>array</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>arrayクラス, 固定サイズ配列のSTLコンテナ</h1>
+<h2>目次</h2>
+<ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array.html#introduction">はじめに</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array.html#interface">インタフェース</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array.html#discussion">議論</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array.html#code">コード例</a></li>
+</ul>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/array/introduction" name="introduction">はじめに</a></h2>
+<p>C++ 標準ライブラリの一部である C++ 標準テンプレートライブラリ STL は、さまざまな種類のコンテナに対してアルゴリズムを適用するためのフレームワークを提供している。しかしながら、通常の配列は STL コンテナのインターフェイスには備わっていない(STL コンテナのイテレータとしてのインターフェイスは用意されているけれども)。</p>
+<p>通常の配列を置き換えるものとして、STL では <code><span style="color: #000">vector&lt;&gt;</span></code>が提供されているが、<code><span style="color: #000">vector&lt;&gt;</span></code> は動的配列のセマンティクスを持つので、要素数が変化する可能性を持つデータを管理対象とする。静的なサイズさえあれば充分な場面では、このことはいくぶんかのオーバーヘッドを生じさせることとなる。</p>
+<p>Matthew H. Austern は彼の本、 <em>Generic Programming and the STL</em> の中で、 <strong>block</strong> と名づけられた、静的サイズの通常の配列を扱うとても便利なラッパクラスを紹介している。これは通常の配列よりも安全であり、パフォーマンスもひけを取らない。 <em>The C++ Programming Language, 3rd edition</em> で、Bjarne Stroustrup は <strong>c_array</strong> という同じようなクラスを紹介しているが、これは私(<a href="http://www.josuttis.com/" target="_blank">Nicolai Josuttis</a>)が、私の本 <em>The C++ Standard Library - A Tutorial and Reference</em> の中で <strong>carray</strong> と呼んでいるものを少々変更して提供したものだ。ここに紹介するのは、これらのアプローチのエッセンスを、<a href="http://www.boost.org/" target="_blank">boost</a> からのたくさんのフィードバックで味付けしたものである。</p>
+<p>いろいろな名前を考えたすえ、このクラスの名前はシンプルに <strong>array</strong> と決定した。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/array/interface" name="interface">インタフェース</a></h2>
+<p>このクラスは以下のインターフェイスを提供する。</p>
+<p><strong>型:</strong></p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>型</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">value_type</span></code></td>
+<td>要素の型</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">iterator</span></code></td>
+<td>イテレータの型(ランダムアクセス・イテレータ)</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">const_iterator</span></code></td>
+<td>定数とされる要素へのイテレータの型</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">reference</span></code></td>
+<td>要素の参照の型</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">const_reference</span></code></td>
+<td>定数とされる要素への参照の型</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">size_type</span></code></td>
+<td>符号付のサイズの型</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">difference_type</span></code></td>
+<td>符号なしの距離(差分)の型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>操作:</strong></p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>操作</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">array&lt;type,num&gt;</span></code></td>
+<td>デフォルトコンストラクタ。<code><span style="color: #000">num</span></code> (要素数)個の<code><span style="color: #000">type</span></code> (型)を要素とする配列を作成する。下のコメントを参照。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">array&lt;type,num&gt;(a)</span></code></td>
+<td>コピーコンストラクタ<code><span style="color: #000">a</span></code> のすべての要素をコピーする。(<code><span style="color: #000">a</span></code> は同じ <code><span style="color: #000">type</span></code> と <code><span style="color: #000">num</span></code> でなければならない)。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">operator=</span></code></td>
+<td>代入。すべての要素を代入する。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">assign(val)</span></code></td>
+<td>すべての要素に <code><span style="color: #000">val</span></code> を代入する。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">begin()</span></code></td>
+<td>最初の要素へのイテレータを返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">end()</span></code></td>
+<td>最後の要素の次の位置へのイテレータを返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">rbegin()</span></code></td>
+<td>逆イテレーションでの最初の要素を指す逆イテレータを返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">rend()</span></code></td>
+<td>逆イテレーションでの最後の要素のひとつ後ろ(behind)を指す逆イテレータを返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">operator[i]</span></code></td>
+<td>インデックス <code><span style="color: #000">i</span></code> の要素を返す(範囲チェックなし)</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">at(i)</span></code></td>
+<td>インデックス <code><span style="color: #000">i</span></code> の要素を返す(<code><span style="color: #000">i</span></code> が不正な場合は <code><span style="color: #000">std::range_error</span></code> を送出する)</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">front()</span></code></td>
+<td>最初の要素を返す(要素が存在することを呼び出し側で保証しなければならない)</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">back()</span></code></td>
+<td>最後の要素を返す(要素が存在することを呼び出し側で保証しなければならない)</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">data()</span></code></td>
+<td>生の配列を読み取り専用として返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">size()</span></code></td>
+<td>要素数を返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">empty()</span></code></td>
+<td>配列が空かどうかを返す。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">max_size()</span></code></td>
+<td>格納可能な要素数の最大値を返す(<code><span style="color: #000">size()</span></code> と同じ)。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">swap(a)</span></code></td>
+<td><code><span style="color: #000">array a</span></code> と要素を交換する。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">==, !=</span></code></td>
+<td>等値性を調べる。</td>
+</tr>
+<tr>
+<td><code><span style="color: #000">&lt;, &lt;=, &gt;, &gt;=</span></code></td>
+<td><code><span style="color: #000">array</span></code> の比較演算。</td>
+</tr>
+</tbody>
+</table>
+<p><strong>値:</strong></p>
+<table border="1" bordercolor="#888" style="border-collapse:collapse">
+<thead>
+<tr>
+<th>定数</th>
+<th>説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code><span style="color: #000">static_size</span></code></td>
+<td>コンパイル時の要素数</td>
+</tr>
+</tbody>
+</table>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/array/discussion" name="discussion">議論</a></h2>
+<p><code><span style="color: #000">array</span></code> クラスは"reversible container"(C++ 標準 Section 23.1, [lib.container.requirements] を参照)の要件のほとんどを満たしているが、完全にではない。<code><span style="color: #000">array</span></code> が reversible な STL コンテナではない理由は以下のとおりである。</p>
+<ul>
+<li>提供されるべきコンストラクタがない</li>
+<li>要素が不確定な初期値を持つ可能性がある(以下を参照)。</li>
+<li><code><span style="color: #000">swap()</span></code> の計算量が定数ではない。</li>
+<li><code><span style="color: #000">size()</span></code> が常に一定で、型の第2テンプレート引数によって決定される。</li>
+<li>アロケータのサポートを提供しないコンテナである。</li>
+</ul>
+<p>また、"sequence"(C++標準Section 23.1.1, [lib.sequence.reqmts]参照)であるための要件を、以下のものを除いて満たしていない。</p>
+<ul>
+<li><code><span style="color: #000">front()</span></code> と <code><span style="color: #000">back()</span></code> が提供されている。</li>
+<li><code><span style="color: #000">operator[]</span></code> と <code><span style="color: #000">at()</span></code> が提供されている。</li>
+</ul>
+<p>コンストラクタの点に関しては、重要な設計上のトレードオフを行い、(それによって)"<strong>aggregate</strong>"( C++ 標準 Section 8.5.1, [dcl.init.aggr] を参照)として <code><span style="color: #000">array</span></code> を実装することができた。つまり、</p>
+<ul>
+<li><code><span style="color: #000">array</span></code> は、ブレースで囲まれ、要素番号の昇順に並べられ、カンマで区切られたコンテナの要素への初期値のリストによって初期化することができる。<ul>
+<li><code><span style="color: #000">boost::array&lt;int,4&gt; a = { { 1, 2, 3 } };</span></code></li>
+<li>リスト内の初期値の数が足りない場合、残りの要素はデフォルト値のままになる(したがって定義された値を持つ)ことに注意しよう。</li>
+</ul>
+</li>
+<li>しかしながら、<code><span style="color: #000">初期値のリストをないままにすると、要素は不確定の初期値をもつことになる。</span></code></li>
+<li>ユーザー定義のコンストラクタを持たない。</li>
+<li><code><span style="color: #000">private</span></code> あるいは <code><span style="color: #000">protected</span></code> な 非 <code><span style="color: #000">static</span></code> データメンバをもたない。</li>
+<li>基底クラスを持たない。</li>
+<li>仮想関数を持たない。</li>
+</ul>
+<p>現在の実装はこのようなアプローチをとっているが、不確定な初期値を持つ可能性があることは大きな問題点である。そこで、この点に関してこのようにすべきだというあなたの考えを、ぜひフィードバックしてほしい。ここから導かれる <strong>未解決の問題点</strong> は以下のようなものだ。</p>
+<ul>
+<li>初期化リストをサポートするべきか、あるいは次のようなものでOKか？<ul>
+<li><code><span style="color: #000">int data[] = { 1, 2, 3, 4 }</span></code></li>
+<li><code><span style="color: #000">array&lt;int,5&gt; x(data);</span></code> あるいは  <code><span style="color: #000">array&lt;int,data&gt; x;</span></code></li>
+</ul>
+</li>
+<li>可搬性のために、初期化リストとして、"<code><span style="color: #000">{ { ... } }</span></code>"のかわりに、"<code><span style="color: #000">{ ... }</span></code>"を使えるようにするべきだろうか？<ul>
+<li>規格の 8.5.1 (11) ではこれは許されているようだが、gcc 2.95.2 では警告メッセージを表示する。</li>
+</ul>
+</li>
+<li>初期値の決定と、初期化リストのサポートのための、別の方法があるだろうか？</li>
+<li>&lt;font color="red"逆イテレータのstuffのための Static_casts はどうするか？&lt;/font&gt;<ul>
+<li>&lt;font color="red"&gt;原文は「Static_casts for reverse iterator stuff?」。よくわかりません…&lt;/font&gt;</li>
+</ul>
+</li>
+</ul>
+<p>建設的な<a href="http://boostjp.github.io/archive/boost_docs/libs/array/solutions@josuttis.com">フィードバック</a>はどのようなものでも歓迎する。<strong>注意してほしいのは、boostメーリングリストのすべてのメールを読むだけの時間が、私にはないという点だ。というわけで、確実にフィードバックが私に届くようにするため、このクラスに関するメールについては、私にコピーを送ってほしい。</strong></p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/array/code" name="code">コード例</a></h2>
+<p>以下のコードは「このままの形(as is)」で提供され、明示的あるいは暗黙的な保証はない。</p>
+<ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array.hpp.html"><strong>array.hpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code> の実装ファイル</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array1.cpp.html"><strong>array1.cpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code>を使った簡単な例</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array2.cpp.html"><strong>array2.cpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code>を使った別の例</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array3.cpp.html"><strong>array3.cpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code>を使った三つ目の例</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array4.cpp.html"><strong>array4.cpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code> の <code><span style="color: #000">array&lt;&gt;</span></code> を使った例</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/array/array5.cpp.html"><strong>array5.cpp</strong></a>, <code><span style="color: #000">array&lt;&gt;</span></code> の他の操作をテストする例</li>
+</ul>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>
