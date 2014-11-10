@@ -1,0 +1,258 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>mem_fn</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>mem_fn.hpp</h1>
+<h2>目次</h2>
+<ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#purpose">目的</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#faq">FAQ</a><ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#Q1">mem_fnを、標準の std::mem_fun[_ref]アダプタのかわりに使用できるか?</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#Q2">既に書いてしまったコード中のstd::mem_fun[_ref]を、 全てmem_fnで置き換えるべきか?</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#Q3">mem_fnは COM のメソッドに使えるか?</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#Q4">何故 BOOST_MEM_FN_ENABLE_STDCALL は最初から有効になっていないのか?</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#interface">インタフェース</a><ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#synopsis">Synopsis</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#requirements">必須事項</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#get_pointer">get_pointer</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#mem_fn">mem_fn</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#implementation">実装</a><ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#files">ファイル</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#dependency">依存関係</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#number-of-arguments">引数の上限個数</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#stdcall">"<strong>stdcall" と "</strong>fastcall" のサポート</a></li>
+</ul>
+</li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn.html#acknowledgements">謝辞</a></li>
+</ul>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/purpose" name="purpose">目的</a></h2>
+<p><code><span style="color: #000">boost::mem_fn</span></code> は、標準関数である<code><span style="color: #000">std::mem_fun</span></code> と <code><span style="color: #000">std::mem_fun_ref</span></code>の一般化である。<code><span style="color: #000">mem_fn</span></code>は、2つ以上の引数をとる メンバ関数へのポインタをサポートし、また<code><span style="color: #000">mem_fn</span></code>の戻す関数オブジェクトは第一引数に、 (訳注: そのメンバ関数の属するクラスのインスタンスを指すような) ポインタ、参照、スマートポインタをとることができる。 <code><span style="color: #000">mem_fn</span></code>は、メンバ変数へのポインタも、引数をとらず自身への定数参照を 戻す関数とみなすことによってサポートする。</p>
+<p><code><span style="color: #000">mem_fn</span></code>の目的は2つある。一つ目は、コンテナにスマートポインタが格納されている場合であっても、 次のような</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">std::for_each(v.begin(), v.end(), boost::mem_fn(&amp;Shape::draw));</span></code></pre>
+
+見慣れた文法によって、メンバ関数の呼び出しを可能にすることである。</p>
+<p>二つ目は、メンバ関数へのポインタを関数オブジェクトのように取り扱いたいライブラリ開発者に、 実装の道具として使用して貰うことである。例えば、あるライブラリは次のようにしてより便利な <code><span style="color: #000">for_each</span></code>アルゴリズムを提供することができ、</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class It, class R, class T&gt; void for_each(It first, It last, R (T::*pmf) ())
+{
+    std::for_each(first, last, boost::mem_fn(pmf));
+}</span></code></pre>
+
+このアルゴリズムは次のようにして手軽に利用することができる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">for_each(v.begin(), v.end(), &amp;Shape::draw);</span></code></pre>
+
+このアルゴリズムの機能を文書化する際には、単に次のように書けば良い：</p>
+<blockquote>
+<p><code><span style="color: #000">template&lt;class It, class R, class T&gt;</span></code>
+<code><span style="color: #000">void for_each(It first, It last, R (T::*pmf) ());</span></code>
+<strong>結果:</strong> <code><span style="color: #000">std::for_each(first, last, boost::mem_fn(pmf));</span></code> と同等。</p>
+</blockquote>
+<p>ここで、 <code><span style="color: #000">boost::mem_fn</span></code> の部分はこのページへのリンクとするとよいだろう。 <a href="http://boostjp.github.io/archive/boost_docs/libs/bind/bind.html">bindのドキュメント</a> にそのような例があるので参照のこと。</p>
+<p><code><span style="color: #000">mem_fn</span></code> は1つの引数(メンバ関数へのポインタ)をとり、標準あるいは独自の アルゴリズムに渡すのに適した関数オブジェクトを戻す：</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">struct X
+{
+    void f();
+};
+
+void g(std::vector&lt;X&gt; &amp; v)
+{
+    std::for_each(v.begin(), v.end(), boost::mem_fn(&amp;X::f));
+};
+
+void h(std::vector&lt;X *&gt; const &amp; v)
+{
+    std::for_each(v.begin(), v.end(), boost::mem_fn(&amp;X::f));
+};
+
+void k(std::vector&lt;boost::shared_ptr&lt;X&gt; &gt; const &amp; v)
+{
+    std::for_each(v.begin(), v.end(), boost::mem_fn(&amp;X::f));
+};</span></code></pre>
+
+戻される関数オブジェクトは、引数のメンバ関数ポインタと同じ引数をとることに加え、 インスタンスを表すための「柔軟な」第一引数をとる。</p>
+<p>関数オブジェクトが、適切なクラス(上の例では <code><span style="color: #000">X</span></code>)を指すポインタでも参照でも ない第一引数<code><span style="color: #000">x</span></code>をもって呼ばれた場合、関数オブジェクトは<code><span style="color: #000">get_pointer(x)</span></code> を用いて<code><span style="color: #000">x</span></code>からポインタを得ようとする。 スマートポインタの作者は、自分たちのスマートポインタ向けの適切な<code><span style="color: #000">get_pointer</span></code>関数 を定義(overload)しておくことで、それを<code><span style="color: #000">mem_fn</span></code>対応とすることができる。</p>
+<p>[注意: <code><span style="color: #000">get_pointer</span></code> の戻り値はポインタでなくともよい。 <code><span style="color: #000">(x-&gt;*pmf)(...)</span></code>という形式でメンバ関数が呼び出せるなら、どんなオブジェクトでも問題ない。]</p>
+<p>[注意: ライブラリは、<code><span style="color: #000">get_pointer</span></code> の非限定的 (訳注:名前空間を明示しない) 呼び出しを行なう。 そのため、引数依存検索の過程では、オーバーロードされた<code><span style="color: #000">boost::get_pointer</span></code>関数群に加えて、 そのスマートポインタが定義された名前空間内の<code><span style="color: #000">get_pointer</span></code>関数群も検索対象になる。]</p>
+<p><code><span style="color: #000">mem_fn</span></code>が戻す全ての関数オブジェクトは、<code><span style="color: #000">result_type</span></code>なる<code><span style="color: #000">typedef</span></code>を開示する。 この<code><span style="color: #000">typedef</span></code>は、メンバ関数の戻り型を表す。メンバ変数を渡した場合には、<code><span style="color: #000">result_type</span></code> はそのメンバ変数の型の定数参照として定義される。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/faq" name="faq">FAQ</a></h2>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/Q1" name="Q1">mem_fnを、標準の std::mem_fun[_ref]アダプタのかわりに使用できるか?</a></h3>
+<p>はい。単純な使い方では、<code><span style="color: #000">mem_fn</span></code> は標準のアダプタが提供しないいくつかの機能を提供する。 <code><span style="color: #000">std::bind1st</span></code>、<code><span style="color: #000">std::bind2nd</span></code>、<a href="http://boostjp.github.io/archive/boost_docs/libs/compose/index.html">Boost.Compose</a> と標準のアダプタを組み合わせるような複雑な使い方をしている場合は、 <a href="http://boostjp.github.io/archive/boost_docs/libs/bind/bind.html"><code><span style="color: #000">boost::bind</span></code></a> を使用するように書き換えることで、<code><span style="color: #000">mem_fn</span></code>の恩恵を自動的に受けることができる。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/Q2" name="Q2">既に書いてしまったコード中のstd::mem_fun[_ref]を、 全てmem_fnで置き換えるべきか?</a></h3>
+<p>いいえ。そうする強い理由がないならすべきではない。<code><span style="color: #000">mem_fn</span></code> は、標準のアダプタに 非常に良く似ているが、100%の互換性があるわけではない。特に、<code><span style="color: #000">mem_fn</span></code>は、標準の アダプタとは違って <code><span style="color: #000">std::[const_]mem_fun[1][_ref]_t</span></code> 型のオブジェクトを戻さないので、 標準の <code><span style="color: #000">argument_type</span></code> 及び <code><span style="color: #000">first_argument_type</span></code> という (nested) <code><span style="color: #000">typedef</span></code> を 用いて第一引数の型を記述することが (完全には) できない。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/Q4" name="Q3">mem_fnは COM のメソッドに使えるか?</a></h3>
+<p>はい。<code><span style="color: #000">#define BOOST_MEM_FN_ENABLE_STDCALL</span></code> とすれば可能である。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/Q4" name="Q4">何故 BOOST_MEM_FN_ENABLE_STDCALL は最初から有効になっていないのか?</a></h3>
+<p>特定のベンダへの依存を避けるため、可搬性のない拡張は、一般にデフォルトでオフにされるべきである。 もし <code><span style="color: #000">BOOST_MEM_FN_ENABLE_STDCALL</span></code> がデフォルトで有効であったなら、あなたはそうとは気づかずに その拡張を使ってしまい、結果としてあなたのコードの可搬性が損なわれるかもしれない。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/interface" name="interface">インタフェース</a></h2>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/synopsis" name="synopsis">Synopsis</a></h3>
+<p><pre class="codehilite"><code class="language-cpp"><i>unspecified-1</i> mem_fn(R (T::*pmf) ());
+
+template&lt;class R, class T&gt; <i>unspecified-2</i> mem_fn(R (T::*pmf) () const);
+
+template&lt;class R, class T&gt; <i>unspecified-2</i>-1 mem_fn(R T::*pm);
+
+template&lt;class R, class T, class A1&gt; <i>unspecified-3</i> mem_fn(R (T::*pmf) (A1));
+
+template&lt;class R, class T, class A1&gt; <i>unspecified-4</i> mem_fn(R (T::*pmf) (A1) const);
+
+template&lt;class R, class T, class A1, class A2&gt; <i>unspecified-5</i> mem_fn(R (T::*pmf) (A1, A2));
+
+template&lt;class R, class T, class A1, class A2&gt; <i>unspecified-6</i> mem_fn(R (T::*pmf) (A1, A2) const);
+
+// 実際には、より多くの引数をとるような関数が、更にいくつかオーバーロードされている
+
+}<span style="color: #000">namespace boost
+{
+
+template&lt;class T&gt; T * get_pointer(T * p);
+
+template&lt;class R, class T&gt; </span></code></pre>
+</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/requirements" name="requirements">必須事項</a></h3>
+<p>Synopsis で述べられた全ての <em>unspecified-N</em> 型は <code><span style="color: #000">CopyConstructible</span></code> (コピーコンストラクト可能) かつ <code><span style="color: #000">Assignable</span></code> (代入可能) であること。そのためのコピーコンストラクタ及び代入演算子 は例外を送出しないこと。 <em>unspecified-N</em> <code><span style="color: #000">::result_type</span></code> は <code><span style="color: #000">mem_fn</span></code> に渡されたメンバ関数ポインタの戻り型、と定義されること (Synopsis での <code><span style="color: #000">R</span></code>)。 <em>unspecified-2-1</em> <code><span style="color: #000">::result_type</span></code> は <code><span style="color: #000">R const &amp;</span></code> 、と定義されること。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/get_pointer" name="get_pointer">get_pointer</a></h3>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class T&gt; T * get_pointer(T * p)</span></code></pre>
+
+- 戻り値： <code><span style="color: #000">p</span></code>
+- 例外： 送出しない。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mem_fn" name="mem_fn">mem_fn</a></h3>
+<p><pre class="codehilite"><code class="language-cpp"><i>unspecified-1</i> mem_fn(R (T::*pmf) ())<span style="color: #000">template&lt;class R, class T&gt; </span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t)</span></code> は <code><span style="color: #000">(t.*pmf)()</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T</span></code>あるいはその派生型の左辺値である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)()</span></code> と等価である(それ以外の場合)。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><i>unspecified-2</i> mem_fn(R (T::*pmf) () const)<span style="color: #000">template&lt;class R, class T&gt; </span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t)</span></code> は <code><span style="color: #000">(t.*pmf)()</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T [const]</span></code> あるいはその派生型である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)()</span></code> と等価である(それ以外の場合)。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><i>unspecified-2-1</i> mem_fn(R T::*pm)<span style="color: #000">template&lt;class R, class T&gt; </span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t)</span></code> は <code><span style="color: #000">t.*pm</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T [const]</span></code> あるいはその派生型である場合)。 あるいは <code><span style="color: #000">get_pointer(t)-&gt;*pm</span></code> と等価である（それ以外の場合）。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class R, class T, class A1&gt; unspecified-3 mem_fn(R (T::*pmf) (A1))</span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t, a1)</span></code> は <code><span style="color: #000">(t.*pmf)(a1)</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T</span></code> あるいはその派生型の左辺値である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)(a1)</span></code> と等価である（それ以外の場合）。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class R, class T, class A1&gt; unspecified-4 mem_fn(R (T::*pmf) (A1) const)</span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t, a1)</span></code> は <code><span style="color: #000">(t.*pmf)(a1)</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T [const]</span></code> あるいはその派生型である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)(a1)</span></code> と等価である（それ以外の場合）。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class R, class T, class A1, class A2&gt; unspecified-5 mem_fn(R (T::*pmf) (A1, A2))</span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t, a1, a2)</span></code> は <code><span style="color: #000">(t.*pmf)(a1, a2)</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T</span></code> あるいはその派生型の左辺値である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)(a1, a2)</span></code> と等価である（それ以外の場合）。
+- 例外： 送出しない。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;class R, class T, class A1, class A2&gt; unspecified-6 mem_fn(R (T::*pmf) (A1, A2) const)</span></code></pre>
+
+- 戻り値： 関数オブジェクト <code><span style="color: #000">f</span></code> を戻す。ここで、式 <code><span style="color: #000">f(t, a1, a2)</span></code> は <code><span style="color: #000">(t.*pmf)(a1, a2)</span></code> と等価である (<code><span style="color: #000">t</span></code> が <code><span style="color: #000">T [const]</span></code> あるいはその派生型である場合)。 あるいは <code><span style="color: #000">(get_pointer(t)-&gt;*pmf)(a1, a2)</span></code> と等価である（それ以外の場合）。
+- 例外： 送出しない。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/implementation" name="implementation">実装</a></h2>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/files" name="files">ファイル</a></h3>
+<ul>
+<li>boost/mem_fn.hpp (メインヘッダ)</li>
+<li>boost/bind/mem_fn_cc.hpp (mem_fn.hpp より使用される。直接インクルードしないこと。)</li>
+<li>boost/bind/mem_fn_vw.hpp (mem_fn.hpp より使用される。直接インクルードしないこと。)</li>
+<li>boost/bind/mem_fn_template.hpp (mem_fn.hpp より使用される。直接インクルードしないこと。)</li>
+<li>libs/bind/test/mem_fn_test.cpp (テスト)</li>
+<li>libs/bind/test/mem_fn_derived_test.cpp (派生オブジェクトでのテスト)</li>
+<li>libs/bind/test/mem_fn_fastcall_test.cpp (<code><span style="color: #000">__fastcall</span></code>のテスト)</li>
+<li>libs/bind/test/mem_fn_stdcall_test.cpp (<code><span style="color: #000">__stdcall</span></code>のテスト)</li>
+<li>libs/bind/test/mem_fn_void_test.cpp (戻りが<code><span style="color: #000">void</span></code>であるケースのテスト)</li>
+</ul>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/dependency" name="dependency">依存関係</a></h3>
+<ul>
+<li>Boost.Config</li>
+</ul>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/number-of-arguments" name="number-of-arguments">引数の上限個数</a></h3>
+<p>この実装では、8つまでの引数をとるメンバ関数がサポートされている。これは、設計に固有の 制限という訳ではなく、実装の詳細である。</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/stdcall" name="stdcall">"<strong>stdcall" と "</strong>fastcall" のサポート</a></h3>
+<p>いくつかのプラットフォームでは、 <strong>呼び出し規則</strong> (どのように関数が起動されるかの規則: 引数はどのように渡されるのか、戻り値はどのように扱われるのか、もしスタックを使用したなら、 誰がそれを奇麗にするのか) の異なるような何種類かのメンバ関数を作成できる。</p>
+<p>例えば、Windows API の関数と、COMインタフェースのメンバ関数は、 <code><span style="color: #000">__stdcall</span></code> という呼び出し規則を用いるし、 Borland の VCL コンポーネントは <code><span style="color: #000">__fastcall</span></code> を用いる。</p>
+<p><code><span style="color: #000">mem_fn</span></code> を <code><span style="color: #000">__stdcall</span></code> メンバ関数に用いるには、mem_fn.hpp が (直接、あるいは間接的に) インクルードされる前に マクロ <code><span style="color: #000">BOOST_MEM_FN_ENABLE_STDCALL</span></code> を <code><span style="color: #000">#define</span></code> する。</p>
+<p><code><span style="color: #000">mem_fn</span></code> を <code><span style="color: #000">__fastcall</span></code> メンバ関数に用いるには、mem_fn.hpp が (直接、あるいは間接的に) インクルードされる前に マクロ <code><span style="color: #000">BOOST_MEM_FN_ENABLE_FASTCALL</span></code> を <code><span style="color: #000">#define</span></code> する。</p>
+<p>[注意: これは可搬性のない拡張であり、インタフェースの一部ではない。]</p>
+<p>[注意: いくつかのコンパイラは、 <code><span style="color: #000">__stdcall</span></code> キーワードに対して最小限のサポートしか提供していない。]</p>
+<h3><a href="http://boostjp.github.io/archive/boost_docs/libs/bind/acknowledgements" name="acknowledgements">謝辞</a></h3>
+<p><code><span style="color: #000">get_pointer</span></code>ベースの設計は、Rene Jageによる、特性クラスを用いて <code><span style="color: #000">mem_fn</span></code>を ユーザ定義のスマートポインタに適合させるという提案に影響されたものである。</p>
+<p>フォーマルレビューの期間に、Richard Crossley、 Jens Maurer、 Ed Brey、その他の方々の示唆によって、たくさんの 改良があった。レビューマネージャは Darin Adler であった。</p>
+<p>Steve Anichini は、COMインタフェースが <code><span style="color: #000">__stdcall</span></code> を使用していることを指摘した。</p>
+<p>Dave Abrahams は、不完全なコンパイラにおいても "戻り値なし" をサポートすべく、<code><span style="color: #000">bind</span></code> と <code><span style="color: #000">mem_fn</span></code> を改良した。</p>
+<hr />
+<p>Copyright © 2001, 2002 by Peter Dimov and Multi Media Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided "as is" without express or implied warranty, and with no claim as to its suitability for any purpose.</p>
+<hr />
+<p>Japanese Translation Copyright © 2003 SATO Yusuke <a href="http://boostjp.github.io/archive/boost_docs/libs/bind/mailto:y-sato@y-sa.to">y-sato@y-sa.to</a>.</p>
+<p>オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>
