@@ -93,16 +93,18 @@ namespace std {
 }</span></code></pre>
 
 ジェネリック・アルゴリズムのテストとして、一般的な複数の入力型に対してインスタンスの生成を行う場合が往々にしてある。 一例として、<code><span style="color: #000">std::stable_sort()</span></code> に対して、イテレータとして組み込みのポインタ型を適用することが考えられる。 これは、アルゴリズムの実行時の振る舞いをテストするには適切であるが、コンセプト充当性の保証には有用ではない。 なぜなら、C++ の組み込み型は特定のコンセプトとー致を見ることは決してなく、たいていの場合、それが提供する機能は何らかのコンセプトが単独で必要とする最小のそれを上回っている。 すなわち、たとえ与えられた型で関数テンプレートがコンパイルできたとしても、そのコンセプトの要求事項は、その関数を充当する実際の要求事項に及ばないことがありうる。 それ故に、一般的な入力型でテストすることに加えて、原型クラスでコンパイルすることは重要である。</p>
-<p>以下は、記載されている <a href="https://sites.google.com/site/cpprefjp/reference/algorithm/stable_sort" target="_blank"><code><span style="color: #000">std::stable_sort()</span></code></a> の要求事項をチェックするために原型を使用する方法を示す、<a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html">stl_concept_covering.cpp</a> からの抜粋である。 この場合、<a href="http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html" target="_blank"><code><span style="color: #000">CopyConstructible</span></code>（コピー・コンストラクト可能）</a> と <a href="http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html" target="_blank"><code><span style="color: #000">Assignable</span></code></a>（割り当て可能） 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、<code><span style="color: #000">Base</span></code> という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。</p>
+<p>以下は、記載されている <a href="https://sites.google.com/site/cpprefjp/reference/algorithm/stable_sort" target="_blank"><code><span style="color: #000">std::stable_sort()</span></code></a> の要求事項をチェックするために原型を使用する方法を示す、<a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html">stl_concept_covering.cpp</a> からの抜粋である。 この場合、<a href="http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html" target="_blank"><code><span style="color: #000">CopyConstructible</span></code>（コピー・コンストラクト可能）</a> と <a href="http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html" target="_blank"><code><span style="color: #000">Assignable</span></code>（割り当て可能）</a> 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、<code><span style="color: #000">Base</span></code> という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。</p>
 <p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">{
   typedef less_than_comparable_archetype&lt; 
       sgi_assignable_archetype&lt;&gt; &gt; ValueType;
   random_access_iterator_archetype&lt;ValueType&gt; ri;
   std::stable_sort(ri, ri);
 }</span></code></pre>
-
-- <a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/prog_with_concepts.html">次へ： Programming with Concepts</a>
-- <a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html">前へ： Creating Concept Checking Classes</a></p>
+</p>
+<ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/prog_with_concepts.html">次へ： Programming with Concepts</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html">前へ： Creating Concept Checking Classes</a></li>
+</ul>
 <hr />
 <p>Copyright © 2000 <a href="http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm" target="_blank">Jeremy Siek</a>(<a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/mailto:jsiek@osl.iu.edu">jsiek@osl.iu.edu</a>) Andrew Lumsdaine(<a href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/mailto:lums@osl.iu.edu">lums@osl.iu.edu</a>)</p>
   </div>
