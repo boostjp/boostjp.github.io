@@ -1,0 +1,1035 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>stl_concept_covering.cpp</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>libs/concept_check/stl_concept_covering.cpp</h1>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">// (C) Copyright Jeremy Siek 2000-2002. Permission to copy, use, modify,
+// sell and distribute this software is granted provided this
+// copyright notice appears in all copies. This software is provided
+// "as is" without express or implied warranty, and with no claim as
+// to its suitability for any purpose.
+
+#include &lt;algorithm&gt;
+#include &lt;numeric&gt;
+#include &lt;boost/concept_check.hpp&gt;
+#include &lt;boost/concept_archetype.hpp&gt;
+
+/*
+
+ This file uses the archetype classes to find out which concepts
+ actually *cover* the STL algorithms true requirements. The
+ archetypes/concepts chosen do not necessarily match the C++ standard
+ or the SGI STL documentation, but instead were chosen based on the
+ minimal concepts that current STL implementations require, which in
+ many cases is less stringent than the standard. In some places there
+ was significant differences in the implementations' requirements and
+ in those places macros were used to select different requirements,
+ the purpose being to document what the requirements of various
+ implementations are.  It is an open issue as to whether the C++
+ standard should be changed to reflect these weaker requirements.
+
+*/
+
+boost::detail::dummy_constructor dummy_cons;
+
+// This is a special concept needed for std::swap_ranges.
+// It is mutually convertible, and also SGIAssignable
+template &lt;class T&gt;
+class mutually_convertible_archetype
+{
+private:
+  mutually_convertible_archetype() { }
+public:
+  mutually_convertible_archetype(const mutually_convertible_archetype&amp;) { }
+  mutually_convertible_archetype&amp; 
+  operator=(const mutually_convertible_archetype&amp;)
+    { return *this; }
+  mutually_convertible_archetype(boost::detail::dummy_constructor) { }
+
+  template &lt;class U&gt;
+  mutually_convertible_archetype&amp; 
+  operator=(const mutually_convertible_archetype&lt;U&gt;&amp;)
+    { return *this; }
+
+};
+
+
+// for std::accumulate
+namespace accum
+{
+  typedef boost::sgi_assignable_archetype&lt;&gt; Ret;
+  struct T {
+    T(const Ret&amp;) { }
+    T(boost::detail::dummy_constructor x) { }
+  };
+  typedef boost::null_archetype&lt;&gt; Tin;
+  Ret operator+(const T&amp;, const Tin&amp;) {
+    return Ret(dummy_cons);
+  }
+}
+
+// for std::inner_product
+namespace inner_prod
+{
+  typedef boost::sgi_assignable_archetype&lt;&gt; RetAdd;
+  typedef boost::sgi_assignable_archetype&lt;&gt; RetMult;
+  struct T {
+    T(const RetAdd&amp;) { }
+    T(boost::detail::dummy_constructor x) { }
+  };
+  typedef boost::null_archetype&lt;int&gt; Tin1;
+  typedef boost::null_archetype&lt;char&gt; Tin2;
+}
+
+namespace boost { // so Koenig lookup will find
+
+  inner_prod::RetMult
+  operator*(const inner_prod::Tin1&amp;, const inner_prod::Tin2&amp;) {
+    return inner_prod::RetMult(dummy_cons);
+  }
+  inner_prod::RetAdd 
+  operator+(const inner_prod::T&amp;, 
+            const inner_prod::RetMult&amp;) {
+    return inner_prod::RetAdd(dummy_cons);
+  }
+}
+
+
+// for std::partial_sum and adj_diff
+namespace part_sum
+{
+  typedef boost::null_archetype&lt;&gt; Tout;
+  typedef boost::sgi_assignable_archetype&lt;
+    boost::convertible_to_archetype&lt;Tout&gt; &gt; Ret;
+  class Tin {
+  public:
+    Tin(const Ret&amp;) { }
+    Tin(boost::detail::dummy_constructor x) { }  
+    operator const Tout&amp;() const { return boost::static_object&lt;Tout&gt;::get(); }
+  private:
+    Tin() { }
+  };
+  Ret operator+(const Tin&amp;, const Tin&amp;) {
+    return Ret(dummy_cons);
+  }
+  Ret operator-(const Tin&amp;, const Tin&amp;) {
+    return Ret(dummy_cons);
+  }
+}
+
+// for std::power
+
+namespace power_stuff {
+  struct monoid_archetype {
+    monoid_archetype(boost::detail::dummy_constructor x) { }  
+  };
+
+  boost::multipliable_archetype&lt;monoid_archetype&gt;
+  identity_element
+  (std::multiplies&lt; boost::multipliable_archetype&lt;monoid_archetype&gt; &gt;) 
+  {
+    return boost::multipliable_archetype&lt;monoid_archetype&gt;(dummy_cons);
+  }
+}
+
+struct tag1 { };
+struct tag2 { };
+
+int
+main()
+{
+  using namespace boost;
+
+  //===========================================================================
+  // Non-mutating Algorithms
+  {
+    input_iterator_archetype&lt; 
+      convertible_to_archetype&lt; null_archetype&lt;&gt;  &gt; &gt; in;
+    unary_function_archetype&lt; null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      f(dummy_cons);
+    std::for_each(in, in, f);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;&gt; Left;
+    input_iterator_archetype&lt; Left &gt; in;
+    equality_comparable2_second_archetype&lt;&gt; value(dummy_cons);
+    in = std::find(in, in, value);
+  }
+  {
+    input_iterator_archetype&lt; 
+      convertible_to_archetype&lt; null_archetype&lt;&gt;  &gt; &gt; in;
+    unary_predicate_archetype&lt; null_archetype&lt;&gt;  &gt; pred(dummy_cons);
+    in = std::find_if(in, in, pred);
+  }
+  {
+    forward_iterator_archetype&lt; equality_comparable_archetype&lt;&gt; &gt; fo;
+    fo = std::adjacent_find(fo, fo);
+  }
+  {
+    forward_iterator_archetype&lt; 
+      convertible_to_archetype&lt; null_archetype&lt;&gt;  &gt; &gt; fo;
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    fo = std::adjacent_find(fo, fo, pred);
+  }
+  {
+    typedef equal_op_first_archetype&lt;&gt; Left;
+    input_iterator_archetype&lt;Left&gt; in;
+    typedef equal_op_second_archetype&lt;&gt; Right;
+    forward_iterator_archetype&lt;Right&gt; fo;
+    in = std::find_first_of(in, in, fo, fo);
+  }
+  {
+    typedef equal_op_first_archetype&lt;&gt; Left;
+    typedef input_iterator_archetype&lt;Left&gt; InIter;
+    InIter in;
+    function_requires&lt; InputIteratorConcept&lt;InIter&gt; &gt;();
+    equal_op_second_archetype&lt;&gt; value(dummy_cons);
+    std::iterator_traits&lt;InIter&gt;::difference_type
+      n = std::count(in, in, value);
+    ignore_unused_variable_warning(n);
+  }
+  {
+    typedef input_iterator_archetype&lt;
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; InIter;
+    InIter in;
+    unary_predicate_archetype&lt;null_archetype&lt;&gt; &gt; pred(dummy_cons);
+    std::iterator_traits&lt;InIter&gt;::difference_type
+      n = std::count_if(in, in, pred);
+    ignore_unused_variable_warning(n);
+  }
+  {
+    typedef equal_op_first_archetype&lt;&gt; Left;
+    typedef input_iterator_archetype&lt;Left&gt; InIter1;
+    InIter1 in1;
+    typedef equal_op_second_archetype&lt;&gt; Right;
+    typedef input_iterator_archetype&lt;Right&gt; InIter2;
+    InIter2 in2;
+    std::pair&lt;InIter1, InIter2&gt; p = std::mismatch(in1, in1, in2);
+    ignore_unused_variable_warning(p);
+  }
+  {
+    typedef input_iterator_archetype&lt;
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; InIter;
+    InIter in1, in2;
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    std::pair&lt;InIter, InIter&gt; p = std::mismatch(in1, in1, in2, pred);
+    ignore_unused_variable_warning(p);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;&gt; Left;
+    input_iterator_archetype&lt;Left&gt; in1;
+    typedef equality_comparable2_second_archetype&lt;&gt; Right;
+    input_iterator_archetype&lt;Right&gt; in2;
+    bool b = std::equal(in1, in1, in2);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    input_iterator_archetype&lt; convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt;
+      in1, in2;
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    bool b = std::equal(in1, in1, in2, pred);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;&gt; Left;
+    forward_iterator_archetype&lt;Left&gt; fo1;
+    typedef equality_comparable2_second_archetype&lt;&gt; Right;
+    forward_iterator_archetype&lt;Right&gt; fo2;
+    fo1 = std::search(fo1, fo1, fo2, fo2);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt; 
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; Left;
+    forward_iterator_archetype&lt;Left&gt; fo1;
+    typedef equality_comparable2_second_archetype&lt;
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; Right;
+    forward_iterator_archetype&lt;Right&gt; fo2;
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    fo1 = std::search(fo1, fo1, fo2, fo2, pred);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;&gt; Left;
+    forward_iterator_archetype&lt;Left&gt; fo;
+    equality_comparable2_second_archetype&lt;&gt; value(dummy_cons);
+    int n = 1;
+    fo = std::search_n(fo, fo, n, value);
+  }
+  {
+    forward_iterator_archetype&lt; 
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; fo;
+    convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; value(dummy_cons);
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    int n = 1;
+    fo = std::search_n(fo, fo, n, value, pred);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;&gt; Left;
+    forward_iterator_archetype&lt;Left&gt; fo1;
+    typedef equality_comparable2_second_archetype&lt;null_archetype&lt;&gt; &gt; Right;
+    forward_iterator_archetype&lt;Right&gt; fo2;
+    fo1 = std::find_end(fo1, fo1, fo2, fo2);
+  }
+  {
+    // equality comparable required because find_end() calls search
+    typedef equality_comparable2_first_archetype&lt;
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; Left;
+    forward_iterator_archetype&lt;Left&gt; fo1;
+    typedef equality_comparable2_second_archetype&lt;
+      convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; &gt; Right;
+    forward_iterator_archetype&lt;Right&gt; fo2;
+    binary_predicate_archetype&lt;null_archetype&lt;&gt; , null_archetype&lt;&gt; &gt; 
+      pred(dummy_cons);
+    fo1 = std::find_end(fo1, fo1, fo2, fo2, pred);
+  }
+
+  //===========================================================================
+  // Mutating Algorithms
+
+  {
+    typedef null_archetype&lt;&gt; OutT;
+    typedef convertible_to_archetype&lt;OutT&gt; InT;
+    input_iterator_archetype&lt;InT&gt; in;
+    output_iterator_archetype&lt;OutT&gt; out(dummy_cons);
+    out = std::copy(in, in, out);
+  }
+  {
+    typedef assignable_archetype&lt;&gt; OutT;
+    typedef convertible_to_archetype&lt;OutT&gt; InT;
+    bidirectional_iterator_archetype&lt;InT&gt; bid_in;
+    mutable_bidirectional_iterator_archetype&lt;OutT&gt; bid_out;
+    bid_out = std::copy_backward(bid_in, bid_in, bid_out);
+  }
+  {
+    sgi_assignable_archetype&lt;&gt; a(dummy_cons), b(dummy_cons);
+    std::swap(a, b);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;&gt; T;
+    mutable_forward_iterator_archetype&lt;T&gt; a, b;
+    std::iter_swap(a, b);
+  }
+  {
+    typedef mutually_convertible_archetype&lt;int&gt; Tin;
+    typedef mutually_convertible_archetype&lt;char&gt; Tout;
+    mutable_forward_iterator_archetype&lt;Tin&gt; fi1;
+    mutable_forward_iterator_archetype&lt;Tout&gt; fi2;
+    fi2 = std::swap_ranges(fi1, fi1, fi2);
+  }
+  {
+    typedef convertible_to_archetype&lt;null_archetype&lt;&gt; &gt; Tin;
+    typedef null_archetype&lt;&gt; Tout;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    unary_function_archetype&lt;null_archetype&lt;&gt; , 
+      convertible_to_archetype&lt;Tout&gt; &gt; op(dummy_cons);
+    out = std::transform(in, in, out, op);
+  }
+  {
+    typedef convertible_to_archetype&lt;null_archetype&lt;int&gt; &gt; Tin1;
+    typedef convertible_to_archetype&lt;null_archetype&lt;char&gt; &gt; Tin2;
+    typedef null_archetype&lt;&gt; Tout;
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    binary_function_archetype&lt;null_archetype&lt;int&gt;, null_archetype&lt;char&gt;,
+      convertible_to_archetype&lt;Tout&gt; &gt; op(dummy_cons);
+    out = std::transform(in1, in1, in2, out, op);
+  }
+  {
+    typedef equality_comparable2_first_archetype&lt;
+      assignable_archetype&lt;&gt; &gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    equality_comparable2_second_archetype&lt;
+      convertible_to_archetype&lt;FT&gt; &gt; value(dummy_cons);
+    std::replace(fi, fi, value, value);
+  }
+  {
+    typedef null_archetype&lt;&gt; PredArg;
+    typedef assignable_archetype&lt; 
+      convertible_to_archetype&lt;PredArg&gt; &gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    convertible_to_archetype&lt;FT&gt; value(dummy_cons);
+    std::replace_if(fi, fi, pred, value);
+  }
+  {
+#if 0
+    // Issue, the use of ?: inside replace_copy() complicates things
+    typedef equal_op_first_archetype&lt;&gt; Tin;
+    typedef null_archetype&lt;&gt; Tout;
+    typedef equal_op_second_archetype&lt; convertible_to_archetype&lt;Tout&gt; &gt; T;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    T value(dummy_cons);
+    out = std::replace_copy(in, in, out, value, value);
+#else
+    typedef null_archetype&lt;&gt; Tout;
+    typedef equal_op_second_archetype&lt; convertible_to_archetype&lt;Tout&gt; &gt; T;
+    // Adding convertible to T for Tin solves the problem, so would
+    // making T convertible to Tin. Not sure what the right way to
+    // express the requirement would be. Also, perhaps the
+    // implementation's use of ?: is invalid.
+    typedef equal_op_first_archetype&lt; convertible_to_archetype&lt;T&gt; &gt; Tin;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    T value(dummy_cons);
+    out = std::replace_copy(in, in, out, value, value);
+#endif
+  }
+  {
+    // The issue of ?: also affects this function
+    typedef null_archetype&lt;int&gt; PredArg;
+    typedef null_archetype&lt;char&gt; Tout;
+    typedef convertible_to_archetype&lt;Tout, 
+      convertible_to_archetype&lt;PredArg&gt; &gt; T;
+    typedef convertible_to_archetype&lt;PredArg,
+      convertible_to_archetype&lt;Tout,
+      convertible_to_archetype&lt;T&gt; &gt; &gt; Tin;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    T value(dummy_cons);
+    out = std::replace_copy_if(in, in, out, pred, value);
+  }
+  {
+    typedef assignable_archetype&lt;&gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    typedef convertible_to_archetype&lt;FT&gt; T;
+    T value(dummy_cons);
+    std::fill(fi, fi, value);
+  }  
+  {
+    typedef null_archetype&lt;&gt; Tout;
+    typedef convertible_to_archetype&lt;Tout&gt; T;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    T value(dummy_cons);
+    int n = 1;
+    out = std::fill_n(out, n, value);
+  }
+  {
+    typedef assignable_archetype&lt;&gt; FT;
+    typedef convertible_to_archetype&lt;FT&gt; Ret;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    generator_archetype&lt;Ret&gt; gen;
+    std::generate(fi, fi, gen);
+  }
+  {
+    typedef assignable_archetype&lt;&gt; FT;
+    typedef convertible_to_archetype&lt;FT&gt; Ret;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    generator_archetype&lt;Ret&gt; gen;
+    int n = 1;
+    std::generate_n(fi, n, gen);
+  }
+  {
+    typedef assignable_archetype&lt; equality_comparable2_first_archetype&lt;&gt; &gt; FT;
+    typedef equality_comparable2_second_archetype&lt;&gt; T;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    fi = std::remove(fi, fi, value);
+  }
+  {
+    typedef assignable_archetype&lt;&gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    typedef null_archetype&lt;&gt; PredArg;
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    fi = std::remove_if(fi, fi, pred);
+  }
+  {
+    typedef null_archetype&lt;&gt; Tout;
+    typedef equality_comparable2_first_archetype&lt;
+      convertible_to_archetype&lt;Tout&gt; &gt; Tin;
+    typedef equality_comparable2_second_archetype&lt;&gt; T;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    T value(dummy_cons);
+    out = std::remove_copy(in, in, out, value);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Tout;
+    typedef null_archetype&lt;char&gt; PredArg;
+    typedef convertible_to_archetype&lt;PredArg,
+      convertible_to_archetype&lt;Tout&gt; &gt; Tin;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    out = std::remove_copy_if(in, in, out, pred);
+  }
+  {
+    typedef sgi_assignable_archetype&lt; equality_comparable_archetype&lt;&gt; &gt; T;
+    mutable_forward_iterator_archetype&lt;T&gt; fi;
+    fi = std::unique(fi, fi);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; &gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; pred(dummy_cons);
+    fi = std::unique(fi, fi, pred);
+  }
+  {
+    typedef equality_comparable_archetype&lt; sgi_assignable_archetype&lt;&gt; &gt; T;
+    input_iterator_archetype&lt;T&gt; in;
+    output_iterator_archetype&lt;T&gt; out(dummy_cons);
+    out = std::unique_copy(in, in, out);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef null_archetype&lt;short&gt; Tout;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Tout,
+      convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; &gt; &gt; Tin;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; pred(dummy_cons);
+    out = std::unique_copy(in, in, out, pred);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;&gt; T;
+    mutable_bidirectional_iterator_archetype&lt;T&gt; bi;
+    std::reverse(bi, bi);
+  }
+  {
+    typedef null_archetype&lt;&gt; Tout;
+    typedef convertible_to_archetype&lt;Tout&gt; Tin;
+    bidirectional_iterator_archetype&lt;Tin&gt; bi;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    out = std::reverse_copy(bi, bi, out);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;&gt; T;
+    mutable_forward_iterator_archetype&lt;T&gt; fi;
+    // Issue, SGI STL is not have void return type, C++ standard does
+    std::rotate(fi, fi, fi);
+  }
+  {
+    typedef null_archetype&lt;&gt; Tout;
+    typedef convertible_to_archetype&lt;Tout&gt; FT;
+    forward_iterator_archetype&lt;FT&gt; fi;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    out = std::rotate_copy(fi, fi, fi, out);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;&gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    std::random_shuffle(ri, ri);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;&gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    unary_function_archetype&lt;std::ptrdiff_t, std::ptrdiff_t&gt; ran(dummy_cons);
+    std::random_shuffle(ri, ri, ran);
+  }
+  {
+    typedef null_archetype&lt;&gt; PredArg;
+    typedef sgi_assignable_archetype&lt;convertible_to_archetype&lt;PredArg&gt; &gt; FT;
+    mutable_bidirectional_iterator_archetype&lt;FT&gt; bi;
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    bi = std::partition(bi, bi, pred);
+  }
+  {
+    typedef null_archetype&lt;&gt; PredArg;
+    typedef sgi_assignable_archetype&lt;convertible_to_archetype&lt;PredArg&gt; &gt; FT;
+    mutable_forward_iterator_archetype&lt;FT&gt; fi;
+    unary_predicate_archetype&lt;PredArg&gt; pred(dummy_cons);
+    fi = std::stable_partition(fi, fi, pred);
+  }
+
+  //===========================================================================
+  // Sorting Algorithms
+  {
+    typedef sgi_assignable_archetype&lt; 
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    std::sort(ri, ri);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    std::sort(ri, ri, comp);
+  }
+  {
+    typedef less_than_comparable_archetype&lt; 
+        sgi_assignable_archetype&lt;&gt; &gt; ValueType;
+    mutable_random_access_iterator_archetype&lt;ValueType&gt; ri;
+    std::stable_sort(ri, ri);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg&gt; &gt; ValueType;
+    mutable_random_access_iterator_archetype&lt;ValueType&gt; ri;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    std::stable_sort(ri, ri, comp);
+  }
+  {
+    typedef sgi_assignable_archetype&lt; 
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    std::partial_sort(ri, ri, ri);
+  }
+
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    std::partial_sort(ri, ri, ri, comp);
+  }
+  {
+    // This could be formulated so that the two iterators are not
+    // required to have the same value type, but it is messy.
+    typedef sgi_assignable_archetype&lt; 
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    input_iterator_archetype&lt;T&gt; in;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri_out;
+    ri_out = std::partial_sort_copy(in, in , ri_out, ri_out);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    input_iterator_archetype&lt;T&gt; in;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri_out;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    ri_out = std::partial_sort_copy(in, in , ri_out, ri_out, comp);
+  }
+  {
+    typedef sgi_assignable_archetype&lt; less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    std::nth_element(ri, ri, ri);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    std::nth_element(ri, ri, ri, comp);
+  }
+  {
+#if defined(__GNUC__)
+    typedef less_than_op_first_archetype&lt;&gt; FT;
+    typedef less_than_op_second_archetype&lt;&gt; T;
+#elif defined(__KCC)
+    // The KAI version of this uses a one-argument less-than function
+    // object.
+    typedef less_than_comparable_archetype&lt;&gt; T;
+    typedef convertible_to_archetype&lt;T&gt; FT;
+#endif
+    forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    fi = std::lower_bound(fi, fi, value);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef convertible_to_archetype&lt;Arg1&gt; FT;
+    typedef convertible_to_archetype&lt;Arg2&gt; T;
+    forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    fi = std::lower_bound(fi, fi, value, comp);
+  }
+  {
+#if defined(__GNUC__)
+    // Note, order of T,FT is flipped from lower_bound
+    typedef less_than_op_second_archetype&lt;&gt; FT;
+    typedef less_than_op_first_archetype&lt;&gt; T;
+#elif defined(__KCC)
+    typedef less_than_comparable_archetype&lt;&gt; T;
+    typedef convertible_to_archetype&lt;T&gt; FT;
+#endif
+    forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    fi = std::upper_bound(fi, fi, value);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    // Note, order of T,FT is flipped from lower_bound
+    typedef convertible_to_archetype&lt;Arg1&gt; T;
+    typedef convertible_to_archetype&lt;Arg2&gt; FT;
+    forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    fi = std::upper_bound(fi, fi, value, comp);
+  }
+  {
+#if defined(__GNUC__)
+    typedef less_than_op_first_archetype&lt;
+      less_than_op_second_archetype&lt; null_archetype&lt;&gt;, optag2&gt;, optag1&gt; FT;
+    typedef less_than_op_second_archetype&lt;
+      less_than_op_first_archetype&lt; null_archetype&lt;&gt;, optag2&gt;, optag1&gt; T;
+#elif defined(__KCC)
+    typedef less_than_comparable_archetype&lt;&gt; T;
+    typedef convertible_to_archetype&lt;T&gt; FT;
+#endif
+    typedef forward_iterator_archetype&lt;FT&gt; FIter;
+    FIter fi;
+    T value(dummy_cons);
+    std::pair&lt;FIter,FIter&gt; p = std::equal_range(fi, fi, value);
+    ignore_unused_variable_warning(p);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; FT;
+    typedef convertible_to_archetype&lt;Arg2,
+      convertible_to_archetype&lt;Arg1&gt; &gt; T;
+    typedef forward_iterator_archetype&lt;FT&gt; FIter;
+    FIter fi;
+    T value(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    std::pair&lt;FIter,FIter&gt; p = std::equal_range(fi, fi, value, comp);
+    ignore_unused_variable_warning(p);
+  }
+  {
+#if defined(__GNUC__)
+    typedef less_than_op_first_archetype&lt;
+      less_than_op_second_archetype&lt;null_archetype&lt;&gt;, optag2&gt;, optag1&gt; FT;
+    typedef less_than_op_second_archetype&lt;
+      less_than_op_first_archetype&lt;null_archetype&lt;&gt;, optag2&gt;, optag1&gt; T;
+#elif defined(__KCC)
+    typedef less_than_op_first_archetype&lt; less_than_comparable_archetype&lt;&gt; &gt; T;
+    typedef less_than_op_second_archetype&lt; convertible_to_archetype&lt;T&gt; &gt; FT;
+#endif
+    forward_iterator_archetype&lt;FT&gt; fi;
+    T value(dummy_cons);
+    bool b = std::binary_search(fi, fi, value);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+#if defined(__GNUC__) || defined(__KCC)
+    typedef convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; FT;
+    typedef convertible_to_archetype&lt;Arg2,
+      convertible_to_archetype&lt;Arg1&gt; &gt; T;
+#endif
+    typedef forward_iterator_archetype&lt;FT&gt; FIter;
+    FIter fi;
+    T value(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    bool b = std::binary_search(fi, fi, value, comp);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef null_archetype&lt;&gt; Tout;
+#if defined(__GNUC__) || defined(__KCC)
+    typedef less_than_op_first_archetype&lt;
+      less_than_op_second_archetype&lt;
+      convertible_to_archetype&lt;Tout&gt;, optag2&gt;, optag1 &gt; Tin1;
+    typedef less_than_op_second_archetype&lt;
+      less_than_op_first_archetype&lt;
+      convertible_to_archetype&lt;Tout&gt;, optag2&gt; ,optag1&gt; Tin2;
+#endif
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    out = std::merge(in1, in1, in2, in2, out);
+    out = std::set_union(in1, in1, in2, in2, out);
+    out = std::set_intersection(in1, in1, in2, in2, out);
+    out = std::set_difference(in1, in1, in2, in2, out);
+    out = std::set_symmetric_difference(in1, in1, in2, in2, out);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef null_archetype&lt;short&gt; Tout;
+#if defined(__GNUC__) || defined(__KCC)
+    typedef convertible_to_archetype&lt;Tout,
+      convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; &gt; Tin1;
+    typedef convertible_to_archetype&lt;Tout,
+      convertible_to_archetype&lt;Arg2,
+      convertible_to_archetype&lt;Arg1&gt; &gt; &gt; Tin2;
+#endif
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    out = std::merge(in1, in1, in2, in2, out, comp);
+    out = std::set_union(in1, in1, in2, in2, out, comp);
+    out = std::set_intersection(in1, in1, in2, in2, out, comp);
+    out = std::set_difference(in1, in1, in2, in2, out, comp);
+    out = std::set_symmetric_difference(in1, in1, in2, in2, out, comp);
+  }
+  {
+    typedef sgi_assignable_archetype&lt; 
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_bidirectional_iterator_archetype&lt;T&gt; bi;
+    std::inplace_merge(bi, bi, bi);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    mutable_bidirectional_iterator_archetype&lt;T&gt; bi;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    std::inplace_merge(bi, bi, bi, comp);
+  }
+  {
+#if defined(__GNUC__) || defined(__KCC)
+    typedef less_than_op_first_archetype&lt;
+      less_than_op_second_archetype&lt;null_archetype&lt;&gt;, optag1&gt;, optag2&gt; Tin1;
+    typedef less_than_op_second_archetype&lt;
+      less_than_op_first_archetype&lt;null_archetype&lt;&gt;, optag1&gt;, optag2&gt; Tin2;
+#endif
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    bool b = std::includes(in1, in1, in2, in2);
+    b = std::lexicographical_compare(in1, in1, in2, in2);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+#if defined(__GNUC__) || defined(__KCC)
+    typedef convertible_to_archetype&lt;Arg1,
+      convertible_to_archetype&lt;Arg2&gt; &gt; Tin1;
+    typedef convertible_to_archetype&lt;Arg2,
+      convertible_to_archetype&lt;Arg1&gt; &gt; Tin2;
+#endif
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    binary_predicate_archetype&lt;Arg1, Arg2&gt; comp(dummy_cons);
+    bool b = std::includes(in1, in1, in2, in2, comp);
+    b = std::lexicographical_compare(in1, in1, in2, in2, comp);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    std::push_heap(ri, ri);
+    std::pop_heap(ri, ri);
+    std::make_heap(ri, ri);
+    std::sort_heap(ri, ri);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    typedef sgi_assignable_archetype&lt; 
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    mutable_random_access_iterator_archetype&lt;T&gt; ri;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    std::push_heap(ri, ri, comp);
+    std::pop_heap(ri, ri, comp);
+    std::make_heap(ri, ri, comp);
+    std::sort_heap(ri, ri, comp);
+  }
+  {
+    typedef less_than_comparable_archetype&lt;&gt; T;
+    T a(dummy_cons), b(dummy_cons);
+    const T&amp; c = std::min(a, b);
+    const T&amp; d = std::max(a, b);
+    ignore_unused_variable_warning(c);
+    ignore_unused_variable_warning(d);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    typedef convertible_to_archetype&lt;Arg&gt; T;
+    T a(dummy_cons), b(dummy_cons);
+    const T&amp; c = std::min(a, b, comp);
+    const T&amp; d = std::max(a, b, comp);
+    ignore_unused_variable_warning(c);
+    ignore_unused_variable_warning(d);
+  }
+  {
+    typedef less_than_comparable_archetype&lt;&gt; T;
+    forward_iterator_archetype&lt;T&gt; fi;
+    fi = std::min_element(fi, fi);
+    fi = std::max_element(fi, fi);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    typedef convertible_to_archetype&lt;Arg&gt; T;
+    forward_iterator_archetype&lt;T&gt; fi;
+    fi = std::min_element(fi, fi, comp);
+    fi = std::max_element(fi, fi, comp);
+  }
+  {
+    typedef sgi_assignable_archetype&lt;
+      less_than_comparable_archetype&lt;&gt; &gt; T;
+    mutable_bidirectional_iterator_archetype&lt;T&gt; bi;
+    bool b = std::next_permutation(bi, bi);
+    b = std::prev_permutation(bi, bi);
+    ignore_unused_variable_warning(b);
+  }
+  {
+    typedef null_archetype&lt;&gt; Arg;
+    binary_predicate_archetype&lt;Arg, Arg&gt; comp(dummy_cons);
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg&gt; &gt; T;
+    mutable_bidirectional_iterator_archetype&lt;T&gt; bi;
+    bool b = std::next_permutation(bi, bi, comp);
+    b = std::prev_permutation(bi, bi, comp);
+    ignore_unused_variable_warning(b);
+  }
+  //===========================================================================
+  // Generalized Numeric Algorithms
+
+  {
+    // Bummer, couldn't use plus_op because of a problem with
+    // mutually recursive types.
+    input_iterator_archetype&lt;accum::Tin&gt; in;
+    accum::T init(dummy_cons);
+    init = std::accumulate(in, in, init);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg1;
+    typedef null_archetype&lt;char&gt; Arg2;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg1&gt; &gt; T;
+    typedef convertible_to_archetype&lt;T&gt; Ret;
+    typedef convertible_to_archetype&lt;Arg2&gt; Tin;
+    input_iterator_archetype&lt;Tin&gt; in;
+    T init(dummy_cons);
+    binary_function_archetype&lt;Arg1, Arg2, Ret&gt; op(dummy_cons);
+    init = std::accumulate(in, in, init, op);
+  }
+  {
+    input_iterator_archetype&lt;inner_prod::Tin1&gt; in1;
+    input_iterator_archetype&lt;inner_prod::Tin2&gt; in2;
+    inner_prod::T init(dummy_cons);
+    init = std::inner_product(in1, in1, in2, init);
+  }
+  {
+    typedef null_archetype&lt;int&gt; MultArg1;
+    typedef null_archetype&lt;char&gt; MultArg2;
+    typedef null_archetype&lt;short&gt; AddArg1;
+    typedef null_archetype&lt;long&gt; AddArg2;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;AddArg1&gt; &gt; T;
+    typedef convertible_to_archetype&lt;AddArg2&gt; RetMult;
+    typedef convertible_to_archetype&lt;T&gt; RetAdd;
+    typedef convertible_to_archetype&lt;MultArg1&gt; Tin1;
+    typedef convertible_to_archetype&lt;MultArg2&gt; Tin2;
+    input_iterator_archetype&lt;Tin1&gt; in1;
+    input_iterator_archetype&lt;Tin2&gt; in2;
+    T init(dummy_cons);
+    binary_function_archetype&lt;MultArg1, MultArg2, RetMult&gt; mult_op(dummy_cons);
+    binary_function_archetype&lt;AddArg1, AddArg2, RetAdd&gt; add_op(dummy_cons);
+    init = std::inner_product(in1, in1, in2, init, add_op, mult_op);
+  }
+  {
+    input_iterator_archetype&lt;part_sum::Tin&gt; in;
+    output_iterator_archetype&lt;part_sum::Tout&gt; out(dummy_cons);
+    out = std::partial_sum(in, in, out);
+  }
+  {
+    typedef null_archetype&lt;int&gt; Arg;
+    typedef null_archetype&lt;char&gt; Tout;
+    typedef sgi_assignable_archetype&lt;
+      convertible_to_archetype&lt;Arg,
+      convertible_to_archetype&lt;Tout&gt; &gt; &gt; Tin;
+    typedef convertible_to_archetype&lt;Tout,
+      convertible_to_archetype&lt;Tin&gt; &gt; Ret;
+    input_iterator_archetype&lt;Tin&gt; in;
+    output_iterator_archetype&lt;Tout&gt; out(dummy_cons);
+    binary_function_archetype&lt;Arg, Arg, Ret&gt; add_op(dummy_cons);
+    out = std::partial_sum(in, in, out, add_op);
+    binary_function_archetype&lt;Arg, Arg, Ret&gt; subtract_op(dummy_cons);
+    out = std::adjacent_difference(in, in, out, subtract_op);
+  }
+  {
+    input_iterator_archetype&lt;part_sum::Tin&gt; in;
+    output_iterator_archetype&lt;part_sum::Tout&gt; out(dummy_cons);
+    out = std::adjacent_difference(in, in, out);
+  }
+  return 0;
+}</span></code></pre>
+</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>
