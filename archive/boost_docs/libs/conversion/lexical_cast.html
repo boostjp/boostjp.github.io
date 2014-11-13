@@ -1,0 +1,187 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+
+        <title>lexical_cast</title>
+
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
+
+<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
+
+<!-- <script src="/static/js/root.js"></script> -->
+
+
+        <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <script>
+            document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
+        </script>
+    </head>
+    <body>
+<header>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
+        <form class="navbar-form navbar-right" role="search">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">検索</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</header>
+
+        <main id="main" role="main">
+            <div class="container-fluid">
+<div class="row">
+  <div class="col-md-2">
+<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
+  </div>
+  <div class="col-md-10">
+<h1>Header boost/lexical_cast.hpp</h1>
+<ul>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#motivation">動機</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#examples">例</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#synopsis">ヘッダ概要</a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#lexical_cast"><code><span style="color: #000">lexical_cast</span></code></a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#bad_lexical_cast"><code><span style="color: #000">bad_lexical_cast</span></code></a></li>
+<li><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#changes">更新履歴</a></li>
+</ul>
+<hr />
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/motivation" name="motivation">動機</a></h2>
+<p>例えば、<code><span style="color: #000">int</span></code>型のデータを<code><span style="color: #000">string</span></code>型で表現させるときや、逆に<code><span style="color: #000">string</span></code>型のインスタンスに格納された数値表現を<code><span style="color: #000">int</span></code>型に変換するなど、値を文字列の表現に変換しなければならないことがしばしばある。これらは、画面上の表示と設定ファイルの関係のように、プログラムの内部構造を外部に出力する際に良く用いられる手法である。</p>
+<p>C/C++標準ライブラリは、先に述べた変換機能の数々を提供するが、それらは使いやすさや拡張性、安全性の面においてまちまちである。</p>
+<p>例として、<code><span style="color: #000">atoi</span></code>に代表されるC標準関数における多くの制限について述べてみよう ：</p>
+<ul>
+<li>変換は文字列から内部データ型への一方向に限られる。Cライブラリを用いた別の変換方法としては、sprintf関数が存在するが不便で安全性も低い。</li>
+<li>また、<code><span style="color: #000">itoa</span></code>関数のような非標準の機能を用いる方法もあるが、それでは移植性の低下を招いてしまう。</li>
+<li>サポートする型がプリミティブな数値型の一部(<code><span style="color: #000">int</span></code>, <code><span style="color: #000">long</span></code>, <code><span style="color: #000">double</span></code>)のみである。</li>
+<li>文字列表現から複素数や有理数への変換のように、サポートする型を増やすことは通常できない。</li>
+</ul>
+<p><code><span style="color: #000">strtol</span></code>に代表される標準C関数では、いくつかの基本的な制限が存在するものの、変換に関する素晴らしい制御方法を提供してくれる。しかし、普通、そのような制御方法は必要ではないし、使われることもない。<code><span style="color: #000">scanf</span></code>とその関連する関数では、さらに優れた制御方法を提供してくれるものの、安全性と使いやすさにおいて優秀とは言い難い。</p>
+<p>C++標準ライブラリは、ここで問題になっている種類のin-core 整形のために<code><span style="color: #000">stringstream</span></code> を提供している。これは、文字列による、任意の型と入出力との間の変換と整形に関して幅広く管理する。しかし単純な変換に関して言えば、<code><span style="color: #000">stringstream</span></code> を直接利用するのは不格好(余計なローカル変数を取る必要があり、中置記法の利便性を失う)であるか、或いは不明瞭になりうる(<code><span style="color: #000">stringstream</span></code> オブジェクトが式の中で一時的オブジェクトとして作成される場合)。これは多くの面で、包括的な概念及びテキスト表現の管理能力を提供するが、これらは比較的高水準なので、単純な変換のためにも極端に多くのことを巻き込まなければならない。</p>
+<p><code><span style="color: #000">lexical_cast</span></code>テンプレート関数はテキストで表現可能な任意の型同士の変換を便利で一貫性のある形、簡単に言えば式レベルでの便利な変換を提供する。</p>
+<p>精度や書式において<code><span style="color: #000">lexical_cast</span></code>が標準で行うより柔軟な操作を必要とするとき、<code><span style="color: #000">stringstream</span></code>の使用を推奨する。また、数値型間の変換を行う場合、<a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/cast.html#numeric_cast"><code><span style="color: #000">numeric_cast</span></code></a>の方が適している。</p>
+<p>文字列ベースの表現に関する問題点等に関する議論を扱ったものとして、Herb Sutterの記事 <a href="http://www.gotw.ca/publications/mill19.htm" target="_blank">The String Formatters of Manor Farm</a>を紹介しておこう。これには、<code><span style="color: #000">stringstream</span></code>や<code><span style="color: #000">lexical_cast</span></code>等の比較も含まれている。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/examples" name="examples">例</a></h2>
+<p>以下のサンプルではコマンドラインから与えられた複数の引数を数値の列に変換している。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">int main(int argc, char * argv[])
+{
+    using boost::lexical_cast;
+    using boost::bad_lexical_cast;
+
+    std::vector&lt;short&gt; args;
+
+    while(*++argv)
+    {
+        try
+        {
+            args.push_back(lexical_cast&lt;short&gt;(*argv));
+        }
+        catch(bad_lexical_cast &amp;)
+        {
+            args.push_back(0);
+        }
+    }
+    ...
+}</span></code></pre>
+
+以下のサンプルでは文字列の中に数値を埋め込んでいる。</p>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">void log_message(const std::string &amp;);
+
+void log_errno(int yoko)
+{
+    log_message("Error " + boost::lexical_cast&lt;std::string&gt;(yoko) + ": " + strerror(yoko));
+}</span></code></pre>
+</p>
+<hr />
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/synopsis" name="synopsis">ヘッダ概要</a></h2>
+<p>ライブラリの詳細："boost/lexical_cast.hpp"</p>
+<p><pre class="codehilite"><code class="language-cpp"><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#bad_lexical_cast">bad_lexical_cast</a>;
+    template&lt;typename Target, typename Source&gt;
+      Target <a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#lexical_cast">lexical_cast</a>(Source arg);
+}<span style="color: #000">namespace boost
+{
+    class </span></code></pre>
+
+テストコード："lexical_cast_test.cpp"</p>
+<hr />
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast" name="lexical_cast"><code><span style="color: #000">lexical_cast</span></code></a></h2>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">template&lt;typename Target, typename Source&gt;
+  Target lexical_cast(Source arg);</span></code></pre>
+
+引数として受け取った<code><span style="color: #000">arg</span></code>を<code><span style="color: #000">std::stringstream</span></code>に流し込み、<code><span style="color: #000">Target</span></code>のデータに変換して返す。もし変換が失敗した場合、例外<a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#bad_lexical_cast"><code><span style="color: #000">bad_lexical_cast</span></code></a>が発生する。</p>
+<p>引数と戻り値の型の条件：</p>
+<ul>
+<li><code><span style="color: #000">Source</span></code>は<code><span style="color: #000">OutputStreamable</span></code>（<code><span style="color: #000">stream</span></code>に出力可能）でなければならない。<ul>
+<li>つまり、<code><span style="color: #000">std::ostream</span></code>のオブジェクトを左辺に取り、引数の型（<code><span style="color: #000">Source</span></code>）のインスタンスを右辺に取る<code><span style="color: #000">operator&lt;&lt;</span></code>が定義されていなければならない。</li>
+</ul>
+</li>
+<li><code><span style="color: #000">Source</span></code>と<code><span style="color: #000">Target</span></code>は<code><span style="color: #000">CopyConstructible</span></code>（コピーコンストラクト可能）でなければならない。[20.1.3]</li>
+<li><code><span style="color: #000">Target</span></code>は<code><span style="color: #000">InputStreamable</span></code>（<code><span style="color: #000">stream</span></code>から入力可能）でなければならない。<ul>
+<li>つまり、<code><span style="color: #000">std::istream</span></code>のオブジェクトを左辺に取り、戻り値の型（<code><span style="color: #000">Target</span></code>）のインスタンスを右辺に取る<code><span style="color: #000">operator&gt;&gt;</span></code>が定義されていなければならない。</li>
+</ul>
+</li>
+<li><code><span style="color: #000">Target</span></code>は<code><span style="color: #000">DefaultConstructible</span></code>（デフォルトコンストラクト可能）でなければならない。<ul>
+<li>つまり、<code><span style="color: #000">Target</span></code>のオブジェクトのデフォルト初期化が可能でなければならない。[8.5, 20.1.4]</li>
+</ul>
+</li>
+<li><code><span style="color: #000">Target</span></code>は<code><span style="color: #000">Assignable</span></code>でなければならない。[23.1]</li>
+</ul>
+<p><code><span style="color: #000">stream</span></code>におけるベースの文字型は、特にワイド文字を利用した変換を必要としない場合、<code><span style="color: #000">char</span></code>型を利用し、そうで無ければ、<code><span style="color: #000">wchar_t</span></code>型を利用する。ベースにワイド文字を必要とするのは、<code><span style="color: #000">wchar_t</span></code>、<code><span style="color: #000">wchar_t *</span></code>、<code><span style="color: #000">std::wstring</span></code>である。</p>
+<p>より高度な変換を必要とする場合、<code><span style="color: #000">std::stringstream</span></code>および<code><span style="color: #000">std::wstringstream</span></code>を利用することをお勧めする。<code><span style="color: #000">stream</span></code>の機能の必要のない変換が要求されているのならば、<code><span style="color: #000">lexical_cast</span></code>を利用することは適さない。そのような特殊なケースための準備を<code><span style="color: #000">lexical_cast</span></code>は用意してないからである。</p>
+<hr />
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/bad_lexical_cast" name="bad_lexical_cast"><code><span style="color: #000">bad_lexical_cast</span></code></a></h2>
+<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">class bad_lexical_cast : public std::bad_cast
+{
+public:
+    ... // std::exceptionと同様のメンバ関数を持つ
+};</span></code></pre>
+
+この例外は<a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/lexical_cast.html#lexical_cast"><code><span style="color: #000">lexical_cast</span></code></a>が失敗したことを示すために使用される。</p>
+<h2><a href="http://boostjp.github.io/archive/boost_docs/libs/conversion/changes" name="changes">更新履歴</a></h2>
+<ul>
+<li>前バージョンの<code><span style="color: #000">lexical_cast</span></code>は、浮動小数型の変換のために<code><span style="color: #000">stream</span></code>のデフォルトの精度を利用していたが、現行版においては、<code><span style="color: #000">std::numeric_limits</span></code>を特殊化している型に関しては、それを元に変換を行うようになった。</li>
+<li>前バージョンの<code><span style="color: #000">lexical_cast</span></code>は、任意のワイド文字型の変換をサポートしていなかった。ワイド文字型の完全な言語、ライブラリのサポートがなされているコンパイラにおいては、<code><span style="color: #000">lexical_cast</span></code>は<code><span style="color: #000">wchar_t</span></code>、<code><span style="color: #000">wchar_t *</span></code>、および<code><span style="color: #000">std::wstring</span></code>の変換をサポートする。</li>
+<li>前バージョンの<code><span style="color: #000">lexical_cast</span></code>は、従来型のストリーム抽出演算子が値を読むために充分であると仮定していた。しかしながら、文字列入出力は、その空白文字が、文字列の内容ではなく、入出力セパレータの役目を演じてしまうという結果、非対称なのである。現在のバージョンでは<code><span style="color: #000">std::string</span></code>と<code><span style="color: #000">std::wstring</span></code>(サポートされているところでは) のでこの誤りが修正されている。例えば、<code><span style="color: #000">lexical_cast&lt;std::string&gt;("Hello, World")</span></code> は、<code><span style="color: #000">bad_lexical_cast</span></code>例外で失敗することなく、成功する。</li>
+<li>前バージョンの<code><span style="color: #000">lexical_cast</span></code>は、ポインタへの危険なもしくは無意味な変換を許していたが、現行版においては、ポインタへの変換は例外<code><span style="color: #000">bad_lexical_cast</span></code>を投げるようになっている：コード<code><span style="color: #000">lexical_cast&lt;char *&gt;("Goodbye, World")</span></code>は未定義の振る舞いをする代わりに、例外を投げる。</li>
+</ul>
+<hr />
+<p>© Copyright Kevlin Henney, 2000–2003</p>
+  </div>
+</div>
+            </div>
+        </main>
+    </body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>
+            window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
+        </script>
+    <![endif]-->
+</html>
