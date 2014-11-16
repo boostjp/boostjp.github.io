@@ -1,489 +1,135 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-    <head>
-        <meta charset="UTF-8">
-
-        <title>1_53_0</title>
-
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
-
-<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
-
-<!-- <script src="/static/js/root.js"></script> -->
-
-
-        <!--[if lt IE 9]>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=en> <!--<![endif]--> <head><meta charset=UTF-8><title>Boost 1.53.0 リリースノート - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <script>
+        <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
-        </script>
-    </head>
-    <body>
-<header>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
-      </div>
+        </script><style type=text/css>
+.tree{
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  background-color:#fbfbfb;
+  border:1px solid #999;
+  margin-bottom:10px;
+  /*max-height:300px;*/
+  /*min-height:20px;*/
+  /*overflow-y:auto;*/
+  padding:3px
+}
+.tree ul {
+  padding-left:32px
+}
+.tree > ul{
+  padding-left:0px
+}
+.tree a{
+  display:inline;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  width:90%
+}
+.tree li{
+  list-style-type:none;
+  margin:0;
+  padding:4px 0 0 2px;
+  position:relative
+}
+.tree li::before,.tree li::after{
+  content:'';
+  left:-20px;
+  position:absolute;
+  right:auto
+}
+.tree li::before{
+  border-left:1px solid #999;
+  bottom:50px;
+  height:100%;
+  top:0;
+  width:1px;
+  -webkit-transition:"border-color 0.1s ease 0.1s";
+  -moz-transition:"border-color 0.1s ease 0.1s";
+  -o-transition:"border-color 0.1s ease 0.1s";
+  transition:"border-color 0.1s ease 0.1s"
+}
+.tree li::after{
+  border-top:1px solid #999;
+  height:20px;
+  top:13px;
+  width:23px;
+  -webkit-transition:"border-color 0.1s ease 0.1s";
+  -moz-transition:"border-color 0.1s ease 0.1s";
+  -o-transition:"border-color 0.1s ease 0.1s";
+  transition:"border-color 0.1s ease 0.1s"
+}
+.tree li span{
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border:1px solid #999;
+  border-radius:5px;
+  display:inline-block;
+  line-height:14px;
+  padding:2px 4px;
+  text-decoration:none;
+  -webkit-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  -moz-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  -o-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s
+}
+.tree li.parent_li>span{cursor:pointer}
+.tree li.parent_li>span:hover{
+  background-color:#df8505;
+  border:1px solid #c67605;
+  color:#fff
+}
+.tree li.parent_li>span:hover+ul li::after{border-top-color:#f89406}
+.tree li.parent_li>span:hover+ul li::before{border-left-color:#f89406}
+.tree li.parent_li>span:hover+ul li span{
+  background:#fddfb3;
+  border:1px solid #faa937;
+  color:#000
+}
+.tree li:last-child::before{height:30px}
+.tree>ul>li::before,.tree>ul>li::after{border:0}
+        </style><script>
+$(document).ready(function() {
+    $('.tree > ul')
+        .attr('role', 'tree')
+        .find('ul')
+        .attr('role', 'group');
+    $('.tree')
+        .find('li:has(ul)')
+        .addClass('parent_li')
+        .attr('role', 'treeitem')
+        .find(' > span')
+        .attr('title', 'Collapse this branch')
+        .on('click', function (e) {
 
-      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">検索</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
-
-        <main id="main" role="main">
-            <div class="container-fluid">
-<div class="row">
-  <div class="col-md-2">
-<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
-  </div>
-  <div class="col-md-10">
-<h1>Boost 1.53.0 リリースノート</h1>
-<p>本家リリースノート：</p>
-<ul>
-<li><a href="https://svn.boost.org/svn/boost/website/public_html/live/feed/history/boost_1_53_0.qbk" target="_blank">https://svn.boost.org/svn/boost/website/public_html/live/feed/history/boost_1_53_0.qbk</a></li>
-</ul>
-<h2>新ライブラリ</h2>
-<ul>
-<li>Atomic<ul>
-<li>Helge Bahmannによる、C++11スタイルの<code><span style="color: #000">atomic</span></code>ライブラリ。Tim Blechmannによってメンテナンスされる。</li>
-</ul>
-</li>
-<li>Coroutine<ul>
-<li>Oliver Kowalkeによるコルーチンライブラリ</li>
-</ul>
-</li>
-<li>Lockfree<ul>
-<li>Tim Blechmannによるロックフリーデータ構造</li>
-</ul>
-</li>
-<li>Multiprecision<ul>
-<li>John MaddockとChristopher Kormanyosによる、拡張精度の算術型演算(浮動小数点数型、整数型、有理数型)。</li>
-</ul>
-</li>
-<li>Odeint<ul>
-<li>Karsten AhnertとMario Mulanskyによる、常微分方程式ライブラリ</li>
-</ul>
-</li>
-</ul>
-<h2>更新ライブラリ</h2>
-<ul>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#array">Array</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#algorithm">Algorithm</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#asio">Asio</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#bimap">Bimap</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#container">Container</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#context">Context</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#geometry">Geometry</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#gil">GIL</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#graph">Graph</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#hash">Hash</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#interprocess">Interprocess</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#intrusive">Intrusive</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#lexical-cast">Lexical Cast</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#locale">Locale</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#math">Math</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#minmax">MinMax</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#move">Move</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#polygon">Polygon</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#random">Random</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#range">Range</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#ratio">Ratio</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#regex">Regex</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#smart-pointers">Smart Pointers</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#string-algo">String Algo</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#thread">Thread</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#unordered">Unordered</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#utility">Utility</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#variant">Variant</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#wave">Wave</a></li>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#xpressive">Xpressive</a></li>
-</ul>
-<h2>更新ツール</h2>
-<ul>
-<li><a href="http://boostjp.github.io/document/version/1_53_0.html#build">Build</a></li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/array" name="array">Array</a></h2>
-<ul>
-<li><code><span style="color: #000">boost::get</span></code>と<code><span style="color: #000">std::get</span></code>をサポート(<a href="https://svn.boost.org/trac/boost/ticket/7652" target="_blank">#7652</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/algorithm" name="algorithm">Algorithm</a></h2>
-<ul>
-<li>非ASCIIのコメントを修正(<a href="https://svn.boost.org/trac/boost/ticket/7781" target="_blank">#7781</a>)</li>
-<li>Knuth-Morris-Prattのドキュメントを更新(<a href="https://svn.boost.org/trac/boost/ticket/7656" target="_blank">#7656</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/asio" name="asio">Asio</a></h2>
-<ul>
-<li>いくつかの64ビットから32ビットへの変換警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/7459" target="_blank">#7459</a>)</li>
-<li>ドキュメントとコメントの小さな間違いを修正(<a href="https://svn.boost.org/trac/boost/ticket/7761" target="_blank">#7761</a>)</li>
-<li><code><span style="color: #000">basic_socket::get_option()</span></code>のドキュメントにある例で、古い関数を使用していたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7562" target="_blank">#7562</a>)</li>
-<li>OpenSSLに合わせて、<code><span style="color: #000">SSL_CTX</span></code>に使用する型を<code><span style="color: #000">long</span></code>から<code><span style="color: #000">int</span></code>に変更(<a href="https://svn.boost.org/trac/boost/ticket/7209" target="_blank">#7209</a>)</li>
-<li>最近のMinGWバージョンでは、<code><span style="color: #000">_snwprintf</span></code>がコンパイルエラーとなるため、<code><span style="color: #000">swprintf</span></code>を使用するようにした(<a href="https://svn.boost.org/trac/boost/ticket/7373" target="_blank">#7373</a>)</li>
-<li>Windows上で<code><span style="color: #000">io_service</span></code>のスレッドプールをシャットダウンするときに、デッドロックする問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7552" target="_blank">#7552</a>)</li>
-<li><code><span style="color: #000">noexcept</span></code>修飾子を使うようにした(<a href="https://svn.boost.org/trac/boost/ticket/7797" target="_blank">#7797</a>)</li>
-<li>UNIXドメインソケットの例で、<code><span style="color: #000">accept</span></code>が致命的なエラーにならないよう修正した(<a href="https://svn.boost.org/trac/boost/ticket/7488" target="_blank">#7488</a>)</li>
-<li>デフォルトメモリアロケーションの振る舞いを改善するために、小さいブロックの再利用をする最適化を追加</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/bimap" name="bimap">Bimap</a></h2>
-<ul>
-<li>エラーメッセージを改善するために、<code><span style="color: #000">map_view_iterator</span></code>をリファクタ</li>
-<li>情報で比較する際の<code><span style="color: #000">replace_</span></code>(<code><span style="color: #000">left</span></code>/<code><span style="color: #000">right</span></code>/<code><span style="color: #000">key</span></code>/<code><span style="color: #000">data</span></code>)のバグを修正</li>
-<li><code><span style="color: #000">vector_of</span></code>ビューと<code><span style="color: #000">list_of</span></code>ビューの<code><span style="color: #000">assign(size_type,value_type)</span></code>のバグを修正</li>
-<li><code><span style="color: #000">vector_of</span></code>ビューの<code><span style="color: #000">operator[](size_type)</span></code>と<code><span style="color: #000">at(size_type)</span></code>の戻り値を修正</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/chrono" name="chrono">Chrono</a></h2>
-<p><strong>非推奨</strong></p>
-<ul>
-<li>Boost.Chrono 1.2.xに含まれていたchrono i/oを、2.0で完全にリファクタリングした</li>
-<li>chrono i/o : <code><span style="color: #000">duration_short</span></code>、<code><span style="color: #000">duration_long</span></code>マニピュレータを非推奨にした。その代わりに、パラメータ付きのフォーマットマニピュレータである<code><span style="color: #000">duration_fmt</span></code>、もしくは名前変更したマニピュレータである<code><span style="color: #000">duration_symbol</span></code>、<code><span style="color: #000">duration_prefix</span></code>を使用すること。</li>
-<li>chrono i/o : <code><span style="color: #000">duration_punct&lt;&gt;</span></code>ファセットを非推奨にした。代わりに、情報取得のために<code><span style="color: #000">get_duration_style</span></code>フリー関数、ローカライズのために<code><span style="color: #000">duration_units</span></code>ファセットを使用すること。</li>
-<li><code><span style="color: #000">BOOST_CHRONO_VERSION==2</span></code>とした場合、非推奨機能は使用できない。</li>
-</ul>
-<p><strong>バグ修正</strong></p>
-<ul>
-<li><code><span style="color: #000">time_point&lt;system_clock&gt;</span></code>の出力バージョンがコンパイルに失敗する問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7546" target="_blank">#7546</a>)</li>
-<li><code><span style="color: #000">time_point&lt;system_clock&gt;</span></code>の入力バージョンがコンパイルに失敗する問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7547" target="_blank">#7547</a>)</li>
-<li>chrono i/oで時間の解析が不完全だった問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7868" target="_blank">#7868</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/container" name="container">Container</a></h2>
-<ul>
-<li><code><span style="color: #000">list::const_iterator</span></code>の<code><span style="color: #000">operator-&gt;()</span></code>がコンパイルエラーになる問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7650" target="_blank">#7650</a>)</li>
-<li><code><span style="color: #000">vector</span></code>の挿入パフォーマンスを改善</li>
-<li>パフォーマンス向上のために、実験的にマルチアロケーションのインタフェースを再度変更(まだ実験)</li>
-<li>例外無効化の環境に対応</li>
-<li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正</li>
-<li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/context" name="context">Context</a></h2>
-<ul>
-<li>ARMのiOS、x86(32ビット)のMacOS Xのサポートを追加</li>
-<li>Win32のSEH上書き保護サポートを追加</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/geometry" name="geometry">Geometry</a></h2>
-<p><strong>バグ修正</strong></p>
-<ul>
-<li>内部リングが最小サイズ以下の場合(たとえば、1か2個の点)に、ポリゴンの生成を回避するようにした</li>
-<li><code><span style="color: #000">geometry::disjoint</span></code>へのセグメント縮退(Karsten Ahnertによるパッチ)</li>
-<li><code><span style="color: #000">geometry::difference</span></code>で、正接のハンドリングが不足していた問題を修正(H2からの報告)</li>
-<li><code><span style="color: #000">geometry::for_each</span></code>でのラムダを使用を修正</li>
-<li><code><span style="color: #000">geometry::comparable_distance</span></code>の<code><span style="color: #000">point-linestring</span></code>、<code><span style="color: #000">point-range</span></code>、<code><span style="color: #000">point-polygon</span></code>を修正</li>
-</ul>
-<p><strong>新機能</strong></p>
-<ul>
-<li><code><span style="color: #000">geometry::disjoint</span></code>の組み合わせ： <code><span style="color: #000">point</span></code>/<code><span style="color: #000">ring</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">polygon</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">multi_polygon</span></code></li>
-<li><code><span style="color: #000">geometry::intersects</span></code>の組み合わせ： <code><span style="color: #000">point</span></code>/<code><span style="color: #000">ring</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">polygon</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">multi_polygon</span></code></li>
-</ul>
-<p><strong>内部的な変更</strong></p>
-<ul>
-<li>様々なアルゴリズムの特殊バージョンと未実装バージョンを更新(以前のバージョンから引き続いての変更。これらは構造を簡略化し、より良いエラー報告をし、ドキュメント化の自動的に行う)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/gil" name="gil">GIL</a></h2>
-<ul>
-<li>自己代入の警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/4919" target="_blank">#4919</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/graph" name="graph">Graph</a></h2>
-<p><strong>バグ修正</strong></p>
-<ul>
-<li><code><span style="color: #000">kolmogorov_max_flow()</span></code>がmax flow値を見つけてこない問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/3468" target="_blank">#3468</a>, <a href="https://svn.boost.org/trac/boost/ticket/7728" target="_blank">#7728</a>)</li>
-<li>アルゴリズムの要件が間違っていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/4386" target="_blank">#4386</a>)</li>
-<li><code><span style="color: #000">depth_first_search()</span></code>に、<code><span style="color: #000">on_finish_edge</span></code>イベントを追加(<a href="https://svn.boost.org/trac/boost/ticket/5269" target="_blank">#5269</a>)</li>
-<li>未使用変数警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/7428" target="_blank">#7428</a>)</li>
-<li><code><span style="color: #000">kamada_kawai_spring_layout.hpp</span></code>のコメント誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7457" target="_blank">#7457</a>)</li>
-<li><code><span style="color: #000">graph</span></code>/<code><span style="color: #000">reverse_graph.hpp</span></code>の不要なセミコロンを削除(<a href="https://svn.boost.org/trac/boost/ticket/7467" target="_blank">#7467</a>)</li>
-<li><code><span style="color: #000">named_graph</span></code>に対する<code><span style="color: #000">add_vertex()</span></code>関数のオーバーロードが曖昧になる問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7600" target="_blank">#7600</a>)</li>
-<li><code><span style="color: #000">boost/graph/labeled_graph.hpp</span></code>内の誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7648" target="_blank">#7648</a>)</li>
-<li><code><span style="color: #000">boost/graph/tiernan_all_cycles.hpp</span></code>内の誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7684" target="_blank">#7684</a>)</li>
-<li><code><span style="color: #000">Graph</span></code>コンセプトの、必須ではない関連型を要件から削除(<a href="https://svn.boost.org/trac/boost/ticket/7741" target="_blank">#7741</a>)</li>
-<li><code><span style="color: #000">small_world_iterator</span></code>のドキュメントに、デフォルト引数が記載されていない(<a href="https://svn.boost.org/trac/boost/ticket/7771" target="_blank">#7771</a>)</li>
-<li><code><span style="color: #000">inserted_labeled_vertex()</span></code>でプロパティが追加されていなかったのを修正(<a href="https://svn.boost.org/trac/boost/ticket/7773" target="_blank">#7773</a>)</li>
-<li>Push Relabel Max Flowのドキュメント上のサンプルにあった誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7780" target="_blank">#7780</a>)</li>
-<li><code><span style="color: #000">Graph</span></code>コンセプトのドキュメントで、<code><span style="color: #000">examples/undirected.cpp</span></code>へのリンクが切れていたのを修正(<a href="https://svn.boost.org/trac/boost/ticket/7787" target="_blank">#7787</a>)</li>
-<li>その他、Tracにないいくつかのバグ修正</li>
-</ul>
-<p><strong>機能追加</strong></p>
-<ul>
-<li>複数のグラフを含むGraphMLの読み込みをサポート</li>
-<li><code><span style="color: #000">A*</span></code>検索の新バージョンを追加。具体的にはツリーや、同じ頂点を何度も通ることを許可するために、必要ならカラーマップを削除する。</li>
-<li>VF2 subgraph isomorphismアルゴリズムを追加(Flavio De Lorenziに感謝する！)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/hash" name="hash">Hash</a></h2>
-<ul>
-<li>利用可能な環境で<code><span style="color: #000">boost::int128_type</span></code>と<code><span style="color: #000">boost::uint128_type</span></code>のサポートを追加</li>
-<li>プラットフォームが標準の浮動小数点数関数を持っている場合は、自動推論を使用しないようにした(<a href="https://svn.boost.org/trac/boost/ticket/7221" target="_blank">#7221</a>, <a href="https://svn.boost.org/trac/boost/ticket/7470" target="_blank">#7470</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/interprocess" name="interprocess">Interprocess</a></h2>
-<ul>
-<li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正</li>
-<li>パフォーマンス向上のために、実験的にマルチアロケーションのインタフェースを再度変更(まだ実験)</li>
-<li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li>
-<li>[&lt;font color="red"&gt;ABI破壊&lt;/font&gt;] 効率改善のため、ノードプールアロケータを内部的に変更</li>
-<li>ファイルマッピングのデータ構造を作る際、小さいサイズを指定するとクラッシュする問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7795" target="_blank">#7795</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/intrusive" name="intrusive">Intrusive</a></h2>
-<ul>
-<li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/7174" target="_blank">#7174</a>)</li>
-<li>等値キーの要素が挿入される位置についてドキュメントに記載(<a href="https://svn.boost.org/trac/boost/ticket/7529" target="_blank">#7529</a>)</li>
-<li><code><span style="color: #000">boost/intrusive/detail/has_member_function_callable_with.hpp</span></code>でのコンパイルエラーを修正。<code><span style="color: #000">const</span></code>付きの型を継承していた(<a href="https://svn.boost.org/trac/boost/ticket/7815" target="_blank">#7815</a>)</li>
-<li>侵入コンテナのコンストラクタに、不足していた<code><span style="color: #000">explicit</span></code>を付けた</li>
-<li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/lexical-cast" name="lexical-cast">Lexical Cast</a></h2>
-<ul>
-<li>ユーザー定義クラスのための、新たな文字型(<code><span style="color: #000">char16_t</span></code>/<code><span style="color: #000">char32_t</span></code>)検出アルゴリズム(<a href="https://svn.boost.org/trac/boost/ticket/6786" target="_blank">#6786</a>)</li>
-<li>ドキュメント更新(<a href="https://svn.boost.org/trac/boost/ticket/7582" target="_blank">#7582</a>, <a href="https://svn.boost.org/trac/boost/ticket/7831" target="_blank">#7831</a>)</li>
-<li><code><span style="color: #000">std::array</span></code>の変換が、最適化の効かない書き方になっていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7799" target="_blank">#7799</a>)</li>
-<li>g++で<code><span style="color: #000">-ftrapvオプション</span></code> (trap overflow errors : オーバーフローを検知して<code><span style="color: #000">abort()</span></code>させる)をつけるとエラーになるケースを修正(<a href="https://svn.boost.org/trac/boost/ticket/7814" target="_blank">#7814</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/locale" name="locale">Locale</a></h2>
-<ul>
-<li>セキュリティ関連のバグ修正。いくつかの不正なUTF-8シーケンスを、有効なものとして受け入れていた(<a href="https://svn.boost.org/trac/boost/ticket/7743" target="_blank">#7743</a>)</li>
-<li>Windowsのコードページ名として不正な名前を使用していたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7386" target="_blank">#7386</a>)</li>
-<li>Doxygenのフォーマットミスによって、ドキュメントが不足していたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7734" target="_blank">#7734</a>)</li>
-<li>いくつかの場所で <code><span style="color: #000">std::</span></code> 指定が抜けていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7701" target="_blank">#7701</a>)</li>
-<li>いくつかの誤字と、英語の構文を修正(<a href="https://svn.boost.org/trac/boost/ticket/7368" target="_blank">#7368</a>, <a href="https://svn.boost.org/trac/boost/ticket/7762" target="_blank">#7762</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/math" name="math">Math</a></h2>
-<ul>
-<li>問題点の修正：<ul>
-<li>Lanczos近似の背景ドキュメントの誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7325" target="_blank">#7325</a>)</li>
-<li><code><span style="color: #000">atanh()</span></code>の正の値を渡した場合、<code><span style="color: #000">domain_error</span></code>例外が送出されるべきだが、<code><span style="color: #000">overflow</span></code>例外が送出されていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7415" target="_blank">#7415</a>)</li>
-<li><code><span style="color: #000">asinh()</span></code>のエラーポリシーとして<code><span style="color: #000">ignore_error</span></code>を設定していても、大きな負数を渡すと<code><span style="color: #000">overflow</span></code>例外が送出されてしまう問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7416" target="_blank">#7416</a>)</li>
-<li>FBSD環境での<code><span style="color: #000">isinf()</span></code>のコンパイルエラーを修正(<a href="https://svn.boost.org/trac/boost/ticket/7183" target="_blank">#7183</a>)</li>
-<li><code><span style="color: #000">boost/math/constants/calculate_constants.hpp</span></code>ヘッダのコメント誤字を修正(<a href="https://svn.boost.org/trac/boost/ticket/7649" target="_blank">#7649</a>)</li>
-<li><code><span style="color: #000">math/minimax/main.cpp</span></code>に、インクルードするヘッダが足りていなかったので修正(<a href="https://svn.boost.org/trac/boost/ticket/7694" target="_blank">#7694</a>)</li>
-<li><code><span style="color: #000">float_advance()</span></code>に非正規化数として0を設定するとスタックオーバーフローする問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/4445" target="_blank">#4445</a>)</li>
-<li>libc++でコンパイルが通らない問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7492" target="_blank">#7492</a>)</li>
-</ul>
-</li>
-<li>two-sample students tの例が間違っていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7402" target="_blank">#7402</a>)</li>
-<li><code><span style="color: #000">complex</span></code>の<code><span style="color: #000">acos</span></code>/<code><span style="color: #000">asin</span></code>/<code><span style="color: #000">atan</span></code>を改善(<a href="https://svn.boost.org/trac/boost/ticket/7290" target="_blank">#7290</a>, <a href="https://svn.boost.org/trac/boost/ticket/7291" target="_blank">#7291</a>)</li>
-<li><code><span style="color: #000">cyl_bessel_j</span></code>と<code><span style="color: #000">gamma_p</span></code>/<code><span style="color: #000">gamma_q</span></code>のいくつかのコーナーケースで精度を改善。Rocco Romeoに感謝する。</li>
-<li>整数でのベッセルJとYの精度を改善。Rocco Romeoに感謝する。</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/minmax" name="minmax">MinMax</a></h2>
-<ul>
-<li>カンマ演算子の誤用を修正(<a href="https://svn.boost.org/trac/boost/ticket/7752" target="_blank">#7752</a>)</li>
-<li>ドキュメント上の壊れたリンクを修正(<a href="https://svn.boost.org/trac/boost/ticket/7751" target="_blank">#7751</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/move" name="move">Move</a></h2>
-<ul>
-<li><code><span style="color: #000">boost/move/move.hpp</span></code>に全ての機能を入れていたので、<code><span style="color: #000">core.hpp</span></code>と<code><span style="color: #000">utility.hpp</span></code>に分離した(<a href="https://svn.boost.org/trac/boost/ticket/6524" target="_blank">#6524</a>)</li>
-<li>ドキュメントの小さな修正</li>
-<li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li>
-<li><code><span style="color: #000">uninitialized_move()</span></code>の実装に、例外のチェックが抜けていた(<a href="https://svn.boost.org/trac/boost/ticket/7830" target="_blank">#7830</a>)</li>
-<li>マクロの不足と間違いを修正(<a href="https://svn.boost.org/trac/boost/ticket/7832" target="_blank">#7832</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/polygon" name="polygon">Polygon</a></h2>
-<p><strong>修正</strong></p>
-<ul>
-<li><code><span style="color: #000">boost::polygon::contains()</span></code>が、含まれていても<code><span style="color: #000">false</span></code>を返す場合があったのを修正(<a href="https://svn.boost.org/trac/boost/ticket/6366" target="_blank">#6366</a>)</li>
-<li><code><span style="color: #000">boost::polygon::belongs()</span></code>の、ODR違反によるリンクエラーを修正(<a href="https://svn.boost.org/trac/boost/ticket/7678" target="_blank">#7678</a>)</li>
-</ul>
-<p><strong>内部的な変更</strong></p>
-<ul>
-<li><code><span style="color: #000">point</span></code>/<code><span style="color: #000">segment</span></code>/<code><span style="color: #000">interval</span></code>と<code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>をリファクタ</li>
-<li><code><span style="color: #000">point</span></code>と<code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>区間のユニットテストを追加</li>
-<li><code><span style="color: #000">transform.hpp</span></code>の2次元操作を簡略化</li>
-<li><code><span style="color: #000">point_3d</span></code> <code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>を削除</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/random" name="random">Random</a></h2>
-<ul>
-<li>例外が無効な状態で、コンパイルが通るように修正(<a href="https://svn.boost.org/trac/boost/ticket/5399" target="_blank">#5399</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/range" name="range">Range</a></h2>
-<ul>
-<li><code><span style="color: #000">range/any_range.hpp</span></code>にインクルードが不足している問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/5603" target="_blank">#5603</a>)</li>
-<li><code><span style="color: #000">search_n</span></code>の実装詳細名前空間が<code><span style="color: #000">boost::range::range_detail</span></code>になっていたので、他に合わせて<code><span style="color: #000">boost::range_detail</span></code>に修正(<a href="https://svn.boost.org/trac/boost/ticket/6103" target="_blank">#6103</a>)</li>
-<li>いくつかのドキュメント修正</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/ratio" name="ratio">Ratio</a></h2>
-<ul>
-<li>クラステンプレート<code><span style="color: #000">br_mul</span></code>のメンバ変数<code><span style="color: #000">nan</span></code>の初期値のシフト演算において、シフトカウントがマイナスになったり、大きすぎる数になった場合に、未定義動作を引き起こすという警告が発生する問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7616" target="_blank">#7616</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/regex" name="regex">Regex</a></h2>
-<ul>
-<li><code><span style="color: #000">make_u32regex()</span></code>のUTF-8検証が不十分だったので修正(<a href="https://svn.boost.org/trac/boost/ticket/7744" target="_blank">#7744</a>)</li>
-<li>gcc4.7.2でC++11オプションを有効にした際の警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/7644" target="_blank">#7644</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/smart-pointers" name="smart-pointers">Smart Pointers</a></h2>
-<p><strong>新機能</strong></p>
-<ul>
-<li>Glen Fernandes氏による、配列用の<code><span style="color: #000">make_shared</span></code>と<code><span style="color: #000">allocate_shared</span></code>実装を取り込んだ。これにより、デフォルト初期化と値なし初期化についてのオーバーロードと同じく、コンストラクタ実引数かinitializer listで初期化されうる配列についてのシングルアロケーションが可能になった。詳細はこちら[<a href="http://www.boost.org/doc/libs/1_53_0/libs/smart_ptr/make_shared_array.html" target="_blank">/libs/smart_ptr/make_shared_array.html make_shared and allocate_shared for arrays</a>]を参照のこと。</li>
-<li><code><span style="color: #000">shared_ptr</span></code>を、配列へのポインタを保持できるようにした。これには、テンプレートパラメータで配列型(<code><span style="color: #000">T[]</span></code>もしくは<code><span style="color: #000">T[N]</span></code>)を指定する。</li>
-<li>C++11コンパイラでは<code><span style="color: #000">explicit operator bool()</span></code>を使用するようにした。これは、以下のようなケースでコードを破壊する：  1. <code><span style="color: #000">bool</span></code>をとる関数にスマートポインタを渡しているコード  2. <code><span style="color: #000">bool</span></code>を返す関数でスマートポインタを返しているコードこのようなケースでは、 <code><span style="color: #000">p != 0</span></code> もしくは <code><span style="color: #000">!!p</span></code> を使用してください</li>
-<li>[追加リリースノート] だいぶ前から非推奨だった<code><span style="color: #000">shared_ptr</span></code>の<code><span style="color: #000">value_type</span></code>を削除した。代わりに<code><span style="color: #000">element_type</span></code>を使用すること。</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/string-algo" name="string-algo">String Algo</a></h2>
-<ul>
-<li>パターンがオーバーラップしている時に、オーバーラップしている箇所がヒットしない問題を修正 (<a href="https://svn.boost.org/trac/boost/ticket/7784" target="_blank">#7784</a>)</li>
-<li>あいまいな<code><span style="color: #000">insert</span></code>呼び出しを排除 (<a href="https://svn.boost.org/trac/boost/ticket/7346" target="_blank">#7346</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/thread" name="thread">Thread</a></h2>
-<p><strong>廃止された機能</strong></p>
-<ul>
-<li>boost 1.53で廃止された機能はboost 1.58までは利用可能である</li>
-<li>C++11準拠： <code><span style="color: #000">packaged_task&lt;R&gt;</span></code>を廃止した。以降は<code><span style="color: #000">packaged_task&lt;R()&gt;</span></code>を使うこと</li>
-<li><code><span style="color: #000">Mutex::scoped_lock</span></code>、<code><span style="color: #000">scoped_try_lock</span></code>、<code><span style="color: #000">boost::condition</span></code>を廃止にした(<a href="https://svn.boost.org/trac/boost/ticket/7537" target="_blank">#7537</a>)</li>
-</ul>
-<p><strong>新機能</strong></p>
-<ul>
-<li>C++11準拠： ムーブ可能な関数オブジェクトと実引数をとれる<code><span style="color: #000">thread</span></code>コンストラクタを追加(<a href="https://svn.boost.org/trac/boost/ticket/6270" target="_blank">#6270</a>)</li>
-<li>C++11準拠： システムまわりの関数に<code><span style="color: #000">noexcept</span></code>をつけた(<a href="https://svn.boost.org/trac/boost/ticket/7279" target="_blank">#7279</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">promise</span></code>::<code><span style="color: #000">…at_thread_exit</span></code>関数を追加(<a href="https://svn.boost.org/trac/boost/ticket/7280" target="_blank">#7280</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">packaged_task</span></code>テンプレートに<code><span style="color: #000">ArgTypes</span></code>を追加(<a href="https://svn.boost.org/trac/boost/ticket/7281" target="_blank">#7281</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">packaged_task::make_ready_at_thread_exit</span></code>関数を追加(<a href="https://svn.boost.org/trac/boost/ticket/7282" target="_blank">#7282</a>)</li>
-<li>C++11準拠： ムーブ可能な関数オブジェクトと実引数をとれる<code><span style="color: #000">async</span></code>を追加(<a href="https://svn.boost.org/trac/boost/ticket/7412" target="_blank">#7412</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">launch</span></code>ポリシーが<code><span style="color: #000">defferred</span></code>のとき、<code><span style="color: #000">async</span></code>を追加する(<a href="https://svn.boost.org/trac/boost/ticket/7413" target="_blank">#7413</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">future::get</span></code> の事後条件が <code><span style="color: #000">valid()==false</span></code> になるようにした(<a href="https://svn.boost.org/trac/boost/ticket/7414" target="_blank">#7414</a>)</li>
-<li>ゼロオーバーヘッドな<code><span style="color: #000">condition_variable</span></code>を提供(<a href="https://svn.boost.org/trac/boost/ticket/7422" target="_blank">#7422</a>)</li>
-<li>Async: <code><span style="color: #000">make_future</span></code>と<code><span style="color: #000">make_shared_future</span></code>を追加(<a href="https://svn.boost.org/trac/boost/ticket/7444" target="_blank">#7444</a>)</li>
-<li>Thread: デストラクタで<code><span style="color: #000">thread</span></code>を<code><span style="color: #000">join</span></code>するヘルパークラスを追加(<a href="https://svn.boost.org/trac/boost/ticket/7540" target="_blank">#7540</a>)</li>
-<li>Thread: デストラクタで<code><span style="color: #000">thread</span></code>を<code><span style="color: #000">join</span></code>する<code><span style="color: #000">thread</span></code>のラッパークラスを追加(<a href="https://svn.boost.org/trac/boost/ticket/7541" target="_blank">#7541</a>)</li>
-<li>C++11準拠： <code><span style="color: #000">async</span></code>で作成した<code><span style="color: #000">future</span></code>がデストラクタで<code><span style="color: #000">join</span></code>するようにした(<a href="https://svn.boost.org/trac/boost/ticket/7575" target="_blank">#7575</a>)</li>
-<li>Synchro: <code><span style="color: #000">strict_lock</span></code>と<code><span style="color: #000">nested_strict_lock</span></code>を追加(<a href="https://svn.boost.org/trac/boost/ticket/7587" target="_blank">#7587</a>)</li>
-<li>Synchro: 依存関係を制限するために<code><span style="color: #000">locks.hpp</span></code>を分割した(<a href="https://svn.boost.org/trac/boost/ticket/7588" target="_blank">#7588</a>)</li>
-<li>Synchro: Boost.ConceptCheckを利用して"ロック可能コンセプト"チェッカーを追加した(<a href="https://svn.boost.org/trac/boost/ticket/7590" target="_blank">#7590</a>)</li>
-<li><code><span style="color: #000">enable_if</span></code>で使える"ロック可能トレイト"を追加(<a href="https://svn.boost.org/trac/boost/ticket/7591" target="_blank">#7591</a>)</li>
-<li>Synchro: なにもしない、<code><span style="color: #000">UpgardeLockable</span></code>コンセプトに適合する<code><span style="color: #000">null_mutex</span></code>を追加(<a href="https://svn.boost.org/trac/boost/ticket/7592" target="_blank">#7592</a>)</li>
-<li>Synchro: <code><span style="color: #000">externally_locked</span></code>クラスを追加(<a href="https://svn.boost.org/trac/boost/ticket/7593" target="_blank">#7593</a>)</li>
-<li>Threads: スレッド中断禁止設定を追加(<a href="https://svn.boost.org/trac/boost/ticket/7590" target="_blank">#7594</a>)</li>
-</ul>
-<p><strong>バグ修正</strong></p>
-<ul>
-<li>回帰テストツールで、データ競合によって<code><span style="color: #000">BOOST_TEST(n_alive == 1);</span></code>が失敗する問題を修正(<a href="https://svn.boost.org/trac/boost/ticket/7464" target="_blank">#7464</a>)</li>
-<li><code><span style="color: #000">condition_variable::generations</span></code>メンバ関数が<code><span style="color: #000">notify_one</span></code>か<code><span style="color: #000">notify_all</span></code>を呼び続ける状態になり、メモリー消費とパフォーマンスに甚大な影響を及してしまう(<a href="https://svn.boost.org/trac/boost/ticket/7657" target="_blank">#7657</a>)</li>
-<li>スレッド内で<code><span style="color: #000">this_thread::sleep_for</span></code> はもう<code><span style="color: #000">steady_clock</span></code>を使わない(<a href="https://svn.boost.org/trac/boost/ticket/7665" target="_blank">#7665</a>)</li>
-<li><code><span style="color: #000">thread_group::join_all()</span></code>は<code><span style="color: #000">thread</span></code>が<code><span style="color: #000">join</span></code>可能かチェックすべき(<a href="https://svn.boost.org/trac/boost/ticket/7668" target="_blank">#7668</a>)</li>
-<li><code><span style="color: #000">thread_group::join_all()</span></code>は<code><span style="color: #000">resource_deadlock_would_occur</span></code>を<code><span style="color: #000">catch</span></code>すべき(<a href="https://svn.boost.org/trac/boost/ticket/7669" target="_blank">#7669</a>)</li>
-<li><code><span style="color: #000">lockable_traits.hpp</span></code>の"defined"トークンがtypoしている(<a href="https://svn.boost.org/trac/boost/ticket/7672" target="_blank">#7672</a>)</li>
-<li><code><span style="color: #000">boost::future</span></code>の<code><span style="color: #000">set_wait_callback</span></code>のスレッドセーフ問題(<a href="https://svn.boost.org/trac/boost/ticket/7798" target="_blank">#7798</a>)</li>
-<li><code><span style="color: #000">this_thread::sleep_for</span></code>と<code><span style="color: #000">this_thread::sleep_until</span></code>の説明が正しくない(<a href="https://svn.boost.org/trac/boost/ticket/7808" target="_blank">#7808</a>)</li>
-<li><code><span style="color: #000">cv_status::no_timeout</span></code>が<code><span style="color: #000">rel_time</span></code>で指定した時間を越えたときに返却されている。<code><span style="color: #000">cv_status::timeout</span></code>であるべき(<a href="https://svn.boost.org/trac/boost/ticket/7812" target="_blank">#7812</a>)</li>
-<li><code><span style="color: #000">thread::id</span></code>に、シンボル可視の属性が付いていなかったことによる警告を修正(<a href="https://svn.boost.org/trac/boost/ticket/7874" target="_blank">#7874</a>)</li>
-<li><code><span style="color: #000">BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED</span></code>をデフォルトで有効にするよう修正(<a href="https://svn.boost.org/trac/boost/ticket/7875" target="_blank">#7875</a>)</li>
-<li><code><span style="color: #000">condition_variable::wait(unique_lock&lt;mutex&gt;&amp;)</span></code>で発生する例外のメッセージが不適切だったので修正(<a href="https://svn.boost.org/trac/boost/ticket/7882" target="_blank">#7882</a>)</li>
-<li><code><span style="color: #000">thread::do_try_join_until()</span></code>に戻り値の型が抜けていたので修正(<a href="https://svn.boost.org/trac/boost/ticket/7890" target="_blank">#7890</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/unordered" name="unordered">Unordered</a></h2>
-<ul>
-<li>標準以前の古いvariadic pairコンストラクタのサポートを外し、同等の実装をしなおした。いずれもBoost 1.48からdeprecated指定である。</li>
-<li><code><span style="color: #000">erase</span></code>のより単純な実装の導入や、deprecated指定されていたコンフィグマクロの除去など、内部実装をさらに変更した。</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/utility" name="utility">Utility</a></h2>
-<ul>
-<li>文字列への所有権を持たない参照を保持する<code><span style="color: #000">string_ref</span></code>クラスを追加</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/variant" name="variant">Variant</a></h2>
-<ul>
-<li>C++11環境に対してのみだが、ムーブコンストラクタとムーブ代入演算子を追加した。Variantライブラリは今、コピー不可でムーブ可なオブジェクトが使用できる(<a href="https://svn.boost.org/trac/boost/ticket/7620" target="_blank">#7620</a>, <a href="https://svn.boost.org/trac/boost/ticket/7576" target="_blank">#7576</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/wave" name="wave">Wave</a></h2>
-<ul>
-<li><code><span style="color: #000">context&lt;&gt;::add_macro_definition</span></code>がマクロ置換リストにまれに余計な<code><span style="color: #000">T_EOF</span></code>を追加する問題を修正</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/xpressive" name="xpressive">Xpressive</a></h2>
-<ul>
-<li>最近のスマートポインタに対応するための修正(<a href="https://svn.boost.org/trac/boost/ticket/7809" target="_blank">#7809</a>)</li>
-</ul>
-<h2><a href="http://boostjp.github.io/document/version/build" name="build">Build</a></h2>
-<ul>
-<li>Qt5ツールセット</li>
-<li>rccサポートを改善(<a href="https://svn.boost.org/trac/boost/ticket/7576" target="_blank">#7576</a>)</li>
-</ul>
-<h2>テスト済みコンパイラ</h2>
-<ul>
-<li>Linux:<ul>
-<li>GCC: 4.1.2, 4.2.4, 4.4.4, 4.5.3, 4.6.3, 4.7.2</li>
-<li>GCC, C++11 mode: 4.4.4, 4.5.3, 4.6.3, 4.7.2</li>
-<li>Intel: 11.1, 12.1</li>
-<li>LLVM Clang: 2.8</li>
-<li>LLVM Clang, with libc++: 3.2</li>
-</ul>
-</li>
-<li>OS X:<ul>
-<li>GCC: 4.4.7</li>
-<li>GCC, C++11 mode: 4.4.4</li>
-<li>Intel: 11.1, 12.0</li>
-</ul>
-</li>
-<li>Windows:<ul>
-<li>Visual C++: 9.0, 10.0</li>
-</ul>
-</li>
-<li>FreeBSD:<ul>
-<li>GCC: 4.2.1, 32 and 64 bit</li>
-</ul>
-</li>
-</ul>
-<p>追加のテストコンパイラ：</p>
-<ul>
-<li>Linux:<ul>
-<li>Cray: 4.6.1</li>
-<li>Clang: from subversion</li>
-<li>LLVM Clang, with libc++: 3.2</li>
-<li>GCC: 4.2.4, 4.4.4, 4.5.3, 4.6.3, 4.7.1</li>
-<li>GCC, C++11 mode: 4.4.4, 4.5.3, 4.6.3, 4.7.1, 4.7.2</li>
-<li>pgCC: 11.9</li>
-<li>Intel: 10.1, 11.1, 12.1</li>
-<li>Intel, C++11 mode: 13.0.1</li>
-<li>Visual Age:</li>
-</ul>
-</li>
-<li>OS X:<ul>
-<li>Clang: from subversion</li>
-<li>Clang, C++11 mode: from subversion</li>
-<li>Intel: 11.1, 12.0</li>
-<li>GCC: 4.4.7</li>
-<li>GCC, C++11 mode: 4.4.4</li>
-</ul>
-</li>
-<li>Windows:<ul>
-<li>Visual C++: 10.0, 11.0</li>
-<li>Visual C++ with STLport: 9.0</li>
-<li>Visual C++, Windows Mobile 5, with STLport: 9.0</li>
-</ul>
-</li>
-<li>AIX:<ul>
-<li>IBM XL C/C++ Enterprise Edition: V12.1.0.1</li>
-</ul>
-</li>
-</ul>
-<h2>翻訳</h2>
-<p>Akira Takahashi, Takatoshi Kondo, zak</p>
-  </div>
-</div>
-            </div>
-        </main>
-    </body>
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7 ]>
+        var children = $(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(':visible')) {
+            children.hide('fast');
+            $(this)
+                .attr('title', 'Expand this branch')
+                .find(' > i')
+                .addClass('glyphicon-plus')
+                .removeClass('glyphicon-minus');
+        }
+        else {
+            children.show('fast');
+            $(this)
+                .attr('title', 'Collapse this branch')
+                .find(' > i')
+                .addClass('glyphicon-minus')
+                .removeClass('glyphicon-plus');
+        }
+        e.stopPropagation();
+    });
+});
+        </script></head> <body> <header> <nav class="navbar navbar-default" role=navigation> <div class=container-fluid> <div class=navbar-header> <button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a class=navbar-brand href=/>boostjp : Boost日本語情報サイト</a> </div> <div class="collapse navbar-collapse" id=navbar-collapse> <form class="navbar-form navbar-right" role=search> <div class=form-group> <input type=text class=form-control placeholder=Search> </div> <button type=submit class="btn btn-default">検索</button> </form> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class=col-md-3> <div class=tree> <ul> <li> <a href=/communities.html>コミュニティ</a> </li> <li> <a href=/howtobuild.html>Boostライブラリのビルド方法</a> </li> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/mailing-lists.html>メーリングリスト</a> </li> <li> <a href=/the-team.html>運営メンバ</a> </li> <li> <a href=/used_project.html>Boostを使用しているプロジェクト</a> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive.html>アーカイブ</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/boost_docs.html>#旧Boost日本語化プロジェクト</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> document <ul> <li style="display: none"> <a href=/archive/boost_docs/document/error_handling.html>エラーと例外のハンドリング</a> </li> <li style="display: none"> <a href=/archive/boost_docs/document/generic_exception_safety.html>ジェネリックコンポーネントにおける例外安全性</a> </li> <li style="display: none"> <a href=/archive/boost_docs/document/generic_programming.html>ジェネリックプログラミング手法</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> libs <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/libraries.html>各ライブラリの翻訳ドキュメント</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> array <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array.html>arrayクラス, 固定サイズ配列のSTLコンテナ</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array.hpp.html>array.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array1.cpp.html>array1.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array2.cpp.html>array2.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array3.cpp.html>array3.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array4.cpp.html>array4.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array5.cpp.html>array5.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/index.html>Array wrapper library</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> bind <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/bind.html>bind.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/bind_as_compose.cpp.html>bind_as_compose.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/mem_fn.html>mem_fn.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/ref.html>ref.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> compatibility <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/compatibility/index.html>Boost.Compatibilty ライブラリ</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> compose <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose.html>Compose Function Object Adapters</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose.hpp.html>boost/compose.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose1.cpp.html>compose1.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose2.cpp.html>compose2.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose3.cpp.html>compose3.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose4.cpp.html>compose4.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/index.html>非推奨： Compose library</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/print.hpp.html>libs/compose/print.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> concept_check <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/bibliography.html>参考文献</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/concept_check.html>The Boost Concept Check Library (BCCL)</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/concept_covering.html>コンセプトの充当化と原型</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/creating_concepts.html>コンセプト・チェック用クラスの作成</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/implementation.html>コンセプト・チェックの実装</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/prog_with_concepts.html>Programming with Concepts</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/reference.html>リファレンス</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/stl_concept_check.cpp.html>libs/concept_check/stl_concept_check.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html>libs/concept_check/stl_concept_covering.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/using_concept_check.html>コンセプト・チェックの利用</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> conversion <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/cast.html>Header boost/cast.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/cast_test.cpp.html>libs/conversion/cast_test.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/index.html>Boost Conversion Library</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/lexical_cast.html>Header boost/lexical_cast.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> date_time <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/class_date.html>gregorian::date</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/class_date_duration.html>gregorian::date_duration</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/date_algorithms.html>Date Generators / Algorithms</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/dates_as_strings.cpp.html>dates_as_strings.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/days_alive.cpp.html>days_alive.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/days_till_new_year.cpp.html>days_till_new_year.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/gregorian.html>Gregorian Date System Documentation</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/index.html>Boost Date-Time Library Documentation</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/period_calc.cpp.html>period_calc.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/print_holidays.cpp.html>print_holidays.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/print_month.cpp.html>print_month.cpp</a> </li> </ul> </li> </ul> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/cpp_online_reading.html>C++オンライン読書会</a> <ul> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_001.html>第1回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_002.html>第2回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_003.html>第3回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_004.html>第4回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_005.html>第5回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_006.html>第6回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_007.html>第7回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_008.html>第8回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_009.html>第9回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_010.html>第10回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_011.html>第11回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_012.html>第12回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_013.html>第13回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_014.html>第14回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_015.html>第15回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/request.html>読みたいC++資料リクエスト</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/propose.html>提案予定プロジェクト</a> <ul> <li style="display: none"> <a href=/archive/propose/templ_rec_max.html>テンプレートの再帰上限数workaround(rejected)</a> </li> </ul> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/boostcon.html>BoostCon</a> <ul> <li style="display: none"> <a href=/boostcon/2010.html>BoostCon 2010</a> </li> <li style="display: none"> <a href=/boostcon/2011.html>BoostCon 2011</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/cppnow.html>C++Now!</a> <ul> <li style="display: none"> <a href=/cppnow/2012.html>C++Now! 2012</a> </li> <li style="display: none"> <a href=/cppnow/2013.html>C++Now! 2013</a> </li> <li style="display: none"> <a href=/cppnow/2014.html>C++Now! 2014</a> </li> </ul> </li> <li class=active> <span><i class="glyphicon glyphicon-minus"></i></span> <a href=/document.html>ドキュメント</a> <ul> <li> <a href=/document/boost-range-algorithm-kansu-no-susume.html>Boost.Range アルゴリズム関数のすすめ</a> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization.html>Boost.Serialization</a> <ul> <li style="display: none"> <a href=/document/boostserialization/overview.html>Overview</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/other-classses.html>Other Classses</a> <ul> <li style="display: none"> <a href=/document/boostserialization/other-classses/extended_type_info.html>extended_type_info</a> </li> <li style="display: none"> <a href=/document/boostserialization/other-classses/singleton.html>singleton</a> </li> <li style="display: none"> <a href=/document/boostserialization/other-classses/void_cast.html>void_cast</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference.html>Reference</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/archive-concepts.html>Archive Concepts</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/serializableconcept.html>SerializableConcept</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/serializableconcept/class-serialization-traits.html>Class Serialization Traits</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/serializableconcept/class-serialization-traits/export-key.html>Export Key</a> </li> </ul> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/special-considerations.html>Special Considerations</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/special-considerations/exporting-class-serialization.html>Exporting Class Serialization</a> </li> </ul> </li> </ul> </li> </ul> </li> <li class=active> <span><i class="glyphicon glyphicon-minus"></i></span> <a href=/document/version.html>リリースノート</a> <ul> <li> <a href=/document/version/1_45_0.html>Boost 1.45.0 リリースノート</a> </li> <li> <a href=/document/version/1_46_0.html>Boost 1.46.0 リリースノート</a> </li> <li> <a href=/document/version/1_46_1.html>Boost 1.46.1リリースノート</a> </li> <li> <a href=/document/version/1_47_0.html>Boost 1.47.0 リリースノート</a> </li> <li> <a href=/document/version/1_48_0.html>Boost 1.48.0 リリースノート</a> </li> <li> <a href=/document/version/1_49_0.html>Boost 1.49.0 リリースノート</a> </li> <li> <a href=/document/version/1_50_0.html>Boost 1.50.0 リリースノート</a> </li> <li> <a href=/document/version/1_51_0.html>Boost 1.51.0 リリースノート</a> </li> <li> <a href=/document/version/1_52_0.html>Boost 1.52.0 リリースノート</a> </li> <li> <a href=/document/version/1_53_0.html>Boost 1.53.0 リリースノート</a> </li> <li> <a href=/document/version/1_54_0.html>Boost 1.54.0リリースノート</a> </li> <li> <a href=/document/version/1_55_0.html>Boost 1.55.0 リリースノート</a> </li> <li> <a href=/document/version/1_56_0.html>Boost 1.56.0リリースノート</a> </li> <li> <a href=/document/version/1_57_0.html>Boost 1.57.0リリースノート</a> </li> </ul> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> editors_doc <ul> <li style="display: none"> <a href=/editors_doc/start_editing.html>boostjpを編集するには</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/study_meeting.html>Boost.勉強会</a> <ul> <li style="display: none"> <a href=/study_meeting/idea.html>ネタ帳</a> </li> <li style="display: none"> <a href=/study_meeting/reversed_index.html>ライブラリ逆引き</a> </li> <li style="display: none"> <a href=/study_meeting/study1.html>Boost.勉強会 #1</a> </li> <li style="display: none"> <a href=/study_meeting/study10.html>Boost.勉強会 #10 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study11.html>Boost.勉強会 #11 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study12.html>Boost.勉強会 #12 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study13.html>Boost.勉強会 #13 仙台</a> </li> <li style="display: none"> <a href=/study_meeting/study14.html>Boost.勉強会 #14 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study15.html>Boost.勉強会 #15 札幌</a> </li> <li style="display: none"> <a href=/study_meeting/study16.html>Boost.勉強会 #16 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study2.html>Boost.勉強会 #2</a> </li> <li style="display: none"> <a href=/study_meeting/study3.html>Boost.勉強会 #3 関西</a> </li> <li style="display: none"> <a href=/study_meeting/study4.html>Boost.勉強会 #4</a> </li> <li style="display: none"> <a href=/study_meeting/study5.html>Boost.勉強会 #5 名古屋</a> </li> <li style="display: none"> <a href=/study_meeting/study6.html>Boost.勉強会 #6 札幌</a> </li> <li style="display: none"> <a href=/study_meeting/study7.html>Boost.勉強会 #7 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study8.html>Boost.勉強会 #8 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study9.html>Boost.勉強会 #9 つくば</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-nagoya.html>Boost.忘年会 2010@名古屋</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-sapporo.html>Boost.忘年会 2010@sapporo</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-tokyo.html>Boost.忘年会 2010@東京</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/tips.html>Boost逆引きリファレンス</a> <ul> <li style="display: none"> <a href=/tips/array.html>配列</a> </li> <li style="display: none"> <a href=/tips/build.html>ビルドツール</a> </li> <li style="display: none"> <a href=/tips/build_link.html>ヘッダオンリー or ビルドが必要なライブラリ</a> </li> <li style="display: none"> <a href=/tips/circular_buffer.html>循環バッファ</a> </li> <li style="display: none"> <a href=/tips/config.html>コンパイラ間の差を吸収する</a> </li> <li style="display: none"> <a href=/tips/constcond_overload.html>コンパイル時条件によるオーバーロード</a> </li> <li style="display: none"> <a href=/tips/cxx11-boost-mapping.html>C++11とBoostの対応付け</a> </li> <li style="display: none"> <a href=/tips/date_time.html>日付の計算</a> </li> <li style="display: none"> <a href=/tips/dynamic_assert.html>実行時アサート</a> </li> <li style="display: none"> <a href=/tips/dynamic_bitset.html>サイズを動的に変更できるビット集合</a> </li> <li style="display: none"> <a href=/tips/dynamic_regex.html>動的な正規表現</a> </li> <li style="display: none"> <a href=/tips/dynamic_type.html>動的型</a> </li> <li style="display: none"> <a href=/tips/filesystem.html>ファイル／ディレクトリ操作</a> </li> <li style="display: none"> <a href=/tips/finite_state_machine.html>有限状態マシン</a> </li> <li style="display: none"> <a href=/tips/foreach.html>for each文</a> </li> <li style="display: none"> <a href=/tips/format.html>文字列フォーマット</a> </li> <li style="display: none"> <a href=/tips/function.html>関数ポインタと関数オブジェクトを統一的に扱う</a> </li> <li style="display: none"> <a href=/tips/geometry.html>計算幾何</a> </li> <li style="display: none"> <a href=/tips/graph.html>グラフ</a> </li> <li style="display: none"> <a href=/tips/hashmap.html>ハッシュ表</a> </li> <li style="display: none"> <a href=/tips/ini.html>iniファイルの読み込み／書き込み</a> </li> <li style="display: none"> <a href=/tips/initialize.html>組み込み型を必ず初期化する</a> </li> <li style="display: none"> <a href=/tips/interval_arithmetic.html>区間演算</a> </li> <li style="display: none"> <a href=/tips/io_state.html>ストリームの状態を戻す</a> </li> <li style="display: none"> <a href=/tips/iterator.html>イテレータを作る</a> </li> <li style="display: none"> <a href=/tips/json.html>JSONの読み込み／書き込み</a> </li> <li style="display: none"> <a href=/tips/lambda.html>無名関数</a> </li> <li style="display: none"> <a href=/tips/linear-algebra.html>線形代数</a> </li> <li style="display: none"> <a href=/tips/list.html>リスト処理の遅延評価</a> </li> <li style="display: none"> <a href=/tips/lockfree-queue.html>ロックフリーキュー</a> </li> <li style="display: none"> <a href=/tips/lockfree-stack.html>ロックフリースタック</a> </li> <li style="display: none"> <a href=/tips/logging.html>ロギング</a> </li> <li style="display: none"> <a href=/tips/math.html>数学</a> </li> <li style="display: none"> <a href=/tips/memory_mapped_file.html>メモリマップドファイル</a> </li> <li style="display: none"> <a href=/tips/move.html>ムーブ可能なクラスを定義する</a> </li> <li style="display: none"> <a href=/tips/mpi.html>MPI による並列計算</a> </li> <li style="display: none"> <a href=/tips/multi_array.html>多次元配列</a> </li> <li style="display: none"> <a href=/tips/multi_index.html>コンテナに複数の並び順を持たせる</a> </li> <li style="display: none"> <a href=/tips/multiprec-float.html>多倍長浮動小数点数</a> </li> <li style="display: none"> <a href=/tips/multiprec-int.html>多倍長整数</a> </li> <li style="display: none"> <a href=/tips/named_parameter.html>名前付き引数</a> </li> <li style="display: none"> <a href=/tips/noncopyable.html>クラスをコピー不可にする</a> </li> <li style="display: none"> <a href=/tips/noncopyable_container.html>コピー不可なオブジェクトを持ちまわる</a> </li> <li style="display: none"> <a href=/tips/operators.html>演算子を自動定義する</a> </li> <li style="display: none"> <a href=/tips/optional.html>無効値の統一的な表現</a> </li> <li style="display: none"> <a href=/tips/parser.html>構文解析</a> </li> <li style="display: none"> <a href=/tips/partial_eval.html>カリー化／部分適用</a> </li> <li style="display: none"> <a href=/tips/priority_sort.html>優先順位を付けて並べ替える</a> </li> <li style="display: none"> <a href=/tips/program_options.html>コマンドラインオプションの定義／取得</a> </li> <li style="display: none"> <a href=/tips/random.html>乱数</a> </li> <li style="display: none"> <a href=/tips/scope_guard.html>スコープを抜ける際に実行されるブロック</a> </li> <li style="display: none"> <a href=/tips/serialize.html>シリアライズ</a> </li> <li style="display: none"> <a href=/tips/signals.html>シグナル／スロット</a> </li> <li style="display: none"> <a href=/tips/smart_ptr.html>リソースを自動的に解放する</a> </li> <li style="display: none"> <a href=/tips/static_assert.html>コンパイル時アサート</a> </li> <li style="display: none"> <a href=/tips/static_regex.html>静的な正規表現</a> </li> <li style="display: none"> <a href=/tips/statistics.html>統計処理</a> </li> <li style="display: none"> <a href=/tips/string_algo.html>文字列操作</a> </li> <li style="display: none"> <a href=/tips/template_page.html>テンプレートページ</a> </li> <li style="display: none"> <a href=/tips/thread.html>スレッド</a> </li> <li style="display: none"> <a href=/tips/timer.html>処理時間の計測</a> </li> <li style="display: none"> <a href=/tips/tuple.html>タプル</a> </li> <li style="display: none"> <a href=/tips/type_traits.html>型特性</a> </li> <li style="display: none"> <a href=/tips/unit_test.html>単体テスト</a> </li> <li style="display: none"> <a href=/tips/uuid.html>オブジェクトにユニークなIDを付ける</a> </li> <li style="display: none"> <a href=/tips/variant.html>ユーザー定義型を扱える型安全な共用体</a> </li> <li style="display: none"> <a href=/tips/version.html>Boostのバージョンを調べる</a> </li> <li style="display: none"> <a href=/tips/xml.html>XMLの読み込み／書き込み</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/tips/network.html>ネットワーク</a> <ul> <li style="display: none"> <a href=/tips/network/tcp.html>ネットワーク - TCP</a> </li> </ul> </li> </ul> </li> </ul> </div> </div> <div class=col-md-9> <div class=row> <ol class=breadcrumb> <li> <a href=/document.html>ドキュメント</a> </li> <li> <a href=/document/version.html>リリースノート</a> </li> <li class=active> Boost 1.53.0 リリースノート </li> </ol> </div> <div class=row> <h1>Boost 1.53.0 リリースノート</h1> <p>本家リリースノート：</p> <ul> <li><a href=https://svn.boost.org/svn/boost/website/public_html/live/feed/history/boost_1_53_0.qbk target=_blank>https://svn.boost.org/svn/boost/website/public_html/live/feed/history/boost_1_53_0.qbk</a></li> </ul> <h2>新ライブラリ</h2> <ul> <li>Atomic<ul> <li>Helge Bahmannによる、C++11スタイルの<code><span style="color: #000">atomic</span></code>ライブラリ。Tim Blechmannによってメンテナンスされる。</li> </ul> </li> <li>Coroutine<ul> <li>Oliver Kowalkeによるコルーチンライブラリ</li> </ul> </li> <li>Lockfree<ul> <li>Tim Blechmannによるロックフリーデータ構造</li> </ul> </li> <li>Multiprecision<ul> <li>John MaddockとChristopher Kormanyosによる、拡張精度の算術型演算(浮動小数点数型、整数型、有理数型)。</li> </ul> </li> <li>Odeint<ul> <li>Karsten AhnertとMario Mulanskyによる、常微分方程式ライブラリ</li> </ul> </li> </ul> <h2>更新ライブラリ</h2> <ul> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#array>Array</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#algorithm>Algorithm</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#asio>Asio</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#bimap>Bimap</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#container>Container</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#context>Context</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#geometry>Geometry</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#gil>GIL</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#graph>Graph</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#hash>Hash</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#interprocess>Interprocess</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#intrusive>Intrusive</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#lexical-cast>Lexical Cast</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#locale>Locale</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#math>Math</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#minmax>MinMax</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#move>Move</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#polygon>Polygon</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#random>Random</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#range>Range</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#ratio>Ratio</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#regex>Regex</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#smart-pointers>Smart Pointers</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#string-algo>String Algo</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#thread>Thread</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#unordered>Unordered</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#utility>Utility</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#variant>Variant</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#wave>Wave</a></li> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#xpressive>Xpressive</a></li> </ul> <h2>更新ツール</h2> <ul> <li><a href=http://boostjp.github.io/document/version/1_53_0.html#build>Build</a></li> </ul> <h2><a href=http://boostjp.github.io/document/version/array name=array>Array</a></h2> <ul> <li><code><span style="color: #000">boost::get</span></code>と<code><span style="color: #000">std::get</span></code>をサポート(<a href=https://svn.boost.org/trac/boost/ticket/7652 target=_blank>#7652</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/algorithm name=algorithm>Algorithm</a></h2> <ul> <li>非ASCIIのコメントを修正(<a href=https://svn.boost.org/trac/boost/ticket/7781 target=_blank>#7781</a>)</li> <li>Knuth-Morris-Prattのドキュメントを更新(<a href=https://svn.boost.org/trac/boost/ticket/7656 target=_blank>#7656</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/asio name=asio>Asio</a></h2> <ul> <li>いくつかの64ビットから32ビットへの変換警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/7459 target=_blank>#7459</a>)</li> <li>ドキュメントとコメントの小さな間違いを修正(<a href=https://svn.boost.org/trac/boost/ticket/7761 target=_blank>#7761</a>)</li> <li><code><span style="color: #000">basic_socket::get_option()</span></code>のドキュメントにある例で、古い関数を使用していたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7562 target=_blank>#7562</a>)</li> <li>OpenSSLに合わせて、<code><span style="color: #000">SSL_CTX</span></code>に使用する型を<code><span style="color: #000">long</span></code>から<code><span style="color: #000">int</span></code>に変更(<a href=https://svn.boost.org/trac/boost/ticket/7209 target=_blank>#7209</a>)</li> <li>最近のMinGWバージョンでは、<code><span style="color: #000">_snwprintf</span></code>がコンパイルエラーとなるため、<code><span style="color: #000">swprintf</span></code>を使用するようにした(<a href=https://svn.boost.org/trac/boost/ticket/7373 target=_blank>#7373</a>)</li> <li>Windows上で<code><span style="color: #000">io_service</span></code>のスレッドプールをシャットダウンするときに、デッドロックする問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7552 target=_blank>#7552</a>)</li> <li><code><span style="color: #000">noexcept</span></code>修飾子を使うようにした(<a href=https://svn.boost.org/trac/boost/ticket/7797 target=_blank>#7797</a>)</li> <li>UNIXドメインソケットの例で、<code><span style="color: #000">accept</span></code>が致命的なエラーにならないよう修正した(<a href=https://svn.boost.org/trac/boost/ticket/7488 target=_blank>#7488</a>)</li> <li>デフォルトメモリアロケーションの振る舞いを改善するために、小さいブロックの再利用をする最適化を追加</li> </ul> <h2><a href=http://boostjp.github.io/document/version/bimap name=bimap>Bimap</a></h2> <ul> <li>エラーメッセージを改善するために、<code><span style="color: #000">map_view_iterator</span></code>をリファクタ</li> <li>情報で比較する際の<code><span style="color: #000">replace_</span></code>(<code><span style="color: #000">left</span></code>/<code><span style="color: #000">right</span></code>/<code><span style="color: #000">key</span></code>/<code><span style="color: #000">data</span></code>)のバグを修正</li> <li><code><span style="color: #000">vector_of</span></code>ビューと<code><span style="color: #000">list_of</span></code>ビューの<code><span style="color: #000">assign(size_type,value_type)</span></code>のバグを修正</li> <li><code><span style="color: #000">vector_of</span></code>ビューの<code><span style="color: #000">operator[](size_type)</span></code>と<code><span style="color: #000">at(size_type)</span></code>の戻り値を修正</li> </ul> <h2><a href=http://boostjp.github.io/document/version/chrono name=chrono>Chrono</a></h2> <p><strong>非推奨</strong></p> <ul> <li>Boost.Chrono 1.2.xに含まれていたchrono i/oを、2.0で完全にリファクタリングした</li> <li>chrono i/o : <code><span style="color: #000">duration_short</span></code>、<code><span style="color: #000">duration_long</span></code>マニピュレータを非推奨にした。その代わりに、パラメータ付きのフォーマットマニピュレータである<code><span style="color: #000">duration_fmt</span></code>、もしくは名前変更したマニピュレータである<code><span style="color: #000">duration_symbol</span></code>、<code><span style="color: #000">duration_prefix</span></code>を使用すること。</li> <li>chrono i/o : <code><span style="color: #000">duration_punct&lt;&gt;</span></code>ファセットを非推奨にした。代わりに、情報取得のために<code><span style="color: #000">get_duration_style</span></code>フリー関数、ローカライズのために<code><span style="color: #000">duration_units</span></code>ファセットを使用すること。</li> <li><code><span style="color: #000">BOOST_CHRONO_VERSION==2</span></code>とした場合、非推奨機能は使用できない。</li> </ul> <p><strong>バグ修正</strong></p> <ul> <li><code><span style="color: #000">time_point&lt;system_clock&gt;</span></code>の出力バージョンがコンパイルに失敗する問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7546 target=_blank>#7546</a>)</li> <li><code><span style="color: #000">time_point&lt;system_clock&gt;</span></code>の入力バージョンがコンパイルに失敗する問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7547 target=_blank>#7547</a>)</li> <li>chrono i/oで時間の解析が不完全だった問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7868 target=_blank>#7868</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/container name=container>Container</a></h2> <ul> <li><code><span style="color: #000">list::const_iterator</span></code>の<code><span style="color: #000">operator-&gt;()</span></code>がコンパイルエラーになる問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7650 target=_blank>#7650</a>)</li> <li><code><span style="color: #000">vector</span></code>の挿入パフォーマンスを改善</li> <li>パフォーマンス向上のために、実験的にマルチアロケーションのインタフェースを再度変更(まだ実験)</li> <li>例外無効化の環境に対応</li> <li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正</li> <li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li> </ul> <h2><a href=http://boostjp.github.io/document/version/context name=context>Context</a></h2> <ul> <li>ARMのiOS、x86(32ビット)のMacOS Xのサポートを追加</li> <li>Win32のSEH上書き保護サポートを追加</li> </ul> <h2><a href=http://boostjp.github.io/document/version/geometry name=geometry>Geometry</a></h2> <p><strong>バグ修正</strong></p> <ul> <li>内部リングが最小サイズ以下の場合(たとえば、1か2個の点)に、ポリゴンの生成を回避するようにした</li> <li><code><span style="color: #000">geometry::disjoint</span></code>へのセグメント縮退(Karsten Ahnertによるパッチ)</li> <li><code><span style="color: #000">geometry::difference</span></code>で、正接のハンドリングが不足していた問題を修正(H2からの報告)</li> <li><code><span style="color: #000">geometry::for_each</span></code>でのラムダを使用を修正</li> <li><code><span style="color: #000">geometry::comparable_distance</span></code>の<code><span style="color: #000">point-linestring</span></code>、<code><span style="color: #000">point-range</span></code>、<code><span style="color: #000">point-polygon</span></code>を修正</li> </ul> <p><strong>新機能</strong></p> <ul> <li><code><span style="color: #000">geometry::disjoint</span></code>の組み合わせ： <code><span style="color: #000">point</span></code>/<code><span style="color: #000">ring</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">polygon</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">multi_polygon</span></code></li> <li><code><span style="color: #000">geometry::intersects</span></code>の組み合わせ： <code><span style="color: #000">point</span></code>/<code><span style="color: #000">ring</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">polygon</span></code>, <code><span style="color: #000">point</span></code>/<code><span style="color: #000">multi_polygon</span></code></li> </ul> <p><strong>内部的な変更</strong></p> <ul> <li>様々なアルゴリズムの特殊バージョンと未実装バージョンを更新(以前のバージョンから引き続いての変更。これらは構造を簡略化し、より良いエラー報告をし、ドキュメント化の自動的に行う)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/gil name=gil>GIL</a></h2> <ul> <li>自己代入の警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/4919 target=_blank>#4919</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/graph name=graph>Graph</a></h2> <p><strong>バグ修正</strong></p> <ul> <li><code><span style="color: #000">kolmogorov_max_flow()</span></code>がmax flow値を見つけてこない問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/3468 target=_blank>#3468</a>, <a href=https://svn.boost.org/trac/boost/ticket/7728 target=_blank>#7728</a>)</li> <li>アルゴリズムの要件が間違っていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/4386 target=_blank>#4386</a>)</li> <li><code><span style="color: #000">depth_first_search()</span></code>に、<code><span style="color: #000">on_finish_edge</span></code>イベントを追加(<a href=https://svn.boost.org/trac/boost/ticket/5269 target=_blank>#5269</a>)</li> <li>未使用変数警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/7428 target=_blank>#7428</a>)</li> <li><code><span style="color: #000">kamada_kawai_spring_layout.hpp</span></code>のコメント誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7457 target=_blank>#7457</a>)</li> <li><code><span style="color: #000">graph</span></code>/<code><span style="color: #000">reverse_graph.hpp</span></code>の不要なセミコロンを削除(<a href=https://svn.boost.org/trac/boost/ticket/7467 target=_blank>#7467</a>)</li> <li><code><span style="color: #000">named_graph</span></code>に対する<code><span style="color: #000">add_vertex()</span></code>関数のオーバーロードが曖昧になる問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7600 target=_blank>#7600</a>)</li> <li><code><span style="color: #000">boost/graph/labeled_graph.hpp</span></code>内の誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7648 target=_blank>#7648</a>)</li> <li><code><span style="color: #000">boost/graph/tiernan_all_cycles.hpp</span></code>内の誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7684 target=_blank>#7684</a>)</li> <li><code><span style="color: #000">Graph</span></code>コンセプトの、必須ではない関連型を要件から削除(<a href=https://svn.boost.org/trac/boost/ticket/7741 target=_blank>#7741</a>)</li> <li><code><span style="color: #000">small_world_iterator</span></code>のドキュメントに、デフォルト引数が記載されていない(<a href=https://svn.boost.org/trac/boost/ticket/7771 target=_blank>#7771</a>)</li> <li><code><span style="color: #000">inserted_labeled_vertex()</span></code>でプロパティが追加されていなかったのを修正(<a href=https://svn.boost.org/trac/boost/ticket/7773 target=_blank>#7773</a>)</li> <li>Push Relabel Max Flowのドキュメント上のサンプルにあった誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7780 target=_blank>#7780</a>)</li> <li><code><span style="color: #000">Graph</span></code>コンセプトのドキュメントで、<code><span style="color: #000">examples/undirected.cpp</span></code>へのリンクが切れていたのを修正(<a href=https://svn.boost.org/trac/boost/ticket/7787 target=_blank>#7787</a>)</li> <li>その他、Tracにないいくつかのバグ修正</li> </ul> <p><strong>機能追加</strong></p> <ul> <li>複数のグラフを含むGraphMLの読み込みをサポート</li> <li><code><span style="color: #000">A*</span></code>検索の新バージョンを追加。具体的にはツリーや、同じ頂点を何度も通ることを許可するために、必要ならカラーマップを削除する。</li> <li>VF2 subgraph isomorphismアルゴリズムを追加(Flavio De Lorenziに感謝する！)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/hash name=hash>Hash</a></h2> <ul> <li>利用可能な環境で<code><span style="color: #000">boost::int128_type</span></code>と<code><span style="color: #000">boost::uint128_type</span></code>のサポートを追加</li> <li>プラットフォームが標準の浮動小数点数関数を持っている場合は、自動推論を使用しないようにした(<a href=https://svn.boost.org/trac/boost/ticket/7221 target=_blank>#7221</a>, <a href=https://svn.boost.org/trac/boost/ticket/7470 target=_blank>#7470</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/interprocess name=interprocess>Interprocess</a></h2> <ul> <li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正</li> <li>パフォーマンス向上のために、実験的にマルチアロケーションのインタフェースを再度変更(まだ実験)</li> <li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li> <li>[&lt;font color="red"&gt;ABI破壊&lt;/font&gt;] 効率改善のため、ノードプールアロケータを内部的に変更</li> <li>ファイルマッピングのデータ構造を作る際、小さいサイズを指定するとクラッシュする問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7795 target=_blank>#7795</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/intrusive name=intrusive>Intrusive</a></h2> <ul> <li>GCCの<code><span style="color: #000">-Wshadow</span></code>警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/7174 target=_blank>#7174</a>)</li> <li>等値キーの要素が挿入される位置についてドキュメントに記載(<a href=https://svn.boost.org/trac/boost/ticket/7529 target=_blank>#7529</a>)</li> <li><code><span style="color: #000">boost/intrusive/detail/has_member_function_callable_with.hpp</span></code>でのコンパイルエラーを修正。<code><span style="color: #000">const</span></code>付きの型を継承していた(<a href=https://svn.boost.org/trac/boost/ticket/7815 target=_blank>#7815</a>)</li> <li>侵入コンテナのコンストラクタに、不足していた<code><span style="color: #000">explicit</span></code>を付けた</li> <li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li> </ul> <h2><a href=http://boostjp.github.io/document/version/lexical-cast name=lexical-cast>Lexical Cast</a></h2> <ul> <li>ユーザー定義クラスのための、新たな文字型(<code><span style="color: #000">char16_t</span></code>/<code><span style="color: #000">char32_t</span></code>)検出アルゴリズム(<a href=https://svn.boost.org/trac/boost/ticket/6786 target=_blank>#6786</a>)</li> <li>ドキュメント更新(<a href=https://svn.boost.org/trac/boost/ticket/7582 target=_blank>#7582</a>, <a href=https://svn.boost.org/trac/boost/ticket/7831 target=_blank>#7831</a>)</li> <li><code><span style="color: #000">std::array</span></code>の変換が、最適化の効かない書き方になっていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7799 target=_blank>#7799</a>)</li> <li>g++で<code><span style="color: #000">-ftrapvオプション</span></code> (trap overflow errors : オーバーフローを検知して<code><span style="color: #000">abort()</span></code>させる)をつけるとエラーになるケースを修正(<a href=https://svn.boost.org/trac/boost/ticket/7814 target=_blank>#7814</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/locale name=locale>Locale</a></h2> <ul> <li>セキュリティ関連のバグ修正。いくつかの不正なUTF-8シーケンスを、有効なものとして受け入れていた(<a href=https://svn.boost.org/trac/boost/ticket/7743 target=_blank>#7743</a>)</li> <li>Windowsのコードページ名として不正な名前を使用していたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7386 target=_blank>#7386</a>)</li> <li>Doxygenのフォーマットミスによって、ドキュメントが不足していたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7734 target=_blank>#7734</a>)</li> <li>いくつかの場所で <code><span style="color: #000">std::</span></code> 指定が抜けていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7701 target=_blank>#7701</a>)</li> <li>いくつかの誤字と、英語の構文を修正(<a href=https://svn.boost.org/trac/boost/ticket/7368 target=_blank>#7368</a>, <a href=https://svn.boost.org/trac/boost/ticket/7762 target=_blank>#7762</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/math name=math>Math</a></h2> <ul> <li>問題点の修正：<ul> <li>Lanczos近似の背景ドキュメントの誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7325 target=_blank>#7325</a>)</li> <li><code><span style="color: #000">atanh()</span></code>の正の値を渡した場合、<code><span style="color: #000">domain_error</span></code>例外が送出されるべきだが、<code><span style="color: #000">overflow</span></code>例外が送出されていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7415 target=_blank>#7415</a>)</li> <li><code><span style="color: #000">asinh()</span></code>のエラーポリシーとして<code><span style="color: #000">ignore_error</span></code>を設定していても、大きな負数を渡すと<code><span style="color: #000">overflow</span></code>例外が送出されてしまう問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7416 target=_blank>#7416</a>)</li> <li>FBSD環境での<code><span style="color: #000">isinf()</span></code>のコンパイルエラーを修正(<a href=https://svn.boost.org/trac/boost/ticket/7183 target=_blank>#7183</a>)</li> <li><code><span style="color: #000">boost/math/constants/calculate_constants.hpp</span></code>ヘッダのコメント誤字を修正(<a href=https://svn.boost.org/trac/boost/ticket/7649 target=_blank>#7649</a>)</li> <li><code><span style="color: #000">math/minimax/main.cpp</span></code>に、インクルードするヘッダが足りていなかったので修正(<a href=https://svn.boost.org/trac/boost/ticket/7694 target=_blank>#7694</a>)</li> <li><code><span style="color: #000">float_advance()</span></code>に非正規化数として0を設定するとスタックオーバーフローする問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/4445 target=_blank>#4445</a>)</li> <li>libc++でコンパイルが通らない問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7492 target=_blank>#7492</a>)</li> </ul> </li> <li>two-sample students tの例が間違っていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7402 target=_blank>#7402</a>)</li> <li><code><span style="color: #000">complex</span></code>の<code><span style="color: #000">acos</span></code>/<code><span style="color: #000">asin</span></code>/<code><span style="color: #000">atan</span></code>を改善(<a href=https://svn.boost.org/trac/boost/ticket/7290 target=_blank>#7290</a>, <a href=https://svn.boost.org/trac/boost/ticket/7291 target=_blank>#7291</a>)</li> <li><code><span style="color: #000">cyl_bessel_j</span></code>と<code><span style="color: #000">gamma_p</span></code>/<code><span style="color: #000">gamma_q</span></code>のいくつかのコーナーケースで精度を改善。Rocco Romeoに感謝する。</li> <li>整数でのベッセルJとYの精度を改善。Rocco Romeoに感謝する。</li> </ul> <h2><a href=http://boostjp.github.io/document/version/minmax name=minmax>MinMax</a></h2> <ul> <li>カンマ演算子の誤用を修正(<a href=https://svn.boost.org/trac/boost/ticket/7752 target=_blank>#7752</a>)</li> <li>ドキュメント上の壊れたリンクを修正(<a href=https://svn.boost.org/trac/boost/ticket/7751 target=_blank>#7751</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/move name=move>Move</a></h2> <ul> <li><code><span style="color: #000">boost/move/move.hpp</span></code>に全ての機能を入れていたので、<code><span style="color: #000">core.hpp</span></code>と<code><span style="color: #000">utility.hpp</span></code>に分離した(<a href=https://svn.boost.org/trac/boost/ticket/6524 target=_blank>#6524</a>)</li> <li>ドキュメントの小さな修正</li> <li>非推奨マクロ<code><span style="color: #000">BOOST_NO_XXXX</span></code>の代わりに<code><span style="color: #000">BOOST_NO_CXX11_XXX</span></code>を使用するよう置き換えた</li> <li><code><span style="color: #000">uninitialized_move()</span></code>の実装に、例外のチェックが抜けていた(<a href=https://svn.boost.org/trac/boost/ticket/7830 target=_blank>#7830</a>)</li> <li>マクロの不足と間違いを修正(<a href=https://svn.boost.org/trac/boost/ticket/7832 target=_blank>#7832</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/polygon name=polygon>Polygon</a></h2> <p><strong>修正</strong></p> <ul> <li><code><span style="color: #000">boost::polygon::contains()</span></code>が、含まれていても<code><span style="color: #000">false</span></code>を返す場合があったのを修正(<a href=https://svn.boost.org/trac/boost/ticket/6366 target=_blank>#6366</a>)</li> <li><code><span style="color: #000">boost::polygon::belongs()</span></code>の、ODR違反によるリンクエラーを修正(<a href=https://svn.boost.org/trac/boost/ticket/7678 target=_blank>#7678</a>)</li> </ul> <p><strong>内部的な変更</strong></p> <ul> <li><code><span style="color: #000">point</span></code>/<code><span style="color: #000">segment</span></code>/<code><span style="color: #000">interval</span></code>と<code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>をリファクタ</li> <li><code><span style="color: #000">point</span></code>と<code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>区間のユニットテストを追加</li> <li><code><span style="color: #000">transform.hpp</span></code>の2次元操作を簡略化</li> <li><code><span style="color: #000">point_3d</span></code> <code><span style="color: #000">data</span></code>/<code><span style="color: #000">concept</span></code>/<code><span style="color: #000">traits</span></code>を削除</li> </ul> <h2><a href=http://boostjp.github.io/document/version/random name=random>Random</a></h2> <ul> <li>例外が無効な状態で、コンパイルが通るように修正(<a href=https://svn.boost.org/trac/boost/ticket/5399 target=_blank>#5399</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/range name=range>Range</a></h2> <ul> <li><code><span style="color: #000">range/any_range.hpp</span></code>にインクルードが不足している問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/5603 target=_blank>#5603</a>)</li> <li><code><span style="color: #000">search_n</span></code>の実装詳細名前空間が<code><span style="color: #000">boost::range::range_detail</span></code>になっていたので、他に合わせて<code><span style="color: #000">boost::range_detail</span></code>に修正(<a href=https://svn.boost.org/trac/boost/ticket/6103 target=_blank>#6103</a>)</li> <li>いくつかのドキュメント修正</li> </ul> <h2><a href=http://boostjp.github.io/document/version/ratio name=ratio>Ratio</a></h2> <ul> <li>クラステンプレート<code><span style="color: #000">br_mul</span></code>のメンバ変数<code><span style="color: #000">nan</span></code>の初期値のシフト演算において、シフトカウントがマイナスになったり、大きすぎる数になった場合に、未定義動作を引き起こすという警告が発生する問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7616 target=_blank>#7616</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/regex name=regex>Regex</a></h2> <ul> <li><code><span style="color: #000">make_u32regex()</span></code>のUTF-8検証が不十分だったので修正(<a href=https://svn.boost.org/trac/boost/ticket/7744 target=_blank>#7744</a>)</li> <li>gcc4.7.2でC++11オプションを有効にした際の警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/7644 target=_blank>#7644</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/smart-pointers name=smart-pointers>Smart Pointers</a></h2> <p><strong>新機能</strong></p> <ul> <li>Glen Fernandes氏による、配列用の<code><span style="color: #000">make_shared</span></code>と<code><span style="color: #000">allocate_shared</span></code>実装を取り込んだ。これにより、デフォルト初期化と値なし初期化についてのオーバーロードと同じく、コンストラクタ実引数かinitializer listで初期化されうる配列についてのシングルアロケーションが可能になった。詳細はこちら[<a href=http://www.boost.org/doc/libs/1_53_0/libs/smart_ptr/make_shared_array.html target=_blank>/libs/smart_ptr/make_shared_array.html make_shared and allocate_shared for arrays</a>]を参照のこと。</li> <li><code><span style="color: #000">shared_ptr</span></code>を、配列へのポインタを保持できるようにした。これには、テンプレートパラメータで配列型(<code><span style="color: #000">T[]</span></code>もしくは<code><span style="color: #000">T[N]</span></code>)を指定する。</li> <li>C++11コンパイラでは<code><span style="color: #000">explicit operator bool()</span></code>を使用するようにした。これは、以下のようなケースでコードを破壊する： 1. <code><span style="color: #000">bool</span></code>をとる関数にスマートポインタを渡しているコード 2. <code><span style="color: #000">bool</span></code>を返す関数でスマートポインタを返しているコードこのようなケースでは、 <code><span style="color: #000">p != 0</span></code> もしくは <code><span style="color: #000">!!p</span></code> を使用してください</li> <li>[追加リリースノート] だいぶ前から非推奨だった<code><span style="color: #000">shared_ptr</span></code>の<code><span style="color: #000">value_type</span></code>を削除した。代わりに<code><span style="color: #000">element_type</span></code>を使用すること。</li> </ul> <h2><a href=http://boostjp.github.io/document/version/string-algo name=string-algo>String Algo</a></h2> <ul> <li>パターンがオーバーラップしている時に、オーバーラップしている箇所がヒットしない問題を修正 (<a href=https://svn.boost.org/trac/boost/ticket/7784 target=_blank>#7784</a>)</li> <li>あいまいな<code><span style="color: #000">insert</span></code>呼び出しを排除 (<a href=https://svn.boost.org/trac/boost/ticket/7346 target=_blank>#7346</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/thread name=thread>Thread</a></h2> <p><strong>廃止された機能</strong></p> <ul> <li>boost 1.53で廃止された機能はboost 1.58までは利用可能である</li> <li>C++11準拠： <code><span style="color: #000">packaged_task&lt;R&gt;</span></code>を廃止した。以降は<code><span style="color: #000">packaged_task&lt;R()&gt;</span></code>を使うこと</li> <li><code><span style="color: #000">Mutex::scoped_lock</span></code>、<code><span style="color: #000">scoped_try_lock</span></code>、<code><span style="color: #000">boost::condition</span></code>を廃止にした(<a href=https://svn.boost.org/trac/boost/ticket/7537 target=_blank>#7537</a>)</li> </ul> <p><strong>新機能</strong></p> <ul> <li>C++11準拠： ムーブ可能な関数オブジェクトと実引数をとれる<code><span style="color: #000">thread</span></code>コンストラクタを追加(<a href=https://svn.boost.org/trac/boost/ticket/6270 target=_blank>#6270</a>)</li> <li>C++11準拠： システムまわりの関数に<code><span style="color: #000">noexcept</span></code>をつけた(<a href=https://svn.boost.org/trac/boost/ticket/7279 target=_blank>#7279</a>)</li> <li>C++11準拠： <code><span style="color: #000">promise</span></code>::<code><span style="color: #000">…at_thread_exit</span></code>関数を追加(<a href=https://svn.boost.org/trac/boost/ticket/7280 target=_blank>#7280</a>)</li> <li>C++11準拠： <code><span style="color: #000">packaged_task</span></code>テンプレートに<code><span style="color: #000">ArgTypes</span></code>を追加(<a href=https://svn.boost.org/trac/boost/ticket/7281 target=_blank>#7281</a>)</li> <li>C++11準拠： <code><span style="color: #000">packaged_task::make_ready_at_thread_exit</span></code>関数を追加(<a href=https://svn.boost.org/trac/boost/ticket/7282 target=_blank>#7282</a>)</li> <li>C++11準拠： ムーブ可能な関数オブジェクトと実引数をとれる<code><span style="color: #000">async</span></code>を追加(<a href=https://svn.boost.org/trac/boost/ticket/7412 target=_blank>#7412</a>)</li> <li>C++11準拠： <code><span style="color: #000">launch</span></code>ポリシーが<code><span style="color: #000">defferred</span></code>のとき、<code><span style="color: #000">async</span></code>を追加する(<a href=https://svn.boost.org/trac/boost/ticket/7413 target=_blank>#7413</a>)</li> <li>C++11準拠： <code><span style="color: #000">future::get</span></code> の事後条件が <code><span style="color: #000">valid()==false</span></code> になるようにした(<a href=https://svn.boost.org/trac/boost/ticket/7414 target=_blank>#7414</a>)</li> <li>ゼロオーバーヘッドな<code><span style="color: #000">condition_variable</span></code>を提供(<a href=https://svn.boost.org/trac/boost/ticket/7422 target=_blank>#7422</a>)</li> <li>Async: <code><span style="color: #000">make_future</span></code>と<code><span style="color: #000">make_shared_future</span></code>を追加(<a href=https://svn.boost.org/trac/boost/ticket/7444 target=_blank>#7444</a>)</li> <li>Thread: デストラクタで<code><span style="color: #000">thread</span></code>を<code><span style="color: #000">join</span></code>するヘルパークラスを追加(<a href=https://svn.boost.org/trac/boost/ticket/7540 target=_blank>#7540</a>)</li> <li>Thread: デストラクタで<code><span style="color: #000">thread</span></code>を<code><span style="color: #000">join</span></code>する<code><span style="color: #000">thread</span></code>のラッパークラスを追加(<a href=https://svn.boost.org/trac/boost/ticket/7541 target=_blank>#7541</a>)</li> <li>C++11準拠： <code><span style="color: #000">async</span></code>で作成した<code><span style="color: #000">future</span></code>がデストラクタで<code><span style="color: #000">join</span></code>するようにした(<a href=https://svn.boost.org/trac/boost/ticket/7575 target=_blank>#7575</a>)</li> <li>Synchro: <code><span style="color: #000">strict_lock</span></code>と<code><span style="color: #000">nested_strict_lock</span></code>を追加(<a href=https://svn.boost.org/trac/boost/ticket/7587 target=_blank>#7587</a>)</li> <li>Synchro: 依存関係を制限するために<code><span style="color: #000">locks.hpp</span></code>を分割した(<a href=https://svn.boost.org/trac/boost/ticket/7588 target=_blank>#7588</a>)</li> <li>Synchro: Boost.ConceptCheckを利用して"ロック可能コンセプト"チェッカーを追加した(<a href=https://svn.boost.org/trac/boost/ticket/7590 target=_blank>#7590</a>)</li> <li><code><span style="color: #000">enable_if</span></code>で使える"ロック可能トレイト"を追加(<a href=https://svn.boost.org/trac/boost/ticket/7591 target=_blank>#7591</a>)</li> <li>Synchro: なにもしない、<code><span style="color: #000">UpgardeLockable</span></code>コンセプトに適合する<code><span style="color: #000">null_mutex</span></code>を追加(<a href=https://svn.boost.org/trac/boost/ticket/7592 target=_blank>#7592</a>)</li> <li>Synchro: <code><span style="color: #000">externally_locked</span></code>クラスを追加(<a href=https://svn.boost.org/trac/boost/ticket/7593 target=_blank>#7593</a>)</li> <li>Threads: スレッド中断禁止設定を追加(<a href=https://svn.boost.org/trac/boost/ticket/7590 target=_blank>#7594</a>)</li> </ul> <p><strong>バグ修正</strong></p> <ul> <li>回帰テストツールで、データ競合によって<code><span style="color: #000">BOOST_TEST(n_alive == 1);</span></code>が失敗する問題を修正(<a href=https://svn.boost.org/trac/boost/ticket/7464 target=_blank>#7464</a>)</li> <li><code><span style="color: #000">condition_variable::generations</span></code>メンバ関数が<code><span style="color: #000">notify_one</span></code>か<code><span style="color: #000">notify_all</span></code>を呼び続ける状態になり、メモリー消費とパフォーマンスに甚大な影響を及してしまう(<a href=https://svn.boost.org/trac/boost/ticket/7657 target=_blank>#7657</a>)</li> <li>スレッド内で<code><span style="color: #000">this_thread::sleep_for</span></code> はもう<code><span style="color: #000">steady_clock</span></code>を使わない(<a href=https://svn.boost.org/trac/boost/ticket/7665 target=_blank>#7665</a>)</li> <li><code><span style="color: #000">thread_group::join_all()</span></code>は<code><span style="color: #000">thread</span></code>が<code><span style="color: #000">join</span></code>可能かチェックすべき(<a href=https://svn.boost.org/trac/boost/ticket/7668 target=_blank>#7668</a>)</li> <li><code><span style="color: #000">thread_group::join_all()</span></code>は<code><span style="color: #000">resource_deadlock_would_occur</span></code>を<code><span style="color: #000">catch</span></code>すべき(<a href=https://svn.boost.org/trac/boost/ticket/7669 target=_blank>#7669</a>)</li> <li><code><span style="color: #000">lockable_traits.hpp</span></code>の"defined"トークンがtypoしている(<a href=https://svn.boost.org/trac/boost/ticket/7672 target=_blank>#7672</a>)</li> <li><code><span style="color: #000">boost::future</span></code>の<code><span style="color: #000">set_wait_callback</span></code>のスレッドセーフ問題(<a href=https://svn.boost.org/trac/boost/ticket/7798 target=_blank>#7798</a>)</li> <li><code><span style="color: #000">this_thread::sleep_for</span></code>と<code><span style="color: #000">this_thread::sleep_until</span></code>の説明が正しくない(<a href=https://svn.boost.org/trac/boost/ticket/7808 target=_blank>#7808</a>)</li> <li><code><span style="color: #000">cv_status::no_timeout</span></code>が<code><span style="color: #000">rel_time</span></code>で指定した時間を越えたときに返却されている。<code><span style="color: #000">cv_status::timeout</span></code>であるべき(<a href=https://svn.boost.org/trac/boost/ticket/7812 target=_blank>#7812</a>)</li> <li><code><span style="color: #000">thread::id</span></code>に、シンボル可視の属性が付いていなかったことによる警告を修正(<a href=https://svn.boost.org/trac/boost/ticket/7874 target=_blank>#7874</a>)</li> <li><code><span style="color: #000">BOOST_THREAD_THROW_IF_PRECONDITION_NOT_SATISFIED</span></code>をデフォルトで有効にするよう修正(<a href=https://svn.boost.org/trac/boost/ticket/7875 target=_blank>#7875</a>)</li> <li><code><span style="color: #000">condition_variable::wait(unique_lock&lt;mutex&gt;&amp;)</span></code>で発生する例外のメッセージが不適切だったので修正(<a href=https://svn.boost.org/trac/boost/ticket/7882 target=_blank>#7882</a>)</li> <li><code><span style="color: #000">thread::do_try_join_until()</span></code>に戻り値の型が抜けていたので修正(<a href=https://svn.boost.org/trac/boost/ticket/7890 target=_blank>#7890</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/unordered name=unordered>Unordered</a></h2> <ul> <li>標準以前の古いvariadic pairコンストラクタのサポートを外し、同等の実装をしなおした。いずれもBoost 1.48からdeprecated指定である。</li> <li><code><span style="color: #000">erase</span></code>のより単純な実装の導入や、deprecated指定されていたコンフィグマクロの除去など、内部実装をさらに変更した。</li> </ul> <h2><a href=http://boostjp.github.io/document/version/utility name=utility>Utility</a></h2> <ul> <li>文字列への所有権を持たない参照を保持する<code><span style="color: #000">string_ref</span></code>クラスを追加</li> </ul> <h2><a href=http://boostjp.github.io/document/version/variant name=variant>Variant</a></h2> <ul> <li>C++11環境に対してのみだが、ムーブコンストラクタとムーブ代入演算子を追加した。Variantライブラリは今、コピー不可でムーブ可なオブジェクトが使用できる(<a href=https://svn.boost.org/trac/boost/ticket/7620 target=_blank>#7620</a>, <a href=https://svn.boost.org/trac/boost/ticket/7576 target=_blank>#7576</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/wave name=wave>Wave</a></h2> <ul> <li><code><span style="color: #000">context&lt;&gt;::add_macro_definition</span></code>がマクロ置換リストにまれに余計な<code><span style="color: #000">T_EOF</span></code>を追加する問題を修正</li> </ul> <h2><a href=http://boostjp.github.io/document/version/xpressive name=xpressive>Xpressive</a></h2> <ul> <li>最近のスマートポインタに対応するための修正(<a href=https://svn.boost.org/trac/boost/ticket/7809 target=_blank>#7809</a>)</li> </ul> <h2><a href=http://boostjp.github.io/document/version/build name=build>Build</a></h2> <ul> <li>Qt5ツールセット</li> <li>rccサポートを改善(<a href=https://svn.boost.org/trac/boost/ticket/7576 target=_blank>#7576</a>)</li> </ul> <h2>テスト済みコンパイラ</h2> <ul> <li>Linux:<ul> <li>GCC: 4.1.2, 4.2.4, 4.4.4, 4.5.3, 4.6.3, 4.7.2</li> <li>GCC, C++11 mode: 4.4.4, 4.5.3, 4.6.3, 4.7.2</li> <li>Intel: 11.1, 12.1</li> <li>LLVM Clang: 2.8</li> <li>LLVM Clang, with libc++: 3.2</li> </ul> </li> <li>OS X:<ul> <li>GCC: 4.4.7</li> <li>GCC, C++11 mode: 4.4.4</li> <li>Intel: 11.1, 12.0</li> </ul> </li> <li>Windows:<ul> <li>Visual C++: 9.0, 10.0</li> </ul> </li> <li>FreeBSD:<ul> <li>GCC: 4.2.1, 32 and 64 bit</li> </ul> </li> </ul> <p>追加のテストコンパイラ：</p> <ul> <li>Linux:<ul> <li>Cray: 4.6.1</li> <li>Clang: from subversion</li> <li>LLVM Clang, with libc++: 3.2</li> <li>GCC: 4.2.4, 4.4.4, 4.5.3, 4.6.3, 4.7.1</li> <li>GCC, C++11 mode: 4.4.4, 4.5.3, 4.6.3, 4.7.1, 4.7.2</li> <li>pgCC: 11.9</li> <li>Intel: 10.1, 11.1, 12.1</li> <li>Intel, C++11 mode: 13.0.1</li> <li>Visual Age:</li> </ul> </li> <li>OS X:<ul> <li>Clang: from subversion</li> <li>Clang, C++11 mode: from subversion</li> <li>Intel: 11.1, 12.0</li> <li>GCC: 4.4.7</li> <li>GCC, C++11 mode: 4.4.4</li> </ul> </li> <li>Windows:<ul> <li>Visual C++: 10.0, 11.0</li> <li>Visual C++ with STLport: 9.0</li> <li>Visual C++, Windows Mobile 5, with STLport: 9.0</li> </ul> </li> <li>AIX:<ul> <li>IBM XL C/C++ Enterprise Edition: V12.1.0.1</li> </ul> </li> </ul> <h2>翻訳</h2> <p>Akira Takahashi, Takatoshi Kondo, zak</p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>
             window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
         </script>
-    <![endif]-->
-</html>
+    <![endif]--> </html>

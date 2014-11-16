@@ -1,80 +1,133 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
-    <head>
-        <meta charset="UTF-8">
-
-        <title>memory_mapped_file</title>
-
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-
-<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<!-- <link rel="stylesheet" href="/static/css/root.css"> -->
-
-<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- <script src="//platform.twitter.com/widgets.js"></script> -->
-
-<!-- <script src="/static/js/root.js"></script> -->
-
-
-        <!--[if lt IE 9]>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=en> <!--<![endif]--> <head><meta charset=UTF-8><title>メモリマップドファイル - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <script>
+        <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
-        </script>
-    </head>
-    <body>
-<header>
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#boostjp-navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">boostjp : Boost日本語情報サイト</a>
-      </div>
+        </script><style type=text/css>
+.tree{
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  -webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  -moz-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);
+  background-color:#fbfbfb;
+  border:1px solid #999;
+  margin-bottom:10px;
+  /*max-height:300px;*/
+  /*min-height:20px;*/
+  /*overflow-y:auto;*/
+  padding:3px
+}
+.tree ul {
+  padding-left:32px
+}
+.tree > ul{
+  padding-left:0px
+}
+.tree a{
+  display:inline;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  width:90%
+}
+.tree li{
+  list-style-type:none;
+  margin:0;
+  padding:4px 0 0 2px;
+  position:relative
+}
+.tree li::before,.tree li::after{
+  content:'';
+  left:-20px;
+  position:absolute;
+  right:auto
+}
+.tree li::before{
+  border-left:1px solid #999;
+  bottom:50px;
+  height:100%;
+  top:0;
+  width:1px;
+  -webkit-transition:"border-color 0.1s ease 0.1s";
+  -moz-transition:"border-color 0.1s ease 0.1s";
+  -o-transition:"border-color 0.1s ease 0.1s";
+  transition:"border-color 0.1s ease 0.1s"
+}
+.tree li::after{
+  border-top:1px solid #999;
+  height:20px;
+  top:13px;
+  width:23px;
+  -webkit-transition:"border-color 0.1s ease 0.1s";
+  -moz-transition:"border-color 0.1s ease 0.1s";
+  -o-transition:"border-color 0.1s ease 0.1s";
+  transition:"border-color 0.1s ease 0.1s"
+}
+.tree li span{
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  border:1px solid #999;
+  border-radius:5px;
+  display:inline-block;
+  line-height:14px;
+  padding:2px 4px;
+  text-decoration:none;
+  -webkit-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  -moz-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  -o-transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s;
+  transition:color .2s ease .1s,background-color .2s ease .1s,border-color .3s ease .2s
+}
+.tree li.parent_li>span{cursor:pointer}
+.tree li.parent_li>span:hover{
+  background-color:#df8505;
+  border:1px solid #c67605;
+  color:#fff
+}
+.tree li.parent_li>span:hover+ul li::after{border-top-color:#f89406}
+.tree li.parent_li>span:hover+ul li::before{border-left-color:#f89406}
+.tree li.parent_li>span:hover+ul li span{
+  background:#fddfb3;
+  border:1px solid #faa937;
+  color:#000
+}
+.tree li:last-child::before{height:30px}
+.tree>ul>li::before,.tree>ul>li::after{border:0}
+        </style><script>
+$(document).ready(function() {
+    $('.tree > ul')
+        .attr('role', 'tree')
+        .find('ul')
+        .attr('role', 'group');
+    $('.tree')
+        .find('li:has(ul)')
+        .addClass('parent_li')
+        .attr('role', 'treeitem')
+        .find(' > span')
+        .attr('title', 'Collapse this branch')
+        .on('click', function (e) {
 
-      <div class="collapse navbar-collapse" id="boostjp-navbar-collapse">
-        <form class="navbar-form navbar-right" role="search">
-          <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
-          </div>
-          <button type="submit" class="btn btn-default">検索</button>
-        </form>
-      </div>
-    </div>
-  </nav>
-</header>
-
-        <main id="main" role="main">
-            <div class="container-fluid">
-<div class="row">
-  <div class="col-md-2">
-<ul><li><a href="/study_meeting.html">study_meeting</a></li><li><a href="/communities.html">communities</a></li><li><a href="/archive.html">archive</a></li><li><a href="/document.html">document</a></li><li><a href="/boostcon.html">boostcon</a></li><li><a href="/tips.html">tips</a></li><li><a href="/the-team.html">the-team</a></li><li><a href="/cppnow.html">cppnow</a></li><li><a href="/mailing-lists.html">mailing-lists</a></li><li><a href="/howtobuild.html">howtobuild</a></li><li><a href="/used_project.html">used_project</a></li><li><a href="/index.html">index</a></li><li><a href="/tips/noncopyable.html">noncopyable</a></li><li><a href="/tips/move.html">move</a></li><li><a href="/tips/math.html">math</a></li><li><a href="/tips/initialize.html">initialize</a></li><li><a href="/tips/string_algo.html">string_algo</a></li><li><a href="/tips/signals.html">signals</a></li><li><a href="/tips/mpi.html">mpi</a></li><li><a href="/tips/lockfree-queue.html">lockfree-queue</a></li><li><a href="/tips/logging.html">logging</a></li><li><a href="/tips/version.html">version</a></li><li><a href="/tips/format.html">format</a></li><li><a href="/tips/multi_index.html">multi_index</a></li><li><a href="/tips/ini.html">ini</a></li><li><a href="/tips/filesystem.html">filesystem</a></li><li><a href="/tips/partial_eval.html">partial_eval</a></li><li><a href="/tips/dynamic_assert.html">dynamic_assert</a></li><li><a href="/tips/multiprec-int.html">multiprec-int</a></li><li><a href="/tips/finite_state_machine.html">finite_state_machine</a></li><li><a href="/tips/geometry.html">geometry</a></li><li><a href="/tips/tuple.html">tuple</a></li><li><a href="/tips/dynamic_type.html">dynamic_type</a></li><li><a href="/tips/linear-algebra.html">linear-algebra</a></li><li><a href="/tips/dynamic_bitset.html">dynamic_bitset</a></li><li><a href="/tips/timer.html">timer</a></li><li><a href="/tips/named_parameter.html">named_parameter</a></li><li><a href="/tips/io_state.html">io_state</a></li><li><a href="/tips/scope_guard.html">scope_guard</a></li><li><a href="/tips/interval_arithmetic.html">interval_arithmetic</a></li><li><a href="/tips/date_time.html">date_time</a></li><li><a href="/tips/lockfree-stack.html">lockfree-stack</a></li><li><a href="/tips/program_options.html">program_options</a></li><li><a href="/tips/hashmap.html">hashmap</a></li><li><a href="/tips/multi_array.html">multi_array</a></li><li><a href="/tips/serialize.html">serialize</a></li><li><a href="/tips/list.html">list</a></li><li><a href="/tips/statistics.html">statistics</a></li><li><a href="/tips/memory_mapped_file.html">memory_mapped_file</a></li><li><a href="/tips/priority_sort.html">priority_sort</a></li><li><a href="/tips/static_assert.html">static_assert</a></li><li><a href="/tips/constcond_overload.html">constcond_overload</a></li><li><a href="/tips/uuid.html">uuid</a></li><li><a href="/tips/lambda.html">lambda</a></li><li><a href="/tips/network.html">network</a></li><li><a href="/tips/random.html">random</a></li><li><a href="/tips/parser.html">parser</a></li><li><a href="/tips/graph.html">graph</a></li><li><a href="/tips/array.html">array</a></li><li><a href="/tips/build_link.html">build_link</a></li><li><a href="/tips/thread.html">thread</a></li><li><a href="/tips/optional.html">optional</a></li><li><a href="/tips/static_regex.html">static_regex</a></li><li><a href="/tips/unit_test.html">unit_test</a></li><li><a href="/tips/operators.html">operators</a></li><li><a href="/tips/noncopyable_container.html">noncopyable_container</a></li><li><a href="/tips/cxx11-boost-mapping.html">cxx11-boost-mapping</a></li><li><a href="/tips/foreach.html">foreach</a></li><li><a href="/tips/config.html">config</a></li><li><a href="/tips/iterator.html">iterator</a></li><li><a href="/tips/build.html">build</a></li><li><a href="/tips/dynamic_regex.html">dynamic_regex</a></li><li><a href="/tips/json.html">json</a></li><li><a href="/tips/smart_ptr.html">smart_ptr</a></li><li><a href="/tips/xml.html">xml</a></li><li><a href="/tips/circular_buffer.html">circular_buffer</a></li><li><a href="/tips/type_traits.html">type_traits</a></li><li><a href="/tips/function.html">function</a></li><li><a href="/tips/template_page.html">template_page</a></li><li><a href="/tips/variant.html">variant</a></li><li><a href="/tips/multiprec-float.html">multiprec-float</a></li><li><a href="/editors_doc/start_editing.html">start_editing</a></li><li><a href="/boostcon/2011.html">2011</a></li><li><a href="/boostcon/2010.html">2010</a></li><li><a href="/archive/propose.html">propose</a></li><li><a href="/archive/boost_docs.html">boost_docs</a></li><li><a href="/archive/cpp_online_reading.html">cpp_online_reading</a></li><li><a href="/cppnow/2014.html">2014</a></li><li><a href="/cppnow/2012.html">2012</a></li><li><a href="/cppnow/2013.html">2013</a></li><li><a href="/document/version.html">version</a></li><li><a href="/document/boostserialization.html">boostserialization</a></li><li><a href="/document/boost-range-algorithm-kansu-no-susume.html">boost-range-algorithm-kansu-no-susume</a></li><li><a href="/study_meeting/study5.html">study5</a></li><li><a href="/study_meeting/study6.html">study6</a></li><li><a href="/study_meeting/year-end-party2010-sapporo.html">year-end-party2010-sapporo</a></li><li><a href="/study_meeting/idea.html">idea</a></li><li><a href="/study_meeting/study14.html">study14</a></li><li><a href="/study_meeting/study13.html">study13</a></li><li><a href="/study_meeting/study10.html">study10</a></li><li><a href="/study_meeting/study4.html">study4</a></li><li><a href="/study_meeting/study16.html">study16</a></li><li><a href="/study_meeting/study8.html">study8</a></li><li><a href="/study_meeting/study11.html">study11</a></li><li><a href="/study_meeting/year-end-party2010-tokyo.html">year-end-party2010-tokyo</a></li><li><a href="/study_meeting/study12.html">study12</a></li><li><a href="/study_meeting/study9.html">study9</a></li><li><a href="/study_meeting/reversed_index.html">reversed_index</a></li><li><a href="/study_meeting/study7.html">study7</a></li><li><a href="/study_meeting/study1.html">study1</a></li><li><a href="/study_meeting/study3.html">study3</a></li><li><a href="/study_meeting/study15.html">study15</a></li><li><a href="/study_meeting/study2.html">study2</a></li><li><a href="/study_meeting/year-end-party2010-nagoya.html">year-end-party2010-nagoya</a></li></ul>
-  </div>
-  <div class="col-md-10">
-<h1>メモリマップドファイル</h1>
-<p>メモリマップドファイルには<a href="http://www.boost.org/doc/libs/release/doc/html/interprocess.html" target="_blank"> Boost Interprocess Library</a> を使用する。</p>
-<p>Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、<a href="http://www.boost.org/doc/libs/release/doc/html/date_time.html" target="_blank">Boost DateTime Library</a> を利用している箇所があるため注意すること。</p>
-<p>またこのページでManaged Memory Segmentsについての記述は基本的に<code><span style="color: #000">managed_mapped_file</span></code>以外のクラス(<code><span style="color: #000">managed_shared_memory</span></code>など)でも同様の動作を行う。</p>
-<h2>インデックス</h2>
-<ul>
-<li><a href="http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping">存在しているファイルからマッピングする</a></li>
-<li><a href="http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer">ファイルをテンポラリバッファとしての利用する</a></li>
-<li><a href="http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping">ファイルをコンテナにマッピングする</a></li>
-</ul>
-<h2><a href="http://boostjp.github.io/tips/file-mapping" name="file-mapping">存在しているファイルからマッピングする</a></h2>
-<p>既に存在しているファイルをマッピングするには、<code><span style="color: #000">boost::interprocess::file_mapping</span></code>クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、<code><span style="color: #000">boost::interprocess::mapped_region</span></code>クラスでビューを作成してアクセスする。</p>
-<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">namespace ipc = boost::interprocess;
+        var children = $(this).parent('li.parent_li').find(' > ul > li');
+        if (children.is(':visible')) {
+            children.hide('fast');
+            $(this)
+                .attr('title', 'Expand this branch')
+                .find(' > i')
+                .addClass('glyphicon-plus')
+                .removeClass('glyphicon-minus');
+        }
+        else {
+            children.show('fast');
+            $(this)
+                .attr('title', 'Collapse this branch')
+                .find(' > i')
+                .addClass('glyphicon-minus')
+                .removeClass('glyphicon-plus');
+        }
+        e.stopPropagation();
+    });
+});
+        </script></head> <body> <header> <nav class="navbar navbar-default" role=navigation> <div class=container-fluid> <div class=navbar-header> <button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a class=navbar-brand href=/>boostjp : Boost日本語情報サイト</a> </div> <div class="collapse navbar-collapse" id=navbar-collapse> <form class="navbar-form navbar-right" role=search> <div class=form-group> <input type=text class=form-control placeholder=Search> </div> <button type=submit class="btn btn-default">検索</button> </form> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class=col-md-3> <div class=tree> <ul> <li> <a href=/communities.html>コミュニティ</a> </li> <li> <a href=/howtobuild.html>Boostライブラリのビルド方法</a> </li> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/mailing-lists.html>メーリングリスト</a> </li> <li> <a href=/the-team.html>運営メンバ</a> </li> <li> <a href=/used_project.html>Boostを使用しているプロジェクト</a> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive.html>アーカイブ</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/boost_docs.html>#旧Boost日本語化プロジェクト</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> document <ul> <li style="display: none"> <a href=/archive/boost_docs/document/error_handling.html>エラーと例外のハンドリング</a> </li> <li style="display: none"> <a href=/archive/boost_docs/document/generic_exception_safety.html>ジェネリックコンポーネントにおける例外安全性</a> </li> <li style="display: none"> <a href=/archive/boost_docs/document/generic_programming.html>ジェネリックプログラミング手法</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> libs <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/libraries.html>各ライブラリの翻訳ドキュメント</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> array <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array.html>arrayクラス, 固定サイズ配列のSTLコンテナ</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array.hpp.html>array.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array1.cpp.html>array1.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array2.cpp.html>array2.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array3.cpp.html>array3.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array4.cpp.html>array4.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/array5.cpp.html>array5.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/array/index.html>Array wrapper library</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> bind <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/bind.html>bind.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/bind_as_compose.cpp.html>bind_as_compose.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/mem_fn.html>mem_fn.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/bind/ref.html>ref.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> compatibility <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/compatibility/index.html>Boost.Compatibilty ライブラリ</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> compose <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose.html>Compose Function Object Adapters</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose.hpp.html>boost/compose.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose1.cpp.html>compose1.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose2.cpp.html>compose2.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose3.cpp.html>compose3.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/compose4.cpp.html>compose4.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/index.html>非推奨： Compose library</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/compose/print.hpp.html>libs/compose/print.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> concept_check <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/bibliography.html>参考文献</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/concept_check.html>The Boost Concept Check Library (BCCL)</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/concept_covering.html>コンセプトの充当化と原型</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/creating_concepts.html>コンセプト・チェック用クラスの作成</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/implementation.html>コンセプト・チェックの実装</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/prog_with_concepts.html>Programming with Concepts</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/reference.html>リファレンス</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/stl_concept_check.cpp.html>libs/concept_check/stl_concept_check.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html>libs/concept_check/stl_concept_covering.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/concept_check/using_concept_check.html>コンセプト・チェックの利用</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> conversion <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/cast.html>Header boost/cast.hpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/cast_test.cpp.html>libs/conversion/cast_test.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/index.html>Boost Conversion Library</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/conversion/lexical_cast.html>Header boost/lexical_cast.hpp</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> date_time <ul> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/class_date.html>gregorian::date</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/class_date_duration.html>gregorian::date_duration</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/date_algorithms.html>Date Generators / Algorithms</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/dates_as_strings.cpp.html>dates_as_strings.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/days_alive.cpp.html>days_alive.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/days_till_new_year.cpp.html>days_till_new_year.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/gregorian.html>Gregorian Date System Documentation</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/index.html>Boost Date-Time Library Documentation</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/period_calc.cpp.html>period_calc.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/print_holidays.cpp.html>print_holidays.cpp</a> </li> <li style="display: none"> <a href=/archive/boost_docs/libs/date_time/print_month.cpp.html>print_month.cpp</a> </li> </ul> </li> </ul> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/cpp_online_reading.html>C++オンライン読書会</a> <ul> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_001.html>第1回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_002.html>第2回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_003.html>第3回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_004.html>第4回 C++Now! 読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_005.html>第5回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_006.html>第6回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_007.html>第7回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_008.html>第8回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_009.html>第9回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_010.html>第10回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_011.html>第11回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_012.html>第12回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_013.html>第13回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_014.html>第14回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/archive_015.html>第15回 C++オンライン読書会</a> </li> <li style="display: none"> <a href=/archive/cpp_online_reading/request.html>読みたいC++資料リクエスト</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/archive/propose.html>提案予定プロジェクト</a> <ul> <li style="display: none"> <a href=/archive/propose/templ_rec_max.html>テンプレートの再帰上限数workaround(rejected)</a> </li> </ul> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/boostcon.html>BoostCon</a> <ul> <li style="display: none"> <a href=/boostcon/2010.html>BoostCon 2010</a> </li> <li style="display: none"> <a href=/boostcon/2011.html>BoostCon 2011</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/cppnow.html>C++Now!</a> <ul> <li style="display: none"> <a href=/cppnow/2012.html>C++Now! 2012</a> </li> <li style="display: none"> <a href=/cppnow/2013.html>C++Now! 2013</a> </li> <li style="display: none"> <a href=/cppnow/2014.html>C++Now! 2014</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document.html>ドキュメント</a> <ul> <li style="display: none"> <a href=/document/boost-range-algorithm-kansu-no-susume.html>Boost.Range アルゴリズム関数のすすめ</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization.html>Boost.Serialization</a> <ul> <li style="display: none"> <a href=/document/boostserialization/overview.html>Overview</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/other-classses.html>Other Classses</a> <ul> <li style="display: none"> <a href=/document/boostserialization/other-classses/extended_type_info.html>extended_type_info</a> </li> <li style="display: none"> <a href=/document/boostserialization/other-classses/singleton.html>singleton</a> </li> <li style="display: none"> <a href=/document/boostserialization/other-classses/void_cast.html>void_cast</a> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference.html>Reference</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/archive-concepts.html>Archive Concepts</a> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/serializableconcept.html>SerializableConcept</a> <ul> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/serializableconcept/class-serialization-traits.html>Class Serialization Traits</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/serializableconcept/class-serialization-traits/export-key.html>Export Key</a> </li> </ul> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/boostserialization/reference/special-considerations.html>Special Considerations</a> <ul> <li style="display: none"> <a href=/document/boostserialization/reference/special-considerations/exporting-class-serialization.html>Exporting Class Serialization</a> </li> </ul> </li> </ul> </li> </ul> </li> <li style="display: none"> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/document/version.html>リリースノート</a> <ul> <li style="display: none"> <a href=/document/version/1_45_0.html>Boost 1.45.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_46_0.html>Boost 1.46.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_46_1.html>Boost 1.46.1リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_47_0.html>Boost 1.47.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_48_0.html>Boost 1.48.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_49_0.html>Boost 1.49.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_50_0.html>Boost 1.50.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_51_0.html>Boost 1.51.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_52_0.html>Boost 1.52.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_53_0.html>Boost 1.53.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_54_0.html>Boost 1.54.0リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_55_0.html>Boost 1.55.0 リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_56_0.html>Boost 1.56.0リリースノート</a> </li> <li style="display: none"> <a href=/document/version/1_57_0.html>Boost 1.57.0リリースノート</a> </li> </ul> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> editors_doc <ul> <li style="display: none"> <a href=/editors_doc/start_editing.html>boostjpを編集するには</a> </li> </ul> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/study_meeting.html>Boost.勉強会</a> <ul> <li style="display: none"> <a href=/study_meeting/idea.html>ネタ帳</a> </li> <li style="display: none"> <a href=/study_meeting/reversed_index.html>ライブラリ逆引き</a> </li> <li style="display: none"> <a href=/study_meeting/study1.html>Boost.勉強会 #1</a> </li> <li style="display: none"> <a href=/study_meeting/study10.html>Boost.勉強会 #10 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study11.html>Boost.勉強会 #11 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study12.html>Boost.勉強会 #12 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study13.html>Boost.勉強会 #13 仙台</a> </li> <li style="display: none"> <a href=/study_meeting/study14.html>Boost.勉強会 #14 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study15.html>Boost.勉強会 #15 札幌</a> </li> <li style="display: none"> <a href=/study_meeting/study16.html>Boost.勉強会 #16 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study2.html>Boost.勉強会 #2</a> </li> <li style="display: none"> <a href=/study_meeting/study3.html>Boost.勉強会 #3 関西</a> </li> <li style="display: none"> <a href=/study_meeting/study4.html>Boost.勉強会 #4</a> </li> <li style="display: none"> <a href=/study_meeting/study5.html>Boost.勉強会 #5 名古屋</a> </li> <li style="display: none"> <a href=/study_meeting/study6.html>Boost.勉強会 #6 札幌</a> </li> <li style="display: none"> <a href=/study_meeting/study7.html>Boost.勉強会 #7 東京</a> </li> <li style="display: none"> <a href=/study_meeting/study8.html>Boost.勉強会 #8 大阪</a> </li> <li style="display: none"> <a href=/study_meeting/study9.html>Boost.勉強会 #9 つくば</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-nagoya.html>Boost.忘年会 2010@名古屋</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-sapporo.html>Boost.忘年会 2010@sapporo</a> </li> <li style="display: none"> <a href=/study_meeting/year-end-party2010-tokyo.html>Boost.忘年会 2010@東京</a> </li> </ul> </li> <li class=active> <span><i class="glyphicon glyphicon-minus"></i></span> <a href=/tips.html>Boost逆引きリファレンス</a> <ul> <li> <a href=/tips/array.html>配列</a> </li> <li> <a href=/tips/build.html>ビルドツール</a> </li> <li> <a href=/tips/build_link.html>ヘッダオンリー or ビルドが必要なライブラリ</a> </li> <li> <a href=/tips/circular_buffer.html>循環バッファ</a> </li> <li> <a href=/tips/config.html>コンパイラ間の差を吸収する</a> </li> <li> <a href=/tips/constcond_overload.html>コンパイル時条件によるオーバーロード</a> </li> <li> <a href=/tips/cxx11-boost-mapping.html>C++11とBoostの対応付け</a> </li> <li> <a href=/tips/date_time.html>日付の計算</a> </li> <li> <a href=/tips/dynamic_assert.html>実行時アサート</a> </li> <li> <a href=/tips/dynamic_bitset.html>サイズを動的に変更できるビット集合</a> </li> <li> <a href=/tips/dynamic_regex.html>動的な正規表現</a> </li> <li> <a href=/tips/dynamic_type.html>動的型</a> </li> <li> <a href=/tips/filesystem.html>ファイル／ディレクトリ操作</a> </li> <li> <a href=/tips/finite_state_machine.html>有限状態マシン</a> </li> <li> <a href=/tips/foreach.html>for each文</a> </li> <li> <a href=/tips/format.html>文字列フォーマット</a> </li> <li> <a href=/tips/function.html>関数ポインタと関数オブジェクトを統一的に扱う</a> </li> <li> <a href=/tips/geometry.html>計算幾何</a> </li> <li> <a href=/tips/graph.html>グラフ</a> </li> <li> <a href=/tips/hashmap.html>ハッシュ表</a> </li> <li> <a href=/tips/ini.html>iniファイルの読み込み／書き込み</a> </li> <li> <a href=/tips/initialize.html>組み込み型を必ず初期化する</a> </li> <li> <a href=/tips/interval_arithmetic.html>区間演算</a> </li> <li> <a href=/tips/io_state.html>ストリームの状態を戻す</a> </li> <li> <a href=/tips/iterator.html>イテレータを作る</a> </li> <li> <a href=/tips/json.html>JSONの読み込み／書き込み</a> </li> <li> <a href=/tips/lambda.html>無名関数</a> </li> <li> <a href=/tips/linear-algebra.html>線形代数</a> </li> <li> <a href=/tips/list.html>リスト処理の遅延評価</a> </li> <li> <a href=/tips/lockfree-queue.html>ロックフリーキュー</a> </li> <li> <a href=/tips/lockfree-stack.html>ロックフリースタック</a> </li> <li> <a href=/tips/logging.html>ロギング</a> </li> <li> <a href=/tips/math.html>数学</a> </li> <li> <a href=/tips/memory_mapped_file.html>メモリマップドファイル</a> </li> <li> <a href=/tips/move.html>ムーブ可能なクラスを定義する</a> </li> <li> <a href=/tips/mpi.html>MPI による並列計算</a> </li> <li> <a href=/tips/multi_array.html>多次元配列</a> </li> <li> <a href=/tips/multi_index.html>コンテナに複数の並び順を持たせる</a> </li> <li> <a href=/tips/multiprec-float.html>多倍長浮動小数点数</a> </li> <li> <a href=/tips/multiprec-int.html>多倍長整数</a> </li> <li> <a href=/tips/named_parameter.html>名前付き引数</a> </li> <li> <a href=/tips/noncopyable.html>クラスをコピー不可にする</a> </li> <li> <a href=/tips/noncopyable_container.html>コピー不可なオブジェクトを持ちまわる</a> </li> <li> <a href=/tips/operators.html>演算子を自動定義する</a> </li> <li> <a href=/tips/optional.html>無効値の統一的な表現</a> </li> <li> <a href=/tips/parser.html>構文解析</a> </li> <li> <a href=/tips/partial_eval.html>カリー化／部分適用</a> </li> <li> <a href=/tips/priority_sort.html>優先順位を付けて並べ替える</a> </li> <li> <a href=/tips/program_options.html>コマンドラインオプションの定義／取得</a> </li> <li> <a href=/tips/random.html>乱数</a> </li> <li> <a href=/tips/scope_guard.html>スコープを抜ける際に実行されるブロック</a> </li> <li> <a href=/tips/serialize.html>シリアライズ</a> </li> <li> <a href=/tips/signals.html>シグナル／スロット</a> </li> <li> <a href=/tips/smart_ptr.html>リソースを自動的に解放する</a> </li> <li> <a href=/tips/static_assert.html>コンパイル時アサート</a> </li> <li> <a href=/tips/static_regex.html>静的な正規表現</a> </li> <li> <a href=/tips/statistics.html>統計処理</a> </li> <li> <a href=/tips/string_algo.html>文字列操作</a> </li> <li> <a href=/tips/template_page.html>テンプレートページ</a> </li> <li> <a href=/tips/thread.html>スレッド</a> </li> <li> <a href=/tips/timer.html>処理時間の計測</a> </li> <li> <a href=/tips/tuple.html>タプル</a> </li> <li> <a href=/tips/type_traits.html>型特性</a> </li> <li> <a href=/tips/unit_test.html>単体テスト</a> </li> <li> <a href=/tips/uuid.html>オブジェクトにユニークなIDを付ける</a> </li> <li> <a href=/tips/variant.html>ユーザー定義型を扱える型安全な共用体</a> </li> <li> <a href=/tips/version.html>Boostのバージョンを調べる</a> </li> <li> <a href=/tips/xml.html>XMLの読み込み／書き込み</a> </li> <li> <span><i class="glyphicon glyphicon-plus"></i></span> <a href=/tips/network.html>ネットワーク</a> <ul> <li style="display: none"> <a href=/tips/network/tcp.html>ネットワーク - TCP</a> </li> </ul> </li> </ul> </li> </ul> </div> </div> <div class=col-md-9> <div class=row> <ol class=breadcrumb> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> メモリマップドファイル </li> </ol> </div> <div class=row> <h1>メモリマップドファイル</h1> <p>メモリマップドファイルには<a href=http://www.boost.org/doc/libs/release/doc/html/interprocess.html target=_blank> Boost Interprocess Library</a> を使用する。</p> <p>Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、<a href=http://www.boost.org/doc/libs/release/doc/html/date_time.html target=_blank>Boost DateTime Library</a> を利用している箇所があるため注意すること。</p> <p>またこのページでManaged Memory Segmentsについての記述は基本的に<code><span style="color: #000">managed_mapped_file</span></code>以外のクラス(<code><span style="color: #000">managed_shared_memory</span></code>など)でも同様の動作を行う。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping>存在しているファイルからマッピングする</a></li> <li><a href=http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer>ファイルをテンポラリバッファとしての利用する</a></li> <li><a href=http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping>ファイルをコンテナにマッピングする</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/file-mapping name=file-mapping>存在しているファイルからマッピングする</a></h2> <p>既に存在しているファイルをマッピングするには、<code><span style="color: #000">boost::interprocess::file_mapping</span></code>クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、<code><span style="color: #000">boost::interprocess::mapped_region</span></code>クラスでビューを作成してアクセスする。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">namespace ipc = boost::interprocess;
 
 ipc::file_mapping map("data.dat",ipc::read_only);
 ipc::mapped_region view(map,ipc::read_only);
@@ -83,20 +136,12 @@ void* ptr = view.get_address();           // マッピングしたファイル�
 std::size_t const size = view.get_size(); // マッピングした領域のサイズ
 
 std::vector&lt;char&gt; dat( size );
-memcpy( dat.data(), ptr, size );</span></code></pre>
-</p>
-<p>また、<code><span style="color: #000">mapped_region</span></code>クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。</p>
-<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">std::size_t const offset = 0;   // マッピング領域の開始位置(ファイル先頭から)
+memcpy( dat.data(), ptr, size );</span></code></pre> </p> <p>また、<code><span style="color: #000">mapped_region</span></code>クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">std::size_t const offset = 0;   // マッピング領域の開始位置(ファイル先頭から)
 std::size_t const size   = 128; // 領域のサイズ
 
 ipc::mapped_region view(map,ipc::read_only,offset,size);
 
-BOOST_ASSERT( size == view.get_size() );</span></code></pre>
-</p>
-<h2><a href="http://boostjp.github.io/tips/file-as-temporary-buffer" name="file-as-temporary-buffer">ファイルをテンポラリバッファとしての利用する</a></h2>
-<p>メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。</p>
-<p><code><span style="color: #000">managed_mapped_file</span></code>クラスの<code><span style="color: #000">construct()</span></code>メンバを使用し、<code><span style="color: #000">find()</span></code>メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。</p>
-<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/interprocess/managed_mapped_file.hpp&gt;
+BOOST_ASSERT( size == view.get_size() );</span></code></pre> </p> <h2><a href=http://boostjp.github.io/tips/file-as-temporary-buffer name=file-as-temporary-buffer>ファイルをテンポラリバッファとしての利用する</a></h2> <p>メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。</p> <p><code><span style="color: #000">managed_mapped_file</span></code>クラスの<code><span style="color: #000">construct()</span></code>メンバを使用し、<code><span style="color: #000">find()</span></code>メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">#include &lt;boost/interprocess/managed_mapped_file.hpp&gt;
 #include &lt;iostream&gt;
 
 int main()
@@ -117,12 +162,7 @@ int main()
     int* t = mfile.construct&lt;int&gt;(ipc::anonymous_instance)(42);
     BOOST_ASSERT( *t == 42 );
     mfile.destroy_ptr(t);
-}</span></code></pre>
-</p>
-<h2><a href="http://boostjp.github.io/tips/container-file-mapping" name="container-file-mapping">ファイルをコンテナにマッピングする</a></h2>
-<p>Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、<a href="http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html" target="_blank">Boost Multi-Index Containers Library</a>も利用可能である。</p>
-<p>基本的にはManaged Memory Segmentsクラスから取得できる<code><span style="color: #000">segment_manager</span></code>を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。</p>
-<p><pre class="codehilite"><code class="language-cpp"><span style="color: #000">#include &lt;boost/interprocess/managed_mapped_file.hpp&gt;
+}</span></code></pre> </p> <h2><a href=http://boostjp.github.io/tips/container-file-mapping name=container-file-mapping>ファイルをコンテナにマッピングする</a></h2> <p>Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、<a href=http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html target=_blank>Boost Multi-Index Containers Library</a>も利用可能である。</p> <p>基本的にはManaged Memory Segmentsクラスから取得できる<code><span style="color: #000">segment_manager</span></code>を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">#include &lt;boost/interprocess/managed_mapped_file.hpp&gt;
 #include &lt;boost/interprocess/containers/vector.hpp&gt;
 #include &lt;boost/interprocess/allocators/allocator.hpp&gt;
 #include &lt;iostream&gt;
@@ -144,18 +184,9 @@ int main()
     vec-&gt;resize(10);
     boost::generate(*vec,[](){ return 42; });
     boost::for_each(*vec,[](int i) { std::cout &lt;&lt; i &lt;&lt; std::endl; } );
-}</span></code></pre>
-</p>
-  </div>
-</div>
-            </div>
-        </main>
-    </body>
-    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started -->
-    <!--[if lt IE 7 ]>
+}</span></code></pre> </p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>
             window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
         </script>
-    <![endif]-->
-</html>
+    <![endif]--> </html>
