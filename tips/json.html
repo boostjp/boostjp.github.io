@@ -126,97 +126,101 @@ function tree_onclick(e) {
       ]
    }
 }
-</span></code></pre></p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;boost/property_tree/ptree.hpp&gt;
-#include &lt;boost/property_tree/json_parser.hpp&gt;
-#include &lt;boost/foreach.hpp&gt;
-#include &lt;boost/optional.hpp&gt;
+</span></code></pre></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+<span style="color: #BC7A00">#include &lt;string&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/property_tree/ptree.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/property_tree/json_parser.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/optional.hpp&gt;</span>
 
-using namespace boost::property_tree;
+<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>property_tree;
 
-int main()
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
     ptree pt;
-    read_json("data.json", pt);
+    read_json(<span style="color: #BA2121">"data.json"</span>, pt);
 
-    // Data.value
-    if (boost::optional&lt;int&gt; value = pt.get_optional&lt;int&gt;("Data.value")) {
-        std::cout &lt;&lt; "value : " &lt;&lt; value.get() &lt;&lt; std::endl;
+    <span style="color: #408080; font-style: italic">// Data.value</span>
+    <span style="color: #008000; font-weight: bold">if</span> (boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> value <span style="color: #666666">=</span> pt.get_optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"Data.value"</span>)) {
+        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"value : "</span> <span style="color: #666666">&lt;&lt;</span> value.get() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
-    else {
-        std::cout &lt;&lt; "value is nothing" &lt;&lt; std::endl;
-    }
-
-    // Data.str
-    if (boost::optional&lt;std::string&gt; str = pt.get_optional&lt;std::string&gt;("Data.str")) {
-        std::cout &lt;&lt; "str : " &lt;&lt; str.get() &lt;&lt; std::endl;
-    }
-    else {
-        std::cout &lt;&lt; "str is nothing" &lt;&lt; std::endl;
+    <span style="color: #008000; font-weight: bold">else</span> {
+        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"value is nothing"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 
-    // Data.info
-    BOOST_FOREACH (const ptree::value_type&amp; child, pt.get_child("Data.info")) {
-        const ptree&amp; info = child.second;
+    <span style="color: #408080; font-style: italic">// Data.str</span>
+    <span style="color: #008000; font-weight: bold">if</span> (boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span> str <span style="color: #666666">=</span> pt.get_optional<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"Data.str"</span>)) {
+        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"str : "</span> <span style="color: #666666">&lt;&lt;</span> str.get() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    }
+    <span style="color: #008000; font-weight: bold">else</span> {
+        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"str is nothing"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    }
 
-        // Data.info.id
-        if (boost::optional&lt;int&gt; id = info.get_optional&lt;int&gt;("id")) {
-            std::cout &lt;&lt; "id : " &lt;&lt; id.get() &lt;&lt; std::endl;
+    <span style="color: #408080; font-style: italic">// Data.info</span>
+    BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> ptree<span style="color: #666666">::</span>value_type<span style="color: #666666">&amp;</span> child, pt.get_child(<span style="color: #BA2121">"Data.info"</span>)) {
+        <span style="color: #008000; font-weight: bold">const</span> ptree<span style="color: #666666">&amp;</span> info <span style="color: #666666">=</span> child.second;
+
+        <span style="color: #408080; font-style: italic">// Data.info.id</span>
+        <span style="color: #008000; font-weight: bold">if</span> (boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> id <span style="color: #666666">=</span> info.get_optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"id"</span>)) {
+            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"id : "</span> <span style="color: #666666">&lt;&lt;</span> id.get() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
         }
-        else {
-            std::cout &lt;&lt; "id is nothing" &lt;&lt; std::endl;
+        <span style="color: #008000; font-weight: bold">else</span> {
+            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"id is nothing"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
         }
 
-        // Data.info.name
-        if (boost::optional&lt;std::string&gt; name = info.get_optional&lt;std::string&gt;("name")) {
-            std::cout &lt;&lt; "name : " &lt;&lt; name.get() &lt;&lt; std::endl;
+        <span style="color: #408080; font-style: italic">// Data.info.name</span>
+        <span style="color: #008000; font-weight: bold">if</span> (boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span> name <span style="color: #666666">=</span> info.get_optional<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"name"</span>)) {
+            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"name : "</span> <span style="color: #666666">&lt;&lt;</span> name.get() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
         }
-        else {
-            std::cout &lt;&lt; "name is nothing" &lt;&lt; std::endl;
+        <span style="color: #008000; font-weight: bold">else</span> {
+            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"name is nothing"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
         }
     }
-}</span></code></pre> 実行結果：</p> <p><pre><code><span style="color: #000">value : 3
+}
+</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">value : 3
 str : Hello
 id : 1
 name : Alice
 id : 2
 name : Millia
-</span></code></pre> まず、「Data.value」要素を取得するには、JSONが読み込まれた<code><span style="color: #000">boost::property_tree:ptree</span></code>に対して以下のように指定する：</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">boost::optional&lt;int&gt; value = pt.get_optional&lt;int&gt;("Data.value");</span></code></pre> 要素アクセスのパス指定には、ドットによるアクセスを行う。</p> <p><code><span style="color: #000">ptree</span></code>クラスの<code><span style="color: #000">get_optional()</span></code>メンバ関数によって、指定された型に変換された要素が返される。要素の取得に失敗した場合は、<code><span style="color: #000">boost::optional</span></code>型の無効値が返される。</p> <p>次に、「Data.info」の要素を列挙するには、<code><span style="color: #000">boost::property_tree::ptree</span></code>オブジェクトに対して、<code><span style="color: #000">get_child()</span></code>メンバ関数でパス指定し、子ツリーを取得する。取得した子ツリーを<code><span style="color: #000">BOOST_FOREACH</span></code>でループし、各要素を取得する。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">BOOST_FOREACH (const ptree::value_type&amp; child, pt.get_child("Data.info")) {
-    …
-}</span></code></pre> </p> <h2><a href=http://boostjp.github.io/tips/write name=write>JSONの書き込み</a></h2> <p>JSONを書き込むには、要素を設定するために<code><span style="color: #000">boost::property_tree::ptree</span></code>クラスの<code><span style="color: #000">put()</span></code>メンバ関数を使用し、<code><span style="color: #000">add_child()</span></code>メンバで子ツリーに登録する。</p> <p>保存には、<code><span style="color: #000">boost::property_tree::write_json()</span></code>関数に、ファイル名と<code><span style="color: #000">ptree</span></code>オブジェクトを指定する。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">#include &lt;iostream&gt;
-#include &lt;string&gt;
-#include &lt;boost/property_tree/ptree.hpp&gt;
-#include &lt;boost/property_tree/json_parser.hpp&gt;
-#include &lt;boost/foreach.hpp&gt;
-#include &lt;boost/optional.hpp&gt;
+</span></code></pre> まず、「Data.value」要素を取得するには、JSONが読み込まれた<code><span style="color: #000">boost::property_tree:ptree</span></code>に対して以下のように指定する：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> value <span style="color: #666666">=</span> pt.get_optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"Data.value"</span>);
+</pre></div> 要素アクセスのパス指定には、ドットによるアクセスを行う。</p> <p><code><span style="color: #000">ptree</span></code>クラスの<code><span style="color: #000">get_optional()</span></code>メンバ関数によって、指定された型に変換された要素が返される。要素の取得に失敗した場合は、<code><span style="color: #000">boost::optional</span></code>型の無効値が返される。</p> <p>次に、「Data.info」の要素を列挙するには、<code><span style="color: #000">boost::property_tree::ptree</span></code>オブジェクトに対して、<code><span style="color: #000">get_child()</span></code>メンバ関数でパス指定し、子ツリーを取得する。取得した子ツリーを<code><span style="color: #000">BOOST_FOREACH</span></code>でループし、各要素を取得する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> ptree<span style="color: #666666">::</span>value_type<span style="color: #666666">&amp;</span> child, pt.get_child(<span style="color: #BA2121">"Data.info"</span>)) {
+    <span style="border: 1px solid #FF0000">…</span>
+}
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/write name=write>JSONの書き込み</a></h2> <p>JSONを書き込むには、要素を設定するために<code><span style="color: #000">boost::property_tree::ptree</span></code>クラスの<code><span style="color: #000">put()</span></code>メンバ関数を使用し、<code><span style="color: #000">add_child()</span></code>メンバで子ツリーに登録する。</p> <p>保存には、<code><span style="color: #000">boost::property_tree::write_json()</span></code>関数に、ファイル名と<code><span style="color: #000">ptree</span></code>オブジェクトを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+<span style="color: #BC7A00">#include &lt;string&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/property_tree/ptree.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/property_tree/json_parser.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
+<span style="color: #BC7A00">#include &lt;boost/optional.hpp&gt;</span>
 
-using namespace boost::property_tree;
+<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>property_tree;
 
-int main()
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
     ptree pt;
 
-    pt.put("Data.value", 3);
-    pt.put("Data.str", "Hello");
+    pt.put(<span style="color: #BA2121">"Data.value"</span>, <span style="color: #666666">3</span>);
+    pt.put(<span style="color: #BA2121">"Data.str"</span>, <span style="color: #BA2121">"Hello"</span>);
 
     ptree child;
     {
         ptree info;
-        info.put("id", 1);
-        info.put("name", "Alice");
-        child.push_back(std::make_pair("", info));
+        info.put(<span style="color: #BA2121">"id"</span>, <span style="color: #666666">1</span>);
+        info.put(<span style="color: #BA2121">"name"</span>, <span style="color: #BA2121">"Alice"</span>);
+        child.push_back(std<span style="color: #666666">::</span>make_pair(<span style="color: #BA2121">""</span>, info));
     }
     {
         ptree info;
-        info.put("id", 2);
-        info.put("name", "Millia");
-        child.push_back(std::make_pair("", info));
+        info.put(<span style="color: #BA2121">"id"</span>, <span style="color: #666666">2</span>);
+        info.put(<span style="color: #BA2121">"name"</span>, <span style="color: #BA2121">"Millia"</span>);
+        child.push_back(std<span style="color: #666666">::</span>make_pair(<span style="color: #BA2121">""</span>, info));
     }
-    pt.add_child("Data.info", child);
+    pt.add_child(<span style="color: #BA2121">"Data.info"</span>, child);
 
-    write_json("data_out.json", pt);
-}</span></code></pre> 出力されたdata_out.json：</p> <p><pre><code><span style="color: #000">{
+    write_json(<span style="color: #BA2121">"data_out.json"</span>, pt);
+}
+</pre></div> 出力されたdata_out.json：</p> <p><pre><code><span style="color: #000">{
     "Data":
     {
         "value": "3",
@@ -234,23 +238,26 @@ int main()
         ]
     }
 }
-</span></code></pre></p> <h2><a href=http://boostjp.github.io/tips/key-includes-dot name=key-includes-dot>応用編：キーにドット（.）が含まれる場合の子ノードの挿入</a></h2> <p>通常、<code><span style="color: #000">ptree</span></code>オブジェクト に子要素を追加する場合は <code><span style="color: #000">put_child()</span></code>メンバ関数 または <code><span style="color: #000">add_child()</span></code> メンバ関数を利用するが、これら高レベル関数ではドットが区切り文字として扱われるので、キーにドットが含まれる場合は挿入がうまく行かない。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">【擬似コードによる処理の流れ】
-R ptree::put_child(key_str, node) {
-    key_strをパーズしてセパレータを認識する；
-    this-&gt;push_back(パーズした子階層, node);
-}</span></code></pre> そこで、区切り文字を無効にしたいキーがある場合は、そのキーに対して明示的に<code><span style="color: #000">boost::property_tree::path</span></code>クラスを初期化するステップを踏む。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">pt.put_child(
-      property_tree::path("result for \"test.dat\"", '\0') // セパレータを無効化
-    , {"success"}
-);</span></code></pre> 出力例：</p> <p><pre><code><span style="color: #000">{
+</span></code></pre></p> <h2><a href=http://boostjp.github.io/tips/key-includes-dot name=key-includes-dot>応用編：キーにドット（.）が含まれる場合の子ノードの挿入</a></h2> <p>通常、<code><span style="color: #000">ptree</span></code>オブジェクト に子要素を追加する場合は <code><span style="color: #000">put_child()</span></code>メンバ関数 または <code><span style="color: #000">add_child()</span></code> メンバ関数を利用するが、これら高レベル関数ではドットが区切り文字として扱われるので、キーにドットが含まれる場合は挿入がうまく行かない。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="border: 1px solid #FF0000">【擬似コードによる処理の流れ】</span>
+R ptree<span style="color: #666666">::</span>put_child(key_str, node) {
+    key_str<span style="border: 1px solid #FF0000">をパーズしてセパレータを認識する；</span>
+    <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>push_back(<span style="border: 1px solid #FF0000">パーズした子階層</span>, node);
+}
+</pre></div> そこで、区切り文字を無効にしたいキーがある場合は、そのキーに対して明示的に<code><span style="color: #000">boost::property_tree::path</span></code>クラスを初期化するステップを踏む。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">pt.put_child(
+      property_tree<span style="color: #666666">::</span>path(<span style="color: #BA2121">"result for </span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">test.dat</span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">"</span>, <span style="color: #BA2121">'\0'</span>) <span style="color: #408080; font-style: italic">// セパレータを無効化</span>
+    , {<span style="color: #BA2121">"success"</span>}
+);
+</pre></div> 出力例：</p> <p><pre><code><span style="color: #000">{
     "result for \"test.dat\"": "success"
 }
-</span></code></pre> この方法は結構万能である。さらなる子階層への追加は <code><span style="color: #000">operator /</span></code> を利用し以下のようにする。</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">property_tree::ptree result_data_pt;
-result_data_pt.push_back({"", 1234});
-result_data_pt.push_back({"", 5678});
+</span></code></pre> この方法は結構万能である。さらなる子階層への追加は <code><span style="color: #000">operator /</span></code> を利用し以下のようにする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">property_tree<span style="color: #666666">::</span>ptree result_data_pt;
+result_data_pt.push_back({<span style="color: #BA2121">""</span>, <span style="color: #666666">1234</span>});
+result_data_pt.push_back({<span style="color: #BA2121">""</span>, <span style="color: #666666">5678</span>});
 pt.put_child(
-    property_tree::path("result for \"test.dat\"", '\0') // セパレータを無効化
-        / "result_data",
-    result_data_pt);</span></code></pre> </p> <p>出力例：</p> <p><pre><code><span style="color: #000">{
+    property_tree<span style="color: #666666">::</span>path(<span style="color: #BA2121">"result for </span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">test.dat</span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">"</span>, <span style="color: #BA2121">'\0'</span>) <span style="color: #408080; font-style: italic">// セパレータを無効化</span>
+        <span style="color: #666666">/</span> <span style="color: #BA2121">"result_data"</span>,
+    result_data_pt);
+</pre></div> </p> <p>出力例：</p> <p><pre><code><span style="color: #000">{
     "result for \"test.dat\"": {
         "result_data": [
             1234,

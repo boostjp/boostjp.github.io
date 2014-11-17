@@ -122,8 +122,9 @@ int main(int, char*[]) {
     std::stable_sort(v.begin(), v.end());
     return 0;
 }
-</span></code></pre> この場合、<code><span style="color: #000">std::stable_sort()</span></code> アルゴリズムは以下のようなプロトタイプを有する：</p> <p><pre class=codehilite><code class=language-cpp><span style="color: #000">template &lt;class RandomAccessIterator&gt;
-void stable_sort(RandomAccessIterator first, RandomAccessIterator last);</span></code></pre> Gnu C++ でこのコードをコンパイルすると、以下のコンパイラ・エラーを生成する。他のコンパイラ出力は Appendix にリストしてある(訳注 : このバージョンのドキュメントには記載されていない)。</p> <p><pre><code><span style="color: #000">stl_algo.h: In function `void __merge_sort_loop&lt;_List_iterator
+</span></code></pre> この場合、<code><span style="color: #000">std::stable_sort()</span></code> アルゴリズムは以下のようなプロトタイプを有する：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">RandomAccessIterator</span><span style="color: #666666">&gt;</span>
+<span style="color: #B00040">void</span> stable_sort(RandomAccessIterator first, RandomAccessIterator last);
+</pre></div> Gnu C++ でこのコードをコンパイルすると、以下のコンパイラ・エラーを生成する。他のコンパイラ出力は Appendix にリストしてある(訳注 : このバージョンのドキュメントには記載されていない)。</p> <p><pre><code><span style="color: #000">stl_algo.h: In function `void __merge_sort_loop&lt;_List_iterator
   &lt;int,int &amp;,int *&gt;, int *, int&gt;(_List_iterator&lt;int,int &amp;,int *&gt;,
   _List_iterator&lt;int,int &amp;,int *&gt;, int *, int)':
 stl_algo.h:1448:   instantiated from `__merge_sort_with_buffer
