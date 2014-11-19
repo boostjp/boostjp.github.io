@@ -1,0 +1,350 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>boostjp : Boost日本語情報サイト</title>
+  <link href="http://boostjp.github.io" />
+  <updated>2014-11-19 18:51:08 +0900</updated>
+  <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+
+  
+    <entry>
+      <title>posix_time::time_duration</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/class_time_duration.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 18:51:08 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time/class_time_duration.md b/archive/boost_docs/libs/date_time/class_time_duration.md
+index b782bba..f98c260 100644
+--- a/archive/boost_docs/libs/date_time/class_time_duration.md
++++ b/archive/boost_docs/libs/date_time/class_time_duration.md
+@@ -5,6 +5,7 @@
+ - [Posix Timeのインデックスへ](./posix_time.md)
+ 
+ **Time Duration Documentation**
++
+ - [Introduction](#introduction)
+ - [Header](#header)
+ - [Construction](#construction)
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost Date-Time Library Documentation</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 18:49:26 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time.md b/archive/boost_docs/libs/date_time.md
+index 4e65455..c5bb2e8 100644
+--- a/archive/boost_docs/libs/date_time.md
++++ b/archive/boost_docs/libs/date_time.md
+@@ -38,7 +38,7 @@ Version 1.00
+ [Posix Time System](./date_time/posix_time.md)
+ 
+ - [Class ptime](./date_time/class_ptime.md)
+-- Class time_duration
++- [Class time_duration](./date_time/class_time_duration.md)
+ - Class time_period
+ - Time Iterators
+ - UTC / Local Time Adjustments
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>posix_time::time_duration</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/class_time_duration.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 18:49:26 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time/class_time_duration.md b/archive/boost_docs/libs/date_time/class_time_duration.md
+new file mode 100644
+index 0000000..b782bba
+--- /dev/null
++++ b/archive/boost_docs/libs/date_time/class_time_duration.md
+@@ -0,0 +1,112 @@
++#posix_time::time_duration
++
++- [全体のインデックスへ](../date_time.md)
++- [Gregorianのインデックスへ](./gregorian.md)
++- [Posix Timeのインデックスへ](./posix_time.md)
++
++**Time Duration Documentation**
++- [Introduction](#introduction)
++- [Header](#header)
++- [Construction](#construction)
++- [Count Based Construction](#count-based-construction)
++- [Construct from String](#construct-from-string)
++- [Accessors](#accessors)
++- [Conversion To String](#conversion-to-string)
++- [Operators](#operators)
++
++
++## &lt;a name=&#34;introduction&#34; href=&#34;introduction&#34;&gt;Introduction&lt;/a&gt;
++`boost::posix_time::time_duration` クラスは時間の長さを確実に表現できる基底型である。 時間長(duration)は正あるいは負の値を取り得る。
++
++以下に示すように、異なった分解能を調整するために基底の `time_duration` から継承するいくつかの小さなヘルパークラスがある。 これらのクラスによって、コードを短く、意図をより明確にすることができる。
++
++![](http://www.boost.org/doc/libs/1_31_0/libs/date_time/doc/time_duration_inherit.png)
++
++例:
++
++```cpp
++using namespace boost::gregorian;
++using namespace boost::posix_time;
++
++time_duration td = hours(1) + seconds(10); //01:00:01
++td = hours(1) + nanosec(5); //01:00:00.000000005
++```
++
++注意：高分解能(たとえば`nanosec`)が存在するかどうかは、依存するインストールライブラリによって異なる。詳細は、[Build-Compiler Information](./BuildInfo.md)を参照。
++
++## &lt;a name=&#34;header&#34; href=&#34;header&#34;&gt;Header&lt;/a&gt;
++```cpp
++#include &#34;boost/date_time/posix_time/posix_time.hpp&#34; //全ての型とI/Oを含む
++```
++
++もしくは
++
++```cpp
++#include &#34;boost/date_time/posix_time/posix_time_types.hpp&#34; //型のみでI/Oは含まない
++```
++
++
++## &lt;a name=&#34;construction&#34; href=&#34;construction&#34;&gt;Construction&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `time_duration(hours,minutes,seconds,fractional_seconds)` | 数値から時間長(duration)を生成する | `time_duration td(1,2,3,9); //1 hr 2 min 3 sec 9 nanoseconds` |
++
++
++## &lt;a name=&#34;count-based-construction&#34; href=&#34;count-based-construction&#34;&gt;Construction By Count&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `hours(long)`        | 時間単位で生成       | `time_duration td = hours(3);` |
++| `minutes(long)`      | 分単位で生成         | `time_duration td = minutes(3);` |
++| `seconds(long)`      | 秒単位で生成         | `time_duration td = seconds(3);` |
++| `milliseconds(long)` | ミリ秒単位で生成     | `time_duration td = milliseconds(3);` |
++| `microseconds(long)` | マイクロ秒単位で生成 | `time_duration td = microseconds(3);` |
++| `nanoseconds(long)`  | ナノ秒単位で生成     | `time_duration td = nanoseconds(3);`  |
++
++
++## &lt;a name=&#34;conversion-to-string&#34; href=&#34;conversion-to-string&#34;&gt;Construction From String&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `time_duration duration_from_string(const std::string&amp;)` | 区切られた文字列から生成 | `std::string ts(&#34;23:59:59.000&#34;);`&lt;br/&gt; `time_duraton td(duration_from_string(ts));` |
++
++
++## &lt;a name=&#34;accessors&#34; href=&#34;accessors&#34;&gt;Accessors&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `long hours() const` | 時間の部分を取得 | `time_duration td(1,2,3); td.hours() --&gt; 1` |
++| `long minutes() const` | 正規化された分の部分を取得 | `time_duration td(1,2,3); td.minutes() --&gt; 2` |
++| `long seconds() const` | 秒の部分を取得 | `time_duration td(1,2,3); td.hours() --&gt; 3` |
++| `long fractional_seconds() const` | 秒の小数部を取得 | `time_duration td(1,2,3, 1000); td.fractional_seconds() --&gt; 1000` |
++| `bool is_negative() const` | 時間長(duration)が負の時 `true` | `time_duration td(-1,0,0); td.is_negative() --&gt; true` |
++| `time_duration invert_sign() const` | 符号を反転させた時間長(duration)を新たに生成 | `time_duration td(-1,0,0); td.invert_sign() --&gt; 01:00:00` |
++| `static gdtl::time_resolutions resolution()` | `time_duration` クラスが表現可能な分解能 | `time_duration::resolution() --&gt; nano` |
++| `boost::int64_t ticks()` | 時間長(duration)型の生の数を返す | `time_duration td(0,0,0, 1000); td.ticks() --&gt; 1000` |
++| `static time_duration unit()` | 時間長(duration)型の扱える最小単位を返す(1ナノ秒) | `time_duration::unit() --&gt; time_duration(0,0,0,1)` |
++
++
++## &lt;a name=&#34;conversion-to-string&#34; href=&#34;conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `std::string to_simple_string(time_duration)` | HH:MM:SS.fffffffff 形式に変換する(fff...部は、秒の小数部が0でないときのみ含まれる) | 10:00:01.123456789 |
++| `std::string to_iso_string(time_duration)` | HHMMSS,fffffffff 形式に変換する | 100001,123456789 |
++
++
++## &lt;a name=&#34;operators&#34; href=&#34;operators&#34;&gt;Operators&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `operator==, operator!=,`&lt;br/&gt; `operator&gt;, operator&lt;`&lt;br/&gt; `operator&gt;=, operator&lt;=` | サポートする比較演算子 | `dd1 == dd2`, etc |
++| `time_duration operator+(time_duration) const` | 時間長(durations)を加算する | `time_duration td1(hours(1)+minutes(2));`&lt;br/&gt; `time_duration td2(seconds(10)); time_duration td3 = td1 + td2;` |
++| `time_duration operator-(time_duration) const` 時間長(durations)を減算する | `time_duration td1(hours(1)+nanosec(2));`&lt;br/&gt; `time_duration td2 = td1 - minutes(1);` |
++
++
++***
++Last modified: Wed Aug 28 17:52:03 MST 2002 by [Jeff Garland](jeff@crystalclearsoftware.com) © 2000-2002 
++
++Japanese Translation Copyright (C) 2003 [Shoji Shinohara](sshino@cppll.jp).
++
++
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost Date-Time Library Documentation</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 17:30:16 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time.md b/archive/boost_docs/libs/date_time.md
+index 6eb8b87..4e65455 100644
+--- a/archive/boost_docs/libs/date_time.md
++++ b/archive/boost_docs/libs/date_time.md
+@@ -37,7 +37,7 @@ Version 1.00
+ 
+ [Posix Time System](./date_time/posix_time.md)
+ 
+-- Class ptime
++- [Class ptime](./date_time/class_ptime.md)
+ - Class time_duration
+ - Class time_period
+ - Time Iterators
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>posix_time::ptime Documentation</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/class_ptime.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 17:29:46 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time/class_ptime.md b/archive/boost_docs/libs/date_time/class_ptime.md
+index d4c7833..f7bb5d2 100644
+--- a/archive/boost_docs/libs/date_time/class_ptime.md
++++ b/archive/boost_docs/libs/date_time/class_ptime.md
+@@ -78,6 +78,7 @@
+ ## &lt;a name=&#34;operators&#34; href=&#34;operators&#34;&gt;Operators&lt;/a&gt;
+ 
+ | Syntax | Description | Example |
++|--------|-------------|---------|
+ | `operator==, operator!=,`&lt;br/&gt; `operator&gt;, operator&lt;` &lt;br/&gt; `operator&gt;=, operator&lt;=` | サポートする比較演算子 | `t1 == t2`, etc |
+ | `ptime operator+(date_duration) const` | オフセット日数(`date_duration`)を加えた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `date_duration dd(1);`&lt;br/&gt; `ptime t2 = t + dd;` |
+ | `ptime operator-(date_duration) const` | オフセット日数(`date_duration`)を差し引いた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `date_duration dd(1);`&lt;br/&gt; `ptime t2 = t - dd;` |
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>posix_time::ptime Documentation</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/class_ptime.html"/>
+      <id>c583d118608a8a3e8cb093d17d76f1a1efc371d3:archive/boost_docs/libs/date_time/class_time_duration.md</id>
+      <updated>2014-11-19 17:27:48 +0900</updated>
+      <summary>diff --git a/archive/boost_docs/libs/date_time/class_ptime.md b/archive/boost_docs/libs/date_time/class_ptime.md
+new file mode 100644
+index 0000000..d4c7833
+--- /dev/null
++++ b/archive/boost_docs/libs/date_time/class_ptime.md
+@@ -0,0 +1,94 @@
++#posix_time::ptime Documentation
++
++- [全体のインデックスへ](../date_time.md)
++- [Gregorianのインデックスへ](./gregorian.md)
++- [Posix Timeのインデックスへ](./posix_time.md)
++
++**ptime Documentation**
++
++- [Introduction](#introduction)
++- [Header](#header)
++- [Construction](#construction)
++- [Construct from String](#construct-from-string)
++- [Construct from Clock](#construct-from-clock)
++- [Accessors](#accessors)
++- [Conversion To String](#conversion-to-string)
++- [Operators](#operators)
++
++
++## &lt;a name=&#34;introduction&#34; href=&#34;introduction&#34;&gt;Introduction&lt;/a&gt;
++`boost::posix_time::ptime` クラスは時間位置(time point)を操作するための主要なインタフェースである。 一般に，`ptime` クラスは代入可能ではあるが，一度構築されると不変である事が多い。
++
++クラス `ptime` は，時間位置(time point)の日付部分へのインタフェースである `gregorian::date` に依存する。
++
++`ptime` を生成する別の手法が，[time iterators](./time_iterators.md) にある。
++
++
++## &lt;a name=&#34;header&#34; href=&#34;header&#34;&gt;Header&lt;/a&gt;
++```cpp
++#include &#34;boost/date_time/posix_time/posix_time.hpp&#34; //全ての型とI/Oを含む
++```
++
++もしくは
++
++```cpp
++#include &#34;boost/date_time/posix_time/posix_time_types.hpp&#34; //型のみでI/Oは含まない
++```
++
++
++## &lt;a name=&#34;construction&#34; href=&#34;construction&#34;&gt;Construction&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `ptime(date,time_duration)` | 日付とオフセットから構築 | `ptime t1(date(2002,Jan,10), time_duration(1,2,3));`&lt;br/&gt; `ptime t2(date(2002,Jan,10), hours(1)+nanosec(5));` |
++| `ptime(ptime)` | コピーコンストラクタ | `ptime t3(t1)` |
++
++
++## &lt;a name=&#34;construct-from-string&#34; href=&#34;construct-from-string&#34;&gt;Construction From String&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `ptime time_from_string(const std::string&amp;)` | 区切られた文字列から構築 | `std::string ts(&#34;2002-01-20 23:59:59.000&#34;);`&lt;br/&gt; `date d(time_from_string(ts));` |
++
++
++## &lt;a name=&#34;construct-from-clock&#34; href=&#34;construct-from-clock&#34;&gt;Construction From Clock&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `static ptime second_clock::local_time();` | 計算機の時間帯設定に基づいた地域時間(秒レベル分解能)で初期化 | `ptime t(second_clock::local_time());` |
++| `static ptime second_clock::universal_time()` | UTC 時間で初期化 | `ptime t(second_clock::universal_day());` |
++
++
++## &lt;a name=&#34;accessors&#34; href=&#34;accessors&#34;&gt;Accessors&lt;/a&gt;
++
++| Syntax | Description | Example |
++|--------|-------------|---------|
++| `date date() const` | 時間の日付部分を取得 | `date d(2002,Jan,10);`&lt;br/&gt; `ptime t(d, hour(1));`&lt;br/&gt; `t.date() --&gt; 2002-Jan-10;` |
++| `time_duration time_of_day() const` | その日の時間オフセットを取得 | `date d(2002,Jan,10);`&lt;br/&gt; `ptime t(d, hour(1));`&lt;br/&gt; `t.time_of_day() --&gt; 01:00:00;` |
++
++
++## &lt;a name=&#34;conversion-to-string&#34; href=&#34;conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;
++
++| Syntax | Description | Example |
++| `std::string to_simple_string(ptime)` | YYYY-mmm-DD HH:MM:SS.fffffffff 形式の文字列(mmm は月名の3文字短縮名)に変換。 秒の小数部(.fffffffff)は0でないとき含まれる。 | 2002-Jan-01 10:00:01.123456789 |
++| `std::string to_iso_string(ptime)` | YYYYMMDDTHHMMSS,fffffffff 形式(T は日付と時間の区切り) に変換 | 20020131T100001,123456789 |
++| `std::string to_iso_extended_string(ptime)` | YYYY-MM-DDTHH:MM:SS,fffffffff 形式(T は日付と時間の区切り) に変換 | 2002-01-31T10:00:01,123456789 |
++
++
++## &lt;a name=&#34;operators&#34; href=&#34;operators&#34;&gt;Operators&lt;/a&gt;
++
++| Syntax | Description | Example |
++| `operator==, operator!=,`&lt;br/&gt; `operator&gt;, operator&lt;` &lt;br/&gt; `operator&gt;=, operator&lt;=` | サポートする比較演算子 | `t1 == t2`, etc |
++| `ptime operator+(date_duration) const` | オフセット日数(`date_duration`)を加えた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `date_duration dd(1);`&lt;br/&gt; `ptime t2 = t + dd;` |
++| `ptime operator-(date_duration) const` | オフセット日数(`date_duration`)を差し引いた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `date_duration dd(1);`&lt;br/&gt; `ptime t2 = t - dd;` |
++| `ptime operator+(time_duration) const` | 時間長(`time_duration`)を加えた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `ptime t2 = t + hours(1) + minutes(2);` |
++| `ptime operator-(time_duration) const` | 時間長(`time_duration`)を差し引いた `ptime` を返す | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t(d,minutes(5));`&lt;br/&gt; `ptime t2 = t - minutes(2);` |
++| `time_duration operator-(ptime) const` | 二つの時間の差を取る | `date d(2002,Jan,1);`&lt;br/&gt; `ptime t1(d,minutes(5));`&lt;br/&gt; `ptime t2(d,seconds(5));`&lt;br/&gt; `time_duration t3 = t2 - t1;//negative result` |
++
++
++***
++Last modified: Wed Aug 28 17:52:03 MST 2002 by [Jeff Garland](jeff@crystalclearsoftware.com) © 2000-2002 
++
++Japanese Translation Copyright (C) 2003 [Shoji Shinohara](sshino@cppll.jp).
++
++
+</summary>
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+</feed>
