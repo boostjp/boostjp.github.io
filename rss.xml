@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-11-21T13:05:28.878675</updated>
-  <id>4f78e812-29a5-4f92-a4b4-e64ea4c0092d</id>
+  <updated>2014-11-21T14:29:31.453171</updated>
+  <id>5077dee3-9d4e-4561-849c-0a5b022c3e19</id>
 
   
     <entry>
@@ -781,79 +781,6 @@ time_iterator &lt;span style=&#34;color: #0000FF&#34;&gt;titr&lt;/span&gt;(now,h
 &lt;hr /&gt;
 &lt;p&gt;Last modified: Wed Aug 28 17:52:03 MST 2002 by &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002 &lt;/p&gt;
 &lt;p&gt;Japanese Translation Copyright (C) 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;.&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>トレードオフ：安定性、予測性と近似 -- Boost.DateTime : トレードオフの翻訳ドキュメントを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/tradeoffs.html"/>
-      <id>7556f0fe3acda0ef3acef318aa01c1919e192e34:archive/boost_docs/libs/date_time/tradeoffs.md</id>
-      <updated>2014-11-20 20:37:57 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;トレードオフ：安定性、予測性と近似&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;避けられないトレードオフ&lt;/h2&gt;
-&lt;p&gt;このライブラリは、ユーザが必要とするであろうすべてを提供するために最善を尽くす。しかし、どの時間ライブラリにも、できることを制限する固有の制約がある。 特に、ユーザはある特定のアプリケーションに、次の3つの能力の内どの2つが必要かを選ぶ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;壁掛け時計の時刻との厳密な一致&lt;/li&gt;
-&lt;li&gt;正確な数学, 例: 時間長の計算&lt;/li&gt;
-&lt;li&gt;未来の時間位置(timepoints)を取り扱う能力&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;あるライブラリは、3つすべてを与えると暗黙のうちに約束するかもしれない。しかし、実際にテストしてみれば、同時に2つだけが本当である。 この制限は、どんな特定のライブラリでも設計や実装の欠陥ではない;もっと正確に言えば、それは国際基準によって定義される時法系が非常に異なる結果である。 3つのケースについてそれぞれ見てみよう:&lt;/p&gt;
-&lt;p&gt;壁掛け時計の時刻との厳密な一致を望むなら、UTC あるいは地域時間のいずれかを使用しなければならない。 UTC 時刻同士の差を取って時間長(duration)を計算し、秒精度が必要な場合、2つの時間はあまり遠い未来にあってはならない。なぜなら、うるう秒が計算に影響するが、そればたったの約半年前に決定されるものだからである。 地域時間については、立法機関が思うままにDST規則を変えることができ、また(実際に)変えるので、未来の時間長(duration)計算は、いつでも異常になり得る。&lt;/p&gt;
-&lt;p&gt;壁掛け時計の未来の時間を扱いたければ、(一般的なケースで)上述と同じ理由のために、正確な時間長(durations)を計算することができないであろう。&lt;/p&gt;
-&lt;p&gt;もし未来の時間について正確な計算を必要とするなら、TAI あるいは同等の物を使わなければならないだろう。しかし、TAI から UTC あるいは地域時間への写像はうるう秒に依存すため、壁掛け時計の時間と正確には一致しないであろう。&lt;/p&gt;
-&lt;h2&gt;安定性、予測性と近似&lt;/h2&gt;
-&lt;p&gt;ここに、何が起こっているのかを説明するのに役立つある基礎理論がある。 時間型が任意の抽象的なデータ型(ADT;Abstract Data Type)のように、それらの値に対する操作と一緒に1セットの値であることを忘れないで欲しい。&lt;/p&gt;
-&lt;h3&gt;安定性(Stability)&lt;/h3&gt;
-&lt;p&gt;与えられた値に関連付いたビットパターンが時間とともに変化しない場合、型の表現は安定している。 不安定な表現を備えた型は、おそらく誰の役にも立たない。したがって、我々はどんな時間ライブラリにも安定した表現だけを使用するよう要求するだろう。&lt;/p&gt;
-&lt;p&gt;特定のオペランドに演算を適用する結果が時間とともに変化しない場合、型に対する演算は安定している。&lt;/p&gt;
-&lt;h3&gt;予測性(Predictability)&lt;/h3&gt;
-&lt;p&gt;集合は、よく明確(well-defined)であるか不明確(ill-defined)であるか、の 2つのカテゴリーに分類される。 型が集合であるので、型をカバーするためにこれらの定義を拡張することができる。&lt;/p&gt;
-&lt;p&gt;任意の型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; について、値 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; が型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; のメンバーかどうか決める述語 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( x )&lt;/span&gt;&lt;/code&gt; があるとする。 この述語は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;true&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false&lt;/span&gt;&lt;/code&gt;, あるいは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;dont_know&lt;/span&gt;&lt;/code&gt; を返すものとする。&lt;/p&gt;
-&lt;p&gt;すべての &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( x )&lt;/span&gt;&lt;/code&gt; が &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;true&lt;/span&gt;&lt;/code&gt; か &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false&lt;/span&gt;&lt;/code&gt; のどちらかを返す場合、集合 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; は &lt;strong&gt;明確(well-defined)&lt;/strong&gt; であるという。&lt;/p&gt;
-&lt;p&gt;任意の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( x )&lt;/span&gt;&lt;/code&gt; が &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;dont_know&lt;/span&gt;&lt;/code&gt; を返す場合、集合 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; は &lt;strong&gt;不明確(ill-defined)&lt;/strong&gt; であるという。&lt;/p&gt;
-&lt;p&gt;それらは数学で通常使われる規則である。 しかしながら、時間型に特有な特性のために、この考察を洗練し、以下のように第3のカテゴリーを作ることは有用である:&lt;/p&gt;
-&lt;p&gt;任意の時間型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; について、値 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; が &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; のメンバーかどうか決める述語 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( x, t )&lt;/span&gt;&lt;/code&gt; があるとする。 述語が評価されるとき、パラメータ &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;t&lt;/span&gt;&lt;/code&gt; は時間に相当する。 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;xi&lt;/span&gt;&lt;/code&gt; それぞれに対して、以下のような時間 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ti&lt;/span&gt;&lt;/code&gt; と値 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v&lt;/span&gt;&lt;/code&gt; があるとする:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v = true&lt;/span&gt;&lt;/code&gt; あるいは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v = false&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;t &amp;lt; ti&lt;/span&gt;&lt;/code&gt; である全ての &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;t&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( xi, t )&lt;/span&gt;&lt;/code&gt; は &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;dont_know&lt;/span&gt;&lt;/code&gt; を返す&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;t &amp;gt;= ti&lt;/span&gt;&lt;/code&gt; である全ての &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;t&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_member( xi, t )&lt;/span&gt;&lt;/code&gt; は &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v&lt;/span&gt;&lt;/code&gt; を返す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;xi&lt;/span&gt;&lt;/code&gt; が &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; のメンバーであるかどうか「見つけ出す」とき、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ti&lt;/span&gt;&lt;/code&gt; はこのように時間である。今、我々は時間型の3つのカテゴリーを定義することができる:&lt;/p&gt;
-&lt;p&gt;全ての &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;xi&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ti&lt;/span&gt;&lt;/code&gt; = 負の無限大 のとき、型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; は &lt;strong&gt;予測可能&lt;/strong&gt; であるという。&lt;/p&gt;
-&lt;p&gt;ある &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;xi&lt;/span&gt;&lt;/code&gt; について、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ti&lt;/span&gt;&lt;/code&gt; = 正の無限大 のとき、型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; は &lt;strong&gt;不明確(ill-formed)&lt;/strong&gt; であるという。&lt;/p&gt;
-&lt;p&gt;それ以外のとき、型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; は &lt;strong&gt;予測不能&lt;/strong&gt; であるという。 (これは、ある &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;xi&lt;/span&gt;&lt;/code&gt; のために &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ti&lt;/span&gt;&lt;/code&gt; が有限であることを意味する)&lt;/p&gt;
-&lt;p&gt;不明確(ill-formed)な集合には実用性がほとんど無いので、これ以上は議論しない。 上記について簡単に言えば、予測可能な型は全ての値が事前に分かっているが、予測不能な型ではいくつかの値がある特定の時間になるまで分からない。&lt;/p&gt;
-&lt;h3&gt;操作の安定性&lt;/h3&gt;
-&lt;p&gt;予測可能な型には2つの重要な特性がある:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;それらの要素から連続する整数への、順序を維持する写像が有る&lt;/li&gt;
-&lt;li&gt;それらの値に対する時間長(duration)の演算は安定している&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;この実用上の効果は時間長(duration)の計算を単純な整数の減算で実装できるということである。 予測可能な型の例は TAI timepoints およびグレゴリオ暦の日付である。&lt;/p&gt;
-&lt;p&gt;予測できない型は正反対の特性を持っている:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;それらの要素から連続する整数への、順序を維持する写像が無い&lt;/li&gt;
-&lt;li&gt;それらの値に対する時間長(duration)の演算は安定していない&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;予測できない型の例は UTC timepoints および地域時間 timepoints である。&lt;/p&gt;
-&lt;p&gt;予測不能な型の中の範囲が予測可能であり得ると示すことによって、これを少し改善することができる。また、完全にその範囲内で実行された演算は安定しているであろう。 例えば、UTC timepoints において 1970-01-01 から現在までの範囲は予測可能である。したがって、その範囲内での時間長(duration)の計算は安定しているであろう。&lt;/p&gt;
-&lt;h3&gt;近似(Approximations)&lt;/h3&gt;
-&lt;p&gt;UTC と 地域時間のような重要な時間型が実際には予測不能なので、これらの制限は問題である。また、したがって、それらに対する演算は時々不安定である。しかし、実用上の問題として、地域時間で指定される将来の 2つの時間位置(timepoints)の間の時間長(duration)を計算するようなこの種の演算を実行したいことが多々ある。&lt;/p&gt;
-&lt;p&gt;このライブラリにできる最善策は、近似値(一般に可能で、大抵の用途で十分である)を提供することである。 もちろん、文書は、答えが近似値(したがって不安定である)であること、そしてエラーがどの位の大きさになり得るのか明示しなくてはならない。 多くの点で、予測不能な集合での計算は浮動小数点数の使用(結果がほぼ正確だろうと期待されるだけ)に似ている。 予測可能な集合での計算は整数の使用と似ており、そして結果が正確であると期待される。&lt;/p&gt;
-&lt;p&gt;正確な答えが要求されたり、不安定さを許容できない状況のために、ユーザがそれを明示できなければならない。 そして、ユーザが正確で安定した答えが得られないような計算を要求すれば、ライブラリは例外を投げるべきである。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Last modified: Wed Aug 28 17:52:03 MST 2002 by &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002 &lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
