@@ -111,6 +111,13 @@
     visibility:hidden !important;
 }
 */
+
+code {
+    color: #000000;
+}
+a code {
+    color: #428bca;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -168,7 +175,7 @@ day_iterator itr(weekstart);
 <span style="color: #008000; font-weight: bold">for</span> (; itr <span style="color: #666666">&lt;=</span> weekend; <span style="color: #666666">++</span>itr) {
   std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> to_iso_extended_string(<span style="color: #666666">*</span>itr) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> そして <code><span style="color: #000">posix_time</span></code> システムの使用例である。 詳細は「<a href=http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html>時間プログラミング</a>」で解説する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>posix_time; 
+</pre></div> そして <code>posix_time</code> システムの使用例である。 詳細は「<a href=http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html>時間プログラミング</a>」で解説する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>posix_time; 
 date <span style="color: #0000FF">d</span>(<span style="color: #666666">2002</span>,Feb,<span style="color: #666666">1</span>); <span style="color: #408080; font-style: italic">//an arbitrary date</span>
 ptime <span style="color: #0000FF">t1</span>(d, hours(<span style="color: #666666">5</span>)<span style="color: #666666">+</span>nanosec(<span style="color: #666666">100</span>));<span style="color: #408080; font-style: italic">//date + time of day offset</span>
 ptime t2 <span style="color: #666666">=</span> t1 <span style="color: #666666">-</span> minutes(<span style="color: #666666">4</span>)<span style="color: #666666">+</span>seconds(<span style="color: #666666">2</span>);

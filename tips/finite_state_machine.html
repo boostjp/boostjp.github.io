@@ -111,6 +111,13 @@
     visibility:hidden !important;
 }
 */
+
+code {
+    color: #000000;
+}
+a code {
+    color: #428bca;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -190,7 +197,7 @@ function tree_onclick(e) {
     m.<span style=color:#ff0000>process_event</span>( my_event1() );  <span style="color: #408080; font-style: italic">// my_state1 -&gt; my_state2</span>
     m.<span style=color:#ff0000>process_event</span>( my_event2() );  <span style="color: #408080; font-style: italic">// my_state2 -&gt; my_state3</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/state-event name=state-event>状態の開始と終了のタイミングで任意の処理を行う</a></h2> <p>状態クラスに <code><span style="color: #000">on_entry()</span></code>, <code><span style="color: #000">on_exit()</span></code> メンバ関数を定義すると、それぞれ状態の開始と終了時に、自動的に呼ばれる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/state-event name=state-event>状態の開始と終了のタイミングで任意の処理を行う</a></h2> <p>状態クラスに <code>on_entry()</code>, <code>on_exit()</code> メンバ関数を定義すると、それぞれ状態の開始と終了時に、自動的に呼ばれる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 
@@ -236,9 +243,9 @@ function tree_onclick(e) {
     m.start();                      <span style="color: #408080; font-style: italic">// my_state1 </span>
     m.process_event( my_event1() ); <span style="color: #408080; font-style: italic">// my_state1 -&gt; my_state2 </span>
 }
-</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">exit: my_state1
+</pre></div> 実行結果：</p> <p><pre><code>exit: my_state1
 entry: my_state2
-</span></code></pre></p> <h2><a href=http://boostjp.github.io/tips/change-state-event name=change-state-event>状態遷移イベントを受け取ったタイミングで任意の処理を行う</a></h2> <p>有限状態マシンがイベントを受け取ったとき、任意の処理を実行できる。</p> <p>状態遷移テーブルには <code><span style="color: #000">_row</span></code> のかわりに <code><span style="color: #000">a_row</span></code> を使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/change-state-event name=change-state-event>状態遷移イベントを受け取ったタイミングで任意の処理を行う</a></h2> <p>有限状態マシンがイベントを受け取ったとき、任意の処理を実行できる。</p> <p>状態遷移テーブルには <code>_row</code> のかわりに <code>a_row</code> を使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 
@@ -279,9 +286,9 @@ entry: my_state2
     m.process_event( my_event1() ); <span style="color: #408080; font-style: italic">// my_state1 -&gt; my_state2 ( <span style=color:#ff0000>on_event1</span> ) </span>
     m.process_event( my_event2() ); <span style="color: #408080; font-style: italic">// my_state2 -&gt; my_state3 ( <span style=color:#ff0000>on_event2</span> ) </span>
 }
-</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">on_event1
+</pre></div> 実行結果：</p> <p><pre><code>on_event1
 on_event2
-</span></code></pre></p> <h2><a href=http://boostjp.github.io/tips/guard name=guard>状態遷移を拒否する</a></h2> <p>有限状態マシンがイベントを受け取ったとき、実行時に状態遷移を拒否することができる。</p> <p>状態遷移テーブルには <code><span style="color: #000">_row</span></code> の代わりに <code><span style="color: #000">g_row</span></code> を使う。</p> <p><code><span style="color: #000">g_row</span></code> に指定したメンバ関数が <code><span style="color: #000">false</span></code> を返すとき、状態遷移は拒否される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/guard name=guard>状態遷移を拒否する</a></h2> <p>有限状態マシンがイベントを受け取ったとき、実行時に状態遷移を拒否することができる。</p> <p>状態遷移テーブルには <code>_row</code> の代わりに <code>g_row</code> を使う。</p> <p><code>g_row</code> に指定したメンバ関数が <code>false</code> を返すとき、状態遷移は拒否される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 
@@ -335,8 +342,8 @@ on_event2
     m.process_event( my_event1() ); <span style="color: #408080; font-style: italic">// my_state1 -&gt; my_state2</span>
     m.process_event( my_event2() ); <span style="color: #408080; font-style: italic">// 拒否。</span>
 }
-</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">entry: my_state2
-</span></code></pre></p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
+</pre></div> 実行結果：</p> <p><pre><code>entry: my_state2
+</code></pre></p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>
             window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})

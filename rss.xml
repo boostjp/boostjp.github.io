@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-11-21T17:44:42.366745</updated>
-  <id>755ee53c-6949-4944-9caa-ab2646a0e03b</id>
+  <updated>2014-11-22T02:07:04.633505</updated>
+  <id>46c48e5a-6a85-48da-a0af-c474f4ecddd4</id>
 
   
     <entry>
@@ -14,7 +14,7 @@
       
         <content type="html">&lt;h1&gt;コンセプトの充当化と原型&lt;/h1&gt;
 &lt;p&gt;これまで、コンポーネントへの入力に対して、最小限の要求事項(コンセプト)を選択することの重要性を議論してきた。 しかし、選択したコンセプトが対象のアルゴリズムを「充当 &#34;cover&#34;」していることを確認するのも、同様に重要である。 すなわち、発生する可能性のあるユーザ・エラーは全てコンセプト・チェックによって漏れなく捕らえられるべきである。 コンセプト充当性は、「原型クラス &#34;archetype class&#34;」を使用することで確認可能だ。 原型クラスとは、特定のコンセプトに関連するインタフェースの正確な実装である。 原型クラスの実行時の振舞いに重要性はなく、そのメンバ関数本体は空文のままでかまわない。 そうすれば、コンポーネントへの入力として原型クラスを与えてコンパイルするだけで、簡単なテスト・プログラムが作成できる。 そのプログラムがコンパイル可能であれば、対応するコンセプトがそのコンポーネントを充当していることが確認できたことになる。&lt;/p&gt;
-&lt;p&gt;以下のコードは、&lt;a href=&#34;http://www.sgi.com/tech/stl/trivial.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;TrivialIterator&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; コンセプトに対する原型クラスである。 原型が対応するコンセプトと正確に一致していることを保証するために、いくつかの点で注意しなければならないことがある。 例えば、コンセプトは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;operator*()&lt;/span&gt;&lt;/code&gt; の戻り値型が値型に変換可能でなければならない。 だからといって、これはその戻り値型として、より厳格に &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp;&lt;/span&gt;&lt;/code&gt; あるいは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;const T&amp;amp;&lt;/span&gt;&lt;/code&gt; を要求している訳ではない。 それは、原型クラスの戻り値型として &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp;&lt;/span&gt;&lt;/code&gt; あるいは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;const T&amp;amp;&lt;/span&gt;&lt;/code&gt; を使用することが、誤りとなることを意味する。 正しいアプローチは、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt; 型に変換可能なユーザー定義の戻り値型を作成することで、この例では &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;input_proxy&lt;/span&gt;&lt;/code&gt; として処理している。 原型クラスを用いたテストの妥当性は、完全にコンセプトとの正確な一致に依存しており、それを確認するためには慎重な（人手による）検査を必要とする。&lt;/p&gt;
+&lt;p&gt;以下のコードは、&lt;a href=&#34;http://www.sgi.com/tech/stl/trivial.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;TrivialIterator&lt;/code&gt;&lt;/a&gt; コンセプトに対する原型クラスである。 原型が対応するコンセプトと正確に一致していることを保証するために、いくつかの点で注意しなければならないことがある。 例えば、コンセプトは &lt;code&gt;operator*()&lt;/code&gt; の戻り値型が値型に変換可能でなければならない。 だからといって、これはその戻り値型として、より厳格に &lt;code&gt;T&amp;amp;&lt;/code&gt; あるいは &lt;code&gt;const T&amp;amp;&lt;/code&gt; を要求している訳ではない。 それは、原型クラスの戻り値型として &lt;code&gt;T&amp;amp;&lt;/code&gt; あるいは &lt;code&gt;const T&amp;amp;&lt;/code&gt; を使用することが、誤りとなることを意味する。 正しいアプローチは、&lt;code&gt;T&lt;/code&gt; 型に変換可能なユーザー定義の戻り値型を作成することで、この例では &lt;code&gt;input_proxy&lt;/code&gt; として処理している。 原型クラスを用いたテストの妥当性は、完全にコンセプトとの正確な一致に依存しており、それを確認するためには慎重な（人手による）検査を必要とする。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; input_proxy {
   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;() {
@@ -43,8 +43,8 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-ジェネリック・アルゴリズムのテストとして、一般的な複数の入力型に対してインスタンスの生成を行う場合が往々にしてある。 一例として、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::stable_sort()&lt;/span&gt;&lt;/code&gt; に対して、イテレータとして組み込みのポインタ型を適用することが考えられる。 これは、アルゴリズムの実行時の振る舞いをテストするには適切であるが、コンセプト充当性の保証には有用ではない。 なぜなら、C++ の組み込み型は特定のコンセプトとー致を見ることは決してなく、たいていの場合、それが提供する機能は何らかのコンセプトが単独で必要とする最小のそれを上回っている。 すなわち、たとえ与えられた型で関数テンプレートがコンパイルできたとしても、そのコンセプトの要求事項は、その関数を充当する実際の要求事項に及ばないことがありうる。 それ故に、一般的な入力型でテストすることに加えて、原型クラスでコンパイルすることは重要である。&lt;/p&gt;
-&lt;p&gt;以下は、記載されている &lt;a href=&#34;http://cpprefjp.github.io/reference/algorithm/stable_sort.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::stable_sort()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; の要求事項をチェックするために原型を使用する方法を示す、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html&#34;&gt;stl_concept_covering.cpp&lt;/a&gt; からの抜粋である。 この場合、&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;CopyConstructible&lt;/span&gt;&lt;/code&gt;（コピー・コンストラクト可能）&lt;/a&gt; と &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Assignable&lt;/span&gt;&lt;/code&gt;（割り当て可能）&lt;/a&gt; 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Base&lt;/span&gt;&lt;/code&gt; という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。&lt;/p&gt;
+ジェネリック・アルゴリズムのテストとして、一般的な複数の入力型に対してインスタンスの生成を行う場合が往々にしてある。 一例として、&lt;code&gt;std::stable_sort()&lt;/code&gt; に対して、イテレータとして組み込みのポインタ型を適用することが考えられる。 これは、アルゴリズムの実行時の振る舞いをテストするには適切であるが、コンセプト充当性の保証には有用ではない。 なぜなら、C++ の組み込み型は特定のコンセプトとー致を見ることは決してなく、たいていの場合、それが提供する機能は何らかのコンセプトが単独で必要とする最小のそれを上回っている。 すなわち、たとえ与えられた型で関数テンプレートがコンパイルできたとしても、そのコンセプトの要求事項は、その関数を充当する実際の要求事項に及ばないことがありうる。 それ故に、一般的な入力型でテストすることに加えて、原型クラスでコンパイルすることは重要である。&lt;/p&gt;
+&lt;p&gt;以下は、記載されている &lt;a href=&#34;http://cpprefjp.github.io/reference/algorithm/stable_sort.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::stable_sort()&lt;/code&gt;&lt;/a&gt; の要求事項をチェックするために原型を使用する方法を示す、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html&#34;&gt;stl_concept_covering.cpp&lt;/a&gt; からの抜粋である。 この場合、&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;CopyConstructible&lt;/code&gt;（コピー・コンストラクト可能）&lt;/a&gt; と &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Assignable&lt;/code&gt;（割り当て可能）&lt;/a&gt; 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、&lt;code&gt;Base&lt;/code&gt; という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;{
   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; less_than_comparable_archetype&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; 
       sgi_assignable_archetype&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; ValueType;
@@ -77,7 +77,7 @@
 &lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/span&gt;&lt;/code&gt; や &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;fuga.f();&lt;/span&gt;&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/support-cpp11&#34; name=&#34;support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/h2&gt;
@@ -108,7 +108,7 @@
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#endif&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost/config.hpp&lt;/span&gt;&lt;/code&gt; をインクルードすると、コンパイラやバージョンに応じて &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_&lt;/span&gt;&lt;/code&gt;&lt;em&gt;FEATURE_NAME&lt;/em&gt; が定義される。定義されているマクロ名に対応した機能は、そのコンパイラでは使えない。&lt;/p&gt;
+&lt;code&gt;boost/config.hpp&lt;/code&gt; をインクルードすると、コンパイラやバージョンに応じて &lt;code&gt;BOOST_NO_&lt;/code&gt;&lt;em&gt;FEATURE_NAME&lt;/em&gt; が定義される。定義されているマクロ名に対応した機能は、そのコンパイラでは使えない。&lt;/p&gt;
 &lt;p&gt;以下はそのマクロ一覧である。C++11の新機能については各々で調べたし。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
@@ -119,224 +119,224 @@
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_ALIGNAS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;alignas&lt;/span&gt;&lt;/code&gt;キーワード&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_ALIGNAS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の&lt;code&gt;alignas&lt;/code&gt;キーワード&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_ALLOCATOR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11バージョンの&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::allocator&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_ALLOCATOR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11バージョンの&lt;code&gt;std::allocator&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_ATOMIC_SP&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_ATOMIC_SP&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;C++11のスマートポインタがアトミック操作をサポートしているか&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_ARRAY&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/array.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_ARRAY&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/array.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;array&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_CHRONO&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/chrono.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;chrono&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_CHRONO&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/chrono.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;chrono&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_CODECVT&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/codecvt.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;codecvt&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_CODECVT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/codecvt.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;codecvt&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_CONDITION_VARIABLE&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/condition_variable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;condition_variable&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_CONDITION_VARIABLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/condition_variable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;condition_variable&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_FORWARD_LIST&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/forward_list.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;forward_list&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_FORWARD_LIST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/forward_list.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;forward_list&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_FUNCTIONAL&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11バージョンと互換のある&lt;a href=&#34;http://cpprefjp.github.io/reference/functional.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;functional&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_FUNCTIONAL&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11バージョンと互換のある&lt;a href=&#34;http://cpprefjp.github.io/reference/functional.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;functional&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_FUTURE&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/future.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;future&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_FUTURE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/future.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;future&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_INITIALIZER_LIST&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/initializer_list.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;initializer_list&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ。 変数の初期化を &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;{1, 2, 3}&lt;/span&gt;&lt;/code&gt; のような記述で行う&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_INITIALIZER_LIST&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/initializer_list.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;initializer_list&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ。 変数の初期化を &lt;code&gt;{1, 2, 3}&lt;/code&gt; のような記述で行う&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_MUTEX&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/mutex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;mutex&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_MUTEX&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/mutex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;mutex&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_RANDOM&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/random.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;random&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_RANDOM&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/random.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;random&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_RATIO&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/ratio.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;ratio&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_RATIO&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/ratio.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;ratio&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_REGEX&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/regex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;regex&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_REGEX&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/regex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;regex&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_SYSTEM_ERROR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/system_error.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;system_error&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_SYSTEM_ERROR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/system_error.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;system_error&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_THREAD&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/thread.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;thread&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_THREAD&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/thread.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;thread&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_TUPLE&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/tuple.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;tuple&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_TUPLE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/tuple.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;tuple&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_TYPEINDEX&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/typeindex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;typeindex&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_TYPEINDEX&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/typeindex.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;typeindex&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_TYPE_TRAITS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/type_traits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;type_traits&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_TYPE_TRAITS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/type_traits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;type_traits&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_UNORDERED_MAP&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/unordered_map.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;unordered_map&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_UNORDERED_MAP&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/unordered_map.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;unordered_map&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_HDR_UNORDERED_SET&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/unordered_set.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;unordered_set&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_HDR_UNORDERED_SET&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11の標準ライブラリ&lt;a href=&#34;http://cpprefjp.github.io/reference/unordered_set.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;unordered_set&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_INLINE_NAMESPACES&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;inline namespace&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_INLINE_NAMESPACES&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;inline namespace&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_SMART_PTR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;C++11のスマートポインタ、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;shared_ptr&lt;/span&gt;&lt;/code&gt;と&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unique_ptr&lt;/span&gt;&lt;/code&gt;を提供しているか&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_SMART_PTR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;C++11のスマートポインタ、&lt;code&gt;shared_ptr&lt;/code&gt;と&lt;code&gt;unique_ptr&lt;/code&gt;を提供しているか&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_AUTO_DECLARATIONS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;auto&lt;/span&gt;&lt;/code&gt; による変数の型の自動決定&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;// x の型は初期化式 expr から自動的に決定する&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;auto x = expr;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_AUTO_DECLARATIONS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt; による変数の型の自動決定&lt;br /&gt; &lt;code&gt;// x の型は初期化式 expr から自動的に決定する&lt;/code&gt;&lt;br /&gt; &lt;code&gt;auto x = expr;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;auto&lt;/span&gt;&lt;/code&gt; での宣言で、一度に複数の変数を宣言する&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;auto x = expr1, y = expr2;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_AUTO_MULTIDECLARATIONS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;auto&lt;/code&gt; での宣言で、一度に複数の変数を宣言する&lt;br /&gt; &lt;code&gt;auto x = expr1, y = expr2;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_CHAR16_T&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;組み込み型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;char16_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_CHAR16_T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;組み込み型 &lt;code&gt;char16_t&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_CHAR32_T&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;組み込み型 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;char32_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_CHAR32_T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;組み込み型 &lt;code&gt;char32_t&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_TEMPLATE_ALIASES&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&lt;/span&gt;&lt;/code&gt; による別名宣言。&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&amp;lt;typename T&amp;gt; using my_vector = std::vector&amp;lt;T, my_allocator&amp;lt;T&amp;gt; &amp;gt;;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;my_vector&amp;lt;T&amp;gt; v;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_TEMPLATE_ALIASES&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template&lt;/code&gt; による別名宣言。&lt;br /&gt; &lt;code&gt;template&amp;lt;typename T&amp;gt; using my_vector = std::vector&amp;lt;T, my_allocator&amp;lt;T&amp;gt; &amp;gt;;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;my_vector&amp;lt;T&amp;gt; v;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_CONSTEXPR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_CONSTEXPR&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;コンパイル時に計算して定数に畳み込むことが可能なことを示す修飾子&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_DECLTYPE&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Boost.Typeof のように式から型を取得する&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;// x は expr1 の型として宣言され、&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;// expr2 で初期化される&lt;/span&gt;&lt;/code&gt;&lt;br /&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;decltype(expr1) x = expr2;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_DECLTYPE&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Boost.Typeof のように式から型を取得する&lt;br /&gt; &lt;code&gt;// x は expr1 の型として宣言され、&lt;/code&gt;&lt;br /&gt; &lt;code&gt;// expr2 で初期化される&lt;/code&gt;&lt;br /&gt;&lt;code&gt;decltype(expr1) x = expr2;&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_DECLTYPE_N3276&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;N3276仕様の&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;decltype&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_DECLTYPE_N3276&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;N3276仕様の&lt;code&gt;decltype&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_DEFAULTED_FUNCTIONS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_DEFAULTED_FUNCTIONS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;コンストラクタ、コピー代入演算子、デストラクタをデフォルト実装で宣言する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_DELETED_FUNCTIONS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;関数の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;delete&lt;/span&gt;&lt;/code&gt; 宣言&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_DELETED_FUNCTIONS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;関数の &lt;code&gt;delete&lt;/code&gt; 宣言&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型変換演算子に対する &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;explicit&lt;/span&gt;&lt;/code&gt; 宣言&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_EXPLICIT_CONVERSION_OPERATORS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;型変換演算子に対する &lt;code&gt;explicit&lt;/code&gt; 宣言&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_EXTERN_TEMPLATE&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_EXTERN_TEMPLATE&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;テンプレートのインスタンス化をその翻訳単位では行わないようにする&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_FUNCTION_TEMPLATE_DEFAULT_ARGS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;関数テンプレートのテンプレートパラメータにデフォルト引数を指定する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_LAMBDAS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_LAMBDAS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ラムダ式&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_LOCAL_CLASS_TEMPLATE_PARAMETERS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ローカルクラスをテンプレートパラメータに指定する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_LONG_LONG&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;(unsigned) long long&lt;/span&gt;&lt;/code&gt; 型&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_LONG_LONG&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;(unsigned) long long&lt;/code&gt; 型&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_NOEXCEPT&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;noexcept&lt;/span&gt;&lt;/code&gt;キーワード&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_NOEXCEPT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;noexcept&lt;/code&gt;キーワード&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_NULLPTR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_NULLPTR&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ヌルポインタを示すキーワード&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_RANGE_BASED_FOR&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;範囲&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;for&lt;/span&gt;&lt;/code&gt;文&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_RANGE_BASED_FOR&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;範囲&lt;code&gt;for&lt;/code&gt;文&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;`BOOST_NO_CXX11_RAW_LITERALS&lt;/td&gt;
 &lt;td&gt;文字列リテラルの新しい表記法&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_RVALUE_REFERENCES&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_RVALUE_REFERENCES&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;右辺値参照型&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_SCOPED_ENUMS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_SCOPED_ENUMS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;スコープ付きの列挙型&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_STATIC_ASSERT&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;条件式によってコンパイルエラーにするための &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;static_assert&lt;/span&gt;&lt;/code&gt; 文&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_STATIC_ASSERT&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;条件式によってコンパイルエラーにするための &lt;code&gt;static_assert&lt;/code&gt; 文&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_STD_UNORDERD&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unordered_set&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unordered_multiset&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unordered_map&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unordered_multimap&lt;/span&gt;&lt;/code&gt; の4つのコンテナクラステンプレート&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_STD_UNORDERD&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;unordered_set&lt;/code&gt;, &lt;code&gt;unordered_multiset&lt;/code&gt;, &lt;code&gt;unordered_map&lt;/code&gt;, &lt;code&gt;unordered_multimap&lt;/code&gt; の4つのコンテナクラステンプレート&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_TRAILING_RESULT_TYPES&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_TRAILING_RESULT_TYPES&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;関数の戻り値型を後置&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_UNICODE_LITERALS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Unicode 文字・文字列リテラル(&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;u8&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;u&lt;/span&gt;&lt;/code&gt;, &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;U&lt;/span&gt;&lt;/code&gt;)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_UNICODE_LITERALS&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;Unicode 文字・文字列リテラル(&lt;code&gt;u8&lt;/code&gt;, &lt;code&gt;u&lt;/code&gt;, &lt;code&gt;U&lt;/code&gt;)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_UNIFIED_INITIALIZATION_SYNTAX&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;コンストラクタの呼び出しを初期化子リストと同じ構文で記述する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_USER_DEFINED_LITERALS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_USER_DEFINED_LITERALS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ユーザー定義リテラル&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_VARIADIC_TEMPLATES&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_VARIADIC_TEMPLATES&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;可変引数テンプレート&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NO_CXX11_VARIADIC_MACROS&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;BOOST_NO_CXX11_VARIADIC_MACROS&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;可変引数マクロ&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/deduced-typename&#34; name=&#34;deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/span&gt;&lt;/code&gt; や &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;fuga.f();&lt;/span&gt;&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/deduced-typename&#34; name=&#34;deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; hoge {
     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; type;
 };
@@ -354,7 +354,7 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-関数テンプレートもしくはクラステンプレート内で、上の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;f&lt;/span&gt;&lt;/code&gt; のように内部でテンプレートパラメータの内部で宣言された型名を利用する場合、(a) の箇所では、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T::type&lt;/span&gt;&lt;/code&gt; が型名であることを示す必要がある。具体的には &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; キーワードを使って、 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename T::type x;&lt;/span&gt;&lt;/code&gt; のように記述する。しかし古いコンパイラなどでは、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; を付けずとも空気を読んで &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T::type&lt;/span&gt;&lt;/code&gt; が型であると判断することで、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; キーワードそのものをサポートしていない場合がある。次のように記述することで、この問題は回避可能である。&lt;/p&gt;
+関数テンプレートもしくはクラステンプレート内で、上の &lt;code&gt;f&lt;/code&gt; のように内部でテンプレートパラメータの内部で宣言された型名を利用する場合、(a) の箇所では、&lt;code&gt;T::type&lt;/code&gt; が型名であることを示す必要がある。具体的には &lt;code&gt;typename&lt;/code&gt; キーワードを使って、 &lt;code&gt;typename T::type x;&lt;/code&gt; のように記述する。しかし古いコンパイラなどでは、&lt;code&gt;typename&lt;/code&gt; を付けずとも空気を読んで &lt;code&gt;T::type&lt;/code&gt; が型であると判断することで、&lt;code&gt;typename&lt;/code&gt; キーワードそのものをサポートしていない場合がある。次のように記述することで、この問題は回避可能である。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; f() {
     BOOST_DEDUCED_TYPENAME T&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;type x;
@@ -362,9 +362,9 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_DEDUCED_TYPENAME&lt;/span&gt;&lt;/code&gt; マクロは、普通 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; になるが、かかる位置での &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; をサポートしていないコンパイラでは空に展開される。&lt;/p&gt;
+&lt;code&gt;BOOST_DEDUCED_TYPENAME&lt;/code&gt; マクロは、普通 &lt;code&gt;typename&lt;/code&gt; になるが、かかる位置での &lt;code&gt;typename&lt;/code&gt; をサポートしていないコンパイラでは空に展開される。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/nested-template&#34; name=&#34;nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;上記の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; と似たような問題で、次のようなコードがコンパイラによって通ったり通らなかったりする：&lt;/p&gt;
+&lt;p&gt;上記の &lt;code&gt;typename&lt;/code&gt; と似たような問題で、次のようなコードがコンパイラによって通ったり通らなかったりする：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; hoge {
     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
     &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; f() {}
@@ -384,7 +384,7 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-(a) は &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int&lt;/span&gt;&lt;/code&gt; で実体化したメンバ関数テンプレートの呼び出しとは認識されず、(b) もメンバクラステンプレートを &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int&lt;/span&gt;&lt;/code&gt; で実体化した型の変数の宣言とは見なされない。次のように記述する必要がある。&lt;/p&gt;
+(a) は &lt;code&gt;int&lt;/code&gt; で実体化したメンバ関数テンプレートの呼び出しとは認識されず、(b) もメンバクラステンプレートを &lt;code&gt;int&lt;/code&gt; で実体化した型の変数の宣言とは見なされない。次のように記述する必要がある。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; g(T &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x) {
     x.&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; f&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (a’)&lt;/span&gt;
@@ -392,7 +392,7 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-(a’) では &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;f&lt;/span&gt;&lt;/code&gt; の前に &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&lt;/span&gt;&lt;/code&gt; キーワードを付けて、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;f&lt;/span&gt;&lt;/code&gt; がテンプレートであることを明記している。(b’) も同様に &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;fuga&lt;/span&gt;&lt;/code&gt; がテンプレートであると示しているが、同時に &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T::template fuga&amp;lt;int&amp;gt;&lt;/span&gt;&lt;/code&gt; が型であることも示すために &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; も付けている。しかし上の &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;typename&lt;/span&gt;&lt;/code&gt; の問題と同様に、この &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&lt;/span&gt;&lt;/code&gt; キーワードの使い方をサポートしないコンパイラが存在する。これについては &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;BOOST_NESTED_TEMPLATE&lt;/span&gt;&lt;/code&gt; マクロを使うことで解決する。次のように使う：&lt;/p&gt;
+(a’) では &lt;code&gt;f&lt;/code&gt; の前に &lt;code&gt;template&lt;/code&gt; キーワードを付けて、&lt;code&gt;f&lt;/code&gt; がテンプレートであることを明記している。(b’) も同様に &lt;code&gt;fuga&lt;/code&gt; がテンプレートであると示しているが、同時に &lt;code&gt;T::template fuga&amp;lt;int&amp;gt;&lt;/code&gt; が型であることも示すために &lt;code&gt;typename&lt;/code&gt; も付けている。しかし上の &lt;code&gt;typename&lt;/code&gt; の問題と同様に、この &lt;code&gt;template&lt;/code&gt; キーワードの使い方をサポートしないコンパイラが存在する。これについては &lt;code&gt;BOOST_NESTED_TEMPLATE&lt;/code&gt; マクロを使うことで解決する。次のように使う：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; g(T &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x) {
     x.BOOST_NESTED_TEMPLATE f&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (a&#39;)&lt;/span&gt;
@@ -400,7 +400,7 @@
 }
 &lt;/pre&gt;&lt;/div&gt;
 
-この &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&lt;/span&gt;&lt;/code&gt; キーワードの使い方をサポートするコンパイラでは &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template&lt;/span&gt;&lt;/code&gt; と展開され、そうでないコンパイラでは空に展開される。&lt;/p&gt;
+この &lt;code&gt;template&lt;/code&gt; キーワードの使い方をサポートするコンパイラでは &lt;code&gt;template&lt;/code&gt; と展開され、そうでないコンパイラでは空に展開される。&lt;/p&gt;
 &lt;p&gt;documented boost version is 1.51.0&lt;/p&gt;</content>
       
       <author>
@@ -423,9 +423,9 @@
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/assign&#34; name=&#34;assign&#34;&gt;あらゆる型の値を代入する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;型には、あらゆる型の値を格納することができる。&lt;/p&gt;
-&lt;p&gt;格納されている型のチェックには、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any::type()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用し、&lt;a href=&#34;http://cpprefjp.github.io/reference/typeinfo/type_info.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::type_info&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;型で判定することができる。&lt;/p&gt;
-&lt;p&gt;格納されている値を元の型に変換するには、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any_cast()&lt;/span&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;boost::any&lt;/code&gt;型には、あらゆる型の値を格納することができる。&lt;/p&gt;
+&lt;p&gt;格納されている型のチェックには、&lt;code&gt;boost::any::type()&lt;/code&gt;メンバ関数を使用し、&lt;a href=&#34;http://cpprefjp.github.io/reference/typeinfo/type_info.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::type_info&lt;/code&gt;&lt;/a&gt;型で判定することができる。&lt;/p&gt;
+&lt;p&gt;格納されている値を元の型に変換するには、&lt;code&gt;boost::any_cast()&lt;/code&gt;関数を使用する。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/any.hpp&amp;gt;&lt;/span&gt;
@@ -447,10 +447,10 @@
 &lt;/pre&gt;&lt;/div&gt;
 
 実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Hello
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;Hello
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/extract-value&#34; name=&#34;extract-value&#34;&gt;値を取り出す&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;に代入した値を取り出すには、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any_cast()&lt;/span&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;boost::any&lt;/code&gt;に代入した値を取り出すには、&lt;code&gt;boost::any_cast()&lt;/code&gt;関数を使用する。&lt;/p&gt;
 &lt;p&gt;この関数の使用方法は、コピーして取り出す、値を参照する、値へのポインタを取得する、の3つがある。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方法1. 値をコピーして取り出す。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any a;
@@ -458,25 +458,25 @@
 T x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any_cast&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(a);
 &lt;/pre&gt;&lt;/div&gt;
 
-この例のように、テンプレート引数に取り出す型&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt;を指定し、引数として&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;オブジェクトへの参照を渡すことで、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;型に格納されている型Tのオブジェクトを、コピーで取り出すことができる。&lt;/p&gt;
-&lt;p&gt;型&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt;のオブジェクトが格納されていない場合には、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::bad_any_cast&lt;/span&gt;&lt;/code&gt;例外が投げられる。&lt;/p&gt;
+この例のように、テンプレート引数に取り出す型&lt;code&gt;T&lt;/code&gt;を指定し、引数として&lt;code&gt;boost::any&lt;/code&gt;オブジェクトへの参照を渡すことで、&lt;code&gt;boost::any&lt;/code&gt;型に格納されている型Tのオブジェクトを、コピーで取り出すことができる。&lt;/p&gt;
+&lt;p&gt;型&lt;code&gt;T&lt;/code&gt;のオブジェクトが格納されていない場合には、&lt;code&gt;boost::bad_any_cast&lt;/code&gt;例外が投げられる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方法2. 値を参照する。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any a;
 &lt;span style=&#34;border: 1px solid #FF0000&#34;&gt;…&lt;/span&gt;
 T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any_cast&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;gt;&lt;/span&gt;(a);
 &lt;/pre&gt;&lt;/div&gt;
 
-この例のように、テンプレート引数に&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp;&lt;/span&gt;&lt;/code&gt;を指定した場合、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;型に格納されている型Tのオブジェクトを参照することができる。&lt;/p&gt;
-&lt;p&gt;型&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt;のオブジェクトが格納されていない場合には、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::bad_any_cast&lt;/span&gt;&lt;/code&gt;例外が投げられる。&lt;/p&gt;
+この例のように、テンプレート引数に&lt;code&gt;T&amp;amp;&lt;/code&gt;を指定した場合、&lt;code&gt;boost::any&lt;/code&gt;型に格納されている型Tのオブジェクトを参照することができる。&lt;/p&gt;
+&lt;p&gt;型&lt;code&gt;T&lt;/code&gt;のオブジェクトが格納されていない場合には、&lt;code&gt;boost::bad_any_cast&lt;/code&gt;例外が投げられる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方法3. 値へのポインタを取得する。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any a;
 T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;any_cast&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;a);
 &lt;/pre&gt;&lt;/div&gt;
 
-この例のように、テンプレート引数に型&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt;を指定し、引数として&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;オブジェクトへのポインタを渡すことで、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::any&lt;/span&gt;&lt;/code&gt;型に格納されている型Tのオブジェクトへのポインタを取得できる。&lt;/p&gt;
-&lt;p&gt;型&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&lt;/span&gt;&lt;/code&gt;のオブジェクトが格納されていない場合には、ヌルポインタが返される。&lt;/p&gt;
+この例のように、テンプレート引数に型&lt;code&gt;T&lt;/code&gt;を指定し、引数として&lt;code&gt;boost::any&lt;/code&gt;オブジェクトへのポインタを渡すことで、&lt;code&gt;boost::any&lt;/code&gt;型に格納されている型Tのオブジェクトへのポインタを取得できる。&lt;/p&gt;
+&lt;p&gt;型&lt;code&gt;T&lt;/code&gt;のオブジェクトが格納されていない場合には、ヌルポインタが返される。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/store-to-container&#34; name=&#34;store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::vector&amp;lt;boost::any&amp;gt;&lt;/span&gt;&lt;/code&gt;のようにすれば、あらゆる型の値をコンテナに入れることができる。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;std::vector&amp;lt;boost::any&amp;gt;&lt;/code&gt;のようにすれば、あらゆる型の値をコンテナに入れることができる。&lt;/p&gt;
 &lt;p&gt;このようなコンテナは、ヘテロなコンテナ(heterogeneous containers)と呼ばれる。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
@@ -537,7 +537,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長浮動小数点数の、基本的な使い方を示す。&lt;/p&gt;
-&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision::cpp_dec_float_100&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラス型を使用して、2の平方根を求めるプログラムである。&lt;/p&gt;
+&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::multiprecision::cpp_dec_float_100&lt;/code&gt;&lt;/a&gt;クラス型を使用して、2の平方根を求めるプログラムである。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
 
@@ -558,9 +558,9 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;1.4142135623730950488016887242096980785696718753769480731766797379907324784621070388503875343276415727
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_100&lt;/span&gt;&lt;/code&gt;は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、100桁の仮数部を表現可能な多倍長浮動小数点数である。Boost.Multiprecisionが提供する全ての機能は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision&lt;/span&gt;&lt;/code&gt;名前空間以下で定義される。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1.4142135623730950488016887242096980785696718753769480731766797379907324784621070388503875343276415727
+&lt;/code&gt;&lt;/pre&gt;
+&lt;code&gt;cpp_dec_float_100&lt;/code&gt;は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、100桁の仮数部を表現可能な多倍長浮動小数点数である。Boost.Multiprecisionが提供する全ての機能は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間以下で定義される。&lt;/p&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長浮動小数点数は、以下の演算をサポートする。ビット演算は使用できない。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
@@ -571,67 +571,67 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a + b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a += b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a + b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a += b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;加算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a - b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a -= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a - b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a -= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;減算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a * b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a *= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a * b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a *= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;乗算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a / b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a /= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a / b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a /= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;除算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;+a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;+a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;符号をプラスにする&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;-a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;-a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;符号をマイナスにする&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a++;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;++a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a++;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;++a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;インクリメント&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a--;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;--a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a--;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;--a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;デクリメント&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a == b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a == b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;等値比較&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a != b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a != b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;非等値比較&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt; b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;より小さいかの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より小さいかの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;以下かの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以下かの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt; b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;より大きいかの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より大きいかの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;以上かの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以上かの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;os &amp;lt;&amp;lt; a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;os &amp;lt;&amp;lt; a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ストリームへの出力&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is &amp;gt;&amp;gt; a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;is &amp;gt;&amp;gt; a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ストリームからの入力&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -644,8 +644,8 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 
 | 型                  | 説明 |
 |---------------------|--------------------|
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_50&lt;/span&gt;&lt;/code&gt;  | 仮数部を50桁表現可能な浮動小数点数  |
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_100&lt;/span&gt;&lt;/code&gt; | 仮数部を100桁表現可能な浮動小数点数 |&lt;/p&gt;
+| &lt;code&gt;cpp_dec_float_50&lt;/code&gt;  | 仮数部を50桁表現可能な浮動小数点数  |
+| &lt;code&gt;cpp_dec_float_100&lt;/code&gt; | 仮数部を100桁表現可能な浮動小数点数 |&lt;/p&gt;
 &lt;p&gt;以下は、ユーザー定義の固定精度浮動小数点数型を定義する例である：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 仮数部を1,000桁表現可能な浮動小数点数の定義&lt;/span&gt;
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
@@ -656,7 +656,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;ul&gt;
 &lt;li&gt;デフォルト値は0である&lt;/li&gt;
 &lt;li&gt;基数は10。基数2ベースとは異なる振る舞いが可能&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;infinity&lt;/span&gt;&lt;/code&gt;と&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;NaN&lt;/span&gt;&lt;/code&gt;をサポートする。オーバーフローやゼロ割り時には、組み込みの浮動小数点数型と同じ振る舞いをする。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;infinity&lt;/code&gt;と&lt;code&gt;NaN&lt;/code&gt;をサポートする。オーバーフローやゼロ割り時には、組み込みの浮動小数点数型と同じ振る舞いをする。&lt;/li&gt;
 &lt;li&gt;全ての操作は、常に切り捨てを行う&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/gmp_float.html&#34; target=&#34;_blank&#34;&gt;GMPバックエンドの多倍長浮動小数点数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
@@ -665,23 +665,23 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 
 | 型               | 説明 |
 |------------------|---------------------------------------|
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpf_float_50&lt;/span&gt;&lt;/code&gt;   | 仮数部を50桁表現可能な浮動小数点数    |
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpf_float_100&lt;/span&gt;&lt;/code&gt;  | 仮数部を100桁表現可能な浮動小数点数   |
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpf_float_500&lt;/span&gt;&lt;/code&gt;  | 仮数部を500桁表現可能な浮動小数点数   |
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpf_float_1000&lt;/span&gt;&lt;/code&gt; | 仮数部を1,000桁表現可能な浮動小数点数 |
-| &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpf_float&lt;/span&gt;&lt;/code&gt;      | 仮数部を任意長表現可能な浮動小数点数  |&lt;/p&gt;
+| &lt;code&gt;mpf_float_50&lt;/code&gt;   | 仮数部を50桁表現可能な浮動小数点数    |
+| &lt;code&gt;mpf_float_100&lt;/code&gt;  | 仮数部を100桁表現可能な浮動小数点数   |
+| &lt;code&gt;mpf_float_500&lt;/code&gt;  | 仮数部を500桁表現可能な浮動小数点数   |
+| &lt;code&gt;mpf_float_1000&lt;/code&gt; | 仮数部を1,000桁表現可能な浮動小数点数 |
+| &lt;code&gt;mpf_float&lt;/code&gt;      | 仮数部を任意長表現可能な浮動小数点数  |&lt;/p&gt;
 &lt;p&gt;以下は、ユーザー定義の固定精度浮動小数点数型を定義する例である：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 仮数部を10,000桁表現可能な浮動小数点数の定義&lt;/span&gt;
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;number&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;gmp_float&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;10000&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; mpf_dec_float_10000;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;gmp_float&lt;/span&gt;&lt;/code&gt;のテンプレート引数として0を指定すると、任意長の仮数部が表現可能になる。&lt;/p&gt;
+&lt;code&gt;gmp_float&lt;/code&gt;のテンプレート引数として0を指定すると、任意長の仮数部が表現可能になる。&lt;/p&gt;
 &lt;p&gt;GMP多倍長浮動小数点数の特徴：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;デフォルト値は0である&lt;/li&gt;
 &lt;li&gt;GMPのグローバル設定を変更しない&lt;/li&gt;
-&lt;li&gt;GMPは&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;infinity&lt;/span&gt;&lt;/code&gt;や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;NaN&lt;/span&gt;&lt;/code&gt;といった概念を持たないため、可能な限りオーバーフローやゼロ割りは避けること。オーバーフロー時またはゼロ割り時には&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::overflow_error&lt;/span&gt;&lt;/code&gt;例外が送出される。&lt;/li&gt;
+&lt;li&gt;GMPは&lt;code&gt;infinity&lt;/code&gt;や&lt;code&gt;NaN&lt;/code&gt;といった概念を持たないため、可能な限りオーバーフローやゼロ割りは避けること。オーバーフロー時またはゼロ割り時には&lt;code&gt;std::overflow_error&lt;/code&gt;例外が送出される。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;MPFRバックエンドの多倍長浮動小数点数&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/mpfr.hpp&amp;gt;&lt;/span&gt;
@@ -700,23 +700,23 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float_50&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpfr_float_50&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を50桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float_100&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpfr_float_100&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を100桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float_500&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpfr_float_500&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を500桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float_1000&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpfr_float_1000&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を1,000桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpfr_float&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を任意長表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -731,11 +731,11 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;static_mpfr_float_50&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;static_mpfr_float_50&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を50桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;static_mpfr_float_100&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;static_mpfr_float_100&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部を100桁表現可能な浮動小数点数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -746,17 +746,17 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;number&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt;mpfr_float_backend&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;10000&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; mpf_dec_float_10000;
 &lt;/pre&gt;&lt;/div&gt;
 
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpfr_float_backend&lt;/span&gt;&lt;/code&gt;の第2テンプレート引数として&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision::allocate_stack&lt;/span&gt;&lt;/code&gt;列挙値を指定することで、動的メモリ確保を行わない多倍長浮動小数点数型の定義ができる。&lt;/p&gt;
+&lt;code&gt;mpfr_float_backend&lt;/code&gt;の第2テンプレート引数として&lt;code&gt;boost::multiprecision::allocate_stack&lt;/code&gt;列挙値を指定することで、動的メモリ確保を行わない多倍長浮動小数点数型の定義ができる。&lt;/p&gt;
 &lt;p&gt;MPFR多倍長浮動小数点数の特徴：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;デフォルト値は&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;NaN&lt;/span&gt;&lt;/code&gt;である&lt;/li&gt;
+&lt;li&gt;デフォルト値は&lt;code&gt;NaN&lt;/code&gt;である&lt;/li&gt;
 &lt;li&gt;全ての操作は、最近接値への丸めを使用する&lt;/li&gt;
 &lt;li&gt;GMPとMPFRのグローバル設定を変更しない&lt;/li&gt;
-&lt;li&gt;0で割ると&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;infinity&lt;/span&gt;&lt;/code&gt;になる&lt;/li&gt;
+&lt;li&gt;0で割ると&lt;code&gt;infinity&lt;/code&gt;になる&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列から多倍長浮動小数点数に変換するには、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;explicit&lt;/span&gt;&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;assign()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用する。
-文字列は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;char&lt;/span&gt;&lt;/code&gt;配列および&lt;a href=&#34;http://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::string&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;を受け取ることができる。&lt;/p&gt;
+&lt;p&gt;文字列から多倍長浮動小数点数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。
+文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;a href=&#34;http://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::string&lt;/code&gt;&lt;/a&gt;を受け取ることができる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
@@ -775,10 +775,10 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;3.14
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.14
 3.14
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;assign()&lt;/span&gt;&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;assign()&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
 
@@ -794,11 +794,11 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;3.14
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-変換できない文字列が渡された場合は、&lt;a href=&#34;http://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::runtime_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.14
+&lt;/code&gt;&lt;/pre&gt;
+変換できない文字列が渡された場合は、&lt;a href=&#34;http://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::runtime_error&lt;/code&gt;&lt;/a&gt;例外が送出される。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列への変換には、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;str()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::string&lt;/span&gt;&lt;/code&gt;型で多倍長浮動小数点数の文字列表現を返す。&lt;/p&gt;
+&lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長浮動小数点数の文字列表現を返す。&lt;/p&gt;
 &lt;p&gt;デフォルトでは固定小数点表記の文字列が返されるが、以下の引数を設定することで、精度と表記、その他出力方法を選択できる。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;第1引数： 出力する精度。0を指定した場合、できるだけ多くの桁数を出力する。&lt;/li&gt;
@@ -832,15 +832,15 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;3.140000000000000124344978758017532527446746826171875
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.140000000000000124344978758017532527446746826171875
 3.1400000000000001243449787580175325274467468261718750000000000000000000000
 3.1400000000000001243449787580175325274467468261718750000000000000000000000e+00
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/convert-precision&#34; name=&#34;convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長浮動小数点数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小さい精度から大きい精度への変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;float&lt;/span&gt;&lt;/code&gt;や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;double&lt;/span&gt;&lt;/code&gt;型といった組み込みの浮動小数点数型から、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_50&lt;/span&gt;&lt;/code&gt;や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_100&lt;/span&gt;&lt;/code&gt;といった多倍長浮動小数点数への暗黙変換が可能である。&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_50&lt;/span&gt;&lt;/code&gt;から&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_dec_float_100&lt;/span&gt;&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;float&lt;/code&gt;や&lt;code&gt;double&lt;/code&gt;型といった組み込みの浮動小数点数型から、&lt;code&gt;cpp_dec_float_50&lt;/code&gt;や&lt;code&gt;cpp_dec_float_100&lt;/code&gt;といった多倍長浮動小数点数への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;また、&lt;code&gt;cpp_dec_float_50&lt;/code&gt;から&lt;code&gt;cpp_dec_float_100&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
 
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
@@ -875,7 +875,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長浮動小数点数でも使用できる。&lt;/p&gt;
-&lt;p&gt;これらの関数は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision&lt;/span&gt;&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
+&lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -885,95 +885,95 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T abs(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/fabs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T fabs(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T abs(T x);&lt;/code&gt;&lt;br /&gt; &lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/fabs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T fabs(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;絶対値&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sqrt&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sqrt(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sqrt&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sqrt(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;平方根&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T floor(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T floor(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;床関数（引数より大きくない最近傍の整数）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ceil(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T ceil(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;天井関数（引数より小さくない最近傍の整数）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T trunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T itrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ltrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T lltrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T trunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T itrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T ltrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lltrunc(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ゼロ方向への丸め&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T round(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T lround(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T llround(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T round(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lround(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T llround(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;四捨五入による丸め&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/exp&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T exp(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/exp&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T exp(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;e (ネイピア数) を底とする指数関数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T log(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;e (ネイピア数) を底とする自然対数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log10&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T log10(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log10&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log10(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;10 を底とする常用対数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T cos(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;余弦関数（コサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sin(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;正弦関数（サイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T tan(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;正接関数（タンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/acos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T acos(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/acos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T acos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆余弦関数（アークコサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/asin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T asin(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/asin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T asin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆正弦関数（アークサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T atan(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆正接関数（アークタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cosh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T cosh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cosh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cosh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線余弦関数（ハイパボリックコサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sinh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sinh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sinh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sinh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線正弦関数（ハイパボリックサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tanh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T tanh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tanh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tanh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線正接関数（ハイパボリックタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ldexp(T x, int);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T ldexp(T x, int);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;2 の冪乗との乗算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T frexp(T x, int*);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T frexp(T x, int*);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部と 2 の冪乗への分解&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T pow(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T pow(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;冪乗&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T fmod(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T fmod(T x, T y);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;浮動小数点剰余&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T atan2(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan2(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;対辺と隣辺からの逆正接関数（アークタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1008,7 +1008,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長整数の、基本的な使い方を示す。&lt;/p&gt;
-&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision::cpp_int&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスを使用して、100の階乗を求めるプログラムである。&lt;/p&gt;
+&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::multiprecision::cpp_int&lt;/code&gt;&lt;/a&gt;クラスを使用して、100の階乗を求めるプログラムである。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/&lt;span style=&#34;color:#ff0000&#34;&gt;cpp_int&lt;/span&gt;.hpp&amp;gt;&lt;/span&gt;
 
@@ -1026,9 +1026,9 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、任意精度の多倍長整数である。この型は、メモリが許す限り無限の桁数を扱える。Boost.Multiprecisionが提供する全ての機能は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision&lt;/span&gt;&lt;/code&gt;名前空間以下で定義される。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;code&gt;cpp_int&lt;/code&gt;は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、任意精度の多倍長整数である。この型は、メモリが許す限り無限の桁数を扱える。Boost.Multiprecisionが提供する全ての機能は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間以下で定義される。&lt;/p&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長整数は、組み込みの整数型と同じ演算をサポートする。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
@@ -1039,91 +1039,91 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a + b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a += b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a + b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a += b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;加算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a - b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a -= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a - b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a -= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;減算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a * b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a *= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a * b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a *= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;乗算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a / b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a /= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a / b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a /= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;除算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a % b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a %= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a % b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a %= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;剰余算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;+a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;+a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;符号をプラスにする&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;-a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;-a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;符号をマイナスにする&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a++;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;++a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a++;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;++a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;インクリメント&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a--;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;--a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a--;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;--a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;デクリメント&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;amp; b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;amp;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;amp; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;amp;= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ビットAND&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a | b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a |= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a | b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a |= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ビットOR&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a ^ b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a ^= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a ^ b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a ^= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ビットXOR&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt;&amp;lt; b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt;&amp;lt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt;&amp;lt; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;lt;&amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;左ビットシフト&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt;&amp;gt; b;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt;&amp;gt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt;&amp;gt; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;gt;&amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;右ビットシフト&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a == b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a == b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;等値比較&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a != b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a != b;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;非等値比較&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt; b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;より小さいかの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より小さいかの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;lt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;以下かの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以下かの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt; b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;より大きいかの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より大きいかの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a &amp;gt;= b;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;a&lt;/span&gt;&lt;/code&gt;が&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;b&lt;/span&gt;&lt;/code&gt;以上かの判定&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以上かの判定&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;os &amp;lt;&amp;lt; a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;os &amp;lt;&amp;lt; a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ストリームへの出力&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is &amp;gt;&amp;gt; a;&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;is &amp;gt;&amp;gt; a;&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ストリームからの入力&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1144,23 +1144,23 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cpp_int&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;任意精度の符号付き多倍長整数。 メモリが許す限り、無限の桁数を扱える。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int128_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int128_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;128ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int256_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int256_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;256ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int512_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int512_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;512ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int1024_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;int1024_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1024ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1175,19 +1175,19 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;uint128_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;uint128_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;128ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;uint256_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;uint256_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;256ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;uint512_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;uint512_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;512ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;uint1024_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;uint1024_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1024ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1202,23 +1202,23 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_cpp_int&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_cpp_int&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;任意精度の符号付き多倍長整数。 メモリが許す限り、無限の精度を扱える。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_int128_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_int128_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;128ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_int256_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_int256_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;256ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_int512_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_int512_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;512ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_int1024_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_int1024_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1024ビット精度の符号付き整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1233,19 +1233,19 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_uint128_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_uint128_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;128ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cheked_uint256_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;cheked_uint256_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;256ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_uint512_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_uint512_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;512ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;checked_uint1024_t&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;checked_uint1024_t&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1024ビット精度の符号なし整数。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1262,7 +1262,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;ゼロ割り時&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::overflow_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1277,15 +1277,15 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;tbody&gt;
 &lt;tr&gt;
 &lt;td&gt;ゼロ割り時&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::overflow_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;符号なしなのにマイナス値になった&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::range_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::range_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td&gt;オーバーフロー時&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::overflow_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/stdexcept&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -1303,7 +1303,7 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;mpz_int&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;mpz_int&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;任意精度の符号付き多倍長整数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1322,14 +1322,14 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;tom_int&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;tom_int&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;任意精度の符号付き多倍長整数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列から多倍長整数に変換するには、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;explicit&lt;/span&gt;&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;assign()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;文字列は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;char&lt;/span&gt;&lt;/code&gt;配列および&lt;a href=&#34;http://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::string&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;を受け取ることができる。&lt;/p&gt;
+&lt;p&gt;文字列から多倍長整数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;a href=&#34;http://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::string&lt;/code&gt;&lt;/a&gt;を受け取ることができる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
@@ -1348,10 +1348,10 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;123
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
 456
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;assign()&lt;/span&gt;&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;assign()&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
 
@@ -1367,11 +1367,11 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;123
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-変換できない文字列が渡された場合は、&lt;a href=&#34;http://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::runtime_error&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;例外が送出される。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
+&lt;/code&gt;&lt;/pre&gt;
+変換できない文字列が渡された場合は、&lt;a href=&#34;http://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::runtime_error&lt;/code&gt;&lt;/a&gt;例外が送出される。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列への変換には、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;str()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::string&lt;/span&gt;&lt;/code&gt;型で多倍長整数の文字列表現を返す。&lt;/p&gt;
+&lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長整数の文字列表現を返す。&lt;/p&gt;
 &lt;p&gt;デフォルトでは10進数表現の文字列が返されるが、以下の引数を設定することで、精度と基数、その他出力方法を選択できる。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;第1引数： 出力する精度。整数では単に無視されるので、0を指定すればよい。&lt;/li&gt;
@@ -1405,15 +1405,15 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;123
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
 173
 7B
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/convert-integer&#34; name=&#34;convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長整数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小さい整数型から大きい整数型への変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int&lt;/span&gt;&lt;/code&gt;や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;long&lt;/span&gt;&lt;/code&gt;型といった組み込みの整数型から、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int128_t&lt;/span&gt;&lt;/code&gt;や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;といった多倍長整数への暗黙変換が可能である。&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int128_t&lt;/span&gt;&lt;/code&gt;から&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int256&lt;/span&gt;&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;int&lt;/code&gt;や&lt;code&gt;long&lt;/code&gt;型といった組み込みの整数型から、&lt;code&gt;int128_t&lt;/code&gt;や&lt;code&gt;cpp_int&lt;/code&gt;といった多倍長整数への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;また、&lt;code&gt;int128_t&lt;/code&gt;から&lt;code&gt;int256&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
 
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
@@ -1446,8 +1446,8 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/min&#34; name=&#34;min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;多倍長整数の最小値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::numeric_limits&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/min.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;min()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;任意精度整数である&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;は無限の桁数を持つため、最小値は取得できなかったものとして、0を返す。&lt;/p&gt;
+&lt;p&gt;多倍長整数の最小値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/min.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;min()&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最小値は取得できなかったものとして、0を返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
 
@@ -1464,12 +1464,12 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;0
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;0
 -340282366920938463463374607431768211455
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/max&#34; name=&#34;max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;多倍長整数の最大値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::numeric_limits&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/max.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;max()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;任意精度整数である&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;は無限の桁数を持つため、最大値は取得できなかったものとして、0を返す。&lt;/p&gt;
+&lt;p&gt;多倍長整数の最大値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/max.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;max()&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最大値は取得できなかったものとして、0を返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
 
@@ -1486,14 +1486,14 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;0
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;0
 340282366920938463463374607431768211455
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/is-bounded&#34; name=&#34;is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;多倍長整数型の表す値が有限かどうかを判定するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::numeric_limits&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_bounded&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;定数を取得する。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_bounded&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;bool&lt;/span&gt;&lt;/code&gt;型で定義され、有限であれば&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;true&lt;/span&gt;&lt;/code&gt;、無限であれば&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false&lt;/span&gt;&lt;/code&gt;が設定される。&lt;/p&gt;
-&lt;p&gt;任意精度整数である&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;cpp_int&lt;/span&gt;&lt;/code&gt;は無限の桁数を持つため、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_bounded&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false&lt;/span&gt;&lt;/code&gt;となる。&lt;/p&gt;
-&lt;p&gt;固定精度整数の&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int128_t&lt;/span&gt;&lt;/code&gt;、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int256_t&lt;/span&gt;&lt;/code&gt;といった型の場合、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;is_bounded&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;true&lt;/span&gt;&lt;/code&gt;となる。&lt;/p&gt;
+&lt;p&gt;多倍長整数型の表す値が有限かどうかを判定するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;定数を取得する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;bool&lt;/code&gt;型で定義され、有限であれば&lt;code&gt;true&lt;/code&gt;、無限であれば&lt;code&gt;false&lt;/code&gt;が設定される。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;false&lt;/code&gt;となる。&lt;/p&gt;
+&lt;p&gt;固定精度整数の&lt;code&gt;int128_t&lt;/code&gt;、&lt;code&gt;int256_t&lt;/code&gt;といった型の場合、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;true&lt;/code&gt;となる。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
 
@@ -1511,13 +1511,13 @@ T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; x &lt;span style=&#34
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;false
 true
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長整数でも使用できる。&lt;/p&gt;
-&lt;p&gt;これらの関数は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision&lt;/span&gt;&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
+&lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1527,101 +1527,101 @@ true
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T abs(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/fabs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T fabs(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T abs(T x);&lt;/code&gt;&lt;br /&gt; &lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/fabs&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T fabs(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;絶対値&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sqrt&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sqrt(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sqrt&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sqrt(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;平方根&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T floor(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T floor(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;床関数（引数より大きくない最近傍の整数）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ceil(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T ceil(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;天井関数（引数より小さくない最近傍の整数）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T trunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T itrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ltrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T lltrunc(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T trunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T itrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T ltrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lltrunc(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ゼロ方向への丸め&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T round(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T lround(T x);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T llround(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T round(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lround(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T llround(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;四捨五入による丸め&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/exp&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T exp(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/exp&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T exp(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;e (ネイピア数) を底とする指数関数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T log(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;e (ネイピア数) を底とする自然対数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log10&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T log10(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/log10&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log10(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;10 を底とする常用対数&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T cos(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;余弦関数（コサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sin(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;正弦関数（サイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T tan(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;正接関数（タンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/acos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T acos(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/acos&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T acos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆余弦関数（アークコサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/asin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T asin(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/asin&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T asin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆正弦関数（アークサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T atan(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;逆正接関数（アークタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cosh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T cosh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/cosh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cosh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線余弦関数（ハイパボリックコサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sinh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T sinh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/sinh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sinh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線正弦関数（ハイパボリックサイン）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tanh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T tanh(T x);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/tanh&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tanh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;双曲線正接関数（ハイパボリックタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T ldexp(T x, int);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T ldexp(T x, int);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;2 の冪乗との乗算&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T frexp(T x, int*);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T frexp(T x, int*);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;仮数部と 2 の冪乗への分解&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T pow(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T pow(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;冪乗&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T fmod(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T fmod(T x, T y);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;浮動小数点剰余&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T atan2(T x, T y);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/atan2&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan2(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;対辺と隣辺からの逆正接関数（アークタンジェント）&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;&lt;strong&gt;整数に特化した数学関数サポート&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;以下の関数は、Boost.Multiprecisionで整数演算に特化したものとして、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::multiprecision&lt;/span&gt;&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
+&lt;p&gt;以下の関数は、Boost.Multiprecisionで整数演算に特化したものとして、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -1631,43 +1631,43 @@ true
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T pow(T x, unsigned int y);&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://sites.google.com/site/cpprefjp/reference/cmath/pow&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T pow(T x, unsigned int y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;冪乗&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T powm(T b, T p, T m);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T powm(T b, T p, T m);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;冪剰余&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;void divide_qr(T x, y, T&amp;amp; q, T&amp;amp; r);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;void divide_qr(T x, y, T&amp;amp; q, T&amp;amp; r);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;除算と剰余算を同時に行う&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Integer&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Integer integer_modulus(T x, Integer val);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Integer&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;Integer integer_modulus(T x, Integer val);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;剰余の絶対値&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;unsigned int lsb(T x);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;unsigned int lsb(T x);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;1に設定されている最下位ビットのインデックスを取得する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;bool bit_test(T val, unsigned index);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;bool bit_test(T val, unsigned index);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;指定されたインデックスのビットが1に設定されているかを判定する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp; bit_set(T&amp;amp; val, unsigned index);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_set(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;指定されたインデックスのビットを1に設定する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp; bit_unset(T&amp;amp; val, unsigned index);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_unset(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;指定されたインデックスのビットを0に設定する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;T&amp;amp; bit_flip(T&amp;amp; val, unsigned index);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_flip(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;指定されたインデックスのビットを反転する&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Engine&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;bool miller_rabin_test(T n, unsigned trials, Engine&amp;amp; gen);&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;bool miller_rabin_test(T n, unsigned trials);&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Engine&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;bool miller_rabin_test(T n, unsigned trials, Engine&amp;amp; gen);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;bool miller_rabin_test(T n, unsigned trials);&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;ミラー・ラビン素数判定&lt;br /&gt; 参照： &lt;a href=&#34;http://d.hatena.ne.jp/faith_and_brave/20130222/1361516978&#34; target=&#34;_blank&#34;&gt;Boost.Multiprecision ミラー・ラビン法による素数判定 - Faith and Brave - C++で遊ぼう&lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -1690,7 +1690,7 @@ true
         <content type="html">&lt;h1&gt;優先順位を付けて並べ替える&lt;/h1&gt;
 &lt;p&gt;ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。
 このような比較方法は、一覧画面のようなものを作る場合に必要となる。&lt;/p&gt;
-&lt;p&gt;優先順位付きの比較には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/&#34; target=&#34;_blank&#34;&gt;Boost Fusion Library&lt;/a&gt;が提供するタプル型を使用する。タプルとは、異なる複数の型からなるシーケンスである。&lt;a href=&#34;http://boostjp.github.io/reference/utility/pair.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::pair&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;が2つの異なる型のオブジェクトを格納するのに対して、タプルは任意個のオブジェクトを格納できる。&lt;/p&gt;
+&lt;p&gt;優先順位付きの比較には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/&#34; target=&#34;_blank&#34;&gt;Boost Fusion Library&lt;/a&gt;が提供するタプル型を使用する。タプルとは、異なる複数の型からなるシーケンスである。&lt;a href=&#34;http://boostjp.github.io/reference/utility/pair.html&#34;&gt;&lt;code&gt;std::pair&lt;/code&gt;&lt;/a&gt;が2つの異なる型のオブジェクトを格納するのに対して、タプルは任意個のオブジェクトを格納できる。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/&#34; target=&#34;_blank&#34;&gt;Boost.Fusion&lt;/a&gt;が提供するタプルは比較演算子を持っており、それがちょうど前述した「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」という意味論での比較を行う。&lt;/p&gt;
 &lt;p&gt;クラスのメンバ変数をタプルに変換することにより、優先順位付きの比較が可能となる。&lt;/p&gt;
 &lt;p&gt;以下がその例である：&lt;/p&gt;
@@ -1736,18 +1736,18 @@ true
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;application, a.exe
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;application, a.exe
 application, b.exe
 text, a.txt
 text, b.txt
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;&lt;/pre&gt;
 ファイルが、ファイル種別順に並んだ上で、種別が同じファイルは名前で並べ替えられていることがわかるだろう。&lt;/p&gt;
-&lt;p&gt;このプログラムでは、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;File&lt;/span&gt;&lt;/code&gt;クラスの&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;operator&amp;lt;()&lt;/span&gt;&lt;/code&gt;演算子において「ファイル種別でどちらが小さいかを比較し、同じであればファイル名がどちらが小さいかを比較する」という優先順位付き比較を行なっている。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/container/generation/functions/vector_tie.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::fusion::vector_tie()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;関数は、引数として受け取った変数への参照から、参照のタプル型を構築する。ここでは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/container/vector.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::fusion::vector&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;const std::string&amp;amp;, const std::string&amp;amp;&amp;gt;&lt;/span&gt;&lt;/code&gt;という型のタプルオブジェクトを構築する。&lt;/p&gt;
-&lt;p&gt;Boost.Fusionが提供するタプル型に対する比較演算子は、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/sequence/operator/comparison.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;&amp;lt;boost/fusion/include/comparison.hpp&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;ヘッダで定義されている。&lt;/p&gt;
+&lt;p&gt;このプログラムでは、&lt;code&gt;File&lt;/code&gt;クラスの&lt;code&gt;operator&amp;lt;()&lt;/code&gt;演算子において「ファイル種別でどちらが小さいかを比較し、同じであればファイル名がどちらが小さいかを比較する」という優先順位付き比較を行なっている。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/container/generation/functions/vector_tie.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::fusion::vector_tie()&lt;/code&gt;&lt;/a&gt;関数は、引数として受け取った変数への参照から、参照のタプル型を構築する。ここでは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/container/vector.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::fusion::vector&lt;/code&gt;&lt;/a&gt;&lt;code&gt;&amp;lt;const std::string&amp;amp;, const std::string&amp;amp;&amp;gt;&lt;/code&gt;という型のタプルオブジェクトを構築する。&lt;/p&gt;
+&lt;p&gt;Boost.Fusionが提供するタプル型に対する比較演算子は、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fusion/doc/html/fusion/sequence/operator/comparison.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&amp;lt;boost/fusion/include/comparison.hpp&amp;gt;&lt;/code&gt;&lt;/a&gt;ヘッダで定義されている。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;参照：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/algorithm/lexicographical_compare.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::lexicographical_compare()&lt;/span&gt;&lt;/code&gt; - cpprefjp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/algorithm/lexicographical_compare.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::lexicographical_compare()&lt;/code&gt; - cpprefjp&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content>
       
       <author>
@@ -1803,15 +1803,15 @@ text, b.txt
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;3
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3
 hello
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラステンプレートが、型安全に抽象化された共用体である。そのテンプレート引数として、格納されうる型を列挙する。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスは、テンプレートパラメータで指定された型のオブジェクトを、コピー／ムーブコンストラクタおよび代入演算子で代入できる。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/apply_visitor.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::apply_visitor()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;関数に指定する関数オブジェクトは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/static_visitor.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::static_visitor&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスから派生したクラスであり、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトにどの型のオブジェクトが格納されているのかによって、関数呼び出し演算子を適切にオーバーロードしてくれる。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;クラステンプレートが、型安全に抽象化された共用体である。そのテンプレート引数として、格納されうる型を列挙する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;クラスは、テンプレートパラメータで指定された型のオブジェクトを、コピー／ムーブコンストラクタおよび代入演算子で代入できる。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/apply_visitor.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::apply_visitor()&lt;/code&gt;&lt;/a&gt;関数に指定する関数オブジェクトは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/static_visitor.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::static_visitor&lt;/code&gt;&lt;/a&gt;クラスから派生したクラスであり、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;オブジェクトにどの型のオブジェクトが格納されているのかによって、関数呼び出し演算子を適切にオーバーロードしてくれる。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/which-type&#34; name=&#34;which-type&#34;&gt;どの型が格納されているかを判定する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトにどの型が格納されているか判定するには&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;which()&lt;/span&gt;&lt;/code&gt;メンバ関数、もしくは&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;type()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;which()&lt;/span&gt;&lt;/code&gt;メンバ関数は、格納されている型の、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;0&lt;/span&gt;&lt;/code&gt;から始まるインデックスを返す。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;オブジェクトにどの型が格納されているか判定するには&lt;code&gt;which()&lt;/code&gt;メンバ関数、もしくは&lt;code&gt;type()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;which()&lt;/code&gt;メンバ関数は、格納されている型の、&lt;code&gt;0&lt;/code&gt;から始まるインデックスを返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/variant.hpp&amp;gt;&lt;/span&gt;
@@ -1832,11 +1832,11 @@ hello
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;0
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;0
 0
 2
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;type()&lt;/span&gt;&lt;/code&gt;メンバ関数は、格納されている型の&lt;a href=&#34;http://cpprefjp.github.io/reference/typeinfo/type_info.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::type_info&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトへの&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;const&lt;/span&gt;&lt;/code&gt;左辺値参照を返す。&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;code&gt;type()&lt;/code&gt;メンバ関数は、格納されている型の&lt;a href=&#34;http://cpprefjp.github.io/reference/typeinfo/type_info.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::type_info&lt;/code&gt;&lt;/a&gt;オブジェクトへの&lt;code&gt;const&lt;/code&gt;左辺値参照を返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/variant.hpp&amp;gt;&lt;/span&gt;
@@ -1858,15 +1858,15 @@ hello
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;int
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;int
 double
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/get-value&#34; name=&#34;get-value&#34;&gt;格納されている値を取り出す&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトに格納されている値を取り出すには、&lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::get()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;非メンバ関数を使用する。
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;オブジェクトに格納されている値を取り出すには、&lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::get()&lt;/code&gt;&lt;/a&gt;非メンバ関数を使用する。
 この関数には参照版とポインタ版の2種類が用意されている。それぞれの特徴は以下の通り：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;参照版 ： &lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::get()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;非メンバ関数に&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトへの参照を渡すと、格納されている値への参照を返す。指定された型が格納されている型と同じではない場合、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/bad_get.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::bad_get&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;型の例外を送出する。&lt;/li&gt;
-&lt;li&gt;ポインタ版 ： &lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::get()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;非メンバ関数に&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;オブジェクトへのポインタを渡すと、格納されている値へのポインタを返す。指定された型が格納されている型と同じではない場合、ヌルポインタを返す。&lt;/li&gt;
+&lt;li&gt;参照版 ： &lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::get()&lt;/code&gt;&lt;/a&gt;非メンバ関数に&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;オブジェクトへの参照を渡すと、格納されている値への参照を返す。指定された型が格納されている型と同じではない場合、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/bad_get.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::bad_get&lt;/code&gt;&lt;/a&gt;型の例外を送出する。&lt;/li&gt;
+&lt;li&gt;ポインタ版 ： &lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::get()&lt;/code&gt;&lt;/a&gt;非メンバ関数に&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;オブジェクトへのポインタを渡すと、格納されている値へのポインタを返す。指定された型が格納されている型と同じではない場合、ヌルポインタを返す。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
@@ -1897,14 +1897,14 @@ double
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;1
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1
 1
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/clear&#34; name=&#34;clear&#34;&gt;値をクリアする&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Variantには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/variant/design.html#variant.design.never-empty&#34; target=&#34;_blank&#34;&gt;決して空にはならない保証&lt;/a&gt;という考え方があるため、他の値を入れることはできてもクリアはできない。&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;clear()&lt;/span&gt;&lt;/code&gt;関数は用意されておらず、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;empty()&lt;/span&gt;&lt;/code&gt;メンバ関数は常に&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;false&lt;/span&gt;&lt;/code&gt;を返す。&lt;/p&gt;
-&lt;p&gt;どうしてもクリアしたい場合は、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::blank&lt;/span&gt;&lt;/code&gt;という型を&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;variant&lt;/span&gt;&lt;/code&gt;に格納できるように指定する。これは単なる中身が空のクラスである。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;which()&lt;/span&gt;&lt;/code&gt;メンバ関数や&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;type()&lt;/span&gt;&lt;/code&gt;メンバ関数を使用して、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::blank&lt;/span&gt;&lt;/code&gt;オブジェクトが格納されているかどうかで、空かどうかを判定する。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::variant&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;クラスは、そのデフォルトコンストラクタで第1テンプレートパラメータのオブジェクトを構築するので、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::blank&lt;/span&gt;&lt;/code&gt;は第1テンプレートパラメータとして指定することを推奨する。&lt;/p&gt;
+&lt;p&gt;Boost.Variantには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/variant/design.html#variant.design.never-empty&#34; target=&#34;_blank&#34;&gt;決して空にはならない保証&lt;/a&gt;という考え方があるため、他の値を入れることはできてもクリアはできない。&lt;code&gt;clear()&lt;/code&gt;関数は用意されておらず、&lt;code&gt;empty()&lt;/code&gt;メンバ関数は常に&lt;code&gt;false&lt;/code&gt;を返す。&lt;/p&gt;
+&lt;p&gt;どうしてもクリアしたい場合は、&lt;code&gt;boost::blank&lt;/code&gt;という型を&lt;code&gt;variant&lt;/code&gt;に格納できるように指定する。これは単なる中身が空のクラスである。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;which()&lt;/code&gt;メンバ関数や&lt;code&gt;type()&lt;/code&gt;メンバ関数を使用して、&lt;code&gt;boost::blank&lt;/code&gt;オブジェクトが格納されているかどうかで、空かどうかを判定する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::variant&lt;/code&gt;&lt;/a&gt;クラスは、そのデフォルトコンストラクタで第1テンプレートパラメータのオブジェクトを構築するので、&lt;code&gt;boost::blank&lt;/code&gt;は第1テンプレートパラメータとして指定することを推奨する。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
 &lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/variant.hpp&amp;gt;&lt;/span&gt;
@@ -1926,8 +1926,8 @@ double
 &lt;/pre&gt;&lt;/div&gt;
 
 出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;blank
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;blank
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/recursive-variant&#34; name=&#34;recursive-variant&#34;&gt;variantを再帰的にする&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;documentated boost version is 1.52.0&lt;/p&gt;</content>
       
@@ -3433,21 +3433,21 @@ double
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Rank&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;値型が整数型で、キー型が集合の要素型と等しい &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap%20.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ReadWritePropertyMap&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Rank&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;値型が整数型で、キー型が集合の要素型と等しい &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap%20.html&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Parent&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ReadWritePropertyMap&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; のモデルで、かつ、キー型および値型は集合の要素型と等しくなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Parent&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルで、かつ、キー型および値型は集合の要素型と等しくなければならない。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;FindCompress&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;FindCompress&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;代表値の検索およびパス圧縮関数オブジェクトのうちの 1つであるべきだ。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2&gt;Example&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;disjoint_sets&lt;/span&gt;&lt;/code&gt; に対する典型的な使用法の手本は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/kruskal_minimum_spanning_tree.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;kruskal_minimum_spanning_tree()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; アルゴリズムで見ることができる。 この例では、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;union_set()&lt;/span&gt;&lt;/code&gt; の代わりに &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;link()&lt;/span&gt;&lt;/code&gt; を呼び出す。 なぜなら、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;u&lt;/span&gt;&lt;/code&gt; および &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v&lt;/span&gt;&lt;/code&gt; が &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;find_set()&lt;/span&gt;&lt;/code&gt; から得られ、したがって、既にそれら集合の代表値であるからだ。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;disjoint_sets&lt;/code&gt; に対する典型的な使用法の手本は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/kruskal_minimum_spanning_tree.html&#34;&gt;&lt;code&gt;kruskal_minimum_spanning_tree()&lt;/code&gt;&lt;/a&gt; アルゴリズムで見ることができる。 この例では、&lt;code&gt;union_set()&lt;/code&gt; の代わりに &lt;code&gt;link()&lt;/code&gt; を呼び出す。 なぜなら、&lt;code&gt;u&lt;/code&gt; および &lt;code&gt;v&lt;/code&gt; が &lt;code&gt;find_set()&lt;/code&gt; から得られ、したがって、既にそれら集合の代表値であるからだ。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;...
 disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Rank, Parent, FindCompress&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; dsets(rank, p);
 
@@ -3476,50 +3476,50 @@ disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Ran
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;disjoint_sets(Rank r, Parent p)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;disjoint_sets(Rank r, Parent p)&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;コンストラクタ。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;disjoint_sets(const disjoint_sets&amp;amp; x)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;disjoint_sets(const disjoint_sets&amp;amp; x)&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;コピーコンストラクタ。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Element&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;void make_set(Element x)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Element x&lt;/span&gt;&lt;/code&gt; を含む単集合を作成する。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void make_set(Element x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Element x&lt;/code&gt; を含む単集合を作成する。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Element&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;void link(Element x, Element y)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; および &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;y&lt;/span&gt;&lt;/code&gt; で表わされる 2つの集合を結合する。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void link(Element x, Element y)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;x&lt;/code&gt; および &lt;code&gt;y&lt;/code&gt; で表わされる 2つの集合を結合する。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Element&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;void union_set(Element x, Element y)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;要素 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; および &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;y&lt;/span&gt;&lt;/code&gt; を含む 2つの集合を結合する。 これは、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;link(find_set(x),find_set(y))&lt;/span&gt;&lt;/code&gt; に相当する。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void union_set(Element x, Element y)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素 &lt;code&gt;x&lt;/code&gt; および &lt;code&gt;y&lt;/code&gt; を含む 2つの集合を結合する。 これは、&lt;code&gt;link(find_set(x),find_set(y))&lt;/code&gt; に相当する。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class Element&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;Element find_set(Element x)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;要素 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; を含む集合のための代表値を返す。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;Element find_set(Element x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素 &lt;code&gt;x&lt;/code&gt; を含む集合のための代表値を返す。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;std::size_t count_sets(ElementIterator first, ElementIterator last)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;std::size_t count_sets(ElementIterator first, ElementIterator last)&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;素集合の個数を返す。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;void compress_sets(ElementIterator first, ElementIterator last)&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void compress_sets(ElementIterator first, ElementIterator last)&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;すべての要素の親がその代表値であるように親ツリーを平滑化する。&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2&gt;Complexity&lt;/h2&gt;
-&lt;p&gt;時間計算量は、O(m alpha(m,n)) である。alpha は逆アッカーマン関数、 m は disjoint-set の演算（&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;make_set()&lt;/span&gt;&lt;/code&gt;、&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;find_set()&lt;/span&gt;&lt;/code&gt;、および &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;link()&lt;/span&gt;&lt;/code&gt;）の総数、n は要素数である。 alpha 関数はとても遅く、log 関数よりもはるかに遅くなる。&lt;/p&gt;
+&lt;p&gt;時間計算量は、O(m alpha(m,n)) である。alpha は逆アッカーマン関数、 m は disjoint-set の演算（&lt;code&gt;make_set()&lt;/code&gt;、&lt;code&gt;find_set()&lt;/code&gt;、および &lt;code&gt;link()&lt;/code&gt;）の総数、n は要素数である。 alpha 関数はとても遅く、log 関数よりもはるかに遅くなる。&lt;/p&gt;
 &lt;p&gt;参照：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_connected_components.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;incremental_connected_components()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_connected_components.html&#34;&gt;&lt;code&gt;incremental_connected_components()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;disjoint_sets_with_storage&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ID,InverseID,FindCompress&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-このクラスは、順位および親のプロパティのための記憶領域を内部で管理する。 記憶領域は、要素IDにより索引付けされた配列の中にある。ゆえに、ID および InverseID ファンクタを必要とする。 順位および親のプロパティは、構築中に初期化される、 したがって、各要素は自動的に集合の中にある（従って、このクラスのオブジェクトを &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_components.html#sec:initialize-incremental-components&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;initialize_incremental_components()&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; 関数で初期化することは必要でない。）。 このクラスは、頂点プロパティを格納する場所を提供しない &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;edge_list&lt;/span&gt;&lt;/code&gt; グラフの（動的）接続している構成要素を計算する場合に特に有用である。&lt;/p&gt;
+このクラスは、順位および親のプロパティのための記憶領域を内部で管理する。 記憶領域は、要素IDにより索引付けされた配列の中にある。ゆえに、ID および InverseID ファンクタを必要とする。 順位および親のプロパティは、構築中に初期化される、 したがって、各要素は自動的に集合の中にある（従って、このクラスのオブジェクトを &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_components.html#sec:initialize-incremental-components&#34;&gt;&lt;code&gt;initialize_incremental_components()&lt;/code&gt;&lt;/a&gt; 関数で初期化することは必要でない。）。 このクラスは、頂点プロパティを格納する場所を提供しない &lt;code&gt;edge_list&lt;/code&gt; グラフの（動的）接続している構成要素を計算する場合に特に有用である。&lt;/p&gt;
 &lt;h2&gt;Template Parameters&lt;/h2&gt;
 &lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
 &lt;thead&gt;
@@ -3531,24 +3531,24 @@ disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Ran
 &lt;/thead&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ID&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;0からN（集合中の要素の総数）までの整数に要素を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ReadablePropertyMap&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::identity_property_map&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ID&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0からN（集合中の要素の総数）までの整数に要素を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;&lt;code&gt;ReadablePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::identity_property_map&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;InverseID&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;要素に整数を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;ReadablePropertyMap&lt;/span&gt;&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;boost::identity_property_map&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;InverseID&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素に整数を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;&lt;code&gt;ReadablePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::identity_property_map&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;FindCompress&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;FindCompress&lt;/code&gt;&lt;/td&gt;
 &lt;td&gt;代表値の検索およびパス圧縮関数オブジェクトのうちの 1つであるべきだ。&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;representative_with_full_path_compression&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;representative_with_full_path_compression&lt;/code&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2&gt;Members&lt;/h2&gt;
-&lt;p&gt;このクラスは、以下のメンバだけでなく &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;disjoint_sets&lt;/span&gt;&lt;/code&gt; のすべてのメンバも持っている。&lt;/p&gt;
+&lt;p&gt;このクラスは、以下のメンバだけでなく &lt;code&gt;disjoint_sets&lt;/code&gt; のすべてのメンバも持っている。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;disjoint_sets_with_storage(size_type n &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;,
                            ID id &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; ID(),
                            InverseID inv &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; InverseID())
@@ -3562,14 +3562,14 @@ disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Ran
 
 各集合の代表値が最も小さな ID を備えた要素になるように代表値を再整理する。 &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;事後条件: &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;v &amp;gt;= parent[v]&lt;/span&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;事後条件: &lt;code&gt;v &amp;gt;= parent[v]&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;事前条件: 素集合の構造は圧縮されていなければならない。 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;representative_with_path_halving&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Parent&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-これは、要素 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; と同じ構成要素のための代表的な頂点を検索するファンクタである。 代表値木を横断している間、ファンクタは、さらに木の高さを短くするためにパス二分技術を適用する。&lt;/p&gt;
+これは、要素 &lt;code&gt;x&lt;/code&gt; と同じ構成要素のための代表的な頂点を検索するファンクタである。 代表値木を横断している間、ファンクタは、さらに木の高さを短くするためにパス二分技術を適用する。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Element &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Parent p, Element x)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
@@ -3577,7 +3577,7 @@ disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Ran
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;representative_with_full_path_compression&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Parent&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
-これは、要素 &lt;code&gt;&lt;span style=&#34;color: #000&#34;&gt;x&lt;/span&gt;&lt;/code&gt; が属する集合のための代表的な要素を検索するファンクタである。&lt;/p&gt;
+これは、要素 &lt;code&gt;x&lt;/code&gt; が属する集合のための代表的な要素を検索するファンクタである。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Element &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Parent p, Element x)
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;

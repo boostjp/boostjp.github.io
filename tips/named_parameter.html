@@ -111,6 +111,13 @@
     visibility:hidden !important;
 }
 */
+
+code {
+    color: #000000;
+}
+a code {
+    color: #428bca;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -188,15 +195,15 @@ BOOST_PARAMETER_NAME(text)
 {
     draw((_text <span style="color: #666666">=</span> <span style="color: #BA2121">"Hello"</span>, _color <span style="color: #666666">=</span> Color(<span style="color: #666666">255</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>), _pos <span style="color: #666666">=</span> Point(<span style="color: #666666">10</span>, <span style="color: #666666">20</span>)));
 }
-</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">position: 10,20
+</pre></div> 実行結果：</p> <p><pre><code>position: 10,20
 color: 255,0,0
 text: Hello
-</span></code></pre> 名前付き引数を利用するには、まずラベルを定義する必要がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_PARAMETER_NAME(label)
-</pre></div> このようにすると、<code><span style="color: #000">_label</span></code>という名前のラベルが作成され、名前付き引数の「名前」として使用可能になる。</p> <p>名前付き引数の指定は、以下のように「ラベル = 値」の形式で記述する。複数の名前付き引数が必要な場合は、全体をカッコで囲む必要がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">f((_label <span style="color: #666666">=</span> x, label2 <span style="color: #666666">=</span> y));
+</code></pre> 名前付き引数を利用するには、まずラベルを定義する必要がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_PARAMETER_NAME(label)
+</pre></div> このようにすると、<code>_label</code>という名前のラベルが作成され、名前付き引数の「名前」として使用可能になる。</p> <p>名前付き引数の指定は、以下のように「ラベル = 値」の形式で記述する。複数の名前付き引数が必要な場合は、全体をカッコで囲む必要がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">f((_label <span style="color: #666666">=</span> x, label2 <span style="color: #666666">=</span> y));
 </pre></div> </p> <p>名前付き引数を指定された関数は、まずパラメータをテンプレートで「パラメータパック」という一つの変数として受け取る。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">ArgPack</span><span style="color: #666666">&gt;</span>
 <span style="color: #B00040">void</span> f(<span style="color: #008000; font-weight: bold">const</span> ArgPack<span style="color: #666666">&amp;</span> args);
-</pre></div> 各ラベルの値を取り出すには、パラメータパックに<code><span style="color: #000">operator[]()</span></code>でラベルを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">const</span> X<span style="color: #666666">&amp;</span> x <span style="color: #666666">=</span> args[_label];
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/define-label-in-namespace name=define-label-in-namespace>ラベルを名前空間で定義する</a></h2> <p>Boost.Parameterでは、ラベルをユーザーの名前空間に定義することができる。</p> <p>以下は、前項で定義したラベルを<code><span style="color: #000">ui</span></code>名前空間に移した例である：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> 各ラベルの値を取り出すには、パラメータパックに<code>operator[]()</code>でラベルを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">const</span> X<span style="color: #666666">&amp;</span> x <span style="color: #666666">=</span> args[_label];
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/define-label-in-namespace name=define-label-in-namespace>ラベルを名前空間で定義する</a></h2> <p>Boost.Parameterでは、ラベルをユーザーの名前空間に定義することができる。</p> <p>以下は、前項で定義したラベルを<code>ui</code>名前空間に移した例である：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/parameter/name.hpp&gt;</span>
 
@@ -236,10 +243,10 @@ BOOST_PARAMETER_NAME(text)
 {
     draw((ui<span style="color: #666666">::</span>_text <span style="color: #666666">=</span> <span style="color: #BA2121">"Hello"</span>, ui<span style="color: #666666">::</span>_color <span style="color: #666666">=</span> Color(<span style="color: #666666">255</span>, <span style="color: #666666">0</span>, <span style="color: #666666">0</span>), ui<span style="color: #666666">::</span>_pos <span style="color: #666666">=</span> Point(<span style="color: #666666">10</span>, <span style="color: #666666">20</span>)));
 }
-</pre></div> 実行結果：</p> <p><pre><code><span style="color: #000">position: 10,20
+</pre></div> 実行結果：</p> <p><pre><code>position: 10,20
 color: 255,0,0
 text: Hello
-</span></code></pre></p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
+</code></pre></p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>
             window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})

@@ -111,6 +111,13 @@
     visibility:hidden !important;
 }
 */
+
+code {
+    color: #000000;
+}
+a code {
+    color: #428bca;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -165,7 +172,13 @@ actions exec_executable
 
 <span style=color:#ff0000>notfile exec</span> : @exec_executable : /sample//executable ;
 explicit exec ;
-<span style="color: #000"></span></code></pre> explicitルールを指定しないと意図しないタイミングで実行されてしまうので注意されたい。</p> <p><pre><code><span style=color:#ff0000>4.5</span>
+</code></pre> explicitルールを指定しないと意図しないタイミングで実行されてしまうので注意されたい。</p> <p><pre><code>$ cat source.cpp
+#include &lt;iostream&gt;
+int main()
+{
+    std::cout &lt;&lt; __GNUC__ &lt;&lt; "." &lt;&lt; __GNUC_MINOR__ &lt;&lt; std::endl;
+}
+$ bjam --toolset=gcc-<span style=color:#ff0000>4.5</span>
 ...found 9 targets...
 ...updating 5 targets...
 common.mkdir bin
@@ -194,13 +207,8 @@ $ bjam --toolset=gcc-<span style=color:#ff0000>4.6</span> exec
 Jamfile&lt;/home/boosters&gt;.exec_executable &lt;l./gcc-<span style=color:#ff0000>4.6</span>/debug&gt;exec
 <span style=color:#ff0000>4.6</span>
 ...updated 1 target...
-<span style="color: #000">$ cat source.cpp
-#include &lt;iostream&gt;
-int main()
-{
-    std::cout &lt;&lt; __GNUC__ &lt;&lt; "." &lt;&lt; __GNUC_MINOR__ &lt;&lt; std::endl;
-}
-$ bjam --toolset=gcc-</span></code></pre> 実行時はビルド時と同じtoolset,variantを指定する必要がある。ビルドされていない場合、ビルドを行ってから実行する。</p> <h2><a href=http://boostjp.github.io/tips/install-with-saved-directory name=install-with-saved-directory>ディレクトリ構造を保存した状態でインストールを行う</a></h2> <p>通常インストールターゲットを定義する際、packageモジュールのinstallルールを用いることが多い。しかし、これはヘッダファイルのディレクトリ構造をデフォルトで保存しない。ヘッダファイルを細かく分けることの多いC++などではこの動作は使いにくい。以下にデフォルトの動作を例示する。</p> <p><pre><code><span style=color:#ff0000>import package ;</span>
+</code></pre> 実行時はビルド時と同じtoolset,variantを指定する必要がある。ビルドされていない場合、ビルドを行ってから実行する。</p> <h2><a href=http://boostjp.github.io/tips/install-with-saved-directory name=install-with-saved-directory>ディレクトリ構造を保存した状態でインストールを行う</a></h2> <p>通常インストールターゲットを定義する際、packageモジュールのinstallルールを用いることが多い。しかし、これはヘッダファイルのディレクトリ構造をデフォルトで保存しない。ヘッダファイルを細かく分けることの多いC++などではこの動作は使いにくい。以下にデフォルトの動作を例示する。</p> <p><pre><code># Jamroot.jam
+<span style=color:#ff0000>import package ;</span>
 import path ;
 
 path-constant project-root : [ path.make ./ ] ;
@@ -213,8 +221,11 @@ explicit install ;
   : # libraries
   : [ path.glob-tree $(project-root) : *.hpp ]
   ;
-<span style="color: #000"># Jamroot.jam
-</span></code></pre></p> <p><pre><code><span style=color:#ff0000>./sample:</span>
+</code></pre></p> <p><pre><code>$ ls -R
+.:
+Jamroot.jam  sample/
+
+<span style=color:#ff0000>./sample:</span>
 <span style=color:#ff0000>detail/  sample.hpp</span>
 
 <span style=color:#ff0000>./sample/detail:</span>
@@ -233,16 +244,7 @@ include/
 <span style=color:#ff0000>/home/boosters/local/include:</span>
 <span style=color:#ff0000>sample1.hpp</span>  sample.hpp
 $
-<span style="color: #000">$ ls -R
-.:
-Jamroot.jam  sample/
-
-</span></code></pre> これを回避するには<code><span style="color: #000">&lt;install-source-root&gt;</span></code>を使用すればよい。具体的には以下のようになる。</p> <p><pre><code><span style=color:#ff0000>&lt;install-source-root&gt;$(project-root)</span>
-  : # binaries
-  : # libraries
-  : [ path.glob-tree $(project-root) : *.hpp ]
-  ;
-<span style="color: #000"># Jamroot.jam
+</code></pre> これを回避するには<code>&lt;install-source-root&gt;</code>を使用すればよい。具体的には以下のようになる。</p> <p><pre><code># Jamroot.jam
 import package ;
 import path ;
 
@@ -251,7 +253,17 @@ project /sample ;
 
 explicit install ;
 package.install install
-  : </span></code></pre></p> <p><pre><code><span style=color:#ff0000>detail/  sample.hpp</span>
+  : <span style=color:#ff0000>&lt;install-source-root&gt;$(project-root)</span>
+  : # binaries
+  : # libraries
+  : [ path.glob-tree $(project-root) : *.hpp ]
+  ;
+</code></pre></p> <p><pre><code>$ ls -R
+.:
+Jamroot.jam  sample/
+
+./sample:
+<span style=color:#ff0000>detail/  sample.hpp</span>
 
 ./sample/detail:
 <span style=color:#ff0000>sample1.hpp</span>
@@ -277,12 +289,7 @@ sample/
 <span style=color:#ff0000>/home/boosters/local/include/sample/detail:</span>
 <span style=color:#ff0000>sample1.hpp</span>
 $
-<span style="color: #000">$ ls -R
-.:
-Jamroot.jam  sample/
-
-./sample:
-</span></code></pre> </p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
+</code></pre> </p> </div> </div> </div> </div> </main> </body> <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.  chromium.org/developers/how-tos/chrome-frame-getting-started --> <!--[if lt IE 7 ]>
         <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
         <script>
             window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})
