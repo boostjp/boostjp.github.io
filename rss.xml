@@ -2,9 +2,350 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-11-28T14:47:51.907323</updated>
-  <id>7f1a0cc8-5d53-47c5-97e2-4ce90525a69d</id>
+  <updated>2014-12-01T19:06:48.306577</updated>
+  <id>619d2eb9-1e89-4120-91c0-6f26d4b7bf66</id>
 
+  
+    <entry>
+      <title>The Boost Format library -- Boost.Format : 構文の項を追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/format/format.html"/>
+      <id>0e53b64192cea93f34eb4917a46a6d166c3d678f:archive/boost_docs/libs/format/format.md</id>
+      <updated>2014-12-01 19:06:02 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;The Boost Format library&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;boost/format.hpp&amp;gt;&lt;/code&gt; &lt;code&gt;format&lt;/code&gt;クラスは &lt;code&gt;printf&lt;/code&gt; に似た、ユーザ定義型も扱える型安全な書式化処理を提供する。 &lt;/p&gt;
+&lt;p&gt;(このライブラリは他の &lt;code&gt;boost&lt;/code&gt; ライブラリに依存しない)&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#synopsis&#34;&gt;Synopsis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#hot-it-works&#34;&gt;How it works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#examples&#34;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#sample-files&#34;&gt;Sample Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#syntax&#34;&gt;Syntax&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#printf-format-specifications&#34;&gt;printf format-specifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#new-format-specifications&#34;&gt;new format-specifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#differences-of-behavior-vs-printf&#34;&gt;Differences of behaviour vs printf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#user-defined-types-output&#34;&gt;User-defined types Output&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Manipulators and the internal stream state&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#exceptions&#34;&gt;Exceptions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Alternatives&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/synopsis&#34; name=&#34;synopsis&#34;&gt;Synopsis&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;format&lt;/code&gt; オブジェクトは書式文字列から構築され、その後 &lt;code&gt;operator%&lt;/code&gt; を繰り返し呼び出されることで引数を与えられる。 &lt;/p&gt;
+&lt;p&gt;それぞれの引数は文字列に変換され、書式文字列に従って順に一つの文字列へと結合される。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;writing %1%,  x=%2% : %3%-th try&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;toto&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;40.23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; 
+     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#34;writing toto,  x=40.230 : 50-th try&#34;と表示&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/hot-it-works&#34; name=&#34;hot-it-works&#34;&gt;How it works&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;1.書式文字列 &lt;code&gt;s&lt;/code&gt; を伴って &lt;code&gt;format(s)&lt;/code&gt; を呼び出すと、あるオブジェクトが構築される。このオブジェクトは、書式文字列を構文解析してすべての命令を探し、次のステップのために内部構造を準備する。
+2.そして、すぐに&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt; )
+&lt;/pre&gt;&lt;/div&gt;
+
+のようにするか、あるいは後で、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;);
+fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt;; fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt;;
+&lt;/pre&gt;&lt;/div&gt;
+
+とすることで、フォーマッタに変数を食わせることができる。 &lt;/p&gt;
+&lt;p&gt;変数は内部のストリームにダンプされる。ストリームの状態は、与えられた書式文字列の書式化オプション(あれば)によってセットされる。 &lt;code&gt;format&lt;/code&gt; オブジェクトは最後のステップのための結果文字列を保持する。&lt;/p&gt;
+&lt;p&gt;3.すべての引数を与えてしまえば、その &lt;code&gt;format&lt;/code&gt; オブジェクトをストリームにダンプしたり、メンバ関数 &lt;code&gt;str()&lt;/code&gt; か名前空間 &lt;code&gt;boost::io&lt;/code&gt; にある &lt;code&gt;str(const format&amp;amp;)&lt;/code&gt; 関数で文字列を取り出すことができる。結果の文字列は、別の引数が与えられて再初期化されるまで、 &lt;code&gt;format&lt;/code&gt; オブジェクトの中にアクセス可能な状態で残る。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 先ほど作って引数を与えた fmter の結果を表示:&lt;/span&gt;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter ;  
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 結果の文字列を取り出せる:&lt;/span&gt;
+string s  &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; fmter.str();
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 何度でも:&lt;/span&gt;
+s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; fmter.str( );
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// すべてのステップを一度に行うこともできる:&lt;/span&gt;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt;; 
+string s2 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;str( format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt; );
+&lt;/pre&gt;&lt;/div&gt;
+
+4.ステップ３の後で &lt;code&gt;format&lt;/code&gt; オブジェクトを再利用し、ステップ２からやり直すこともできる: &lt;code&gt;fmter % 18 % 39;&lt;/code&gt;
+新しい変数を同じ書式文字列で書式化する際は、こうすることでステップ１で生じる高価な処理を節約できる。&lt;/p&gt;
+&lt;p&gt;結局のところ、 &lt;code&gt;format&lt;/code&gt; クラスは、書式文字列(&lt;code&gt;printf&lt;/code&gt; に似た命令を用いる)を内部のストリームへの操作に翻訳する。そして最終的に、その書式化の結果を文字列として、あるいは直接に出力ストリームへと返す。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/examples&#34; name=&#34;examples&#34;&gt;Examples&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; std;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;group;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;str;
+&lt;/pre&gt;&lt;/div&gt;
+
+- 並べ替えありの単純な出力:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1% %2% %3% %2% %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;11&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;22&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;333&#34;&lt;/span&gt;; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#39;単純な&#39;形式。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;11 22 333 22 11 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;POSIX 版 &lt;code&gt;printf&lt;/code&gt; の位置指定命令を用いた、より精細な書式化:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%1$+5d,%2$+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// POSIX版Printf形式&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;(x,y) = ( -23, +35) \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;並べ替えのない、古典的な &lt;code&gt;printf&lt;/code&gt; の命令:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;writing %s,  x=%s : %d-th step &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;toto&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;40.23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; 
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;writing toto, x=40.23 : 50-th step \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同じことを表現するにもいろいろな方法がある:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%+5d,%+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%|+5|,%|+5|) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%1$+5d,%2$+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%|1$+5|,%|2$+5|) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はどれも : &lt;code&gt;&#34;(x,y) = ( -23, +35) \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;マニピュレータによる書式文字列の修飾:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1$+5d_ %1$d &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;);
+
+format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter2&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1%_ %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;);
+fmter2.modify_item(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, group(showpos, setw(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)) ); 
+
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt; ;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter2 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt; ;
+&lt;/pre&gt;&lt;/div&gt;
+
+どちらも同じように表示する : &lt;code&gt;&#34;_ +101_ 101 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;引数を伴うマニピュレータ:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1%_ %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; group(showpos, setw(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+
+マニピュレータは、 &lt;code&gt;%1%&lt;/code&gt; が現れるたびに適用されるので、出力はこうなる : &lt;code&gt;&#34;_ +101_ +101 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新しいフォーマット機能「絶対桁送り(absolute tabulations)」はループの中で使うと便利である。これはあるフィールドを各行の同じ位置に出力する機能で、たとえ直前の引数の幅が大きく変化したとしても、同じ位置に出力することを保証してくれる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color: #666666&#34;&gt;=0&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; names.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1%, %2%, %|40t|%3%&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; names[i] &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; surname[i] &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; tel[i];
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;code&gt;names&lt;/code&gt; 、 &lt;code&gt;surnames&lt;/code&gt; 、そして &lt;code&gt;tel&lt;/code&gt; などのベクタ(sample_new_features.cpp を参照)は次のように表示される :&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;Marc-Françis Michel, Durand,           +33 (0) 123 456 789
+Jean, de Lattre de Tassigny,           +33 (0) 987 654 321
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/sample-files&#34; name=&#34;sample-files&#34;&gt;Sample Files&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_formats.cpp.html&#34;&gt;sample_formats.cpp&lt;/a&gt; は &lt;code&gt;format&lt;/code&gt; の簡単な使い方をデモする。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_new_features.cpp.html&#34;&gt;sample_new_features.cpp&lt;/a&gt; は、単純な位置指定命令、中寄せ、そして「桁送り」など、 &lt;code&gt;printf&lt;/code&gt; の構文に追加された書式化機能のいくつかを説明する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_advanced.cpp.html&#34;&gt;sample_advanced.cpp&lt;/a&gt; は、 &lt;code&gt;format&lt;/code&gt; オブジェクトの 再利用や修飾といった、さらに進んだ機能の使い方をデモする。&lt;/p&gt;
+&lt;p&gt;そして &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_userType.cpp.html&#34;&gt;sample_userType.cpp&lt;/a&gt; はユーザ定義型に対する &lt;code&gt;format&lt;/code&gt; の振る舞いを示す。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/syntax&#34; name=&#34;syntax&#34;&gt;Syntax&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format( format&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;string ) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; arg1 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; arg2 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ... &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; argN
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;strong&gt;format-string&lt;/strong&gt; は特殊な命令を含むテキストである。これらの命令は、与えられた引数の書式化結果の文字列によって置換される。 &lt;/p&gt;
+&lt;p&gt;C/C++ の世界におけるレガシーな構文は &lt;code&gt;printf&lt;/code&gt; で使われているものである。そのため &lt;code&gt;format&lt;/code&gt; は &lt;code&gt;printf&lt;/code&gt; の書式文字列をそのまま利用でき、同じ結果を生成する。(ほとんどの場合において。詳細は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#differences-of-behavior-vs-printf&#34;&gt;Incompatibilities with printf&lt;/a&gt; を見よ) &lt;/p&gt;
+&lt;p&gt;この中核となる構文は、新機能を許すだけでなく、 C++ のストリームの文脈に適合するために拡張された。そのため、 &lt;code&gt;format&lt;/code&gt; は書式文字列のさまざまな形式の命令を受け付ける :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;レガシーな &lt;code&gt;printf&lt;/code&gt; の書式文字列 : &lt;code&gt;%spec&lt;/code&gt;　ここで &lt;strong&gt;spec&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; の書式指定子である &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;spec&lt;/strong&gt; は幅、アライメント、数値を書式化する際の基数、その他の特殊なフラグなどの書式化オプションを渡す。 しかし &lt;code&gt;printf&lt;/code&gt; の古典的な型指定フラグは &lt;code&gt;format&lt;/code&gt; ではより弱い意味しか持たない。 &lt;code&gt;format&lt;/code&gt; は内部ストリームと書式化パラメータのどちらかまたは両方に適当なフラグをセットするだけで、対応する引数が指定した型であるかどうかは問わない。 &lt;/li&gt;
+&lt;li&gt;例 : &lt;code&gt;2$x&lt;/code&gt; という指定子は、 &lt;code&gt;printf&lt;/code&gt; にとっては「整数である二つ目の引数を16進数で出力する」という意味であるが、 &lt;code&gt;format&lt;/code&gt; においては「二つ目の引数を、ストリームの &lt;code&gt;basefield&lt;/code&gt; フラグを &lt;code&gt;hex&lt;/code&gt; にセットして出力する」という意味でしかない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%|spec|&lt;/code&gt; ここで &lt;strong&gt;spec&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; の書式指定子である。 &lt;ul&gt;
+&lt;li&gt;括弧[訳注：米英語では、二つの記号の組み合わせで何かを囲むものはすべてbracket(括弧)と呼び、ここでは縦棒 &lt;code&gt;|&lt;/code&gt; 二つを括弧と呼んでいる]は書式文字列の可読性を改善するが、本来は &lt;strong&gt;spec&lt;/strong&gt; の型変換文字を省略可能にするために導入された。この情報は C++ の変数には不要だが、 &lt;code&gt;printf&lt;/code&gt; の構文をそのまま用いる場合には、書式指定子の終端を決定するために必要だというだけの理由で、常に型変換文字を与える必要がある。 &lt;/li&gt;
+&lt;li&gt;例 : &lt;code&gt;&#34;%|-5|&#34;&lt;/code&gt; は 次の変数を幅を 5 、左寄せにフォーマットする。これは &lt;code&gt;printf&lt;/code&gt; の以下の命令と同じものである : &lt;code&gt;&#34;%-5g&#34;&lt;/code&gt;, &lt;code&gt;&#34;%-5f&#34;&lt;/code&gt;, &lt;code&gt;&#34;%-5s&#34;&lt;/code&gt; ..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%N%&lt;/code&gt;&lt;ul&gt;
+&lt;li&gt;この単純な位置指定の表記は、 N 番目の引数を書式化オプションなしでフォーマットするよう要求するものである。 &lt;/li&gt;
+&lt;li&gt;(これは &lt;code&gt;printf&lt;/code&gt; の位置指定命令(&lt;code&gt;&#34;%N$s&#34;&lt;/code&gt; のような)の短縮形に過ぎないが、ずっと読みやすく、また「型変換指定」文字を用いないですむというご利益がある)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;printf&lt;/code&gt; の標準の書式指定子に加えて、中寄せのような新しい機能が実装されている。詳細は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#new-format-specifications&#34;&gt;new format specification&lt;/a&gt; を参照。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/printf-format-specifications&#34; name=&#34;printf-format-specifications&#34;&gt;printf format-specifications&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Boost.Format でサポートされる &lt;code&gt;printf&lt;/code&gt; の書式指定子は、引数の位置指定をサポートしない標準 C の &lt;code&gt;printf&lt;/code&gt; よりも、むしろ Unix98 &lt;a href=&#34;http://www.opengroup.org/onlinepubs/7908799/xsh/fprintf.html&#34; target=&#34;_blank&#34;&gt;Open-group printf&lt;/a&gt; の構文に従っている。 (両者の間では共通のフラグは同じ意味を持つので、誰も頭痛に悩まされることはない) &lt;/p&gt;
+&lt;p&gt;なお、一つの書式文字列に位置指定付きの書式指定子(例． %3$+d)と位置指定なしのもの(例． %+d)を混ぜて使用するのはエラーである。 
+Open-group の仕様では同じ引数を複数回参照すること(例．&lt;code&gt;&#34;%1$d %1$d&#34;&lt;/code&gt;)は未定義動作であるが、 Boost.Format では各引数を何度でも参照できる。ただ一つの制約は、書式文字列に現れる最大の引数の数が P であるとき、必ず P 個の引数を期待することである。(例．&lt;code&gt;&#34;%1$d %10$d&#34;&lt;/code&gt; ならば P == 10) &lt;/p&gt;
+&lt;p&gt;引数の数が多すぎても少なすぎても例外が起こる。 (そうでないようにセットされていなければ。 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#exceptions&#34;&gt;exceptions&lt;/a&gt; を参照)&lt;/p&gt;
+&lt;p&gt;書式指定子 &lt;strong&gt;spec&lt;/strong&gt; は次の形式を持つ : [ &lt;strong&gt;N&lt;/strong&gt;&lt;code&gt;$&lt;/code&gt; ] [ &lt;strong&gt;flags&lt;/strong&gt; ] [ &lt;strong&gt;width&lt;/strong&gt; ] [ . &lt;strong&gt;precision&lt;/strong&gt; ] &lt;strong&gt;type-char&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;大括弧で囲われたフィールドは省略可能である。 各フィールドは以下のリストのように説明される :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;N&lt;/strong&gt;&lt;code&gt;$&lt;/code&gt; (省略可能なフィールド)は、その書式指定子が N 番目の引数に適用されると指定する。(これは &lt;strong&gt;位置指定書式指定子&lt;/strong&gt; と呼ばれる) &lt;/li&gt;
+&lt;li&gt;これが与えられない場合、引数は前から順番に解釈される。(ただし、その後に引数番号付きの書式指定子を与えるのはエラーである)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;flags&lt;/strong&gt; は以下の任意のシーケンスである :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;フラグ&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;th&gt;内部ストリームへの作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;-&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左寄せ&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;=&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;中寄せ&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される)&lt;br /&gt; &lt;code&gt;printf&lt;/code&gt; には存在しない(追加機能)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;+&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;正の数であっても符号を表示する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;showpos&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;#&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;基数および小数点を表示する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;showbase&lt;/code&gt; と &lt;code&gt;showpoint&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;0&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0 で穴埋めする(符号および基数表示の後に挿入) 左寄せでない場合、 &lt;code&gt;setfill(&#39;0&#39;)&lt;/code&gt; を呼び出し &lt;code&gt;internal&lt;/code&gt; をセットする&lt;br /&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#user-defined-types-output&#34;&gt;ユーザ定義型&lt;/a&gt;を扱うためにストリーム変換の後に追加の動作を行う&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39; &#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字列が &lt;code&gt;+&lt;/code&gt; または &lt;code&gt;-&lt;/code&gt; から始まらない場合、変換された文字の前にスペースを挿入&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される) &lt;br /&gt; &lt;code&gt;printf&lt;/code&gt; のものとは挙動が異なる : 内部のアライメントには影響されない&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;width&lt;/strong&gt; は変換の結果文字列に対する最小の幅を指定する。 必要ならば、文字列はアライメントにあわせてパディングされ、文字で埋める。この文字はマニピュレータ経由でストリームにセットされたものか、あるいは書式文字列で指定された文字(例． &lt;code&gt;&#39;0&#39;&lt;/code&gt;, &lt;code&gt;&#39;-&#39;&lt;/code&gt;, ... などのフラグ)である。 &lt;ul&gt;
+&lt;li&gt;この幅は変換ストリームにセットされるのではないことに注意してほしい。 ユーザ定義型の出力をサポートする(これはいくつかのメンバに &lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; を何度も呼び出すことになりうる)ため、幅の取り扱いはすべての引数オブジェクトのストリーム変換の後に、 &lt;code&gt;format&lt;/code&gt; クラスのコードの中で行われる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;precision&lt;/strong&gt; (小数点の後に続く)はストリームの精度をセットする。&lt;ul&gt;
+&lt;li&gt;浮動少数点型の数値を出力する場合、&lt;ul&gt;
+&lt;li&gt;固定小数点表示モードまたは指数表示モードでは、小数点より後ろの数字の最大文字数を設定する。&lt;/li&gt;
+&lt;li&gt;デフォルトモード(%g のような&#39;ジェネラルモード&#39;)では、全体の数字の最大文字数を設定する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;type-char&lt;/strong&gt; が &lt;code&gt;s&lt;/code&gt; または &lt;code&gt;S&lt;/code&gt; の場合は別の意味を持つ : 変換文字列は最初の &lt;strong&gt;precision&lt;/strong&gt; 文字で切り詰められる。 (&lt;strong&gt;width&lt;/strong&gt; によるパディングは、この切り詰めの後で施される。)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;type-char&lt;/strong&gt; 。これは、対象になっている引数が指定した型のいずれかであることを強要しない。その型指定子に関連付けられたフラグをセットするだけである。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型変換指定文字&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;th&gt;ストリームへの作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;p&lt;/code&gt; または &lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１６進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hex&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;８進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;oct&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浮動小数点数の指数表記&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;floatfield&lt;/code&gt; ビットを &lt;code&gt;scientific&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浮動小数点数の固定小数点表記   &lt;code&gt;floatfield&lt;/code&gt; ビットを &lt;code&gt;fixed&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;g&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;一般的な(デフォルトの)浮動小数点表記&lt;/td&gt;
+&lt;td&gt;すべての &lt;code&gt;floatfield&lt;/code&gt; ビットを&lt;strong&gt;外す&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;X&lt;/code&gt;, &lt;code&gt;E&lt;/code&gt; または &lt;code&gt;G&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;それぞれの小文字と同じように作用。ただし数値の出力に際して大文字を用いる。(指数、１６進数、..)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&#39;x&#39;&lt;/code&gt;, &lt;code&gt;&#39;e&#39;&lt;/code&gt;, または &lt;code&gt;&#39;g&#39;&lt;/code&gt; と同じ作用に&lt;strong&gt;加え&lt;/strong&gt;、 &lt;code&gt;uppercase&lt;/code&gt; をセットする。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;d&lt;/code&gt;, &lt;code&gt;i&lt;/code&gt; または &lt;code&gt;u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１０進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;basefield&lt;/code&gt; ビットを &lt;code&gt;dec&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;s&lt;/code&gt; または &lt;code&gt;S&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字列を出力&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;precision&lt;/strong&gt; 指定子が外され、値は後の&#39;切り詰め&#39;のために内部フィールドへ送られる。 (上記の &lt;strong&gt;precision&lt;/strong&gt; の説明を参照)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;c&lt;/code&gt; または &lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１文字出力&lt;/td&gt;
+&lt;td&gt;変換文字列の最初の文字のみが用いられる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字&lt;code&gt;%&lt;/code&gt;を表示&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;&#39;n&#39;&lt;/code&gt; 型指定子は、こうした流れに合わないので、無視される(そして対応する引数も)。 &lt;/p&gt;
+&lt;p&gt;また、 &lt;code&gt;printf&lt;/code&gt; の &lt;code&gt;&#39;l&#39;&lt;/code&gt;, &lt;code&gt;&#39;L&#39;&lt;/code&gt;, あるいは &lt;code&gt;&#39;h&#39;&lt;/code&gt; 修飾子(ワイド、ロングおよびショート型を示す)もサポートされている(が、内部ストリームには何の作用もしない)。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/new-format-specifications&#34; name=&#34;new-format-specifications&#34;&gt;new format-specifications&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;前述の表で述べたように、中寄せフラグ &lt;code&gt;&#39;=&#39;&lt;/code&gt; が追加された。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%{n&lt;/code&gt;&lt;strong&gt;t&lt;/strong&gt;&lt;code&gt;}&lt;/code&gt; は絶対桁送りを挿入する。ここで n は正の数である。 すなわち &lt;code&gt;format&lt;/code&gt; は、必要であれば、作成済みの文字列の長さが n 文字に届くまで文字で埋め込む。 (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#examples&#34;&gt;examples&lt;/a&gt; を参照)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%{n&lt;/code&gt;&lt;strong&gt;T&lt;/strong&gt;&lt;code&gt;X}&lt;/code&gt; も同様に桁送りを挿入するが、埋め込む文字としてストリームの現在の「埋め込み」文字の代わりに &lt;code&gt;X&lt;/code&gt; を用いる。 (デフォルト状態のストリームではスペースを埋め込む)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/differences-of-behavior-vs-printf&#34; name=&#34;differences-of-behavior-vs-printf&#34;&gt;Differences of behaviour vs printf&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;x1&lt;/code&gt;, &lt;code&gt;x2&lt;/code&gt; という二つの変数(組み込み型で、 C の &lt;code&gt;printf&lt;/code&gt; でサポートされているもの)と書式文字列&lt;code&gt;s&lt;/code&gt;があって、 &lt;code&gt;printf&lt;/code&gt; 関数で以下のように使われるとする :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;printf(s, x1, x2);
+&lt;/pre&gt;&lt;/div&gt;
+
+ほとんどすべてのケースで、その結果はこの命令と同じものになる :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(s) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x1 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x2;
+&lt;/pre&gt;&lt;/div&gt;
+
+しかしいくつかの &lt;code&gt;printf&lt;/code&gt; 書式指定子はストリームの書式化オプションに上手く翻訳されないため、 Boost.Format の &lt;code&gt;printf&lt;/code&gt; エミュレーションには注意すべき僅かな不完全性がある。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;format&lt;/code&gt; クラスは、 &lt;code&gt;printf&lt;/code&gt; の書式文字列を常に受け付けてほとんど同じ出力を生成するように、どのような場合でもサポートしないオプションを黙って無視する。 &lt;/p&gt;
+&lt;p&gt;以下はそうした相違点のすべての一覧である :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&#39;0&#39;&lt;/code&gt; および &lt;code&gt;&#39; &#39;&lt;/code&gt; オプション : &lt;code&gt;printf&lt;/code&gt; は数値以外の変換でこれらのオプションを無視するが、 &lt;code&gt;format&lt;/code&gt; は変数のあらゆる型にそれらを適用する。 (そのためこれらのオプションをユーザ定義型に対して用いることができる。例． &lt;code&gt;Rational&lt;/code&gt; クラスなど)&lt;/li&gt;
+&lt;li&gt;汎整数型の引数に対する &lt;strong&gt;precision&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; では特別な意味を持つ : &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;printf( &#34;(%5.3d)&#34; , 7 ) ;&lt;/code&gt; は &lt;code&gt;«( 007) »&lt;/code&gt; と出力する。 &lt;/li&gt;
+&lt;li&gt;一方で &lt;code&gt;format&lt;/code&gt; は、ストリームと同様に、汎整数型への変換に対する精度パラメータを無視する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;printf&lt;/code&gt; の &lt;code&gt;&#39;&lt;/code&gt; オプション (三桁ごとに数値をグループ化する書式)) は &lt;code&gt;format&lt;/code&gt; では無効である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;printf&lt;/code&gt; では、幅または精度がアスタリスク (&lt;code&gt;*&lt;/code&gt;) にセットされている場合、その値を与えられた引数から読み取る。例． &lt;code&gt;printf(&#34;%1$d:%2$.*3$d:%4$.*3$d\n&#34;, hour, min, precision, sec);&lt;/code&gt; [訳注：この例では、 &lt;code&gt;min&lt;/code&gt; と &lt;code&gt;sec&lt;/code&gt; を表示する際の精度は第三引数 &lt;code&gt;precision&lt;/code&gt; の値が用いられる。 &lt;code&gt;precision=3&lt;/code&gt; なら &lt;code&gt;&#34;%.3d&#34;&lt;/code&gt; だし、 &lt;code&gt;precision=10&lt;/code&gt; なら &lt;code&gt;&#34;%.10d&#34;&lt;/code&gt; になる。] &lt;ul&gt;
+&lt;li&gt;このクラスは現在のところ、このメカニズムをサポートしない。そのためこのような精度または幅フィールドは構文解析の時点で黙って無視される。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同様に、特殊な &lt;code&gt;&#39;n&#39;&lt;/code&gt; 型指定子 (書式化によって出力された文字数を変数に格納するよう &lt;code&gt;printf&lt;/code&gt; に命じるのに用いる) は &lt;code&gt;format&lt;/code&gt; では無効である。&lt;/p&gt;
+&lt;p&gt;そのためこの型指定子を含む書式文字列は &lt;code&gt;printf&lt;/code&gt; でも &lt;code&gt;format&lt;/code&gt; でも同じ変換文字列を生成する。 &lt;code&gt;printf&lt;/code&gt; と &lt;code&gt;format&lt;/code&gt; で書式化された文字列に違いは生じない。 &lt;/p&gt;
+&lt;p&gt;Boost.Format で書式化された文字数をを得るには以下のようにする :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;formatter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%+5d&#34;&lt;/span&gt;);
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; formatter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x;
+&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; formatter.str().size();
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/user-defined-types-output&#34; name=&#34;user-defined-types-output&#34;&gt;User-defined types output&lt;/a&gt;&lt;/h2&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>libs/format/example/sample_advanced.cpp -- Boost.Format : Sample Files追加</title>
