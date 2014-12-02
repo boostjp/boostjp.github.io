@@ -2,9 +2,384 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-02T18:34:17.738869</updated>
-  <id>3c25f76c-8a2a-46c5-9948-e799efbf5a24</id>
+  <updated>2014-12-02T18:44:50.231356</updated>
+  <id>e11d3949-c191-4b0f-8845-20f2286958c6</id>
 
+  
+    <entry>
+      <title>The Boost Format library -- Boost.Format : Manipulators, and internal stream stateを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/format/format.html"/>
+      <id>e55c1f065f84d46dc5fdbd6da39a6fb4ed0d1813:archive/boost_docs/libs/format/format.md</id>
+      <updated>2014-12-02 18:44:36 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;The Boost Format library&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;boost/format.hpp&amp;gt;&lt;/code&gt; &lt;code&gt;format&lt;/code&gt;クラスは &lt;code&gt;printf&lt;/code&gt; に似た、ユーザ定義型も扱える型安全な書式化処理を提供する。 &lt;/p&gt;
+&lt;p&gt;(このライブラリは他の &lt;code&gt;boost&lt;/code&gt; ライブラリに依存しない)&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#synopsis&#34;&gt;Synopsis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#hot-it-works&#34;&gt;How it works&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#examples&#34;&gt;Examples&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#sample-files&#34;&gt;Sample Files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#syntax&#34;&gt;Syntax&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#printf-format-specifications&#34;&gt;printf format-specifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#new-format-specifications&#34;&gt;new format-specifications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#differences-of-behavior-vs-printf&#34;&gt;Differences of behaviour vs printf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#user-defined-types-output&#34;&gt;User-defined types Output&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#manipulators-and-the-internal-stream-state&#34;&gt;Manipulators and the internal stream state&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#alternatives&#34;&gt;Alternatives&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#exceptions&#34;&gt;Exceptions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/synopsis&#34; name=&#34;synopsis&#34;&gt;Synopsis&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;format&lt;/code&gt; オブジェクトは書式文字列から構築され、その後 &lt;code&gt;operator%&lt;/code&gt; を繰り返し呼び出されることで引数を与えられる。 &lt;/p&gt;
+&lt;p&gt;それぞれの引数は文字列に変換され、書式文字列に従って順に一つの文字列へと結合される。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;writing %1%,  x=%2% : %3%-th try&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;toto&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;40.23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; 
+     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#34;writing toto,  x=40.230 : 50-th try&#34;と表示&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/hot-it-works&#34; name=&#34;hot-it-works&#34;&gt;How it works&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;1.書式文字列 &lt;code&gt;s&lt;/code&gt; を伴って &lt;code&gt;format(s)&lt;/code&gt; を呼び出すと、あるオブジェクトが構築される。このオブジェクトは、書式文字列を構文解析してすべての命令を探し、次のステップのために内部構造を準備する。
+2.そして、すぐに&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt; )
+&lt;/pre&gt;&lt;/div&gt;
+
+のようにするか、あるいは後で、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;);
+fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt;; fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt;;
+&lt;/pre&gt;&lt;/div&gt;
+
+とすることで、フォーマッタに変数を食わせることができる。 &lt;/p&gt;
+&lt;p&gt;変数は内部のストリームにダンプされる。ストリームの状態は、与えられた書式文字列の書式化オプション(あれば)によってセットされる。 &lt;code&gt;format&lt;/code&gt; オブジェクトは最後のステップのための結果文字列を保持する。&lt;/p&gt;
+&lt;p&gt;3.すべての引数を与えてしまえば、その &lt;code&gt;format&lt;/code&gt; オブジェクトをストリームにダンプしたり、メンバ関数 &lt;code&gt;str()&lt;/code&gt; か名前空間 &lt;code&gt;boost::io&lt;/code&gt; にある &lt;code&gt;str(const format&amp;amp;)&lt;/code&gt; 関数で文字列を取り出すことができる。結果の文字列は、別の引数が与えられて再初期化されるまで、 &lt;code&gt;format&lt;/code&gt; オブジェクトの中にアクセス可能な状態で残る。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 先ほど作って引数を与えた fmter の結果を表示:&lt;/span&gt;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter ;  
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 結果の文字列を取り出せる:&lt;/span&gt;
+string s  &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; fmter.str();
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 何度でも:&lt;/span&gt;
+s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; fmter.str( );
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// すべてのステップを一度に行うこともできる:&lt;/span&gt;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt;; 
+string s2 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;str( format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%2% %1%&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;36&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;77&lt;/span&gt; );
+&lt;/pre&gt;&lt;/div&gt;
+
+4.ステップ３の後で &lt;code&gt;format&lt;/code&gt; オブジェクトを再利用し、ステップ２からやり直すこともできる: &lt;code&gt;fmter % 18 % 39;&lt;/code&gt;
+新しい変数を同じ書式文字列で書式化する際は、こうすることでステップ１で生じる高価な処理を節約できる。&lt;/p&gt;
+&lt;p&gt;結局のところ、 &lt;code&gt;format&lt;/code&gt; クラスは、書式文字列(&lt;code&gt;printf&lt;/code&gt; に似た命令を用いる)を内部のストリームへの操作に翻訳する。そして最終的に、その書式化の結果を文字列として、あるいは直接に出力ストリームへと返す。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/examples&#34; name=&#34;examples&#34;&gt;Examples&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; std;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;group;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;str;
+&lt;/pre&gt;&lt;/div&gt;
+
+- 並べ替えありの単純な出力:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1% %2% %3% %2% %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;11&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;22&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;333&#34;&lt;/span&gt;; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#39;単純な&#39;形式。&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;11 22 333 22 11 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;POSIX 版 &lt;code&gt;printf&lt;/code&gt; の位置指定命令を用いた、より精細な書式化:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%1$+5d,%2$+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// POSIX版Printf形式&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;(x,y) = ( -23, +35) \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;並べ替えのない、古典的な &lt;code&gt;printf&lt;/code&gt; の命令:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;writing %s,  x=%s : %d-th step &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;toto&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;40.23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; 
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はこうなる : &lt;code&gt;&#34;writing toto, x=40.23 : 50-th step \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;同じことを表現するにもいろいろな方法がある:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%+5d,%+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%|+5|,%|+5|) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%1$+5d,%2$+5d) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(x,y) = (%|1$+5|,%|2$+5|) &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;-23&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;35&lt;/span&gt;;
+&lt;/pre&gt;&lt;/div&gt;
+
+表示はどれも : &lt;code&gt;&#34;(x,y) = ( -23, +35) \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;マニピュレータによる書式文字列の修飾:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1$+5d_ %1$d &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;);
+
+format &lt;span style=&#34;color: #0000FF&#34;&gt;fmter2&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1%_ %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;);
+fmter2.modify_item(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, group(showpos, setw(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)) ); 
+
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt; ;
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; fmter2 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt; ;
+&lt;/pre&gt;&lt;/div&gt;
+
+どちらも同じように表示する : &lt;code&gt;&#34;_ +101_ 101 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;引数を伴うマニピュレータ:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;_%1%_ %1% &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; group(showpos, setw(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;101&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+
+マニピュレータは、 &lt;code&gt;%1%&lt;/code&gt; が現れるたびに適用されるので、出力はこうなる : &lt;code&gt;&#34;_ +101_ +101 \n&#34;&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新しいフォーマット機能「絶対桁送り(absolute tabulations)」はループの中で使うと便利である。これはあるフィールドを各行の同じ位置に出力する機能で、たとえ直前の引数の幅が大きく変化したとしても、同じ位置に出力することを保証してくれる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i&lt;span style=&#34;color: #666666&#34;&gt;=0&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; names.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1%, %2%, %|40t|%3%&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; names[i] &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; surname[i] &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; tel[i];
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;code&gt;names&lt;/code&gt; 、 &lt;code&gt;surnames&lt;/code&gt; 、そして &lt;code&gt;tel&lt;/code&gt; などのベクタ(sample_new_features.cpp を参照)は次のように表示される :&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;Marc-Françis Michel, Durand,           +33 (0) 123 456 789
+Jean, de Lattre de Tassigny,           +33 (0) 987 654 321
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/sample-files&#34; name=&#34;sample-files&#34;&gt;Sample Files&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_formats.cpp.html&#34;&gt;sample_formats.cpp&lt;/a&gt; は &lt;code&gt;format&lt;/code&gt; の簡単な使い方をデモする。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_new_features.cpp.html&#34;&gt;sample_new_features.cpp&lt;/a&gt; は、単純な位置指定命令、中寄せ、そして「桁送り」など、 &lt;code&gt;printf&lt;/code&gt; の構文に追加された書式化機能のいくつかを説明する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_advanced.cpp.html&#34;&gt;sample_advanced.cpp&lt;/a&gt; は、 &lt;code&gt;format&lt;/code&gt; オブジェクトの 再利用や修飾といった、さらに進んだ機能の使い方をデモする。&lt;/p&gt;
+&lt;p&gt;そして &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_userType.cpp.html&#34;&gt;sample_userType.cpp&lt;/a&gt; はユーザ定義型に対する &lt;code&gt;format&lt;/code&gt; の振る舞いを示す。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/syntax&#34; name=&#34;syntax&#34;&gt;Syntax&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;format( format&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;string ) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; arg1 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; arg2 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ... &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; argN
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;strong&gt;format-string&lt;/strong&gt; は特殊な命令を含むテキストである。これらの命令は、与えられた引数の書式化結果の文字列によって置換される。 &lt;/p&gt;
+&lt;p&gt;C/C++ の世界におけるレガシーな構文は &lt;code&gt;printf&lt;/code&gt; で使われているものである。そのため &lt;code&gt;format&lt;/code&gt; は &lt;code&gt;printf&lt;/code&gt; の書式文字列をそのまま利用でき、同じ結果を生成する。(ほとんどの場合において。詳細は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#differences-of-behavior-vs-printf&#34;&gt;Incompatibilities with printf&lt;/a&gt; を見よ) &lt;/p&gt;
+&lt;p&gt;この中核となる構文は、新機能を許すだけでなく、 C++ のストリームの文脈に適合するために拡張された。そのため、 &lt;code&gt;format&lt;/code&gt; は書式文字列のさまざまな形式の命令を受け付ける :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;レガシーな &lt;code&gt;printf&lt;/code&gt; の書式文字列 : &lt;code&gt;%spec&lt;/code&gt;　ここで &lt;strong&gt;spec&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; の書式指定子である &lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;spec&lt;/strong&gt; は幅、アライメント、数値を書式化する際の基数、その他の特殊なフラグなどの書式化オプションを渡す。 しかし &lt;code&gt;printf&lt;/code&gt; の古典的な型指定フラグは &lt;code&gt;format&lt;/code&gt; ではより弱い意味しか持たない。 &lt;code&gt;format&lt;/code&gt; は内部ストリームと書式化パラメータのどちらかまたは両方に適当なフラグをセットするだけで、対応する引数が指定した型であるかどうかは問わない。 &lt;/li&gt;
+&lt;li&gt;例 : &lt;code&gt;2$x&lt;/code&gt; という指定子は、 &lt;code&gt;printf&lt;/code&gt; にとっては「整数である二つ目の引数を16進数で出力する」という意味であるが、 &lt;code&gt;format&lt;/code&gt; においては「二つ目の引数を、ストリームの &lt;code&gt;basefield&lt;/code&gt; フラグを &lt;code&gt;hex&lt;/code&gt; にセットして出力する」という意味でしかない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%|spec|&lt;/code&gt; ここで &lt;strong&gt;spec&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; の書式指定子である。 &lt;ul&gt;
+&lt;li&gt;括弧[訳注：米英語では、二つの記号の組み合わせで何かを囲むものはすべてbracket(括弧)と呼び、ここでは縦棒 &lt;code&gt;|&lt;/code&gt; 二つを括弧と呼んでいる]は書式文字列の可読性を改善するが、本来は &lt;strong&gt;spec&lt;/strong&gt; の型変換文字を省略可能にするために導入された。この情報は C++ の変数には不要だが、 &lt;code&gt;printf&lt;/code&gt; の構文をそのまま用いる場合には、書式指定子の終端を決定するために必要だというだけの理由で、常に型変換文字を与える必要がある。 &lt;/li&gt;
+&lt;li&gt;例 : &lt;code&gt;&#34;%|-5|&#34;&lt;/code&gt; は 次の変数を幅を 5 、左寄せにフォーマットする。これは &lt;code&gt;printf&lt;/code&gt; の以下の命令と同じものである : &lt;code&gt;&#34;%-5g&#34;&lt;/code&gt;, &lt;code&gt;&#34;%-5f&#34;&lt;/code&gt;, &lt;code&gt;&#34;%-5s&#34;&lt;/code&gt; ..&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%N%&lt;/code&gt;&lt;ul&gt;
+&lt;li&gt;この単純な位置指定の表記は、 N 番目の引数を書式化オプションなしでフォーマットするよう要求するものである。 &lt;/li&gt;
+&lt;li&gt;(これは &lt;code&gt;printf&lt;/code&gt; の位置指定命令(&lt;code&gt;&#34;%N$s&#34;&lt;/code&gt; のような)の短縮形に過ぎないが、ずっと読みやすく、また「型変換指定」文字を用いないですむというご利益がある)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;code&gt;printf&lt;/code&gt; の標準の書式指定子に加えて、中寄せのような新しい機能が実装されている。詳細は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#new-format-specifications&#34;&gt;new format specification&lt;/a&gt; を参照。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/printf-format-specifications&#34; name=&#34;printf-format-specifications&#34;&gt;printf format-specifications&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Boost.Format でサポートされる &lt;code&gt;printf&lt;/code&gt; の書式指定子は、引数の位置指定をサポートしない標準 C の &lt;code&gt;printf&lt;/code&gt; よりも、むしろ Unix98 &lt;a href=&#34;http://www.opengroup.org/onlinepubs/7908799/xsh/fprintf.html&#34; target=&#34;_blank&#34;&gt;Open-group printf&lt;/a&gt; の構文に従っている。 (両者の間では共通のフラグは同じ意味を持つので、誰も頭痛に悩まされることはない) &lt;/p&gt;
+&lt;p&gt;なお、一つの書式文字列に位置指定付きの書式指定子(例．&lt;code&gt;%3$+d&lt;/code&gt;)と位置指定なしのもの(例．&lt;code&gt;%+d&lt;/code&gt;)を混ぜて使用するのはエラーである。 
+Open-group の仕様では同じ引数を複数回参照すること(例．&lt;code&gt;&#34;%1$d %1$d&#34;&lt;/code&gt;)は未定義動作であるが、 Boost.Format では各引数を何度でも参照できる。ただ一つの制約は、書式文字列に現れる最大の引数の数が P であるとき、必ず P 個の引数を期待することである。(例．&lt;code&gt;&#34;%1$d %10$d&#34;&lt;/code&gt; ならば P == 10) &lt;/p&gt;
+&lt;p&gt;引数の数が多すぎても少なすぎても例外が起こる。 (そうでないようにセットされていなければ。 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#exceptions&#34;&gt;exceptions&lt;/a&gt; を参照)&lt;/p&gt;
+&lt;p&gt;書式指定子 &lt;strong&gt;spec&lt;/strong&gt; は次の形式を持つ : [ &lt;strong&gt;N&lt;/strong&gt;&lt;code&gt;$&lt;/code&gt; ] [ &lt;strong&gt;flags&lt;/strong&gt; ] [ &lt;strong&gt;width&lt;/strong&gt; ] [ . &lt;strong&gt;precision&lt;/strong&gt; ] &lt;strong&gt;type-char&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;大括弧で囲われたフィールドは省略可能である。 各フィールドは以下のリストのように説明される :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;N&lt;/strong&gt;&lt;code&gt;$&lt;/code&gt; (省略可能なフィールド)は、その書式指定子が N 番目の引数に適用されると指定する。(これは &lt;strong&gt;位置指定書式指定子&lt;/strong&gt; と呼ばれる) &lt;/li&gt;
+&lt;li&gt;これが与えられない場合、引数は前から順番に解釈される。(ただし、その後に引数番号付きの書式指定子を与えるのはエラーである)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;flags&lt;/strong&gt; は以下の任意のシーケンスである :&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;フラグ&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;th&gt;内部ストリームへの作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;-&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左寄せ&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;=&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;中寄せ&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される)&lt;br /&gt; &lt;code&gt;printf&lt;/code&gt; には存在しない(追加機能)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;+&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;正の数であっても符号を表示する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;showpos&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;#&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;基数および小数点を表示する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;showbase&lt;/code&gt; と &lt;code&gt;showpoint&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39;0&#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0 で穴埋めする(符号および基数表示の後に挿入) 左寄せでない場合、 &lt;code&gt;setfill(&#39;0&#39;)&lt;/code&gt; を呼び出し &lt;code&gt;internal&lt;/code&gt; をセットする&lt;br /&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#user-defined-types-output&#34;&gt;ユーザ定義型&lt;/a&gt;を扱うためにストリーム変換の後に追加の動作を行う&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;&#39; &#39;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字列が &lt;code&gt;+&lt;/code&gt; または &lt;code&gt;-&lt;/code&gt; から始まらない場合、変換された文字の前にスペースを挿入&lt;/td&gt;
+&lt;td&gt;N/A (後で文字列に適用される) &lt;br /&gt; &lt;code&gt;printf&lt;/code&gt; のものとは挙動が異なる : 内部のアライメントには影響されない&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;width&lt;/strong&gt; は変換の結果文字列に対する最小の幅を指定する。 必要ならば、文字列はアライメントにあわせてパディングされ、文字で埋める。この文字はマニピュレータ経由でストリームにセットされたものか、あるいは書式文字列で指定された文字(例． &lt;code&gt;&#39;0&#39;&lt;/code&gt;, &lt;code&gt;&#39;-&#39;&lt;/code&gt;, ... などのフラグ)である。 &lt;ul&gt;
+&lt;li&gt;この幅は変換ストリームにセットされるのではないことに注意してほしい。 ユーザ定義型の出力をサポートする(これはいくつかのメンバに &lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt; を何度も呼び出すことになりうる)ため、幅の取り扱いはすべての引数オブジェクトのストリーム変換の後に、 &lt;code&gt;format&lt;/code&gt; クラスのコードの中で行われる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;precision&lt;/strong&gt; (小数点の後に続く)はストリームの精度をセットする。&lt;ul&gt;
+&lt;li&gt;浮動少数点型の数値を出力する場合、&lt;ul&gt;
+&lt;li&gt;固定小数点表示モードまたは指数表示モードでは、小数点より後ろの数字の最大文字数を設定する。&lt;/li&gt;
+&lt;li&gt;デフォルトモード(%g のような&#39;ジェネラルモード&#39;)では、全体の数字の最大文字数を設定する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;type-char&lt;/strong&gt; が &lt;code&gt;s&lt;/code&gt; または &lt;code&gt;S&lt;/code&gt; の場合は別の意味を持つ : 変換文字列は最初の &lt;strong&gt;precision&lt;/strong&gt; 文字で切り詰められる。 (&lt;strong&gt;width&lt;/strong&gt; によるパディングは、この切り詰めの後で施される。)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;type-char&lt;/strong&gt; 。これは、対象になっている引数が指定した型のいずれかであることを強要しない。その型指定子に関連付けられたフラグをセットするだけである。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型変換指定文字&lt;/th&gt;
+&lt;th&gt;意味&lt;/th&gt;
+&lt;th&gt;ストリームへの作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;p&lt;/code&gt; または &lt;code&gt;x&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１６進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;hex&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;o&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;８進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;oct&lt;/code&gt; をセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;e&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浮動小数点数の指数表記&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;floatfield&lt;/code&gt; ビットを &lt;code&gt;scientific&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;f&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浮動小数点数の固定小数点表記   &lt;code&gt;floatfield&lt;/code&gt; ビットを &lt;code&gt;fixed&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;g&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;一般的な(デフォルトの)浮動小数点表記&lt;/td&gt;
+&lt;td&gt;すべての &lt;code&gt;floatfield&lt;/code&gt; ビットを&lt;strong&gt;外す&lt;/strong&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;X&lt;/code&gt;, &lt;code&gt;E&lt;/code&gt; または &lt;code&gt;G&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;それぞれの小文字と同じように作用。ただし数値の出力に際して大文字を用いる。(指数、１６進数、..)&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&#39;x&#39;&lt;/code&gt;, &lt;code&gt;&#39;e&#39;&lt;/code&gt;, または &lt;code&gt;&#39;g&#39;&lt;/code&gt; と同じ作用に&lt;strong&gt;加え&lt;/strong&gt;、 &lt;code&gt;uppercase&lt;/code&gt; をセットする。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;d&lt;/code&gt;, &lt;code&gt;i&lt;/code&gt; または &lt;code&gt;u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１０進数で出力&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;basefield&lt;/code&gt; ビットを &lt;code&gt;dec&lt;/code&gt; にセットする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;s&lt;/code&gt; または &lt;code&gt;S&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字列を出力&lt;/td&gt;
+&lt;td&gt;&lt;strong&gt;precision&lt;/strong&gt; 指定子が外され、値は後の&#39;切り詰め&#39;のために内部フィールドへ送られる。 (上記の &lt;strong&gt;precision&lt;/strong&gt; の説明を参照)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;c&lt;/code&gt; または &lt;code&gt;C&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;１文字出力&lt;/td&gt;
+&lt;td&gt;変換文字列の最初の文字のみが用いられる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;%&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;文字&lt;code&gt;%&lt;/code&gt;を表示&lt;/td&gt;
+&lt;td&gt;N/A&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;&#39;n&#39;&lt;/code&gt; 型指定子は、こうした流れに合わないので、無視される(そして対応する引数も)。 &lt;/p&gt;
+&lt;p&gt;また、 &lt;code&gt;printf&lt;/code&gt; の &lt;code&gt;&#39;l&#39;&lt;/code&gt;, &lt;code&gt;&#39;L&#39;&lt;/code&gt;, あるいは &lt;code&gt;&#39;h&#39;&lt;/code&gt; 修飾子(ワイド、ロングおよびショート型を示す)もサポートされている(が、内部ストリームには何の作用もしない)。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/new-format-specifications&#34; name=&#34;new-format-specifications&#34;&gt;new format-specifications&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;前述の表で述べたように、中寄せフラグ &lt;code&gt;&#39;=&#39;&lt;/code&gt; が追加された。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%{n&lt;/code&gt;&lt;strong&gt;t&lt;/strong&gt;&lt;code&gt;}&lt;/code&gt; は絶対桁送りを挿入する。ここで n は正の数である。 すなわち &lt;code&gt;format&lt;/code&gt; は、必要であれば、作成済みの文字列の長さが n 文字に届くまで文字で埋め込む。 (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/format.html#examples&#34;&gt;examples&lt;/a&gt; を参照)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;%{n&lt;/code&gt;&lt;strong&gt;T&lt;/strong&gt;&lt;code&gt;X}&lt;/code&gt; も同様に桁送りを挿入するが、埋め込む文字としてストリームの現在の「埋め込み」文字の代わりに &lt;code&gt;X&lt;/code&gt; を用いる。 (デフォルト状態のストリームではスペースを埋め込む)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/differences-of-behavior-vs-printf&#34; name=&#34;differences-of-behavior-vs-printf&#34;&gt;Differences of behaviour vs printf&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;x1&lt;/code&gt;, &lt;code&gt;x2&lt;/code&gt; という二つの変数(組み込み型で、 C の &lt;code&gt;printf&lt;/code&gt; でサポートされているもの)と書式文字列&lt;code&gt;s&lt;/code&gt;があって、 &lt;code&gt;printf&lt;/code&gt; 関数で以下のように使われるとする :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;printf(s, x1, x2);
+&lt;/pre&gt;&lt;/div&gt;
+
+ほとんどすべてのケースで、その結果はこの命令と同じものになる :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(s) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x1 &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x2;
+&lt;/pre&gt;&lt;/div&gt;
+
+しかしいくつかの &lt;code&gt;printf&lt;/code&gt; 書式指定子はストリームの書式化オプションに上手く翻訳されないため、 Boost.Format の &lt;code&gt;printf&lt;/code&gt; エミュレーションには注意すべき僅かな不完全性がある。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;format&lt;/code&gt; クラスは、 &lt;code&gt;printf&lt;/code&gt; の書式文字列を常に受け付けてほとんど同じ出力を生成するように、どのような場合でもサポートしないオプションを黙って無視する。 &lt;/p&gt;
+&lt;p&gt;以下はそうした相違点のすべての一覧である :&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&#39;0&#39;&lt;/code&gt; および &lt;code&gt;&#39; &#39;&lt;/code&gt; オプション : &lt;code&gt;printf&lt;/code&gt; は数値以外の変換でこれらのオプションを無視するが、 &lt;code&gt;format&lt;/code&gt; は変数のあらゆる型にそれらを適用する。 (そのためこれらのオプションをユーザ定義型に対して用いることができる。例． &lt;code&gt;Rational&lt;/code&gt; クラスなど)&lt;/li&gt;
+&lt;li&gt;汎整数型の引数に対する &lt;strong&gt;precision&lt;/strong&gt; は &lt;code&gt;printf&lt;/code&gt; では特別な意味を持つ : &lt;ul&gt;
+&lt;li&gt;&lt;code&gt;printf( &#34;(%5.3d)&#34; , 7 ) ;&lt;/code&gt; は &lt;code&gt;«( 007) »&lt;/code&gt; と出力する。 &lt;/li&gt;
+&lt;li&gt;一方で &lt;code&gt;format&lt;/code&gt; は、ストリームと同様に、汎整数型への変換に対する精度パラメータを無視する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;printf&lt;/code&gt; の &lt;code&gt;&#39;&lt;/code&gt; オプション (三桁ごとに数値をグループ化する書式)) は &lt;code&gt;format&lt;/code&gt; では無効である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;printf&lt;/code&gt; では、幅または精度がアスタリスク (&lt;code&gt;*&lt;/code&gt;) にセットされている場合、その値を与えられた引数から読み取る。例． &lt;code&gt;printf(&#34;%1$d:%2$.*3$d:%4$.*3$d\n&#34;, hour, min, precision, sec);&lt;/code&gt; [訳注：この例では、 &lt;code&gt;min&lt;/code&gt; と &lt;code&gt;sec&lt;/code&gt; を表示する際の精度は第三引数 &lt;code&gt;precision&lt;/code&gt; の値が用いられる。 &lt;code&gt;precision=3&lt;/code&gt; なら &lt;code&gt;&#34;%.3d&#34;&lt;/code&gt; だし、 &lt;code&gt;precision=10&lt;/code&gt; なら &lt;code&gt;&#34;%.10d&#34;&lt;/code&gt; になる。] &lt;ul&gt;
+&lt;li&gt;このクラスは現在のところ、このメカニズムをサポートしない。そのためこのような精度または幅フィールドは構文解析の時点で黙って無視される。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同様に、特殊な &lt;code&gt;&#39;n&#39;&lt;/code&gt; 型指定子 (書式化によって出力された文字数を変数に格納するよう &lt;code&gt;printf&lt;/code&gt; に命じるのに用いる) は &lt;code&gt;format&lt;/code&gt; では無効である。&lt;/p&gt;
+&lt;p&gt;そのためこの型指定子を含む書式文字列は &lt;code&gt;printf&lt;/code&gt; でも &lt;code&gt;format&lt;/code&gt; でも同じ変換文字列を生成する。 &lt;code&gt;printf&lt;/code&gt; と &lt;code&gt;format&lt;/code&gt; で書式化された文字列に違いは生じない。 &lt;/p&gt;
+&lt;p&gt;Boost.Format で書式化された文字数をを得るには以下のようにする :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;format &lt;span style=&#34;color: #0000FF&#34;&gt;formatter&lt;/span&gt;(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%+5d&#34;&lt;/span&gt;);
+cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; formatter &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; x;
+&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; n &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; formatter.str().size();
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/user-defined-types-output&#34; name=&#34;user-defined-types-output&#34;&gt;User-defined types output&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ストリーム状態の修飾に翻訳されたすべてのフラグは、ユーザ定義型にも再帰的に作用する。 ( フラグはアクティブなまま残るので、 ユーザ定義クラスによって呼ばれる各々の &lt;code&gt;&amp;lt;&amp;lt;&lt;/code&gt; 演算に対しても、期待するオプションが渡される) &lt;/p&gt;
+&lt;p&gt;例．妥当なクラス &lt;code&gt;Rational&lt;/code&gt; なら次のようになる :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Rational &lt;span style=&#34;color: #0000FF&#34;&gt;ratio&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;16&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;);
+cerr &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%#x &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;)  &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ratio;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// -&amp;gt; &#34;0x10/0x9 \n&#34;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+その他の書式化オプションでは話は異なる。例えば、幅の設定はオブジェクトによって生成される最終出力に適用され、内部の各々の出力には適用されない。これは都合のいい話である :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cerr &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%-8d&#34;&lt;/span&gt;)  &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ratio;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// -&amp;gt; &#34;16/9    &#34; であって、 &#34;16      /9       &#34; ではない&lt;/span&gt;
+cerr &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%=8d&#34;&lt;/span&gt;)  &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ratio;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// -&amp;gt; &#34;  16/9  &#34; であって、 &#34;   16   /    9   &#34; ではない&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+しかし、 &lt;code&gt;0&lt;/code&gt; や &lt;code&gt;&#39; &#39;&lt;/code&gt; オプションにも同様に働くため、不自然なことになってしまう。(意地の悪いことに、 &lt;code&gt;&#39;+&#39;&lt;/code&gt; が &lt;code&gt;showpos&lt;/code&gt; によってストリームの状態へと直接翻訳できるのに対して、 &lt;code&gt;printf&lt;/code&gt; のゼロやスペースに当たるオプションはストリームには存在しない) :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cerr &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%+08d &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;)  &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ratio;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// -&amp;gt; &#34;+00016/9&#34;&lt;/span&gt;
+cerr &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;% 08d &lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;)  &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; ratio;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// -&amp;gt; &#34;000 16/9&#34;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/manipulators-and-the-internal-stream-state&#34; name=&#34;manipulators-and-the-internal-stream-state&#34;&gt;Manipulators, and internal stream state&lt;/a&gt;
+&lt;code&gt;format&lt;/code&gt; の内部ストリームの状態は、引数を出力する直前に保存され、直後に復帰される。そのため、修飾子の影響は後まで引きづられずに、適用される引数にだけ作用する。 &lt;/p&gt;
+&lt;p&gt;ストリームのデフォルト状態は標準で述べられているように : 精度 6 、幅 0 、右寄せ、そして１０進数基数である。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;format&lt;/code&gt; ストリームの内部ストリームの状態は引数と一緒に渡されるマニピュレータによって変えることができる； &lt;code&gt;group&lt;/code&gt; 関数を経由して以下のようにできる :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1% %2% %1%&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; group(hex, showbase, &lt;span style=&#34;color: #666666&#34;&gt;40&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#34;0x28 50 0x28\n&#34; と表示&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;code&gt;group&lt;/code&gt; の内側にある N 個の項目を渡すとき、 Boost.Format はマニピュレータに通常の引数とは異なる処理をする必要がある。そのため、 &lt;code&gt;group&lt;/code&gt; の使用には以下の制限がある :&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;表示されるオブジェクトは &lt;code&gt;group&lt;/code&gt; の最後の項目として渡されなければならない&lt;/li&gt;
+&lt;li&gt;先頭の N-1 個の項目はマニピュレータとして扱われるので、出力を生成しても破棄される&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;マニピュレータは、それが現れるごとに、後に続く引数の直前にストリームに渡される。 書式文字列で指定された書式化オプションは、この方法で渡されたストリーム状態修飾子によって上書きされる点に注意して欲しい。 例えば以下のコードで、 &lt;code&gt;hex&lt;/code&gt; マニピュレータは、書式文字列の中で１０進数出力を設定している型指定子 d よりも高い優先度を持つ :&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; format(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;%1$d %2% %1%&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; group(hex, showbase, &lt;span style=&#34;color: #666666&#34;&gt;40&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;50&lt;/span&gt;; 
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &#34;0x28 50 0x28\n&#34; と表示&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/alternatives&#34; name=&#34;alternatives&#34;&gt;Alternatives&lt;/a&gt;&lt;/h2&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>The Boost Format library -- Boost.Format : User-defined types Outputを追加</title>
@@ -1663,228 +2038,6 @@ Jean, de Lattre de Tassigny,           +33 (0) 987 654 321
 &lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_new_features.cpp.html&#34;&gt;sample_new_features.cpp&lt;/a&gt; は、単純な位置指定命令、中寄せ、そして「桁送り」など、 &lt;code&gt;printf&lt;/code&gt; の構文に追加された書式化機能のいくつかを説明する。&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_advanced.cpp.html&#34;&gt;sample_advanced.cpp&lt;/a&gt; は、 &lt;code&gt;format&lt;/code&gt; オブジェクトの 再利用や修飾といった、さらに進んだ機能の使い方をデモする。&lt;/p&gt;
 &lt;p&gt;そして &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/format/example/sample_userType.cpp.html&#34;&gt;sample_userType.cpp&lt;/a&gt; はユーザ定義型に対する &lt;code&gt;format&lt;/code&gt; の振る舞いを示す。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>ジェネリックコンポーネントにおける例外安全性 -- 英文での斜体を、日本語では太字にした。 これは英語から日本語への翻訳で一般的な手法。日本語文章中の斜体は目立たない。</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/document/generic_exception_safety.html"/>
-      <id>febe350aad0ebfbefa50221e17d30e36bb728a5d:archive/boost_docs/document/generic_exception_safety.md</id>
-      <updated>2014-11-27 23:49:45 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;ジェネリックコンポーネントにおける例外安全性&lt;/h1&gt;
-&lt;p&gt;C++標準ライブラリのために規定した例外安全性の経験から学んだこと&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;David Abrahams&lt;/li&gt;
-&lt;li&gt;david.abrahams@rcn.com&lt;/li&gt;
-&lt;li&gt;翻訳元：&lt;a href=&#34;http://www.boost.org/community/exception_safety.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/community/exception_safety.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;概要&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;この文書は実世界の必要性に対する応答の中で蓄積された知識を表す: つまり、 C++ 標準テンプレートライブラリは、役立つ、そして明確な例外との相互作用を示し、 エラー捕捉の機構は C++ 言語の中核に組み込まれている。 この文書では、例外安全性の意味を探求し、例外と汎用性についての驚くべき神話を明らかにし、 プログラムの正当性を理由付けるための価値ある道具について述べ、 例外安全性を実証するための自動化されたテストの手続きを概説する。&lt;/p&gt;
-&lt;p&gt;Keywords: exception-safety, exceptions, STL, C++&lt;/p&gt;
-&lt;h2&gt;1 例外安全性とは何か&lt;/h2&gt;
-&lt;p&gt;簡単に言えば、コンポーネントの例外安全性とは、 実行中に例外が投げられたとき、正当な振る舞いを示すことを意味する。 ほとんどの人にとって、「正当な」という用語は、エラー捕捉に対する通常の例外全てを含む: つまり、資源は漏れるべきではないし、プログラムは実行を継続できるように、 明確な状態であり続けるべきである。多くのコンポーネントにとって、 これはまた、エラーに出会った時に呼び出し元に報告されるような例外も含む。&lt;/p&gt;
-&lt;p&gt;より公式に言えば、コンポーネントの中から例外が投げられたときに、 もしその不変性が損なわれないなら、そのコンポーネントは最小限の例外安全性を持っていると言える。 後に見るが、通常、少なくとも3種類の異なる例外安全性が区別されている。 これらの区別は巨大なシステムの振る舞いについて記述し、理由付けるのに役立つのである。&lt;/p&gt;
-&lt;p&gt;汎用コンポーネントでは、通常我々は、さらに、 &lt;strong&gt;例外中立性&lt;/strong&gt; という期待をもつ。 これは、コンポーネントの型パラメータによって投げられた例外は、 そのコンポーネントの呼び出し元まで、変わることなく伝えられるべきである、 ということを意味する。&lt;/p&gt;
-&lt;h2&gt;2 神話と迷信&lt;/h2&gt;
-&lt;p&gt;例外安全性は、これまでのところ簡単なものに見える: それは、より伝統的なエラー捕捉の技術を使ったコードに期待する以上のことを、 何も構築したりはしない。しかし、心理学的な観点からこの用語を調べてみることは、価値があるだろう。 C++ が例外を持つ以前は、誰も「エラー安全性」について語らなかった。&lt;/p&gt;
-&lt;p&gt;まるで例外は、正しいコードに対する &lt;strong&gt;ミステリアスな攻撃&lt;/strong&gt; であり、 我々が自らをその攻撃から守らなければいけないようなものであると見なされているかのようである。 言うまでもなく、これはエラー捕捉との健全な関係に繋がらない! 標準化の間、変更に対する幅広いサポートを要求する民主的な過程で、 私は広く支持された多くの迷信に出会った。 汎用コンポーネントにおける例外安全性の議論を始めるために、 それらのいくつかを見ておくことは意味のあることだろう。&lt;/p&gt;
-&lt;p&gt;「テンプレートと例外の相互作用は、良く理解できない。」 これら両方が言語の新しい特徴であると考える人々から良く聞かれるこの神話は、 簡単に却下できる: そこには、相互作用はないのである。 テンプレートは、一度実体化されれば、全ての面で通常のクラスや関数と同じように機能する。 例外と関連したテンプレートの振る舞いを考えるための単純な方法は、 そのテンプレートの特別版の実体化がどう機能するかについて考えることである。 最後に、テンプレートの汎用性は、何も特別なことを引き起こさない。 コンポーネントのクライアントは操作の一部を提供するが(この操作は、もし特別版でないなら、 任意の例外を投げるだろう)、我々が良く親しんだ仮想関数や、 単純な関数ポインタを使った操作についても、同じことなのである。&lt;/p&gt;
-&lt;p&gt;「例外安全性をもつ汎用コンテナを書くのが不可能であることは、 良く知られている」 この主張は、Tom Cargill による文書、 [^4] に関連してよく聞かれる。そこで彼は、汎用スタックテンプレートに対する例外安全性の問題について探求している。 彼の文書で、 Cargill は多くの役立つ問題を掲げているが、 残念ながらそれらの問題に対する解決法を提供できていない。彼は解決は不可能である、と提案して結論付けている。不幸にも彼の文書は、 多くの人に、そのような空論の 「証拠」 として読まれてしまった。 しかしこの文書が出版されてから、例外安全な汎用コンテナの多くの実例があったのである。 C++ 標準ライブラリコンテナもその中にはいる。&lt;/p&gt;
-&lt;p&gt;「例外を扱うとコードは遅くなり、テンプレートは本質的に 可能な限りのパフォーマンスを得るために使われる。」 C++ の優れた実装は、例外が投げられるまでにその例外を扱うひとつの命令サイクルを費やすことはしないで、 例外は関数呼び出しの同じようなスピードで捕捉可能である [^7]。 それだけで、例外を使ったプログラムに、 エラーの可能性を無視したプログラムと同等のパフォーマンスを提供している。 例外を使うと実際は、結果的に別の理由で「伝統的な」エラー捕捉の方法よりも早くなる。 まず、 catch 節はコンパイラに、どのコードがエラー捕捉に費やされるかを明確に示す。 このため、通常の実行パスから分離することが可能であり、参照の局所性が改善する。 次に、「伝統的な」エラー捕捉を使ったコードは典型的に、単一の関数を呼び出した後、いつも返り値を検査しなければならない。 例外を使えば、このオーバヘッドは完全に消える。&lt;/p&gt;
-&lt;p&gt;「例外はプログラムの振る舞いを推論することを難しくしてしまう」 通常、この神話が支持されて引用されるのは、 スタック巻き戻しの間に「隠れた」実行パスを通る、という意味においてである。 隠れた実行パスはローカル変数が関数から戻る前に破棄されることを期待している C++ プログラマにとっては、なにも新しいものではない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;ErrorCode &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;( &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; result )         &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 1 &lt;/span&gt;
-{                                  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 2 &lt;/span&gt;
-    X x;                           &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 3 &lt;/span&gt;
-    ErrorCode err &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; x.g( result ); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 4 &lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; ( err &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; kNoError )         &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 5 &lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; err;                &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 6 &lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...More code here... &lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; kNoError;               &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 7 &lt;/span&gt;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-上の例では、6行目と7行目に &lt;code&gt;X::~X&lt;/code&gt; の「隠れた」呼び出しがある。 そう考えれば、例外を使うことで、エラー捕捉に対して、明白なコードの無駄は存在しない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;()                 &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 1 &lt;/span&gt;
-{                       &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 2 &lt;/span&gt;
-    X x;                &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 3 &lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; x.g(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 4 &lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...More code here... &lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; result;      &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 5 &lt;/span&gt;
-} 
-&lt;/pre&gt;&lt;/div&gt;
-
-例外をより良く知っている多くのプログラマにとって、2番目の例は実際は最初の例よりも、 読みやすく理解しやすい。 「隠れた」コードパスは同じくローカル変数のデストラクタを呼び出している。 更にこれは、冷害が起こった場合にそれぞれの関数呼び出しの後に、 潜在的なリターン文があるかのような、正確に振る舞う単純なパターンに従うのである。 通常の実行パスはエラー捕捉によって分かりにくくならないので、可読性は向上し、 返り値は自然なやり方で使えるように解放されるのである。 例外が正確さを向上することが出来る、さらに重要なやり方がある: それは、 単純なクラス不変性を可能にすることによる。 最初の例では、もし &lt;code&gt;X&lt;/code&gt; のコンストラクタが資源を確保する必要があるなら、 失敗を報告する手だてはない: C++ ではコンストラクタは返り値を持てないからである。 例外を使わない場合は通常、資源を要求するクラスが構築の仕事を完了する、 別の初期化関数を含まなければならない、という結果になる。 プログラマはそのため、クラス &lt;code&gt;X&lt;/code&gt; のオブジェクトが使われるとき、 完全な &lt;code&gt;X&lt;/code&gt; を手にしたのか、それともどこかで構築に失敗したものを手にしたのか、 決して確信をもてない(或いは更に悪いことに、誰かが単に初期化関数を呼び忘れたのかもしれない。)&lt;/p&gt;
-&lt;h2&gt;3 例外安全性の契約的原則&lt;/h2&gt;
-&lt;p&gt;非汎用的なコンポーネントは例外安全として記述することが出来るが、 汎用的なコンポーネントの場合は、クライアントによる構造化が可能なので、 例外安全性は通常、コンポーネントとクライアントの契約に依存する。 例えば、汎用的コンポーネントの設計者はコンポーネントのデストラクタで使われる演算が、 どんな例外も投げないことを要求するだろう。汎用的コンポーネントはその代わり、次の保証のうちのひとつを提供するだろう。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;基本的保証&lt;/strong&gt; : コンポーネントの不変性は保持され、資源漏れはない。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;強い保証&lt;/strong&gt; : 演算は成功して完了するか、例外を投げるかのどちらかである。 例外を投げる場合、プログラムの状態は演算が始まる前の状態と全く同じである。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;例外不送出保証&lt;/strong&gt; : 演算は例外を投げない。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;基本的保証&lt;/strong&gt; は、全てのコンポーネントに負わせることの出来る、 例外安全性に対する単純で最小限の基準である。 例外の後でもまだコンポーネントは以前のように使うことが出来ると述べているに過ぎない。 重要なことだが、不変性の保持によって、スタック巻き戻しの一部として潜在的に、 コンポーネントを破棄することが出来るのである。 この保証は実際には、見た目ほど役立つものではない。 もしコンポーネントが多くの有効状態を持つなら、例外の後にコンポーネントの状態が、 またはその状態だけが有効な状態なのかどうか知ることは出来ない。 この場合、回復のための選択肢は限られている: コンポーネントの破棄か、 さらに使う前に、ある既知の状態にコンポーネントをリセットするかである。 次の例を考えてみよう:&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;X&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; 
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; print_random_sequence() 
-{ 
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; v(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// A vector of 10 items &lt;/span&gt;
-    try { 
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Provides only the basic guarantee &lt;/span&gt;
-        v.insert( v.begin(), X() ); 
-    } 
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;catch&lt;/span&gt;(...) {} &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ignore any exceptions above &lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// print the vector&#39;s contents &lt;/span&gt;
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;(&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; v.size() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;) &#34;&lt;/span&gt;; 
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;copy( v.begin(), v.end(), 
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream_iterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;( std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; &#34;&lt;/span&gt; ) ); 
-} 
-&lt;/pre&gt;&lt;/div&gt;
-
-我々はみんな、例外後に v が有効であることを知っているので、 この関数は &lt;code&gt;X&lt;/code&gt; のどんなランダムなシーケンスでも出力することが出来る。これはクラッシュしないと言う意味で「安全」ではあるが、出力の内容は予想できないものである。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;強い保証&lt;/strong&gt; は、「責任を持つか、巻き戻すか」という意味論を完全に提供する。 C++ 標準コンテナの場合、これは例えばもし例外が投げられても全てのイテレータは有効なままであることを意味する。 我々はまた、コンテナが例外が投げられる前と全く同じ要素を持っていることも知っている。 失敗したら、なんの効果も及ぼさない処理は、明らかに利点がある: 例外が発生した場合でも、 プログラムの状態は単純で予測可能なのである。 C++ 標準ライブラリでは、ノードを使うコンテナ、&lt;code&gt;list&lt;/code&gt;, &lt;code&gt;set&lt;/code&gt;, &lt;code&gt;multiset&lt;/code&gt;, &lt;code&gt;map&lt;/code&gt;, &lt;code&gt;multimap&lt;/code&gt; のほとんど全ての演算が強い保証を提供している。)&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;例外不送出保証&lt;/strong&gt; は最も強いものであり、演算は例外を投げないことを保証されている、 というものである: これは常に成功して完了する。 この保証はほとんどのデストラクタにとって必要なものであり、 C++ 標準ライブラリコンポーネントのデストラクタは実際にすべて、 例外を投げないことを保証されている。 例外不送出保証、他の理由で重要となることを我々は見るだろう。&lt;/p&gt;
-&lt;h2&gt;4 法的論争&lt;/h2&gt;
-&lt;p&gt;契約がより複雑になることは避けられない: その代わり整理することが可能である。 C++ 標準ライブラリには、任意の型引数にひとつの保証を与え、 例外を投げないというクライアント型からの約束が追加されれれば、より強い保証を与えているものもある。 例えば、標準コンテナ操作 &lt;code&gt;vector&amp;lt;T&amp;gt;::erase&lt;/code&gt; はどんな &lt;code&gt;T&lt;/code&gt; にも &lt;strong&gt;基本的保証&lt;/strong&gt; を与えるが、コピーコンストラクタとコピー代入演算子が例外を投げないなら、 &lt;strong&gt;例外不送出保証&lt;/strong&gt; を与えている。&lt;/p&gt;
-&lt;h2&gt;5 コンポーネントはどのレベルの例外安全性を規定する必要があるか&lt;/h2&gt;
-&lt;p&gt;クライアントの観点から、可能な限り最も強いレベルの安全性が理想的である。 もちろん &lt;strong&gt;例外不送出保証&lt;/strong&gt; は多くの演算に対して不可能であるが、 強い保証についてはどうだろうか? 例えば、 &lt;code&gt;vector&amp;lt;T&amp;gt;::insert&lt;/code&gt; に対してちょっとした振る舞いが欲しいと仮定しよう。  &lt;code&gt;vector&lt;/code&gt; の中間への挿入は、新しい要素のための場所を作るために、 挿入点以降の要素を、次の位置にコピーする必要がある。 もし要素のコピーが失敗に終われば、操作の巻き戻しは既に行われたコピーの「取り消し」を必要とする。&lt;/p&gt;
-&lt;p&gt;ひとつの可能な選択肢は、新しい配列の内容を、毎回新しいメモリで構築して、 成功したときのみ古い内容を破棄するように &lt;code&gt;insert&lt;/code&gt; を再定義することである。 残念ながら、このアプローチにはコストがかかる: &lt;code&gt;vector&lt;/code&gt; の終端付近での挿入は、 以前ではほとんどコピーを行う必要がなかったが、 このアプローチでは全ての要素をコピーしなければいけない。 &lt;strong&gt;基本的保証&lt;/strong&gt; はこの操作に対する「自然な」水準の安全性である。 パフォーマンスを脅かすことなく保証を与えているのである。 実際ライブラリの全ての演算は、層のような「自然な」水準の安全性を提供している。&lt;/p&gt;
-&lt;p&gt;パフォーマンスの要求は基準の草案の中では、確立した部分であり、 パフォーマンスは STL の基本的な目的であるので、 これらの要求の中で提供されうる、より強い安全性を明記する試みは為されなかった。 全てのライブラリが &lt;strong&gt;強い保証&lt;/strong&gt; を与えているわけではないが、 &lt;strong&gt;基本的保証&lt;/strong&gt; を提供する、標準コンテナほとんどの演算は、上に述べた、 「新たなコピーを作る」という戦略を使うことで、強い保証を持つことが出来る。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Container&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;BasicOp&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; 
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; MakeOperationStrong( Container&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; c, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; BasicOp&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; op ) 
-{ 
-    Container tmp(c); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Copy c &lt;/span&gt;
-    op(tmp); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Work on the copy &lt;/span&gt;
-    c.swap(tmp); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Cannot fail&lt;/span&gt;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-この技は、より強い保証を提供する(そして異なるパフォーマンス特性を提供する)、 似たようなコンテナを作るためのラッパクラスに導入することが出来る。&lt;/p&gt;
-&lt;h2&gt;6 私たちは、私たちが得ることができる全てを得るべきか&lt;/h2&gt;
-&lt;p&gt;特殊な実装を考えれば、安全性についての自然な水準を判断することを望めるだろう。 コンポーネントに対する要求を確立するのにこれを使うことで、 実装が制限されるという危険性が生じる。 我々が使いたくなるような、より効率的な実装を誰かが作り上げても、 それが我々の持つ例外安全性への要求を満たしていないことに気づくかもしれない。 STL が扱っているデータ構造とアルゴリズムという、よく研究された領域では、 このようなことに誰も期待を寄せないかもしれないが、 それでも実際、より優れたものが作られている。最近の &lt;strong&gt;introsort&lt;/strong&gt; アルゴリズムは、その良い例である [^6]。 これは、既に確立した &lt;strong&gt;quicksort&lt;/strong&gt; に対して、最悪の計算量を必要とするような場合での、 大幅な改善を示している。 実際に標準コンポーネントの要求がどの程度のものなのかを決定するために、 実世界の典型的な場合を考えた。 選ばれたテストケースは 「合成コンテナ」である。 2つ以上の標準コンテナの合成である、そのコンテナは広く必要とされているだけでなく、 巨大なシステムで不変性を維持することについての単純で代表的な事例である。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// SearchableStack - A stack which can be efficiently searched &lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// for any value. &lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; 
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SearchableStack&lt;/span&gt; 
-{ 
- &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; 
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; push(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t);           &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// O(log n) &lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;pop&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// O(log n) &lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; contains(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// O(log n) &lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; top() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;            &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// O(1) &lt;/span&gt;
- &lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt; 
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;set&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; set_impl; 
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;list&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;set&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; list_impl; 
-}; 
-&lt;/pre&gt;&lt;/div&gt;
-
-ここでは、&lt;code&gt;list&lt;/code&gt; は &lt;code&gt;set&lt;/code&gt; のイテレータのスタックとして振る舞う: 全ての要素は最初に &lt;code&gt;set&lt;/code&gt; に入り、その結果その位置が &lt;code&gt;list&lt;/code&gt; に入れられる。 不変性というのは、簡単なことである: &lt;code&gt;set&lt;/code&gt; と &lt;code&gt;list&lt;/code&gt; は常に、 同じ要素数を持ち、&lt;code&gt;set&lt;/code&gt; 全ての要素は &lt;code&gt;list&lt;/code&gt; の要素により参照されている、ということである。 以下の &lt;code&gt;push&lt;/code&gt; 関数の実装は、 &lt;code&gt;set&lt;/code&gt; と &lt;code&gt;list&lt;/code&gt; によって提供される自然な水準の例外安全性で、 &lt;strong&gt;強い保証&lt;/strong&gt; を提供するために設計されたものである。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;                                &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 1&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; SearchableStack&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;push(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t)         &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 2&lt;/span&gt;
-{                                                 &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 3&lt;/span&gt;
-    set&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; set_impl.insert(t);      &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 4&lt;/span&gt;
-    try                                           &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 5&lt;/span&gt;
-    {                                             &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 6&lt;/span&gt;
-        list_impl.push_back(i);                   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 7&lt;/span&gt;
-    }                                             &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 8&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;catch&lt;/span&gt;(...)                                    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 9&lt;/span&gt;
-    {                                             &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 10&lt;/span&gt;
-        set_impl.erase(i);                        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 11&lt;/span&gt;
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;throw&lt;/span&gt;;                                    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 12&lt;/span&gt;
-    }                                             &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 13&lt;/span&gt;
-}                                                 &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 14&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-このコードは実際に、ライブラリの何を要求するだろうか? 非 &lt;code&gt;const&lt;/code&gt; 演算が行われる行を調べてみる必要がある。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;4行目: 挿入が失敗したが、 &lt;code&gt;set_impl&lt;/code&gt;がその過程で変更されている場合、 不変性は保たれない。そこで、&lt;code&gt;set&amp;lt;T&amp;gt;::insert&lt;/code&gt; からの &lt;strong&gt;強い保証&lt;/strong&gt; に頼ることが出来なければならない。&lt;/li&gt;
-&lt;li&gt;7行目: 同様に &lt;code&gt;push_back&lt;/code&gt; が失敗して &lt;code&gt;list_impl&lt;/code&gt; がその過程で変更されているなら、不変性は保たれない。 そこで、&lt;code&gt;list&amp;lt;T&amp;gt;::insert&lt;/code&gt; からの &lt;strong&gt;強い保証&lt;/strong&gt; に頼ることが出来なければならない。&lt;/li&gt;
-&lt;li&gt;11行目: ここで4行目の挿入を「巻き戻し」ている。もしこの操作が失敗すれば、 不変性を回復することは出来ないだろう。結局 &lt;code&gt;set&amp;lt;T&amp;gt;::erase&lt;/code&gt; からの &lt;strong&gt;例外不送出保証&lt;/strong&gt; に頼ることになる。&lt;/li&gt;
-&lt;li&gt;11行目: 同じ理由で、 &lt;code&gt;i&lt;/code&gt; を &lt;code&gt;erase&lt;/code&gt; 関数に渡すことが出来るということにも、 頼らなければならない: &lt;code&gt;set&amp;lt;T&amp;gt;::iterator&lt;/code&gt; からの、 &lt;strong&gt;例外不送出保証&lt;/strong&gt; に頼る必要があるのである。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;私は標準化の際にこの方法で問題を扱うことで、多くを学んだ。 まず、合成コンテナに対して明示された保証は、実際はそのコンポーネントからのより強い保証 (11行目の &lt;strong&gt;例外不送出保証&lt;/strong&gt; )に依存するということである。 また、この単純な例を実装するために、自然な水準の例外安全性を全ての面で利用した。 そして、この分析は、以前私が、演算をそれぞれ独立したものと考えていたときには見逃していた、 イテレータへの要求を明らかにした。 結論は、可能な限り自然な水準の例外安全性を提供すべきだ、ということである。 より速く、しかしより安全ではない実装は常に、標準コンポーネントの拡張として提供されるべきである。&lt;/p&gt;
-&lt;h2&gt;7 例外安全性の自動テスト&lt;/h2&gt;
-&lt;p&gt;標準化の過程の一部として、私は STL での例外安全な参照の実装を作った。 エラー捕捉コードは実際にかなり厳密にテストされたが、 エラー状態を起こすことが難しいので、そのテストは部分的である。 初めて実行されたときにクラッシュしたエラー捕捉コードを考えるというのは、 とても一般的である-出荷される製品では。実装が実際に宣伝通りに動くという確信を強めるために、 私は自動化されたテストスイートを設計した。これは同僚の Matt Arnold の精緻な技術に基づいている。&lt;/p&gt;
-&lt;p&gt;テストプログラムは基本的なところから始まった: 特にグローバル演算子 &lt;code&gt;new&lt;/code&gt; と&lt;code&gt;delete&lt;/code&gt;についての強化と計測である。 出来る限り多くの潜在的な問題を明らかにするために選ばれた型引数で、 コンポーネント(コンテナとアルゴリズム)の実体が作られた。 例えば、全ての型引数にはヒープ領域にメモリを割り当てられるポインタが与えられた。 そのため、コンテナに格納されたオブジェクトをリークさせることは、 メモリリークとして検出された。&lt;/p&gt;
-&lt;p&gt;最後に、ポインタが間違って示す可能性のある場合に、その都度、 演算に例外を投げさせることが出来るような仕組みを設計した。 クライアントが提供し、例外を投げることが許されている全ての演算の最初に、 &lt;code&gt;ThisCanThrow&lt;/code&gt; の呼び出しが加えられた。 &lt;code&gt;ThisCanThrow&lt;/code&gt; の呼び出しはまた、 テストされる汎用的演算が例外を投げるかもしれない全ての場所にも加えられた。 例えば、より機能を強化したものに置き換えられた、グローバル演算子 &lt;code&gt;new&lt;/code&gt; である。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Use this as a type parameter, e.g. vector&amp;lt;TestClass&amp;gt; &lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; TestClass 
-{ 
-    TestClass( &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; v &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt; ) 
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; p( ThisCanThrow(), &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;( v ) ) {} 
-    TestClass( &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; TestClass&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; rhs ) 
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; p( ThisCanThrow(), &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;( &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;rhs.p ) ) {} 
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; TestClass&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;( &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; TestClass&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; rhs ) 
-        { ThisCanThrow(); &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;rhs.p; } 
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt;( &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; TestClass&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; rhs ) 
-        { ThisCanThrow(); &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;p &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;rhs.p; } 
-    ...etc... 
-    &lt;span style=&#34;color: #666666&#34;&gt;~&lt;/span&gt;TestClass() { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;delete&lt;/span&gt; p; } 
-};
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ThisCanThrow&lt;/code&gt; は単に、「throw カウンタ」をデクリメントするだけであり、 もしそれが &lt;code&gt;0&lt;/code&gt; になったら、例外を投げる。 テスト毎に、外側のループで、徐々に大きな値にカウンターを設定して開始し、 演算のテストが完了するまで繰り返し試す、という形を取った。 結果は、失敗する可能性がある実行パスに沿って、連続的なステップで、オペレーションが例外を投げた。 例えば、 &lt;strong&gt;強い保証&lt;/strong&gt; をテストするのに使われた関数の単純なバージョンがある:&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;extern&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; gThrowCounter; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// The throw counter&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;ThisCanThrow&lt;/span&gt;() 
-{ 
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (gThrowCounter&lt;span style=&#34;color: #666666&#34;&gt;--&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;) 
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; 
-} 
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Value&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Operation&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; 
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; StrongCheck(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Value&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; v, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; op) 
-{ 
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; succeeded &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;false&lt;/span&gt;; 
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color: #B00040&#34;&gt;long&lt;/span&gt; nextThrowCount &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;succeeded; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;nextThrowCount) 
-    { 
-        Value duplicate &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; v; 
-        try 
-        { 
-            gThrowCounter &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; nextThrowCount; 
-            op( duplicate ); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Try the operation &lt;/span&gt;
-            succeeded &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;true&lt;/span&gt;; 
-        } 
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;catch&lt;/span&gt;(...) &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Catch all exceptions &lt;/span&gt;
-        { 
-            &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; unchanged &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; duplicate &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; v; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Test strong guarantee &lt;/span&gt;
-            assert( unchanged ); 
-        } 
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Specialize as desired for each container type, to check &lt;/span&gt;
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// integrity. For example, size() == distance(begin(),end()) &lt;/span&gt;
-        CheckInvariant(v); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Check any invariant &lt;/span&gt;
-    } 
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-注意すべきは、この種のテストは非汎用的なコンポーネントより、汎用的なものの方が 遙かに簡単で、煩わしさのないものである、ということである。 これは、テストに特化した型引数を、 テストされるコンポーネントのソースコードを変更することなく使うことが出来るからである。 また上の &lt;code&gt;StrongCheck&lt;/code&gt; のような汎用関数が広範な値と演算のテストを行うのに役立つ。&lt;/p&gt;
-&lt;h2&gt;8 さらにくわしく知るための資料&lt;/h2&gt;
-&lt;p&gt;私が知る限り、現在 STL の利用可能な例外安全性には2種類の記述しかない。 STL の例外安全の実装のリファレンスでの、オリジナルの仕様 [^2] は、非公式な仕様であり、単純で自明(そして冗長)である。 そこでは、この文書で概説してきた、基本的と強い保証の区別が使われている。 それは明らかに、資源漏れを禁止していて、最終的な C++ 標準と比べ、多くの面で同じなのだが、 保証という点では実質的に異なる。 私はこの文書の改訂版が速やかに作られることを望んでいる。 C++ 標準での例外安全性の記述[^1] はほんの少しだけ公式なものであるが、読みにくい「規格化」 で構成されていて、ウェブ上ではほとんど見ることが出来ない。とくに、資源漏れについては直接は全く扱われていない。 それが規格であるという利点を持っているに過ぎない。&lt;/p&gt;
-&lt;p&gt;例外安全の実装[^5] に関するオリジナルのリファレンスは、SGI STL の古いバージョンである。 これは限られた能力の C++ コンパイラのために設計された。 これは完全な STL の実装ではないが、コードは読みやすいし、 役立つ基底クラスのテクニックを、コンストラクタでの例外捕捉をなくすために説明している。 参照の実装を検証するために使われた完全なテストスイート&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/document/実践としては、この関数はあまりにも貧弱なランダムシーケンス製作器である!&#34;&gt;^3&lt;/a&gt; は、引き続き SGI STL の最近のバージョン全てで使われている。 そして他のベンダの実装をテスト(通らなかった)するのにも使われている。 文書で注記されているように、それは隠れたコンパイラのバグを明らかにするのに、特に最適化と例外捕捉コードが相互作用するような場所では、強力であるだろう。&lt;/p&gt;
-&lt;h2&gt;参考文献&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;International Standard ISO/IEC 14882, Information Technology-Programming Languages-C++, Document Number ISO/IEC 14882-1998, available from &lt;a href=&#34;http://webstore.ansi.org/ansidocstore/default.asp&#34; target=&#34;_blank&#34;&gt;http://webstore.ansi.org/ansidocstore/default.asp&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;D. Abrahams, Exception Safety in STLport, available at &lt;a href=&#34;http://www.stlport.org/doc/exception_safety.html&#34; target=&#34;_blank&#34;&gt;http://www.stlport.org/doc/exception_safety.html&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;D. Abrahams and B. Fomitchev, Exception Handling Test Suite, available at &lt;a href=&#34;http://www.stlport.org/doc/eh_testsuite.html&#34; target=&#34;_blank&#34;&gt;http://www.stlport.org/doc/eh_testsuite.html&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;Tom Cargill, &#34;Exception Handling: A False Sense of Security,&#34; C++ Report, Nov-Dec 1994, also available at &lt;a href=&#34;http://www.awl.com/cp/mec++-cargill.html&#34; target=&#34;_blank&#34;&gt;http://www.awl.com/cp/mec++-cargill.html&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;B. Fomitchev, Adapted SGI STL Version 1.0, with exception handling code by D. Abrahams, available at &lt;a href=&#34;http://www.metabyte.com/~fbp/stl/old.html&#34; target=&#34;_blank&#34;&gt;http://www.metabyte.com/~fbp/stl/old.html&lt;/a&gt;.&lt;/li&gt;
-&lt;li&gt;D. R. Musser, &#34;Introspective Sorting and Selection Algorithms,&#34; Software-Practice and Experience 27(8):983-993, 1997.&lt;/li&gt;
-&lt;li&gt;Bjarne Stroustrup, The Design And Evolution of C++. Addison Wesley, Reading, MA, 1995, ISBN 0-201-54330-3, Section 16.9.1.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;脚注&lt;/h2&gt;
-&lt;p&gt;[^1]: おそらく Cargill の場合、解決に対する最も大きな障害は、 彼が、不幸な組み合わせの選択をしてしまったということであった: 彼がコンテナのために選んだインタフェースは、彼が要求する安全性の特徴と一致しないものだったのだ。 どちらかを変更すれば、彼は問題を解決できただろう。&lt;/p&gt;
-&lt;p&gt;[^2]: C++ でデストラクタから例外が投げられることは通常進められない。 デストラクタは、それ自身他の例外によって引き起こされるスタック巻き戻しの途中で呼び出されるかもしれないからである。 2番目の例外がデストラクタを越えて伝えられることが可能なら、 問題はすぐに解決する。&lt;/p&gt;
-&lt;p&gt;[^4]: 変更操作を行うアルゴリズムが通常、 &lt;strong&gt;強い保証&lt;/strong&gt; を提供できないことは、 注目に値する: ある範囲の変更された要素を巻き戻すために、 例外を投げるかもしれない &lt;code&gt;operator=&lt;/code&gt; を使って、以前の状態に戻さなければならないのである。 C++ 標準ライブラリでは、この規則はほとんど守られていて、 巻き戻しの振る舞いは破棄だけで成立している: 例外は、&lt;code&gt;uninitialized_copy&lt;/code&gt;, &lt;code&gt;uninitialized_fill&lt;/code&gt;, &lt;code&gt;uninitialized_fill_n&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;[^5]: C++ 標準ライブラリのクライアントが提供する全ての型引数は、 デストラクタが例外を投げないことを要求される。 その代わりに、 C++ 標準ライブラリの全てのコンポーネントは少なくとも &lt;strong&gt;基本的保証&lt;/strong&gt; を提供するのである。&lt;/p&gt;
-&lt;p&gt;[^6]: 変更操作を行う多くのアルゴリズムに対して C++ 規格では 似たような整理が為されている。しかし規格化の過程で時間の制約は全く考えられていない。&lt;/p&gt;
-&lt;p&gt;[^7]: 要素の &lt;code&gt;Compare&lt;/code&gt; がコピー時に例外を投げるかもしれないような連想コンテナは、この技を使っていない。 スワップ関数が失敗するかもしれないからである。&lt;/p&gt;
-&lt;p&gt;[^8]: これは、たびたび望まれ、しかしまだ見知らぬ &lt;code&gt;container_traits&amp;lt;&amp;gt;&lt;/code&gt; テンプレートのもう一つの潜在的な利用を示している。 例外安全性の制約を満たす、コンテナの自動選択である。&lt;/p&gt;
-&lt;p&gt;[^9]: &lt;code&gt;set&amp;lt;T&amp;gt;&lt;/code&gt; に対する要求を減らし、 例外時の問題を減らすために、 &lt;code&gt;erase&lt;/code&gt; を &lt;code&gt;try&lt;/code&gt;/&lt;code&gt;catch&lt;/code&gt; ブロックに入れようとするかもしれない。 しかし結局、問題なのである。 まず、&lt;code&gt;erase&lt;/code&gt; は失敗し、この場合必要な結果を産み出すための実行可能な代替案は存在しない。 また、より一般には、型引数が多様なので、汎用コンポーネントにたいして、 どんな選択肢も成功する保証はめったになされるものではない。&lt;/p&gt;
-&lt;p&gt;[^10]: STL の設計の有力な哲学は、全ての利用にとって基本的でない機能は、その機能が必要なときに、基本のコンポーネントを適応することで得られる限り、 効率を求めないでいく、ということである。 これはそのような哲学に端を発しているが、 &lt;strong&gt;基本的保証&lt;/strong&gt; でさえ、 既にその保証を持っていない基本のコンポーネントを適応して、そのような保証を得ることは難しいか、不可能である。&lt;/p&gt;
-&lt;p&gt;[^11]: メモリシステムをどのようにして守るかについての素晴らしい議論が、 次のものに書かれている: Steve Maguire, Writing Solid Code, Microsoft Press, Redmond, WA, 1993, ISBN 1-55615- 551-4.&lt;/p&gt;
-&lt;p&gt;[^12]: この技は、テストされる操作が例外中立であることを必要とすることに注意すること。 もし操作が例外から回復して、処理を続けようとするなら、&lt;code&gt;throw&lt;/code&gt; カウンタは負の値になるだろう。 そしてその後の失敗するかもしれない操作は、例外安全性に対してテストされない。&lt;/p&gt;
-&lt;p&gt;[^13]: 例外安全性を導入した規格草案に対する変更は、 変更される単語の数が多いという理由だけで修正が拒否されるような、 草案作成の過程のかなり遅い時期に為された。 不幸にも、この結果、簡潔さを求める余り、ある程度妥協したものとなった。 Greg Colvin はこれらの変更の範囲を最小化するために必要な、 賢い言語-法実務についての責任がある。&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
