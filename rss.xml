@@ -2,9 +2,74 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-10T17:02:05.227664</updated>
-  <id>f73ac5ee-bc7a-461b-95c7-dbdc4501b01a</id>
+  <updated>2014-12-10T17:07:47.992757</updated>
+  <id>fc3b0efa-403a-41d3-bb4a-da11e4afdf45</id>
 
+  
+    <entry>
+      <title>Function Pointer Adapters -- Boost.Functional : Function Pointer Adaptorsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/ptr_fun.html"/>
+      <id>d5479af8e0ded0249323d16803fb0378d4ed250e:archive/boost_docs/libs/functional/ptr_fun.md</id>
+      <updated>2014-12-10 17:07:39 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Function Pointer Adapters&lt;/h1&gt;
+&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§ 20.3.7): 由来の関数ポインタアダプ タの両方の強化バージョンを提供する:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;pointer_to_unary_function&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pointer_to_binary_function&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;ptr_fun&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;しかし、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/function_traits.html&#34;&gt;function object traits&lt;/a&gt; を使用しているおかげで、このライブラリのアダプタと接続する場合、このアダプタを使う必要はない。しかしながら、あなたの実装が我々の特性クラスとともにきちんと働かない場合 (部分特殊化版が欠けていることによる) や、サードパーティの関数オブジェクトアダプタとともに使いたい場合に、使う必要があるかもしれない。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;これらのアダプタを使う必要がある場合、使い方は標準関数ポインタアダプタと同様である。例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;bad&lt;/span&gt;(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string foo) { ... }
+...
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
+...
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator it
+     &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(c.begin(), c.end(), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;not1(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ptr_fun(bad)));
+&lt;/pre&gt;&lt;/div&gt;
+
+しかしながら、このライブラリは関数オブジェクト特性をサポートする、強化された &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html&#34;&gt;ネゲータ&lt;/a&gt; を含んでいることに注意しなさい。それで、以上のソースと同様に以下のように書ける。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator it
+     &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(c.begin(), c.end(), boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;not1(bad));
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/arguments&#34; name=&#34;arguments&#34;&gt;Argument Types&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;標準は &lt;code&gt;pointer_to_unary_function&lt;/code&gt; をこのように定 義する(§20.3.8 ¶2):&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Arg&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Result&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;pointer_to_unary_function&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; unary_function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Arg, Result&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;explicit&lt;/span&gt; pointer_to_unary_function(Result (&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; f)(Arg));
+  Result &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Arg x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
+};
+&lt;/pre&gt;&lt;/div&gt;
+
+&lt;code&gt;operator()&lt;/code&gt; の引数はラップされる関数の引数と厳密に等しい型であることに注意しなさい。もしこれが値型であれば、引数は値渡しされ、二度コピーされる。&lt;code&gt;pointer_to_binary_function&lt;/code&gt; も同様の問題を持っている。&lt;/p&gt;
+&lt;p&gt;しかしながら、引数を代わりに &lt;code&gt;const Arg&amp;amp;&lt;/code&gt; と宣言することによって非効率を削除しようとすると、&lt;code&gt;Arg&lt;/code&gt; が参照型であった場合、現 在では非合法な (ただし &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106&#34; target=&#34;_blank&#34;&gt;C++ 言語中核の問題点 106 番目&lt;/a&gt; を参照せよ)、参照の参照ができてしまう。&lt;/p&gt;
+&lt;p&gt;つまり、&lt;code&gt;operator()&lt;/code&gt; の引数を宣言する望ましい方法は、ラップされる関数の引数が参照であるかないかに依っている。もしそれが参照であるならば、単純に &lt;code&gt;Arg&lt;/code&gt; と宣言したいのであり、もし値であれば &lt;code&gt;const Arg&amp;amp;&lt;/code&gt; と宣言したいのである。&lt;/p&gt;
+&lt;p&gt;Boost の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.html&#34;&gt;&lt;code&gt;call_traits&lt;/code&gt;&lt;/a&gt; クラステンプレートは &lt;code&gt;param_type&lt;/code&gt; &lt;code&gt;typedef&lt;/code&gt; を含んでいて、それは部分特殊化版を用いて正確にこの判断をを行う。&lt;code&gt;operator()&lt;/code&gt; を以下のように宣言することによって。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Result &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; call_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Arg&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;param_type x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+我々は望ましい結果を引き出した - 参照の参照を生み出すことなく、効率性を得たのだ。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/limitations&#34; name=&#34;limitations&#34;&gt;Limitations&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;call traits テンプレートはこの改良を実現するために使われる関数オブジェクト特性と &lt;code&gt;call_traits&lt;/code&gt; の両方が部分特殊化版に頼っているので、この改良は部分特殊化の機能を持つコンパイラでのみ有効である。そうでないコンパイラでは、関数に渡される引数は常に参照渡しとなるので、参照の参照の可能性を生みだすことになる。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
+&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Negators -- Boost.Functional : Negatorsを追加</title>
@@ -737,278 +802,6 @@ f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; do_something;
 &lt;hr /&gt;
 &lt;p&gt;Douglas Gregor&lt;/p&gt;
 &lt;p&gt;Last modified: Fri Oct 11 05:39:27 EDT 2002&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;
-&lt;p&gt;このドキュメントの対象: Boost Version 1.29.0&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost.Function Reference Manual -- 脚注のアンカーを設定</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/function/reference.html"/>
-      <id>eacba182e052e1e910cdd0d34df61c612906a878:archive/boost_docs/libs/function/reference.md</id>
-      <updated>2014-12-08 15:56:15 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Boost.Function Reference Manual&lt;/h1&gt;
-&lt;h2&gt;Header &lt;code&gt;&amp;lt;boost/function.hpp&amp;gt;&lt;/code&gt; synopsis&lt;/h2&gt;
-&lt;p&gt;以下で、 &lt;code&gt;MAX_ARGS&lt;/code&gt; は実装定義の定数であり、 Boost.Function でサポートされる引数の数の最大値 (少なくとも 10) である。このドキュメント中で参照される &lt;code&gt;MAX_ARGS&lt;/code&gt; 定数は、ライブラリ中で直接的には定義されていない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost {
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;function_base&lt;/span&gt;
-  {
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; implementation&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;defined safe_bool;
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; empty() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-  };
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// [0, MAX_ARGS] の範囲の全ての N について&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Signature,
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg1,
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg2,
-           ...
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; ArgN,
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy    &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; empty_function_policy, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin     &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; empty_function_mixin, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;function_base&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;functionN&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; function_base, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; Mixin
-  {
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ResultType result_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/reference.html#note&#34;&gt;[1]&lt;/a&gt;&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Policy     policy_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Mixin      mixin_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Allocator  allocator_type;
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Arg1 argument_type;        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// N == 1 の場合&lt;/span&gt;
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Arg1 first_argument_type;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// N == 2 の場合&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Arg2 second_argument_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// N == 2 の場合&lt;/span&gt;
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Arg1 arg1_type;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; Arg2 arg2_type;
-             .
-             .
-             .
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ArgN argN_type;
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;enum&lt;/span&gt; { arity &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; N };
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 構築&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;explicit&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;functionN&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Mixin&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; Mixin());
-    functionN(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN(F, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Mixin&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; Mixin());
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN(reference_wrapper&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;);
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 代入&lt;/span&gt;
-    functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(F);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(reference_wrapper&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;);
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;set&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; set(F); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;swap&lt;/span&gt;(functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;clear&lt;/span&gt;();
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// bool 型の文脈&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt; safe_bool() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 呼び出し&lt;/span&gt;
-    result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Arg1 a1, Arg2 a2, ..., ArgN aN) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-  };
-
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; ResultType,
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg1,
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg2,
-           ...
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; ArgN,
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-           &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; swap(functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;,
-            functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;);
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// [0, MAX_ARGS] の範囲の全ての N について&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Signature, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 関数型: ResultType (Arg1, Arg2, ..., ArgN)&lt;/span&gt;
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy    &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; empty_function_policy, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin     &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; empty_function_mixin, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;function_base&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;function&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  {
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 構築&lt;/span&gt;
-    function();
-    function(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-    function(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN(F);
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 代入&lt;/span&gt;
-    function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-    function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(F);
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;set&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; function&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;set&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; set(F); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-  };
-
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Signature, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; swap(function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Signature, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;,
-            function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Signature, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt;);
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/definitions&#34; name=&#34;definitions&#34;&gt;定義&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;引数型 &lt;code&gt;Arg1&lt;/code&gt;, &lt;code&gt;Arg2&lt;/code&gt;, ..., &lt;code&gt;ArgN&lt;/code&gt; と戻り値型 &lt;code&gt;ResultType&lt;/code&gt; に対して、該当する以下の関数が適格な時、関数オブジェクト &lt;code&gt;f&lt;/code&gt; は「 互換性がある 」という。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 関数型が void 以外の場合&lt;/span&gt;
-ResultType &lt;span style=&#34;color: #0000FF&#34;&gt;foo&lt;/span&gt;(Arg1 arg1, Arg2 arg2, ..., ArgN argN)
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; f(arg1, arg2, ..., argN);
-}
-
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 関数型が void の場合&lt;/span&gt;
-ResultType &lt;span style=&#34;color: #0000FF&#34;&gt;foo&lt;/span&gt;(Arg1 arg1, Arg2 arg2, ..., ArgN argN)
-{
-  f(arg1, arg2, ..., argN);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-メンバ関数ポインタには、特別な規定がある。メンバ関数ポインタは関数オブジェクトではないが、 Boost.Function は内部的にメンバ関数ポインタを関数オブジェクトに作り変える。 &lt;code&gt;R (X::*mf)(Arg1, Arg2, ..., ArgN) cv-quals&lt;/code&gt; の形のメンバ関数ポインタは、以下のように関数呼出し演算子をオーバロードした関数オブジェクトに作り変えられる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; P&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-R &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(cv&lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt;quals P&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x, Arg1 arg1, Arg2 arg2, ..., ArgN argN) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; (&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;x).&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;mf(arg1, arg2, ..., argN);
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-- &lt;code&gt;F&lt;/code&gt; が関数ポインタであるか、 &lt;code&gt;boost::is_stateless&amp;lt;T&amp;gt;&lt;/code&gt; が真の時、 &lt;code&gt;F&lt;/code&gt; 型の関数オブジェクト &lt;code&gt;f&lt;/code&gt; は「 状態を持たない 」という。状態を持たない関数オブジェクトの Boost.Function での構築/コピーは発生せず、例外は起きず、記憶域の割り当ても起きない。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Class &lt;code&gt;function_base&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;クラス &lt;code&gt;function_base&lt;/code&gt; は全ての Boost.Function オブジェクトに共通する基底クラスだ。 &lt;code&gt;function_base&lt;/code&gt; 型のオブジェクトが直接作られることはないだろう。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; empty() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-- 戻り値: 関数オブジェクトを格納していれば &lt;code&gt;true&lt;/code&gt; 、そうでなければ &lt;code&gt;false&lt;/code&gt; 。
-- 例外: 例外を起こさない。&lt;/p&gt;
-&lt;h2&gt;Class template &lt;code&gt;functionN&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;クラステンプレート &lt;code&gt;functionN&lt;/code&gt; は実際には、 &lt;code&gt;function0&lt;/code&gt;, &lt;code&gt;function1&lt;/code&gt;, ... と、ある実装定義の最大値まで続く、関連するクラス群である。以下の文では、 &lt;code&gt;N&lt;/code&gt; はパラメータの数、 &lt;code&gt;f&lt;/code&gt; は暗黙のオブジェクトパラメータを表す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;explicit&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;functionN&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Mixin&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; Mixin());
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: 与えられたミックスインから &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトを構築する。
-- 事後条件: &lt;code&gt;f.empty()&lt;/code&gt;
-- 例外: &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトの構築で例外が起きない限り、例外を起こさない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;functionN(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 事後条件: &lt;code&gt;g&lt;/code&gt; が空でなければ、 &lt;code&gt;f&lt;/code&gt; は &lt;code&gt;g&lt;/code&gt; が格納する関数オブジェクトのコピーを格納する。 &lt;code&gt;g.empty()&lt;/code&gt; ならば &lt;code&gt;f&lt;/code&gt; も空になる。 &lt;code&gt;f&lt;/code&gt; のミックスインは、 &lt;code&gt;g&lt;/code&gt; のミックスインからコピーされる。
-- 例外: &lt;code&gt;g&lt;/code&gt; が格納する関数オブジェクトのコピーや &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトの構築で例外が起きない限り、例外を起こさない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN(F g, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Mixin&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; Mixin());
-&lt;/pre&gt;&lt;/div&gt;
-
-- 必須事項: &lt;code&gt;g&lt;/code&gt; は&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/reference.html#definitions&#34;&gt;互換性がある&lt;/a&gt;関数オブジェクトであること。
-- 作用: 与えられたミックスインから &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトを構築する。
-- 事後条件: &lt;code&gt;g&lt;/code&gt; が空でなければ、 &lt;code&gt;f&lt;/code&gt; は &lt;code&gt;g&lt;/code&gt; のコピーを格納する。 &lt;code&gt;g&lt;/code&gt; が空ならば、 &lt;code&gt;f.empty()&lt;/code&gt; が真となる。
-- 例外: &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトの構築で例外が起きず、 &lt;code&gt;g&lt;/code&gt; が状態を持たない関数オブジェクトならば、例外を起こさない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN(reference_wrapper&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 必須事項: &lt;code&gt;g.get()&lt;/code&gt; は&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/reference.html#definitions&#34;&gt;互換性がある&lt;/a&gt;関数オブジェクトであること。
-- 作用: 与えられたミックスインから &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトを構築する。
-- 事後条件: &lt;code&gt;g.get()&lt;/code&gt; が空でなければ、 &lt;code&gt;this&lt;/code&gt; は &lt;code&gt;g&lt;/code&gt; (&lt;code&gt;g.get()&lt;/code&gt;のコピーではない) を格納する。 &lt;code&gt;g.get()&lt;/code&gt; が空ならば、 &lt;code&gt;this-&amp;gt;empty()&lt;/code&gt; が真となる。
-- 例外: &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトの構築で例外が起きない限り、例外を起こさない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 事後条件: &lt;code&gt;g&lt;/code&gt; が空でなければ、 &lt;code&gt;f&lt;/code&gt; は &lt;code&gt;g&lt;/code&gt; が格納する関数オブジェクトのコピーを格納する。 &lt;code&gt;g.empty()&lt;/code&gt; ならば、 &lt;code&gt;f&lt;/code&gt; も空になる。 &lt;code&gt;f&lt;/code&gt; のミックスインには &lt;code&gt;g&lt;/code&gt; のミックスインが代入される。
-- 戻り値: &lt;code&gt;*this&lt;/code&gt;
-- 例外: &lt;code&gt;g&lt;/code&gt; が&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/reference.html#definitions&#34;&gt;状態を持たない&lt;/a&gt;関数オブジェクトを格納しているか、 &lt;code&gt;g&lt;/code&gt; が関数オブジェクトへの参照を格納してる場合は、例外を起こさない。ただし、 &lt;code&gt;Mixin&lt;/code&gt; 型サブオブジェクトのコピーで例外が起きた場合を除く。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(F g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 必須事項: &lt;code&gt;g&lt;/code&gt; は互換性がある関数オブジェクトであること。
-- 事後条件: &lt;code&gt;g&lt;/code&gt; が空でなければ、 &lt;code&gt;f&lt;/code&gt; は &lt;code&gt;g&lt;/code&gt; のコピーを格納する。 &lt;code&gt;g&lt;/code&gt; が空ならば、 &lt;code&gt;f.empty()&lt;/code&gt; が真となる。
-- 戻り値: &lt;code&gt;*this&lt;/code&gt;
-- 例外: &lt;code&gt;g&lt;/code&gt; が状態を持たない関数オブジェクトを格納していれば、例外を起こさない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;(reference_wrapper&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 必須事項: &lt;code&gt;g.get()&lt;/code&gt; が互換性がある関数オブジェクトであること。
-- 事後条件: &lt;code&gt;g.get()&lt;/code&gt; が空でなければ、 &lt;code&gt;f&lt;/code&gt; は &lt;code&gt;g.get()&lt;/code&gt; ( &lt;code&gt;g.get()&lt;/code&gt; のコピーではない) を格納する。 &lt;code&gt;g.get()&lt;/code&gt; が空ならば、 &lt;code&gt;f.empty()&lt;/code&gt; が真となる。
-- 戻り値: &lt;code&gt;*this&lt;/code&gt;
-- 例外: &lt;code&gt;this&lt;/code&gt; が格納していた関数オブジェクトの破棄で例外が起きた場合のみ、例外を起こす。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;set&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;*this = g&lt;/code&gt;
-- 注意: この関数の使用は推奨されない。この関数は Boost.Function の将来のバージョンで削除される。代わりに代入演算子を使って欲しい。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; F&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; set(F g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;*this = g&lt;/code&gt;
-- 注意: この関数の使用は推奨されない。この関数は Boost.Function の将来のバージョンで削除される。代わりに代入演算子を使って欲しい。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;swap&lt;/span&gt;(functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;f&lt;/code&gt; と &lt;code&gt;g&lt;/code&gt; が格納する関数オブジェクトを交換し、 &lt;code&gt;f&lt;/code&gt; と &lt;code&gt;g&lt;/code&gt; のミックスインを交換する。
-- 例外: 例外は発生しない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;clear&lt;/span&gt;();
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;!empty()&lt;/code&gt;ならば、格納する関数オブジェクトを破棄する。
-- 事後条件: &lt;code&gt;empty()&lt;/code&gt;が真になる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt; safe_bool() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-&lt;/pre&gt;&lt;/div&gt;
-
-- 戻り値: &lt;code&gt;!empty()&lt;/code&gt;と等価な&lt;code&gt;safe_bool&lt;/code&gt; 。
-- 例外: 例外は発生しない。
-- 注意: &lt;code&gt;safe_bool&lt;/code&gt; 型は bool 型が予想される場所 (例: &lt;code&gt;if&lt;/code&gt; の条件) に使用できる。しかし、 &lt;code&gt;bool&lt;/code&gt; 型で起きる暗黙の型変換 (例: &lt;code&gt;int&lt;/code&gt;型への変換) は許されない。これによってユーザの間違いの元を減らせることがある。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-- 戻り値: &lt;code&gt;this-&amp;gt;empty()&lt;/code&gt;
-- 例外: 例外は発生しない。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Arg1 a1, Arg2 a2, ..., ArgN aN) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-&lt;/pre&gt;&lt;/div&gt;
-
-- 必須事項: !empty()
-- 作用: 以下で、 &lt;code&gt;target&lt;/code&gt; は格納された関数オブジェクトである。 &lt;code&gt;target&lt;/code&gt; 変数には &lt;code&gt;const&lt;/code&gt; 修飾子や &lt;code&gt;volatile&lt;/code&gt; 修飾子が付いていない (ので、関数呼出し演算子に &lt;code&gt;const&lt;/code&gt; 修飾子や &lt;code&gt;volatile&lt;/code&gt; 修飾子が付いている必要はない) 。
-    1. &lt;code&gt;policy_type policy;&lt;/code&gt;
-    2. &lt;code&gt;policy.precall(this);&lt;/code&gt;
-    3. &lt;code&gt;target(a1, a2, ..., aN);&lt;/code&gt;
-    4. &lt;code&gt;policy.postcall(this);&lt;/code&gt;
-- 戻り値: &lt;code&gt;target&lt;/code&gt; の戻り値。
-- 注意: 呼び出しポリシーは推奨されなくなり、今後のリリースで削除される。&lt;/p&gt;
-&lt;h2&gt;Class template &lt;code&gt;function&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;クラステンプレート &lt;code&gt;function&lt;/code&gt; は、番号付きクラステンプレート &lt;code&gt;function0&lt;/code&gt;, &lt;code&gt;function1&lt;/code&gt;, ... の薄いラッパである。 &lt;code&gt;MAX_ARGS&lt;/code&gt; までの引数を受け付ける。 &lt;code&gt;N&lt;/code&gt; 個の引数を渡されれば、 &lt;code&gt;functionN&lt;/code&gt; (引数 &lt;code&gt;N&lt;/code&gt; 個専用のクラス) から派生する。&lt;/p&gt;
-&lt;p&gt;クラステンプレート &lt;code&gt;function&lt;/code&gt; のメンバ関数のセマンティクスは、全て &lt;code&gt;functionN&lt;/code&gt; オブジェクトと同じである。ただし、 &lt;code&gt;function&lt;/code&gt; オブジェクトの正しいコピーコンストラクトやコピーの代入のために、追加のメンバ関数を定義している。&lt;/p&gt;
-&lt;h3&gt;Operations&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; ResultType,
-         &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg1,
-     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Arg2,
-         ...
-     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; ArgN,
-         &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-         &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin, &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 推奨されない&lt;/span&gt;
-         &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; swap(functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; f,
-          functionN&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ResultType, Arg1, Arg2, ..., ArgN, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;f.swap(g);&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Signature, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Policy, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Mixin, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; swap(function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Signature, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; f,
-          function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Signature, Policy, Mixin, Allocator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; g);
-&lt;/pre&gt;&lt;/div&gt;
-
-- 作用: &lt;code&gt;f.swap(g);&lt;/code&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/note&#34; name=&#34;note&#34;&gt;脚注&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;[1] : コンパイラが &lt;code&gt;void&lt;/code&gt; 型の &lt;code&gt;return&lt;/code&gt; をサポートしていない場合、 &lt;code&gt;ReturnType&lt;/code&gt; に &lt;code&gt;void&lt;/code&gt; を指定すると、 Boost.Function オブジェクトの &lt;code&gt;result_type&lt;/code&gt; は実装依存になる。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;Douglas Gregor&lt;/p&gt;
-&lt;p&gt;Last modified: Fri Oct 11 05:40:09 EDT 2002&lt;/p&gt;
 &lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;
 &lt;p&gt;このドキュメントの対象: Boost Version 1.29.0&lt;/p&gt;</content>
