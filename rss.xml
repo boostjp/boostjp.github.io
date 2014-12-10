@@ -2,9 +2,93 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-10T17:07:47.992757</updated>
-  <id>fc3b0efa-403a-41d3-bb4a-da11e4afdf45</id>
+  <updated>2014-12-10T17:13:12.285321</updated>
+  <id>c17502ea-ee54-436e-9238-eef61d87af0a</id>
 
+  
+    <entry>
+      <title>Binders -- Boost.Functional : Bindersを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html"/>
+      <id>871108d59e78c22ff53788e026377e0fab403ea2:archive/boost_docs/libs/functional/binders.md</id>
+      <updated>2014-12-10 17:12:58 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Binders&lt;/h1&gt;
+&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§20.3.6): 由来のバインダ関数オブジェクトアダプタの両方の強化バージョンを提供する:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;binder1st&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;binder2nd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bind1st&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bind2nd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;標準ライブラリにあるそれらの代わりに、これらのアダプタを使う主な便益は、それらが &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html#refref&#34;&gt;参照の参照&lt;/a&gt; 問題を回避することにある。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使い方は標準バインダと同様である。例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
+              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/refref&#34; name=&#34;refref&#34;&gt;References to References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;以下の使用例を考えなさい。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
+              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
+&lt;/pre&gt;&lt;/div&gt;
+
+これがもし &lt;code&gt;std::bind2nd&lt;/code&gt; と &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を使って書かれているならば、コンパイルできないだろう。&lt;/p&gt;
+&lt;p&gt;この問題は &lt;code&gt;bar&lt;/code&gt; が参照引数を取ることが原因で起こる。標準は &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を &lt;code&gt;second_argument_type&lt;/code&gt; が &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; である関数オブジェクトを作るように定義する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind2nd&lt;/code&gt; 呼び出しは &lt;code&gt;binder2nd&lt;/code&gt; を作り、それは標準が以下のように定義している:&lt;/p&gt;
+&lt;p&gt;``cpp
+template &amp;lt;class Operation&amp;gt;
+class binder2nd
+    : public unary_function&amp;lt;typename Operation::first_argument_type,
+                            typename Operation::result_type&amp;gt; {
+...
+public:
+  binder2nd(const Operation&amp;amp; x,
+            const typename Operation::second_argument_type&amp;amp; y);
+  ...&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;
+我々の `Operation` の `second_argument_type` は `std::ostream&amp;amp;` であるから、コンストラクタの中の `y` の型は `std::ostream&amp;amp;&amp;amp;` となるだろう。参照の参照を作ることはできないから、参照の参照は C++ では非合法であるとしてこの時点でコンパイルエラーになる。(ただし [C++ 言語中核の問題点 106 番目](http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106) を参照せよ)。
+
+このライブラリのバインダは Boost [`call_traits`](../utility/call_traits.md) テンプレートを使うことによってこの問題を回避している。
+
+コンストラクタは以下のように宣言される。
+
+```cpp
+binder2nd(const Operation&amp;amp; x,
+          typename call_traits&amp;lt;
+             typename binary_traits&amp;lt;Operation&amp;gt;::second_argument_type
+          &amp;gt;::param_type y)
+&lt;/code&gt;&lt;/pre&gt;
+結果、&lt;code&gt;y&lt;/code&gt; は &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; 型を持つ。そして、我々の例はコンパイルされる。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
+&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Function Pointer Adapters -- Boost.Functional : Function Pointer Adaptorsを追加</title>
@@ -670,141 +754,6 @@ std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(c.begin(), 
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Header `&lt;boost/function.hpp&gt;` -- Boost.Function : FAQを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/function.html"/>
-      <id>8c046698c88d93e44f47d0eb44294020d8a920ce:archive/boost_docs/libs/function.md</id>
-      <updated>2014-12-08 16:35:52 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Header &lt;code&gt;&amp;lt;boost/function.hpp&amp;gt;&lt;/code&gt;&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;翻訳元ドキュメント： &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/doc/html/function.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/doc/html/function.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;ヘッダファイル &lt;code&gt;&amp;lt;boost/function.hpp&amp;gt;&lt;/code&gt; に含まれるのは、関数オブジェクトのラッパとなるクラステンプレート群である。 Boost.Function の概念はコールバックを一般化したものだ。 Boost.Function は以下の点で関数ポインタと共通の特徴をもっている。 1 つは、何らかの実装によって呼び出される「呼び出しのインタフェース」 (例: 2 つの &lt;code&gt;int&lt;/code&gt; 型引数を取り、 &lt;code&gt;float&lt;/code&gt; を返す関数) を定義していること。もう 1 つは、呼び出される実装をプログラム実行中に変更できる事だ。&lt;/p&gt;
-&lt;p&gt;一般に、遅延呼び出しやコールバックを実現するために関数ポインタを使うあらゆる場面で、代わりに Boost.Function を使用できる。そして、それによって呼ばれる側の実装はぐっと自由になる。呼ばれる側にはあらゆる「互換性のある」関数オブジェクト (や関数ポインタ) が指定できる。「互換性がある」とは、 Boost.Function に渡した引数が、対象となる関数オブジェクトの引数に変換できるということだ(訳注：戻り値にも互換性が必要)。&lt;/p&gt;
-&lt;h2&gt;目次&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#compatibility-note&#34;&gt;Compatibility Note&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/tutorial.html&#34;&gt;Tutorial&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/reference.html&#34;&gt;Reference manual&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#function-vs-function-pointers&#34;&gt;Boost.Function vs. Function Pointers&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#performance&#34;&gt;Performance&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#portability&#34;&gt;Portability&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#design-rationale&#34;&gt;Design rationale&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function.html#acknowledgements&#34;&gt;Acknowledgements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/faq.html&#34;&gt;FAQ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/compatibility-note&#34; name=&#34;compatibility-note&#34;&gt;Compatibility Note&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Function は、インタフェースを小さく、分かりやすくするために、一部が再設計された。昔の Boost.Function にあった、いくつかのめったに (または決して) 使われない機能は推奨されなくなり、近々削除される。以下に推奨されなくなった機能とその理由、それに伴うコードの修正法をリストアップする。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::function&lt;/code&gt; クラステンプレートの文法が変更された。以前は&lt;code&gt;boost::function&amp;lt;int, float, double, std::string&amp;gt;&lt;/code&gt;のように書いたが、 &lt;code&gt;boost::function&amp;lt;int (float, double, std::string)&amp;gt;&lt;/code&gt;のような、より自然な書き方になった。戻り値と全ての引数の型が、 1 つの関数型のパラメータに収まる事になったのだ。残りのテンプレートパラメータ (&lt;code&gt;Allocator&lt;/code&gt;など) が、この関数型パラメータの後に続く。
-    この変更への対応は、コンパイラに依存する。あなたのコンパイラがテンプレートの部分特殊化版をサポートし、関数型をパース (これは大抵 OK) できるなら、新しい文法を使うようにソースを修正してもいいし (推奨) 、文法が変わっていない&lt;code&gt;functionN&lt;/code&gt; クラスを直接使ってもいい。あなたのコンパイラがテンプレートの部分特殊化版か関数型をサポートしていなければ、&lt;code&gt;functionN&lt;/code&gt;クラスを使う必要がある。&lt;code&gt;functionN&lt;/code&gt;クラスを使うように修正するのは簡単で、クラス名の最後に引数の数を加えるだけだ (例: &lt;code&gt;boost::function&amp;lt;void, int, int&amp;gt;&lt;/code&gt; を &lt;code&gt;boost::function2&amp;lt;void, int, int&amp;gt;&lt;/code&gt; に変更) 。
-    &lt;code&gt;boost::function&lt;/code&gt; クラステンプレートの古い文法のサポートはしばらく続くが、いつかは削除される。削除した方がエラーメッセージが分かりやすくなり、リンク互換性が良くなるからだ。&lt;/li&gt;
-&lt;li&gt;呼び出しポリシーのテンプレートパラメータ (&lt;code&gt;Policy&lt;/code&gt;) は推奨されておらず、将来削除される。この機能はめったに使われないので、代替となる機能は無い。&lt;/li&gt;
-&lt;li&gt;ミックスインのテンプレートパラメータ (&lt;code&gt;Mixin&lt;/code&gt;) は推奨されておらず、将来削除される。この機能はめったに使われないので、代替となる機能は無い。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;set&lt;/code&gt; メソッドは推奨されておらず、将来削除される。代わりに代入演算子を使えば良い。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;新しい文法に移行し、推奨されない機能を削除するためには、 &lt;code&gt;BOOST_FUNCTION_NO_DEPRECATED&lt;/code&gt; プリプロセサマクロを定義する。このマクロを定義すると、推奨されない全ての機能が使えなくなる。 &lt;code&gt;BOOST_FUNCTION_NO_DEPRECATED&lt;/code&gt; を使ってコンパイルされたプログラムなら、推奨されない機能が削除されても大丈夫だ。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function-vs-function-pointers&#34; name=&#34;function-vs-function-pointers&#34;&gt;Boost.Function vs. Function Pointers&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Function には関数ポインタに比べていくつかの利点がある。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Boost.Function は、任意の互換性がある関数オブジェクトを格納できる (関数ポインタは全く同じシグネチャを持つ関数しか受け付けない) 。&lt;/li&gt;
-&lt;li&gt;Boost.Function は、引数の束縛などの関数オブジェクトを作り出すライブラリと共用できる。&lt;/li&gt;
-&lt;li&gt;Boost.Function を使えば、空の関数オブジェクトの呼び出しを、デバッグ時に簡単に検出できる。&lt;/li&gt;
-&lt;li&gt;Boost.Function では、それぞれの呼び出しの前後に、ある操作を実行するように指定できる。例えば、同期用の基本命令を関数型の一部にすることができる(訳注：この機能 (呼び出しポリシー) は推奨されておらず、将来削除される)。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;そしてもちろん、関数ポインタにも Boost.Function に比べていくつかの利点がある。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;関数ポインタはサイズが小さい (関数ポインタはポインタ 1 つ、 Boost.Function はポインタ 3 つ) 。&lt;/li&gt;
-&lt;li&gt;関数ポインタは高速だ (Boost.Function は関数ポインタを通した呼び出しを 2 回する可能性がある) 。&lt;/li&gt;
-&lt;li&gt;関数ポインタは C のライブラリと下位互換性がある。&lt;/li&gt;
-&lt;li&gt;エラーメッセージが読みやすい。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以上 2 つのリストは Darin Adler のコメントを編集したものである。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/performance&#34; name=&#34;performance&#34;&gt;Performance&lt;/a&gt;&lt;/h2&gt;
-&lt;h3&gt;Function object wrapper size&lt;/h3&gt;
-&lt;p&gt;関数オブジェクトのラッパのサイズは 2 つの関数ポインタと、 1 つの関数ポインタまたはデータのポインタ (の大きい方) のサイズになる。一般的な 32 ビットプラットフォームでは、 1 つのラッパ当たり 12 バイトになる。さらに、対象となる関数オブジェクトがヒープに割り当てられる。&lt;/p&gt;
-&lt;h3&gt;Copying efficiency&lt;/h3&gt;
-&lt;p&gt;関数オブジェクトのラッパのコピーによって、格納された関数オブジェクトのコピーのためにメモリ割り当てが発生する。デフォルトのアロケータを、もっと速いカスタムアロケータで置換することもできる。また、関数オブジェクトのラッパが、対象となる関数オブジェクトの「参照」を格納するように指定できる (&lt;code&gt;ref&lt;/code&gt;を使用) 。これは関数オブジェクトのコピーが酷く高価な場合に有効だ。&lt;/p&gt;
-&lt;h3&gt;Invocation efficiency&lt;/h3&gt;
-&lt;p&gt;適切なインライン化を行うコンパイラならば、関数オブジェクトの呼び出しによって、関数ポインタを通した呼び出しが 1 回行われる。非メンバ関数ポインタの呼び出しならば、その関数ポインタの呼び出しに加えて、もう 1 回の呼び出しが行われる (コンパイラがとても強力な関数をまたいだ分析を行うならば別だが) 。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/portability&#34; name=&#34;portability&#34;&gt;Portability&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Function は、できるだけ移植性を高めるように、できるだけ多くのコンパイラ (C++ 標準準拠度が低いものも含む) をサポートするように設計されている。以下のコンパイラは &lt;code&gt;boost::function&lt;/code&gt;に含まれる全てのテストケースに合格した。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;GCC 2.95.3&lt;/li&gt;
-&lt;li&gt;GCC 3.0&lt;/li&gt;
-&lt;li&gt;SGI MIPSpro 7.3.0&lt;/li&gt;
-&lt;li&gt;Borland C++ 5.5.1&lt;/li&gt;
-&lt;li&gt;Comeau C++ 4.2.45.2&lt;/li&gt;
-&lt;li&gt;Metrowerks Codewarrior 6.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;以下のコンパイラでも &lt;code&gt;boost::function&lt;/code&gt;を使えるが、いくつか問題がある。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Microsoft Visual C++ 6.0 (service pack 5): アロケータはサポートされない。 &lt;code&gt;boost::function&lt;/code&gt; クラステンプレートにいくつか問題がある ( &lt;code&gt;boost::functionN&lt;/code&gt; の方は動作するようだ) 。&lt;/li&gt;
-&lt;li&gt;Intel C++ 5.0: アロケータはサポートされない。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;あなたのコンパイラが上のリストになければ、 &lt;code&gt;boost::function&lt;/code&gt; ライブラリを使えるかチェックするための小さなテスト群があるので、これを使える。標準に準拠したコンパイラなら、修正無しでコードをコンパイルできるはずだが、問題が起きたらバグレポートを送ってほしい。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/design-rationale&#34; name=&#34;design-rationale&#34;&gt;Design rationale&lt;/a&gt;&lt;/h2&gt;
-&lt;h3&gt;Combatting virtual function bloat&lt;/h3&gt;
-&lt;p&gt;多くのコンパイラでは、仮想関数の使用によって「コードの膨張」が起きがちである。クラスが仮想関数を持つ場合、オブジェクトの型を分類する補助関数を作る必要がある。私達の経験では、多くの &lt;code&gt;boost::function&lt;/code&gt; オブジェクトが使われると、この補助関数が実行可能ファイルのサイズを大きく膨張させる。&lt;/p&gt;
-&lt;p&gt;Boost.Function では、仮想関数の代わりに非メンバ関数を使った、代わりの等価なアプローチをとっている。 Boost.Function オブジェクトが関数オブジェクトを呼び出すためには、本質的に 2 つのポインタを持つ必要がある。所有する関数オブジェクトへの &lt;code&gt;void&lt;/code&gt; ポインタと、関数オブジェクトの「呼び出し役」への &lt;code&gt;void&lt;/code&gt; ポインタ (関数ポインタが代入される) だ。 Boost.Function が提供する、引数と戻り値の変換は、この呼び出し役が実行する。第 3 のポインタは「管理者」と呼ばれる非メンバ関数を指す。これは関数オブジェクトのコピーと破棄を扱う。この方法はタイプセーフだ。なぜなら、関数オブジェクトを実際に扱う関数である呼び出し役と管理者は、関数オブジェクトの型を知らされてインスタンス化されるので、入ってくる &lt;code&gt;void&lt;/code&gt; ポインタ (関数オブジェクトへのポインタ) を、正しい型に安全にキャストできるからだ。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/acknowledgements&#34; name=&#34;acknowledgements&#34;&gt;Acknowledgements&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;たくさんの人がこのライブラリの作成に参加した。 William Kempf 、 Jesse Jones 、 Karl Nelson は、ライブラリのインタフェースと守備範囲を、他のライブラリとは独立したものにする上で大きな助けになってくれた。 John Maddock は公式なレビューをやってくれた。他にもたくさんの人がレビューをして、インタフェース、実装、ドキュメントについて優れたコメントを寄せてくれた。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Douglas Gregor&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;
-&lt;p&gt;このドキュメントの対象: Boost Version 1.29.0&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>boost::function FAQ -- Boost.Function : FAQを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/function/faq.html"/>
-      <id>8c046698c88d93e44f47d0eb44294020d8a920ce:archive/boost_docs/libs/function/faq.md</id>
-      <updated>2014-12-08 16:35:52 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;boost::function FAQ&lt;/h1&gt;
-&lt;h2&gt;Q: &lt;code&gt;void&lt;/code&gt; ポインタを見かけたが、これはタイプセーフなのか？&lt;/h2&gt;
-&lt;p&gt;はい。 &lt;code&gt;boost::function&lt;/code&gt; は &lt;code&gt;void&lt;/code&gt; ポインタや、戻り値も引数もない関数ポインタを使っているが、タイプセーフだ。関数ポインタや関数オブジェクトを管理/実行する関数の中には、全ての型の情報が書き込まれている。 &lt;code&gt;void&lt;/code&gt; ポインタや &lt;code&gt;void&lt;/code&gt; 関数ポインタが指す本当の型を知らされてインスタンス化されるのは、これらの管理/実行用関数だけなのだ。 &lt;code&gt;void&lt;/code&gt; ポインタと &lt;code&gt;void&lt;/code&gt; 関数ポインタの両方が必要な理由は、オブジェクトへのポインタと &lt;code&gt;void&lt;/code&gt; ポインタは互いに安全にキャストでき、異なる型の関数ポインタ同士も安全にキャストできることだ (ただし、異なる型で関数ポインタを呼び出してはならない) 。&lt;/p&gt;
-&lt;h2&gt;Q: なぜ &lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; の回避手段を取っているのか？ C++ では許されているはずだ！&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; は C++ 標準で許されている。以下はこれを使ったコードの一部だ。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;();
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;g&lt;/span&gt;() { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; f(); }
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; を使わない理由の 1 つとして、全てのコンパイラが &lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; をサポートしているわけではないことが挙げられる。実際には、このちょっとした機能をサポートするコンパイラはごく一部だ。さらに、 &lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; を使わないことで、 &lt;code&gt;boost::function&lt;/code&gt; はもっと柔軟になった。以下の例を考えてみよう。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;do_something&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
-
-boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; f;
-f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; do_something;
-&lt;/pre&gt;&lt;/div&gt;
-
-この &lt;code&gt;boost::function&lt;/code&gt; の使い方が有効なのは、 &lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; が使われていないからだ。 &lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; を使うと、以下のコードと同等の不正なコードをコンパイルしようとすることになる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;();
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;g&lt;/span&gt;() { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; f(); }
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;code&gt;void&lt;/code&gt; の &lt;code&gt;return&lt;/code&gt; を使わないことで、 &lt;code&gt;boost::function&lt;/code&gt; は戻り値を飲み込めるようになる、というのが本質なのだ。このことは、「ぴったり一致しないパラメータを持つ関数や関数オブジェクトを代入/実行できる」こととも一貫している。&lt;/p&gt;
-&lt;h2&gt;Q: なぜ (関数を) コピーするのか？&lt;/h2&gt;
-&lt;p&gt;2000 年の 11 ～ 12 月に、コピー vs. 参照の論争が長々と繰り広げられた。その結果、コピーの方が予測しやすいセマンティクスになるという結論になった。私はここでその議論を蒸し返すつもりはない。コピーが不適当な場合は、参照カウント式アロケータを使えばよい。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Douglas Gregor&lt;/p&gt;
-&lt;p&gt;Last modified: Fri Oct 11 05:39:27 EDT 2002&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;
-&lt;p&gt;このドキュメントの対象: Boost Version 1.29.0&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
