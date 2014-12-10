@@ -2,9 +2,90 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-10T17:21:01.645532</updated>
-  <id>510668ee-34bf-43dc-aec7-77fa2f80f6f6</id>
+  <updated>2014-12-10T17:22:37.288123</updated>
+  <id>dd703659-aa10-4dcc-956f-61fa9bb9b91c</id>
 
+  
+    <entry>
+      <title>Binders -- コードブロックが壊れていたので修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html"/>
+      <id>2b2f23e2cbe8583e4847e7446881236907c11a42:archive/boost_docs/libs/functional/binders.md</id>
+      <updated>2014-12-10 17:22:27 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Binders&lt;/h1&gt;
+&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§20.3.6): 由来のバインダ関数オブジェクトアダプタの両方の強化バージョンを提供する:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;binder1st&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;binder2nd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;bind1st&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bind2nd&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;標準ライブラリにあるそれらの代わりに、これらのアダプタを使う主な便益は、それらが &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html#refref&#34;&gt;参照の参照&lt;/a&gt; 問題を回避することにある。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;使い方は標準バインダと同様である。例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
+              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/refref&#34; name=&#34;refref&#34;&gt;References to References&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;以下の使用例を考えなさい。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
+              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
+&lt;/pre&gt;&lt;/div&gt;
+
+これがもし &lt;code&gt;std::bind2nd&lt;/code&gt; と &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を使って書かれているならば、コンパイルできないだろう。&lt;/p&gt;
+&lt;p&gt;この問題は &lt;code&gt;bar&lt;/code&gt; が参照引数を取ることが原因で起こる。標準は &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を &lt;code&gt;second_argument_type&lt;/code&gt; が &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; である関数オブジェクトを作るように定義する。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind2nd&lt;/code&gt; 呼び出しは &lt;code&gt;binder2nd&lt;/code&gt; を作り、それは標準が以下のように定義している:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Operation&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;binder2nd&lt;/span&gt;
+    &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; unary_function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;first_argument_type,
+                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;result_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; {
+...
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+  binder2nd(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x,
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;second_argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; y);
+  ...
+&lt;/pre&gt;&lt;/div&gt;
+
+我々の &lt;code&gt;Operation&lt;/code&gt; の &lt;code&gt;second_argument_type&lt;/code&gt; は &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; であるから、コンストラクタの中の &lt;code&gt;y&lt;/code&gt; の型は &lt;code&gt;std::ostream&amp;amp;&amp;amp;&lt;/code&gt; となるだろう。参照の参照を作ることはできないから、参照の参照は C++ では非合法であるとしてこの時点でコンパイルエラーになる。(ただし &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106&#34; target=&#34;_blank&#34;&gt;C++ 言語中核の問題点 106 番目&lt;/a&gt; を参照せよ)。&lt;/p&gt;
+&lt;p&gt;このライブラリのバインダは Boost &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.html&#34;&gt;&lt;code&gt;call_traits&lt;/code&gt;&lt;/a&gt; テンプレートを使うことによってこの問題を回避している。&lt;/p&gt;
+&lt;p&gt;コンストラクタは以下のように宣言される。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;binder2nd(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x,
+          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; call_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;
+             &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; binary_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;second_argument_type
+          &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;param_type y)
+&lt;/pre&gt;&lt;/div&gt;
+
+結果、&lt;code&gt;y&lt;/code&gt; は &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; 型を持つ。そして、我々の例はコンパイルされる。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
+&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Function Object Traits -- 表が壊れていたので修正</title>
@@ -345,69 +426,6 @@ std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span styl
 我々は望ましい結果を引き出した - 参照の参照を生み出すことなく、効率性を得たのだ。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/limitations&#34; name=&#34;limitations&#34;&gt;Limitations&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;call traits テンプレートはこの改良を実現するために使われる関数オブジェクト特性と &lt;code&gt;call_traits&lt;/code&gt; の両方が部分特殊化版に頼っているので、この改良は部分特殊化の機能を持つコンパイラでのみ有効である。そうでないコンパイラでは、関数に渡される引数は常に参照渡しとなるので、参照の参照の可能性を生みだすことになる。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
-&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Negators -- Boost.Functional : Negatorsを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html"/>
-      <id>af3876aff4114b123e715c0cd553746d626a4b30:archive/boost_docs/libs/functional/negators.md</id>
-      <updated>2014-12-10 17:01:54 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Negators&lt;/h1&gt;
-&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§20.3.5) 由来のネゲータアダプタの両方の強化バージョンを提供する:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;unary_negate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;binary_negate&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;not1&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;not2&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;このライブラリのネゲータは標準バージョンを二つの方法で改良する。&lt;/p&gt;
-&lt;p&gt;適合関数オブジェクトではなく関数を否定する時、それらは &lt;code&gt;ptr_fun&lt;/code&gt; の必要を回避するために、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/function_traits.html&#34;&gt;function object traits&lt;/a&gt; を用いる。&lt;/p&gt;
-&lt;p&gt;それらは引数や適合された関数に渡す引数を宣言する最上の方法を決するため、Boost の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.html&#34;&gt;call traits&lt;/a&gt; を用いる。(&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html#arguments&#34;&gt;下記&lt;/a&gt;参照)&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;使い型は標準ネゲータと同様である。例えば、&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;bad&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Foo &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;foo) { ... }
-...
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
-...
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(c.begin(), c.end(), boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;not1(bad));
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/arguments&#34; name=&#34;arguments&#34;&gt;Argument Types&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;C++ 標準 (§20.3.5) は unary negate をこのように定義 している。(binary negate も似ている):&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Predicate&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;unary_negate&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; unary_function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type,&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; {
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;explicit&lt;/span&gt; unary_negate(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; pred);
-  &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-};
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; が参照であった場合、 &lt;code&gt;operator()&lt;/code&gt; の引数の型は参照の参照になることに注意しなさい。これは、現在の C++ では非合法である。(ただし &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106&#34; target=&#34;_blank&#34;&gt;C++ 言語中核の問題点 106 番目&lt;/a&gt; を参照せよ)。&lt;/p&gt;
-&lt;p&gt;しかしながら、もし代わりに &lt;code&gt;operator()&lt;/code&gt; を &lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; を変更せずにそのまま採用して定義すると、それが値型であった場合不必要に非効率になってしまう。それは引数が二度コピーされることによる。一度は &lt;code&gt;unary_negate&lt;/code&gt; の &lt;code&gt;operator()&lt;/code&gt; を呼ぶ時、さらに適合された関数で &lt;code&gt;operator()&lt;/code&gt; を呼ぶ時にもう一度である。&lt;/p&gt;
-&lt;p&gt;つまり&lt;code&gt;operator()&lt;/code&gt; を宣言する望ましい方法は、 &lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; が参照であるか否かに依 る。もしそれが参照であれば、単純に &lt;code&gt;argument_type&lt;/code&gt; として宣言したいし、それが値であれば &lt;code&gt;const argument_type&amp;amp;&lt;/code&gt; として宣言したいのである。&lt;/p&gt;
-&lt;p&gt;Boost の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.html&#34;&gt;&lt;code&gt;call_traits&lt;/code&gt;&lt;/a&gt; クラステンプレートは &lt;code&gt;param_type&lt;/code&gt; &lt;code&gt;typedef&lt;/code&gt; を含んでいて、それは部分特 殊化版を用いて正確にこの判断を行う。&lt;code&gt;operator()&lt;/code&gt; を 以下のように宣言することによって。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; call_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;param_type x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-我々は望ましい結果を引き出した - 参照の参照を生み出すことなく、効率性を得たのだ。実のところ、実際の宣言は関数オブジェクト特性を使うためもう少し複雑である。しかし効果は同様である。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/limitations&#34; name=&#34;limitations&#34;&gt;Limitations&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;この関数オブジェクト特性の両方と call traits はこの改良を実現するために使われる関数オブジェクト特性と &lt;code&gt;call_traits&lt;/code&gt; の両方が部分特殊化版に頼っているので、この改良は部分特殊化版の機能を持つコンパイラでのみ有効である。 そうでないコンパイラでは、このライブラリのネゲータは標準内のそれらと非常に似た振る舞いをする - 関数に適合するために &lt;code&gt;ptr_fun&lt;/code&gt; が必要であるし、参照の参照は避けられないだろう。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
 &lt;p&gt;Revised 28 June 2000&lt;/p&gt;
