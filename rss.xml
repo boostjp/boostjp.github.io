@@ -2,9 +2,298 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-11T15:42:48.252989</updated>
-  <id>1c67dbcc-e3b1-4f43-83ae-3458fdfc7479</id>
+  <updated>2014-12-11T15:57:26.021745</updated>
+  <id>f7b858ca-944d-4675-87ff-f4cfb778bf07</id>
 
+  
+    <entry>
+      <title>the Boost Graph Library -- Boost.Graph : adjacency_list_traitsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph.html"/>
+      <id>d8dc8f5c181fdb8bc5ce97d495fe030966abcbcc:archive/boost_docs/libs/graph.md</id>
+      <updated>2014-12-11 15:57:13 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;the Boost Graph Library&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/bgl-cover.jpg&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;BGLへの序章&lt;/li&gt;
+&lt;li&gt;歴史&lt;/li&gt;
+&lt;li&gt;刊行物&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/acknowledgements.html&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;クイック・ツアー&lt;/li&gt;
+&lt;li&gt;基本的なグラフ理論の復習&lt;/li&gt;
+&lt;li&gt;チュートリアル&lt;ol&gt;
+&lt;li&gt;Property Maps&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;adjacency_list&lt;/code&gt; class&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;例題&lt;ol&gt;
+&lt;li&gt;ファイル依存関係の例&lt;/li&gt;
+&lt;li&gt;Kevin Bacon の６次数&lt;/li&gt;
+&lt;li&gt;Graph Coloring&lt;/li&gt;
+&lt;li&gt;Sparse Matrix Ordering&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;BGL 拡張&lt;ol&gt;
+&lt;li&gt;Constructing graph algorithms with BGL&lt;/li&gt;
+&lt;li&gt;Converting Existing Graphs to BGL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Boost Graph インタフェイス&lt;ol&gt;
+&lt;li&gt;Graph&lt;/li&gt;
+&lt;li&gt;Incidence Graph&lt;/li&gt;
+&lt;li&gt;Bidirectional Graph&lt;/li&gt;
+&lt;li&gt;Adjacency Graph&lt;/li&gt;
+&lt;li&gt;Vertex List Graph&lt;/li&gt;
+&lt;li&gt;Edge List Graph&lt;/li&gt;
+&lt;li&gt;Vertex and Edge List Graph&lt;/li&gt;
+&lt;li&gt;Mutable Graph&lt;/li&gt;
+&lt;li&gt;Property Graph&lt;/li&gt;
+&lt;li&gt;Mutable Property Graph&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;The Property Map Library （専門的にはグラフ・ライブラリの部分ではないが、ここで使用される頻度が高い）&lt;/li&gt;
+&lt;li&gt;ビジタ・コンセプト&lt;ol&gt;
+&lt;li&gt;BFS （幅優先探査） Visitor&lt;/li&gt;
+&lt;li&gt;DFS （深度優先探査） Visitor&lt;/li&gt;
+&lt;li&gt;Dijkstra Visitor&lt;/li&gt;
+&lt;li&gt;Bellman Ford Visitor&lt;/li&gt;
+&lt;li&gt;Event Visitor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;EventVisitorList アダプタ&lt;ol&gt;
+&lt;li&gt;Event Visitor List&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bfs_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dfs_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bellman_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イベント・ビジタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・クラス&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;subgraph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reverse_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filtered_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Vector as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Matrix as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Leda Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Stanford GraphBase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イテレータ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;特性クラス&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;graph_traits&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html&#34;&gt;&lt;code&gt;adjacency_list_traits&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;bgl_named_params&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;核となるアルゴリズム・パターン&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;breadth_first_search&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;breadth_first_visit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_search&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_visit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;undirected_dfs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uniform_cost_search&lt;/code&gt; (非推奨、代わりに Dijkstra を使うこと)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アルゴリズム&lt;ol&gt;
+&lt;li&gt;最短経路アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bellman_ford_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dag_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;johnson_all_pairs_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最小全域木アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;kruskal_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prim_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;connected_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strong_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Incremental Connected Components&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;initialize_incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;same_component&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;component_index&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最大流アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;edmunds_karp_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;push_relabel_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;topological_sort&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transitive_closure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;copy_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transpose_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isomorphism&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cuthill_mckee_ordering&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequential_vertex_coloring&lt;/code&gt;(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;minimum_degree_ordering&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Graphviz フォーマット入出力ユーティリティ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;write_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;read_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;補助コンセプト、補助クラス、補助関数&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;property&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;ColorValue&lt;/li&gt;
+&lt;li&gt;Buffer&lt;/li&gt;
+&lt;li&gt;BasicMatrix&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incident&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opposite&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ith_bandwidth&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Tools for random graphs&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;random_vertex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;random_edge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generate_random_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;randomize_property&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;目標と To-Do 項目&lt;/li&gt;
+&lt;li&gt;トラブルシューティング&lt;/li&gt;
+&lt;li&gt;既知の問題&lt;/li&gt;
+&lt;li&gt;FAQ&lt;/li&gt;
+&lt;li&gt;BGL Book Errata&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>adjacency_list_traits&lt;EdgeList, VertexList, Directed&gt; -- Boost.Graph : adjacency_list_traitsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html"/>
+      <id>d8dc8f5c181fdb8bc5ce97d495fe030966abcbcc:archive/boost_docs/libs/graph/adjacency_list_traits.md</id>
+      <updated>2014-12-11 15:57:13 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;adjacency_list_traits&amp;lt;EdgeList, VertexList, Directed&amp;gt;&lt;/h1&gt;
+&lt;p&gt;このクラスは &lt;code&gt;adjacency_list&lt;/code&gt; クラスに結びついた型のいくつかをアクセスする代替方法を提供する。このクラスの主な理由は値が頂点記述子または辺記述子であるグラフ・プロパティを時々作成したいと思うからである。もしこのために &lt;code&gt;graph_traits&lt;/code&gt; を使おうと試みるならば、相互に再帰的な型の問題にぶつかるだろう。この問題を避けるために &lt;code&gt;adjacency_list_traits&lt;/code&gt; クラスが提供され、それはユーザにグラフのためのプロパティ型を提供する 要求をすることなしにユーザが頂点記述子型または辺記述型にアクセスできるようにする。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;EdgeList&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;VertexList&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Directed&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; adjacency_list_traits {
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ... vertex_descriptor;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ... edge_descriptor;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ... directed_category;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; ... edge_parallel_category;
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Where Defined&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost/graph/adjacency_list.hpp&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Template Parameters&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;パラメータ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;th&gt;デフォルト&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;EdgeList&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;辺コンテナの実装のための選択子型。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vecS&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;VertexList&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;頂点コンテナの実装のための選択子型。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;vecS&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Directed&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;グラフが有向であるか無向であるかの選択子型。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;directedS&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Model of&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sgi.com/tech/stl/DefaultConstructible.html&#34; target=&#34;_blank&#34;&gt;DefaultConstructible&lt;/a&gt; and &lt;a href=&#34;http://www.sgi.com/tech/stl/Assignable.html&#34; target=&#34;_blank&#34;&gt;Assignable&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Type Requirements&lt;/h2&gt;
+&lt;p&gt;工事中&lt;/p&gt;
+&lt;h2&gt;Members&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;メンバ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;vertex_descriptor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;グラフ中の頂点を識別するのに使われるオブジェクトのための型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;edge_descriptor&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;グラフ中の辺を識別するのに使われるオブジェクトのための型。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;directed_category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;これはグラフが無向 (&lt;code&gt;undirected_tag&lt;/code&gt;) であるか有向 (&lt;code&gt;directed_tag&lt;/code&gt;) であるかを述べる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;edge_parallel_category&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;これはグラフが多重辺の挿入を許可する (&lt;code&gt;allow_parallel_edge_tag&lt;/code&gt;) か、または自動的に多重辺を取り除く (&lt;code&gt;disallow_parallel_edge_tag&lt;/code&gt;) かを述べる。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/kn@mm.neweb.ne.jp&#34;&gt;Kent.N&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>the Boost Graph Library -- Boost.Graph : Adjacency Iteratorを追加</title>
@@ -953,87 +1242,6 @@
 &lt;/ul&gt;
 &lt;p&gt;Japanese Translation Copyright (C) 2003 OKI Miyuki&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Binders -- コードブロックが壊れていたので修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html"/>
-      <id>2b2f23e2cbe8583e4847e7446881236907c11a42:archive/boost_docs/libs/functional/binders.md</id>
-      <updated>2014-12-10 17:22:27 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Binders&lt;/h1&gt;
-&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§20.3.6): 由来のバインダ関数オブジェクトアダプタの両方の強化バージョンを提供する:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;binder1st&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;binder2nd&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;bind1st&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bind2nd&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;標準ライブラリにあるそれらの代わりに、これらのアダプタを使う主な便益は、それらが &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/binders.html#refref&#34;&gt;参照の参照&lt;/a&gt; 問題を回避することにある。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;使い方は標準バインダと同様である。例えば、&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-};
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
-              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/refref&#34; name=&#34;refref&#34;&gt;References to References&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下の使用例を考えなさい。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Foo&lt;/span&gt; {
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; bar(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ostream &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;);
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-};
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(c.begin(), c.end(), 
-              boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun_ref(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bar), std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout));
-&lt;/pre&gt;&lt;/div&gt;
-
-これがもし &lt;code&gt;std::bind2nd&lt;/code&gt; と &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を使って書かれているならば、コンパイルできないだろう。&lt;/p&gt;
-&lt;p&gt;この問題は &lt;code&gt;bar&lt;/code&gt; が参照引数を取ることが原因で起こる。標準は &lt;code&gt;std::mem_fun_ref&lt;/code&gt; を &lt;code&gt;second_argument_type&lt;/code&gt; が &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; である関数オブジェクトを作るように定義する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;bind2nd&lt;/code&gt; 呼び出しは &lt;code&gt;binder2nd&lt;/code&gt; を作り、それは標準が以下のように定義している:&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Operation&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;binder2nd&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; unary_function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;first_argument_type,
-                            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;result_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; {
-...
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-  binder2nd(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x,
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;second_argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; y);
-  ...
-&lt;/pre&gt;&lt;/div&gt;
-
-我々の &lt;code&gt;Operation&lt;/code&gt; の &lt;code&gt;second_argument_type&lt;/code&gt; は &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; であるから、コンストラクタの中の &lt;code&gt;y&lt;/code&gt; の型は &lt;code&gt;std::ostream&amp;amp;&amp;amp;&lt;/code&gt; となるだろう。参照の参照を作ることはできないから、参照の参照は C++ では非合法であるとしてこの時点でコンパイルエラーになる。(ただし &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106&#34; target=&#34;_blank&#34;&gt;C++ 言語中核の問題点 106 番目&lt;/a&gt; を参照せよ)。&lt;/p&gt;
-&lt;p&gt;このライブラリのバインダは Boost &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.html&#34;&gt;&lt;code&gt;call_traits&lt;/code&gt;&lt;/a&gt; テンプレートを使うことによってこの問題を回避している。&lt;/p&gt;
-&lt;p&gt;コンストラクタは以下のように宣言される。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;binder2nd(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x,
-          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; call_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;
-             &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; binary_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Operation&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;second_argument_type
-          &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;param_type y)
-&lt;/pre&gt;&lt;/div&gt;
-
-結果、&lt;code&gt;y&lt;/code&gt; は &lt;code&gt;std::ostream&amp;amp;&lt;/code&gt; 型を持つ。そして、我々の例はコンパイルされる。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
-&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
