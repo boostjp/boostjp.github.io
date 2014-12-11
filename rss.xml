@@ -2,9 +2,109 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-11T18:37:11.188420</updated>
-  <id>c395f0ce-f72a-4feb-a578-8cf0a1cc4122</id>
+  <updated>2014-12-11T18:38:09.900964</updated>
+  <id>9f3a031f-1ba7-46b7-bdf7-d6a79ab85fa7</id>
 
+  
+    <entry>
+      <title>Copy Constructible -- 表が壊れていたので修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/copy_constructible.html"/>
+      <id>46c767a4b0a39b92fef235162fbb8b76ac7133f1:archive/boost_docs/libs/utility/copy_constructible.md</id>
+      <updated>2014-12-11 18:37:58 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Copy Constructible&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;説明&lt;/h2&gt;
+&lt;p&gt;オブジェクトのコピーが可能である場合、その型はCopy Constructibleである。&lt;/p&gt;
+&lt;h2&gt;表記&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;T&lt;/code&gt;はCopy Constructibleモデルの型&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;t&lt;/code&gt;は&lt;code&gt;T&lt;/code&gt;型のオブジェクト&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;u&lt;/code&gt;は&lt;code&gt;const T&lt;/code&gt;型のオブジェクト&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;定義&lt;/h2&gt;
+&lt;h2&gt;妥当な式&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;名前&lt;/th&gt;
+&lt;th&gt;式&lt;/th&gt;
+&lt;th&gt;戻り値の型&lt;/th&gt;
+&lt;th&gt;意味論&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;コピーコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T(t)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;t&lt;/code&gt;は&lt;code&gt;T(t)&lt;/code&gt;と同等である&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;コピーコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T(u)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;u&lt;/code&gt;は&lt;code&gt;T(u)&lt;/code&gt;と同等である&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;デストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;t.~T()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;アドレス演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;amp;t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;t&lt;/code&gt;のアドレスを意味する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;アドレス演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;amp;u&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;T*&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;u&lt;/code&gt;のアドレスを意味する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;モデル&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;int&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::pair&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;コンセプトチェックするクラス&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; CopyConstructibleConcept
+{
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; constraints() {
+    T a(b);            &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// require copy constructor&lt;/span&gt;
+    T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; ptr &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;a;       &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// require address of operator&lt;/span&gt;
+    const_constraints(a);
+    ignore_unused_variable_warning(ptr);
+  }
+  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; const_constraints(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; a) {
+    T c(a);            &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// require const copy constructor&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; ptr &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;a; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// require const address of operator&lt;/span&gt;
+    ignore_unused_variable_warning(c);
+    ignore_unused_variable_warning(ptr);
+  }
+  T b;
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;関連項目&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.sgi.com/tech/stl/DefaultConstructible.html&#34; target=&#34;_blank&#34;&gt;Default Constructible&lt;/a&gt; and &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/assignable.html&#34;&gt;Assignable&lt;/a&gt;&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.lsc.nd.edu/~jsiek&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Assignable -- ファイル名戻し</title>
@@ -1397,444 +1497,6 @@ get_property(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const
 &lt;/ul&gt;
 &lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>dijkstra-example.cpp.md -- リンク切れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/example/dijkstra-example.cpp.html"/>
-      <id>88cfbc65641b1446baac2a70963f8a93b80ef7b9:archive/boost_docs/libs/graph/example/dijkstra-example.cpp.md</id>
-      <updated>2014-12-11 18:30:25 +0900</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/graph/example/dijkstra-example.cpp.md b/archive/boost_docs/libs/graph/example/dijkstra-example.cpp.md
-deleted file mode 100644
-index 7b20339..0000000
---- a/archive/boost_docs/libs/graph/example/dijkstra-example.cpp.md
-+++ /dev/null
-@@ -1,115 +0,0 @@
--#libs/graph/example/dijkstra-example.cpp
--
--```cpp
--//=======================================================================
--// Copyright 2001 Jeremy G. Siek, Andrew Lumsdaine, Lie-Quan Lee, 
--//
--// This file is part of the Boost Graph Library
--//
--// You should have received a copy of the License Agreement for the
--// Boost Graph Library along with the software; see the file LICENSE.
--// If not, contact Office of Research, Indiana University,
--// Bloomington, IN 47405.
--//
--// Permission to modify the code and to distribute the code is
--// granted, provided the text of this NOTICE is retained, a notice if
--// the code was modified is included with the above COPYRIGHT NOTICE
--// and with the COPYRIGHT NOTICE in the LICENSE file, and that the
--// LICENSE file is distributed with the modified code.
--//
--// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.
--// By way of example, but not limitation, Licensor MAKES NO
--// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY
--// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS
--// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS
--// OR OTHER RIGHTS.
--//=======================================================================
--#include &amp;lt;boost/config.hpp&amp;gt;
--#include &amp;lt;iostream&amp;gt;
--#include &amp;lt;fstream&amp;gt;
--
--#include &amp;lt;boost/graph/graph_traits.hpp&amp;gt;
--#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;
--#include &amp;lt;boost/graph/dijkstra_shortest_paths.hpp&amp;gt;
--
--using namespace boost;
--
--int
--main(int, char *[])
--{
--  typedef adjacency_list &amp;lt; listS, vecS, directedS,
--    no_property, property &amp;lt; edge_weight_t, int &amp;gt; &amp;gt; graph_t;
--  typedef graph_traits &amp;lt; graph_t &amp;gt;::vertex_descriptor vertex_descriptor;
--  typedef graph_traits &amp;lt; graph_t &amp;gt;::edge_descriptor edge_descriptor;
--  typedef std::pair&amp;lt;int, int&amp;gt; Edge;
--
--  const int num_nodes = 5;
--  enum nodes { A, B, C, D, E };
--  char name[] = &amp;#34;ABCDE&amp;#34;;
--  Edge edge_array[] = { Edge(A, C), Edge(B, B), Edge(B, D), Edge(B, E),
--    Edge(C, B), Edge(C, D), Edge(D, E), Edge(E, A), Edge(E, B)
--  };
--  int weights[] = { 1, 2, 1, 2, 7, 3, 1, 1, 1 };
--  int num_arcs = sizeof(edge_array) / sizeof(Edge);
--#if defined(BOOST_MSVC) &amp;amp;&amp;amp; BOOST_MSVC &amp;lt;= 1300
--  graph_t g(num_nodes);
--  property_map&amp;lt;graph_t, edge_weight_t&amp;gt;::type weightmap = get(edge_weight, g);
--  for (std::size_t j = 0; j &amp;lt; num_arcs; ++j) {
--    edge_descriptor e; bool inserted;
--    tie(e, inserted) = add_edge(edge_array[j].first, edge_array[j].second, g);
--    weightmap[e] = weights[j];
--  }
--#else
--  graph_t g(edge_array, edge_array + num_arcs, weights, num_nodes);
--  property_map&amp;lt;graph_t, edge_weight_t&amp;gt;::type weightmap = get(edge_weight, g);
--#endif
--  std::vector&amp;lt;vertex_descriptor&amp;gt; p(num_vertices(g));
--  std::vector&amp;lt;int&amp;gt; d(num_vertices(g));
--  vertex_descriptor s = vertex(A, g);
--
--#if defined(BOOST_MSVC) &amp;amp;&amp;amp; BOOST_MSVC &amp;lt;= 1300
--  // VC++ has trouble with the named parameters mechanism
--  property_map&amp;lt;graph_t, vertex_index_t&amp;gt;::type indexmap = get(vertex_index, g);
--  dijkstra_shortest_paths(g, s, &amp;amp;p[0], &amp;amp;d[0], weightmap, indexmap, 
--                          std::less&amp;lt;int&amp;gt;(), closed_plus&amp;lt;int&amp;gt;(), 
--                          std::numeric_limits&amp;lt;int&amp;gt;::max(), 0,
--                          default_dijkstra_visitor());
--#else
--  dijkstra_shortest_paths(g, s, predecessor_map(&amp;amp;p[0]).distance_map(&amp;amp;d[0]));
--#endif
--
--  std::cout &amp;lt;&amp;lt; &amp;#34;distances and parents:&amp;#34; &amp;lt;&amp;lt; std::endl;
--  graph_traits &amp;lt; graph_t &amp;gt;::vertex_iterator vi, vend;
--  for (tie(vi, vend) = vertices(g); vi != vend; ++vi) {
--    std::cout &amp;lt;&amp;lt; &amp;#34;distance(&amp;#34; &amp;lt;&amp;lt; name[*vi] &amp;lt;&amp;lt; &amp;#34;) = &amp;#34; &amp;lt;&amp;lt; d[*vi] &amp;lt;&amp;lt; &amp;#34;, &amp;#34;;
--    std::cout &amp;lt;&amp;lt; &amp;#34;parent(&amp;#34; &amp;lt;&amp;lt; name[*vi] &amp;lt;&amp;lt; &amp;#34;) = &amp;#34; &amp;lt;&amp;lt; name[p[*vi]] &amp;lt;&amp;lt; std::
--      endl;
--  }
--  std::cout &amp;lt;&amp;lt; std::endl;
--
--  std::ofstream dot_file(&amp;#34;figs/dijkstra-eg.dot&amp;#34;);
--
--  dot_file &amp;lt;&amp;lt; &amp;#34;digraph D {\n&amp;#34;
--    &amp;lt;&amp;lt; &amp;#34;  rankdir=LR\n&amp;#34;
--    &amp;lt;&amp;lt; &amp;#34;  size=\&amp;#34;4,3\&amp;#34;\n&amp;#34;
--    &amp;lt;&amp;lt; &amp;#34;  ratio=\&amp;#34;fill\&amp;#34;\n&amp;#34;
--    &amp;lt;&amp;lt; &amp;#34;  edge[style=\&amp;#34;bold\&amp;#34;]\n&amp;#34; &amp;lt;&amp;lt; &amp;#34;  node[shape=\&amp;#34;circle\&amp;#34;]\n&amp;#34;;
--
--  graph_traits &amp;lt; graph_t &amp;gt;::edge_iterator ei, ei_end;
--  for (tie(ei, ei_end) = edges(g); ei != ei_end; ++ei) {
--    graph_traits &amp;lt; graph_t &amp;gt;::edge_descriptor e = *ei;
--    graph_traits &amp;lt; graph_t &amp;gt;::vertex_descriptor
--      u = source(e, g), v = target(e, g);
--    dot_file &amp;lt;&amp;lt; name[u] &amp;lt;&amp;lt; &amp;#34; -&amp;gt; &amp;#34; &amp;lt;&amp;lt; name[v]
--      &amp;lt;&amp;lt; &amp;#34;[label=\&amp;#34;&amp;#34; &amp;lt;&amp;lt; get(weightmap, e) &amp;lt;&amp;lt; &amp;#34;\&amp;#34;&amp;#34;;
--    if (p[v] == u)
--      dot_file &amp;lt;&amp;lt; &amp;#34;, color=\&amp;#34;black\&amp;#34;&amp;#34;;
--    else
--      dot_file &amp;lt;&amp;lt; &amp;#34;, color=\&amp;#34;grey\&amp;#34;&amp;#34;;
--    dot_file &amp;lt;&amp;lt; &amp;#34;]&amp;#34;;
--  }
--  dot_file &amp;lt;&amp;lt; &amp;#34;}&amp;#34;;
--  return EXIT_SUCCESS;
--}
--```
--
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>family-tree-eg.cpp.md -- リンク切れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/example/family-tree-eg.cpp.html"/>
-      <id>88cfbc65641b1446baac2a70963f8a93b80ef7b9:archive/boost_docs/libs/graph/example/family-tree-eg.cpp.md</id>
-      <updated>2014-12-11 18:30:25 +0900</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/graph/example/family-tree-eg.cpp.md b/archive/boost_docs/libs/graph/example/family-tree-eg.cpp.md
-deleted file mode 100644
-index a9d44b4..0000000
---- a/archive/boost_docs/libs/graph/example/family-tree-eg.cpp.md
-+++ /dev/null
-@@ -1,73 +0,0 @@
--#libs/graph/example/family-tree-eg.cpp
--
--```cpp
--//=======================================================================
--// Copyright 2001 Jeremy G. Siek, Andrew Lumsdaine, Lie-Quan Lee, 
--//
--// This file is part of the Boost Graph Library
--//
--// You should have received a copy of the License Agreement for the
--// Boost Graph Library along with the software; see the file LICENSE.
--// If not, contact Office of Research, Indiana University,
--// Bloomington, IN 47405.
--//
--// Permission to modify the code and to distribute the code is
--// granted, provided the text of this NOTICE is retained, a notice if
--// the code was modified is included with the above COPYRIGHT NOTICE
--// and with the COPYRIGHT NOTICE in the LICENSE file, and that the
--// LICENSE file is distributed with the modified code.
--//
--// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.
--// By way of example, but not limitation, Licensor MAKES NO
--// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY
--// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS
--// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS
--// OR OTHER RIGHTS.
--//=======================================================================
--#include &amp;lt;boost/config.hpp&amp;gt;
--#include &amp;lt;iostream&amp;gt;
--#include &amp;lt;vector&amp;gt;
--#include &amp;lt;string&amp;gt;
--#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;
--#include &amp;lt;boost/tuple/tuple.hpp&amp;gt;
--enum family
--{ Jeanie, Debbie, Rick, John, Amanda, Margaret, Benjamin, N };
--int
--main()
--{
--  using namespace boost;
--  const char *name[] = { &amp;#34;Jeanie&amp;#34;, &amp;#34;Debbie&amp;#34;, &amp;#34;Rick&amp;#34;, &amp;#34;John&amp;#34;, &amp;#34;Amanda&amp;#34;,
--    &amp;#34;Margaret&amp;#34;, &amp;#34;Benjamin&amp;#34;
--  };
--
--  adjacency_list &amp;lt;&amp;gt; g(N);
--  add_edge(Jeanie, Debbie, g);
--  add_edge(Jeanie, Rick, g);
--  add_edge(Jeanie, John, g);
--  add_edge(Debbie, Amanda, g);
--  add_edge(Rick, Margaret, g);
--  add_edge(John, Benjamin, g);
--
--  graph_traits &amp;lt; adjacency_list &amp;lt;&amp;gt; &amp;gt;::vertex_iterator i, end;
--  graph_traits &amp;lt; adjacency_list &amp;lt;&amp;gt; &amp;gt;::adjacency_iterator ai, a_end;
--  property_map &amp;lt; adjacency_list &amp;lt;&amp;gt;, vertex_index_t &amp;gt;::type
--    index_map = get(vertex_index, g);
--
--  for (tie(i, end) = vertices(g); i != end; ++i) {
--    std::cout &amp;lt;&amp;lt; name[get(index_map, *i)];
--    tie(ai, a_end) = adjacent_vertices(*i, g);
--    if (ai == a_end)
--      std::cout &amp;lt;&amp;lt; &amp;#34; has no children&amp;#34;;
--    else
--      std::cout &amp;lt;&amp;lt; &amp;#34; is the parent of &amp;#34;;
--    for (; ai != a_end; ++ai) {
--      std::cout &amp;lt;&amp;lt; name[get(index_map, *ai)];
--      if (boost::next(ai) != a_end)
--        std::cout &amp;lt;&amp;lt; &amp;#34;, &amp;#34;;
--    }
--    std::cout &amp;lt;&amp;lt; std::endl;
--  }
--  return EXIT_SUCCESS;
--}
--```
--
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>libs/graph/example/dijkstra-example.cpp -- リンク切れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/examples/dijkstra-example.cpp.html"/>
-      <id>88cfbc65641b1446baac2a70963f8a93b80ef7b9:archive/boost_docs/libs/graph/examples/dijkstra-example.cpp.md</id>
-      <updated>2014-12-11 18:30:25 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;libs/graph/example/dijkstra-example.cpp&lt;/h1&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Copyright 2001 Jeremy G. Siek, Andrew Lumsdaine, Lie-Quan Lee, &lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// This file is part of the Boost Graph Library&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// You should have received a copy of the License Agreement for the&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Boost Graph Library along with the software; see the file LICENSE.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// If not, contact Office of Research, Indiana University,&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Bloomington, IN 47405.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Permission to modify the code and to distribute the code is&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// granted, provided the text of this NOTICE is retained, a notice if&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// the code was modified is included with the above COPYRIGHT NOTICE&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// and with the COPYRIGHT NOTICE in the LICENSE file, and that the&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSE file is distributed with the modified code.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// By way of example, but not limitation, Licensor MAKES NO&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR OTHER RIGHTS.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/config.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;fstream&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/graph_traits.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/dijkstra_shortest_paths.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;
-&lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;[])
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; adjacency_list &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; listS, vecS, directedS,
-    no_property, property &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;edge_weight_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor vertex_descriptor;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;edge_descriptor edge_descriptor;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;pair&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; Edge;
-
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; num_nodes &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;enum&lt;/span&gt; nodes { A, B, C, D, E };
-  &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; name[] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ABCDE&#34;&lt;/span&gt;;
-  Edge edge_array[] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; { Edge(A, C), Edge(B, B), Edge(B, D), Edge(B, E),
-    Edge(C, B), Edge(C, D), Edge(D, E), Edge(E, A), Edge(E, B)
-  };
-  &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; weights[] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt; };
-  &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; num_arcs &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;sizeof&lt;/span&gt;(edge_array) &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;sizeof&lt;/span&gt;(Edge);
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#if defined(BOOST_MSVC) &amp;amp;&amp;amp; BOOST_MSVC &amp;lt;= 1300&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; g(num_nodes);
-  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;edge_weight_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type weightmap &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(edge_weight, g);
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt; j &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; j &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; num_arcs; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;j) {
-    edge_descriptor e; &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; inserted;
-    tie(e, inserted) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; add_edge(edge_array[j].first, edge_array[j].second, g);
-    weightmap[e] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; weights[j];
-  }
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#else&lt;/span&gt;
-  &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; g(edge_array, edge_array &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; num_arcs, weights, num_nodes);
-  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;edge_weight_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type weightmap &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(edge_weight, g);
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#endif&lt;/span&gt;
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;vertex_descriptor&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; p(num_vertices(g));
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; d(num_vertices(g));
-  vertex_descriptor s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertex(A, g);
-
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#if defined(BOOST_MSVC) &amp;amp;&amp;amp; BOOST_MSVC &amp;lt;= 1300&lt;/span&gt;
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// VC++ has trouble with the named parameters mechanism&lt;/span&gt;
-  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;vertex_index_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type indexmap &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(vertex_index, g);
-  dijkstra_shortest_paths(g, s, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;p[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;d[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], weightmap, indexmap, 
-                          std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;less&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(), closed_plus&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(), 
-                          std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;max(), &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;,
-                          default_dijkstra_visitor());
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#else&lt;/span&gt;
-  dijkstra_shortest_paths(g, s, predecessor_map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;p[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;]).distance_map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;d[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;]));
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#endif&lt;/span&gt;
-
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;distances and parents:&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-  graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_iterator vi, vend;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (tie(vi, vend) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertices(g); vi &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; vend; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;vi) {
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;distance(&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;) = &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; d[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;, &#34;&lt;/span&gt;;
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;parent(&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;) = &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[p[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi]] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;
-      endl;
-  }
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ofstream dot_file(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;figs/dijkstra-eg.dot&#34;&lt;/span&gt;);
-
-  dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;digraph D {&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  rankdir=LR&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  size=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;4,3&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  ratio=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;fill&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  edge[style=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;bold&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  node[shape=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;circle&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;]&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;;
-
-  graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;edge_iterator ei, ei_end;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (tie(ei, ei_end) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; edges(g); ei &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; ei_end; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;ei) {
-    graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;edge_descriptor e &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;ei;
-    graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor
-      u &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; source(e, g), v &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; target(e, g);
-    dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[u] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; -&amp;gt; &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[v]
-      &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;[label=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; get(weightmap, e) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (p[v] &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; u)
-      dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;, color=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;black&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt;
-      dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;, color=&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;grey&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\&#34;&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;;
-    dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;]&#34;&lt;/span&gt;;
-  }
-  dot_file &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;}&#34;&lt;/span&gt;;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; EXIT_SUCCESS;
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>libs/graph/example/family-tree-eg.cpp -- リンク切れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/examples/family-tree-eg.cpp.html"/>
-      <id>88cfbc65641b1446baac2a70963f8a93b80ef7b9:archive/boost_docs/libs/graph/examples/family-tree-eg.cpp.md</id>
-      <updated>2014-12-11 18:30:25 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;libs/graph/example/family-tree-eg.cpp&lt;/h1&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Copyright 2001 Jeremy G. Siek, Andrew Lumsdaine, Lie-Quan Lee, &lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// This file is part of the Boost Graph Library&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// You should have received a copy of the License Agreement for the&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Boost Graph Library along with the software; see the file LICENSE.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// If not, contact Office of Research, Indiana University,&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Bloomington, IN 47405.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Permission to modify the code and to distribute the code is&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// granted, provided the text of this NOTICE is retained, a notice if&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// the code was modified is included with the above COPYRIGHT NOTICE&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// and with the COPYRIGHT NOTICE in the LICENSE file, and that the&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSE file is distributed with the modified code.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// By way of example, but not limitation, Licensor MAKES NO&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR OTHER RIGHTS.&lt;/span&gt;
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/config.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;vector&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/tuple/tuple.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;enum&lt;/span&gt; family
-{ Jeanie, Debbie, Rick, John, Amanda, Margaret, Benjamin, N };
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;
-&lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;name[] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; { &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Jeanie&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Debbie&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Rick&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;John&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Amanda&#34;&lt;/span&gt;,
-    &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Margaret&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Benjamin&#34;&lt;/span&gt;
-  };
-
-  adjacency_list &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; g(N);
-  add_edge(Jeanie, Debbie, g);
-  add_edge(Jeanie, Rick, g);
-  add_edge(Jeanie, John, g);
-  add_edge(Debbie, Amanda, g);
-  add_edge(Rick, Margaret, g);
-  add_edge(John, Benjamin, g);
-
-  graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; adjacency_list &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_iterator i, end;
-  graph_traits &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; adjacency_list &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;adjacency_iterator ai, a_end;
-  property_map &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; adjacency_list &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;vertex_index_t&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type
-    index_map &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(vertex_index, g);
-
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (tie(i, end) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertices(g); i &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; end; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i) {
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[get(index_map, &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;i)];
-    tie(ai, a_end) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; adjacent_vertices(&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;i, g);
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (ai &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; a_end)
-      std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; has no children&#34;&lt;/span&gt;;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt;
-      std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; is the parent of &#34;&lt;/span&gt;;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (; ai &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; a_end; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;ai) {
-      std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[get(index_map, &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;ai)];
-      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;next(ai) &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; a_end)
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;, &#34;&lt;/span&gt;;
-    }
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-  }
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; EXIT_SUCCESS;
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
