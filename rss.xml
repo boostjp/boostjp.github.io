@@ -2,9 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-15T15:39:16.526949</updated>
-  <id>527a012f-1391-4b93-8b23-8c3ee48ce2a8</id>
+  <updated>2014-12-15T15:45:26.943990</updated>
+  <id>07a9963c-333d-4386-8d60-2d3d454741eb</id>
 
+  
+    <entry>
+      <title>MultiPassInputIterator -- fix typo</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/MultiPassInputIterator.html"/>
+      <id>e5e76dc9b7a7e384c03c1b7f44e3b55387ab5ae8:archive/boost_docs/libs/utility/MultiPassInputIterator.md</id>
+      <updated>2014-12-15 15:45:21 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;MultiPassInputIterator&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/MultiPassInputIterator.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/utility/MultiPassInputIterator.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;このコンセプトは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;を精製し、範囲を複数のパスで通るようイテレータを使用してもよいという要件を追加しており、&lt;code&gt;it1 == it2&lt;/code&gt;かつ&lt;code&gt;++it1 == ++it2&lt;/code&gt;のとき、&lt;code&gt;it1&lt;/code&gt;は間接参照可能である。このMulti-Pass Input Iteratorは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;によく似ている。唯一の違いは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;の&lt;code&gt;reference&lt;/code&gt;型が&lt;code&gt;value_type&amp;amp;&lt;/code&gt;であることを要求するのに対し、MultiPassInputIteratorは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;のように&lt;code&gt;reference&lt;/code&gt;が&lt;code&gt;value_type&lt;/code&gt;に変換できるということである。&lt;/p&gt;
+&lt;h2&gt;設計ノート&lt;/h2&gt;
+&lt;p&gt;Valentin Bonnardからのコメント：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;私は、Multi-Pass Input Iteratorの導入は、正しい解決ではないと考える。これと同様に、Multi-Pass Bidirectional IteratorやMulti-Pass Random Access Iteratorを定義したいと思うだろうか？私は思わない、確実に。これは問題を混乱させるだけだ。この問題は、既存のイテレータ階層に含まれている移動性(movavility)と変更性(modifiability)と左辺値らしさを混ぜ合わせたものであり、これらは明確に独立している。
+
+Forward、Bidirectional、Random Accessは移動性に関しての用語であり、それ以外の意味に使用すべきではない。イテレータが不変(immutable)か変更可能(mutable)かは、完全に直交する。左辺値のイテレータもまた、不変性(immutability)は直交する。これらのクリーンなコンセプトでは、Multi-Pass Input Iteratorは素直にForward Iteratorと呼べる。
+
+他の変換は以下のようになる：
+
+std::Forward Iterator -&amp;gt; ForwardIterator &amp;amp; Lvalue Iterator
+
+std::Bidirectionnal Iterator -&amp;gt; Bidirectionnal Iterator &amp;amp; Lvalue Iterator
+
+std::Random Access Iterator -&amp;gt; Random Access Iterator &amp;amp; Lvalue Iterator
+
+私のForward Iteratorで許可しておらず、std::Forward Iteratorでは許可されている唯一の操作は「&amp;amp;*it」である。私は、「&amp;amp;*」はジェネリックコードではほとんど必要ないと考える。
+&lt;/code&gt;&lt;/pre&gt;
+Jeremy Siekからの返信：&lt;/p&gt;
+&lt;p&gt;Valentinの分析は正しい。もちろん、ここには後方互換性の問題がある。現在のSTLの実装は、古いForward Iteratorの定義に基いている。これに対するアクションの正しい道筋は、標準C++のForward Iteratorやその他の定義を変更することである。そうすれば、我々はMulti-Pass Input Iteratorをなくすことができる。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>MultiPassInputIterator -- MultiPassInputIterator : 翻訳元ドキュメントを記載</title>
@@ -564,139 +604,6 @@ Jeremy Siekからの返信：&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>AdjacencyGraph -- Boost.Graph : AdjacencyGraphを追加。 また、それに伴い、関連するコンセプトのドキュメントとしてMultiPassInputIteratorを追加。</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html"/>
-      <id>1a43c14ee3797527decd4b9acd08a66b2f344982:archive/boost_docs/libs/graph/AdjacencyGraph.md</id>
-      <updated>2014-12-15 15:31:10 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;AdjacencyGraph&lt;/h1&gt;
-&lt;p&gt;AdjacencyGraph コンセプトは、グラフ中の頂点への隣接頂点の効率的なアクセス のためのインターフェースを供給する。これは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/IncidenceGraph.html&#34;&gt;IncidenceGraph&lt;/a&gt; コンセプト (出辺の終点が隣接頂点である) と非常に良く似ている。 いくつかの状況では頂点への関心のみがあり、しかし一方、他の状況では辺も同様に重要になるため、両者のコンセプトが供給された。&lt;/p&gt;
-&lt;h2&gt;Refinement of&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Graph.html&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;表記&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;識別子&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;G&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;グラフのモデルの型。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;g&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型が &lt;code&gt;G&lt;/code&gt; のオブジェクト。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;v&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型が &lt;code&gt;boost::graph_traits&amp;lt;G&amp;gt;::vertex_descriptor&lt;/code&gt; のオブジェクト。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;関連型&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::graph_traits&amp;lt;G&amp;gt;::traversal_category&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;このタグ型は &lt;code&gt;adjacency_graph_tag&lt;/code&gt; に変換可能でなければならない。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::graph_traits&amp;lt;G&amp;gt;::adjacency_iterator&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;頂点 &lt;code&gt;v&lt;/code&gt; のための隣接イテレータは &lt;code&gt;v&lt;/code&gt; に隣接した頂点へのアクセスを提供する。そのため隣接イテレータの値型はそのグラフの頂点記述子型である。 隣接イテレータは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/MultiPassInputIterator.html&#34;&gt;MultiPassInputIterator&lt;/a&gt; の要求を満たしていなければならない。&lt;/p&gt;
-&lt;h2&gt;妥当な式&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;式&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;adjacent_vertices(v, g)&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;グラフ &lt;code&gt;g&lt;/code&gt; 中の頂点 &lt;code&gt;v&lt;/code&gt; に隣接している頂点へのアクセスを提供 するイテレータ範囲を返す。&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html#note1&#34;&gt;[1]&lt;/a&gt;&lt;br /&gt; 返却型: &lt;code&gt;std::pair&amp;lt;adjacency_iterator, adjacency_iterator&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;計算量の保証&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;adjacent_vertices()&lt;/code&gt; 関数は定数時間内に終了するはずである。&lt;/p&gt;
-&lt;h2&gt;関連項目&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Graph.html&#34;&gt;Graphコンセプト&lt;/a&gt;, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;コンセプトチェックするクラス&lt;/h2&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;G&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; AdjacencyGraphConcept
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;G&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;adjacency_iterator
-    adjacency_iterator;
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;constraints&lt;/span&gt;() {
-    function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; IncidenceGraphConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;G&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-    function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; MultiPassInputIteratorConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;adjacency_iterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-
-    p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; adjacent_vertices(v, g);
-    v &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;p.first;
-    const_constraints(g);
-  }
-  &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;const_constraints&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; G&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g) {
-    p &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; adjacent_vertices(v, g);
-  }
-  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;pair&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;adjacency_iterator,adjacency_iterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; p;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;G&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor v;
-  G g;
-};
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;設計原理&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/IncidenceGraph.html&#34;&gt;IncidenceGraph&lt;/a&gt; が同じ (それ以上の) 機能を実際に含んでいるので、AdjacencyGraph コンセプトはいくぶん軽薄である。 &lt;code&gt;adjacent_vertices()&lt;/code&gt; が &lt;code&gt;out_edges()&lt;/code&gt; よりも使用すると便利な状況があるので AdjacencyGraph コンセプトは存在する。 グラフ・クラスを構築しており、隣接イテレータを作成する余分な仕事を行いたくない場合は、恐れを持たないでいただきたい。 出辺イテレータから隣接イテレータを作成するために使用できる&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;と名付けられたアダプタ・クラスがある。&lt;/p&gt;
-&lt;h2&gt;注釈&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/note1&#34; name=&#34;note1&#34;&gt;[1]&lt;/a&gt; &lt;strong&gt;multigraph&lt;/strong&gt; (多数の辺が同じ二つの頂点を接続できる) の 場合は、&lt;code&gt;adjacent_vertices()&lt;/code&gt; 関数によって返されたイテレータが各隣接頂点を一度含む範囲にアクセスするかどうか、また &lt;code&gt;out_edges()&lt;/code&gt; 関数 のふるまいと一致し、二度以上隣接した頂点を含むことがある範囲にアクセスすべき かどうかとしての問題が持ち出される。 この決定はグラフ・アルゴリズムの実装と共により多くの経験を考慮して再検討される必要があるかもしれないが、今のところふるまいは &lt;code&gt;out_edges()&lt;/code&gt; のそれと一致すると定義される。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>MultiPassInputIterator -- Boost.Graph : AdjacencyGraphを追加。 また、それに伴い、関連するコンセプトのドキュメントとしてMultiPassInputIteratorを追加。</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/MultiPassInputIterator.html"/>
-      <id>1a43c14ee3797527decd4b9acd08a66b2f344982:archive/boost_docs/libs/utility/MultiPassInputIterator.md</id>
-      <updated>2014-12-15 15:31:10 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;MultiPassInputIterator&lt;/h1&gt;
-&lt;p&gt;このコンセプトは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;を精製し、範囲を複数のパスで通るようイテレータを使用してもよいという要件を追加しており、&lt;code&gt;it1 == it2&lt;/code&gt;かつ&lt;code&gt;++it1 == ++it2&lt;/code&gt;のとき、&lt;code&gt;it1&lt;/code&gt;は間接参照可能である。このMulti-Pass Input Iteratorは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;によく似ている。唯一の違いは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;の&lt;code&gt;reference&lt;/code&gt;型が&lt;code&gt;value_type&amp;amp;&lt;/code&gt;であることを要求するのに対し、MultiPassInputIteratorは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;のように&lt;code&gt;reference&lt;/code&gt;が&lt;code&gt;value_type&lt;/code&gt;に変換できるということである。&lt;/p&gt;
-&lt;h2&gt;設計ノート&lt;/h2&gt;
-&lt;p&gt;Valentin Bonnardからのコメント：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;私は、Multi-Pass Input Iteratorの導入は、正しい解決ではないと考える。これと同様に、Multi-Pass Bidirectional IteratorやMulti-Pass Random Access Iteratorを定義したいと思うだろうか？私は思わない、確実に。これは問題を混乱させるだけだ。この問題は、既存のイテレータ階層に含まれている移動性(movavility)と変更性(modifiability)と左辺値らしさを混ぜ合わせたものであり、これらは明確に独立している。&lt;/p&gt;
-&lt;p&gt;Forward、Bidirectional、Random Accessは移動性に関しての用語であり、それ以外の意味に使用すべきではない。イテレータが不変(immutable)か変更可能(mutable)かは、完全に直交する。左辺値のイテレータもまた、不変性(immutability)は直交する。これらのクリーンなコンセプトでは、Multi-Pass Input Iteratorは素直のForward Iteratorと呼べる。&lt;/p&gt;
-&lt;p&gt;他の変換は以下のようになる：
-std::Forward Iterator -&amp;gt; ForwardIterator &amp;amp; Lvalue Iterator
-std::Bidirectionnal Iterator -&amp;gt; Bidirectionnal Iterator &amp;amp; Lvalue Iterator
-std::Random Access Iterator -&amp;gt; Random Access Iterator &amp;amp; Lvalue Iterator&lt;/p&gt;
-&lt;p&gt;私のForward Iteratorで許可しておらず、std::Forward Iteratorでは許可されている唯一の操作は&lt;code&gt;&amp;amp;*it&lt;/code&gt;である。私は、&lt;code&gt;&amp;amp;*&lt;/code&gt;はジェネリックコードではほとんど必要ないと考える。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Jeremy Siekからの返信：&lt;/p&gt;
-&lt;p&gt;Valentinの分析は正しい。もちろん、ここには後方互換性の問題がある。現在のSTLの実装は、古いForward Iteratorの定義に基いている。これに対するアクションの正しい道筋は、標準C++のForward Iteratorやその他の定義を変更することである。そうすれば、我々はMulti-Pass Input Iteratorをなくすことができる。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
       
       <author>
