@@ -2,9 +2,86 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-16T00:19:25.965637</updated>
-  <id>915c8e7f-14ce-4584-a1f4-3f88c87ae664</id>
+  <updated>2014-12-16T00:20:33.921373</updated>
+  <id>ef4f4acc-e9dc-4d4b-a581-f1c10ac212ac</id>
 
+  
+    <entry>
+      <title>bfs_visitor&lt;EventVisitorList&gt; -- リンクミスを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/bfs_visitor.html"/>
+      <id>cd17c119c08a478a58b5c2d57569c4bcd5522dd5:archive/boost_docs/libs/graph/bfs_visitor.md</id>
+      <updated>2014-12-16 00:20:21 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;bfs_visitor&amp;lt;EventVisitorList&amp;gt;&lt;/h1&gt;
+&lt;p&gt;このクラスは、(&lt;code&gt;std::pair&lt;/code&gt; を使って作られる) &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/EventVisitor.html&#34;&gt;EventVisitor&lt;/a&gt; のリストを &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFSVisitor&lt;/a&gt; に変換するアダプタである。&lt;/p&gt;
+&lt;h2&gt;コード例&lt;/h2&gt;
+&lt;p&gt;以下は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/examples/bfs.cpp.html&#34;&gt;examples/bfs.cpp&lt;/a&gt; からの抜粋である。ここでは 3 つのイベントビジタを結合して BFS ビジタを作っている。関数 &lt;code&gt;boost::record_distances&lt;/code&gt; 、 &lt;code&gt;boost::record_predecessors&lt;/code&gt; 、 &lt;code&gt;copy_graph&lt;/code&gt; は全て、イベントビジタを作る関数だ。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Construct graph G and obtain the source vertex s ...&lt;/span&gt;
+
+boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;breadth_first_search(G, s, 
+ boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_bfs_visitor(
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_pair(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;record_distances(d, boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_tree_edge()),
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_pair(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;record_predecessors(p.begin(), 
+                                            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_tree_edge()),
+                 copy_graph(G_copy, boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_examine_edge())))) );
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;モデル&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFSVisitor&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;テンプレートパラメータ&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;パラメータ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;th&gt;デフォルト&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;EventVisitorList&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;std::pair&lt;/code&gt; で作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/EventVisitor.html&#34;&gt;EventVisitor&lt;/a&gt; のリスト。&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/null_visitor.html&#34;&gt;&lt;code&gt;null_visitor&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;定義場所&lt;/h2&gt;
+&lt;p&gt;boost/graph/breadth_first_search.hpp&lt;/p&gt;
+&lt;h2&gt;メンバ関数&lt;/h2&gt;
+&lt;p&gt;このクラスは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFSVisitor&lt;/a&gt; に要求される全てのメンバ関数を実装している。それぞれの関数で、適切なイベントが EventVisitorList の中の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/EventVisitor.html&#34;&gt;EventVisitor&lt;/a&gt; にディスパッチされる。&lt;/p&gt;
+&lt;h2&gt;非メンバ関数&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;関数&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class EventVisitorList&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;bfs_visitor&amp;lt;EventVisitorList&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;make_bfs_visitor(EventVisitorList ev_list);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;イベントビジタのリストを BFS ビジタに適合させたものを返す。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;関連項目&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/visitor_concepts.html&#34;&gt;Visitorコンセプト&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;イベントビジタ: &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/predecessor_recorder.html&#34;&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/a&gt; 、 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/distance_recorder.html&#34;&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/a&gt; 、 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/time_stamper.html&#34;&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/a&gt; 、 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/property_writer.html&#34;&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/a&gt; 。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>the Boost Graph Library -- Boost.Graph : bfs_visitorを追加</title>
@@ -1167,88 +1244,6 @@ Bellman-Ford アルゴリズム [&lt;a href=&#34;http://boostjp.github.io/archiv
 &lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>bellman_ford_shortest_paths -- fix tab</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.html"/>
-      <id>ddc7a4e6c9bd10bb58e41423fcd1f9769e69cadf:archive/boost_docs/libs/graph/bellman_ford_shortest_paths.md</id>
-      <updated>2014-12-15 18:04:25 +0900</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.md b/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.md
-index 1c8b5ff..ad44040 100644
---- a/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.md
-+++ b/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.md
-@@ -7,9 +7,9 @@ bool bellman_ford_shortest_paths(EdgeListGraph&amp;amp; g, Size N,
- 
- // 名前無しパラメータバージョン
- template &amp;lt;class EdgeListGraph, class Size, class WeightMap,
--	  class PredecessorMap, class DistanceMap,
--	  class BinaryFunction, class BinaryPredicate,
--	  class BellmanFordVisitor&amp;gt;
-+      class PredecessorMap, class DistanceMap,
-+      class BinaryFunction, class BinaryPredicate,
-+      class BellmanFordVisitor&amp;gt;
- bool bellman_ford_shortest_paths(EdgeListGraph&amp;amp; g, Size N, 
-   WeightMap weight, PredecessorMap pred, DistanceMap distance, 
-   BinaryFunction combine, BinaryPredicate compare, BellmanFordVisitor v)
-@@ -61,36 +61,36 @@ BELLMAN-FORD(G)
- 
- ##パラメータ
- - IN: `EdgeListGraph&amp;amp; g`
--	- 型が [Edge List Graph](./EdgeListGraph.md) のモデルの有向グラフまたは無向グラフでなければならない。
-+    - 型が [Edge List Graph](./EdgeListGraph.md) のモデルの有向グラフまたは無向グラフでなければならない。
- 
- - IN: `Size N`
--	- グラフ中の頂点の数。型 `Size` は汎整数型でなければならない。
-+    - グラフ中の頂点の数。型 `Size` は汎整数型でなければならない。
- 
- 
- ##名前付きパラメータ
- - IN: `weight_map(WeightMap w)`
--	- グラフ中の各辺の重み　(そして「長さ」もしくは「コスト」として知られる)。 `WeightMap` の型は [Readable Property Map](./ReadablePropertyMap.md) のモデルでなければならない。このプロパティ・マップのキー型はグラフの辺記述子でなければならない。重みマップの値型は距離マップの値型を伴った Addable でなければならない。
--	- デフォルト: `get(edge_weight, g)`
-+    - グラフ中の各辺の重み　(そして「長さ」もしくは「コスト」として知られる)。 `WeightMap` の型は [Readable Property Map](./ReadablePropertyMap.md) のモデルでなければならない。このプロパティ・マップのキー型はグラフの辺記述子でなければならない。重みマップの値型は距離マップの値型を伴った Addable でなければならない。
-+    - デフォルト: `get(edge_weight, g)`
- 
- - OUT: `predecessor_map(PredecessorMap p_map)`
--	- 先行点マップ (predecessor map) は最小全域木中に辺を記録する。 アルゴリズムの完了時に、`V` 中の全ての `u` のための辺 `(p[u],u)` は最小全域木中にある。もし `p[u] = u` なら `u` は始点かまたは始点から到達不能な頂点である。 `PredecessorMap` の型はキーと頂点の型がグラフの頂点記述子型と同じ [Read/Write Property Map](./ReadWritePropertyMap.md) でなければならない。
--	- デフォルト: `dummy_property_map`
-+    - 先行点マップ (predecessor map) は最小全域木中に辺を記録する。 アルゴリズムの完了時に、`V` 中の全ての `u` のための辺 `(p[u],u)` は最小全域木中にある。もし `p[u] = u` なら `u` は始点かまたは始点から到達不能な頂点である。 `PredecessorMap` の型はキーと頂点の型がグラフの頂点記述子型と同じ [Read/Write Property Map](./ReadWritePropertyMap.md) でなければならない。
-+    - デフォルト: `dummy_property_map`
- 
- - IN/OUT: `distance_map(DistanceMap d)`
--	- グラフ `g` 中の始点から各頂点への最短経路の重みは、このプロパティ・マップ中に記録される。`DistanceMap` の型は [Read/Write Property Map](./ReadWritePropertyMap.md) のモデルでなければならない。プロパティ・マップのキー型は グラフの頂点記述子型でなければならず、距離マップの値型は [Less Than Comparable](http://www.sgi.com/tech/stl/LessThanComparable.html) でなければならない。
--	- デフォルト: `get(vertex_distance, g)`
-+    - グラフ `g` 中の始点から各頂点への最短経路の重みは、このプロパティ・マップ中に記録される。`DistanceMap` の型は [Read/Write Property Map](./ReadWritePropertyMap.md) のモデルでなければならない。プロパティ・マップのキー型は グラフの頂点記述子型でなければならず、距離マップの値型は [Less Than Comparable](http://www.sgi.com/tech/stl/LessThanComparable.html) でなければならない。
-+    - デフォルト: `get(vertex_distance, g)`
- 
- - IN: `visitor(BellmanFordVisitor v)`
--	- ビジタ・オブジェクトで、その型は [Bellman-Ford Visitor](./BellmanFordVisitor.md) のモデルでなければならない。ビジタ・オブジェクトは値渡しされる [[1]](#note_1)。
--	- デフォルト: `bellman_visitor&amp;lt;null_visitor&amp;gt;`
-+    - ビジタ・オブジェクトで、その型は [Bellman-Ford Visitor](./BellmanFordVisitor.md) のモデルでなければならない。ビジタ・オブジェクトは値渡しされる [[1]](#note_1)。
-+    - デフォルト: `bellman_visitor&amp;lt;null_visitor&amp;gt;`
- 
- - IN: `distance_combine(BinaryFunction combine)`
--	- この関数オブジェクトはリラックス (減少) 段階中で、加算の役割を置き換える。 第一引数の型は距離マップの値型に一致していなければならず、第二引数の型は重みマップの値型に一致していなければならない。 結果型は距離マップの値型と同じでなければならない。
--	- デフォルト:`std::plus&amp;lt;D&amp;gt;` ここで `D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type` とする。
-+    - この関数オブジェクトはリラックス (減少) 段階中で、加算の役割を置き換える。 第一引数の型は距離マップの値型に一致していなければならず、第二引数の型は重みマップの値型に一致していなければならない。 結果型は距離マップの値型と同じでなければならない。
-+    - デフォルト:`std::plus&amp;lt;D&amp;gt;` ここで `D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type` とする。
- 
- - IN: `distance_compare(BinaryPredicate compare)`
--	- この関数オブジェクトはリラックス (減少) 段階中で、距離を比較する less-than (`&amp;lt;`) 演算子の役割を置き換える。引数の型は距離マップの値型に一致していなければならない。 
--	- デフォルト: `std::less&amp;lt;D&amp;gt;` ここで `D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type` とする。
-+    - この関数オブジェクトはリラックス (減少) 段階中で、距離を比較する less-than (`&amp;lt;`) 演算子の役割を置き換える。引数の型は距離マップの値型に一致していなければならない。 
-+    - デフォルト: `std::less&amp;lt;D&amp;gt;` ここで `D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type` とする。
- 
- 
- ##計算量
-&lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
         <name>Akira Takahashi</name>
