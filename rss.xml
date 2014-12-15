@@ -2,9 +2,49 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-15T15:36:00.421405</updated>
-  <id>ed90ce69-1473-496b-b86e-41f2df6e1daa</id>
+  <updated>2014-12-15T15:39:16.526949</updated>
+  <id>527a012f-1391-4b93-8b23-8c3ee48ce2a8</id>
 
+  
+    <entry>
+      <title>MultiPassInputIterator -- MultiPassInputIterator : 翻訳元ドキュメントを記載</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/MultiPassInputIterator.html"/>
+      <id>5e33ba6aef33c6ec3e8907339750871f078c5527:archive/boost_docs/libs/utility/MultiPassInputIterator.md</id>
+      <updated>2014-12-15 15:39:10 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;MultiPassInputIterator&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/MultiPassInputIterator.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/utility/MultiPassInputIterator.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;このコンセプトは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;を精製し、範囲を複数のパスで通るようイテレータを使用してもよいという要件を追加しており、&lt;code&gt;it1 == it2&lt;/code&gt;かつ&lt;code&gt;++it1 == ++it2&lt;/code&gt;のとき、&lt;code&gt;it1&lt;/code&gt;は間接参照可能である。このMulti-Pass Input Iteratorは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;によく似ている。唯一の違いは、&lt;a href=&#34;http://www.sgi.com/tech/stl/ForwardIterator.hmtl&#34; target=&#34;_blank&#34;&gt;Forward Iterator&lt;/a&gt;の&lt;code&gt;reference&lt;/code&gt;型が&lt;code&gt;value_type&amp;amp;&lt;/code&gt;であることを要求するのに対し、MultiPassInputIteratorは&lt;a href=&#34;http://www.sgi.com/tech/stl/InputIterator.html&#34; target=&#34;_blank&#34;&gt;Input Iterator&lt;/a&gt;のように&lt;code&gt;reference&lt;/code&gt;が&lt;code&gt;value_type&lt;/code&gt;に変換できるということである。&lt;/p&gt;
+&lt;h2&gt;設計ノート&lt;/h2&gt;
+&lt;p&gt;Valentin Bonnardからのコメント：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;私は、Multi-Pass Input Iteratorの導入は、正しい解決ではないと考える。これと同様に、Multi-Pass Bidirectional IteratorやMulti-Pass Random Access Iteratorを定義したいと思うだろうか？私は思わない、確実に。これは問題を混乱させるだけだ。この問題は、既存のイテレータ階層に含まれている移動性(movavility)と変更性(modifiability)と左辺値らしさを混ぜ合わせたものであり、これらは明確に独立している。
+
+Forward、Bidirectional、Random Accessは移動性に関しての用語であり、それ以外の意味に使用すべきではない。イテレータが不変(immutable)か変更可能(mutable)かは、完全に直交する。左辺値のイテレータもまた、不変性(immutability)は直交する。これらのクリーンなコンセプトでは、Multi-Pass Input Iteratorは素直のForward Iteratorと呼べる。
+
+他の変換は以下のようになる：
+
+std::Forward Iterator -&amp;gt; ForwardIterator &amp;amp; Lvalue Iterator
+
+std::Bidirectionnal Iterator -&amp;gt; Bidirectionnal Iterator &amp;amp; Lvalue Iterator
+
+std::Random Access Iterator -&amp;gt; Random Access Iterator &amp;amp; Lvalue Iterator
+
+私のForward Iteratorで許可しておらず、std::Forward Iteratorでは許可されている唯一の操作は「&amp;amp;*it」である。私は、「&amp;amp;*」はジェネリックコードではほとんど必要ないと考える。
+&lt;/code&gt;&lt;/pre&gt;
+Jeremy Siekからの返信：&lt;/p&gt;
+&lt;p&gt;Valentinの分析は正しい。もちろん、ここには後方互換性の問題がある。現在のSTLの実装は、古いForward Iteratorの定義に基いている。これに対するアクションの正しい道筋は、標準C++のForward Iteratorやその他の定義を変更することである。そうすれば、我々はMulti-Pass Input Iteratorをなくすことができる。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>MultiPassInputIterator -- 引用のhtmlへの変換があまり見やすくなかったので、コードブロックに変更</title>
@@ -658,117 +698,6 @@ std::Random Access Iterator -&amp;gt; Random Access Iterator &amp;amp; Lvalue It
 &lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
 &lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Assignable -- 不要なサフィックスを削除</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/Assignable.html"/>
-      <id>be67bb5fe50db1c053d0ee6a148c9d7dc474bd8d:archive/boost_docs/libs/utility/Assignable.md</id>
-      <updated>2014-12-15 14:19:20 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Assignable&lt;/h1&gt;
-&lt;h2&gt;説明&lt;/h2&gt;
-&lt;p&gt;その型のオブジェクトから、その型の他のオブジェクトに代入が可能である場合、その型はAssignableである。&lt;/p&gt;
-&lt;h2&gt;表記&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;T&lt;/code&gt;はAssignableモデルの型&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;t&lt;/code&gt;は&lt;code&gt;T&lt;/code&gt;型のオブジェクト&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;u&lt;/code&gt;は&lt;code&gt;T&lt;/code&gt;型のオブジェクト、もしくは可能であれば&lt;code&gt;const T&lt;/code&gt;型のオブジェクト&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;定義&lt;/h2&gt;
-&lt;h2&gt;妥当な式&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;名前&lt;/th&gt;
-&lt;th&gt;式&lt;/th&gt;
-&lt;th&gt;戻り値の型&lt;/th&gt;
-&lt;th&gt;意味論&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;代入&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;t = u&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&amp;amp;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;t&lt;/code&gt;は&lt;code&gt;u&lt;/code&gt;と同等である&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;モデル&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;int&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;std::pair&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;関連項目&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.sgi.com/tech/stl/DefaultConstructible.html&#34; target=&#34;_blank&#34;&gt;DefaultConstructible&lt;/a&gt; and &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/CopyConstructible.html&#34;&gt;CopyConstructible&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.lsc.nd.edu/~jsiek&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Assignable_a.md -- 不要なサフィックスを削除</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/utility/Assignable_a.html"/>
-      <id>be67bb5fe50db1c053d0ee6a148c9d7dc474bd8d:archive/boost_docs/libs/utility/Assignable_a.md</id>
-      <updated>2014-12-15 14:19:20 +0900</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/utility/Assignable_a.md b/archive/boost_docs/libs/utility/Assignable_a.md
-deleted file mode 100644
-index 18d31d5..0000000
---- a/archive/boost_docs/libs/utility/Assignable_a.md
-+++ /dev/null
-@@ -1,38 +0,0 @@
--#Assignable
--
--##説明
--その型のオブジェクトから、その型の他のオブジェクトに代入が可能である場合、その型はAssignableである。
--
--
--##表記
--- `T`はAssignableモデルの型
--- `t`は`T`型のオブジェクト
--- `u`は`T`型のオブジェクト、もしくは可能であれば`const T`型のオブジェクト
--
--
--##定義
--
--##妥当な式
--
--| 名前 | 式 | 戻り値の型 | 意味論 |
--|------|----|------------|--------|
--| 代入 | `t = u` | `T&amp;amp;` | `t`は`u`と同等である |
--
--
--##モデル
--- `int`
--- `std::pair`
--
--
--##関連項目
--[DefaultConstructible](http://www.sgi.com/tech/stl/DefaultConstructible.html) and [CopyConstructible](./CopyConstructible.md)
--
--
--***
--Copyright © 2000 [Jeremy Siek](http://www.lsc.nd.edu/~jsiek), Univ.of Notre Dame (&amp;lt;jsiek@lsc.nd.edu&amp;gt;)
--
--Japanese Translation Copyright © 2014 [Akira Takahashi](faithandbrave@gmail.com)
--
--オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。
--
--
-&lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
         <name>Akira Takahashi</name>
