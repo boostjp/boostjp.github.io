@@ -2,9 +2,503 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-17T16:01:17.645908</updated>
-  <id>7d6804f5-2cf4-44e8-b9e4-d1b459f2dbdf</id>
+  <updated>2014-12-17T17:05:10.633006</updated>
+  <id>0973af46-6493-4e54-babe-512ecb7b60d7</id>
 
+  
+    <entry>
+      <title>the Boost Graph Library -- Boost.Graph : cuthill_mckee_orderingを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph.html"/>
+      <id>3bcf1a91fef960580b0d2a32e94585caf47346cf:archive/boost_docs/libs/graph.md</id>
+      <updated>2014-12-17 17:04:59 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;the Boost Graph Library&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/bgl-cover.jpg&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;BGLへの序章&lt;/li&gt;
+&lt;li&gt;歴史&lt;/li&gt;
+&lt;li&gt;刊行物&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/acknowledgements.html&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;クイック・ツアー&lt;/li&gt;
+&lt;li&gt;基本的なグラフ理論の復習&lt;/li&gt;
+&lt;li&gt;チュートリアル&lt;ol&gt;
+&lt;li&gt;Property Maps&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;adjacency_list&lt;/code&gt; class&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;例題&lt;ol&gt;
+&lt;li&gt;ファイル依存関係の例&lt;/li&gt;
+&lt;li&gt;Kevin Bacon の６次数&lt;/li&gt;
+&lt;li&gt;Graph Coloring&lt;/li&gt;
+&lt;li&gt;Sparse Matrix Ordering&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;BGL 拡張&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/constructing_algorithms.html&#34;&gt;BGLでグラフアルゴリズムを構築する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Converting Existing Graphs to BGL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Boost Graph インタフェイス&lt;ol&gt;
+&lt;li&gt;Graph&lt;/li&gt;
+&lt;li&gt;Incidence Graph&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BidirectionalGraph.html&#34;&gt;Bidirectional Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html&#34;&gt;Adjacency Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Vertex List Graph&lt;/li&gt;
+&lt;li&gt;Edge List Graph&lt;/li&gt;
+&lt;li&gt;Vertex and Edge List Graph&lt;/li&gt;
+&lt;li&gt;Mutable Graph&lt;/li&gt;
+&lt;li&gt;Property Graph&lt;/li&gt;
+&lt;li&gt;Mutable Property Graph&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;The Property Map Library （専門的にはグラフ・ライブラリの部分ではないが、ここで使用される頻度が高い）&lt;/li&gt;
+&lt;li&gt;ビジタ・コンセプト&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFS （幅優先探査） Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;DFS （深度優先探査） Visitor&lt;/li&gt;
+&lt;li&gt;Dijkstra Visitor&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BellmanFordVisitor.html&#34;&gt;Bellman Ford Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Event Visitor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;EventVisitorList アダプタ&lt;ol&gt;
+&lt;li&gt;Event Visitor List&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bfs_visitor.html&#34;&gt;&lt;code&gt;bfs_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dfs_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_visitor.html&#34;&gt;&lt;code&gt;bellman_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イベント・ビジタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・クラス&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_matrix.html&#34;&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;subgraph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reverse_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filtered_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Vector as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Matrix as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Leda Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Stanford GraphBase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イテレータ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;特性クラス&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;graph_traits&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html&#34;&gt;&lt;code&gt;adjacency_list_traits&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bgl_named_params.html&#34;&gt;&lt;code&gt;bgl_named_params&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;核となるアルゴリズム・パターン&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_search.html&#34;&gt;&lt;code&gt;breadth_first_search&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_visit.html&#34;&gt;&lt;code&gt;breadth_first_visit&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_search&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_visit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;undirected_dfs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uniform_cost_search&lt;/code&gt; (非推奨、代わりに Dijkstra を使うこと)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アルゴリズム&lt;ol&gt;
+&lt;li&gt;最短経路アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.html&#34;&gt;&lt;code&gt;bellman_ford_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dag_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;johnson_all_pairs_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最小全域木アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;kruskal_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prim_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/connected_components.html&#34;&gt;&lt;code&gt;connected_components&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strong_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Incremental Connected Components&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;initialize_incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;same_component&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;component_index&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最大流アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;edmunds_karp_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;push_relabel_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;topological_sort&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transitive_closure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/copy_graph.html&#34;&gt;&lt;code&gt;copy_graph&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transpose_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isomorphism&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/cuthill_mckee_ordering.html&#34;&gt;&lt;code&gt;cuthill_mckee_ordering&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequential_vertex_coloring&lt;/code&gt;(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;minimum_degree_ordering&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Graphviz フォーマット入出力ユーティリティ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;write_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;read_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;補助コンセプト、補助クラス、補助関数&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;property&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;ColorValue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Buffer.html&#34;&gt;Buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BasicMatrix.html&#34;&gt;BasicMatrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incident&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opposite&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;ith_bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tools for random graphs&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;random_vertex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;random_edge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generate_random_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;randomize_property&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;目標と To-Do 項目&lt;/li&gt;
+&lt;li&gt;トラブルシューティング&lt;/li&gt;
+&lt;li&gt;既知の問題&lt;/li&gt;
+&lt;li&gt;FAQ&lt;/li&gt;
+&lt;li&gt;BGL Book Errata&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>cuthill_mckee_ordering -- Boost.Graph : cuthill_mckee_orderingを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/cuthill_mckee_ordering.html"/>
+      <id>3bcf1a91fef960580b0d2a32e94585caf47346cf:archive/boost_docs/libs/graph/cuthill_mckee_ordering.md</id>
+      <updated>2014-12-17 17:04:59 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;cuthill_mckee_ordering&lt;/h1&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;構成要素&lt;/th&gt;
+&lt;th&gt;値&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;グラフ&lt;/td&gt;
+&lt;td&gt;無向&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;プロパティ&lt;/td&gt;
+&lt;td&gt;色、次数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;計算量&lt;/td&gt;
+&lt;td&gt;`time: O(log(m)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;IncidenceGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;OutputIterator&lt;/span&gt;,
+          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ColorMap&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DegreeMap&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; 
+cuthill_mckee_ordering(IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g,
+                       &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s,
+                       OutputIterator inverse_permutation, 
+                       ColorMap color, DegreeMap degree)
+
+(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;)
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;VertexListGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;OutputIterator&lt;/span&gt;, 
+          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ColorMap&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DegreeMap&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; 
+cuthill_mckee_ordering(VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; G, OutputIterator inverse_permutation, 
+                       ColorMap color, DegreeMap degree)
+&lt;/pre&gt;&lt;/div&gt;
+
+Cuthill-Mckee(と逆Cuthill-Mckee)順序アルゴリズム[&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#george81:__sparse_pos_def&#34;&gt;14&lt;/a&gt;, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#cuthill69:reducing_bandwith&#34;&gt;43&lt;/a&gt;, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#liu75:anal_cm_rcm&#34;&gt;44&lt;/a&gt;, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#george71:fem&#34;&gt;45&lt;/a&gt;]の目的は、各頂点に割り当てられている添え字を再順序付けすることによって、グラフの&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;帯域幅&lt;/a&gt;を減らすことである。Cuthill-Mckee の順序付けアルゴリズムは、 i 番目の帯域幅の局所最小化によって動作する。頂点は基本的に幅優先探索順に割り当てられる。ただし各段階において、隣接頂点がキュー中に次数の昇順で並べられることを除く。&lt;/p&gt;
+&lt;p&gt;このアルゴリズムのバージョン (1) がユーザに「始点」を選ばせるのに対し、 バージョン (2) は疑似周辺ペアの発見的手法を用いて良好な始点を見つける。「始点」の選択は順序付けの品質上、重要な影響を持つ傾向がある。&lt;/p&gt;
+&lt;p&gt;このアルゴリズムの出力は、新しい順序付けになっている頂点である。使用した出力イテレータの種類に依存して、Cuthill-Mckee の順序付け、または逆 Cuthill-Mckee の順序付けのどちらか一方を得られる。例えば、出力を &lt;code&gt;vector&lt;/code&gt; のリバース・イテレータを用いて &lt;code&gt;vector&lt;/code&gt; に格納すれば、逆 Cuthill-Mckee 順序付けを得る。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;vertex_descriptor&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; inv_perm(num_vertices(G));
+cuthill_mckee_ordering(G, inv_perm.rbegin());
+&lt;/pre&gt;&lt;/div&gt;
+
+どちらの方法でも、出力を &lt;code&gt;vector&lt;/code&gt; に格納することは、新しい順序付けから古い順序付けへの順列を与える。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;inv_perm[new_index[u]] &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; u
+&lt;/pre&gt;&lt;/div&gt;
+
+多くの場合、ほしい順列は逆の順列、つまり古い添え字から新しい添え字への順列である。これは次の方法で簡単に計算され得る。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (size_type i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+  perm[old_index[inv_perm[i]]] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; i;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;パラメータ&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;バージョン (1) 用:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;IncidenceGraph&amp;amp; g&lt;/code&gt;  (IN) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;無向グラフ。グラフの型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/IncidenceGraph.html&#34;&gt;IncidenceGraph&lt;/a&gt; のモデルでなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;vertex_descriptor s&lt;/code&gt;  (IN) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;始点。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;OutputIterator inverse_permutation&lt;/code&gt;  (OUT) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新しい頂点の順序付け。頂点は新しい順序で &lt;a href=&#34;http://www.sgi.com/tech/stl/OutputIterator.html&#34; target=&#34;_blank&#34;&gt;output iterator&lt;/a&gt; に書かれる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ColorMap color_map&lt;/code&gt;  (WORK) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内部的にアルゴリズムの進行過程を保持するために使われる (同じ頂点を二回訪れるのを回避するために)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;DegreeMap degree_map&lt;/code&gt;  (IN) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは頂点を次数にマップしなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バージョン (2) 用&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;VertexListGraph&amp;amp; g&lt;/code&gt;  (IN) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;無向グラフ。グラフの型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt; のモデルでなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;OutputIterator inverse_permutation&lt;/code&gt;  (OUT) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新しい頂点の順序付け。頂点は新しい順序で出力イテレータに書かれる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;ColorMap color_map&lt;/code&gt;  (WORK) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内部的にアルゴリズムの進行過程を保持するために使われる (同じ頂点を二回訪れるのを回避するために)。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;DegreeMap degree_map&lt;/code&gt;  (IN) &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは頂点を次数にマップしなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;コード例&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/examples/cuthill_mckee_ordering.cpp.html&#34;&gt;examples/cuthill_mckee_ordering.cpp&lt;/a&gt; を参照。&lt;/p&gt;
+&lt;h2&gt;関連項目&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/a&gt;、それと boost/graph/properties.hpp 中の &lt;code&gt;degree_property_map&lt;/code&gt;。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>libs/graph/example/cuthill_mckee_ordering.cpp -- Boost.Graph : cuthill_mckee_orderingを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/examples/cuthill_mckee_ordering.cpp.html"/>
+      <id>3bcf1a91fef960580b0d2a32e94585caf47346cf:archive/boost_docs/libs/graph/examples/cuthill_mckee_ordering.cpp.md</id>
+      <updated>2014-12-17 17:04:59 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;libs/graph/example/cuthill_mckee_ordering.cpp&lt;/h1&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// This file is part of the Boost Graph Library&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// You should have received a copy of the License Agreement for the&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Boost Graph Library along with the software; see the file LICENSE.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// If not, contact Office of Research, University of Notre Dame, Notre&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Dame, IN 46556.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Permission to modify the code and to distribute modified code is&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// granted, provided the text of this NOTICE is retained, a notice that&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// the code was modified is included with the above COPYRIGHT NOTICE and&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// with the COPYRIGHT NOTICE in the LICENSE file, and that the LICENSE&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// file is distributed with the modified code.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// By way of example, but not limitation, Licensor MAKES NO&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR OTHER RIGHTS.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
+
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/config.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;vector&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/cuthill_mckee_ordering.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/properties.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/bandwidth.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;/*&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;  Sample Output&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;  original bandwidth: 8&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;  Reverse Cuthill-McKee ordering starting at: 6&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    8 3 0 9 2 5 1 4 7 6 &lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    bandwidth: 4&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;  Reverse Cuthill-McKee ordering starting at: 0&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    9 1 4 6 7 2 8 5 3 0 &lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    bandwidth: 4&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;  Reverse Cuthill-McKee ordering:&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    0 8 5 7 3 6 4 2 1 9 &lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;    bandwidth: 4&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt; */&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; , &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; [])
+{
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; std;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; adjacency_list&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;vecS, vecS, undirectedS, 
+     property&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;vertex_color_t&lt;/span&gt;, default_color_type,
+       property&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;vertex_degree_t&lt;/span&gt;,&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; Graph;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor Vertex;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertices_size_type size_type;
+
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;pair&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt;, std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; Pair;
+  Pair edges[&lt;span style=&#34;color: #666666&#34;&gt;14&lt;/span&gt;] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; { Pair(&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;), &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//a-d&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//a-f&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//b-c&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//b-e&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//b-g&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//b-j&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//c-d&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//c-e&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//d-f&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;8&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//d-i&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//e-g&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//f-g&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;),  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//f-h&lt;/span&gt;
+                     Pair(&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;,&lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;) }; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//g-h &lt;/span&gt;
+
+  Graph G(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;);
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;14&lt;/span&gt;; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+    add_edge(edges[i].first, edges[i].second, G);
+
+  graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_iterator ui, ui_end;
+
+  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph,&lt;span style=&#34;color: #B00040&#34;&gt;vertex_degree_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type deg &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(vertex_degree, G);
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tie(ui, ui_end) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertices(G); ui &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; ui_end; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;ui)
+    deg[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;ui] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; degree(&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;ui, G);
+
+  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Graph, &lt;span style=&#34;color: #B00040&#34;&gt;vertex_index_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type
+    index_map &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(vertex_index, G);
+
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;original bandwidth: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; bandwidth(G) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; inv_perm(num_vertices(G));
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;size_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; perm(num_vertices(G));
+  {
+    Vertex s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertex(&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;, G);
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//reverse cuthill_mckee_ordering&lt;/span&gt;
+    cuthill_mckee_ordering(G, s, inv_perm.rbegin(), get(vertex_color, G), 
+                           get(vertex_degree, G));
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Reverse Cuthill-McKee ordering starting at: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; s &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  &#34;&lt;/span&gt;;    
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;const_iterator i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; inv_perm.begin();
+         i &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.end(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+      cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; index_map[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;i] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; &#34;&lt;/span&gt;;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (size_type c &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;c)
+      perm[index_map[inv_perm[c]]] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; c;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  bandwidth: &#34;&lt;/span&gt; 
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; bandwidth(G, make_iterator_property_map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], index_map, perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;]))
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+  }
+  {
+    Vertex s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertex(&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, G);
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//reverse cuthill_mckee_ordering&lt;/span&gt;
+    cuthill_mckee_ordering(G, s, inv_perm.rbegin(), get(vertex_color, G),
+                           get(vertex_degree, G));
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Reverse Cuthill-McKee ordering starting at: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; s &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  &#34;&lt;/span&gt;;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;const_iterator i&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;inv_perm.begin();
+       i &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.end(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+      cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; index_map[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;i] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; &#34;&lt;/span&gt;;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (size_type c &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;c)
+      perm[index_map[inv_perm[c]]] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; c;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  bandwidth: &#34;&lt;/span&gt; 
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; bandwidth(G, make_iterator_property_map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], index_map, perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;]))
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+  }
+
+  {
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//reverse cuthill_mckee_ordering&lt;/span&gt;
+    cuthill_mckee_ordering(G, inv_perm.rbegin(), get(vertex_color, G),
+                           make_degree_map(G));
+
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Reverse Cuthill-McKee ordering:&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  &#34;&lt;/span&gt;;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;const_iterator i&lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;inv_perm.begin();
+       i &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.end(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+      cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; index_map[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;i] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34; &#34;&lt;/span&gt;;
+    cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; endl;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (size_type c &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; c &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; inv_perm.size(); &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;c)
+      perm[index_map[inv_perm[c]]] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; c;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;  bandwidth: &#34;&lt;/span&gt; 
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; bandwidth(G, make_iterator_property_map(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], index_map, perm[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;]))
+              &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+  }
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>the Boost Graph Library -- Boost.Graph : copy_graphを追加</title>
@@ -1503,278 +1997,6 @@ connected_components(VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>the Boost Graph Library -- Boost.Graph : ColorValueを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph.html"/>
-      <id>8d73fe7b3e880f83cd8d75651d33ea7417cb8891:archive/boost_docs/libs/graph.md</id>
-      <updated>2014-12-17 13:48:37 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;the Boost Graph Library&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/bgl-cover.jpg&#34; /&gt;&lt;/p&gt;
-&lt;h2&gt;目次&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;BGLへの序章&lt;/li&gt;
-&lt;li&gt;歴史&lt;/li&gt;
-&lt;li&gt;刊行物&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/acknowledgements.html&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;クイック・ツアー&lt;/li&gt;
-&lt;li&gt;基本的なグラフ理論の復習&lt;/li&gt;
-&lt;li&gt;チュートリアル&lt;ol&gt;
-&lt;li&gt;Property Maps&lt;/li&gt;
-&lt;li&gt;The &lt;code&gt;adjacency_list&lt;/code&gt; class&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;例題&lt;ol&gt;
-&lt;li&gt;ファイル依存関係の例&lt;/li&gt;
-&lt;li&gt;Kevin Bacon の６次数&lt;/li&gt;
-&lt;li&gt;Graph Coloring&lt;/li&gt;
-&lt;li&gt;Sparse Matrix Ordering&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;BGL 拡張&lt;ol&gt;
-&lt;li&gt;Constructing graph algorithms with BGL&lt;/li&gt;
-&lt;li&gt;Converting Existing Graphs to BGL&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Boost Graph インタフェイス&lt;ol&gt;
-&lt;li&gt;Graph&lt;/li&gt;
-&lt;li&gt;Incidence Graph&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BidirectionalGraph.html&#34;&gt;Bidirectional Graph&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html&#34;&gt;Adjacency Graph&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Vertex List Graph&lt;/li&gt;
-&lt;li&gt;Edge List Graph&lt;/li&gt;
-&lt;li&gt;Vertex and Edge List Graph&lt;/li&gt;
-&lt;li&gt;Mutable Graph&lt;/li&gt;
-&lt;li&gt;Property Graph&lt;/li&gt;
-&lt;li&gt;Mutable Property Graph&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;The Property Map Library （専門的にはグラフ・ライブラリの部分ではないが、ここで使用される頻度が高い）&lt;/li&gt;
-&lt;li&gt;ビジタ・コンセプト&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFS （幅優先探査） Visitor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;DFS （深度優先探査） Visitor&lt;/li&gt;
-&lt;li&gt;Dijkstra Visitor&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BellmanFordVisitor.html&#34;&gt;Bellman Ford Visitor&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Event Visitor&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;EventVisitorList アダプタ&lt;ol&gt;
-&lt;li&gt;Event Visitor List&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bfs_visitor.html&#34;&gt;&lt;code&gt;bfs_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;dfs_visitor&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;dijkstra_visitor&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_visitor.html&#34;&gt;&lt;code&gt;bellman_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;イベント・ビジタ&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;グラフ・クラス&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_matrix.html&#34;&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;グラフ・アダプタ&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;subgraph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;reverse_graph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;filtered_graph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Vector as Graph(アンドキュメント)&lt;/li&gt;
-&lt;li&gt;Matrix as Graph(アンドキュメント)&lt;/li&gt;
-&lt;li&gt;Leda Graph(アンドキュメント)&lt;/li&gt;
-&lt;li&gt;Stanford GraphBase&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;イテレータ・アダプタ&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;特性クラス&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;graph_traits&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html&#34;&gt;&lt;code&gt;adjacency_list_traits&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;property_map&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;アルゴリズム&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bgl_named_params.html&#34;&gt;&lt;code&gt;bgl_named_params&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;核となるアルゴリズム・パターン&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_search.html&#34;&gt;&lt;code&gt;breadth_first_search&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_visit.html&#34;&gt;&lt;code&gt;breadth_first_visit&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;depth_first_search&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;depth_first_visit&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;undirected_dfs&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;uniform_cost_search&lt;/code&gt; (非推奨、代わりに Dijkstra を使うこと)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;グラフ・アルゴリズム&lt;ol&gt;
-&lt;li&gt;最短経路アルゴリズム&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;dijkstra_shortest_paths&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.html&#34;&gt;&lt;code&gt;bellman_ford_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;dag_shortest_paths&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;johnson_all_pairs_shortest_paths&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;最小全域木アルゴリズム&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;kruskal_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;prim_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;connected_components&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;strong_components&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Incremental Connected Components&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;initialize_incremental_components&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;incremental_components&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;same_component&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;component_index&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;最大流アルゴリズム&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;edmunds_karp_max_flow&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;push_relabel_max_flow&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;topological_sort&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;transitive_closure&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;copy_graph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;transpose_graph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;isomorphism&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cuthill_mckee_ordering&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;sequential_vertex_coloring&lt;/code&gt;(アンドキュメント)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;minimum_degree_ordering&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;AT&amp;amp;T Graphviz フォーマット入出力ユーティリティ&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;write_graphviz&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;read_graphviz&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;補助コンセプト、補助クラス、補助関数&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;property&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;ColorValue&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Buffer.html&#34;&gt;Buffer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BasicMatrix.html&#34;&gt;BasicMatrix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;incident&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;opposite&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;ith_bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Tools for random graphs&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;random_vertex&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;random_edge&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;generate_random_graph&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;randomize_property&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;目標と To-Do 項目&lt;/li&gt;
-&lt;li&gt;トラブルシューティング&lt;/li&gt;
-&lt;li&gt;既知の問題&lt;/li&gt;
-&lt;li&gt;FAQ&lt;/li&gt;
-&lt;li&gt;BGL Book Errata&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>ColorValue -- Boost.Graph : ColorValueを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html"/>
-      <id>8d73fe7b3e880f83cd8d75651d33ea7417cb8891:archive/boost_docs/libs/graph/ColorValue.md</id>
-      <updated>2014-12-17 13:48:37 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;ColorValue&lt;/h1&gt;
-&lt;p&gt;このコンセプトは色付けを必要とする型として記述されており、グラフ中を探査する時に頂点が訪問済か色でマークするために利用される。&lt;/p&gt;
-&lt;h2&gt;Refinement of&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.sgi.com/tech/stl/EqualityComparable.html&#34; target=&#34;_blank&#34;&gt;EqualityComparable&lt;/a&gt; and &lt;a href=&#34;http://www.sgi.com/tech/stl/DefaultConstructible.html&#34; target=&#34;_blank&#34;&gt;DefaultConstructible&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;表記&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;識別子&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;ColorValue モデルの型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;cv&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型 &lt;code&gt;T&lt;/code&gt; のオブジェクト&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;有効な表現式&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;名前&lt;/th&gt;
-&lt;th&gt;式&lt;/th&gt;
-&lt;th&gt;戻り型&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;Get Color White&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;color_traits&amp;lt;T&amp;gt;::white()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;白色を表すオブジェクトを返す。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Get Color Gray&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;color_traits&amp;lt;T&amp;gt;::gray()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;灰色を表すオブジェクトを返す。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Get Color Black&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;color_traits&amp;lt;T&amp;gt;::black()&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;黒色を表すオブジェクトを返す。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;モデル&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;default_color_type&lt;/code&gt; (boost/graph/properties.hpp の中に記述)&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
