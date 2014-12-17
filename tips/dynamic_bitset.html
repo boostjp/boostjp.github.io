@@ -170,7 +170,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> サイズを動的に変更できるビット集合 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/dynamic_bitset.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>サイズを動的に変更できるビット集合</h1> <p>サイズ固定のビット集合である<code>std::bitset</code> に対して、<code>boost::dynamic_bitset</code> はサイズを実行時に変更できるビット集合である。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#resize>サイズを指定する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#nth-bit>ビットの値を設定する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#count-one>1の数を数える</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#test-bit>ビットの値を検査する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#string-conversion>文字列との相互変換</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#flip>ビットの値を反転する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#set>集合演算</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#is-subset-of>2つの集合の包含関係を調べる</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#each-one-bits>1が立っているインデックスを走査する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#customize-data-size>データサイズをカスタマイズする</a></li> </ul> <h1><a href=http://boostjp.github.io/tips/resize name=resize>サイズを指定する</a></h1> <p>コンストラクタ、もしくはメンバ関数<code>resize()</code>でビット集合のサイズを指定できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> サイズを動的に変更できるビット集合 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/dynamic_bitset.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>サイズを動的に変更できるビット集合</h1> <p>サイズ固定のビット集合である<code>std::bitset</code> に対して、<code>boost::dynamic_bitset</code> はサイズを実行時に変更できるビット集合である。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#resize>サイズを指定する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#nth-bit>ビットの値を設定する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#count-one>1の数を数える</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#test-bit>ビットの値を検査する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#string-conversion>文字列との相互変換</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#flip>ビットの値を反転する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#set>集合演算</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#is-subset-of>2つの集合の包含関係を調べる</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#each-one-bits>1が立っているインデックスを走査する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_bitset.html#customize-data-size>データサイズをカスタマイズする</a></li> </ul> <h1><a href=http://boostjp.github.io/tips/dynamic_bitset.html#resize name=resize>サイズを指定する</a></h1> <p>コンストラクタ、もしくはメンバ関数<code>resize()</code>でビット集合のサイズを指定できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;cassert&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> std;
@@ -185,7 +185,7 @@ function tree_onclick(e) {
     assert(bs.size() <span style="color: #666666">==</span> <span style="color: #666666">5</span>);
     cout <span style="color: #666666">&lt;&lt;</span> bs <span style="color: #666666">&lt;&lt;</span> endl;   <span style="color: #408080; font-style: italic">// -&gt; 00000</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/nth-bit name=nth-bit>ビットの値を設定する</a></h2> <p>メンバ関数<code>set</code>/<code>reset</code>、<code>[ ]</code>演算子でビットの値を設定できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#nth-bit name=nth-bit>ビットの値を設定する</a></h2> <p>メンバ関数<code>set</code>/<code>reset</code>、<code>[ ]</code>演算子でビットの値を設定できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> std;
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -207,7 +207,7 @@ function tree_onclick(e) {
     bs[<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #008000">true</span>;          <span style="color: #408080; font-style: italic">// []演算子で0ビット目を1にする</span>
     cout <span style="color: #666666">&lt;&lt;</span> bs <span style="color: #666666">&lt;&lt;</span> endl;    <span style="color: #408080; font-style: italic">// -&gt; 00001</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/count-one name=count-one>1の数を数える</a></h2> <p>メンバ関数<code>count()</code>を使う</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#count-one name=count-one>1の数を数える</a></h2> <p>メンバ関数<code>count()</code>を使う</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;cassert&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -217,7 +217,7 @@ function tree_onclick(e) {
     bs.set();    <span style="color: #408080; font-style: italic">// -&gt; 111</span>
     assert(bs.<span style=color:#ff0000>count()</span> <span style="color: #666666">==</span> <span style="color: #666666">3</span>);
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/test-bit name=test-bit>ビットの値を検査する</a></h2> <p>特定のビットが1かを調べるにはメンバ関数<code>test()</code>もしくは<code>[ ]</code>演算子を使う。</p> <p>1のビットがあるかどうかを調べるにはメンバ関数<code>any()</code>, <code>none()</code>を使う。</p> <p>すべてのビットが1かどうかを調べるにはメンバ関数<code>count()</code>と<code>size()</code>を組み合わせて使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#test-bit name=test-bit>ビットの値を検査する</a></h2> <p>特定のビットが1かを調べるにはメンバ関数<code>test()</code>もしくは<code>[ ]</code>演算子を使う。</p> <p>1のビットがあるかどうかを調べるにはメンバ関数<code>any()</code>, <code>none()</code>を使う。</p> <p>すべてのビットが1かどうかを調べるにはメンバ関数<code>count()</code>と<code>size()</code>を組み合わせて使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;cassert&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> std;
@@ -240,7 +240,7 @@ function tree_onclick(e) {
     bs.set();  <span style="color: #408080; font-style: italic">// -&gt; 111</span>
     assert(<span style=color:#ff0000>bs.count() <span style="color: #666666">==</span> bs.size()</span>);   
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/string-conversion name=string-conversion>文字列との相互変換</a></h2> <p><code>boost::dynamic_bitset</code>クラスでは演算子<code>&lt;&lt;</code>および<code>&gt;&gt;</code>がオーバーロードされているため、<code>istream</code>/<code>ostream</code>を通して文字列との相互変換が可能である。</p> <p>文字列からビット集合への変換は、コンストラクタに文字列を渡すことでも生成できる。</p> <p>ビット集合から文字列への変換は、<code>boost::to_string()</code>関数を使用することもできる。</p> <p>文字列は<code>'0'</code>か<code>'1'</code>のみから構成される必要があり、文字列の右端がインデックス<code>0</code>に対応することに注意。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#string-conversion name=string-conversion>文字列との相互変換</a></h2> <p><code>boost::dynamic_bitset</code>クラスでは演算子<code>&lt;&lt;</code>および<code>&gt;&gt;</code>がオーバーロードされているため、<code>istream</code>/<code>ostream</code>を通して文字列との相互変換が可能である。</p> <p>文字列からビット集合への変換は、コンストラクタに文字列を渡すことでも生成できる。</p> <p>ビット集合から文字列への変換は、<code>boost::to_string()</code>関数を使用することもできる。</p> <p>文字列は<code>'0'</code>か<code>'1'</code>のみから構成される必要があり、文字列の右端がインデックス<code>0</code>に対応することに注意。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/lexical_cast.hpp&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -260,7 +260,7 @@ function tree_onclick(e) {
     dynamic_bitset<span style="color: #666666">&lt;&gt;</span> bs2 <span style="color: #666666">=</span> <span style=color:#ff0000>lexical_cast<span style="color: #666666">&lt;</span>dynamic_bitset<span style="color: #666666">&lt;&gt;</span> <span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"01"</span>);</span>
     std<span style="color: #666666">::</span>string str2 <span style="color: #666666">=</span> <span style=color:#ff0000>lexical_cast<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;</span>(bs2);</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/flip name=flip>ビットの値を反転する</a></h2> <p>メンバ関数<code>flip()</code>でビットの値を反転できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#flip name=flip>ビットの値を反転する</a></h2> <p>メンバ関数<code>flip()</code>でビットの値を反転できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> std;
 
@@ -273,7 +273,7 @@ function tree_onclick(e) {
     bs.<span style=color:#ff0000>flip()</span>;             <span style="color: #408080; font-style: italic">// 引数なしのflipは全てのビットを反転させる</span>
     cout <span style="color: #666666">&lt;&lt;</span> bs <span style="color: #666666">&lt;&lt;</span> endl;    <span style="color: #408080; font-style: italic">// -&gt; 110</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/set name=set>集合演算</a></h2> <p>各種演算子(<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>,　<code>-</code>)およびその代入版(<code>&amp;=</code>, <code>|=</code>, <code>^=</code>, <code>-=</code>)によるビット毎の論理演算により、集合演算ができる。</p> <p>ただし、2項演算子の引数のサイズは等しくなければならない。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#set name=set>集合演算</a></h2> <p>各種演算子(<code>&amp;</code>, <code>|</code>, <code>^</code>, <code>~</code>,　<code>-</code>)およびその代入版(<code>&amp;=</code>, <code>|=</code>, <code>^=</code>, <code>-=</code>)によるビット毎の論理演算により、集合演算ができる。</p> <p>ただし、2項演算子の引数のサイズは等しくなければならない。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
 {
@@ -287,7 +287,7 @@ function tree_onclick(e) {
     <span style=color:#ff0000>bs1 <span style="color: #666666">^</span> bs2</span>;   <span style="color: #408080; font-style: italic">// -&gt; 0110    ビット毎の排他的論理和 = 対称差</span>
     <span style=color:#ff0000>bs1 <span style="color: #666666">-</span> bs2</span>;   <span style="color: #408080; font-style: italic">// -&gt; 0010    差集合</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/is-subset-of name=is-subset-of>2つの集合の包含関係を調べる</a></h2> <p>ビット集合A, Bがある時、AがBの部分集合（A ⊆ B)かを調べるには、メンバ関数<code>is_subset_of()</code>を使う。</p> <p>同様に、AがBの真部分集合（A ⊂ B）かを調べるには、メンバ関数<code>is_proper_subset_of</code>を、AとBが交差する（すなわち、AとBの積集合が空集合でない）かを調べるには、メンバ関数<code>intersects()</code>をそれぞれ使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#is-subset-of name=is-subset-of>2つの集合の包含関係を調べる</a></h2> <p>ビット集合A, Bがある時、AがBの部分集合（A ⊆ B)かを調べるには、メンバ関数<code>is_subset_of()</code>を使う。</p> <p>同様に、AがBの真部分集合（A ⊂ B）かを調べるには、メンバ関数<code>is_proper_subset_of</code>を、AとBが交差する（すなわち、AとBの積集合が空集合でない）かを調べるには、メンバ関数<code>intersects()</code>をそれぞれ使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;cassert&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -304,7 +304,7 @@ function tree_onclick(e) {
     assert(<span style=color:#ff0000>A.intersects(B)</span>);    <span style="color: #408080; font-style: italic">// AはBと交差する</span>
     assert(<span style=color:#ff0000><span style="color: #666666">!</span>B.intersects(C)</span>);   <span style="color: #408080; font-style: italic">// BはCと交差しない    </span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/each-one-bits name=each-one-bits>1が立っているインデックスを走査する</a></h2> <p>メンバ関数<code>find_first()</code>と<code>find_next()</code>を組み合わせて、<code>1</code>が立っているインデックスを走査できる。 </p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#each-one-bits name=each-one-bits>1が立っているインデックスを走査する</a></h2> <p>メンバ関数<code>find_first()</code>と<code>find_next()</code>を組み合わせて、<code>1</code>が立っているインデックスを走査できる。 </p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -322,7 +322,7 @@ function tree_onclick(e) {
 } 
 </pre></div> 出力：</p> <p><pre><code>10
 20
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/customize-data-size name=customize-data-size>データサイズをカスタマイズする</a></h2> <p><code>boost::dynamic_bitset</code>は、第1テンプレート引数の<code>Block</code>型の<code>std::vector</code>でビット列を管理する。</p> <p><code>Block</code>のデフォルト値は<code>unsigned long</code>であるが、別の型を指定することでデータサイズをカスタマイズできる。</p> <p>ただし、<code>Block</code>は符号なし整数型でなければならない。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/dynamic_bitset.html#customize-data-size name=customize-data-size>データサイズをカスタマイズする</a></h2> <p><code>boost::dynamic_bitset</code>は、第1テンプレート引数の<code>Block</code>型の<code>std::vector</code>でビット列を管理する。</p> <p><code>Block</code>のデフォルト値は<code>unsigned long</code>であるが、別の型を指定することでデータサイズをカスタマイズできる。</p> <p>ただし、<code>Block</code>は符号なし整数型でなければならない。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/dynamic_bitset.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;cassert&gt;</span>
 
 <span style="color: #008000; font-weight: bold">using</span> boost<span style="color: #666666">::</span>dynamic_bitset;

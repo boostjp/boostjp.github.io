@@ -170,7 +170,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 単体テスト </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/unit_test.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>単体テスト</h1> <p>単体テストには、<a href=http://www.boost.org/doc/libs/release/libs/test/doc/html/index.html target=_blank>Boost Test Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/unit_test.html#equality-test>等値テスト</a></li> <li><a href=http://boostjp.github.io/tips/unit_test.html#floating-point-equality-test>浮動小数点数の等値テスト</a></li> <li><a href=http://boostjp.github.io/tips/unit_test.html#throw-test>例外が投げられるかどうかのテスト</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/equality-test name=equality-test>等値テスト</a></h2> <p>等値テストには、<code>BOOST_CHECK</code>マクロに条件式を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 単体テスト </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/unit_test.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>単体テスト</h1> <p>単体テストには、<a href=http://www.boost.org/doc/libs/release/libs/test/doc/html/index.html target=_blank>Boost Test Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/unit_test.html#equality-test>等値テスト</a></li> <li><a href=http://boostjp.github.io/tips/unit_test.html#floating-point-equality-test>浮動小数点数の等値テスト</a></li> <li><a href=http://boostjp.github.io/tips/unit_test.html#throw-test>例外が投げられるかどうかのテスト</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/unit_test.html#equality-test name=equality-test>等値テスト</a></h2> <p>等値テストには、<code>BOOST_CHECK</code>マクロに条件式を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
 <span style="color: #BC7A00">#include &lt;boost/test/included/unit_test.hpp&gt;</span>
 
 BOOST_AUTO_TEST_CASE(test1)
@@ -181,7 +181,7 @@ BOOST_AUTO_TEST_CASE(test1)
 </pre></div> 実行結果：</p> <p><pre><code>Running 1 test case...
 
 *** No errors detected
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/floating-point-equality-test name=floating-point-equality-test>浮動小数点数の等値テスト</a></h2> <p>浮動小数点数の等値テストには、<code>BOOST_CHECK_CLOSE</code>マクロに、比較対象の2つの変数と、許容する誤差（%）を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/unit_test.html#floating-point-equality-test name=floating-point-equality-test>浮動小数点数の等値テスト</a></h2> <p>浮動小数点数の等値テストには、<code>BOOST_CHECK_CLOSE</code>マクロに、比較対象の2つの変数と、許容する誤差（%）を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
 <span style="color: #BC7A00">#include &lt;boost/test/included/unit_test.hpp&gt;</span>
 
 BOOST_AUTO_TEST_CASE(test1)
@@ -208,7 +208,7 @@ BOOST_AUTO_TEST_CASE( test1 )
 test.cpp(8): error in "test1": absolute value of v{-0.00123456} exceeds 0.0001
 
 *** 1 failure detected in test suite "Master Test Suite"
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/throw-test name=throw-test>例外が投げられるかどうかのテスト</a></h2> <p><code>BOOST_CHECK_THROW</code>マクロは、ある式が指定した例外を投げるかどうかをテストする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/unit_test.html#throw-test name=throw-test>例外が投げられるかどうかのテスト</a></h2> <p><code>BOOST_CHECK_THROW</code>マクロは、ある式が指定した例外を投げるかどうかをテストする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/test/included/unit_test.hpp&gt;</span>
 

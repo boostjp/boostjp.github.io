@@ -208,7 +208,7 @@ function tree_onclick(e) {
     m.<span style=color:#ff0000>process_event</span>( my_event1() );  <span style="color: #408080; font-style: italic">// my_state1 -&gt; my_state2</span>
     m.<span style=color:#ff0000>process_event</span>( my_event2() );  <span style="color: #408080; font-style: italic">// my_state2 -&gt; my_state3</span>
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/state-event name=state-event>状態の開始と終了のタイミングで任意の処理を行う</a></h2> <p>状態クラスに <code>on_entry()</code>, <code>on_exit()</code> メンバ関数を定義すると、それぞれ状態の開始と終了時に、自動的に呼ばれる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/finite_state_machine.html#state-event name=state-event>状態の開始と終了のタイミングで任意の処理を行う</a></h2> <p>状態クラスに <code>on_entry()</code>, <code>on_exit()</code> メンバ関数を定義すると、それぞれ状態の開始と終了時に、自動的に呼ばれる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 
@@ -256,7 +256,7 @@ function tree_onclick(e) {
 }
 </pre></div> 実行結果：</p> <p><pre><code>exit: my_state1
 entry: my_state2
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/change-state-event name=change-state-event>状態遷移イベントを受け取ったタイミングで任意の処理を行う</a></h2> <p>有限状態マシンがイベントを受け取ったとき、任意の処理を実行できる。</p> <p>状態遷移テーブルには <code>_row</code> のかわりに <code>a_row</code> を使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/finite_state_machine.html#change-state-event name=change-state-event>状態遷移イベントを受け取ったタイミングで任意の処理を行う</a></h2> <p>有限状態マシンがイベントを受け取ったとき、任意の処理を実行できる。</p> <p>状態遷移テーブルには <code>_row</code> のかわりに <code>a_row</code> を使う。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 
@@ -299,7 +299,7 @@ entry: my_state2
 }
 </pre></div> 実行結果：</p> <p><pre><code>on_event1
 on_event2
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/guard name=guard>状態遷移を拒否する</a></h2> <p>有限状態マシンがイベントを受け取ったとき、実行時に状態遷移を拒否することができる。</p> <p>状態遷移テーブルには <code>_row</code> の代わりに <code>g_row</code> を使う。</p> <p><code>g_row</code> に指定したメンバ関数が <code>false</code> を返すとき、状態遷移は拒否される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/finite_state_machine.html#guard name=guard>状態遷移を拒否する</a></h2> <p>有限状態マシンがイベントを受け取ったとき、実行時に状態遷移を拒否することができる。</p> <p>状態遷移テーブルには <code>_row</code> の代わりに <code>g_row</code> を使う。</p> <p><code>g_row</code> に指定したメンバ関数が <code>false</code> を返すとき、状態遷移は拒否される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/front/state_machine_def.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/msm/back/state_machine.hpp&gt;</span>
 

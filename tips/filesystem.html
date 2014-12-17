@@ -170,7 +170,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> ファイル／ディレクトリ操作 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/filesystem.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>ファイル／ディレクトリ操作</h1> <p>ファイル／ディレクトリ操作には、<a href=http://www.boost.org/libs/filesystem/doc/index.htm target=_blank>Boost Filesystem Library</a>を使用する。Boost Filesystem Libraryは、多くのプラットフォーム、コンパイラで動作する汎用的なファイル／ディレクトリ操作のライブラリである。このライブラリはビルドを必要する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/filesystem.html#error-handling>エラーハンドリング</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#copy-file>ファイルをコピーする</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#remove-file>ファイルの削除</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#rename>ファイルを移動する／ファイル名を変更する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#exists>ファイルが存在するかを調べる</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#file-size>ファイルサイズを取得する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#last-write-time>ファイルの最終更新日時を取得する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#create-directory>ディレクトリを作成する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#enumerate-file>ディレクトリ内のファイルを列挙する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/error-handling name=error-handling>エラーハンドリング</a></h2> <p>Boost Filesystem Libraryのエラーハンドリングは、例外を投げるバージョン、エラーを参照で返すバージョンの2種類が存在する。</p> <p><strong>例外バージョン</strong></p> <p>何も指定しなければ、Boost Filesystem Libraryの関数でエラーが出た場合には<code>boost::filesystem::filesystem_error</code>例外が投げられる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> ファイル／ディレクトリ操作 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/filesystem.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>ファイル／ディレクトリ操作</h1> <p>ファイル／ディレクトリ操作には、<a href=http://www.boost.org/libs/filesystem/doc/index.htm target=_blank>Boost Filesystem Library</a>を使用する。Boost Filesystem Libraryは、多くのプラットフォーム、コンパイラで動作する汎用的なファイル／ディレクトリ操作のライブラリである。このライブラリはビルドを必要する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/filesystem.html#error-handling>エラーハンドリング</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#copy-file>ファイルをコピーする</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#remove-file>ファイルの削除</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#rename>ファイルを移動する／ファイル名を変更する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#exists>ファイルが存在するかを調べる</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#file-size>ファイルサイズを取得する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#last-write-time>ファイルの最終更新日時を取得する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#create-directory>ディレクトリを作成する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#enumerate-file>ディレクトリ内のファイルを列挙する</a></li> <li><a href=http://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/filesystem.html#error-handling name=error-handling>エラーハンドリング</a></h2> <p>Boost Filesystem Libraryのエラーハンドリングは、例外を投げるバージョン、エラーを参照で返すバージョンの2種類が存在する。</p> <p><strong>例外バージョン</strong></p> <p>何も指定しなければ、Boost Filesystem Libraryの関数でエラーが出た場合には<code>boost::filesystem::filesystem_error</code>例外が投げられる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
 try {
     fs<span style="color: #666666">::</span>foo();
 }
@@ -185,7 +185,7 @@ fs<span style="color: #666666">::</span>foo(error);
 <span style="color: #008000; font-weight: bold">if</span> (error) {
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"エラー発生！ : "</span> <span style="color: #666666">&lt;&lt;</span> error.message() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/copy-file name=copy-file>ファイルをコピーする</a></h2> <p>ファイルをコピーするには、<code>boost::filesystem::copy_file()</code>関数を使用する。</p> <ul> <li>第1引数はコピー元のパス</li> <li>第2引数はコピー先のパス</li> </ul> <p>コピーに失敗した場合は例外が投げられる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#copy-file name=copy-file>ファイルをコピーする</a></h2> <p>ファイルをコピーするには、<code>boost::filesystem::copy_file()</code>関数を使用する。</p> <ul> <li>第1引数はコピー元のパス</li> <li>第2引数はコピー先のパス</li> </ul> <p>コピーに失敗した場合は例外が投げられる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -221,7 +221,7 @@ fs<span style="color: #666666">::</span>foo(error);
         <span style="color: #008000; font-weight: bold">throw</span>;
     }
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/remove-file name=remove-file>ファイルを削除する</a></h2> <p>ファイルを削除するには、<code>boost::filesystem::remove()</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#remove-file name=remove-file>ファイルを削除する</a></h2> <p>ファイルを削除するには、<code>boost::filesystem::remove()</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -238,7 +238,7 @@ fs<span style="color: #666666">::</span>foo(error);
         <span style="color: #008000; font-weight: bold">throw</span>;
     }
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/rename name=rename>ファイルを移動する／ファイル名を変更する</a></h2> <p>ファイルの移動、ファイル名の変更には、<code>boost::filesystem::rename()</code>を使用する。</p> <ul> <li>第1引数は、元となるファイルのパス。</li> <li>第2引数は、移動先のファイルパス、もしくは新たなファイル名。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#rename name=rename>ファイルを移動する／ファイル名を変更する</a></h2> <p>ファイルの移動、ファイル名の変更には、<code>boost::filesystem::rename()</code>を使用する。</p> <ul> <li>第1引数は、元となるファイルのパス。</li> <li>第2引数は、移動先のファイルパス、もしくは新たなファイル名。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -256,7 +256,7 @@ fs<span style="color: #666666">::</span>foo(error);
         <span style="color: #008000; font-weight: bold">throw</span>;
     }
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/exists name=exists>ファイルが存在するかを調べる</a></h2> <p>ファイルが存在するか調べるには、<code>boost::filesystem::exists()</code>関数を使用する。</p> <p>この関数は、ファイルが存在する場合は<code>true</code>を返し、存在しない場合は<code>false</code>を返す。</p> <p>ファイルのステータス取得に失敗した場合はエラーを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#exists name=exists>ファイルが存在するかを調べる</a></h2> <p>ファイルが存在するか調べるには、<code>boost::filesystem::exists()</code>関数を使用する。</p> <p>この関数は、ファイルが存在する場合は<code>true</code>を返し、存在しない場合は<code>false</code>を返す。</p> <p>ファイルのステータス取得に失敗した場合はエラーを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -274,7 +274,7 @@ fs<span style="color: #666666">::</span>foo(error);
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"ファイルがあった"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/file-size name=file-size>ファイルサイズを取得する</a></h2> <p>ファイルサイズを取得するには、<code>boost::filesystem::file_size()</code>関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#file-size name=file-size>ファイルサイズを取得する</a></h2> <p>ファイルサイズを取得するには、<code>boost::filesystem::file_size()</code>関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -294,7 +294,7 @@ fs<span style="color: #666666">::</span>foo(error);
     }
 }
 </pre></div> 実行結果の例:</p> <p><pre><code>ファイルサイズ: 5107200
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/last-write-time name=last-write-time>ファイルの最終更新日時を取得する</a></h2> <p>ファイルの最終更新日時を取得するには、<code>boost::filesystem::last_write_time()</code>関数を使用する。</p> <p>この関数は戻り値として、<code>std::time_t</code>型として日時を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#last-write-time name=last-write-time>ファイルの最終更新日時を取得する</a></h2> <p>ファイルの最終更新日時を取得するには、<code>boost::filesystem::last_write_time()</code>関数を使用する。</p> <p>この関数は戻り値として、<code>std::time_t</code>型として日時を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</span>
 
@@ -314,7 +314,7 @@ fs<span style="color: #666666">::</span>foo(error);
     }
 }
 </pre></div> 実行結果の例：</p> <p><pre><code>2011-Mar-30 05:56:11
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/create-directory name=create-directory>ディレクトリを作成する</a></h2> <p>ディレクトリを作成するには、<code>boost::filesystem::create_directory()</code>関数を使用する。</p> <p>第1引数として、ディレクトリのパスを指定する。</p> <p>ネストしたディレクトリを一度に作ろうとした場合はエラーとなる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#create-directory name=create-directory>ディレクトリを作成する</a></h2> <p>ディレクトリを作成するには、<code>boost::filesystem::create_directory()</code>関数を使用する。</p> <p>第1引数として、ディレクトリのパスを指定する。</p> <p>ネストしたディレクトリを一度に作ろうとした場合はエラーとなる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -344,7 +344,7 @@ fs<span style="color: #666666">::</span>foo(error);
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"ディレクトリの作成に失敗"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/enumerate-file name=enumerate-file>ディレクトリ内のファイルを列挙する</a></h2> <p>ディレクトリ内のファイルを列挙するには、<code>boost::filesystem::directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#enumerate-file name=enumerate-file>ディレクトリ内のファイルを列挙する</a></h2> <p>ディレクトリ内のファイルを列挙するには、<code>boost::filesystem::directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
 
@@ -362,7 +362,7 @@ fs<span style="color: #666666">::</span>foo(error);
 }
 </pre></div> 実行結果の例</p> <p><pre><code>"a.txt"
 "b.png"
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/recursive-enumerate-file name=recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙する</a></h2> <p>ディレクトリ内の全てのファイルを再帰的に列挙するには、<code>boost::filesystem::recursive_directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file name=recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙する</a></h2> <p>ディレクトリ内の全てのファイルを再帰的に列挙するには、<code>boost::filesystem::recursive_directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
 

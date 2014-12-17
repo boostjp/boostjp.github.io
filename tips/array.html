@@ -170,7 +170,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 配列 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/array.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>配列</h1> <p>Boostでは、標準コンテナのインタフェースで使用できる固定長配列クラス、<code>boost::array</code>を提供する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/array.html#overview>概要</a></li> <li><a href=http://boostjp.github.io/tips/array.html#size>配列の要素数を取得する</a></li> <li><a href=http://boostjp.github.io/tips/array.html#at>添字による要素アクセス</a></li> <li><a href=http://boostjp.github.io/tips/array.html#iterator>イテレータを取得する</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/overview name=overview>概要</a></h2> <p><code>boost::array</code>クラスは、組み込み配列にゼロオーバーヘッドな固定長配列クラスである。</p> <p>このクラスは、組み込み配列とは異なり、<code>std::vector</code>や<code>std::list</code>のような標準コンテナのインタフェースを持つ。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 配列 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/array.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>配列</h1> <p>Boostでは、標準コンテナのインタフェースで使用できる固定長配列クラス、<code>boost::array</code>を提供する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/array.html#overview>概要</a></li> <li><a href=http://boostjp.github.io/tips/array.html#size>配列の要素数を取得する</a></li> <li><a href=http://boostjp.github.io/tips/array.html#at>添字による要素アクセス</a></li> <li><a href=http://boostjp.github.io/tips/array.html#iterator>イテレータを取得する</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/array.html#overview name=overview>概要</a></h2> <p><code>boost::array</code>クラスは、組み込み配列にゼロオーバーヘッドな固定長配列クラスである。</p> <p>このクラスは、組み込み配列とは異なり、<code>std::vector</code>や<code>std::list</code>のような標準コンテナのインタフェースを持つ。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;algorithm&gt;</span>
 
@@ -183,7 +183,7 @@ function tree_onclick(e) {
     std<span style="color: #666666">::</span>for_each(ar.begin(), ar.end(), disp);
 }
 </pre></div> 実行結果：</p> <p><pre><code>3 1 4 
-</code></pre></p> <p><strong>テンプレート引数</strong></p> <p><code>boost::array</code>は、第1テンプレート引数に要素の型、第2テンプレート引数に要素数を取る。</p> <p>この場合、「3要素の<code>int</code>型配列」を作成している。</p> <p><strong>初期化</strong></p> <p><code>boost::array</code>は、組み込み配列と同様に、<code>{ 1, 2, 3 }</code>のような初期化子リストによる初期化が可能である。</p> <p><strong>イテレータインタフェース</strong></p> <p><code>boost::array</code>は、<code>std::vector</code>や<code>std::list</code>と同じように、イテレータを返す<code>begin()</code>/<code>end()</code>のインタフェースを持つ。</p> <h2><a href=http://boostjp.github.io/tips/size name=size>配列の要素数を取得する</a></h2> <p>配列の要素数を取得するには、<code>size()</code>メンバ関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <p><strong>テンプレート引数</strong></p> <p><code>boost::array</code>は、第1テンプレート引数に要素の型、第2テンプレート引数に要素数を取る。</p> <p>この場合、「3要素の<code>int</code>型配列」を作成している。</p> <p><strong>初期化</strong></p> <p><code>boost::array</code>は、組み込み配列と同様に、<code>{ 1, 2, 3 }</code>のような初期化子リストによる初期化が可能である。</p> <p><strong>イテレータインタフェース</strong></p> <p><code>boost::array</code>は、<code>std::vector</code>や<code>std::list</code>と同じように、イテレータを返す<code>begin()</code>/<code>end()</code>のインタフェースを持つ。</p> <h2><a href=http://boostjp.github.io/tips/array.html#size name=size>配列の要素数を取得する</a></h2> <p>配列の要素数を取得するには、<code>size()</code>メンバ関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -194,7 +194,7 @@ function tree_onclick(e) {
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> size <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/at name=at>添字による要素アクセス</a></h2> <p><code>boost::array</code>は、組み込み配列や<code>std::vector</code>と同じように、<code>operator[]()</code>の添字演算子によって要素にランダムアクセスできる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/array.html#at name=at>添字による要素アクセス</a></h2> <p><code>boost::array</code>は、組み込み配列や<code>std::vector</code>と同じように、<code>operator[]()</code>の添字演算子によって要素にランダムアクセスできる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 
 <span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
@@ -207,7 +207,7 @@ function tree_onclick(e) {
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3
 1
 4
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/iterator name=iterator>イテレータ</a></h2> <p><code>boost::array</code>は、<code>begin()</code>、<code>end()</code>メンバ関数によって、最初の要素を指すイテレータ、最後尾要素の次を指すイテレータを取得できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/array.html#iterator name=iterator>イテレータ</a></h2> <p><code>boost::array</code>は、<code>begin()</code>、<code>end()</code>メンバ関数によって、最初の要素を指すイテレータ、最後尾要素の次を指すイテレータを取得できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;algorithm&gt;</span>
 
@@ -222,7 +222,7 @@ function tree_onclick(e) {
 </pre></div> 実行結果：</p> <p><pre><code>3
 1
 4
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/iterator-type name=iterator-type>イテレータの型を取得する</a></h2> <p>イテレータの型は、<code>boost::array&lt;T, N&gt;</code>クラスが持つ、以下のメンバ型で取得できる：</p> <ul> <li><code>iterator</code> : 変更可能なイテレータ</li> <li><code>const_iterator</code> : 読み取り専用イテレータ</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/array.html#iterator-type name=iterator-type>イテレータの型を取得する</a></h2> <p>イテレータの型は、<code>boost::array&lt;T, N&gt;</code>クラスが持つ、以下のメンバ型で取得できる：</p> <ul> <li><code>iterator</code> : 変更可能なイテレータ</li> <li><code>const_iterator</code> : 読み取り専用イテレータ</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;algorithm&gt;</span>
 

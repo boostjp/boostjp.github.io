@@ -170,7 +170,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> リスト処理の遅延評価 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/list.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>リスト処理の遅延評価</h1> <p><a href=http://www.boost.org/doc/libs/release/libs/range/doc/html/index.html target=_blank>Boost Range Library</a>のRangeアダプタは、リスト処理を遅延評価する仕組みを提供する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/list.html#filter>条件抽出 - <code>filtered</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#transform-value>値の変換 - <code>transformed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#transform-type>型変換 - <code>transformed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#reverse>逆順に走査する - <code>reversed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#map-key>mapのキーのみを抽出する - <code>map_keys</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#map-value>mapの値のみを抽出する - <code>map_values</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#join>2つのリストを連結する - <code>join</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#counting-range>値の範囲を生成する - <code>irange</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#pipe>リストに対する複数の遅延処理を合成する</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/filter name=filter>条件抽出 - filtered</a></h2> <p>リストから値の条件抽出をするには、<code>boost::adapotrs::filtered</code>を使用する。</p> <p>以下は、<code>{1, 2, 3, 4, 5}</code>というリストから、偶数値のみを抽出している。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class="row google-search-result"> <gcse:searchresults></gcse:searchresults> </div> <div class=row> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> リスト処理の遅延評価 </li> </ol> </div> <div class=row> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/list.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> <div class=row> <h1>リスト処理の遅延評価</h1> <p><a href=http://www.boost.org/doc/libs/release/libs/range/doc/html/index.html target=_blank>Boost Range Library</a>のRangeアダプタは、リスト処理を遅延評価する仕組みを提供する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/list.html#filter>条件抽出 - <code>filtered</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#transform-value>値の変換 - <code>transformed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#transform-type>型変換 - <code>transformed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#reverse>逆順に走査する - <code>reversed</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#map-key>mapのキーのみを抽出する - <code>map_keys</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#map-value>mapの値のみを抽出する - <code>map_values</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#join>2つのリストを連結する - <code>join</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#counting-range>値の範囲を生成する - <code>irange</code></a></li> <li><a href=http://boostjp.github.io/tips/list.html#pipe>リストに対する複数の遅延処理を合成する</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/list.html#filter name=filter>条件抽出 - filtered</a></h2> <p>リストから値の条件抽出をするには、<code>boost::adapotrs::filtered</code>を使用する。</p> <p>以下は、<code>{1, 2, 3, 4, 5}</code>というリストから、偶数値のみを抽出している。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/filtered.hpp&gt;</span>
@@ -189,7 +189,7 @@ function tree_onclick(e) {
 }
 </pre></div> 実行結果：</p> <p><pre><code>2
 4
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/transform-value name=transform-value>値の変換 - transformed</a></h2> <p>リストの全ての要素に関数を適用するには、<code>boost::adaptors::transformed</code>を使用する。</p> <p>これは、関数型言語一般での<code>map</code>関数に相当する。</p> <p>以下は、リストの全ての要素に<code>1</code>を加算する処理である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#transform-value name=transform-value>値の変換 - transformed</a></h2> <p>リストの全ての要素に関数を適用するには、<code>boost::adaptors::transformed</code>を使用する。</p> <p>これは、関数型言語一般での<code>map</code>関数に相当する。</p> <p>以下は、リストの全ての要素に<code>1</code>を加算する処理である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/transformed.hpp&gt;</span>
@@ -211,7 +211,7 @@ function tree_onclick(e) {
 4
 5
 6
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/transform-type name=transform-type>型変換 - transformed</a></h2> <p>リストの全ての要素に関数を適用する<code>boost::adaptors::transformed</code>は、型変換にも使用することができる。</p> <p>以下は、リストの全ての要素を<code>int</code>から<code>std::string</code>に変換する処理である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#transform-type name=transform-type>型変換 - transformed</a></h2> <p>リストの全ての要素に関数を適用する<code>boost::adaptors::transformed</code>は、型変換にも使用することができる。</p> <p>以下は、リストの全ての要素を<code>int</code>から<code>std::string</code>に変換する処理である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/transformed.hpp&gt;</span>
@@ -235,7 +235,7 @@ std<span style="color: #666666">::</span>string int_to_string(<span style="color
 3
 4
 5
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/reverse name=reverse>逆順に走査する - reversed</a></h2> <p>リストを逆順に走査するには、<code>boost::adaptors::reversed</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#reverse name=reverse>逆順に走査する - reversed</a></h2> <p>リストを逆順に走査するには、<code>boost::adaptors::reversed</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/reversed.hpp&gt;</span>
@@ -256,7 +256,7 @@ std<span style="color: #666666">::</span>string int_to_string(<span style="color
 3
 2
 1
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/map-key name=map-key>mapのキーのみを抽出する - map_keys</a></h2> <p><code>std::map</code>、<code>boost::unordered_map</code>、<code>std::vector&lt;std::pair&lt;Key, Value&gt; &gt;</code>のようなコンテナからキーのみを抽出するには、<code>boost::adaptors::map_keys</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#map-key name=map-key>mapのキーのみを抽出する - map_keys</a></h2> <p><code>std::map</code>、<code>boost::unordered_map</code>、<code>std::vector&lt;std::pair&lt;Key, Value&gt; &gt;</code>のようなコンテナからキーのみを抽出するには、<code>boost::adaptors::map_keys</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;map&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/map.hpp&gt;</span>
@@ -279,7 +279,7 @@ std<span style="color: #666666">::</span>string int_to_string(<span style="color
 </pre></div> 実行結果：</p> <p><pre><code>1
 3
 4
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/map-value name=map-value>mapの値のみを抽出する - map_values</a></h2> <p><code>std::map</code>、<code>boost::unordered_map</code>、<code>std::vector&lt;std::pair&lt;Key, Value&gt; &gt;</code>のようなコンテナから値のみを抽出するには、<code>boost::adaptors::map_values</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#map-value name=map-value>mapの値のみを抽出する - map_values</a></h2> <p><code>std::map</code>、<code>boost::unordered_map</code>、<code>std::vector&lt;std::pair&lt;Key, Value&gt; &gt;</code>のようなコンテナから値のみを抽出するには、<code>boost::adaptors::map_values</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;map&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/map.hpp&gt;</span>
@@ -302,7 +302,7 @@ std<span style="color: #666666">::</span>string int_to_string(<span style="color
 </pre></div> 実行結果：</p> <p><pre><code>Bob
 Alice
 Carol
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/join name=join>2つのリストを連結する - join</a></h2> <p>リストを連結するには、<code>boost::join()</code>関数を使用する。</p> <p>この関数は、2つのリストを連結した新たなリストを返すのではなく、1つのリストの走査が終わったら2つめのリストを走査するRangeを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#join name=join>2つのリストを連結する - join</a></h2> <p>リストを連結するには、<code>boost::join()</code>関数を使用する。</p> <p>この関数は、2つのリストを連結した新たなリストを返すのではなく、1つのリストの走査が終わったら2つめのリストを走査するRangeを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;list&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
@@ -323,7 +323,7 @@ Carol
 3
 4
 5
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/counting-range name=counting-range>値の範囲を生成する - irange</a></h2> <p><code>{1..5}</code>のような連続した値の範囲を生成する場合には、<code>boost::irange()</code>関数を使用する。</p> <p>この関数に値の範囲を引数として渡すことで、その値の範囲を走査可能なRandom Access Rangeを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#counting-range name=counting-range>値の範囲を生成する - irange</a></h2> <p><code>{1..5}</code>のような連続した値の範囲を生成する場合には、<code>boost::irange()</code>関数を使用する。</p> <p>この関数に値の範囲を引数として渡すことで、その値の範囲を走査可能なRandom Access Rangeを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/irange.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
 
@@ -353,7 +353,7 @@ Carol
 3
 5
 7
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/pipe name=pipe>リストに対する複数の遅延処理を合成する</a></h2> <p>Boost Range LibraryのRangeアダプタは、個々の処理を遅延評価するだけでなく、<code>operator|()</code>でさらに繋ぎ、それらの処理を合成できる。</p> <p>以下は、条件抽出(<code>filtered</code>)と関数適用(<code>transformed</code>)を合成する処理である。リストが実際に走査されそれらの処理が必要になるまで評価が遅延される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/list.html#pipe name=pipe>リストに対する複数の遅延処理を合成する</a></h2> <p>Boost Range LibraryのRangeアダプタは、個々の処理を遅延評価するだけでなく、<code>operator|()</code>でさらに繋ぎ、それらの処理を合成できる。</p> <p>以下は、条件抽出(<code>filtered</code>)と関数適用(<code>transformed</code>)を合成する処理である。リストが実際に走査されそれらの処理が必要になるまで評価が遅延される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/adaptor/filtered.hpp&gt;</span>
