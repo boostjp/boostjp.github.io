@@ -2,9 +2,449 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-18T23:01:26.288051</updated>
-  <id>995b95c6-e0bb-4e77-aff4-f4e073b6a725</id>
+  <updated>2014-12-19T14:42:36.831394</updated>
+  <id>2a247afb-caeb-4890-9d0a-2ea41a46c9ce</id>
 
+  
+    <entry>
+      <title>the Boost Graph Library -- Boost.Graph : dag_shortest_pathsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph.html"/>
+      <id>87e1374162491636b6a0ed7fe1ef90c5c81b6628:archive/boost_docs/libs/graph.md</id>
+      <updated>2014-12-19 14:42:05 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;the Boost Graph Library&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/bgl-cover.jpg&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;BGLへの序章&lt;/li&gt;
+&lt;li&gt;歴史&lt;/li&gt;
+&lt;li&gt;刊行物&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/acknowledgements.html&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;クイック・ツアー&lt;/li&gt;
+&lt;li&gt;基本的なグラフ理論の復習&lt;/li&gt;
+&lt;li&gt;チュートリアル&lt;ol&gt;
+&lt;li&gt;Property Maps&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;adjacency_list&lt;/code&gt; class&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;例題&lt;ol&gt;
+&lt;li&gt;ファイル依存関係の例&lt;/li&gt;
+&lt;li&gt;Kevin Bacon の６次数&lt;/li&gt;
+&lt;li&gt;Graph Coloring&lt;/li&gt;
+&lt;li&gt;Sparse Matrix Ordering&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;BGL 拡張&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/constructing_algorithms.html&#34;&gt;BGLでグラフアルゴリズムを構築する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Converting Existing Graphs to BGL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Boost Graph インタフェイス&lt;ol&gt;
+&lt;li&gt;Graph&lt;/li&gt;
+&lt;li&gt;Incidence Graph&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BidirectionalGraph.html&#34;&gt;Bidirectional Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html&#34;&gt;Adjacency Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Vertex List Graph&lt;/li&gt;
+&lt;li&gt;Edge List Graph&lt;/li&gt;
+&lt;li&gt;Vertex and Edge List Graph&lt;/li&gt;
+&lt;li&gt;Mutable Graph&lt;/li&gt;
+&lt;li&gt;Property Graph&lt;/li&gt;
+&lt;li&gt;Mutable Property Graph&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;The Property Map Library （専門的にはグラフ・ライブラリの部分ではないが、ここで使用される頻度が高い）&lt;/li&gt;
+&lt;li&gt;ビジタ・コンセプト&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFS （幅優先探査） Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;DFS （深度優先探査） Visitor&lt;/li&gt;
+&lt;li&gt;Dijkstra Visitor&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BellmanFordVisitor.html&#34;&gt;Bellman Ford Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Event Visitor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;EventVisitorList アダプタ&lt;ol&gt;
+&lt;li&gt;Event Visitor List&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bfs_visitor.html&#34;&gt;&lt;code&gt;bfs_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dfs_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_visitor.html&#34;&gt;&lt;code&gt;bellman_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イベント・ビジタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・クラス&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_matrix.html&#34;&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;subgraph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reverse_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filtered_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Vector as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Matrix as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Leda Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Stanford GraphBase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イテレータ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;特性クラス&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;graph_traits&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html&#34;&gt;&lt;code&gt;adjacency_list_traits&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bgl_named_params.html&#34;&gt;&lt;code&gt;bgl_named_params&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;核となるアルゴリズム・パターン&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_search.html&#34;&gt;&lt;code&gt;breadth_first_search&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_visit.html&#34;&gt;&lt;code&gt;breadth_first_visit&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_search&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;depth_first_visit&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;undirected_dfs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uniform_cost_search&lt;/code&gt; (非推奨、代わりに Dijkstra を使うこと)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アルゴリズム&lt;ol&gt;
+&lt;li&gt;最短経路アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.html&#34;&gt;&lt;code&gt;bellman_ford_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dag_shortest_paths.html&#34;&gt;&lt;code&gt;dag_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;johnson_all_pairs_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最小全域木アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;kruskal_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prim_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/connected_components.html&#34;&gt;&lt;code&gt;connected_components&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strong_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Incremental Connected Components&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;initialize_incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;same_component&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;component_index&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最大流アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;edmunds_karp_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;push_relabel_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;topological_sort&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transitive_closure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/copy_graph.html&#34;&gt;&lt;code&gt;copy_graph&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transpose_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isomorphism&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/cuthill_mckee_ordering.html&#34;&gt;&lt;code&gt;cuthill_mckee_ordering&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequential_vertex_coloring&lt;/code&gt;(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;minimum_degree_ordering&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Graphviz フォーマット入出力ユーティリティ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;write_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;read_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;補助コンセプト、補助クラス、補助関数&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;property&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;ColorValue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Buffer.html&#34;&gt;Buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BasicMatrix.html&#34;&gt;BasicMatrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incident&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opposite&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;ith_bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tools for random graphs&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;random_vertex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;random_edge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generate_random_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;randomize_property&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;目標と To-Do 項目&lt;/li&gt;
+&lt;li&gt;トラブルシューティング&lt;/li&gt;
+&lt;li&gt;既知の問題&lt;/li&gt;
+&lt;li&gt;FAQ&lt;/li&gt;
+&lt;li&gt;BGL Book Errata&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>dag_shortest_paths -- Boost.Graph : dag_shortest_pathsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/dag_shortest_paths.html"/>
+      <id>87e1374162491636b6a0ed7fe1ef90c5c81b6628:archive/boost_docs/libs/graph/dag_shortest_paths.md</id>
+      <updated>2014-12-19 14:42:05 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;dag_shortest_paths&lt;/h1&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 名前付きパラメータバージョン&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;VertexListGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Param&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Tag&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Rest&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; dag_shortest_paths(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g,
+   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s,
+   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; bgl_named_params&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Param,Tag,Rest&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; params)
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 名前無しパラメータバージョン&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;VertexListGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DijkstraVisitor&lt;/span&gt;, 
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DistanceMap&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;WeightMap&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ColorMap&lt;/span&gt;, 
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;PredecessorMap&lt;/span&gt;,
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Compare&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Combine&lt;/span&gt;, 
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DistInf&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;DistZero&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; dag_shortest_paths(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g,
+   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;VertexListGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s, 
+   DistanceMap distance, WeightMap weight, ColorMap color,
+   PredecessorMap pred, DijkstraVisitor vis, 
+   Compare compare, Combine combine, DistInf inf, DistZero zero)
+&lt;/pre&gt;&lt;/div&gt;
+
+このアルゴリズム &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#clr90&#34;&gt;[8]&lt;/a&gt; は 重み付きの非循環有向グラフ (DAG) の単一始点の最短経路問題を解く。 このアルゴリズムは DAG にとって、Dijkstra や Bellman-Ford アルゴリズムより 一層効率的である。全ての辺の重みが 1 に等しい時はこのアルゴリズムの代わりに幅優先探索を使いなさい。最短経路問題の定義のために、最短経路問題のいくつかの背景についての章 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_theory_review.html#shortest-path-algorithms&#34;&gt;Shortest-Paths Algorithms&lt;/a&gt; を見なさい。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dag_shortest_paths()&lt;/code&gt; 関数から出力を得るための主な二つの選択が存在する。&lt;code&gt;distance_map()&lt;/code&gt; パラメータを通して距離プロパティ・マップを提供するならばグラフ中の始点から他の全ての頂点への最短距離は距離マップに記録されるだろう。さらに最短経路木を先行点マップ (predecessor map) に記録する事ができる。その場合 &lt;code&gt;V&lt;/code&gt; 中の各頂点 &lt;code&gt;u&lt;/code&gt; にとって、最短経路木中では &lt;code&gt;p[u]&lt;/code&gt; が &lt;code&gt;u&lt;/code&gt; の先行点になるだろう (ただし &lt;code&gt;p[u] = u&lt;/code&gt; でここに &lt;code&gt;u&lt;/code&gt; が始点であるかまたは始点からは到達不能な頂点である場合を除く)。これらの二つの選択に加え、ユーザはアルゴリズムのイベント・ポイントのどれかの間アクションをとれる独自のビジタを提供することができる。&lt;/p&gt;
+&lt;h2&gt;定義場所&lt;/h2&gt;
+&lt;p&gt;boost/graph/dag_shortest_paths.hpp&lt;/p&gt;
+&lt;h2&gt;パラメータ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;const VertexListGraph&amp;amp; g&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アルゴリズムが適用されるグラフオブジェクト。&lt;code&gt;VertexListGraph&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;Vertex List Graph&lt;/a&gt; のモデルでなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;vertex_descriptor s&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;始点。全ての距離はこの頂点から計算され、最短経路木はこの頂点を根とする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;名前付きパラメータ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;weight_map(WeightMap w_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフ中の各辺の重みまたは「長さ」。&lt;code&gt;WeightMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;Readable Property Map&lt;/a&gt; のモデルでなければならない。グラフの辺記述子型は重みマップのキー型として使用できる必要がある。マップの値型は距離マップの値型を伴った Addable でなければならない。 &lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;get(edge_weight, g)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;vertex_index_map(VertexIndexMap i_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは各頂点を &lt;code&gt;[0, num_vertices(g))&lt;/code&gt; の範囲において整数にマップする。これは辺がリラックスされた (減らされた) 時、ヒープ・データ構造を効率よく更新するのに必要である。&lt;code&gt;VertexIndexMap&lt;/code&gt; は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;Readable Property Map&lt;/a&gt; のモデルでなければならない。マップの値型は汎整数型でなければならない。グラフの頂点記述子型はマップのキー型として使用できる必要がある。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;get(vertex_index, g)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OUT: &lt;code&gt;predecessor_map(PredecessorMap p_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先行点マップ (predecessor map) は最小全域木中に辺を記録する。アルゴリズムの完了時に、&lt;code&gt;V&lt;/code&gt; 中の全ての &lt;code&gt;u&lt;/code&gt; のための辺 &lt;code&gt;(p[u],u)&lt;/code&gt; は最小全域木中にある。もし &lt;code&gt;p[u] = u&lt;/code&gt; なら &lt;code&gt;u&lt;/code&gt; は始点かまたは始点から到達不能な頂点である。 &lt;code&gt;PredecessorMap&lt;/code&gt; の型はキーと頂点の型がグラフの頂点記述子型と同じ &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; でなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;dummy_property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UTIL/OUT: &lt;code&gt;distance_map(DistanceMap d_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフ &lt;code&gt;g&lt;/code&gt; 中の始点 &lt;code&gt;s&lt;/code&gt; から各頂点への最短経路の重みは、このプロパティ・マップ中に記録される。最短経路の重みは、最短経路に沿った辺の重みの和である。&lt;code&gt;DistanceMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; のモデルでなければならない。グラフの頂点記述子型は距離マップのキー型として使用できる必要がある。距離マップの値型は &lt;code&gt;combine&lt;/code&gt; 関数 オブジェクトと単位要素のための &lt;code&gt;zero&lt;/code&gt; オブジェクトから作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Monoid.html&#34;&gt;Monoid&lt;/a&gt; の要素型である。さらに距離の値型は &lt;code&gt;compare&lt;/code&gt; 関数オブジェクトによって供給される &lt;a href=&#34;http://www.sgi.com/tech/stl/StrictWeakOrdering.html&#34; target=&#34;_blank&#34;&gt;StrictWeakOrdering&lt;/a&gt; の順序付けを持っていなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: サイズ &lt;code&gt;num_vertices(g)&lt;/code&gt; の &lt;code&gt;WeightMap&lt;/code&gt; の値型の &lt;code&gt;std::vector&lt;/code&gt; から作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/iterator_property_map.html&#34;&gt;&lt;code&gt;iterator_property_map&lt;/code&gt;&lt;/a&gt; で、添え字マップには &lt;code&gt;i_map&lt;/code&gt; を用いる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_compare(CompareFunction cmp)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;この関数はどの頂点が始点により近いか決定するために距離を比較するのに使われる。 &lt;code&gt;CompareFunction&lt;/code&gt; の型は &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryPredicate.html&#34; target=&#34;_blank&#34;&gt;Binary Predicate&lt;/a&gt; のモデルでなければならず、&lt;code&gt;DistanceMap&lt;/code&gt; プロパティ・マップの値型に一致する引数型を持たなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::less&amp;lt;D&amp;gt;&lt;/code&gt; ここで &lt;code&gt;D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type&lt;/code&gt; とする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_combine(CombineFunction cmb)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;この関数は道の距離を計算するために、距離を結合するのに使われる。 &lt;code&gt;CombineFunction&lt;/code&gt; の型は &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryPredicate.html&#34; target=&#34;_blank&#34;&gt;Binary Function&lt;/a&gt; のモデルでなければならない。二項関数の第一引数の型は &lt;code&gt;DistanceMap&lt;/code&gt; プロパティ・マップの値型に一致していなければならず、第二引数の型は &lt;code&gt;WeightMap&lt;/code&gt; プロパティ・マップの値型に一致していなければならない。結果型は距離の値型と同じでなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::plus&amp;lt;D&amp;gt;&lt;/code&gt; ここで &lt;code&gt;D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type&lt;/code&gt; とする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_inf(D inf)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;inf&lt;/code&gt; オブジェクトは &lt;code&gt;D&lt;/code&gt; オブジェクトのどの値よりも最も大きくなければならない。すなわち、&lt;code&gt;d != inf&lt;/code&gt; の場合どれでも &lt;code&gt;compare(d, inf) == true&lt;/code&gt; でなければならない。 &lt;code&gt;D&lt;/code&gt; の型は &lt;code&gt;DistanceMap&lt;/code&gt; の値型である。 &lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::numeric_limits&amp;lt;D&amp;gt;::max()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_zero(D zero)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zero&lt;/code&gt; の値は距離の値と &lt;code&gt;combine&lt;/code&gt; 関数オブジェクトによって作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Monoid.html&#34;&gt;Monoid&lt;/a&gt; のための単一要素でなければならない。 &lt;code&gt;D&lt;/code&gt; の型は &lt;code&gt;DistanceMap&lt;/code&gt; の値型である。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;D()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UTIL/OUT: &lt;code&gt;color_map(ColorMap c_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは頂点に印をつけるためにアルゴリズムの実行の間使われる。頂点は白色から始めて、それがキュー中に挿入された時に灰色になる。それからそれがキューから取り除かれた時に黒色になる。アルゴリズムの終了時に、始点から到達可能な頂点は黒色に色づけされている。その他の全ての頂点は白色のままである。&lt;code&gt;ColorMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; のモデルでなければならない。頂点記述子はマップのキー型として使用できる必要があり、マップの値型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;Color Value&lt;/a&gt; のモデルでなければならない。 &lt;/li&gt;
+&lt;li&gt;デフォルト: サイズ &lt;code&gt;num_vertices(g)&lt;/code&gt; の &lt;code&gt;default_color_type&lt;/code&gt; の &lt;code&gt;std::vector&lt;/code&gt; から作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/iterator_property_map.html&#34;&gt;&lt;code&gt;iterator_property_map&lt;/code&gt;&lt;/a&gt; で、添え字マップには &lt;code&gt;i_map&lt;/code&gt; を用いる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OUT: &lt;code&gt;visitor(DijkstraVisitor v)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アルゴリズム内の一定のイベント・ポイントの間に起こしたいアクションを指定するのに使いなさい。&lt;code&gt;DijkstraVisitor&lt;/code&gt; は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/DijkstraVisitor.html&#34;&gt;Dijkstra Visitor&lt;/a&gt; コンセプトのモデルでなければならない。ビジタ・オブジェクトは値渡しされる &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dag_shortest_paths.html#note_1&#34;&gt;[1]&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;dijkstra_visitor&amp;lt;null_visitor&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;計算量&lt;/h2&gt;
+&lt;p&gt;時間計算量は O(V + E) である。&lt;/p&gt;
+&lt;h2&gt;ビジタ・イベント・ポイント&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vis.initialize_vertex(u, g)&lt;/code&gt; は、アルゴリズムの開始前に各頂点で呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.examine_vertex(u, g)&lt;/code&gt; は、頂点が集合 &lt;code&gt;S&lt;/code&gt; に加えられた時に呼び出される。この時点で &lt;code&gt;(p[u],u)&lt;/code&gt; は最短経路木の辺であることがわかるので、 &lt;code&gt;d[u] = delta(s,u) = d[p[u]] + w(p[u],u)&lt;/code&gt; である。さらに調査された頂点の距離は単調増加 &lt;code&gt;d[u1] &amp;lt;= d[u2] &amp;lt;= d[un]&lt;/code&gt; である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.examine_edge(e, g)&lt;/code&gt; は、頂点の各出辺において、頂点が集合 &lt;code&gt;S&lt;/code&gt; に加えられた後で直ちに呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.edge_relaxed(e, g)&lt;/code&gt; は、辺 &lt;code&gt;(u,v)&lt;/code&gt; において、 もし &lt;code&gt;d[u] + w(u,v) &amp;lt; d[v]&lt;/code&gt; であるなら呼び出される。頂点 &lt;code&gt;v&lt;/code&gt; のための最近のリラックス (減少) にあずかった辺 &lt;code&gt;(u,v)&lt;/code&gt; は最短経路木の中にある辺である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.discover_vertex(v, g)&lt;/code&gt; は、頂点 &lt;code&gt;v&lt;/code&gt; において、 &lt;code&gt;(u,v)&lt;/code&gt; が調査されて &lt;code&gt;v&lt;/code&gt; が白色である時に呼び出される。頂点が発見されていれば灰色に色づけされており、各到達可能な頂点はきっかり一度発見されるからである。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.edge_not_relaxed(e, g)&lt;/code&gt; は、もし辺がリラックスされない (上を見よ) なら呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.finish_vertex(u, g)&lt;/code&gt; は、頂点の出辺が全て調査された後に呼び出される。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;コード例&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/examples/dag_shortest_paths.cpp.html&#34;&gt;examples/dag_shortest_paths.cpp&lt;/a&gt; を見よ。これはこのアルゴリズムの使用例である。&lt;/p&gt;
+&lt;h2&gt;注釈&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dag_shortest_paths.html#note_1&#34; name=&#34;note_1&#34;&gt;[1]&lt;/a&gt; ビジタのパラメータは値渡しされるので、もしビジタが状態を持っているなら、アルゴリズムの間のいかなる状態の変更も、送ったビジタ・オブジェクトには行われず ビジタ・オブジェクトのコピーに対して行われる。それゆえポインタまたはリファレンスによってこの状態をビジタに保持させることを望むかもしれない。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>libs/graph/example/dag_shortest_paths.cpp -- Boost.Graph : dag_shortest_pathsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/examples/dag_shortest_paths.cpp.html"/>
+      <id>87e1374162491636b6a0ed7fe1ef90c5c81b6628:archive/boost_docs/libs/graph/examples/dag_shortest_paths.cpp.md</id>
+      <updated>2014-12-19 14:42:05 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;libs/graph/example/dag_shortest_paths.cpp&lt;/h1&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Copyright 1997, 1998, 1999, 2000 University of Notre Dame.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Authors: Andrew Lumsdaine, Lie-Quan Lee, Jeremy G. Siek&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// This file is part of the Boost Graph Library&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// You should have received a copy of the License Agreement for the&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Boost Graph Library along with the software; see the file LICENSE.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// If not, contact Office of Research, University of Notre Dame, Notre&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Dame, IN 46556.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Permission to modify the code and to distribute modified code is&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// granted, provided the text of this NOTICE is retained, a notice that&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// the code was modified is included with the above COPYRIGHT NOTICE and&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// with the COPYRIGHT NOTICE in the LICENSE file, and that the LICENSE&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// file is distributed with the modified code.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// LICENSOR MAKES NO REPRESENTATIONS OR WARRANTIES, EXPRESS OR IMPLIED.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// By way of example, but not limitation, Licensor MAKES NO&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// REPRESENTATIONS OR WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// PARTICULAR PURPOSE OR THAT THE USE OF THE LICENSED SOFTWARE COMPONENTS&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR DOCUMENTATION WILL NOT INFRINGE ANY PATENTS, COPYRIGHTS, TRADEMARKS&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OR OTHER RIGHTS.&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//=======================================================================&lt;/span&gt;
+
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/dag_shortest_paths.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/graph/adjacency_list.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Example from Introduction to Algorithms by Cormen, et all p.537.&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// Sample output:&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  r: inifinity&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  s: 0&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  t: 2&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  u: 6&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  v: 5&lt;/span&gt;
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  x: 3&lt;/span&gt;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; adjacency_list&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;vecS, vecS, directedS, 
+    property&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;vertex_distance_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;, property&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;edge_weight_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;;
+  &lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt; g(&lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;);
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;enum&lt;/span&gt; verts { r, s, t, u, v, x };
+  &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt; name[] &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;rstuvx&#34;&lt;/span&gt;;
+  add_edge(r, s, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;, g);
+  add_edge(r, t, &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;, g);
+  add_edge(s, t, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;, g);
+  add_edge(s, u, &lt;span style=&#34;color: #666666&#34;&gt;6&lt;/span&gt;, g);
+  add_edge(t, u, &lt;span style=&#34;color: #666666&#34;&gt;7&lt;/span&gt;, g);
+  add_edge(t, v, &lt;span style=&#34;color: #666666&#34;&gt;4&lt;/span&gt;, g);
+  add_edge(t, x, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;, g);
+  add_edge(u, v, &lt;span style=&#34;color: #666666&#34;&gt;-1&lt;/span&gt;, g);
+  add_edge(u, x, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, g);
+  add_edge(v, x, &lt;span style=&#34;color: #666666&#34;&gt;-2&lt;/span&gt;, g);
+
+  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;vertex_distance_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type
+    d_map &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(vertex_distance, g);
+
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#if defined(BOOST_MSVC) &amp;amp;&amp;amp; BOOST_MSVC &amp;lt;= 1300&lt;/span&gt;
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// VC++ has trouble with the named-parameter mechanism, so&lt;/span&gt;
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// we make a direct call to the underlying implementation function.&lt;/span&gt;
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;default_color_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; color(num_vertices(g));
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; pred(num_vertices(g));
+  default_dijkstra_visitor vis;
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;less&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; compare;
+  closed_plus&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; combine;
+  property_map&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;edge_weight_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;type w_map &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; get(edge_weight, g);
+  dag_shortest_paths(g, s, d_map, w_map, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;color[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;pred[&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;], 
+     vis, compare, combine, std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;max(), &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;);
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#else&lt;/span&gt;
+  dag_shortest_paths(g, s, distance_map(d_map));
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#endif&lt;/span&gt;
+
+  graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;graph_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_iterator vi , vi_end;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (tie(vi, vi_end) &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertices(g); vi &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; vi_end; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;vi)
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (d_map[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;max())
+      std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;: inifinity&lt;/span&gt;&lt;span style=&#34;color: #BB6622; font-weight: bold&#34;&gt;\n&lt;/span&gt;&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;/span&gt;;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt;
+      std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; name[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; d_map[&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;vi] &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#39;\n&#39;&lt;/span&gt;;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>ジェネリックプログラミング手法 -- ページ内リンクの書き方が間違っていたので修正。 修正スクリプトは以下： https://gist.github.com/faithandbrave/39ce0160d4c8ed654b7f</title>
@@ -5915,7 +6355,7 @@ Bellman-Ford アルゴリズム [&lt;a href=&#34;http://boostjp.github.io/archiv
 
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;R&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;A1&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;i&gt;unspecified&lt;span style=&#34;color: #666666&#34;&gt;-3&lt;/span&gt;&lt;/i&gt; mem_fn(R (T&lt;span style=&#34;color: #666666&#34;&gt;::*&lt;/span&gt;pmf) (A1));
 
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;R&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;A1&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;i&gt;unspecified&lt;span style=&#34;color: #666666&#34;&gt;-4&lt;/span&gt;&lt;/i&gt; mem_fn(R (T&lt;span style=&#34;color: #666666&#34;&gt;::*&lt;/span&gt;pmf) (A1) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;);
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;R&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;A1&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; FNnvCjXdMAcsrmziLzrNNXBPyBpBjEZyunspecified&lt;span style=&#34;color: #666666&#34;&gt;-4F&lt;/span&gt;NnvCjXdMAcsrmziLzrNNXBPyBpBjEZy mem_fn(R (T&lt;span style=&#34;color: #666666&#34;&gt;::*&lt;/span&gt;pmf) (A1) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;);
 
 &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;R&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;A1&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;A2&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;i&gt;unspecified&lt;span style=&#34;color: #666666&#34;&gt;-5&lt;/span&gt;&lt;/i&gt; mem_fn(R (T&lt;span style=&#34;color: #666666&#34;&gt;::*&lt;/span&gt;pmf) (A1, A2));
 
@@ -20862,7 +21302,7 @@ pt.put_child(
     v.push_back(&lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;);
 
     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;lambda&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;_1;
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator it &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(v, &lt;span style=&#34;color:#ff0000&#34;&gt;_1 &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;&lt;/span&gt;);
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;iterator it &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(v, fyKKmBWzbRKnvkJwaUYpSNgTfuudkKYg_1 &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3f&lt;/span&gt;yKKmBWzbRKnvkJwaUYpSNgTfuudkKYg);
     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (it &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; v.end())
         std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;it &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
     &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt;
@@ -31524,84 +31964,6 @@ book.xml：&lt;/p&gt;
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>コマンドラインオプションの定義／取得 -- Merge pull request #27 from henry0312/program_options
-</title>
-      <link href="http://boostjp.github.io/tips/program_options.html"/>
-      <id>90be7892a7cd35de41b543f3c602e76c8839c88a:tips/program_options.md</id>
-      <updated>2014-12-17 18:58:44 +0900
-</updated>
-      
-        <content type="html">&lt;h1&gt;コマンドラインオプションの定義／取得&lt;/h1&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/program_options.html&#34; target=&#34;_blank&#34;&gt;Boost Program Options Library&lt;/a&gt;を用いるとプログラムの実行時に付けられる引数文字列について、一般的なオプションの仕組みの定義とその取得を容易に行える。&lt;/p&gt;
-&lt;p&gt;なお、Boost.ProgramOptionsを用いる場合はコンパイルの際に&lt;code&gt;g++ -lboost_program_options source.cxx&lt;/code&gt;の様にしてバイナリーのライブラリーをリンクする必要がある点に注意。&lt;/p&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/program_options.html#define-option&#34;&gt;オプションを定義する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/program_options.html#get-option&#34;&gt;オプションを取得する&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/define-option&#34; name=&#34;define-option&#34;&gt;オプションを定義する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;boost/program_options.hpp&amp;gt;&lt;/code&gt;に定義される&lt;code&gt;boost::program_options&lt;/code&gt;名前空間に含まれる&lt;code&gt;options_description&lt;/code&gt;型により、プログラムオプションを定義する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/program_options.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; ac, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; av)
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;program_options;
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オプションの定義&lt;/span&gt;
-  options_description description(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;おぷしょん&#34;&lt;/span&gt;);
-  description.add_options()
-    (&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;hoge,h&#34;&lt;/span&gt;, value&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;()&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;default_value(&lt;span style=&#34;color: #666666&#34;&gt;-100&lt;/span&gt;), &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ほげほげおぷしょんの説明だよ&#34;&lt;/span&gt;)
-    (&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;fuga,f&#34;&lt;/span&gt;, value&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;()&lt;span style=&#34;color: #666666&#34;&gt;-&amp;gt;&lt;/span&gt;multitoken(), &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ふがふがおぷしょんの説明だよ&#34;&lt;/span&gt;)
-    (&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;help,H&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;へるぷ&#34;&lt;/span&gt;)
-    (&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;version,v&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ばーじょん情報&#34;&lt;/span&gt;)
-    ;
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-以上の例では、&lt;code&gt;app -hoge 123 -fuga 1 2 4 8 16 32&lt;/code&gt;であるとか、&lt;code&gt;app -h -10 -f 123 456 789&lt;/code&gt;であるとか&lt;code&gt;app -H&lt;/code&gt;などの様な利用法を想定したプログラムオプションを定義している。&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;hoge&lt;/code&gt;にはデフォルト値として &lt;code&gt;-100&lt;/code&gt; 、&lt;code&gt;fuga&lt;/code&gt;は複数要素のオプションとして&lt;code&gt;multitoken()&lt;/code&gt;を定義している。&lt;/p&gt;
-&lt;p&gt;※定義しただけでは意味がありませんので、実際には「&lt;a href=&#34;http://boostjp.github.io/tips/program_options.html#get-option&#34;&gt;オプションの取得&lt;/a&gt;」と組み合わせて使います。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/get-option&#34; name=&#34;get-option&#34;&gt;オプションを取得する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;parse_command_line()&lt;/code&gt;関数を使用して、&lt;code&gt;options_description&lt;/code&gt;の定義に基づいてコマンドライン引数を解析し、その結果を&lt;code&gt;variables_map&lt;/code&gt;オブジェクトに対して格納する事を定義する。&lt;code&gt;notiry()&lt;/code&gt;関数を使用することで、実際に&lt;code&gt;variables_map&lt;/code&gt;オブジェクトに解析されたプログラムオプションの結果が格納される。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/program_options.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; ac, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; av)
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;program_options;
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オプションの定義&lt;/span&gt;
-  options_description description(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;おぷしょん&#34;&lt;/span&gt;);
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// （省略：「オプションの定義」を参照のこと）&lt;/span&gt;
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オプションの取得&lt;/span&gt;
-  variables_map vm;
-  store(&lt;span style=&#34;color:#ff0000&#34;&gt;parse_command_line&lt;/span&gt;(ac, av, description), vm);
-  &lt;span style=&#34;color:#ff0000&#34;&gt;notify&lt;/span&gt;(vm);
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (a.) オプション help が存在すれば description をコマンドのヘルプとして出力する。&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;( vm.count(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;help&#34;&lt;/span&gt;) )
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; description &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (b.) オプション hoge の取得（ int 型）&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;auto&lt;/span&gt; hoge &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vm[&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;hoge&#34;&lt;/span&gt;].as&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (c.) オプション fuga の取得 （ std::vector&amp;lt;unsigned&amp;gt; 型）&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;auto&lt;/span&gt; fuga &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vm[&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;fuga&#34;&lt;/span&gt;].as&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;();
-}
-&lt;/pre&gt;&lt;/div&gt;
-
-この例では、(a.)により実際に実行時に&lt;code&gt;app -H&lt;/code&gt;とコマンドラインでオプションを定義すれば、 &lt;code&gt;description&lt;/code&gt; を元にした一般的なプログラムオプションの表示が行われる。&lt;/p&gt;
-&lt;p&gt;(b.)と(c.)ではそれぞれ&lt;code&gt;app -hoge -10&lt;/code&gt;や&lt;code&gt;app -fuga 123 456 789&lt;/code&gt;の様に定義されたプログラムオプションをそれぞれ&lt;code&gt;int&lt;/code&gt;型、&lt;code&gt;std::vector&amp;lt;unsigned&amp;gt;&lt;/code&gt;型取得している。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi
-</name>
-        <email>faithandbrave@gmail.com
-</email>
       </author>
     </entry>
   
