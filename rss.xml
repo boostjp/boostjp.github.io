@@ -2,9 +2,388 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2014-12-22T16:22:32.426148</updated>
-  <id>0aba78c6-49b7-41af-b48c-92f26f15c40e</id>
+  <updated>2014-12-22T17:10:36.896113</updated>
+  <id>d20522ae-b500-455f-b10f-4dae37616329</id>
 
+  
+    <entry>
+      <title>the Boost Graph Library -- Boost.Graph : dijkstra_shortest_pathsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph.html"/>
+      <id>4455ef0c425578d3ecd1bb27f51b1f9c89496164:archive/boost_docs/libs/graph.md</id>
+      <updated>2014-12-22 17:10:31 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;the Boost Graph Library&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント : &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/table_of_contents.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/bgl-cover.jpg&#34; /&gt;&lt;/p&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;BGLへの序章&lt;/li&gt;
+&lt;li&gt;歴史&lt;/li&gt;
+&lt;li&gt;刊行物&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/acknowledgements.html&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;クイック・ツアー&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_theory_review.html&#34;&gt;基本的なグラフ理論の復習&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;チュートリアル&lt;ol&gt;
+&lt;li&gt;Property Maps&lt;/li&gt;
+&lt;li&gt;The &lt;code&gt;adjacency_list&lt;/code&gt; class&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;例題&lt;ol&gt;
+&lt;li&gt;ファイル依存関係の例&lt;/li&gt;
+&lt;li&gt;Kevin Bacon の６次数&lt;/li&gt;
+&lt;li&gt;Graph Coloring&lt;/li&gt;
+&lt;li&gt;Sparse Matrix Ordering&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;BGL 拡張&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/constructing_algorithms.html&#34;&gt;BGLでグラフアルゴリズムを構築する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Converting Existing Graphs to BGL&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Boost Graph インタフェイス&lt;ol&gt;
+&lt;li&gt;Graph&lt;/li&gt;
+&lt;li&gt;Incidence Graph&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BidirectionalGraph.html&#34;&gt;Bidirectional Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/AdjacencyGraph.html&#34;&gt;Adjacency Graph&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Vertex List Graph&lt;/li&gt;
+&lt;li&gt;Edge List Graph&lt;/li&gt;
+&lt;li&gt;Vertex and Edge List Graph&lt;/li&gt;
+&lt;li&gt;Mutable Graph&lt;/li&gt;
+&lt;li&gt;Property Graph&lt;/li&gt;
+&lt;li&gt;Mutable Property Graph&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;The Property Map Library （専門的にはグラフ・ライブラリの部分ではないが、ここで使用される頻度が高い）&lt;/li&gt;
+&lt;li&gt;ビジタ・コンセプト&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BFSVisitor.html&#34;&gt;BFS （幅優先探査） Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/DFSVisitor.html&#34;&gt;DFS （深さ優先探査） Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Dijkstra Visitor&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BellmanFordVisitor.html&#34;&gt;Bellman Ford Visitor&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Event Visitor&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;EventVisitorList アダプタ&lt;ol&gt;
+&lt;li&gt;Event Visitor List&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bfs_visitor.html&#34;&gt;&lt;code&gt;bfs_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dfs_visitor.html&#34;&gt;&lt;code&gt;dfs_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;dijkstra_visitor&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_visitor.html&#34;&gt;&lt;code&gt;bellman_visitor&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イベント・ビジタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;predecessor_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;distance_recorder&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;time_stamper&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_writer&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・クラス&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_matrix.html&#34;&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;subgraph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;reverse_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;filtered_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Vector as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Matrix as Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Leda Graph(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;Stanford GraphBase&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;イテレータ・アダプタ&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_iterator.html&#34;&gt;&lt;code&gt;adjacency_iterator&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;特性クラス&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;graph_traits&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list_traits.html&#34;&gt;&lt;code&gt;adjacency_list_traits&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bgl_named_params.html&#34;&gt;&lt;code&gt;bgl_named_params&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;核となるアルゴリズム・パターン&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_search.html&#34;&gt;&lt;code&gt;breadth_first_search&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/breadth_first_visit.html&#34;&gt;&lt;code&gt;breadth_first_visit&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/depth_first_search.html&#34;&gt;&lt;code&gt;depth_first_search&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/depth_first_visit.html&#34;&gt;&lt;code&gt;depth_first_visit&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;undirected_dfs&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;uniform_cost_search&lt;/code&gt; (非推奨、代わりに Dijkstra を使うこと)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;グラフ・アルゴリズム&lt;ol&gt;
+&lt;li&gt;最短経路アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html&#34;&gt;&lt;code&gt;dijkstra_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bellman_ford_shortest_paths.html&#34;&gt;&lt;code&gt;bellman_ford_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dag_shortest_paths.html&#34;&gt;&lt;code&gt;dag_shortest_paths&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;johnson_all_pairs_shortest_paths&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最小全域木アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;kruskal_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;prim_minimum_spanning_tree&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/connected_components.html&#34;&gt;&lt;code&gt;connected_components&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;strong_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Incremental Connected Components&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;initialize_incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incremental_components&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;same_component&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;component_index&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;最大流アルゴリズム&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;edmunds_karp_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;push_relabel_max_flow&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;topological_sort&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transitive_closure&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/copy_graph.html&#34;&gt;&lt;code&gt;copy_graph&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;transpose_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;isomorphism&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/cuthill_mckee_ordering.html&#34;&gt;&lt;code&gt;cuthill_mckee_ordering&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sequential_vertex_coloring&lt;/code&gt;(アンドキュメント)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;minimum_degree_ordering&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;AT&amp;amp;T Graphviz フォーマット入出力ユーティリティ&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;write_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;read_graphviz&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;補助コンセプト、補助クラス、補助関数&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;property&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;ColorValue&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Buffer.html&#34;&gt;Buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/BasicMatrix.html&#34;&gt;BasicMatrix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;incident&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opposite&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bandwidth.html&#34;&gt;&lt;code&gt;ith_bandwidth&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tools for random graphs&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;random_vertex&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;random_edge&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;generate_random_graph&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;randomize_property&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;目標と To-Do 項目&lt;/li&gt;
+&lt;li&gt;トラブルシューティング&lt;/li&gt;
+&lt;li&gt;既知の問題&lt;/li&gt;
+&lt;li&gt;FAQ&lt;/li&gt;
+&lt;li&gt;BGL Book Errata&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/liequan_lee.htm&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:llee@cs.indiana.edu&#34;&gt;llee@cs.indiana.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.osl.iu.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>dijkstra_shortest_paths -- Boost.Graph : dijkstra_shortest_pathsを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html"/>
+      <id>4455ef0c425578d3ecd1bb27f51b1f9c89496164:archive/boost_docs/libs/graph/dijkstra_shortest_paths.md</id>
+      <updated>2014-12-22 17:10:31 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;dijkstra_shortest_paths&lt;/h1&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 名前付きパラメータバージョン&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; P, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; R&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;
+dijkstra_shortest_paths(&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g,
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s,
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; bgl_named_params&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;P, T, R&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&amp;amp;&lt;/span&gt; params);
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 名前なしパラメータバージョン&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/DijkstraVisitor.html&#34;&gt;DijkstraVisitor&lt;/a&gt;, 
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; PredecessorMap, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; DistanceMap,
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; WeightMap, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; IndexMap, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryPredicate.html&#34; target=&#34;_blank&#34;&gt;Compare&lt;/a&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryFunction.html&#34; target=&#34;_blank&#34;&gt;Combine&lt;/a&gt;, 
+      &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; DistInf, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; DistZero&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; dijkstra_shortest_paths
+  (&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g,
+   &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;VertexListGraph&lt;/a&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s, 
+   PredecessorMap predecessor, DistanceMap distance, WeightMap weight, 
+   IndexMap index_map,
+   &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryPredicate.html&#34; target=&#34;_blank&#34;&gt;Compare&lt;/a&gt; compare, &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryFunction.html&#34; target=&#34;_blank&#34;&gt;Combine&lt;/a&gt; combine, DistInf inf, DistZero zero,
+   &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/DijkstraVisitor.html&#34;&gt;DijkstraVisitor&lt;/a&gt; vis)
+&lt;/pre&gt;&lt;/div&gt;
+
+このアルゴリズム [&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#dijkstra59&#34;&gt;10&lt;/a&gt;,&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#clr90&#34;&gt;8&lt;/a&gt;] は、全ての辺の重みが負でない場合の、重みづけされた有向グラフまたは無向グラフの単一始点の最短経路問題を解く。いくつかの辺の重みが負である場合は Bellman-Ford のアルゴリズムを使いなさい。全ての辺の重みが 1 に等しい時は Dijkstra のアルゴリズムの代わりに幅優先探索を使いなさい。最短経路問題の定義のために、最短経路問題のいくつかの背景 についての章 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_theory_review.html#shortest-path-algorithms&#34;&gt;Shortest-Paths Algorithms&lt;/a&gt; を見なさい。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;dijkstra_shortest_paths()&lt;/code&gt; 関数から出力を得るための主な二つの選択が存在する。&lt;code&gt;distance_map()&lt;/code&gt; パラメータを通して距離プロパティ・ マップを提供するならば、グラフ中の始点から他の全ての頂点への最短距離は距離マップに記録されるだろう。さらに最短経路木を先行点マップ (predecessor map) に記録することができる。その場合 &lt;code&gt;V&lt;/code&gt; 中の各頂点 &lt;code&gt;u&lt;/code&gt; にとって、最短経路木中では &lt;code&gt;p[u]&lt;/code&gt; が &lt;code&gt;u&lt;/code&gt; の先行点になるだろう (ただし &lt;code&gt;p[u] = u&lt;/code&gt; でここに &lt;code&gt;u&lt;/code&gt; が始点であるかまたは始点からは到達不能な頂点である場合を除く)。 これらの二つの選択に加え、ユーザはアルゴリズムのイベント・ポイントのどれかの間アクションを取れる独自のビジタを提供することができる。&lt;/p&gt;
+&lt;p&gt;Dijkstra のアルゴリズムは最短経路を知っている頂点集合 &lt;code&gt;S&lt;/code&gt; を反復的に「育てる」ことによって、始点から他の頂点への全ての最短経路を発見する。アルゴリズムの各段階で、&lt;code&gt;S&lt;/code&gt; に追加される次の頂点は優先度付きキューによって決定される。キューは、距離ラベルによって優先された &lt;code&gt;V - S&lt;/code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html#note_1&#34;&gt;[1]&lt;/a&gt; 中に頂点を含む。そして距離ラベルとはいまの所見られる各頂点への最短経路の長さである。それから優先度付きキューの先頭にある頂点 &lt;code&gt;u&lt;/code&gt; が &lt;code&gt;S&lt;/code&gt; に加えられ、その各先行辺はリラックス (距離が減らされる) される。つまり、もし &lt;code&gt;u&lt;/code&gt; への距離に出辺 &lt;code&gt;(u,v)&lt;/code&gt; の重みを加えた結果が &lt;code&gt;v&lt;/code&gt; の 距離ラベルより小さいなら、頂点 &lt;code&gt;v&lt;/code&gt; の評価された距離は減らされる。 それからアルゴリズムは元に戻り、優先度付きキューの先頭の次の頂点の処理をする。優先度付きキューが空になった時にアルゴリズムは終了する。&lt;/p&gt;
+&lt;p&gt;アルゴリズムは各頂点がどの集合中にあるかの過程を保持するためにカラー・マーカー (白色、灰色、そして黒色) を使う。黒色に色づけされた頂点は &lt;code&gt;S&lt;/code&gt; 中にある。 白色または灰色に色づけされた頂点は &lt;code&gt;V-S&lt;/code&gt; 中にある。白色の頂点はまだ発見されていず、灰色の頂点は優先度付きキュー中にある。デフォルトでは、グラフ中の各頂点のためのカラー・マーカーを格納するための配列を割り当てる。&lt;code&gt;color_map()&lt;/code&gt; パラメータによって独自の記憶域と色へのアクセスを提供することができる。&lt;/p&gt;
+&lt;p&gt;下記の擬似コードは Dijkstra の単一始点の最短経路アルゴリズムである。 &lt;code&gt;w&lt;/code&gt; は辺の重み、&lt;code&gt;d&lt;/code&gt; は距離ラベル、そして &lt;code&gt;p&lt;/code&gt; は最短経路木を符号化するのに使われる各頂点の先行点である。&lt;code&gt;Q&lt;/code&gt; は減少キー操作 (DECREASE-KEY operation) を備える優先度付きキューである。ビジタのイベント・ポイントは右側のラベルによって示されている。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;DIJKSTRA(G, s, w)
+  for each vertex u in V           頂点 u の初期化
+    d[u] := infinity 
+    p[u] := u 
+    color[u] := WHITE
+  end for
+  color[s] := GRAY 
+  d[s] := 0 
+  INSERT(Q, s)                     頂点 s の発見
+  while (Q != Ø)
+    u := EXTRACT-MIN(Q)            頂点 u の調査
+    S := S U { u }
+    for each vertex v in Adj[u]    辺 (u,v) の調査
+      if (w(u,v) + d[u] &amp;lt; d[v])
+        d[v] := w(u,v) + d[u]      辺 (u,v) はリラックスされた (減らされた)
+        p[v] := u 
+        if (color[v] = WHITE) 
+          color[v] := GRAY
+          INSERT(Q, v)             頂点 v の発見
+        else if (color[v] = GRAY)
+          DECREASE-KEY(Q, v)
+      else
+        ...                        辺 (u,v) はリラックスされない (減らされない)
+    end for
+    color[u] := BLACK              頂点 u の終了
+  end while
+  return (d, p)
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;定義場所&lt;/h2&gt;
+&lt;p&gt;boost/graph/dijkstra_shortest_paths.hpp&lt;/p&gt;
+&lt;h2&gt;パラメータ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;const VertexListGraph&amp;amp; g&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アルゴリズムが適用されるグラフオブジェクト。&lt;code&gt;VertexListGraph&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/VertexListGraph.html&#34;&gt;Vertex List Graph&lt;/a&gt; のモデルでなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;vertex_descriptor s&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;始点。全ての距離はこの頂点から計算される。そして最短経路木はこの頂点を根とする。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;名前付きパラメータ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;weight_map(WeightMap w_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフ中の各辺の重みまたは「長さ」。重みは全て非負でなければならず、辺の一つが負であればアルゴリズムは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/exception.html#negative_edge&#34;&gt;&lt;code&gt;negative_edge&lt;/code&gt;&lt;/a&gt; 例外を投げる。&lt;code&gt;WeightMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;Readable Property Map&lt;/a&gt; のモデルでなければならない。グラフの辺記述子型は重みマップのキー型として使用できる必要がある。このマップの値型は距離マップの値型と同じでなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;get(edge_weight, g)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;vertex_index_map(VertexIndexMap i_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは各頂点を &lt;code&gt;[0, num_vertices(g))&lt;/code&gt; の範囲において整数にマップする。これは辺がリラックスされた (減らされた) 時、ヒープ・データ構造を効率よく更新するのに必要である。&lt;code&gt;VertexIndexMap&lt;/code&gt; は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.html&#34;&gt;Readable Property Map&lt;/a&gt; のモデルでなければならない。マップの値型は汎整数型でなければならない。グラフの頂点記述子型はマップのキー型として使用できる必要がある。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;get(vertex_index, g)&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OUT: &lt;code&gt;predecessor_map(PredecessorMap p_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先行点マップ (predecessor map) は最小全域木中に辺を記録する。アルゴリズムの完了時に、&lt;code&gt;V&lt;/code&gt; 中の全ての &lt;code&gt;u&lt;/code&gt; のための辺 &lt;code&gt;(p[u],u)&lt;/code&gt; は最小全域木中にある。もし &lt;code&gt;p[u] = u&lt;/code&gt; なら &lt;code&gt;u&lt;/code&gt; は始点かまたは始点から到達不能な頂点である。 &lt;code&gt;PredecessorMap&lt;/code&gt; の型はキーと頂点の型がグラフの頂点記述子型と同じ &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; でなければならない。 &lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;dummy_property_map&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UTIL/OUT: &lt;code&gt;distance_map(DistanceMap d_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフ &lt;code&gt;g&lt;/code&gt; 中の始点 &lt;code&gt;s&lt;/code&gt; から各頂点への最短経路の重みは、このプロパティ・マップ中に記録される。最短経路の重みは、最短経路に沿った辺の重みの和である。&lt;code&gt;DistanceMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; のモデルでなければならない。グラフの頂点記述子型は距離マップのキー型として使用できる必要がある。距離マップの値型は &lt;code&gt;combine&lt;/code&gt; 関数オブジェクトと単位要素のための &lt;code&gt;zero&lt;/code&gt; オブジェクトから作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Monoid.html&#34;&gt;Monoid&lt;/a&gt; の要素型である。さらに距離の値型は &lt;code&gt;compare&lt;/code&gt; 関数オブジェクトによって提供される &lt;a href=&#34;http://www.sgi.com/tech/stl/StrictWeakOrdering.html&#34; target=&#34;_blank&#34;&gt;StrictWeakOrdering&lt;/a&gt; の順序付けを持っていなければならない。 &lt;/li&gt;
+&lt;li&gt;デフォルト: サイズ &lt;code&gt;num_vertices(g)&lt;/code&gt; の &lt;code&gt;WeightMap&lt;/code&gt; の値型の &lt;code&gt;std::vector&lt;/code&gt; から作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/iterator_property_map.html&#34;&gt;&lt;code&gt;iterator_property_map&lt;/code&gt;&lt;/a&gt; で、添え字マップには &lt;code&gt;i_map&lt;/code&gt; を用いる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_compare(CompareFunction cmp)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;この関数はどの頂点が始点により近いか決定するために距離を比較するのに使われる。&lt;code&gt;CompareFunction&lt;/code&gt; の型は &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryPredicate.html&#34; target=&#34;_blank&#34;&gt;Binary Predicate&lt;/a&gt; のモデルでなければならず、&lt;code&gt;DistanceMap&lt;/code&gt; プロパティ・ マップの値型に一致する引数型を持たなければならない。 &lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::less&amp;lt;D&amp;gt;&lt;/code&gt; ここで &lt;code&gt;D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type&lt;/code&gt; とする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_combine(CombineFunction cmb)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;この関数は道の距離を計算するために、距離を結合するのに使われる。 &lt;code&gt;CombineFunction&lt;/code&gt; の型は &lt;a href=&#34;http://www.sgi.com/tech/stl/BinaryFunction.html&#34; target=&#34;_blank&#34;&gt;Binary Function&lt;/a&gt; のモデルでなければならない。二項関数の第一引数の型は &lt;code&gt;DistanceMap&lt;/code&gt; プロパティ・マップの値型に一致していなければならず、 第二引数の型は &lt;code&gt;WeightMap&lt;/code&gt; プロパティ・マップの値型に一致していなければならない。結果型は距離の値型と同じでなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::plus&amp;lt;D&amp;gt;&lt;/code&gt; ここで &lt;code&gt;D=typename property_traits&amp;lt;DistanceMap&amp;gt;::value_type&lt;/code&gt; とする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_inf(D inf)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;inf&lt;/code&gt; オブジェクトは &lt;code&gt;D&lt;/code&gt; オブジェクトのどの値よりも最も大きく なければならない。すなわち、&lt;code&gt;d != inf&lt;/code&gt; の場合どれでも &lt;code&gt;compare(d, inf) == true&lt;/code&gt; でなければならない。 &lt;code&gt;D&lt;/code&gt; の型は &lt;code&gt;DistanceMap&lt;/code&gt; の値型である。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;std::numeric_limits&amp;lt;D&amp;gt;::max()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;IN: &lt;code&gt;distance_zero(D zero)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;zero&lt;/code&gt; の値は距離の値と &lt;code&gt;combine&lt;/code&gt; 関数オブジェクトによって 作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Monoid.html&#34;&gt;Monoid&lt;/a&gt; のための単一要素でなければならない。&lt;code&gt;D&lt;/code&gt; の型は &lt;code&gt;DistanceMap&lt;/code&gt; の値型である。 &lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;D()&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;UTIL/OUT: &lt;code&gt;color_map(ColorMap c_map)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは頂点に印をつけるためにアルゴリズムの実行の間使われる。頂点は白色から始めて、それがキュー中に挿入された時に灰色になる。それからそれがキューから取り除かれた時に黒色になる。アルゴリズムの終了時に、始点から到達可能な頂点は黒色に色づけされている。その他の全ての頂点は白色のままである。&lt;code&gt;ColorMap&lt;/code&gt; の型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;Read/Write Property Map&lt;/a&gt; のモデルでなければならない。頂点記述子はマップのキー型として使用できる必要があり、マップの値型は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/ColorValue.html&#34;&gt;Color Value&lt;/a&gt; のモデルでなければならない。&lt;/li&gt;
+&lt;li&gt;デフォルト: サイズ &lt;code&gt;num_vertices(g)&lt;/code&gt; の &lt;code&gt;default_color_type&lt;/code&gt; の &lt;code&gt;std::vector&lt;/code&gt; から作られた &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/iterator_property_map.html&#34;&gt;&lt;code&gt;iterator_property_map&lt;/code&gt;&lt;/a&gt; で、添え字マップには &lt;code&gt;i_map&lt;/code&gt; を用いる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;OUT: &lt;code&gt;visitor(DijkstraVisitor v)&lt;/code&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;アルゴリズム内の一定のイベント・ポイントの間に起こしたいアクションを指定するのに使いなさい。&lt;code&gt;DijkstraVisitor&lt;/code&gt; は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/DijkstraVisitor.html&#34;&gt;Dijkstra Visitor&lt;/a&gt; コンセプトのモデルでなければならない。ビジタ・オブジェクトは値渡しされる &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html#note_2&#34;&gt;[2]&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;デフォルト: &lt;code&gt;dijkstra_visitor&amp;lt;null_visitor&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;計算量&lt;/h2&gt;
+&lt;p&gt;時間計算量は O((V + E) log V) か、もし全ての頂点が始点から到達可能ならちょうど O(E log V) になる。&lt;/p&gt;
+&lt;h2&gt;ビジタ・イベント・ポイント&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;vis.initialize_vertex(u, g)&lt;/code&gt; は、アルゴリズムの開始前に各頂点で呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.examine_vertex(u, g)&lt;/code&gt; は、頂点が優先度付きキューから取り除かれ、集合 &lt;code&gt;S&lt;/code&gt; に加えられた時に呼び出される。この時点で &lt;code&gt;(p[u],u)&lt;/code&gt; は最短経路木の辺であることが分かるので &lt;code&gt;d[u] = delta(s,u) = d[p[u]] + w(p[u],u)&lt;/code&gt; である。さらに、調査された頂点の距離は単調増加 &lt;code&gt;d[u1] &amp;lt;= d[u2] &amp;lt;= d[un]&lt;/code&gt; である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.examine_edge(e, g)&lt;/code&gt; は、頂点の各出辺において、頂点が集合 &lt;code&gt;S&lt;/code&gt; に加えられた後で直ちに呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.edge_relaxed(e, g)&lt;/code&gt; は、辺 &lt;code&gt;(u,v)&lt;/code&gt; において、もし &lt;code&gt;d[u] + w(u,v) &amp;lt; d[v]&lt;/code&gt; であるなら呼び出される。頂点 &lt;code&gt;v&lt;/code&gt; のための最近のリラックス (減少) にあずかった辺 &lt;code&gt;(u,v)&lt;/code&gt; は最短経路木の中にある辺である。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.discover_vertex(v, g)&lt;/code&gt; は、頂点 &lt;code&gt;v&lt;/code&gt; において、&lt;code&gt;(u,v)&lt;/code&gt; が調査されて &lt;code&gt;v&lt;/code&gt; が白色である時に呼び出される。頂点が発見されていれば灰色に色づけされており、各到達可能な頂点はきっかり一度発見されるからである。これは頂点が優先度付きキューに挿入される時にも言える。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.edge_not_relaxed(e, g)&lt;/code&gt; は、もし辺がリラックスされない (上を見よ) なら呼び出される。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vis.finish_vertex(u, g)&lt;/code&gt; は、頂点の出辺が全て調査された後に呼び出される。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;コード例&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/examples/dijkstra-example.cpp.html&#34;&gt;examples/dijkstra-example.cpp&lt;/a&gt; を見よ。これは Dijkstra のアルゴリズムの使用例である。&lt;/p&gt;
+&lt;h2&gt;注釈&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html#note_1&#34; name=&#34;note_1&#34;&gt;[1]&lt;/a&gt; ここで使われているアルゴリズムは全ての &lt;code&gt;V - S&lt;/code&gt; 頂点を一度に優先度付きキュー中に置かないことによって、わずかなスペースを節約している。その代わり、発見された &lt;code&gt;V - S&lt;/code&gt; 中のこれらの頂点だけであり、それゆえ無限より少ない距離を持っている。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/dijkstra_shortest_paths.html#note_2&#34; name=&#34;note_2&#34;&gt;[2]&lt;/a&gt; ビジタのパラメータは値渡しされるので、もしビジタが状態を持っているなら、アルゴリズムの間のいかなる状態の変更も、送ったビジタ・オブジェクトには行われずビジタ・オブジェクトのコピーに対して行われる。それゆえポインタまたはリファレンスによってこの状態をビジタに保持させることを望むかもしれない。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>the Boost Graph Library -- Boost.Graph : DFSVisitorを追加</title>
@@ -1391,117 +1770,6 @@ delta (u,v) = 無限(infinity ) そうでなければ（ u から v に至る経
 &lt;p&gt;最短経路問題には、いくつかの変形された問題がある。ここでは単一ペアの問題を定義した、しかし、さらに単一出所問題(グラフ中の1つの頂点から各頂点ごとまでの最短のパス)があり、等価な単一目的地問題、全ペア問題、などである。単一出所の問題を解決するアルゴリズムより漸近的に速い、単一ペアの問題を解決するアルゴリズムは存在しない。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;最短経路木(shortest-paths tree)&lt;/strong&gt;は、グラフ &lt;code&gt;G=(V,E)&lt;/code&gt; 中のある頂点を原点とした有向サブグラフである。&lt;code&gt;V&#39;&lt;/code&gt; を &lt;code&gt;V&lt;/code&gt; のサブセット、&lt;code&gt;E&#39;&lt;/code&gt; を &lt;code&gt;E&lt;/code&gt; のサブセットとし、 &lt;code&gt;V&#39;&lt;/code&gt; は&lt;code&gt;G&#39;&lt;/code&gt; から到達可能な頂点の集合、&lt;code&gt;G&#39;&lt;/code&gt; は原点から連なる経路木を成すものとすれば、&lt;code&gt;V&#39;&lt;/code&gt; 中の全ての頂点 &lt;code&gt;v&lt;/code&gt; は &lt;code&gt;G&#39;&lt;/code&gt; 中の頂点 &lt;code&gt;v&lt;/code&gt; から唯一の経路を持つ。再帰的に、単一頂点アルゴリズムによる結果は最短経路木である。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_theory_review.html#network-flow-algorithms&#34; name=&#34;network-flow-algorithms&#34;&gt;ネットワークフロー問題&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;ネットワークの流れは&lt;strong&gt;送信(source)&lt;/strong&gt;頂点 &lt;code&gt;s&lt;/code&gt; から&lt;strong&gt;受信(sink)&lt;/strong&gt;頂点&lt;code&gt;t&lt;/code&gt;へと向かう有向グラフ &lt;code&gt;G=(V,E)&lt;/code&gt; である。各辺は数値による、&lt;strong&gt;容量(capacity)&lt;/strong&gt;関数 &lt;code&gt;c&lt;/code&gt; 、および、&lt;strong&gt;流れ(flow)&lt;/strong&gt;関数 &lt;code&gt;f&lt;/code&gt; を持つ。流れ関数は次の３条件を満たしていなければならない：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;f(u,v) &amp;lt;= c(u,v) for all (u,v) in V x V (容量制限) 
-f(u,v) = - f(v,u) for all (u,v) in V x V (流れ対称性)
-sumv in V f(u,v) = 0 for all u in V - {s,t} (流れ保存則)
-&lt;/code&gt;&lt;/pre&gt;
-ネットワークにおける&lt;strong&gt;流れ(flow)&lt;/strong&gt;は、受信頂点 &lt;code&gt;t&lt;/code&gt; に流れ込む集合の流れである（それは、送信頂点 &lt;code&gt;s&lt;/code&gt; から流れ出るネットの流れに等価である）。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;|f| = sumu in V f(u,t) = sumv in V f(s,v)
-&lt;/code&gt;&lt;/pre&gt;
-辺における&lt;strong&gt;余剰容量(residual capacity)&lt;/strong&gt;を &lt;code&gt;r(u,v) = c(u,v) – f(u,v)&lt;/code&gt; とする。 &lt;code&gt;r(u,v) &amp;gt; 0&lt;/code&gt; を満たす辺は余剰辺 &lt;code&gt;E&lt;sub&gt;f&lt;/sub&gt;&lt;/code&gt; であり、それは余剰グラフ &lt;code&gt;G&lt;sub&gt;f&lt;/sub&gt; = (V, E&lt;sub&gt;f&lt;/sub&gt;)&lt;/code&gt; を成す。 &lt;code&gt;r(u,v) = 0&lt;/code&gt; を満たす辺は&lt;strong&gt;飽和(saturated)&lt;/strong&gt;している。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;最大流問題(maximum flow problem)&lt;/strong&gt;は、最大に可能な流量値 &lt;code&gt;|f|&lt;/code&gt; を決定することであり、そのときのグラフ中における各辺に対する流量値を決定することである。&lt;/p&gt;
-&lt;p&gt;ネットワークの流れを 図 8 に示す。 &lt;code&gt;A&lt;/code&gt; は送信頂点で、&lt;code&gt;H&lt;/code&gt; は受信頂点。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/max-flow.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図 8: 最大流ネットワーク。各辺は（流れ/容量）のラベルで示している。&lt;/p&gt;
-&lt;p&gt;最大流ネットワーク問題を解決するには長い歴史があり、最初のアルゴリズムは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#ford56:_maxim&#34;&gt;Ford と Fulkerson&lt;/a&gt;による。現在に至る最良のアルゴリズムである push-relabel アルゴリズムは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#goldberg85:_new_max_flow_algor&#34;&gt;Goldberg&lt;/a&gt; によるもので、これは &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/bibliography.html#karzanov74:_deter&#34;&gt;Karzanov&lt;/a&gt; による &lt;strong&gt;preflow&lt;/strong&gt; introduced という概念を元に成り立っている。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 KATO Kimikazu, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/oki_miyuki@cppll.jp&#34;&gt;OKI Miyuki&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2014 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/faithandbrave@gmail.com&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>基本的なグラフ理論の復習 -- 改行が抜けていた</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/graph_theory_review.html"/>
-      <id>f404a71b8f1f910b7aa3c11e6d838801b845a8f1:archive/boost_docs/libs/graph/graph_theory_review.md</id>
-      <updated>2014-12-22 15:32:28 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;基本的なグラフ理論の復習&lt;/h1&gt;
-&lt;p&gt;この章は、基本的なグラフ理論を思い出させることを意図している。読者があらかじめグラフアルゴリズムの知識があるのなら、始めるにあたりこの章は十分であろう。もし読者がグラフアルゴリズムの知識がないのならば、 Cormen, Leiserson, Rivestの&lt;a href=&#34;http://www.toc.lcs.mit.edu/~clr/&#34; target=&#34;_blank&#34;&gt;Introduction to Algorithms&lt;/a&gt; のようなもっと詳しいものを薦める。&lt;/p&gt;
-&lt;h2&gt;グラフ抽象&lt;/h2&gt;
-&lt;p&gt;グラフは、多くの種類の問題を解くのに有効な数学的抽象化である。基本的には、グラフは頂点と辺から構成され、辺は二つの頂点を結ぶ。もっと正確には、グラフ(graph)とは組&lt;code&gt;(V,E)&lt;/code&gt;で表され、&lt;code&gt;V&lt;/code&gt;は有限集合で、&lt;code&gt;E&lt;/code&gt;は&lt;code&gt;V&lt;/code&gt;の２項関係である。&lt;code&gt;V&lt;/code&gt;は &lt;strong&gt;頂点集合(vertex set)&lt;/strong&gt; と呼ばれ、その要素を &lt;strong&gt;頂点(vertex)&lt;/strong&gt; と呼ぶ。&lt;code&gt;E&lt;/code&gt;は辺の集合で、 &lt;strong&gt;辺(edge)&lt;/strong&gt; とは&lt;code&gt;(u,v)&lt;/code&gt;の組で&lt;code&gt;u&lt;/code&gt;、&lt;code&gt;v&lt;/code&gt;は&lt;code&gt;V&lt;/code&gt;の要素である。 &lt;strong&gt;有向グラフ(directed graph)&lt;/strong&gt; においては、辺は順序付けられた組で、 &lt;strong&gt;始点(source)&lt;/strong&gt; を &lt;strong&gt;終点(target)&lt;/strong&gt; へと接続する。無向グラフ(undirected graph)においては、辺は順序付けされていない組で、２つの頂点を両方向につなぐ。つまり、無向グラフでは &lt;code&gt;(u,v)&lt;/code&gt;と&lt;code&gt;(v,u)&lt;/code&gt;は同じ辺の２通りの書き方である。&lt;/p&gt;
-&lt;p&gt;グラフのこの定義は、いくつかの点であいまいである。辺や頂点が何を表現するかが述べられていない。グラフの例としては、連絡道路やハイパーリンク付きのウェブページなどを挙げることができる。これらの詳細がグラフの定義からは除外されているのは、大きな理由がある。それらの詳細はグラフの &lt;strong&gt;抽象化&lt;/strong&gt; の中では必要な部分ではない。詳細を定義から除外することで再利用可能な理論を構築でき、そのことは多くの異なった種類の問題を解く際に役に立つのである。&lt;/p&gt;
-&lt;p&gt;定義にもどろう。グラフは頂点と辺の集合である。実際の様子を見せるため、頂点に文字のラベルがついたグラフを考え、辺を単純に文字の組としよう。ここで、有向グラフの例を次のように書くことができる。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;V = {v, b, x, z, a, y } 
-E = { (b,y), (b,y), (y,v), (z,a), (x,x), (b,x), (x,v), (a,z) } 
-G = (V, E)
-&lt;/code&gt;&lt;/pre&gt;
-このグラフを図示すると 図1 のようになる。辺 &lt;code&gt;(x,x)&lt;/code&gt; は &lt;strong&gt;輪(self-loop)&lt;/strong&gt; と呼ばれる。&lt;code&gt;(b,y)&lt;/code&gt;と &lt;code&gt;(b,y)&lt;/code&gt;は &lt;strong&gt;平行辺(parallel edges)&lt;/strong&gt; であり、これは &lt;strong&gt;マルチグラフ(multigraph)&lt;/strong&gt; でのみ許される(ただし、通常は有向グラフでも無向グラフでも許されない)。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/digraph.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図1: 有向グラフの例&lt;/p&gt;
-&lt;p&gt;次に似たようなグラフを示すが、今度は無向グラフである。これは図2に図示する。無向グラフでは輪は許されない。上記のグラフ(から平行辺&lt;code&gt;(b,y)&lt;/code&gt;を除いたもの)の &lt;strong&gt;無向版(undirected version)&lt;/strong&gt; である。それはつまり、同じ頂点をもち、同じ辺から方向を除いたものを持つことを意味し、&lt;code&gt;(a,z)&lt;/code&gt;と&lt;code&gt;(z,a)&lt;/code&gt;という２つの辺は一つの辺に退化する。また、逆を考えることもできる。無向グラフの &lt;strong&gt;有向版(directed version)&lt;/strong&gt; は、すべての辺をそれぞれの方向を向く２つの辺で置き換えることで得られる。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;V = {v, b, x, z, a, y }
-E = { (b,y), (y,v), (z,a), (b,x), (x,v) }
-G = (V, E)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/undigraph.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図2: 無向グラフの例&lt;/p&gt;
-&lt;p&gt;ここでさらにグラフの用語を定義する。辺&lt;code&gt;(u,v)&lt;/code&gt;がグラフに含まれるとき、頂点&lt;code&gt;v&lt;/code&gt;は頂点&lt;code&gt;u&lt;/code&gt;について &lt;strong&gt;隣接している(adjacent)&lt;/strong&gt; と言う。有向グラフでは、辺&lt;code&gt;(u,v)&lt;/code&gt;は 頂点&lt;code&gt;u&lt;/code&gt;の &lt;strong&gt;出辺(out-edge)&lt;/strong&gt; であり、頂点&lt;code&gt;v&lt;/code&gt;の &lt;strong&gt;入辺(in-edge)&lt;/strong&gt; である。無向グラフでは、辺&lt;code&gt;(u,v)&lt;/code&gt;は頂点&lt;code&gt;u&lt;/code&gt;と&lt;code&gt;v&lt;/code&gt;を &lt;strong&gt;接合している(incident on)&lt;/strong&gt; という。&lt;/p&gt;
-&lt;p&gt;図1で、頂点&lt;code&gt;y&lt;/code&gt;は頂点&lt;code&gt;b&lt;/code&gt;に対して隣接している (ただし&lt;code&gt;b&lt;/code&gt;は&lt;code&gt;y&lt;/code&gt;に対して隣接していない)。辺&lt;code&gt;(b,y)&lt;/code&gt;は&lt;code&gt;b&lt;/code&gt;の出辺であり、&lt;code&gt;y&lt;/code&gt;の入辺である。図2で、&lt;code&gt;y&lt;/code&gt;は&lt;code&gt;b&lt;/code&gt;に隣接していて、また逆も同様である。辺&lt;code&gt;(y,b)&lt;/code&gt;は頂点&lt;code&gt;y&lt;/code&gt;と&lt;code&gt;b&lt;/code&gt;を接合している。&lt;/p&gt;
-&lt;p&gt;有向グラフにおいて、ある頂点の出辺の数は &lt;strong&gt;出次数(out-degree)&lt;/strong&gt; と呼ばれ、入辺の数は &lt;strong&gt;入次数(in-degree)&lt;/strong&gt; と呼ばれる。無向グラフにおいて、ある頂点に対して接合している辺の数は &lt;strong&gt;次数(degree)&lt;/strong&gt; と呼ばれる。図1で、頂点&lt;code&gt;b&lt;/code&gt;の出次数は3であり、入次数は0である。図2では単純に頂点&lt;code&gt;b&lt;/code&gt;の次数は2である。&lt;/p&gt;
-&lt;p&gt;グラフの &lt;strong&gt;路(path)&lt;/strong&gt; とは辺の列で、それぞれの辺の終点が次の辺の始点であるものである。頂点&lt;code&gt;u&lt;/code&gt;から始まり頂点&lt;code&gt;v&lt;/code&gt;で終わる路があれば、頂点&lt;code&gt;v&lt;/code&gt;は&lt;code&gt;u&lt;/code&gt;から &lt;strong&gt;到達可能(reachable)&lt;/strong&gt; であるという。路が &lt;strong&gt;単純(simple)&lt;/strong&gt; であるとは、辺の列の中でどの頂点も繰り返し現れないことである。路&lt;code&gt;&amp;lt;(b,x), (x,v)&amp;gt;&lt;/code&gt;は単純であるが、路&lt;code&gt;&amp;lt;(a,z), (z,a)&amp;gt;&lt;/code&gt;は単純ではない。また、路&lt;code&gt;&amp;lt;(a,z), (z,a)&amp;gt;&lt;/code&gt;は最初の頂点と最後の頂点が一致するので、 &lt;strong&gt;サイクル(cycle)&lt;/strong&gt; と呼ばれる。サイクルのないグラフは &lt;strong&gt;アサイクリック(acyclic)&lt;/strong&gt; と呼ばれる。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;平面的グラフ(planar graph)&lt;/strong&gt; とは、すべての辺が交差しないように平面上に描けるグラフのことである。そのように描かれたものは &lt;strong&gt;平面グラフ(plane graph)&lt;/strong&gt; と呼ばれる。平面グラフの &lt;strong&gt;面(face)&lt;/strong&gt; とは、辺に囲まれた連結成分のことである。平面的グラフの重要な特性は、面、辺、頂点の数がオイラーの定理：&lt;code&gt;|F| - |E| + |V| = 2&lt;/code&gt;によって関係付けられることである。このことは、平面的グラフは最大でもO(|V|)個の辺しか持たないことを意味する。&lt;/p&gt;
-&lt;h2&gt;グラフデータ構造&lt;/h2&gt;
-&lt;p&gt;データ構造を考えるときに最初に考えるべきグラフの属性は、&lt;strong&gt;まばらさ(sparsity)&lt;/strong&gt; である。まばらさとは、頂点に対する相対的な辺の数である。&lt;code&gt;E&lt;/code&gt;が&lt;code&gt;V²&lt;/code&gt;に近いグラフは &lt;strong&gt;密(dense)&lt;/strong&gt; であると呼ばれ、&lt;code&gt;E = alpha V&lt;/code&gt;で&lt;code&gt;alpha&lt;/code&gt;が&lt;code&gt;V&lt;/code&gt;より十分に小さい場合は、まばらな(sparse)グラフと呼ばれる。密なグラフについては、通常、 &lt;strong&gt;隣接行列表現(adjacency-matrix representation)&lt;/strong&gt; が最良の選択であり、一方まばらなグラフについては &lt;strong&gt;隣接リスト表現(adjacency-list representation)&lt;/strong&gt; が最良である。また、まばらなグラフについては &lt;strong&gt;辺リスト表現(edge-list representation)&lt;/strong&gt; も適切な状況下では記憶効率面でよい選択である。&lt;/p&gt;
-&lt;h3&gt;隣接行列表現&lt;/h3&gt;
-&lt;p&gt;グラフの隣接行列表現はV x Vの２次元配列である。 行列a&lt;sub&gt;uv&lt;/sub&gt;の要素は、辺&lt;code&gt;(u,v)&lt;/code&gt;がグラフに含まれるかどうかを示すブーリアン値である。図3に図1(から&lt;code&gt;(b,y)&lt;/code&gt;を引いたもの)の隣接行列表現を表す。保存に必要な領域はO(V²)である。任意の辺について、アクセス、追加、除去にかかる時間はO(1)である。 頂点の追加や除去は、再割り当てとすべてのグラフのコピーが必要になり、手順数はO(V²)になる。&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_matrix.html&#34;&gt;&lt;code&gt;adjacency_matrix&lt;/code&gt;&lt;/a&gt;クラスは、隣接行列表現によってBGLグラフインターフェースを実装する。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/adj_matrix.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図3: 隣接行列によるグラフの表現&lt;/p&gt;
-&lt;h3&gt;隣接リスト表現&lt;/h3&gt;
-&lt;p&gt;グラフの隣接リスト表現では、すべての頂点に対して出辺の列を保存する。まばらなグラフでは、こうすることでメモリ領域を節約でき、必要な領域はO(V + E)だけになる。さらに、すべての頂点の出辺にはより効果的にアクセスできる。辺の挿入のコストはO(1)で、任意の辺へのアクセスはO(alpha)である。ここで、alphaは行列のまばらさ(グラフ中のすべての頂点についての出辺の数の最大値)である。図4は図1のグラフの隣接リスト表現である。&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/adjacency_list.html&#34;&gt;&lt;code&gt;adjacency_list&lt;/code&gt;&lt;/a&gt;は隣接リスト表現の実装である。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/adj_list.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図4: 隣接リストによるグラフ表現&lt;/p&gt;
-&lt;h3&gt;辺リスト表現&lt;/h3&gt;
-&lt;p&gt;グラフの辺リスト表現は、単純に辺の列であり、辺は頂点のIDの組で表される。必要なメモリはO(E)だけである。辺挿入のコストはO(1)であり、特定の辺のアクセスするのはO(E)(あまり効果的でない)である。図5は図1のグラフの辺リスト表現である。&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/edge_list.html&#34;&gt;&lt;code&gt;edge_list&lt;/code&gt;&lt;/a&gt;アダプタクラスは、辺リスト表現の実装を作るのに使うことができる。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/edge_list.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図5: 辺リストによるグラフの表現&lt;/p&gt;
-&lt;h2&gt;グラフアルゴリズム&lt;/h2&gt;
-&lt;h3&gt;グラフ探索アルゴリズム&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;木辺(tree edge)&lt;/strong&gt; とは、グラフ探索アルゴリズムをグラフに適用することによって作られた探索木(またはフォレスト)の辺ことである。辺&lt;code&gt;(u,v)&lt;/code&gt;は木辺であるのは、辺&lt;code&gt;(u,v)&lt;/code&gt;の探索(&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/visitor_concepts.html&#34;&gt;ビジタ&lt;/a&gt;の&lt;code&gt;explore()&lt;/code&gt;メソッドにあたる)をしているときに&lt;code&gt;v&lt;/code&gt;が最初に見つかるときである。&lt;strong&gt;後退辺(back edge)&lt;/strong&gt;とは、探索木上で頂点を先祖につなぐ辺である。したがって、辺&lt;code&gt;(u,v)&lt;/code&gt;では&lt;code&gt;v&lt;/code&gt;は&lt;code&gt;u&lt;/code&gt;の先祖である。輪は後退辺とみなされる。&lt;strong&gt;先行辺(forward edge)&lt;/strong&gt;は木辺ではない辺&lt;code&gt;(u,v)&lt;/code&gt;で、探索木上&lt;code&gt;u&lt;/code&gt;を子孫&lt;code&gt;v&lt;/code&gt;へとつなぐ。&lt;strong&gt;交差辺(cross edge)&lt;/strong&gt;とは、以上の３つのカテゴリに含まれない辺のことである。&lt;/p&gt;
-&lt;h3&gt;幅優先探索&lt;/h3&gt;
-&lt;p&gt;幅優先探索(Breadth-First Search, BFS)とは、グラフに対して横断的であり、特定の原点から到達可能な頂点をすべて探索する。また横断する順番については、頂点のすべての近傍を探索してから近傍の近傍の探索へと進む。幅優先探索について考えるには、例えば水溜りに石を落としたときに波が放射状に広がるように拡散すると思えばよい。同じ「波」の中の頂点は原点から同じ距離にある。頂点は最初にアルゴリズムによって遭遇するときに&lt;strong&gt;発見される(discovered)&lt;/strong&gt;と言う。頂点は、その近傍がすべて探索されたときに&lt;strong&gt;完了した(finished)&lt;/strong&gt;と言われる。これらをわかりやすくする例がある。グラフを図6に示し、そのBFSにおける発見と完了の順番をその下に示す。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/bfs_example.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図6: 広さ優先探索がグラフに広がる様子&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;発見の順番: s r w v t x u y &lt;/li&gt;
-&lt;li&gt;完了の順番: s r w v t x u y&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;s&lt;/code&gt;から開始して、最初は&lt;code&gt;r&lt;/code&gt;と&lt;code&gt;w&lt;/code&gt;(&lt;code&gt;s&lt;/code&gt;の近傍)にたどり着く。&lt;code&gt;s&lt;/code&gt;の両方の希望に到達してから、&lt;code&gt;r&lt;/code&gt;の近傍(頂点&lt;code&gt;v&lt;/code&gt;)に到達し、&lt;code&gt;w&lt;/code&gt;の近傍&lt;code&gt;t&lt;/code&gt;と&lt;code&gt;x&lt;/code&gt;に到達する (&lt;code&gt;r&lt;/code&gt;と&lt;code&gt;w&lt;/code&gt;の順序は意味を持たない)。最後に&lt;code&gt;t&lt;/code&gt;と&lt;code&gt;x&lt;/code&gt;の近傍、&lt;code&gt;u&lt;/code&gt;と&lt;code&gt;y&lt;/code&gt;に到達する。&lt;/p&gt;
-&lt;p&gt;今グラフ上のどこにいるか、次にどこの頂点に行くかをアルゴリズムが把握するために、BFSは頂点に色を塗る。塗る色を置く場所は、グラフの中でもよいし、アルゴリズムに引数として渡すこともできる。&lt;/p&gt;
-&lt;h3&gt;深さ優先探索&lt;/h3&gt;
-&lt;p&gt;深さ優先探査(Depth-First Search, DFS) は、グラフ中の全頂点を探査する。このアルゴリズムでは、常にグラフ中の「深い」部分を、次に探査すべき辺として選択していく。これは、到達した頂点が未訪問の隣接頂点を持たなくなるまで次の未訪問な隣接頂点を選択していき、端に到達すれば前の頂点へと戻り、その頂点から任意の未探査な辺へと探査を継続していくことである。深さ優先探査は、出発する頂点から到達可能な全ての頂点を訪問した後に、残りの未訪問な頂点のうちから１頂点を選択して探査を継続していく。このプロセスは、深度優先の森からともに深度優先の木という集合を形成する。深さ優先探索は、グラフ中の辺を３つのカテゴリーに分類する：木辺、後退辺、先行辺か交差辺(どちらにも明確に分類しない)。与えられたグラフから多くの有効な深度優先の森が典型的に存在し、それゆえ辺を分類するには様々な(かつ等しく有効な)方法がある。&lt;/p&gt;
-&lt;p&gt;深さ優先探査の興味深い特性は、各頂点の発見時と完了時の間において、括弧（入れ子）構造を形成するということである。頂点が発見される場合、私たちが開いた括弧を使用すれば、頂点が探査終了される場合には閉じた括弧が使用され、その結果、括弧により適切に入れ子にされた集合ができあがる。図7は、探査された順番にラベル付けされた辺による無向グラフに適応された DFS （深さ優先探査）である。図の下に、探査を開始した順序と探査を終了した順序を示し、それらから導かれる括弧構造を示す。DFS （深さ優先探査）は、２つが接続されたコンポーネント・アルゴリズム、トポロジカル・ソート、などを含む他のグラフ・アルゴリズムによって使用される核となるアルゴリズムである。これは循環を検知するために利用できる（ファイル依存関係の例における&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/file_dependency_example.html#cycles&#34;&gt;循環依存 （Cylic Dependencies）&lt;/a&gt; の節を見よ）。&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;&#34; src=&#34;http://www.boost.org/doc/libs/1_31_0/libs/graph/doc/figs/dfs.gif&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;図 7: 無向グラフにおける深度優先探査&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;発見の順序: a b e d c f g h i&lt;/li&gt;
-&lt;li&gt;完了の順序: d f c e b a&lt;/li&gt;
-&lt;li&gt;括弧構造: (a (b (e (d d) (c (f f) c) e) b) a) (g (h (i i) h) g)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;最小全域木問題&lt;/h2&gt;
-&lt;p&gt;最小全域木問題は、以下のように定義される：グラフ &lt;code&gt;E&lt;/code&gt; 中の全頂点を接続する循環のサブセット &lt;code&gt;T&lt;/code&gt; を接続の全コストが最小となるように選択することである。全コストは下記により与えられる。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;w(T) = T における辺 (u,v) におけるコスト w(u,v) の合計、 w(u,v) は辺 (u,v) のコスト
-&lt;/code&gt;&lt;/pre&gt;
-&lt;code&gt;T&lt;/code&gt; は&lt;strong&gt;全域木(spanning tree)&lt;/strong&gt;と呼ばれる.&lt;/p&gt;
-&lt;h2&gt;最短経路問題&lt;/h2&gt;
-&lt;p&gt;グラフ理論における古典的問題のひとつは、グラフ中の２頂点間を結ぶ最短経路を見つけることである。形式的に経路はグラフ &lt;code&gt;G = (V, E)&lt;/code&gt; 中の頂点のシーケンス &lt;code&gt;&amp;lt;v0,v1,...,vk&amp;gt;&lt;/code&gt; で表される（辺 &lt;code&gt;(vi,vi+1) for i=0,1,...,k-1&lt;/code&gt; は 辺の集合 &lt;code&gt;E&lt;/code&gt; ）。シーケンスにおいて各頂点は次の頂点へ接続される。最短経路問題において、各辺は重みを数値として与えられている。それゆえ、&lt;strong&gt;経路の重み(weight of a path)&lt;/strong&gt;について記す&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;w(p) = i=1..k of w(vi-1,vi) の合計
-&lt;/code&gt;&lt;/pre&gt;
-頂点 &lt;code&gt;u&lt;/code&gt; から &lt;code&gt;v&lt;/code&gt; に至る&lt;strong&gt;最短経路の重み(shortest path weight)&lt;/strong&gt;は&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;delta (u,v) = min { w(p) : u --&amp;gt; v } もし 頂点 u から v に至る経路が存在すれば
-delta (u,v) = 無限(infinity ) そうでなければ（ u から v に至る経路がなければ）
-&lt;/code&gt;&lt;/pre&gt;
-最短経路は、重みの合計が最小となる経路といえる。&lt;/p&gt;
-&lt;p&gt;最短経路問題には、いくつかの変形された問題がある。ここでは単一ペアの問題を定義した、しかし、さらに単一出所問題(グラフ中の1つの頂点から各頂点ごとまでの最短のパス)があり、等価な単一目的地問題、全ペア問題、などである。単一出所の問題を解決するアルゴリズムより漸近的に速い、単一ペアの問題を解決するアルゴリズムは存在しない。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;最短経路木(shortest-paths tree)&lt;/strong&gt;は、グラフ &lt;code&gt;G=(V,E)&lt;/code&gt; 中のある頂点を原点とした有向サブグラフである。&lt;code&gt;V&#39;&lt;/code&gt; を &lt;code&gt;V&lt;/code&gt; のサブセット、&lt;code&gt;E&#39;&lt;/code&gt; を &lt;code&gt;E&lt;/code&gt; のサブセットとし、 &lt;code&gt;V&#39;&lt;/code&gt; は&lt;code&gt;G&#39;&lt;/code&gt; から到達可能な頂点の集合、&lt;code&gt;G&#39;&lt;/code&gt; は原点から連なる経路木を成すものとすれば、&lt;code&gt;V&#39;&lt;/code&gt; 中の全ての頂点 &lt;code&gt;v&lt;/code&gt; は &lt;code&gt;G&#39;&lt;/code&gt; 中の頂点 &lt;code&gt;v&lt;/code&gt; から唯一の経路を持つ。再帰的に、単一頂点アルゴリズムによる結果は最短経路木である。&lt;/p&gt;
-&lt;h2&gt;ネットワークフロー問題&lt;/h2&gt;
 &lt;p&gt;ネットワークの流れは&lt;strong&gt;送信(source)&lt;/strong&gt;頂点 &lt;code&gt;s&lt;/code&gt; から&lt;strong&gt;受信(sink)&lt;/strong&gt;頂点&lt;code&gt;t&lt;/code&gt;へと向かう有向グラフ &lt;code&gt;G=(V,E)&lt;/code&gt; である。各辺は数値による、&lt;strong&gt;容量(capacity)&lt;/strong&gt;関数 &lt;code&gt;c&lt;/code&gt; 、および、&lt;strong&gt;流れ(flow)&lt;/strong&gt;関数 &lt;code&gt;f&lt;/code&gt; を持つ。流れ関数は次の３条件を満たしていなければならない：&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;f(u,v) &amp;lt;= c(u,v) for all (u,v) in V x V (容量制限) 
 f(u,v) = - f(v,u) for all (u,v) in V x V (流れ対称性)
