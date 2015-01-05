@@ -129,6 +129,14 @@ a code {
   margin: 5px;
   padding: 3px;
 }
+.history {
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  border:1px solid #999;
+  margin: 5px;
+  padding: 3px;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -170,7 +178,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> シグナル／スロット </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/signals.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>シグナル／スロット</h1> <p>イベント処理などで使われるシグナル／スロットには、<a href=http://www.boost.org/doc/libs/release/doc/html/signals2.html target=_blank>Boost Signals2 Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions>複数の関数を登録する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#disconnect>スロットを切断する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#return-value>シグナル呼び出しの戻り値</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions name=connect-multiple-functions>複数の関数を登録する</a></h2> <p>Boost.Signals2のシグナルには、<code>connect()</code>関数によって、複数の関数を接続することができる。</p> <p>シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> シグナル／スロット </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/signals.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/signals.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>シグナル／スロット</h1> <p>イベント処理などで使われるシグナル／スロットには、<a href=http://www.boost.org/doc/libs/release/doc/html/signals2.html target=_blank>Boost Signals2 Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions>複数の関数を登録する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#disconnect>スロットを切断する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#return-value>シグナル呼び出しの戻り値</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions name=connect-multiple-functions>複数の関数を登録する</a></h2> <p>Boost.Signals2のシグナルには、<code>connect()</code>関数によって、複数の関数を接続することができる。</p> <p>シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/bind.hpp&gt;</span>
 

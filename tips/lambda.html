@@ -129,6 +129,14 @@ a code {
   margin: 5px;
   padding: 3px;
 }
+.history {
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  border:1px solid #999;
+  margin: 5px;
+  padding: 3px;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -170,7 +178,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 無名関数 </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/lambda.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>無名関数</h1> <p>無名関数は、<a href=http://www.boost.org/doc/libs/release/doc/html/lambda.html target=_blank>Boost Lambda Library</a> または、 <a href=http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html target=_blank>Boost Phoenix Library</a> を使用することによって表現できる。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/lambda.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/lambda.html#member-variable>メンバ変数を扱う</a></li> <li><a href=http://boostjp.github.io/tips/lambda.html#multiple-expressions>2つ以上の式を書く</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/lambda.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p>Boost.Lambdaによって無名関数を表現するには、<code>boost::lambda</code>名前空間の<code>_1</code>, <code>_2</code>というプレースホルダーと呼ばれる値を使用する。以下は、コンテナから特定の条件に一致した値を見つけ出す例である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> 無名関数 </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/lambda.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/lambda.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>無名関数</h1> <p>無名関数は、<a href=http://www.boost.org/doc/libs/release/doc/html/lambda.html target=_blank>Boost Lambda Library</a> または、 <a href=http://www.boost.org/doc/libs/release/libs/phoenix/doc/html/index.html target=_blank>Boost Phoenix Library</a> を使用することによって表現できる。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/lambda.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/lambda.html#member-variable>メンバ変数を扱う</a></li> <li><a href=http://boostjp.github.io/tips/lambda.html#multiple-expressions>2つ以上の式を書く</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/lambda.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p>Boost.Lambdaによって無名関数を表現するには、<code>boost::lambda</code>名前空間の<code>_1</code>, <code>_2</code>というプレースホルダーと呼ばれる値を使用する。以下は、コンテナから特定の条件に一致した値を見つけ出す例である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm/find_if.hpp&gt;</span>
 
@@ -203,7 +211,7 @@ function tree_onclick(e) {
     v.push_back(<span style="color: #666666">3</span>);
 
     <span style="color: #008000; font-weight: bold">using</span> boost<span style="color: #666666">::</span>lambda<span style="color: #666666">::</span>_1;
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;::</span>iterator it <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>find_if(v, <span style=color:#ff0000>_1 <span style="color: #666666">==</span> <span style="color: #666666">3</span></span>);
+    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;::</span>iterator it <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>find_if(v, fNVjYuDdfgEnmtRZQPeIMXQIWyvTjtqb_1 <span style="color: #666666">==</span> <span style="color: #666666">3f</span>NVjYuDdfgEnmtRZQPeIMXQIWyvTjtqb);
     <span style="color: #008000; font-weight: bold">if</span> (it <span style="color: #666666">!=</span> v.end())
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>it <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     <span style="color: #008000; font-weight: bold">else</span>

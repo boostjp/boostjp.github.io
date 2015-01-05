@@ -129,6 +129,14 @@ a code {
   margin: 5px;
   padding: 3px;
 }
+.history {
+  -webkit-border-radius:4px;
+  -moz-border-radius:4px;
+  border-radius:4px;
+  border:1px solid #999;
+  margin: 5px;
+  padding: 3px;
+}
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -170,7 +178,7 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> ビルドツール </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/build.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>ビルドツール</h1> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/build.html#execute>ビルドしたバイナリを実行する</a></li> <li><a href=http://boostjp.github.io/tips/build.html#install-with-saved-directory>ディレクトリ構造を保存した状態でインストールを行う</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/build.html#execute name=execute>ビルドしたバイナリを実行する</a></h2> <p>bjamでバイナリをビルドした場合、toolsetやvariantによって最終生成物が非常に深い位置に生成される。</p> <p>これを実行するのはインストールするまで困難であるが、notfileモジュールを使用することで実現できる。</p> <p><pre><code><span style=color:#ff0000>import notfile ;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3"> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li> <a href=/index.html>boostjp</a> </li> <li> <a href=/tips.html>Boost逆引きリファレンス</a> </li> <li class=active> ビルドツール </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/build.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/build.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1>ビルドツール</h1> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/build.html#execute>ビルドしたバイナリを実行する</a></li> <li><a href=http://boostjp.github.io/tips/build.html#install-with-saved-directory>ディレクトリ構造を保存した状態でインストールを行う</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/build.html#execute name=execute>ビルドしたバイナリを実行する</a></h2> <p>bjamでバイナリをビルドした場合、toolsetやvariantによって最終生成物が非常に深い位置に生成される。</p> <p>これを実行するのはインストールするまで困難であるが、notfileモジュールを使用することで実現できる。</p> <p><pre><code><span style=color:#ff0000>import notfile ;</span>
 
 project /sample ;
 
