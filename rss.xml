@@ -2,9 +2,42 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-05T15:34:42.299657</updated>
-  <id>6126bfa9-3e4a-4eea-b1ef-eda9b673e42b</id>
+  <updated>2015-01-05T15:39:07.214314</updated>
+  <id>541a13df-6af1-41a9-9bd8-7c0196c3945b</id>
 
+  
+    <entry>
+      <title>boost/graph/exception.hpp -- Boost.Graph : exceptionを追加</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/exception.html"/>
+      <id>70caba9caeabe55754f2045b9ba518ee980861c5:archive/boost_docs/libs/graph/exception.md</id>
+      <updated>2015-01-05 15:39:01 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;boost/graph/exception.hpp&lt;/h1&gt;
+&lt;p&gt;BGL は、 BGL アルゴリズムからエラーを報告するためにいくつかの例外クラスを定義している。 多くの BGL アルゴリズムは入力されるグラフについてある種の要求事項を設定している。 もしこれらの要求事項に則さないならば、 そのアルゴリズムは成功裏に完了することができず、その代わりに適切な例外を投げる。&lt;/p&gt;
+&lt;h2&gt;Synopsis&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; bad_graph &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; invalid_argument {
+  bad_graph(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; string&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; what_arg);
+};
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; not_a_dag &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; bad_graph {
+  not_a_dag();
+};
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; negative_edge &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; bad_graph {
+  negative_edge();
+};
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; negative_cycle &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; bad_graph {
+  negative_cycle();
+};
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; not_connected &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; bad_graph {
+  not_connected();
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>the Boost Graph Library -- Boost.Graph : EventVisitorListコンセプトを追加</title>
@@ -1233,68 +1266,6 @@ index 0000000..fcc1338
 }
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Edge Mutable Graph -- Boost.Graph : EdgeMutableGraphコンセプトを追加</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/graph/EdgeMutableGraph.html"/>
-      <id>97fc471fbf443d7443cfa6ebecb3bfa3d907a2af:archive/boost_docs/libs/graph/EdgeMutableGraph.md</id>
-      <updated>2014-12-28 09:04:56 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;Edge Mutable Graph&lt;/h1&gt;
-&lt;p&gt;Edge Mutable Graph コンセプトは、辺の追加と削除をサポートするグラフのためのインターフェースを定義する。&lt;/p&gt;
-&lt;h2&gt;Refinement of&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/Graph.html&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;関連型&lt;/h2&gt;
-&lt;p&gt;なし&lt;/p&gt;
-&lt;h2&gt;有効な表現式&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;add_edge(u, v, g)&lt;/code&gt; は &lt;code&gt;std::pair&amp;lt;edge_descriptor, bool&amp;gt;&lt;/code&gt; を返す。 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;意味: 辺 &lt;code&gt;(u,v)&lt;/code&gt; をグラフ中に挿入することを試み、そして挿入された辺または多重辺、かつ辺が挿入されたかどうかを述べるフラグを返す。この操作はグラフの頂点記述子または頂点イテレータを無効にしないはずである。ただし、辺記述子または辺イテレータを無効にするかもしれない。&lt;/li&gt;
-&lt;li&gt;事前条件: &lt;code&gt;u&lt;/code&gt; と &lt;code&gt;v&lt;/code&gt; がグラフ中の頂点であること。&lt;/li&gt;
-&lt;li&gt;事後条件: &lt;code&gt;(u,v)&lt;/code&gt; がグラフの辺集合中にあること。返された辺記述子は &lt;code&gt;u&lt;/code&gt; を始点位置に、&lt;code&gt;v&lt;/code&gt; を終点位置に持つだろう。もしグラフが多重辺を許可しているなら、返されるフラグは常に &lt;code&gt;true&lt;/code&gt; である。もしグラフが多重辺を許可しておらず、辺 &lt;code&gt;(u,v)&lt;/code&gt; がすでにグラフ中にあったら返されるフラグは &lt;code&gt;false&lt;/code&gt; である。もし辺 &lt;code&gt;(u,v)&lt;/code&gt; がグラフ中になかったら返されるフラグは &lt;code&gt;true&lt;/code&gt; である。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;remove_edge(u, v, g)&lt;/code&gt; は &lt;code&gt;void&lt;/code&gt; を返す。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;意味: 辺 &lt;code&gt;(u,v)&lt;/code&gt; をグラフから削除する。もしグラフが多重辺を許可しているなら、これは &lt;code&gt;(u,v)&lt;/code&gt; の全ての存在を削除する。&lt;/li&gt;
-&lt;li&gt;事前条件: &lt;code&gt;(u,v)&lt;/code&gt; がグラフの辺集合中にあること。&lt;/li&gt;
-&lt;li&gt;事後条件: &lt;code&gt;(u,v)&lt;/code&gt; がもはやグラフの辺集合中にないこと。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;remove_edge(e, g)&lt;/code&gt; は &lt;code&gt;void&lt;/code&gt; を返す。 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;意味: 辺 &lt;code&gt;e&lt;/code&gt; をグラフから削除する。&lt;/li&gt;
-&lt;li&gt;事前条件: &lt;code&gt;e&lt;/code&gt; がグラフ中の辺であること。&lt;/li&gt;
-&lt;li&gt;事後条件: &lt;code&gt;e&lt;/code&gt; はもはや &lt;code&gt;g&lt;/code&gt; のための辺集合中にないこと。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;clear_vertex(u, g)&lt;/code&gt; は &lt;code&gt;void&lt;/code&gt; を返す。 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;意味: 頂点 &lt;code&gt;u&lt;/code&gt; への、そして頂点 &lt;code&gt;u&lt;/code&gt; からの全ての辺をグラフから削除する。&lt;/li&gt;
-&lt;li&gt;事前条件: &lt;code&gt;u&lt;/code&gt; が &lt;code&gt;g&lt;/code&gt; の有効な頂点記述子であること。&lt;/li&gt;
-&lt;li&gt;事後条件: &lt;code&gt;u&lt;/code&gt; が &lt;code&gt;g&lt;/code&gt; 中のどの辺の始点または終点としても現れないこと。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;計算量の保証&lt;/h2&gt;
-&lt;p&gt;工事中&lt;/p&gt;
-&lt;h2&gt;関連項目&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_concepts.html&#34;&gt;Graphコンセプト&lt;/a&gt;&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000-2001 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Indiana University (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
