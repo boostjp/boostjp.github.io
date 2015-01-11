@@ -203,18 +203,18 @@ function tree_onclick(e) {
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x.value <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>2
-</code></pre> 関数<code>X::foo()</code>の中では、関数の先頭で<code>value</code>に<code>0</code>を代入し、関数を抜ける直前で<code>value</code>に<code>1</code>を代入している。</p> <p>そして、<code>BOOST_SCOPE_EXIT</code>マクロで定義されたブロックの中で<code>value</code>に<code>2</code>が代入されているが、このブロックが<code>X::foo()</code>を抜けるタイミングで呼び出されることで、最終的に<code>value</code>の値が<code>2</code>になっている。</p> <p>Boost.ScopeExitは <strong>変数のキャプチャ</strong> という機能を持っており、</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&amp;</span>value
-</pre></div> という表記によって、変数<code>value</code>への参照をScope Exit構文の中で使用できるようにしている。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">value
-</pre></div> と書いた場合には、変数<code>value</code>のコピーをScope Exit構文の中で使用できるようになる。</p> <p>また、以下のように、変数をカッコで囲んで連続で記述することにより、複数の変数をキャプチャすることができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_SCOPE_EXIT((<span style="color: #666666">&amp;</span>x)(<span style="color: #666666">&amp;</span>y)) {
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>2
+</code></pre></p> <p>関数<code>X::foo()</code>の中では、関数の先頭で<code>value</code>に<code>0</code>を代入し、関数を抜ける直前で<code>value</code>に<code>1</code>を代入している。</p> <p>そして、<code>BOOST_SCOPE_EXIT</code>マクロで定義されたブロックの中で<code>value</code>に<code>2</code>が代入されているが、このブロックが<code>X::foo()</code>を抜けるタイミングで呼び出されることで、最終的に<code>value</code>の値が<code>2</code>になっている。</p> <p>Boost.ScopeExitは <strong>変数のキャプチャ</strong> という機能を持っており、</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #666666">&amp;</span>value
+</pre></div> </p> <p>という表記によって、変数<code>value</code>への参照をScope Exit構文の中で使用できるようにしている。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">value
+</pre></div> </p> <p>と書いた場合には、変数<code>value</code>のコピーをScope Exit構文の中で使用できるようになる。</p> <p>また、以下のように、変数をカッコで囲んで連続で記述することにより、複数の変数をキャプチャすることができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_SCOPE_EXIT((<span style="color: #666666">&amp;</span>x)(<span style="color: #666666">&amp;</span>y)) {
     x <span style="color: #666666">=</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>;
     y <span style="color: #666666">=</span> y <span style="color: #666666">+</span> <span style="color: #666666">1</span>;
 } BOOST_SCOPE_EXIT_END
-</pre></div> なお、Boost-1.50以降ではラムダ式を用いたC++11版の<a href=http://www.boost.org/doc/libs/1_50_0/libs/scope_exit/doc/html/BOOST_SCOPE_EXIT_ALL.html target=_blank><code>BOOST_SCOPE_EXIT_ALL</code></a>マクロが追加され、次のように簡潔なコードも可能になった。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_SCOPE_EXIT_ALL(<span style="color: #666666">&amp;</span>x, <span style="color: #666666">&amp;</span>y) {
+</pre></div> </p> <p>なお、Boost-1.50以降ではラムダ式を用いたC++11版の<a href=http://www.boost.org/doc/libs/1_50_0/libs/scope_exit/doc/html/BOOST_SCOPE_EXIT_ALL.html target=_blank><code>BOOST_SCOPE_EXIT_ALL</code></a>マクロが追加され、次のように簡潔なコードも可能になった。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_SCOPE_EXIT_ALL(<span style="color: #666666">&amp;</span>x, <span style="color: #666666">&amp;</span>y) {
     x <span style="color: #666666">=</span> x <span style="color: #666666">+</span> <span style="color: #666666">1</span>;
     y <span style="color: #666666">=</span> y <span style="color: #666666">+</span> <span style="color: #666666">1</span>;
 };
-</pre></div> <code>BOOST_SCOPE_EXIT_ALL</code>では引数をカンマで区切り、それぞれに<code>=</code>または<code>&amp;</code>により値キャプチャーと参照キャプチャーを定義でき、<code>BOOST_SCOPE_EXIT_END</code>に相当する終端マクロは不要になった。ただし、スコープ定義の終わりにはステートメント終端のセミコロンが必要になっている点に注意されたい。</p> <p><code>BOOST_SCOPE_EXIT</code>と<code>BOOST_SCOPE_EXIT_TPL</code>の内部実装を<code>BOOST_SCOPE_EXIT_ALL</code>と同様にラムダ式を使うバージョンに切り替えるための<a href=http://www.boost.org/doc/libs/1_50_0/libs/scope_exit/doc/html/BOOST_SCOPE_EXIT_CONFIG_USE_LAMBDAS.html target=_blank><code>BOOST_SCOPE_EXIT_CONFIG_USE_LAMBDAS</code></a>マクロも用意されている。</p> <p><strong>Boost.ScopeExitの使いどころ</strong></p> <p>Boost ScopeExitは主にメンバ変数に対する関数内でのコミット／ロールバックを目的に使用されることが多い。</p> <p>たとえば、ボタンクラスを作成することを考える。</p> <p>ボタンは、「押した」「離した」という状態をボタン自身に伝える機能を持ち、内部で通常状態と押下状態の画像を切り替えることができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Button</span> {
+</pre></div> </p> <p><code>BOOST_SCOPE_EXIT_ALL</code>では引数をカンマで区切り、それぞれに<code>=</code>または<code>&amp;</code>により値キャプチャーと参照キャプチャーを定義でき、<code>BOOST_SCOPE_EXIT_END</code>に相当する終端マクロは不要になった。ただし、スコープ定義の終わりにはステートメント終端のセミコロンが必要になっている点に注意されたい。</p> <p><code>BOOST_SCOPE_EXIT</code>と<code>BOOST_SCOPE_EXIT_TPL</code>の内部実装を<code>BOOST_SCOPE_EXIT_ALL</code>と同様にラムダ式を使うバージョンに切り替えるための<a href=http://www.boost.org/doc/libs/1_50_0/libs/scope_exit/doc/html/BOOST_SCOPE_EXIT_CONFIG_USE_LAMBDAS.html target=_blank><code>BOOST_SCOPE_EXIT_CONFIG_USE_LAMBDAS</code></a>マクロも用意されている。</p> <p><strong>Boost.ScopeExitの使いどころ</strong></p> <p>Boost ScopeExitは主にメンバ変数に対する関数内でのコミット／ロールバックを目的に使用されることが多い。</p> <p>たとえば、ボタンクラスを作成することを考える。</p> <p>ボタンは、「押した」「離した」という状態をボタン自身に伝える機能を持ち、内部で通常状態と押下状態の画像を切り替えることができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Button</span> {
 <span style="color: #A0A000">public:</span>
     <span style="color: #B00040">void</span> down();
     <span style="color: #B00040">void</span> <span style="color: #0000FF">up</span>();
@@ -222,7 +222,7 @@ function tree_onclick(e) {
     <span style="color: #B00040">bool</span> is_down() <span style="color: #008000; font-weight: bold">const</span>;
     <span style="color: #B00040">bool</span> in_rect(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p) <span style="color: #008000; font-weight: bold">const</span>;
 };
-</pre></div> そして、ボタンをメンバ変数として持つ画面クラスが、画面のある位置をクリックした場合に呼ばれるハンドラを持っているとしよう。</p> <p>以下のように書くことでボタンの画像切り替えロジックが書ける。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">View</span> {
+</pre></div> </p> <p>そして、ボタンをメンバ変数として持つ画面クラスが、画面のある位置をクリックした場合に呼ばれるハンドラを持っているとしよう。</p> <p>以下のように書くことでボタンの画像切り替えロジックが書ける。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">View</span> {
     Button back_button_;
 <span style="color: #A0A000">public:</span>
     <span style="color: #B00040">void</span> <span style="color: #0000FF">on_click_down</span>(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p)
@@ -247,7 +247,7 @@ function tree_onclick(e) {
         ...
     }
 };
-</pre></div> ここでは、<code>on_click_up()</code>の中で「押されていたら離して処理する」ということをしている。</p> <p>このプログラムが問題になるのは、ボタンが増えたときや、途中で<code>return</code>する必要が出てきた場合である。押されている状態からでなければ離すことはできないので、関数の始めに離すことはできず、途中で<code>return</code>されることを考えると関数の最後で離すこともできない。</p> <p>そういったときに、Boost.ScopeExitを使用することで、関数のスコープを抜けた際に、全てのボタンを確実に離すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">View</span> {
+</pre></div> </p> <p>ここでは、<code>on_click_up()</code>の中で「押されていたら離して処理する」ということをしている。</p> <p>このプログラムが問題になるのは、ボタンが増えたときや、途中で<code>return</code>する必要が出てきた場合である。押されている状態からでなければ離すことはできないので、関数の始めに離すことはできず、途中で<code>return</code>されることを考えると関数の最後で離すこともできない。</p> <p>そういったときに、Boost.ScopeExitを使用することで、関数のスコープを抜けた際に、全てのボタンを確実に離すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">View</span> {
     Button back_button_;
     Button next_button_;
 <span style="color: #A0A000">public:</span>

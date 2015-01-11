@@ -190,7 +190,7 @@ function tree_onclick(e) {
 
     std<span style="color: #666666">::</span>for_each(ar.begin(), ar.end(), disp);
 }
-</pre></div> 実行結果：</p> <p><pre><code>3 1 4 
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3 1 4 
 </code></pre></p> <p><strong>テンプレート引数</strong></p> <p><code>boost::array</code>は、第1テンプレート引数に要素の型、第2テンプレート引数に要素数を取る。</p> <p>この場合、「3要素の<code>int</code>型配列」を作成している。</p> <p><strong>初期化</strong></p> <p><code>boost::array</code>は、組み込み配列と同様に、<code>{ 1, 2, 3 }</code>のような初期化子リストによる初期化が可能である。</p> <p><strong>イテレータインタフェース</strong></p> <p><code>boost::array</code>は、<code>std::vector</code>や<code>std::list</code>と同じように、イテレータを返す<code>begin()</code>/<code>end()</code>のインタフェースを持つ。</p> <h2><a href=http://boostjp.github.io/tips/array.html#size name=size>配列の要素数を取得する</a></h2> <p>配列の要素数を取得するには、<code>size()</code>メンバ関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
 
@@ -227,7 +227,7 @@ function tree_onclick(e) {
 
     std<span style="color: #666666">::</span>for_each(ar.begin(), ar.end(), disp);
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
 1
 4
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/array.html#iterator-type name=iterator-type>イテレータの型を取得する</a></h2> <p>イテレータの型は、<code>boost::array&lt;T, N&gt;</code>クラスが持つ、以下のメンバ型で取得できる：</p> <ul> <li><code>iterator</code> : 変更可能なイテレータ</li> <li><code>const_iterator</code> : 読み取り専用イテレータ</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>

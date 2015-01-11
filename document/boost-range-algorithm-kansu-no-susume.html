@@ -183,7 +183,7 @@ v.push_back(<span style="color: #BA2121">"Foo"</span>);
 v.push_back(<span style="color: #BA2121">"Bar"</span>);
 
 std<span style="color: #666666">::</span>sort(v.begin(), v.end());
-</pre></div> さて、「なんで<code>.begin()</code>とか<code>.end()</code>とか付けないといけないの？」と思ったことありませんか？ないですか。ありますよね。Boost 1.43より搭載されているBoost.Range 2.0なら、<code>boost::sort(v);</code>と書けます。書けるようになりました。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
+</pre></div> </p> <p>さて、「なんで<code>.begin()</code>とか<code>.end()</code>とか付けないといけないの？」と思ったことありませんか？ないですか。ありますよね。Boost 1.43より搭載されているBoost.Range 2.0なら、<code>boost::sort(v);</code>と書けます。書けるようになりました。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm.hpp&gt;</span>
 
@@ -200,7 +200,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> v[i] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> <code>&lt;algorithm&gt;</code>の代わりに<code>&lt;boost/range/algorithm.hpp&gt;</code>をインクルードします。もちろん、<code>&lt;numeric&gt;</code>に対する<code>&lt;boost/range/numeric.hpp&gt;</code>もあります。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
+</pre></div> </p> <p><code>&lt;algorithm&gt;</code>の代わりに<code>&lt;boost/range/algorithm.hpp&gt;</code>をインクルードします。もちろん、<code>&lt;numeric&gt;</code>に対する<code>&lt;boost/range/numeric.hpp&gt;</code>もあります。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/numeric.hpp&gt;</span>
@@ -217,7 +217,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
     <span style="color: #B00040">int</span> average <span style="color: #666666">=</span> sum <span style="color: #666666">/</span> v.size(); <span style="color: #408080; font-style: italic">// 平均値を求める</span>
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> average <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> なお、出力イテレータの部分に関してはそのままです。入力イテレータ～ランダムアクセスイテレータが対象というわけですね。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>なお、出力イテレータの部分に関してはそのままです。入力イテレータ～ランダムアクセスイテレータが対象というわけですね。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;iterator&gt;</span>
 <span style="color: #BC7A00">#include &lt;cctype&gt;</span>
@@ -231,7 +231,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
     <span style="color: #408080; font-style: italic">// std::transform(s.begin(), s.end(), std::back_inserter(upper), std::toupper);</span>
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> upper <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 以下に従ってSTLのアルゴリズム関数の代わりにBoost.Rangeのアルゴリズム関数を使っていて外れはありません。</p> <ul> <li><code>std</code>名前空間の代わりに<code>boost</code>名前空間で定義されている同名の関数を呼びます。</li> <li>それを呼ぶ場合、引数中の<code>x.begin(), x.end()</code>の並びを単に<code>x</code>に変えます。</li> </ul> <p><code>find</code>など、イテレータを戻り値とする関数は、このRangeアルゴリズム関数でも同様にイテレータを戻り値とします。実際には、それに加えて、さらに種類をあるのですが、本稿では取り上げません。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
+</pre></div> </p> <p>以下に従ってSTLのアルゴリズム関数の代わりにBoost.Rangeのアルゴリズム関数を使っていて外れはありません。</p> <ul> <li><code>std</code>名前空間の代わりに<code>boost</code>名前空間で定義されている同名の関数を呼びます。</li> <li>それを呼ぶ場合、引数中の<code>x.begin(), x.end()</code>の並びを単に<code>x</code>に変えます。</li> </ul> <p><code>find</code>など、イテレータを戻り値とする関数は、このRangeアルゴリズム関数でも同様にイテレータを戻り値とします。実際には、それに加えて、さらに種類をあるのですが、本稿では取り上げません。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm.hpp&gt;</span>
 
@@ -245,7 +245,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
 
     std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>string<span style="color: #666666">&gt;::</span>iterator it <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>find(v, <span style="color: #BA2121">"Kyoto"</span>);
 }
-</pre></div> STLコンテナだけでなく、<code>boost::array</code>や<code>std::array</code>などももちろん対応しています。ほか、組込の配列にも使用可能です。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>STLコンテナだけでなく、<code>boost::array</code>や<code>std::array</code>などももちろん対応しています。ほか、組込の配列にも使用可能です。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;iterator&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm.hpp&gt;</span>
 
@@ -256,7 +256,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
     <span style="color: #408080; font-style: italic">// std::copy(a, a + sizeof (a) / sizeof (a[0]), std::ostream_iterator&lt;int&gt;(std::cout, " "));</span>
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> さらに、<code>first</code>, <code>last</code>のイテレータを<code>std::pair</code>の形をしたものも同様に扱えます。最初の例で言うと、<code>std::pair&lt;iterator&gt;(v.begin(), v.end())</code>と<code>boost::sort(v)</code>と<code>boost::sort(std::make_pair(v.begin(), v.end()))</code>が同じということです。これは、ちょうどイテレータのペアを返す関数にぴったりはまります。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;map&gt;</span>
+</pre></div> </p> <p>さらに、<code>first</code>, <code>last</code>のイテレータを<code>std::pair</code>の形をしたものも同様に扱えます。最初の例で言うと、<code>std::pair&lt;iterator&gt;(v.begin(), v.end())</code>と<code>boost::sort(v)</code>と<code>boost::sort(std::make_pair(v.begin(), v.end()))</code>が同じということです。これは、ちょうどイテレータのペアを返す関数にぴったりはまります。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;map&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;iterator&gt;</span>
@@ -277,7 +277,7 @@ std<span style="color: #666666">::</span>sort(v.begin(), v.end());
 
     boost<span style="color: #666666">::</span>for_each(m.equal_range(<span style="color: #BA2121">'F'</span>), output); <span style="color: #408080; font-style: italic">// キーが'F'である要素を出力。</span>
 }
-</pre></div> 最後に、もう1つ。<code>&lt;boost/range/algorithm_ext.hpp&gt;</code>には、STLアルゴリズム関数の単純なラッパではない独自の関数がいくつかあります。その中の<code>remove_erase</code>と<code>remove_erase_if</code>は、コンテナのメンバ関数<code>erase</code>とSTLアルゴリズム関数<code>remove</code>または<code>remove_if</code>を組み合わせて、コンテナから特定の要素を削除するパターンをラップしたものです。Effective STLにも紹介されているこの組み合わせ、もう引数の順番に悩むことなくなり便利です。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
+</pre></div> </p> <p>最後に、もう1つ。<code>&lt;boost/range/algorithm_ext.hpp&gt;</code>には、STLアルゴリズム関数の単純なラッパではない独自の関数がいくつかあります。その中の<code>remove_erase</code>と<code>remove_erase_if</code>は、コンテナのメンバ関数<code>erase</code>とSTLアルゴリズム関数<code>remove</code>または<code>remove_if</code>を組み合わせて、コンテナから特定の要素を削除するパターンをラップしたものです。Effective STLにも紹介されているこの組み合わせ、もう引数の順番に悩むことなくなり便利です。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm_ext.hpp&gt;</span>

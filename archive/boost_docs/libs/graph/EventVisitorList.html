@@ -192,15 +192,15 @@ function tree_onclick(e) {
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> v <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">")"</span>;
   }
 };
-</pre></div> 次に2つのイベントビジタオブジェクトを作り、 <code>std::make_pair</code> で作られる <code>std::pair</code> を使って、この2つから EventVisitorList を作る。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">std<span style="color: #666666">::</span>make_pair(open_paren(), close_paren())
-</pre></div> 次にこのリストを <code>depth_first_search()</code> に渡したいところだが、 <code>depth_first_search()</code> が要求しているのは <a href=http://boostjp.github.io/archive/boost_docs/libs/graph/DFSVisitor.html>DFSVisitor</a> であって、 EventVisitorList ではない。そこで EventVisitor のリストを DFSVisitor に変換するアダプタ、 <a href=http://boostjp.github.io/archive/boost_docs/libs/graph/dfs_visitor.html><code>dfs_visitor</code></a> を使う。他のビジタアダプタ同様、 <code>dfs_visitor</code> には <code>make_dfs_visitor()</code> という作成関数がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">make_dfs_visitor(std<span style="color: #666666">::</span>make_pair(open_paren(), close_paren()))
-</pre></div> さあこれで、以下のように、生成されたビジタオブジェクトを <code>depth_first_search()</code> に渡すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #408080; font-style: italic">// グラフオブジェクト G を作る...</span>
+</pre></div> </p> <p>次に2つのイベントビジタオブジェクトを作り、 <code>std::make_pair</code> で作られる <code>std::pair</code> を使って、この2つから EventVisitorList を作る。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">std<span style="color: #666666">::</span>make_pair(open_paren(), close_paren())
+</pre></div> </p> <p>次にこのリストを <code>depth_first_search()</code> に渡したいところだが、 <code>depth_first_search()</code> が要求しているのは <a href=http://boostjp.github.io/archive/boost_docs/libs/graph/DFSVisitor.html>DFSVisitor</a> であって、 EventVisitorList ではない。そこで EventVisitor のリストを DFSVisitor に変換するアダプタ、 <a href=http://boostjp.github.io/archive/boost_docs/libs/graph/dfs_visitor.html><code>dfs_visitor</code></a> を使う。他のビジタアダプタ同様、 <code>dfs_visitor</code> には <code>make_dfs_visitor()</code> という作成関数がある。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">make_dfs_visitor(std<span style="color: #666666">::</span>make_pair(open_paren(), close_paren()))
+</pre></div> </p> <p>さあこれで、以下のように、生成されたビジタオブジェクトを <code>depth_first_search()</code> に渡すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">  <span style="color: #408080; font-style: italic">// グラフオブジェクト G を作る...</span>
 
   std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>default_color_type<span style="color: #666666">&gt;</span> color(num_vertices(G));
 
   depth_first_search(G, make_dfs_visitor(std<span style="color: #666666">::</span>make_pair(open_paren(), close_paren())),
                      color.begin());
-</pre></div> 3つ以上のイベントビジタのリストを作りたければ、以下のように <code>std::make_pair</code> をネストして呼び出せばいい。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">std<span style="color: #666666">::</span>make_pair(visitor1,
+</pre></div> </p> <p>3つ以上のイベントビジタのリストを作りたければ、以下のように <code>std::make_pair</code> をネストして呼び出せばいい。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">std<span style="color: #666666">::</span>make_pair(visitor1,
   std<span style="color: #666666">::</span>make_pair(visitor2,
     ...
     std<span style="color: #666666">::</span>make_pair(visitorN<span style="color: #666666">-1</span>, visitorN)...));

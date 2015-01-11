@@ -186,7 +186,7 @@ BOOST_AUTO_TEST_CASE(test1)
     <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">int</span> x <span style="color: #666666">=</span> <span style="color: #666666">1</span>;
     BOOST_CHECK(x <span style="color: #666666">==</span> <span style="color: #666666">1</span>);
 }
-</pre></div> 実行結果：</p> <p><pre><code>Running 1 test case...
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>Running 1 test case...
 
 *** No errors detected
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/unit_test.html#floating-point-equality-test name=floating-point-equality-test>浮動小数点数の等値テスト</a></h2> <p>浮動小数点数の等値テストには、<code>BOOST_CHECK_CLOSE</code>マクロに、比較対象の2つの変数と、許容する誤差（%）を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
@@ -199,11 +199,11 @@ BOOST_AUTO_TEST_CASE(test1)
 
     BOOST_CHECK_CLOSE(v1, v2, <span style="color: #666666">0.0001</span>);
 }
-</pre></div> 実行結果：</p> <p><pre><code>Running 1 test case...
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>Running 1 test case...
 test.cpp(9): error in "test1": difference{0.000809999%} between v1{1.2345599999999999e+028} and v2{1.23457e+028} exceeds 0.0001%
 
 *** 1 failure detected in test suite "Master Test Suite"
-</code></pre> <code>0</code>との等値テストには<code>BOOST_CHECK_CLOSE</code>マクロが使えない。代わりに、<code>BOOST_CHECK_SMALL</code>マクロに、比較対象の変数と、許容する誤差（絶対誤差）を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
+</code></pre></p> <p><code>0</code>との等値テストには<code>BOOST_CHECK_CLOSE</code>マクロが使えない。代わりに、<code>BOOST_CHECK_SMALL</code>マクロに、比較対象の変数と、許容する誤差（絶対誤差）を指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define BOOST_TEST_MAIN</span>
 <span style="color: #BC7A00">#include &lt;boost/test/included/unit_test.hpp&gt;</span>
 
 BOOST_AUTO_TEST_CASE( test1 )
@@ -212,7 +212,7 @@ BOOST_AUTO_TEST_CASE( test1 )
 
     BOOST_CHECK_SMALL( v, <span style="color: #666666">1e-4</span> );
 }
-</pre></div> 実行結果：</p> <p><pre><code>Running 1 test case...
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>Running 1 test case...
 test.cpp(8): error in "test1": absolute value of v{-0.00123456} exceeds 0.0001
 
 *** 1 failure detected in test suite "Master Test Suite"

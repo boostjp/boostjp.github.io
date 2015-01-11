@@ -211,7 +211,7 @@ fs<span style="color: #666666">::</span>foo(error);
         <span style="color: #008000; font-weight: bold">throw</span>;
     }
 }
-</pre></div> 上書きコピーをする場合は、<code>copy_file()</code>関数に、<code>boost::filesystem::copy_option::overwrite_if_exists</code>オプションを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>上書きコピーをする場合は、<code>copy_file()</code>関数に、<code>boost::filesystem::copy_option::overwrite_if_exists</code>オプションを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -301,7 +301,7 @@ fs<span style="color: #666666">::</span>foo(error);
         <span style="color: #008000; font-weight: bold">throw</span>;
     }
 }
-</pre></div> 実行結果の例:</p> <p><pre><code>ファイルサイズ: 5107200
+</pre></div> </p> <p>実行結果の例:</p> <p><pre><code>ファイルサイズ: 5107200
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#last-write-time name=last-write-time>ファイルの最終更新日時を取得する</a></h2> <p>ファイルの最終更新日時を取得するには、<code>boost::filesystem::last_write_time()</code>関数を使用する。</p> <p>この関数は戻り値として、<code>std::time_t</code>型として日時を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</span>
@@ -321,7 +321,7 @@ fs<span style="color: #666666">::</span>foo(error);
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"エラー発生！ : "</span> <span style="color: #666666">&lt;&lt;</span> ex.what() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> 実行結果の例：</p> <p><pre><code>2011-Mar-30 05:56:11
+</pre></div> </p> <p>実行結果の例：</p> <p><pre><code>2011-Mar-30 05:56:11
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#create-directory name=create-directory>ディレクトリを作成する</a></h2> <p>ディレクトリを作成するには、<code>boost::filesystem::create_directory()</code>関数を使用する。</p> <p>第1引数として、ディレクトリのパスを指定する。</p> <p>ネストしたディレクトリを一度に作ろうとした場合はエラーとなる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
@@ -337,7 +337,7 @@ fs<span style="color: #666666">::</span>foo(error);
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"ディレクトリの作成に失敗"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> ネストしたディレクトリを含めて一度に作成するには、<code>boost::filesystem::create_directories()</code>関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>ネストしたディレクトリを含めて一度に作成するには、<code>boost::filesystem::create_directories()</code>関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">namespace</span> fs <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>filesystem;
@@ -368,7 +368,7 @@ fs<span style="color: #666666">::</span>foo(error);
             std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> p.filename() <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> 実行結果の例</p> <p><pre><code>"a.txt"
+</pre></div> </p> <p>実行結果の例</p> <p><pre><code>"a.txt"
 "b.png"
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file name=recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙する</a></h2> <p>ディレクトリ内の全てのファイルを再帰的に列挙するには、<code>boost::filesystem::recursive_directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/filesystem.hpp&gt;</span>
@@ -386,7 +386,7 @@ fs<span style="color: #666666">::</span>foo(error);
             std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> p <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> 実行結果の例</p> <p><pre><code>"D:/boost_1_49_0/boost/filesystem\config.hpp"
+</pre></div> </p> <p>実行結果の例</p> <p><pre><code>"D:/boost_1_49_0/boost/filesystem\config.hpp"
 "D:/boost_1_49_0/boost/filesystem\convenience.hpp"
 "D:/boost_1_49_0/boost/filesystem\detail\utf8_codecvt_facet.hpp"
 "D:/boost_1_49_0/boost/filesystem\exception.hpp"

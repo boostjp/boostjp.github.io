@@ -241,14 +241,14 @@ function tree_onclick(e) {
         }
     }
 }
-</pre></div> 実行結果：</p> <p><pre><code>value : 3
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>value : 3
 str : Hello
 id : 1
 name : Alice
 id : 2
 name : Millia
-</code></pre> まず、「Data.value」要素を取得するには、JSONが読み込まれた<code>boost::property_tree:ptree</code>に対して以下のように指定する：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> value <span style="color: #666666">=</span> pt.get_optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"Data.value"</span>);
-</pre></div> 要素アクセスのパス指定には、ドットによるアクセスを行う。</p> <p><code>ptree</code>クラスの<code>get_optional()</code>メンバ関数によって、指定された型に変換された要素が返される。要素の取得に失敗した場合は、<code>boost::optional</code>型の無効値が返される。</p> <p>次に、「Data.info」の要素を列挙するには、<code>boost::property_tree::ptree</code>オブジェクトに対して、<code>get_child()</code>メンバ関数でパス指定し、子ツリーを取得する。取得した子ツリーを<code>BOOST_FOREACH</code>でループし、各要素を取得する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> ptree<span style="color: #666666">::</span>value_type<span style="color: #666666">&amp;</span> child, pt.get_child(<span style="color: #BA2121">"Data.info"</span>)) {
+</code></pre></p> <p>まず、「Data.value」要素を取得するには、JSONが読み込まれた<code>boost::property_tree:ptree</code>に対して以下のように指定する：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> value <span style="color: #666666">=</span> pt.get_optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>(<span style="color: #BA2121">"Data.value"</span>);
+</pre></div> </p> <p>要素アクセスのパス指定には、ドットによるアクセスを行う。</p> <p><code>ptree</code>クラスの<code>get_optional()</code>メンバ関数によって、指定された型に変換された要素が返される。要素の取得に失敗した場合は、<code>boost::optional</code>型の無効値が返される。</p> <p>次に、「Data.info」の要素を列挙するには、<code>boost::property_tree::ptree</code>オブジェクトに対して、<code>get_child()</code>メンバ関数でパス指定し、子ツリーを取得する。取得した子ツリーを<code>BOOST_FOREACH</code>でループし、各要素を取得する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> ptree<span style="color: #666666">::</span>value_type<span style="color: #666666">&amp;</span> child, pt.get_child(<span style="color: #BA2121">"Data.info"</span>)) {
     <span style="border: 1px solid #FF0000">…</span>
 }
 </pre></div> </p> <h2><a href=http://boostjp.github.io/tips/json.html#write name=write>JSONの書き込み</a></h2> <p>JSONを書き込むには、要素を設定するために<code>boost::property_tree::ptree</code>クラスの<code>put()</code>メンバ関数を使用し、<code>add_child()</code>メンバで子ツリーに登録する。</p> <p>保存には、<code>boost::property_tree::write_json()</code>関数に、ファイル名と<code>ptree</code>オブジェクトを指定する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
@@ -284,7 +284,7 @@ name : Millia
 
     write_json(<span style="color: #BA2121">"data_out.json"</span>, pt);
 }
-</pre></div> 出力されたdata_out.json：</p> <p><pre><code>{
+</pre></div> </p> <p>出力されたdata_out.json：</p> <p><pre><code>{
     "Data":
     {
         "value": "3",
@@ -307,14 +307,14 @@ R ptree<span style="color: #666666">::</span>put_child(key_str, node) {
     key_str<span style="border: 1px solid #FF0000">をパーズしてセパレータを認識する；</span>
     <span style="color: #008000; font-weight: bold">this</span><span style="color: #666666">-&gt;</span>push_back(<span style="border: 1px solid #FF0000">パーズした子階層</span>, node);
 }
-</pre></div> そこで、区切り文字を無効にしたいキーがある場合は、そのキーに対して明示的に<code>boost::property_tree::path</code>クラスを初期化するステップを踏む。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">pt.put_child(
+</pre></div> </p> <p>そこで、区切り文字を無効にしたいキーがある場合は、そのキーに対して明示的に<code>boost::property_tree::path</code>クラスを初期化するステップを踏む。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">pt.put_child(
       property_tree<span style="color: #666666">::</span>path(<span style="color: #BA2121">"result for </span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">test.dat</span><span style="color: #BB6622; font-weight: bold">\"</span><span style="color: #BA2121">"</span>, <span style="color: #BA2121">'\0'</span>) <span style="color: #408080; font-style: italic">// セパレータを無効化</span>
     , {<span style="color: #BA2121">"success"</span>}
 );
-</pre></div> 出力例：</p> <p><pre><code>{
+</pre></div> </p> <p>出力例：</p> <p><pre><code>{
     "result for \"test.dat\"": "success"
 }
-</code></pre> この方法は結構万能である。さらなる子階層への追加は <code>operator /</code> を利用し以下のようにする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">property_tree<span style="color: #666666">::</span>ptree result_data_pt;
+</code></pre></p> <p>この方法は結構万能である。さらなる子階層への追加は <code>operator /</code> を利用し以下のようにする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">property_tree<span style="color: #666666">::</span>ptree result_data_pt;
 result_data_pt.push_back({<span style="color: #BA2121">""</span>, <span style="color: #666666">1234</span>});
 result_data_pt.push_back({<span style="color: #BA2121">""</span>, <span style="color: #666666">5678</span>});
 pt.put_child(

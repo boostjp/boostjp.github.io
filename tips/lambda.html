@@ -197,8 +197,8 @@ function tree_onclick(e) {
     <span style="color: #008000; font-weight: bold">else</span>
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Not Found"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
-</code></pre> これを、Boost.Lambdaを使用して書くと以下のようになる：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
+</code></pre></p> <p>これを、Boost.Lambdaを使用して書くと以下のようになる：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/lambda/lambda.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm/find_if.hpp&gt;</span>
@@ -211,14 +211,14 @@ function tree_onclick(e) {
     v.push_back(<span style="color: #666666">3</span>);
 
     <span style="color: #008000; font-weight: bold">using</span> boost<span style="color: #666666">::</span>lambda<span style="color: #666666">::</span>_1;
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;::</span>iterator it <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>find_if(v, <span style=color:#ff0000>_1 <span style="color: #666666">==</span> <span style="color: #666666">3</span></span>);
+    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;::</span>iterator it <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>find_if(v, UTtzKpsffqLKbquEACHypsHAPppYtqAC_1 <span style="color: #666666">==</span> <span style="color: #666666">3U</span>TtzKpsffqLKbquEACHypsHAPppYtqAC);
     <span style="color: #008000; font-weight: bold">if</span> (it <span style="color: #666666">!=</span> v.end())
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>it <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     <span style="color: #008000; font-weight: bold">else</span>
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Not Found"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
-</code></pre> <code>_1</code>という値は、「無名関数の第1引数」を意味し、この場合、コンテナの各要素が渡されることになる。</p> <p>Boost.Lambdaでは、<code>_1</code>, <code>_2</code>のようなプレースホルダーに対して各種演算処理を適用するというスタイルで、無名関数を表現する。</p> <h2><a href=http://boostjp.github.io/tips/lambda.html#member-variable name=member-variable>メンバ変数を扱う</a></h2> <p>Boost.Lambdaでメンバ変数を扱うには、<code>operator-&gt;*()</code>を使用する。左辺はポインタである必要があるため、<code>&amp;_1</code>のように表記し、右辺にはメンバ変数ポインタを指定する。</p> <p>以下は、<code>Person</code>クラスを要素とするコンテナから、<code>name</code>メンバ変数をキーにして該当する要素を検索する処理である：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
+</code></pre></p> <p><code>_1</code>という値は、「無名関数の第1引数」を意味し、この場合、コンテナの各要素が渡されることになる。</p> <p>Boost.Lambdaでは、<code>_1</code>, <code>_2</code>のようなプレースホルダーに対して各種演算処理を適用するというスタイルで、無名関数を表現する。</p> <h2><a href=http://boostjp.github.io/tips/lambda.html#member-variable name=member-variable>メンバ変数を扱う</a></h2> <p>Boost.Lambdaでメンバ変数を扱うには、<code>operator-&gt;*()</code>を使用する。左辺はポインタである必要があるため、<code>&amp;_1</code>のように表記し、右辺にはメンバ変数ポインタを指定する。</p> <p>以下は、<code>Person</code>クラスを要素とするコンテナから、<code>name</code>メンバ変数をキーにして該当する要素を検索する処理である：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/lambda/lambda.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm/find_if.hpp&gt;</span>
@@ -245,7 +245,7 @@ function tree_onclick(e) {
     <span style="color: #008000; font-weight: bold">else</span>
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Not Found"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>1
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>1
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/lambda.html#multiple-expressions name=multiple-expressions>2つ以上の式を書く</a></h2> <p>Boost.Phoenix のカンマ演算子を使用して、複数の式を書くことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/phoenix.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/irange.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
@@ -275,7 +275,7 @@ function tree_onclick(e) {
 
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
 }
-</pre></div> 実行結果：</p> <p><pre><code>10
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>10
 20
 0,1,2,3,4,5,6,7,8,9,
 45

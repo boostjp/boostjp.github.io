@@ -228,7 +228,7 @@ function tree_onclick(e) {
         <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">*</span><span style="color: #008000; font-weight: bold">this</span>;
     }
 };
-</pre></div> ※ リソースを何も保持していないクラス(例えば<code>std::complex</code>など)は自分でコピーコンストラクタを定義する必要ない。(コンパイラがデフォルトで最適なコピーコンストラクタを定義するため)</p> <h2><a href=http://boostjp.github.io/tips/move.html#use-movable-base name=use-movable-base>ムーブ可能な基底クラス／メンバ変数を使用する</a></h2> <p>クラスのムーブコンストラクタ／ムーブ代入演算子が呼ばれる際に、適切に基底クラス、メンバ変数のムーブコンストラクタ／ムーブ代入演算子が呼ばれるようにする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Base</span>
+</pre></div> </p> <p>※ リソースを何も保持していないクラス(例えば<code>std::complex</code>など)は自分でコピーコンストラクタを定義する必要ない。(コンパイラがデフォルトで最適なコピーコンストラクタを定義するため)</p> <h2><a href=http://boostjp.github.io/tips/move.html#use-movable-base name=use-movable-base>ムーブ可能な基底クラス／メンバ変数を使用する</a></h2> <p>クラスのムーブコンストラクタ／ムーブ代入演算子が呼ばれる際に、適切に基底クラス、メンバ変数のムーブコンストラクタ／ムーブ代入演算子が呼ばれるようにする。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Base</span>
 {
     BOOST_COPYABLE_AND_MOVABLE(Base)
 
@@ -298,7 +298,7 @@ function tree_onclick(e) {
     }
     <span style="color: #408080; font-style: italic">// ...</span>
 };
-</pre></div> ※ C++03のコンパイラでのエミュレーションによるムーブセマンティクスの制限として、上記のムーブコンストラクタではムーブの直前に<code>Base &amp;</code>へキャストする必要がある。(これによって正しく<code>Base</code>クラスのムーブコンストラクタが呼ばれるようになる)</p> <h2><a href=http://boostjp.github.io/tips/move.html#define-non-copyable-but-movable-class name=define-non-copyable-but-movable-class>コピー不可／ムーブ可能なクラスを定義する</a></h2> <p><code>unique_ptr</code>や<code>thread</code>など、コピー不可／ムーブ可能なクラスを、Boost.Moveを使用して定義できる。</p> <ul> <li>クラスの<code>private</code>セクションに「<code>BOOST_MOVABLE_BUT_NOT_COPYABLE(クラス名)</code>」を置く。</li> <li>「<code>BOOST_RV_REF(クラス名)</code>」を引数に取るムーブコンストラクタとムーブ代入演算子を定義する。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/move/move.hpp&gt;</span>
+</pre></div> </p> <p>※ C++03のコンパイラでのエミュレーションによるムーブセマンティクスの制限として、上記のムーブコンストラクタではムーブの直前に<code>Base &amp;</code>へキャストする必要がある。(これによって正しく<code>Base</code>クラスのムーブコンストラクタが呼ばれるようになる)</p> <h2><a href=http://boostjp.github.io/tips/move.html#define-non-copyable-but-movable-class name=define-non-copyable-but-movable-class>コピー不可／ムーブ可能なクラスを定義する</a></h2> <p><code>unique_ptr</code>や<code>thread</code>など、コピー不可／ムーブ可能なクラスを、Boost.Moveを使用して定義できる。</p> <ul> <li>クラスの<code>private</code>セクションに「<code>BOOST_MOVABLE_BUT_NOT_COPYABLE(クラス名)</code>」を置く。</li> <li>「<code>BOOST_RV_REF(クラス名)</code>」を引数に取るムーブコンストラクタとムーブ代入演算子を定義する。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/move/move.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;stdexcept&gt;</span>
 
 <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">file_descriptor</span>

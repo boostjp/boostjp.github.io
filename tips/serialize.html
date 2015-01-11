@@ -231,10 +231,10 @@ function tree_onclick(e) {
         data.print();
     }
 }
-</pre></div> 出力ファイル a.txt：</p> <p><pre><code>22 serialization::archive 9 0 0 3 3 abc
-</code></pre> 実行結果(出力ファイルの読込結果)：</p> <p><pre><code>3
+</pre></div> </p> <p>出力ファイル a.txt：</p> <p><pre><code>22 serialization::archive 9 0 0 3 3 abc
+</code></pre></p> <p>実行結果(出力ファイルの読込結果)：</p> <p><pre><code>3
 abc
-</code></pre> <code>boost::serialization::make_nvp</code>の<code>nvp</code>はName Value Pairの略で、値に対して名前を関連付けている。</p> <p>これは、XML形式のようなアーカイブを使用する際に、要素名として使用される。</p> <p>ここでは<code>boost::archive::text_oarchive</code>を使用してテキスト形式にシリアライズしているが、これを<code>boost::archive::xml_oarchive</code>に変えるだけでXML形式にシリアライズされる。</p> <h2><a href=http://boostjp.github.io/tips/serialize.html#non-intrusive name=non-intrusive>非侵入型のシリアライズ関数を定義する</a></h2> <p>すでに作成されたクラス、またはサードパーティで用意されているクラスをシリアライズしたい場合がある。</p> <p>その場合は非侵入型のシリアライズを定義するのが良いだろう。</p> <p>非侵入型シリアライズは <code>boost::serialization</code> 名前空間にシリアライズしたい型を受け取る <code>serialize()</code> 関数を定義することで実現できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/serialization/serialization.hpp&gt;</span>
+</code></pre></p> <p><code>boost::serialization::make_nvp</code>の<code>nvp</code>はName Value Pairの略で、値に対して名前を関連付けている。</p> <p>これは、XML形式のようなアーカイブを使用する際に、要素名として使用される。</p> <p>ここでは<code>boost::archive::text_oarchive</code>を使用してテキスト形式にシリアライズしているが、これを<code>boost::archive::xml_oarchive</code>に変えるだけでXML形式にシリアライズされる。</p> <h2><a href=http://boostjp.github.io/tips/serialize.html#non-intrusive name=non-intrusive>非侵入型のシリアライズ関数を定義する</a></h2> <p>すでに作成されたクラス、またはサードパーティで用意されているクラスをシリアライズしたい場合がある。</p> <p>その場合は非侵入型のシリアライズを定義するのが良いだろう。</p> <p>非侵入型シリアライズは <code>boost::serialization</code> 名前空間にシリアライズしたい型を受け取る <code>serialize()</code> 関数を定義することで実現できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/serialization/serialization.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/serialization/nvp.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">struct</span> Data {
@@ -251,7 +251,7 @@ abc
 }
 
 } } <span style="color: #408080; font-style: italic">// namespace boost::serialization</span>
-</pre></div> 当然ながら、非侵入型シリアライズが正しく動作するのは、クラス外部からアクセスできるデータでインスタンスが再構成可能なクラスに限られる。</p> <h2><a href=http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize name=different-bahavior-serialize-deserialize>非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる</a></h2> <p>サードパーティで用意されているクラスをシリアライズする場合、専用の関数などをつかって構築する場合など、<code>serialize()</code> 関数だけでは実装しにくい場合がある。</p> <p>そのため、非侵入型でも <code>save()</code>/<code>load()</code> 関数に分解して保存時と読み込み時の動作を分ける方法が用意されている。使用するには <code>split_free()</code> 関数を用いる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/serialization/serialization.hpp&gt;</span>
+</pre></div> </p> <p>当然ながら、非侵入型シリアライズが正しく動作するのは、クラス外部からアクセスできるデータでインスタンスが再構成可能なクラスに限られる。</p> <h2><a href=http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize name=different-bahavior-serialize-deserialize>非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる</a></h2> <p>サードパーティで用意されているクラスをシリアライズする場合、専用の関数などをつかって構築する場合など、<code>serialize()</code> 関数だけでは実装しにくい場合がある。</p> <p>そのため、非侵入型でも <code>save()</code>/<code>load()</code> 関数に分解して保存時と読み込み時の動作を分ける方法が用意されている。使用するには <code>split_free()</code> 関数を用いる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/serialization/serialization.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/serialization/split_free.hpp&gt;</span>
 
 <span style="color: #008000; font-weight: bold">struct</span> Data {

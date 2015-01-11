@@ -198,7 +198,7 @@ function tree_onclick(e) {
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 平均値</span>
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 合計値</span>
 }
-</pre></div> 実行結果：</p> <p><pre><code>1
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>1
 3
 15
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#container-stats name=container-stats>既存のコンテナにあるデータから統計をとる</a></h2> <p><code>std::vector</code>や配列のようなコンテナに、統計したいデータが入っていることがある。</p> <p>そういったデータをBoost.Accumulatorsで統計をとるには、<code>for_each()</code>アルゴリズムを使用して<code>accumulator_set</code>にデータを入れる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
@@ -237,7 +237,7 @@ function tree_onclick(e) {
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 中間値</span>
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 合計値</span>
 }
-</pre></div> 実行結果の例：</p> <p><pre><code>5
+</pre></div> </p> <p>実行結果の例：</p> <p><pre><code>5
 544.24
 54424
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#count name=count>要素数を求める - count</a></h2> <p>要素数を求めるには、<code>count</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
@@ -256,7 +256,7 @@ function tree_onclick(e) {
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>count(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#covariance name=covariance>共分散を求める - covariance</a></h2> <p>共分散を求めるには、<code>covariance</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
@@ -274,7 +274,7 @@ function tree_onclick(e) {
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>covariance(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>-1.75
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>-1.75
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#density name=density>密度を求める - density</a></h2> <p>密度を求めるには、<code>density</code>を使用する。</p> <p><code>density</code>は、サンプル分布のヒストグラムを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;utility&gt;</span>
@@ -317,14 +317,14 @@ function tree_onclick(e) {
     }
 
 }
-</pre></div> 実行結果：</p> <p><pre><code>First: -0.14 Second: 0
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>First: -0.14 Second: 0
 First: 0     Second: 0.142857
 First: 0.14  Second: 0
 First: 0.28  Second: 0.0952381
 First: 0.42  Second: 0.238095
 First: 0.56  Second: 0.333333
 First: 0.7   Second: 0.190476
-</code></pre> ソースの参考元： <a href=http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/ target=_blank>http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/</a></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square name=extended_q_square>拡張カイ二乗を求める - extended_q_square</a></h2> <p>拡張カイ二乗を求めるには、<code>extended_q_square</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <p>ソースの参考元： <a href=http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/ target=_blank>http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/</a></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square name=extended_q_square>拡張カイ二乗を求める - extended_q_square</a></h2> <p>拡張カイ二乗を求めるには、<code>extended_q_square</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;vector&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/random.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
@@ -359,7 +359,7 @@ First: 0.7   Second: 0.190476
         std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>extended_p_square(acc)[i] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     }
 }
-</pre></div> 実行結果：</p> <p><pre><code>0.00120014
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>0.00120014
 0.00940417
 0.0965609
 0.253513
@@ -390,7 +390,7 @@ First: 0.7   Second: 0.190476
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;4&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>kurtosis(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>5
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>5
 31.8
 234.2
 1863
@@ -411,7 +411,7 @@ First: 0.7   Second: 0.190476
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>min(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>1
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>1
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#max name=max>最大値を求める - max</a></h2> <p>最大値を求めるには、<code>max</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
@@ -428,7 +428,7 @@ First: 0.7   Second: 0.190476
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>max(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#mean name=mean>平均値を求める - mean</a></h2> <p>平均値を求めるには、<code>mean</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
@@ -446,7 +446,7 @@ First: 0.7   Second: 0.190476
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>2.5
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>2.5
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#median name=median>中央値を求める - median</a></h2> <p>中央値を求めるには、<code>median</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
@@ -464,7 +464,7 @@ First: 0.7   Second: 0.190476
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>median(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3
 </code></pre></p> <p>注意：本処理で返される値は推定値であり、厳密な中央値ではない場合がある。参照： </p> <ul> <li><a href=http://www.boost.org/doc/libs/release/doc/html/accumulators/user_s_guide.html#accumulators.user_s_guide.the_statistical_accumulators_library.median target=_blank>median and variants - Boost Accumulators Library Documentation</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/statistics.html#pot_quantile name=pot_quantile>閾値法 POT:Peak Over Threshold</a></h2> <p>閾値法を使用するには、<code>pot_quantile</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/random.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
@@ -528,7 +528,7 @@ First: 0.7   Second: 0.190476
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc5, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc6, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>3.10319
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>3.10319
 3.09056
 -3.09408
 -3.08917
@@ -555,7 +555,7 @@ First: 0.7   Second: 0.190476
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;3&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>skewness(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>5
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>5
 31.8
 234.2
 0.40604
@@ -575,7 +575,7 @@ First: 0.7   Second: 0.190476
 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>8
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>8
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#weighted-stats name=weighted-stats>重み付きサンプルやヒストグラムの統計量を求める - <code>weighted_*</code></a></h2> <p>重み付きサンプルやヒストグラムの統計量を求めるには、各種<code>weighted_*</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
@@ -606,7 +606,7 @@ First: 0.7   Second: 0.190476
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>skewness(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; 
     std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>kurtosis(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
 }
-</pre></div> 実行結果：</p> <p><pre><code>9
+</pre></div> </p> <p>実行結果：</p> <p><pre><code>9
 20
 2.22222
 0.617284

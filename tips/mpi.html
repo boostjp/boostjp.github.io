@@ -187,7 +187,7 @@ function tree_onclick(e) {
 {
     bmpi<span style="color: #666666">::</span>environment env(argc, argv);
 }
-</pre></div> <code>environment</code> クラスは、 コンストラクタで <code>MPI_Init()</code> を呼び出し、 デストラクタで <code>MPI_Finalize()</code> を呼び出す。</p> <h2><a href=http://boostjp.github.io/tips/mpi.html#rank-and-size name=rank-and-size>自身のランクやノード数を調べる</a></h2> <p>自身のランクや、 全体のノード数を調べるときは <code>boost::mpi::communicator</code> クラスを使用する。</p> <p>その <code>rank()</code> メンバ関数で自身のランク数、 <code>size()</code> メンバ関数でノード数を取得できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/mpi/environment.hpp&gt;</span>
+</pre></div> </p> <p><code>environment</code> クラスは、 コンストラクタで <code>MPI_Init()</code> を呼び出し、 デストラクタで <code>MPI_Finalize()</code> を呼び出す。</p> <h2><a href=http://boostjp.github.io/tips/mpi.html#rank-and-size name=rank-and-size>自身のランクやノード数を調べる</a></h2> <p>自身のランクや、 全体のノード数を調べるときは <code>boost::mpi::communicator</code> クラスを使用する。</p> <p>その <code>rank()</code> メンバ関数で自身のランク数、 <code>size()</code> メンバ関数でノード数を取得できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/mpi/environment.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/mpi/communicator.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 
@@ -373,10 +373,10 @@ function tree_onclick(e) {
   <span style="color: #008000; font-weight: bold">template</span><span style="color: #666666">&lt;&gt;</span>
   <span style="color: #008000; font-weight: bold">struct</span> is_mpi_datatype<span style="color: #666666">&lt;</span>gps_positions<span style="color: #666666">&gt;</span> <span style="color: #666666">:</span> mpl<span style="color: #666666">::</span>true_ {};
 } }
-</pre></div> または</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_IS_MPI_DATATYPE(gps_positions)
-</pre></div> を使用すればいい。</p> <p>また、シリアライズのパフォーマンスを上げるために、Boost.Serialization のトラッキングやバージョンチェックなどを省くと良いと紹介している。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_CLASS_TRACKING(gps_positions, boost<span style="color: #666666">::</span>serialization<span style="color: #666666">::</span>track_never)
+</pre></div> </p> <p>または</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_IS_MPI_DATATYPE(gps_positions)
+</pre></div> </p> <p>を使用すればいい。</p> <p>また、シリアライズのパフォーマンスを上げるために、Boost.Serialization のトラッキングやバージョンチェックなどを省くと良いと紹介している。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">BOOST_CLASS_TRACKING(gps_positions, boost<span style="color: #666666">::</span>serialization<span style="color: #666666">::</span>track_never)
 BOOST_CLASS_IMPLEMENTATION(gps_positions, boost<span style="color: #666666">::</span>serialization<span style="color: #666666">::</span>object_serializable)
-</pre></div> また、 <code>std::string</code> などの標準ライブラリのクラスは Boost.Serialization で既にシリアライズが定義されているので、Boost.MPI で転送することができる。</p> <p>以下のプログラムは、 <code>gps_positions</code> クラスをブロードキャストするプログラムである。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/mpi/communicator.hpp&gt;</span>
+</pre></div> </p> <p>また、 <code>std::string</code> などの標準ライブラリのクラスは Boost.Serialization で既にシリアライズが定義されているので、Boost.MPI で転送することができる。</p> <p>以下のプログラムは、 <code>gps_positions</code> クラスをブロードキャストするプログラムである。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/mpi/communicator.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/mpi/environment.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/mpi/collectives.hpp&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/serialization/serialization.hpp&gt;</span>
