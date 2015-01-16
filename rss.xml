@@ -2,9 +2,390 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-16T23:44:29.932659</updated>
-  <id>f418a322-d04b-4d6b-bac5-567d1386a08a</id>
+  <updated>2015-01-16T23:46:59.674607</updated>
+  <id>57190d2f-1a02-4615-a62b-f79d0a950f73</id>
 
+  
+    <entry>
+      <title>bind.hpp -- compose.mdへのリンク切れを修正(#29)</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/bind.html"/>
+      <id>9bd72665f2b7ecc8db14bfd0beeab602a9fdd366:archive/boost_docs/libs/bind.md</id>
+      <updated>2015-01-16 23:46:46 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;bind.hpp&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント： &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/bind/bind.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/bind/bind.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;目次&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#purpose&#34;&gt;目的&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-and-function-pointer&#34;&gt;関数と関数ポインタに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-object&#34;&gt;関数オブジェクトに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-pointer-to-member&#34;&gt;メンバへのポインタに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-nested-binds-for-function-composition&#34;&gt;関数合成のために入れ子の&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#examples&#34;&gt;コード例&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-standard-algorithms&#34;&gt;標準アルゴリズムに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-boost-function&#34;&gt;Boost.Functionと&lt;code&gt;bind&lt;/code&gt;を組み合わせて使用する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#limitation&#34;&gt;制限&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#frequently-asked-questions&#34;&gt;よくある質問と回答&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-doesnt-this-compile&#34;&gt;どうしてコンパイルできない？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-does-this-compile&#34;&gt;どうしてコンパイルできちゃう？ エラーになる筈なのに。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind-r&#34;&gt;&lt;code&gt;bind(f, ...)&lt;/code&gt; と &lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; はどう違う？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-win-api&#34;&gt;bind は Windows の API 関数に対して使える？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-com-methods&#34;&gt;bind は COM のメソッドに使える？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-mac-toolbox&#34;&gt;bind は Mac の Toolbox 関数に使える？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-extern-c-functions&#34;&gt;bind は extern &#34;C&#34; な関数に使える？&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-doesnt-bind-automatically-recognize-nonstd-functions&#34;&gt;どうして bind は非標準の関数を自動的に認識しない？&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#troubleshooting&#34;&gt;トラブルシューティング&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#incorrect-number-of-arguments&#34;&gt;引数の数が不正&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#function-object-cannot-be-called-with-the-specified-arguments&#34;&gt;関数オブジェクトは指定された引数とともに呼び出すことはできない&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#access-arg-does-not-exist&#34;&gt;存在しない引数へのアクセス&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#inappropriate-use-of-bind&#34;&gt;&lt;code&gt;bind(f, ...)&lt;/code&gt; の不適切な使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#inappropriate-use-of-bind-r&#34;&gt;&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; の不適切な使用&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#binding-a-nonstd-function&#34;&gt;非標準の関数を束縛&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#const-in-signatures&#34;&gt;シグネチャが const を含む&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;MSVC specific: using boost::bind;&lt;/li&gt;
+&lt;li&gt;MSVC specific: class templates shadow function templates&lt;/li&gt;
+&lt;li&gt;MSVC specific: ... in signatures treated as type&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Interface&lt;ul&gt;
+&lt;li&gt;Synopsis&lt;/li&gt;
+&lt;li&gt;Common requirements&lt;/li&gt;
+&lt;li&gt;Common definitions&lt;/li&gt;
+&lt;li&gt;bind&lt;/li&gt;
+&lt;li&gt;Additional overloads&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Implementation&lt;ul&gt;
+&lt;li&gt;Files&lt;/li&gt;
+&lt;li&gt;Dependencies&lt;/li&gt;
+&lt;li&gt;Number of Arguments&lt;/li&gt;
+&lt;li&gt;&#34;&lt;strong&gt;stdcall&#34;, &#34;&lt;/strong&gt;fastcall&#34;, and &#34;pascal&#34; Support&lt;/li&gt;
+&lt;li&gt;Using the BOOST_BIND macro&lt;/li&gt;
+&lt;li&gt;visit_each support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Acknowledgements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#purpose&#34; name=&#34;purpose&#34;&gt;目的&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::bind&lt;/code&gt; は標準ライブラリの関数 &lt;code&gt;std::bind1st&lt;/code&gt; および &lt;code&gt;std::bind2nd&lt;/code&gt; を汎用化したものである。 関数オブジェクトだけでなく、関数や関数へのポインタ、メンバ関数へのポインタをサポートし、任意の引数を特定の値に束縛したり、入力引数を、もとの順番に関係なく自由な位置に移し替えることができる。 &lt;code&gt;bind&lt;/code&gt; が扱うことのできる関数オブジェクトには、特別な条件はない。 特に、標準関数が要求する &lt;code&gt;typedef result_type&lt;/code&gt; や &lt;code&gt;first_argument_type&lt;/code&gt; および &lt;code&gt;second_argument_type&lt;/code&gt; は必須ではない。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;【訳注：このような関数を一般に「バインダ」または「束縛子」と呼ぶ。】&lt;/li&gt;
+&lt;li&gt;【訳注：「入力引数」とは、&lt;code&gt;bind&lt;/code&gt; によって生成された関数オブジェクトを呼び出す時に渡される引数。例えば、&lt;code&gt;bind(f, _1, 5)(x)&lt;/code&gt; における &lt;code&gt;x&lt;/code&gt; のこと。】&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-and-function-pointer&#34; name=&#34;using-bind-with-function-and-function-pointer&#34;&gt;関数と関数ポインタに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;以下の関数が定義されているとき、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; b)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; b;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;g&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; b, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; c)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; b &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; c;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind(f, 1, 2)&lt;/code&gt; は &#34;nullary&#34; (無項)、つまり引数をとらない関数オブジェクトを生成する。これを評価すると &lt;code&gt;f(1, 2)&lt;/code&gt; を返す。 同様に、&lt;code&gt;bind(g, 1, 2, 3)()&lt;/code&gt; は &lt;code&gt;g(1, 2, 3)&lt;/code&gt; と等価である。&lt;/p&gt;
+&lt;p&gt;【訳注：&#34;nullary&#34; は boost の造語のようで、「いくつかの邪悪な提案のうち、いちばんマシ」として選ばれたとの記述が &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/compose.html&#34;&gt;compose ライブラリのコメント&lt;/a&gt; にある。】&lt;/p&gt;
+&lt;p&gt;引数のうちいくつかだけを、選択的に束縛することもできる。 例えば、&lt;code&gt;bind(f, _1, 5)(x)&lt;/code&gt; は &lt;code&gt;f(x, 5)&lt;/code&gt; と等価である。 ここで、&lt;code&gt;_1&lt;/code&gt; は「最初の入力引数によって置き換えられる」ことを意味するプレースホルダである。&lt;/p&gt;
+&lt;p&gt;【訳注：残念ながら、&lt;code&gt;bind(f, _1, 5)(10)&lt;/code&gt; のように、入力引数にリテラルを渡すことはできない。詳しくは、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#limitation&#34;&gt;制限の項&lt;/a&gt; を参照。】&lt;/p&gt;
+&lt;p&gt;比較のため、同じ操作を標準ライブラリのプリミティブを使って書くとこうなる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind2nd(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ptr_fun(f), &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)(x);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; は &lt;code&gt;std::bind1st&lt;/code&gt; の機能もカバーしている。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind1st(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ptr_fun(f), &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;)(x);   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// f(5, x)&lt;/span&gt;
+bind(f, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;, _1)(x);                     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// f(5, x)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; は二つ以上の引数を持つ関数を扱うことができる。 また、引数の置き換え機能はより一般化されている。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bind(f, _2, _1)(x, y);                 &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// f(y, x)&lt;/span&gt;
+bind(g, _1, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;, _1)(x);                 &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// g(x, 9, x)&lt;/span&gt;
+bind(g, _3, _3, _3)(x, y, z);          &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// g(z, z, z)&lt;/span&gt;
+bind(g, _1, _1, _1)(x, y, z);          &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// g(x, x, x)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;最後の例で、&lt;code&gt;bind(g, _1, _1, _1)&lt;/code&gt; が生成する関数オブジェクトは入力引数を一つしか受け取らないにも関わらず、複数の引数を付けて呼び出せることに注意。 このように、余分な引数は黙って無視され、エラーにはならない。 同様に、三番目の例では最初の引数 &lt;code&gt;x&lt;/code&gt; と二番目の引数 &lt;code&gt;y&lt;/code&gt; は無視される。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; に渡される引数はコピーされ、生成された関数オブジェクトの内部に保持される。 例えば、以下のコードでは、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;;
+bind(f, i, _1);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; の値のコピーが関数オブジェクトに格納される。 コピーではなく参照を関数オブジェクトに格納したい場合には、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind/ref.html&#34;&gt;&lt;code&gt;boost::ref&lt;/code&gt;&lt;/a&gt; および &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind/ref.html&#34;&gt;&lt;code&gt;boost::cref&lt;/code&gt;&lt;/a&gt; を使う必要がある。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;;
+bind(f, ref(i), _1);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;【訳注：詳しくは、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind/ref.html&#34;&gt;&lt;code&gt;ref&lt;/code&gt; のドキュメント&lt;/a&gt;を参照。】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-object&#34; name=&#34;using-bind-with-function-object&#34;&gt;関数オブジェクトに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; は通常の関数だけでなく、任意の関数オブジェクトを受け付ける。 一般的には（標準 C++ には &lt;code&gt;typeof&lt;/code&gt; 演算子がなく、戻り型を推論できないため）、生成される関数オブジェクトの &lt;code&gt;operator()&lt;/code&gt; の戻り型を以下のように明示的に指定する必要がある。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; F
+{
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; a, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; b) { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; b; }
+    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #B00040&#34;&gt;long&lt;/span&gt; a, &lt;span style=&#34;color: #B00040&#34;&gt;long&lt;/span&gt; b) { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; a &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; b; }
+};
+
+F f;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;104&lt;/span&gt;;
+
+bind&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(f, _1, _1)(x);        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// f(x, x) つまり、ゼロ&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;関数オブジェクトが &lt;code&gt;result_type&lt;/code&gt; という名前の入れ子の型を開示している場合、戻り型を明示的に書く必要はない。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;nt x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;8&lt;/span&gt;;
+
+bind(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;less&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(), _1, &lt;span style=&#34;color: #666666&#34;&gt;9&lt;/span&gt;)(x);   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// x &amp;lt; 9&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;【注意：戻り型を省略する機能は、コンパイラによっては利用できない場合がある。】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-pointer-to-member&#34; name=&#34;using-bind-with-pointer-to-member&#34;&gt;メンバへのポインタに対して&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;メンバ関数へのポインタやデータメンバへのポインタは &lt;code&gt;operator()&lt;/code&gt; を持たないので、関数オブジェクトではない。 しかし、それでは不便なので、&lt;code&gt;bind&lt;/code&gt; は最初の引数としてメンバへのポインタも受け付ける。 この場合、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mem_fn.html&#34;&gt;&lt;code&gt;boost::mem_fn&lt;/code&gt;&lt;/a&gt; によってメンバへのポインタが関数オブジェクトに変換されて渡されたかのように振る舞う。 すなわち、式&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, &lt;i&gt;args&lt;/i&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;は以下の式と等価である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bind&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;R&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(mem_fn(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f), &lt;i&gt;args&lt;/i&gt;)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;ここで、&lt;code&gt;R&lt;/code&gt; は &lt;code&gt;X::f&lt;/code&gt; の戻り型（メンバ関数の場合）、またはメンバの型への &lt;code&gt;const&lt;/code&gt; な参照（データメンバの場合）である。&lt;/p&gt;
+&lt;p&gt;【注意：&lt;code&gt;mem_fn&lt;/code&gt; が生成する関数オブジェクトを呼び出す際には、最初の引数としてオブジェクトのポインタ、参照またはスマートポインタを渡す。 詳しくは、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/mem_fn.html&#34;&gt;&lt;code&gt;mem_fn&lt;/code&gt; のドキュメント&lt;/a&gt;を参照。】&lt;/p&gt;
+&lt;p&gt;例：&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; X
+{
+    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; f(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; a);
+};
+
+X x;
+
+shared_ptr&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; p(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;new&lt;/span&gt; X);
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;;
+
+bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, ref(x), _1)(i);     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// x.f(i)&lt;/span&gt;
+bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;x, _1)(i);         &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (&amp;amp;x)-&amp;gt;f(i)&lt;/span&gt;
+bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, x, _1)(i);          &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (x の内部的なコピー).f(i)&lt;/span&gt;
+bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, p, _1)(i);          &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// (p の内部的なコピー)-&amp;gt;f(i)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;最後の二つの例は「自己充足な」関数オブジェクトを生成する興味深い例である。 &lt;code&gt;bind(&amp;amp;X::f, x, _1)&lt;/code&gt; は &lt;code&gt;x&lt;/code&gt; のコピーを保持する。 &lt;code&gt;bind(&amp;amp;X::f, p, _1)&lt;/code&gt; は &lt;code&gt;p&lt;/code&gt; のコピーを保持し、&lt;code&gt;p&lt;/code&gt; が &lt;code&gt;boost::shared_ptr&lt;/code&gt; であるため、関数オブジェクトは &lt;code&gt;X&lt;/code&gt; のインスタンスへの参照を持ち、それは &lt;code&gt;p&lt;/code&gt; のスコープを抜けたり &lt;code&gt;reset()&lt;/code&gt; されたりしても有効である。&lt;/p&gt;
+&lt;p&gt;【訳注：つまり、&lt;code&gt;bind&lt;/code&gt; の最初の引数がメンバ関数へのポインタである場合、次の引数はそのメンバ関数を持つクラスまたは派生クラスのオブジェクトまたはポインタ、&lt;code&gt;ref()&lt;/code&gt;、スマートポインタでなければならない。】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-nested-binds-for-function-composition&#34; name=&#34;using-nested-binds-for-function-composition&#34;&gt;関数合成のために入れ子の&lt;code&gt;bind&lt;/code&gt;を使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; に渡される引数のうちいくつかは、それ自体が &lt;code&gt;bind&lt;/code&gt; の入れ子になった式でもよい。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;bind(f, bind(g, _1))(x);               &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// f(g(x))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; によって生成された関数オブジェクトを呼び出す時には、外側の &lt;code&gt;bind&lt;/code&gt; 式が呼ばれる前に内側の &lt;code&gt;bind&lt;/code&gt; 式が、複数ある場合は順不同で評価される。 次に、その結果は外側の &lt;code&gt;bind&lt;/code&gt; が評価される際の引数として渡される。 上の例で、関数オブジェクトが引数リスト &lt;code&gt;(x)&lt;/code&gt; とともに呼び出される場合、&lt;code&gt;bind(g, _1)(x)&lt;/code&gt; がまず評価されて &lt;code&gt;g(x)&lt;/code&gt; となり、次に &lt;code&gt;bind(f, g(x))(x)&lt;/code&gt; が評価され、最終的な結果は &lt;code&gt;f(g(x))&lt;/code&gt; となる。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; のこの機能は、関数を合成するために使用することができる。 詳しくは、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind/bind_as_compose.cpp.html&#34;&gt;&lt;code&gt;bind_as_compose.cpp&lt;/code&gt;&lt;/a&gt; に &lt;code&gt;bind&lt;/code&gt; を使って &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/compose.html&#34;&gt;Boost.Compose&lt;/a&gt; と同様の効果を得るサンプルがあるので、それを参照のこと。&lt;/p&gt;
+&lt;p&gt;ただし、（&lt;code&gt;bind&lt;/code&gt; 関数の）最初の引数、つまり束縛される関数オブジェクトは、評価されないので注意すること。 特に、関数オブジェクトが &lt;code&gt;bind&lt;/code&gt; で生成されたものや、プレースホルダ引数の場合でも評価されないので、次の例は期待通りには動かない。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;pf)(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;pf&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; v;
+
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(v.begin(), v.end(), bind(_1, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;));
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;【訳注：動かないというか、コンパイルできない。】&lt;/p&gt;
+&lt;p&gt;期待通りの結果を得るには、ヘルパ関数オブジェクト &lt;code&gt;apply&lt;/code&gt; を使用する必要がある。 &lt;code&gt;apply&lt;/code&gt; はその最初の引数である関数オブジェクトを、残りの引数リストに対して適用する。 &lt;code&gt;apply&lt;/code&gt; 関数は &lt;code&gt;boost/bind/apply.hpp&lt;/code&gt; ヘッダファイルに定義されている。 上の例は、この &lt;code&gt;apply&lt;/code&gt; を使って次のように書き直せばよい。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;void&lt;/span&gt; (&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;pf)(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;pf&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; v;
+
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(v.begin(), v.end(), bind(apply&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(), _1, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;));
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;時には、最初の引数だけでなく、入れ子になった &lt;code&gt;bind&lt;/code&gt; 部分式であるような他の引数を評価したくない場合もある。 この場合は、別のヘルパ関数 &lt;code&gt;protect&lt;/code&gt; を使用するとよい。 これにより、引数の型がマスクされ、&lt;code&gt;bind&lt;/code&gt; が認識されず、評価されない。 呼び出し時には、&lt;code&gt;protect&lt;/code&gt; は単純に引数リストを他の関数オブジェクトのそのまま渡す。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;protect&lt;/code&gt; 関数は &lt;code&gt;boost/bind/protect.hpp&lt;/code&gt; ヘッダに含まれている。 &lt;code&gt;bind&lt;/code&gt; 関数オブジェクトを評価されないように保護するには、&lt;code&gt;protect(bind(f, ...))&lt;/code&gt; と書けばよい。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#examples&#34; name=&#34;examples&#34;&gt;コード例&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-standard-algorithms&#34; name=&#34;using-bind-with-standard-algorithms&#34;&gt;標準アルゴリズムと&lt;code&gt;bind&lt;/code&gt;を組み合わせて使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;image&lt;/span&gt;;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;animation&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; advance(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; ms);
+    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; inactive() &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; render(image &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; target) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
+};
+
+std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;animation&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; anims;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;C&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;P&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; erase_if(C &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; c, P pred)
+{
+    c.erase(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;remove_if(c.begin(), c.end(), pred), c.end());
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; update(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; ms)
+{
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(anims.begin(), anims.end(), boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;animation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;advance, _1, ms));
+    erase_if(anims, boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fn(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;animation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;inactive));
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; render(image &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; target)
+{
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;for_each(anims.begin(), anims.end(), boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;animation&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;render, _1, boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ref(target)));
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-boost-function&#34; name=&#34;using-bind-with-boost-function&#34;&gt;Boost.Functionと&lt;code&gt;bind&lt;/code&gt;を組み合わせて使用する&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;button&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; onClick;
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;player&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; play();
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;stop&lt;/span&gt;();
+};
+
+button playButton, stopButton;
+player thePlayer;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;connect&lt;/span&gt;()
+{
+    playButton.onClick &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;player&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;play, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;thePlayer);
+    stopButton.onClick &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;player&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;stop, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;thePlayer);
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#limitation&#34; name=&#34;limitation&#34;&gt;制限&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;bind&lt;/code&gt; が生成する関数オブジェクトは、引数を参照渡しで受け取る。このため、&lt;code&gt;const&lt;/code&gt; でない一時オブジェクトやリテラル定数を受け取ることはできない。 これは、C++ 言語自体の制約であり、「転送する関数の問題（？）」として知られている。&lt;/p&gt;
+&lt;p&gt;任意の型の引数を受け取り、それらをそのまま渡すために、&lt;code&gt;bind&lt;/code&gt; ライブラリでは、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; f(T &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;という形式のシグネチャを（訳注：仮引数に）使っている。 上記のように、この方法は &lt;code&gt;const&lt;/code&gt; でない右辺値には使えない。&lt;/p&gt;
+&lt;p&gt;この問題に対して、次のようにオーバーロードを追加する「解決策」がよく提案される。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; f(T &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t);
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; f(T &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; t);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;残念ながら、この方法は (a) 引数が 9 つある場合、512 ものオーバーロードを提供する必要があり、(b) 引数が &lt;code&gt;const&lt;/code&gt; である場合、シグネチャが全く同じであるために半順序（？）を定義できず、左辺値にも右辺値にもうまく働かない。&lt;/p&gt;
+&lt;p&gt;【注意：これは C++ 言語の暗い隅（？）であり、該当する問題はまだ解決されていない。】&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#frequently-asked-questions&#34; name=&#34;frequently-asked-questions&#34;&gt;よくある質問と回答&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-doesnt-this-compile&#34; name=&#34;why-doesnt-this-compile&#34;&gt;どうしてコンパイルできない？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#troubleshooting&#34;&gt;トラブルシューティング&lt;/a&gt; の項を参照。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-does-this-compile&#34; name=&#34;why-does-this-compile&#34;&gt;どうしてコンパイルできちゃう？ エラーになる筈なのに。&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;おそらく、&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; という汎用の構文を使っているためであろう。この書き方は、&lt;code&gt;bind&lt;/code&gt; に対して &lt;code&gt;f&lt;/code&gt; の引数の数や戻り型に関するエラーチェックをしないように指示するものである。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind-r&#34; name=&#34;what-is-the-difference-between-bind-and-bind-r&#34;&gt;&lt;code&gt;bind(f, ...)&lt;/code&gt; と &lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; はどう違う？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;最初の形式は &lt;code&gt;bind&lt;/code&gt; に &lt;code&gt;f&lt;/code&gt; の型を調べて、引数の数や戻り型を解決するように指示する。 引数の数の間違いは「バインド時」に検出される。 この構文はもちろん、&lt;code&gt;f&lt;/code&gt; に対していくつかのことを要求する。 つまり、&lt;code&gt;f&lt;/code&gt; は関数、関数ポインタ、メンバ関数へのポインタのいずれかであるか、関数オブジェクトの場合には &lt;code&gt;result_type&lt;/code&gt; という入れ子の型を定義する必要がある。簡単に言えば、&lt;code&gt;bind&lt;/code&gt; が認識できるものでなければならない。&lt;/p&gt;
+&lt;p&gt;二番目の形式は &lt;code&gt;bind&lt;/code&gt; に &lt;code&gt;f&lt;/code&gt; の型を識別しないように指示する。 これは一般的には、&lt;code&gt;result_type&lt;/code&gt; を開示しない、あるいはできない関数オブジェクトとともに用いられるが、その他に非標準の関数に対しても用いることができる。 たとえば、現在の実装は &lt;code&gt;printf&lt;/code&gt; のような可変引数の関数を自動的に認識しないため、&lt;code&gt;bind&amp;lt;int&amp;gt;(printf, ...)&lt;/code&gt; と書く必要がある。&lt;/p&gt;
+&lt;p&gt;【訳注：「非標準」は原文では nonstandard だが、printf が「非標準」というのは変だなぁ。】&lt;/p&gt;
+&lt;p&gt;他に考慮すべき重要な点として、コンパイラがテンプレートの部分特殊化版や関数テンプレートの半順序（？）に対応していない場合、&lt;code&gt;f&lt;/code&gt; が関数オブジェクトであれば最初の形式は扱えず、また、&lt;code&gt;f&lt;/code&gt; が関数（ポインタ）やメンバ関数へのポインタであれば二番目の形式は扱えないことが多い。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-win-api&#34; name=&#34;does-bind-work-with-win-api&#34;&gt;bind は Windows の API 関数に対して使える？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;はい、&lt;code&gt;#define BOOST_BIND_ENABLE_STDCALL&lt;/code&gt; すれば。 または、目的の関数を &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-object&#34;&gt;generic function object&lt;/a&gt; として扱って、&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; の構文を使っても良い。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-com-methods&#34; name=&#34;does-bind-work-with-com-methods&#34;&gt;bind は COM のメソッドに使える？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;はい、&lt;code&gt;#define BOOST_MEM_FN_ENABLE_STDCALL&lt;/code&gt; すれば。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-mac-toolbox&#34; name=&#34;does-bind-work-with-mac-toolbox&#34;&gt;bind は Mac の Toolbox 関数に使える？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;はい、&lt;code&gt;#define BOOST_BIND_ENABLE_PASCAL&lt;/code&gt; すれば。 または、目的の関数を &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-object&#34;&gt;generic function object&lt;/a&gt; として扱って、&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; の構文を使っても良い。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-extern-c-functions&#34; name=&#34;does-bind-work-with-extern-c-functions&#34;&gt;bind は extern &#34;C&#34; な関数に使える？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;場合による。 いくつかのプラットフォームでは、&lt;code&gt;extern &#34;C&#34;&lt;/code&gt; な関数へのポインタは「通常の」関数ポインタと等価であり、問題なく動く。 他のプラットフォームでは、それらは別物として扱われる。 プラットフォーム固有の &lt;code&gt;bind&lt;/code&gt; の実装があれば、問題を透過的に解決できることが期待されるが、この実装はそうなっていない。 いつものように、回避策は目的の関数を &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#using-bind-with-function-object&#34;&gt;generic function object&lt;/a&gt; として扱って、&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; の構文を使うことである。&lt;/p&gt;
+&lt;p&gt;【訳注：「この実装」とあるが、このドキュメントは &lt;code&gt;bind&lt;/code&gt; の仕様を定義するもので、附属の実装は「サンプル実装」という位置付けで書かれているものと思われる。（？）】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#why-doesnt-bind-automatically-recognize-nonstd-functions&#34; name=&#34;why-doesnt-bind-automatically-recognize-nonstd-functions&#34;&gt;どうして bind は非標準の関数を自動的に認識しない？&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;特定のベンダに縛られることを防ぐために、非標準の拡張は一般的にデフォルトでオフにすべきである。 もしも&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html##does-bind-work-with-win-api&#34;&gt;固有のマクロ&lt;/a&gt;が自動的に定義されたら、そのつもりがないのにそれらの機能を使ってしまい、知らない間に互換性を損なってしまう危険性がある。 また、いくつかのコンパイラは &lt;code&gt;__stdcall (__fastcall)&lt;/code&gt; をデフォルトの呼び出し規約とするオプションを用意しており、特別なサポートは必要ない。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#troubleshooting&#34; name=&#34;troubleshooting&#34;&gt;トラブルシューティング&lt;/a&gt;&lt;/h2&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#incorrect-number-of-arguments&#34; name=&#34;incorrect-number-of-arguments&#34;&gt;引数の数が不正(Incorrect number of arguments)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;式 &lt;code&gt;bind(f, a1, a2, ..., aN)&lt;/code&gt; において、関数オブジェクト &lt;code&gt;f&lt;/code&gt; はちょうど &lt;code&gt;N&lt;/code&gt; 個の引数を取らなければならない。 このエラーは、通常「バインド時」に検出される。すなわち、&lt;code&gt;bind()&lt;/code&gt; を呼び出している行に対してコンパイルエラーが報告される。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;);    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー、f は二つの引数を取る&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このエラーの変種として、メンバ関数に対する暗黙の「&lt;code&gt;this&lt;/code&gt;」引数を忘れることも多い。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; X
+{
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; f(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;);     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー、X::f は二つの引数を取る&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;f, _1, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;【訳注：&lt;code&gt;bind&lt;/code&gt; では、メンバ関数へのポインタは、通常の引数の前に暗黙の「&lt;code&gt;this&lt;/code&gt;」引数をとるものとみなす。】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#function-object-cannot-be-called-with-the-specified-arguments&#34; name=&#34;function-object-cannot-be-called-with-the-specified-arguments&#34;&gt;関数オブジェクトは指定された引数とともに呼び出すことはできない(The function object cannot be called with the specified arguments)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;通常の関数呼び出しと同様、束縛される関数オブジェクトは引数リストと互換性を持つ必要がある。 非互換性は、通常コンパイラによって「呼び出し時」に検出され、&lt;code&gt;bind.hpp&lt;/code&gt; の次のような行に対するエラーとなる。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;    return f(a[a1_], a[a2_]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;An example of this kind of error:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;incompatible&#34;&lt;/span&gt;);      &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK、呼び出さないので&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;incompatible&#34;&lt;/span&gt;)();    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー、&#34;incompatible&#34; は int ではない&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, _1);                  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, _1)(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;incompatible&#34;&lt;/span&gt;);  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー、&#34;incompatible&#34; は int ではない&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#access-arg-does-not-exist&#34; name=&#34;access-arg-does-not-exist&#34;&gt;存在しない引数へのアクセス(Accessing an argument that does not exist)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;プレースホルダ &lt;code&gt;_N&lt;/code&gt; は引数リストの &lt;code&gt;N&lt;/code&gt; 番目の引数を、「呼び出し時」に選択する。 当然、引数リストの範囲外のものにアクセスしようとすればエラーになる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, _1);                  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, _1)();                &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー、一番目の引数は存在しない&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このエラーは、通常 &lt;code&gt;bind.hpp&lt;/code&gt; の次のような行に対して報告される。&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;    return f(a[a1_]);
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;std::bind1st(f, a)&lt;/code&gt; の代わりに使う場合、&lt;code&gt;bind(f, a, _1)&lt;/code&gt; ではなく間違って &lt;code&gt;bind(f, a, _2)&lt;/code&gt; としてしまうことも多い。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#inappropriate-use-of-bind&#34; name=&#34;inappropriate-use-of-bind&#34;&gt;&lt;code&gt;bind(f, ...)&lt;/code&gt; の不適切な使用(Inappropriate use of &lt;code&gt;bind(f, ...)&lt;/code&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;bind(f, a1, a2, ..., aN)&lt;/code&gt; の&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind-r&#34;&gt;形式&lt;/a&gt;は &lt;code&gt;f&lt;/code&gt; を自動的に認識させる。 これは、任意の関数オブジェクトに対して働くわけではない。&lt;code&gt;f&lt;/code&gt; は関数またはメンバ関数へのポインタでなければならない。&lt;/p&gt;
+&lt;p&gt;この形式を &lt;code&gt;result_type&lt;/code&gt; を定義する関数オブジェクトに使えるのは、部分特殊化版や半順序（？）をサポートしているコンパイラに限られる。 特に、MSVC のバージョン 7.0 までは、関数オブジェクトに対するこの構文はサポートしない。&lt;/p&gt;
+&lt;p&gt;【訳注：原文では MSVC up to version 7.0 となっているが、これは 7.0 を含むのだろうか？】&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#inappropriate-use-of-bind-r&#34; name=&#34;inappropriate-use-of-bind-r&#34;&gt;&lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt; の不適切な使用(Inappropriate use of &lt;code&gt;bind&amp;lt;R&amp;gt;(f, ...)&lt;/code&gt;)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;bind&amp;lt;R&amp;gt;(f, a1, a2, ..., aN)&lt;/code&gt;の&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind-r&#34;&gt;形式&lt;/a&gt;は、任意の関数オブジェクトをサポートする。&lt;/p&gt;
+&lt;p&gt;この形式を、(推奨はしないが)関数もしくメンバ関数ポインタに使えるのは、半順序をサポートしているコンパイラに限られる。特に、MSVC のバージョン 7.0 までは、関数とメンバ関数ポインタに対するこの構文はサポートしない。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#binding-a-nonstd-function&#34; name=&#34;binding-a-nonstd-function&#34;&gt;非標準の関数を束縛(Binding a nonstandard function)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;デフォルトでは、&lt;code&gt;bind(f, a1, a2, ..., aN)&lt;/code&gt; の&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind&#34;&gt;形式&lt;/a&gt;は、「通常」のC++関数と関数ポインタのみを受け入れる。&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-win-api&#34;&gt;関数が異なる呼び出し規約を使っていたり&lt;/a&gt;、&lt;code&gt;std::printf&lt;/code&gt;のような可変引数の関数では、動作しない。汎用的な&lt;code&gt;bind&amp;lt;R&amp;gt;(f, a1, a2, ..., aN)&lt;/code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#what-is-the-difference-between-bind-and-bind-r&#34;&gt;形式&lt;/a&gt;なら、そのような非標準関数に対しても動作する。&lt;/p&gt;
+&lt;p&gt;いくつかのプラットフォームでは、&lt;code&gt;extern &#34;C&#34;&lt;/code&gt;の付いた&lt;code&gt;stdcmp&lt;/code&gt;のような関数は、短い形式の&lt;code&gt;bind&lt;/code&gt;では動作しない。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-win-api&#34;&gt;&#34;&lt;code&gt;__stdcall&lt;/code&gt;&#34;&lt;/a&gt;や&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#does-bind-work-with-mac-toolbox&#34;&gt;&#34;&lt;code&gt;pascal&lt;/code&gt;&#34;&lt;/a&gt;のサポートを参照。&lt;/p&gt;
+&lt;h3&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html#const-in-signatures&#34; name=&#34;const-in-signatures&#34;&gt;シグネチャが const を含む(const in signatures)&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;MSVC 6.0やBorland C++ 5.5.1を含むいくつかのプラットフォームでは、関数のシグニチャがトップレベルの&lt;code&gt;const&lt;/code&gt;を持っていることが問題になる：&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;f&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;);
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(f, &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;);     &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// エラー&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;回避策は、引数の形式から&lt;code&gt;const&lt;/code&gt;修飾を削除することだ。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;以下、未翻訳。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2001, 2002 by Peter Dimov and Multi Media Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>template_page.md -- 逆引きリファレンスのテンプレートページは、いらなくなったので削除。(#29)</title>
@@ -1733,805 +2114,6 @@ timer_.async_wait(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt
       <author>
         <name>yoh</name>
         <email>kawasaki.liamg@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>ネットワーク - TCP -- Merge pull request #28 from amedama41/correct_asio_timeout
-</title>
-      <link href="http://boostjp.github.io/tips/network/tcp.html"/>
-      <id>d3c4c31f09c4712a9b84ccb9105cd649e1c3e1c8:tips/network/tcp.md</id>
-      <updated>2015-01-06 00:47:10 +0900
-</updated>
-      
-        <content type="html">&lt;h1&gt;ネットワーク - TCP&lt;/h1&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#connect&#34;&gt;接続&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#accept&#34;&gt;接続待機&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#send&#34;&gt;メッセージ送信&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#receive&#34;&gt;メッセージ受信&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#resolve&#34;&gt;名前解決して接続&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#timeout&#34;&gt;タイムアウトを設定する&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#connect&#34; name=&#34;connect&#34;&gt;接続&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;同期バージョンの接続には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__tcp/socket.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::socket&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_stream_socket/connect/overload2.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;connect&lt;/code&gt;&lt;/a&gt;()メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;接続先の情報は&lt;code&gt;tcp::endpoint&lt;/code&gt;に、IPアドレス文字列と、ポート番号の2つを指定する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;connect()&lt;/code&gt;の第2引数として&lt;code&gt;error_code&lt;/code&gt;を渡した場合には、接続失敗時にエラー情報が&lt;code&gt;error_code&lt;/code&gt;変数に格納される。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;error_code&lt;/code&gt;を渡さなかった場合には、接続失敗時に&lt;code&gt;boost::system::system_error&lt;/code&gt;が例外として投げられる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket(io_service);
-
-    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code error;
-    socket.&lt;span style=&#34;color:#ff0000&#34;&gt;connect&lt;/span&gt;(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;address&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;from_string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;127.0.0.1&#34;&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;), error);
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;span style=&#34;color:#ff0000&#34;&gt;connect&lt;/span&gt; failed : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connected&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非同期バージョンの接続には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__tcp/socket.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::socket&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_stream_socket/async_connect.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;async_connect&lt;/code&gt;&lt;/a&gt;&lt;code&gt;()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;第1引数として、接続先情報のIPアドレス文字列と、ポート番号を指定する。&lt;/p&gt;
-&lt;p&gt;第2引数として、接続成功もしくは接続失敗時に呼ばれる関数を指定する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Client&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Client(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          socket_(io_service)
-    {}
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; connect()
-    {
-        socket_.&lt;span style=&#34;color:#ff0000&#34;&gt;async_connect&lt;/span&gt;(
-                tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;address&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;from_string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;127.0.0.1&#34;&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;),
-                boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_connect, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_connect(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect failed : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connected&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    Client client(io_service);
-
-    client.connect();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#accept&#34; name=&#34;accept&#34;&gt;接続待機&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;接続待機には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__tcp/acceptor.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::acceptor&lt;/code&gt;&lt;/a&gt;クラスを使用する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;acceptor&lt;/code&gt;クラスのコンストラクタには、IPのバージョン(&lt;code&gt;tcp::v4()&lt;/code&gt; or &lt;code&gt;tcp::v6()&lt;/code&gt;)とポート番号を設定する。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;同期バージョンの接続待機には、&lt;code&gt;acceptor&lt;/code&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_socket_acceptor/accept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;accept&lt;/code&gt;&lt;/a&gt;&lt;code&gt;()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;引数として、バインディングする&lt;code&gt;socket&lt;/code&gt;クラスオブジェクトへの参照を渡す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-
-    &lt;span style=&#34;color:#ff0000&#34;&gt;tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;acceptor&lt;/span&gt; acc(io_service, tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;v4(), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;));
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket(io_service);
-
-    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code error;
-    acc.&lt;span style=&#34;color:#ff0000&#34;&gt;accept&lt;/span&gt;(socket, error);
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;span style=&#34;color:#ff0000&#34;&gt;accept&lt;/span&gt; failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;&lt;span style=&#34;color:#ff0000&#34;&gt;accept&lt;/span&gt; correct!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非同期バージョンの接続待機には、&lt;code&gt;acceptor&lt;/code&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_socket_acceptor/async_accept/overload1.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;async_accept&lt;/code&gt;&lt;/a&gt;&lt;code&gt;()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;第1引数としてバインディングする&lt;code&gt;socket&lt;/code&gt;オブジェクトへの参照をとり、第2引数として接続成功もしくは接続失敗時に呼ばれる関数を指定する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Server&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;acceptor acceptor_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Server(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          acceptor_(io_service, tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;v4(), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;)),
-          socket_(io_service) {}
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start_accept()
-    {
-        acceptor_.&lt;span style=&#34;color:#ff0000&#34;&gt;async_accept&lt;/span&gt;(
-            socket_,
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Server&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_accept, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_accept(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;accept failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;accept correct!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    Server server(io_service);
-
-    server.start_accept();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#send&#34; name=&#34;send&#34;&gt;メッセージ送信&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;ここでは、TCPソケットでのメッセージ送信方法を解説する。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;同期バージョンのメッセージ送信には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/write.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::write()&lt;/code&gt;&lt;/a&gt;フリー関数を使用する。&lt;/p&gt;
-&lt;p&gt;この関数には、多様なバージョンが提供されているが、ここでは基本的なものを紹介する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数 ： &lt;code&gt;socket&lt;/code&gt;オブジェクトへの参照&lt;/li&gt;
-&lt;li&gt;第2引数 ： 送信バッファ&lt;/li&gt;
-&lt;li&gt;第3引数 ： 送信結果を格納するエラー値への参照(省略可)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第3引数を省略し、エラーが発生した場合は&lt;code&gt;boost::system::system_error&lt;/code&gt;例外が投げられる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket(io_service);
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続&lt;/span&gt;
-    socket.connect(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;address&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;from_string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;127.0.0.1&#34;&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;));
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// メッセージ送信&lt;/span&gt;
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string msg &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ping&#34;&lt;/span&gt;;
-    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code error;
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;write&lt;/span&gt;(socket, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;buffer(msg), error);
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;send failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;send correct!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非同期バージョンのメッセージ送信には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_write.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::async_write()&lt;/code&gt;&lt;/a&gt;フリー関数を使用する。&lt;/p&gt;
-&lt;p&gt;この関数もまた、いくつかのバージョンが提供されているが、ここでは基本的なものを紹介する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数 ： &lt;code&gt;socket&lt;/code&gt;オブジェクトへの参照&lt;/li&gt;
-&lt;li&gt;第2引数 ： 送信バッファ&lt;/li&gt;
-&lt;li&gt;第3引数 ： 送信成功もしくは失敗時に呼ばれる関数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Client&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string send_data_; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 送信データ&lt;/span&gt;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Client(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          socket_(io_service)
-    {}
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start()
-    {
-        connect();
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; connect()
-    {
-        socket_.async_connect(
-                tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;address&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;from_string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;127.0.0.1&#34;&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;),
-                boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_connect, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続完了&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_connect(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect failed : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt;;
-        }
-
-        send();
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// メッセージ送信&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; send()
-    {
-        send_data_ &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;ping&#34;&lt;/span&gt;;
-        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;async_write&lt;/span&gt;(
-                socket_,
-                asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;buffer(send_data_),
-                boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_send, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;,
-                            asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error,
-                            asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bytes_transferred));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 送信完了&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// error : エラー情報&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// bytes_transferred : 送信したバイト数&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_send(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error, &lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt; bytes_transferred)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;send failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;send correct!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    Client client(io_service);
-
-    client.start();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#receive&#34; name=&#34;receive&#34;&gt;メッセージ受信&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;ここでは、TCPソケットでのメッセージ受信の方法を解説する。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;同期バージョンのメッセージ受信には、以下のいずれかの関数を使用する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/read.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::read()&lt;/code&gt;&lt;/a&gt; ： 指定したバイト数もしくは全データを受信する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/read_at.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::read_at()&lt;/code&gt;&lt;/a&gt; ： 指定した位置のデータを受信する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/read_until.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::read_until()&lt;/code&gt;&lt;/a&gt; ： 指定したパターンのデータまで受信する(特定文字列もしくは正規表現)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;ここでは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/read.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::read()&lt;/code&gt;&lt;/a&gt;フリー関数を使用して解説する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数 ： &lt;code&gt;sockeオブジェクト&lt;/code&gt;への参照&lt;/li&gt;
-&lt;li&gt;第2引数 ： 受信バッファへの参照&lt;/li&gt;
-&lt;li&gt;第3引数 ： どれくらい受信するか。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_all.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_all()&lt;/code&gt;&lt;/a&gt;はバッファがいっぱいになるまで読む。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_at_least.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_at_least(size_t minimum)&lt;/code&gt;&lt;/a&gt;は最低でもNバイト読む。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_exactly.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_exactly(size_t size)&lt;/code&gt;&lt;/a&gt;は指定したサイズ読む。&lt;/li&gt;
-&lt;li&gt;第4引数 ： 受信結果を格納するエラー値への参照(省略可)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;第4引数を省略し、エラーが発生した場合は&lt;code&gt;boost::system::system_error&lt;/code&gt;例外が投げられる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;acceptor acc(io_service, tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;v4(), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;));
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket(io_service);
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続待機&lt;/span&gt;
-    acc.accept(socket);
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// メッセージ受信&lt;/span&gt;
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;streambuf receive_buffer;
-    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code error;
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;read(socket, receive_buffer, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;transfer_all(), error);&lt;/span&gt;
-
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; error &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;eof) {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;receive failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; data &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;buffer_cast&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&amp;gt;&lt;/span&gt;(receive_buffer.data());
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; data &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非同期バージョンのメッセージ受信には、以下のいずれかの関数を使用する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_read.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::async_read()&lt;/code&gt;&lt;/a&gt; ： 指定したバイト数もしくは全データを受信する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_read_at.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::async_read_at()&lt;/code&gt;&lt;/a&gt; ： 指定した位置のデータを受信する&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_read_until.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::async_read_until()&lt;/code&gt;&lt;/a&gt; ： 指定したパターンのデータまで受信する(特定文字列もしくは正規表現)
-ここでは、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/async_read.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::async_read()&lt;/code&gt;&lt;/a&gt;フリー関数を使用して解説する。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;第1引数 ： &lt;code&gt;socket&lt;/code&gt;オブジェクトへの参照&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;第2引数 ： 受信バッファへの参照&lt;/li&gt;
-&lt;li&gt;第3引数 ： どれくらい受信するか。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_all.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_all()&lt;/code&gt;&lt;/a&gt;はバッファがいっぱいになるまで読む。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_at_least.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_at_least(size_t minimum)&lt;/code&gt;&lt;/a&gt;は最低でもNバイト読む。&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/transfer_exactly.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;transfer_exactly(size_t size)&lt;/code&gt;&lt;/a&gt;は指定したサイズ読む。&lt;/li&gt;
-&lt;li&gt;第4引数 ： 受信成功もしくは失敗時に呼ばれる関数&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Server&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;acceptor acceptor_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;streambuf receive_buff_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Server(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          acceptor_(io_service, tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;v4(), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;)),
-          socket_(io_service) {}
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start()
-    {
-        start_accept();
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続待機&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start_accept()
-    {
-        acceptor_.async_accept(
-            socket_,
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Server&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_accept, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続待機完了&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_accept(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;accept failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt;;
-        }
-
-        start_receive();
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// メッセージ受信&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start_receive()
-    {
-        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;async_read&lt;/span&gt;(
-            socket_,
-            receive_buff_,
-            asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;transfer_all(),
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Server&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_receive, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;,
-                        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bytes_transferred));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 受信完了&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// error : エラー情報&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// bytes_transferred : 受信したバイト数&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_receive(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error, &lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt; bytes_transferred)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; error &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;eof) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;receive failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; data &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;buffer_cast&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;char&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;*&amp;gt;&lt;/span&gt;(receive_buff_.data());
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; data &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-
-            receive_buff_.consume(receive_buff_.size());
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    Server server(io_service);
-
-    server.start();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#resolve&#34; name=&#34;resolve&#34;&gt;名前解決して接続&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;名前解決には、&lt;a href=&#34;http://www.boost.org/doc/libs/rerlease/doc/html/boost_asio/reference/ip__tcp/resolver.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::resolver&lt;/code&gt;&lt;/a&gt;クラスと&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__basic_resolver/query.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::resolver::query&lt;/code&gt;&lt;/a&gt;クラスを組み合わせて使用する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;query&lt;/code&gt;クラスのコンストラクタには、以下を指定する：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数 ： ホスト名&lt;/li&gt;
-&lt;li&gt;第2引数 ： サービス名&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;ホスト名等が設定された&lt;code&gt;query&lt;/code&gt;オブジェクトを&lt;code&gt;resolver&lt;/code&gt;クラスの&lt;code&gt;resolve()&lt;/code&gt;メンバ関数に渡し、その文字列を接続関数に渡すことで、同期バージョンでの名前解決しての接続ができる。&lt;/p&gt;
-&lt;p&gt;この関数の最後の引数として&lt;code&gt;boost::system::error_code&lt;/code&gt;オブジェクトへの参照を渡した場合には、名前解決失敗時にエラー情報が格納される。&lt;code&gt;error_code&lt;/code&gt;を渡さなかった場合には、名前解決失敗時に&lt;code&gt;boost::system::system_error&lt;/code&gt;が例外として投げられる。&lt;/p&gt;
-&lt;p&gt;また、この関数は戻り値として、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__basic_resolver/iterator.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::ip::tcp::resolver::iterator&lt;/code&gt;&lt;/a&gt;オブジェクトを返す。このイテレータは、デフォルト構築されたイテレータを終端としてイテレートできる。このイテレータは間接参照によって&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__tcp/endpoint.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;endpoint&lt;/code&gt;&lt;/a&gt;オブジェクトが取得できる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Client&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Client(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          socket_(io_service)
-    {
-    }
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; connect()
-    {
-        tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;resolver resolver(io_service_);
-        tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;resolver&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;query &lt;span style=&#34;color:#ff0000&#34;&gt;query(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;google.com&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;http&#34;&lt;/span&gt;)&lt;/span&gt;;
-
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 同期で名前解決&lt;/span&gt;
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 非同期で接続&lt;/span&gt;
-        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;async_connect(
-            socket,
-            resolver_.&lt;span style=&#34;color:#ff0000&#34;&gt;resolve&lt;/span&gt;(query),
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_connect, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_connect(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect error : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-
-    Client client(io_service);
-    client.connect();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;非同期バージョン&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;非同期バージョンの名前解決には、&lt;a href=&#34;http://www.boost.org/doc/libs/rerlease/doc/html/boost_asio/reference/ip__tcp/resolver.html&#34; target=&#34;_blank&#34;&gt;boost::asio::ip::tcp::resolver&lt;/a&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__basic_resolver/async_resolve/overload1.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;async_resolve&lt;/code&gt;&lt;/a&gt;&lt;code&gt;()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数 ： &lt;code&gt;query&lt;/code&gt;オブジェクト&lt;/li&gt;
-&lt;li&gt;第2引数 ： 名前解決の成功もしくは失敗時に呼ばれる関数。iteratorプレースホルダを束縛することにより、完了時に呼ばれる関数に、&lt;code&gt;endpoint&lt;/code&gt;のイテレータが渡される。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Client&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;resolver resolver_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Client(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          socket_(io_service),
-          resolver_(io_service)
-    {
-    }
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; connect()
-    {
-        tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;resolver&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;query query(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;google.com&#34;&lt;/span&gt;, &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;http&#34;&lt;/span&gt;);
-
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 非同期で名前解決&lt;/span&gt;
-        resolver_.&lt;span style=&#34;color:#ff0000&#34;&gt;async_resolve&lt;/span&gt;(
-            query,
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_resolve, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;,
-                        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error,
-                        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;iterator));
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_resolve(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error,
-                    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;resolver&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;iterator endpoint_iterator)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;resolve failed: &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt;;
-        }
-
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 非同期で接続&lt;/span&gt;
-        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;async_connect(
-            socket_,
-            endpoint_iterator,
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_connect, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_connect(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect error : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect!&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-
-    Client client(io_service);
-    client.connect();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/network/tcp.html#timeout&#34; name=&#34;timeout&#34;&gt;タイムアウトを設定する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;通信処理のタイムアウトには、ソケットに対してタイムアウトを指定するのではなく、タイマークラスの非同期イベントと組み合わせて行う。&lt;/p&gt;
-&lt;p&gt;同期通信でタイムアウトを指定する方法はないため、ここでは非同期バージョンのみ示す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/asio/steady_timer.hpp&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; asio &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;tcp;
-
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Client&lt;/span&gt; {
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service_;
-    tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;socket socket_;
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;streambuf receive_buff_;
-
-    &lt;span style=&#34;color:#ff0000&#34;&gt;asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;steady_timer&lt;/span&gt; timer_; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイムアウト用のタイマー&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; is_canceled_;
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-    Client(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; io_service)
-        &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; io_service_(io_service),
-          socket_(io_service),
-          timer_(io_service),
-          is_canceled_(&lt;span style=&#34;color: #008000&#34;&gt;false&lt;/span&gt;)
-    {}
-
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start()
-    {
-        connect();
-    }
-
-&lt;span style=&#34;color: #A0A000&#34;&gt;private:&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; connect()
-    {
-        socket_.async_connect(
-                tcp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endpoint(asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ip&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;address&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;from_string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;127.0.0.1&#34;&lt;/span&gt;), &lt;span style=&#34;color: #666666&#34;&gt;31400&lt;/span&gt;),
-                boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_connect, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続完了&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_connect(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;connect failed : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt;;
-        }
-
-        start_receive();
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// メッセージ送信&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; start_receive()
-    {
-        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;async_read(
-            socket_,
-            receive_buff_,
-            asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;transfer_all(),
-            boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_receive, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;,
-                        asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error, asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;placeholders&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bytes_transferred));
-
-        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 5秒でタイムアウト&lt;/span&gt;
-        timer_.&lt;span style=&#34;color:#ff0000&#34;&gt;expires_from_now&lt;/span&gt;(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;chrono&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;seconds(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;));
-        timer_.&lt;span style=&#34;color:#ff0000&#34;&gt;async_wait&lt;/span&gt;(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_timer, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, _1));
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 受信完了&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// error : エラー情報&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// bytes_transferred : 送信したバイト数&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_receive(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error, &lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt; bytes_transferred)
-    {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;operation_aborted&lt;/span&gt;) {
-            std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;タイムアウト&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-        }
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-            &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイムアウトになる前に処理が正常終了したのでタイマーを切る&lt;/span&gt;
-            &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイマーのハンドラにエラーが渡される&lt;/span&gt;
-            timer_.&lt;span style=&#34;color:#ff0000&#34;&gt;cancel&lt;/span&gt;();
-            is_canceled_ &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;true&lt;/span&gt;;
-
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error) {
-                std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;その他のエラー : &#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; error.message() &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            }
-            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-                std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;受信成功&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-            }
-        }
-    }
-
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイマーのイベント受信&lt;/span&gt;
-    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_timer(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error) {
-        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;error &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;is_canceled_) {
-            socket_.&lt;span style=&#34;color:#ff0000&#34;&gt;cancel&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 通信処理をキャンセルする。受信ハンドラがエラーになる&lt;/span&gt;
-        }
-    }
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
-{
-    asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;io_service io_service;
-    Client client(io_service);
-
-    client.start();
-
-    io_service.run();
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;タイムアウトにはいくつかのポイントがある。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;1. タイマークラスの選択&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;タイマークラスには以下の選択肢がある：&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;タイマークラス&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/deadline_timer.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::deadline_timer&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;Boost.DateTimeライブラリの&lt;code&gt;posix_time&lt;/code&gt;で時間指定を行う古いタイマー&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/high_resolution_timer.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::high_resolution_timer&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;高分解能タイマー&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/steady_timer.html&#34; target=&#34;_blank&#34;&gt;boost::asio::steady_timer&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;時間が逆行しないことを保証するタイマー&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/system_timer.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::system_timer&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;time_t&lt;/code&gt;と互換性のあるタイマー&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;用途に応じて使い分ける必要があるが、基本的には&lt;code&gt;steady_timer&lt;/code&gt;を推奨する。これは、タイマー処理中にOSの時間設定が変更されても時間が逆行しないタイマーであるため、外部要因によるバグを防ぐことができる。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;2. タイムアウトの時間設定&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;タイムアウトの時間指定は、ここでは以下のように行なっている：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 5秒でタイムアウト&lt;/span&gt;
-timer_.expires_from_now(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;chrono&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;seconds(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;));
-timer_.async_wait(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Client&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_timer, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;this&lt;/span&gt;, _1));
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;各タイマークラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_waitable_timer/expires_from_now/overload2.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;expires_from_now()&lt;/code&gt;&lt;/a&gt;メンバ関数は、現在日時からの相対時間でタイムアウトを指定する関数である。特定の日時にタイムアウトを設定したい場合は、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_waitable_timer/expires_at/overload2.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;expires_at()&lt;/code&gt;&lt;/a&gt;メンバ関数を使用する。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;3. タイムアウト方法&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;ここまではタイムアウトではなく、単にタイマーの使い方を見てきた。
-実際のタイムアウトは以下のようにして行う：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;タイマーハンドラで通信処理をキャンセル or 失敗させる。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;通信処理が正常終了するより前にタイマーハンドラが呼ばれたら、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/ip__tcp/socket.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;socket&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_stream_socket/cancel/overload1.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;cancel()&lt;/code&gt;&lt;/a&gt;メンバ関数や&lt;code&gt;close()&lt;/code&gt;メンバ関数を使用して通信処理を異常終了させる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイマーのイベント受信&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;on_timer&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error) {
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;error &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;is_canceled_) {
-        socket_.cancel(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 通信処理をキャンセルする。受信ハンドラがエラーになる&lt;/span&gt;
-    }
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;注意すべきポイントは、これらの異常終了させるための関数を呼び出しても、通信処理のイベントハンドラが呼び出されるということである。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;通信処理のイベントハンドラでタイムアウトによる中断をハンドリングする&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;タイムアウトによって通信処理が異常終了した場合、通信処理のイベントハンドラには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/error__basic_errors.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::error::operation_aborted&lt;/code&gt;&lt;/a&gt;というエラーが渡される。ハンドラは、タイムアウトによって失敗したのかどうかを正しくハンドリングする必要がある。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;on_receive&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;system&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error_code&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; error, &lt;span style=&#34;color: #B00040&#34;&gt;size_t&lt;/span&gt; bytes_transferred)
-{
-    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;operation_aborted) {
-        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;タイムアウト&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-    }
-
-    ...
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;通信処理がタイマーよりも早く正常終了したらタイマーをキャンセルする&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;通信処理がタイムアウトを待つことなく正常終了した場合は、タイマーを止める必要がある。これをしないと以降の通信処理が意図せずタイムアウトになってしまうだろう。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (error &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; asio&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;error&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;operation_aborted) {
-    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;タイムアウト&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
-}
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt; {
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイムアウトになる前に処理が正常終了したのでタイマーを切る&lt;/span&gt;
-    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// タイマーのハンドラにエラーが渡される&lt;/span&gt;
-    timer_.cancel();
-    is_canceled_ &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000&#34;&gt;true&lt;/span&gt;;
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;タイマークラスの&lt;code&gt;calcel()&lt;/code&gt;メンバ関数を呼ぶと、&lt;code&gt;socket&lt;/code&gt;の場合と逆に、タイマーのハンドラに&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/error__basic_errors.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::asio::error::operation_aborted&lt;/code&gt;&lt;/a&gt;エラーが渡されることになる。&lt;/p&gt;
-&lt;p&gt;ただし、&lt;code&gt;cancel()&lt;/code&gt;メンバ関数を呼ぶ直前ですでにタイムアウトになっている場合、&lt;code&gt;boost::asio::error::operation_aborted&lt;/code&gt;エラーがハンドラに渡されない可能性がある。
-この場合に備えてフラグ変数等でタイマーを止めたことを知らせる必要がある。&lt;/p&gt;
-&lt;p&gt;documented boost version is 1.51.0&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi
-</name>
-        <email>faithandbrave@gmail.com
-</email>
       </author>
     </entry>
   
