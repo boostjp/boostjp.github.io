@@ -2,9 +2,108 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-17T00:10:38.830893</updated>
-  <id>fccc08dd-da58-4668-b123-854dbf3e480b</id>
+  <updated>2015-01-17T00:12:26.980683</updated>
+  <id>d41b0ef9-c799-4c93-a571-bec8b8be07ae</id>
 
+  
+    <entry>
+      <title>コンセプト・チェックの利用 -- concept check : リンク切れを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/using_concept_check.html"/>
+      <id>dbf1389e022545699b9e9f8bd3fa70c82b57acf7:archive/boost_docs/libs/concept_check/using_concept_check.md</id>
+      <updated>2015-01-17 00:12:13 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;コンセプト・チェックの利用&lt;/h1&gt;
+&lt;p&gt;各コンセプトに対して、与えられた型 (あるいは型の集合) がコンセプトをモデル化していることを確かめるために使用することができる、何らかのコンセプト・チェック用クラスが存在する。 Boost コンセプト・チェック・ライブラリ (BCCL) は、C++ 標準ライブラリの中で使用される全てのコンセプト＋αを対象とした、コンセプト・チェック用クラスを含んでいる。 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/reference.html&#34;&gt;リファレンス&lt;/a&gt; セクションに、このコンセプト・チェック用クラスをリストしてある。 さらに、他の Boost ライブラリも、ライブラリ独自の特別なコンセプトに対応するコンセプト・チェック用クラスを付随している。 例えば、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_concepts.html&#34;&gt;graph concept&lt;/a&gt; および &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/property_map.html&#34;&gt;property map concept&lt;/a&gt; がある。 さらに、クラス・テンプレートや関数テンプレートを記述する者は、既存のコンセプトでカバーされていない要求事項を表現する必要のある場合は常に、新しいコンセプト・チェック用クラスを作成すべきである。 その方法は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;コンセプト・チェック用クラスの作成&lt;/a&gt; セクションで説明する。&lt;/p&gt;
+&lt;p&gt;BCCL のコンセプト・チェック用クラスの例として、&lt;code&gt;EqualityComparableConcept&lt;/code&gt; クラスを挙げる。 このクラスは、C++ 標準 20.1.1 に記述されている &lt;code&gt;EqualityComparable&lt;/code&gt; (等値比較可能) 要求事項および、SGI STL で文書化されている &lt;a href=&#34;http://www.sgi.com/tech/stl/EqualityComparable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;EqualityComparable&lt;/code&gt;&lt;/a&gt; (等値比較可能) コンセプトに相当する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; EqualityComparableConcept;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;テンプレート引数 &lt;code&gt;T&lt;/code&gt; はチェック対象の型と意図されている。 すなわち、&lt;code&gt;EqualityComparableConcept&lt;/code&gt; の目的は、&lt;code&gt;T&lt;/code&gt; に対して与えられたテンプレート引数が 等値比較可能コンセプトをモデル化しているかどうか確認することである。&lt;/p&gt;
+&lt;p&gt;個々のコンセプト・チェック用クラスには、該当するコンセプトにおいて有効な式を内包する &lt;code&gt;constraints()&lt;/code&gt; という名前のメンバー関数がある。 ある型が &lt;code&gt;EqualityComparable&lt;/code&gt; (等値比較可能) であるかどうかチェックするためには、その型でコンセプト・チェック用クラスのインスタンスを生成し、次に、コンパイラに、実際に &lt;code&gt;constraints()&lt;/code&gt; 関数を実行することなくコンパイルさせる方法を見つける必要がある。 Boost コンセプト・チェック・ライブラリは、これを容易にする2つのユーティリティ： &lt;code&gt;function_requires()&lt;/code&gt; と &lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; を定義している。&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;function_requires()&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;function_requires()&lt;/code&gt; 関数は関数本体の中で使用できる。また、&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; マクロはクラス定義本体で使用できる。 &lt;code&gt;function_requires()&lt;/code&gt; 関数は引数をとらないが、コンセプト・チェック用クラスを受けるためのテンプレート・パラメータを有する。 これは、以下に示すように、インスタンス化されたコンセプト・チェック用クラスを明示的にテンプレート引数として与えられなければならないことを意味する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In my library:&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; generic_library_function(T x)
+{
+  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; EqualityComparableConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In the user&#39;s code:  &lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;foo&lt;/span&gt; {
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//... &lt;/span&gt;
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;() {
+  foo f;
+  generic_library_function(f);
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; マクロは、ある型がコンセプトをモデル化しているかどうかチェックするために、クラス定義の内部で使用することができる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In my library:&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; generic_library_class
+{
+  BOOST_CLASS_REQUIRE(T, boost, EqualityComparableConcept);
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+};
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In the user&#39;s code:  &lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;foo&lt;/span&gt; {
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//... &lt;/span&gt;
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;() {
+  generic_library_class&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; glc;
+  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;例&lt;/h2&gt;
+&lt;p&gt;以前の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#motivating_example&#34;&gt;動機の例&lt;/a&gt; に対してコンセプト・チェックを応用する場合、良いやり方として、テンプレート・パラメータ型が &lt;a href=&#34;http://www.sgi.com/tech/stl/RandomAccessIterator.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RandomAccessIterator&lt;/code&gt;&lt;/a&gt; をモデル化していることを確認するために &lt;code&gt;std::stable_sort()&lt;/code&gt; の一番上に &lt;code&gt;function_requires()&lt;/code&gt; を挿入することが一つ挙げられる。 さらに、&lt;code&gt;std::stable_sort()&lt;/code&gt; は、イレテータの &lt;code&gt;value_type&lt;/code&gt; が&lt;a href=&#34;http://www.sgi.com/tech/stl/LessThanComparable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LessThanComparable&lt;/code&gt; (未満比較可能)&lt;/a&gt; を満足することが必要であるから、これをチェックするために、重ねて &lt;code&gt;function_requires()&lt;/code&gt; を使用する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;RandomAccessIter&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; stable_sort(RandomAccessIter first, RandomAccessIter last)
+{
+  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; RandomAccessIteratorConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;RandomAccessIter&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;iterator_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;RandomAccessIter&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;value_type value_type;
+  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; LessThanComparableConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;value_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+  ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;コンセプトによっては複数の型を処理するものがある。 この場合、対応するコンセプト・チェック用クラスは複数のテンプレート・パラメータを持つことになる。 以下の例は、&lt;code&gt;function_requires()&lt;/code&gt; を、２つの型パラメータ（プロパティ・マップ型とそのキーとなる型）をとる &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; コンセプトに対して使用する方法を示す。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;IncidenceGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Buffer&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;BFSVisitor&lt;/span&gt;, 
+          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ColorMap&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; breadth_first_search(IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g, 
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s, 
+  Buffer&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; Q, BFSVisitor vis, ColorMap color)
+{
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor Vertex;
+  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; ReadWritePropertyMap&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ColorMap, Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+  ...
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; の使用例として、&lt;code&gt;std::vector&lt;/code&gt; が有すべきコンセプト・チェックを考察する。 要素型に対して当てはめる要求事項の一つは、それが &lt;a href=&#34;http://www.sgi.com/tech/stl/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Assignable&lt;/code&gt; (割当可能)&lt;/a&gt;でなければならない、ということである。 これは、&lt;code&gt;std::vector&lt;/code&gt; の定義の一番上に&lt;code&gt;BOOST_CLASS_REQUIRE(T, boost, AssignableConcept)&lt;/code&gt;を挿入することにより、チェックすることができる。&lt;/p&gt;
+&lt;p&gt;コンセプト・チェックは、ジェネリック・ライブラリの実装者が使用するために設計されているが、エンドユーザーにおいても有用である。 往々にして、ある型が特定のコンセプトをモデル化しているかどうか、不明確な場合がある。 こういうケースでは、問題の型とコンセプトを対象として &lt;code&gt;function_requires()&lt;/code&gt; を使用する、小さなプログラムを作成することで容易にチェックできる。 ファイル &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_check.cpp.html&#34;&gt;stl_concept_checks.cpp&lt;/a&gt; は、STL コンテナにコンセプト・チェックを適応する実例となっている。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;次へ：「コンセプト・チェック用クラスの作成」&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html&#34;&gt;前へ：「はじめに」&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;(&lt;a href=&#34;mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;) Andrew Lumsdaine(&lt;a href=&#34;mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Distjoint Sets（互いに素な集合） -- disjoint_sets : リンク中のスペースを削除</title>
@@ -527,131 +626,6 @@ time_iterator &lt;span style=&#34;color: #0000FF&#34;&gt;titr&lt;/span&gt;(now,h
 &lt;p&gt;注意すべき点は、この技術がコンセプトの要求事項のうち構文に関わる部分(有効な式および関連型)のみを扱うことである。 我々は、コンセプトの要求事項の一部であるセマンティクス不変あるいは計算量保証を扱わない。&lt;/p&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#motivating-example&#34; name=&#34;motivating-example&#34;&gt;動機の例&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;テンプレート・ライブラリの不正な使用法と、その結果生じるエラーメッセージを例証するために単純なサンプルを示す。 下記のコードでは、標準テンプレート・ライブラリー (STL) のジェネリックな &lt;code&gt;std::stable_sort()&lt;/code&gt; アルゴリズム [&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#generic-programming-and-the-stl&#34;&gt;3&lt;/a&gt;、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#stl-tutorial-and-reference-guide&#34;&gt;4&lt;/a&gt;、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#the-standard-template-library&#34;&gt;5&lt;/a&gt;] をリンクリストに適用している。&lt;/p&gt;
-&lt;p&gt;bad_error_eg.cpp:&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;#include &amp;lt;list&amp;gt;
-#include &amp;lt;algorithm&amp;gt;
-
-int main(int, char*[]) {
-    std::list&amp;lt;int&amp;gt; v;
-    std::stable_sort(v.begin(), v.end());
-    return 0;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;この場合、&lt;code&gt;std::stable_sort()&lt;/code&gt; アルゴリズムは以下のようなプロトタイプを有する：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;RandomAccessIterator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; stable_sort(RandomAccessIterator first, RandomAccessIterator last);
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;Gnu C++ でこのコードをコンパイルすると、以下のコンパイラ・エラーを生成する。他のコンパイラ出力は Appendix にリストしてある(訳注 : このバージョンのドキュメントには記載されていない)。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;stl_algo.h: In function `void __merge_sort_loop&amp;lt;_List_iterator
-  &amp;lt;int,int &amp;amp;,int *&amp;gt;, int *, int&amp;gt;(_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;,
-  _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, int *, int)&#39;:
-stl_algo.h:1448:   instantiated from `__merge_sort_with_buffer
-  &amp;lt;_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, int *, int&amp;gt;(
-   _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;,
-   int *, int *)&#39;
-stl_algo.h:1485:   instantiated from `__stable_sort_adaptive&amp;lt;
-  _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, int *, int&amp;gt;(_List_iterator
-  &amp;lt;int,int &amp;amp;,int *&amp;gt;, _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, int *, int)&#39;
-stl_algo.h:1524:   instantiated from here
-stl_algo.h:1377: no match for `_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;amp; -
-  _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;amp;&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;この場合、根本的なエラーの原因は、&lt;code&gt;std:list::iterator&lt;/code&gt; が &lt;a href=&#34;http://www.sgi.com/tech/stl/RandomAccessIterator.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RandomAccessIterator&lt;/code&gt;&lt;/a&gt; コンセプトをモデル化していないことにある。 リストのイテレータは双方向でしかなく、(ベクタのイテレータのように) 完全なランダム・アクセスが可能なわけではない。 残念ながら、このエラーメッセージには、ユーザーにこの事実を示すものは何もない。&lt;/p&gt;
-&lt;p&gt;C++ プログラマがテンプレート・ライブラリに十分な経験を持っていれば、この手のエラーに惑うことは無いかもしれない。 しかし未熟な者にとっては、次のような理由で、このメッセージが理解し難いものとなっている。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;エラーが生じる位置、bad_error_eg.cpp の６行目は、Gnu C++ がインスタンス化スタックを４レベルも深くまで探索して表示するという事実にもかかわらず、エラーメッセージで示されていない。&lt;/li&gt;
-&lt;li&gt;エラーメッセージと、&lt;code&gt;std::stable_sort()&lt;/code&gt; および &lt;a href=&#34;http://www.sgi.com/tech/stl/RandomAccessIterator.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RandomAccessIterator&lt;/code&gt;&lt;/a&gt; に関する文書化された要求事項との間に、文面上の相関がない。&lt;/li&gt;
-&lt;li&gt;エラーメッセージが過度に長く、ユーザーの知らない(かつ知るべきでない！) STL 内部実装用の関数がリストされている。&lt;/li&gt;
-&lt;li&gt;エラーメッセージに、ライブラリ内部の実装用関数が数多くリストアップされているため、プログラマが、エラーの原因は自分のコードではなくライブラリ側にあるとの結論に、誤って飛びついてしまう可能性がある。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;次の例示は、より有用なメッセージとして斯くあるべきと我々が考えるものだ (また実際に Boost コンセプト・チェック・ライブラリが生成するものでもある)。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;boost/concept_check.hpp: In method `void LessThanComparableConcept
-  &amp;lt;_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;gt;::constraints()&#39;:
-boost/concept_check.hpp:334:   instantiated from `RandomAccessIteratorConcept
-  &amp;lt;_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;gt;::constraints()&#39;
-bad_error_eg.cpp:6:   instantiated from `stable_sort&amp;lt;_List_iterator
-  &amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;gt;(_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;, 
-  _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt;)&#39;
-boost/concept_check.hpp:209: no match for `_List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;amp;
-  &amp;lt; _List_iterator&amp;lt;int,int &amp;amp;,int *&amp;gt; &amp;amp;&#39;
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;このメッセージは、標準的なエラー・メッセージがもつ欠点をいくつかの点で改善する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;エラーの生じた位置 (bad_error_eg.cpp:6）がエラーメッセージに明示されている。&lt;/li&gt;
-&lt;li&gt;メッセージは、STL 文書に記述されているコンセプト (&lt;a href=&#34;http://www.sgi.com/tech/stl/RandomAccessIterator.html&#34; target=&#34;_blank&#34;&gt;RandomAccessIterator&lt;/a&gt;) を明示的に言及している。&lt;/li&gt;
-&lt;li&gt;エラーメッセージははるかに短くなり、STL の内部実装用関数を露呈しない。&lt;/li&gt;
-&lt;li&gt;エラーメッセージの中に concept_check.hpp および &lt;code&gt;constraints()&lt;/code&gt; が示されることで、ライブラリ実装の中にではなくユーザーのコードにエラーがあるという事実をユーザーに警告している。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#history&#34; name=&#34;history&#34;&gt;歴史&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;このコンセプト・チェック・システムの初期バージョンは、著者が SGI において、C++ コンパイラおよびライブラリ・グループの一員として勤務している間に開発された。 初期バージョンは今も SGI STL ディストリビューションの一部である。 Boost コンセプト・チェック・ライブラリは、エラーメッセージにおけるそれほど有用でない表現能力を犠牲にして、コンセプト・チェック用クラス定義を非常に単純化しており、その点で SGI STLのコンセプト・チェックとは異なっている。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#publications&#34; name=&#34;publications&#34;&gt;公開資料&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.oonumerics.org/tmpw00/&#34; target=&#34;_blank&#34;&gt;C++ テンプレート・ワークショップ2000&lt;/a&gt;、コンセプト・チェック。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#acknowledgements&#34; name=&#34;acknowledgements&#34;&gt;謝辞&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;インスタンス化を引き起こすために関数ポインタを使用するアイディアは、Alexander Stepanov に拠る。 テンプレートの事前チェックに式を使用するアイディアに関して、その起源を確認できなかった。しかし、それは D&amp;amp;E[&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#design-and-evolution&#34;&gt;2&lt;/a&gt;] に記載されている。 STL コンセプトに関する優れた文書化と構造化を行った Matt Austern に感謝をささげる。このコンセプト・チェックは彼の仕事を基礎にしている。 有益なコメントとレビューを賜った Boost のメンバにも感謝を。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/using_concept_check.html&#34;&gt;次へ：「コンセプト・チェックの利用」&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;(&lt;a href=&#34;mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;) Andrew Lumsdaine(&lt;a href=&#34;mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>The Boost Concept Check Library (BCCL) -- ConceptCheckのトップページ：リンク切れを修正(#29)</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/concept_check.html"/>
-      <id>de3f9d15b691267d7cb4ca1d6693f1a94a4a5e85:archive/boost_docs/libs/concept_check.md</id>
-      <updated>2015-01-16 23:48:12 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;The Boost Concept Check Library (BCCL)&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;翻訳元ドキュメント： &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/concept_check/concept_check.htm&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/concept_check/concept_check.htm&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ヘッダーファイル： boost/concept_check.hpp と boost/concept_archetype.hpp&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;C++ におけるジェネリック・プログラミングは、抽象データ型(あるいは「コンセプト」)を表現するためにテンプレート・パラメータを使用することを特徴としている。 しかし、C++ 言語には、クラス・テンプレートや関数テンプレートに対して、与えられたテンプレート引数がモデル化（もしくは順応）すべきコンセプトを明確に規定するためのメカニズムがない。 よく利用されているのは、必要とされるコンセプトのヒントとなるようにテンプレート・パラメータを命名し、付属文書においてコンセプトの要求事項を記述する方式である。 残念ながら、こういった要求事項の記述は、往々にして曖昧であったり不正確であったり、まったく存在しないこともある。 あるテンプレートが想定している引数の性質を、そのテンプレートのユーザーが正確に理解できなければ、それは由々しき問題となる。 さらに、以下の問題が起こりうる：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不正なテンプレート引数に起因するコンパイラ・エラー・メッセージは、難解になることが多い。 大抵の場合、エラーの示す位置はテンプレートが使用された所ではなく、ユーザーが目にする必要のないテンプレートの実装内である。&lt;/li&gt;
-&lt;li&gt;記述された要求事項が、テンプレートのコンセプトを完全に表現し切れていない場合、使用されたテンプレート引数が記述された要求事項を満足していたとしても、コンパイラ・エラーを受ける可能性がある。&lt;/li&gt;
-&lt;li&gt;記述された要求事項が、テンプレートが実際に必要とするよりも厳格である場合がある。&lt;/li&gt;
-&lt;li&gt;要求事項は、コードの中で明示的に記述されることは無い。 そのために、コードの理解がより困難になる。 さらに、コードと記述された要求事項が同期していない事態も生じる可能性がある。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Boost コンセプト・チェック・ライブラリは、次のような手段を提供する：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;テンプレート・パラメータのコンパイル時チェックを導入するためのメカニズム。&lt;/li&gt;
-&lt;li&gt;コンセプト・チェック用クラスによって、要求事項を明確化するためのフレームワーク。&lt;/li&gt;
-&lt;li&gt;コンセプトの要求事項が、該当テンプレートをカバーしていることを確認するためのメカニズム。&lt;/li&gt;
-&lt;li&gt;C++ 標準ライブラリのコンセプト要求事項に対応する、コンセプト・チェック用クラスおよび原型クラス一式。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;このメカニズムは C++ 標準の機能のみを使用し、実行時オーバーヘッドを課さない。 メカニズムを導入するコストは、コンパイル時間の増大のみである。&lt;/p&gt;
-&lt;p&gt;クラス・テンプレートや関数テンプレートを記述するプログラマは、全員が通常のコード作成作業の一環としてコンセプト・チェックを含めるべきである。 コンセプト・チェックは、コンポーネントへのインターフェイスとして公開されている、すべてのテンプレート・パラメータに対して導入すべきである。 利用したいコンセプトが標準ライブラリーで用いられているものであれば、BCCL の該当するコンセプト・チェック用クラスを、そのまま使用すればよい。 そうでなければ、新たにコンセプト・チェック用クラスを記述することになるが、普通は数行程度に収まるはずだ。 新しいコンセプトを用いるならば、対応する原型クラスも作成すべきである。原型クラスとはコンセプトを表す最小限のスケルトン実装である。&lt;/p&gt;
-&lt;p&gt;この文書を、以下の通り構成する。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#introduction&#34;&gt;はじめに&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#motivating-example&#34;&gt;動機の例&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#history&#34;&gt;歴史&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#publications&#34;&gt;公開資料&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#acknowledgements&#34;&gt;謝辞&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/using_concept_check.html&#34;&gt;コンセプト・チェックの利用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;コンセプト・チェック用クラスの作成&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/concept_covering.html&#34;&gt;コンセプトの充当化と原型&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/prog_with_concepts.html&#34;&gt;コンセプトを用いたプログラミング&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/implementation.html&#34;&gt;コンセプト・チェックの実装&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/reference.html&#34;&gt;リファレンス&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt; はこのライブラリを寄稿した。 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/beman_dawes.html&#34; target=&#34;_blank&#34;&gt;Beman Dawes&lt;/a&gt; が公式レビューを管理した。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#introduction&#34; name=&#34;introduction&#34;&gt;はじめに&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;コンセプト &#34;concept&#34; とは、ジェネリック・アルゴリズムに対する引数として与えられる型が、アルゴリズム内部で正しく使用されるために満足しなければならない要求事項(有効な式、関連型、セマンティクス不変、計算量保証など)の組み合わせである。 C++ では、コンセプトは関数テンプレート(ジェネリック・アルゴリズム)のテンプレート・パラメータとして表現される。 しかしながら、C++ にはコンセプトを表現するための明示的なメカニズムがない。テンプレート・パラメータはただのプレースホルダでしかないのだ。 慣例として、こういったパラメータには、必要とされるコンセプトに対応する名前を与える。しかし、テンプレート・パラメータを実際の型で確定するときに、C++ コンパイラはコンセプトへの遵守を強要しない。&lt;/p&gt;
-&lt;p&gt;当然ながら、ジェネリック・アルゴリズムを、そのコンセプトの内、構文に関わる要求事項を満足していない型で呼び出した場合、コンパイル・エラーが生じる。 しかし、このエラーは、該当する型がコンセプトの要求事項すべてに適合していない事実を本質的に 反映したものではない。 それどころか、エラーはインスタンス化階層の深部で発生し、該当する型に対して式が有効でないか、想定された関連型が利用可能でないといったことが原因として挙げられることになるだろう。 こうして生じたエラーメッセージは、大抵において情報に乏しく、基本的に不可解である。&lt;/p&gt;
-&lt;p&gt;必要とされるものは、インスタンス化位置(かその近傍)で「コンセプトセーフ」を強要するためのメカニズムである。 Boost コンセプト・チェック・ライブラリーは、早い段階でコンセプトの遵守を強要し、遵守していない場合のエラー・メッセージをより有用にするために C++ 標準の機能を使用する。&lt;/p&gt;
-&lt;p&gt;注意すべき点は、この技術がコンセプトの要求事項のうち構文に関わる部分(有効な式および関連型)のみを扱うことである。 我々は、コンセプトの要求事項の一部であるセマンティクス不変あるいは計算量保証を扱わない。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#motivating-example&#34; name=&#34;motivating-example&#34;&gt;動機の例&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;テンプレート・ライブラリの不正な使用法と、その結果生じるエラーメッセージを例証するために単純なサンプルを示す。 下記のコードでは、標準テンプレート・ライブラリー (STL) のジェネリックな &lt;code&gt;std::stable_sort()&lt;/code&gt; アルゴリズム [&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibiography.html#generic-programming-and-the-stl&#34;&gt;3&lt;/a&gt;、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#stl-tutorial-and-reference-guide&#34;&gt;4&lt;/a&gt;、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/bibliography.html#the-standard-template-library&#34;&gt;5&lt;/a&gt;] をリンクリストに適用している。&lt;/p&gt;
 &lt;p&gt;bad_error_eg.cpp:&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;#include &amp;lt;list&amp;gt;
 #include &amp;lt;algorithm&amp;gt;
