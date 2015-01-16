@@ -2,9 +2,191 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-17T00:18:41.593880</updated>
-  <id>b75c2773-c505-4c32-8a7a-a23959db730f</id>
+  <updated>2015-01-17T00:20:10.547658</updated>
+  <id>f9472cd8-bf4d-4c3a-98a1-92114e20db99</id>
 
+  
+    <entry>
+      <title>Boost.Function Tutorial -- function : リンク切れを修正(#29)</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/function/tutorial.html"/>
+      <id>0f20049b631fa910713a22d5b01e2861891bf896:archive/boost_docs/libs/function/tutorial.md</id>
+      <updated>2015-01-17 00:19:54 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Boost.Function Tutorial&lt;/h1&gt;
+&lt;p&gt;Boost.Function には 2 種類の文法がある。推奨文法と互換文法である。推奨文法は C++ にフィットし、考慮するテンプレートパラメータの数も減り、可読性を高めることが多い。しかし、コンパイラのバグのせいで、推奨文法が使えないコンパイラもある。互換文法は Boost.Function がサポートする全てのコンパイラで使える。どちらの文法を使うかは、下の表を見て決めてほしい。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;GNU C++ 2.95.x, 3.0.x, 3.1.x, 3.2&lt;br /&gt; Comeau C++ 4.2.45.2&lt;br /&gt; SGI MIPSpro 7.3.0&lt;br /&gt; Intel C++ 5.0, 6.0&lt;br /&gt; Compaq&#39;s cxx 6.2&lt;/td&gt;
+&lt;td&gt;Microsoft Visual C++ 6.0, 7.0&lt;br /&gt; Borland C++ 5.5.1&lt;br /&gt; Sun WorkShop 6 update 2 C++ 5.3&lt;br /&gt; Metrowerks CodeWarrior 8.1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;あなたのコンパイラが表になければ、推奨文法を試してみて、結果を Boost MLに報告してほしい。この表を最新に保つためだ。&lt;/p&gt;
+&lt;h2&gt;Basic Usage&lt;/h2&gt;
+&lt;p&gt;関数オブジェクトのラッパを定義するには、 &lt;code&gt;function&lt;/code&gt; クラステンプレートをインスタンス化するだけだ。テンプレート引数には、戻り値型と引数型を関数型形式で指定する。ある実装定義の最大値 (デフォルトは 10) までなら、引数は何個でもかまわない。以下に、 2 つの &lt;code&gt;int&lt;/code&gt; 型のパラメータを取り、&lt;code&gt;float&lt;/code&gt; 型を返す関数オブジェクトのラッパ f の定義を示す。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;boost::function&amp;lt;float (int x, int y)&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::function2&amp;lt;float, int, int&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;デフォルトでは、関数オブジェクトのラッパは空である。 &lt;code&gt;f&lt;/code&gt; に代入する関数オブジェクトを作ろう。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; int_div { 
+  &lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; ((&lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt;)x)&lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt;y; }; 
+};
+
+f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; int_div();
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;これで、関数オブジェクト &lt;code&gt;int_div&lt;/code&gt; を呼び出す代わりに &lt;code&gt;f&lt;/code&gt; を使える。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; f(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;f&lt;/code&gt; には、互換性があれば、どんな関数オブジェクトでも代入できる。 &lt;code&gt;int_div&lt;/code&gt; が 2 つの &lt;code&gt;long&lt;/code&gt; 型の引数をとると宣言されていれば、自動的に暗黙の型変換が適用される。引数型に対する唯一の制限は、コピーコンストラクト可能なことである。だから、参照や配列さえ使える。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;boost::function&amp;lt;void (int values[], int n, int&amp;amp; sum, float&amp;amp; avg)&amp;gt; sum_avg;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::function4&amp;lt;void, int[], int, int&amp;amp;, float&amp;gt; sum_avg;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;do_sum_avg&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; values[], &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; n, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; sum, &lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; avg)
+{
+  sum &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; n; i&lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;)
+    sum &lt;span style=&#34;color: #666666&#34;&gt;+=&lt;/span&gt; values[i];
+  avg &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; (&lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt;)sum &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; n;
+}
+
+sum_avg &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;do_sum_avg;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;関数オブジェクトを格納していないラッパを呼び出すのは事前条件違反である。ヌルの関数ポインタを呼び出そうとするようなものだ。関数オブジェクトのラッパが空かどうかは &lt;code&gt;empty()&lt;/code&gt; メソッドでチェックできる。もっと簡潔なのは、 &lt;code&gt;bool&lt;/code&gt; 型の文脈でラッパを使う方法だ。ラッパは、空でなければ &lt;code&gt;true&lt;/code&gt; と評価される。例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; (f)
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; f(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;else&lt;/span&gt;
+  std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;f has no target, so it is unsafe to call&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;ラッパを空にするには、 &lt;code&gt;clear()&lt;/code&gt; メンバ関数を使う。&lt;/p&gt;
+&lt;h2&gt;Free functions&lt;/h2&gt;
+&lt;p&gt;非メンバ関数へのポインタは、 &lt;code&gt;const&lt;/code&gt; な関数呼出し演算子を持つ (インスタンスが1つだけ存在する) 関数オブジェクトの一種とみなせる。よって、関数オブジェクトのラッパに直接代入できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;mul_ints&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) { &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; ((&lt;span style=&#34;color: #B00040&#34;&gt;float&lt;/span&gt;)x) &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y; }
+f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mul_ints;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;Microsoft Visual C++ version 6 を使う場合を除けば、本当は &lt;code&gt;&amp;amp;&lt;/code&gt; は不要だ。&lt;/p&gt;
+&lt;h2&gt;Member functions&lt;/h2&gt;
+&lt;p&gt;多くのシステムで、コールバックは特定のオブジェクトのメンバ関数を呼び出すことが多い。これは「引数の束縛」と呼ばれ、 Boost.Function の守備範囲外である。しかし、 Boost.Function には直接メンバ関数を扱う方法がある。以下のコードのように使う。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; X {
+  &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; foo(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;boost::function&amp;lt;int (X*, int)&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::function2&amp;lt;int, X*, int&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;foo;
+
+X x;
+f(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;x, &lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;引数の束縛をサポートするライブラリはいくつかある。その内 3 つを以下に要約する。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/bind.html&#34;&gt;Boost.Bind&lt;/a&gt;。このライブラリを使えば、あらゆる関数オブジェクトの引数を束縛できる。軽くて移植性が高い。&lt;/li&gt;
+&lt;li&gt;C++ 標準ライブラリ。 &lt;code&gt;std::bind1st&lt;/code&gt; と &lt;code&gt;std::mem_fun&lt;/code&gt; を一緒に使って、メンバ関数ポインタと (その対象となる) オブジェクトを束縛したものは、 Boost.Function で使える。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; X {
+  &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; foo(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;);
+};
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;boost::function&amp;lt;int (int)&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::function1&amp;lt;int, int&amp;gt; f;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;X x;
+f &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind1st(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;mem_fun(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;X&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;foo), &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;x);
+
+f(&lt;span style=&#34;color: #666666&#34;&gt;5&lt;/span&gt;); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// x.foo(5)を呼び出す&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/lambda.md.nolink&#34;&gt;Boost.Lambda&lt;/a&gt; ライブラリ。このライブラリは、自然な C++ の文法を使って関数オブジェクトを構築する強力な機構を提供する。 Lambda は、コンパイラが C++ 標準にかなり準拠していないと使えない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;References to Functions&lt;/h2&gt;
+&lt;p&gt;Boost.Function による関数オブジェクトのコピーが高価 (または不正) な場合がある。そんな場合は、 Boost.Function に実際の関数オブジェクトの「参照」を格納させることができる。&lt;code&gt;ref&lt;/code&gt; や &lt;code&gt;cref&lt;/code&gt; を使うことで、関数オブジェクトの参照のラッパを作成できる。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;推奨文法&lt;/th&gt;
+&lt;th&gt;互換文法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;stateful_type a_function_object;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;boost::function&amp;lt;int (int)&amp;gt; f;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;f = ref(a_function_object);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;boost::function&amp;lt;int (int)&amp;gt; f2(f);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;stateful_type a_function_object;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;boost::function1&amp;lt;int, int&amp;gt; f;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;f = ref(a_function_object);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;boost::function1&amp;lt;int, int&amp;gt; f2(f);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;こうすれば、 &lt;code&gt;f&lt;/code&gt; も &lt;code&gt;f2&lt;/code&gt; も &lt;code&gt;a_function_object&lt;/code&gt; のコピーを作成しない。さらに、関数オブジェクトの参照を使えば、 Boost.Function は代入、構築時に例外を起こさない。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Douglas Gregor&lt;/p&gt;
+&lt;p&gt;Last modified: Fri Oct 11 05:40:00 EDT 2002&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/function/gimite@mx12.freecom.ne.jp&#34;&gt;Hiroshi Ichikawa&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;
+&lt;p&gt;このドキュメントの対象: Boost Version 1.29.0&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>adjacency_list -- adjacency_list : リンク切れしているものにnolinkを付けた</title>
@@ -1460,74 +1642,6 @@ disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Ran
 &lt;/ul&gt;
 &lt;p&gt;Japanese Translation Copyright (C) 2003 IKOMA Yoshiki &lt;a href=&#34;mailto:ikoma@mb.i-chubu.ne.jp&#34;&gt;ikoma@mb.i-chubu.ne.jp&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>全体的な設計の目標 -- 表示崩れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/DesignGoals.html"/>
-      <id>9037274a16cd1e631be784ffeb3d703a5fbf876f:archive/boost_docs/libs/date_time/DesignGoals.md</id>
-      <updated>2015-01-17 00:07:50 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;全体的な設計の目標&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;分類&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;th&gt;機能&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;インタフェース&lt;/td&gt;
-&lt;td&gt;日付と時間を操作するための具体的なクラスを提供する&lt;/td&gt;
-&lt;td&gt;・&lt;code&gt;date&lt;/code&gt;, &lt;code&gt;time&lt;/code&gt;, &lt;code&gt;date_duration&lt;/code&gt;, &lt;code&gt;time_duration&lt;/code&gt;, &lt;code&gt;date_period&lt;/code&gt;, &lt;code&gt;time_period&lt;/code&gt;, ほかにも&lt;br /&gt; 無限数のサポート - 正の無限大, 負の無限大&lt;br /&gt; ・時間と日付の範囲に対するイテレータ&lt;br /&gt; ・日付と時間の実装を可能な限り分離するよう考慮する&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;計算&lt;/td&gt;
-&lt;td&gt;効率的な時間計算を行うための基盤を提供する&lt;/td&gt;
-&lt;td&gt;・日付の間の日数&lt;br /&gt; ・時間の差&lt;br /&gt; ・日付と時間を併せた時間長(durations)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;表現の柔軟性&lt;/td&gt;
-&lt;td&gt;最大限の再利用性と柔軟性を提供する&lt;/td&gt;
-&lt;td&gt;・サイズと分解能を制御するための、traits に基づいた内部表現のカスタマイズ&lt;br /&gt; 異なるエポック(epoch)と分解能の使用が可能 (例:秒とマイクロ秒、2000年から始まる日付と1700年から始まる日付)&lt;br /&gt; ・独特な暦法の内部表現を設定するためのオプション (グレゴリオ暦 + その他)&lt;br /&gt; ・ユリウス通日(Julian Day Number)の使用、および、ユリウス通日とグレゴリオ暦/ユリウス暦との日付変換&lt;br /&gt; ・うるう秒を含む柔軟な調整を考慮する&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;日付の計算&lt;/td&gt;
-&lt;td&gt;日付計算用のツールを提供&lt;/td&gt;
-&lt;td&gt;・祝祭日のような複雑な行事予定を計算するための基盤を提供する&lt;br /&gt; ・ある暦法から別の暦法への変換&lt;br /&gt; ・新たな暦法系に拡張するための能力を提供&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;時間の計算&lt;/td&gt;
-&lt;td&gt;時間を操作するための具体的なクラスを提供&lt;/td&gt;
-&lt;td&gt;・異なった時間帯にまたがる問題を取り扱うための能力を提供&lt;br /&gt; ・昼時間の調整(サマータイム)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;クロックインタフェース&lt;/td&gt;
-&lt;td&gt;現在の時刻を取得するクラスを提供&lt;/td&gt;
-&lt;td&gt;・ネットワーク、高分解能時間源(time source)へのアクセス&lt;br /&gt; ・クラスに代入するための、現在の日付時間情報を取得する&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;I/O インタフェース&lt;/td&gt;
-&lt;td&gt;時間を含む入出力を提供&lt;br /&gt;&lt;/td&gt;
-&lt;td&gt;・多言語サポート&lt;br /&gt; ・ISO8601 に準拠した時間面&lt;br /&gt; ・異なるローカル(環境)での振る舞いのためにI/O面を使用&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;hr /&gt;
-&lt;p&gt;Last modified: Wed Aug 21 15:42:19 MST 2002 by &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
