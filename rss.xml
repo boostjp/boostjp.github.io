@@ -2,9 +2,201 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-17T00:21:21.367365</updated>
-  <id>86822160-1474-40a9-a0e0-b97c5867a9b8</id>
+  <updated>2015-01-17T00:22:33.414740</updated>
+  <id>7908975f-bd7b-4ca5-b3a9-196fb6c62077</id>
 
+  
+    <entry>
+      <title>Distjoint Sets（互いに素な集合） -- disjoint_sets : リンク切れを修正(#29)</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/disjoint_sets.html"/>
+      <id>0876aae3f9108a6832681a1e3c182fa8d8448f4e:archive/boost_docs/libs/disjoint_sets.md</id>
+      <updated>2015-01-17 00:22:20 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;Distjoint Sets（互いに素な集合）&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;翻訳元ドキュメント： &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/disjoint_sets/disjoint_sets.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/1_31_0/libs/disjoint_sets/disjoint_sets.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Rank, Parent, FindCompress&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このクラスは、互いに素な集合（素集合）の演算に 順位による和集合 および パス圧縮 を提供する。disjoint-sets のデータ構造は、素集合の S = {S&lt;sub&gt;1&lt;/sub&gt;, S&lt;sub&gt;2&lt;/sub&gt;, ..., S&lt;sub&gt;k&lt;/sub&gt;} というコレクションを維持する。 各集合は、集合のいくつかの要素である 代表値 によって識別される。 集合は、Parent プロパティマップの中の符号化された有向木によって表わされる。 2つの発見的手法: 「順位による和集合」 および 「パス圧縮」 は、 演算を高速化するのに使われる  [&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/disjoint_sets/bibliography.html#tarjan83&#34;&gt;1&lt;/a&gt;, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/disjoint_sets/bibliography.html#clr90&#34;&gt;2&lt;/a&gt;]。&lt;/p&gt;
+&lt;h2&gt;Where Defined&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;boost/disjoint_sets.hpp&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Template Parameters&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;パラメータ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Rank&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;値型が整数型で、キー型が集合の要素型と等しい &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.md.nolink&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;Parent&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.md.nolink&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルで、かつ、キー型および値型は集合の要素型と等しくなければならない。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;FindCompress&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;代表値の検索およびパス圧縮関数オブジェクトのうちの 1つであるべきだ。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Example&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;disjoint_sets&lt;/code&gt; に対する典型的な使用法の手本は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/kruskal_minimum_spanning_tree.md.nolink&#34;&gt;&lt;code&gt;kruskal_minimum_spanning_tree()&lt;/code&gt;&lt;/a&gt; アルゴリズムで見ることができる。 この例では、&lt;code&gt;union_set()&lt;/code&gt; の代わりに &lt;code&gt;link()&lt;/code&gt; を呼び出す。 なぜなら、&lt;code&gt;u&lt;/code&gt; および &lt;code&gt;v&lt;/code&gt; が &lt;code&gt;find_set()&lt;/code&gt; から得られ、したがって、既にそれら集合の代表値であるからだ。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;...
+disjoint_sets&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Rank, Parent, FindCompress&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; dsets(rank, p);
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (ui  &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; vertices(G).first; ui &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; vertices(G).second; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;ui)
+  dsets.make_set(&lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;ui);
+...
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;while&lt;/span&gt; ( &lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;Q.empty() ) {
+  e &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; Q.front();
+  Q.pop();
+  u &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; dsets.find_set(source(e));
+  v &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; dsets.find_set(target(e));
+  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt; ( u &lt;span style=&#34;color: #666666&#34;&gt;!=&lt;/span&gt; v ) {
+    &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;out&lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; e;
+    dsets.link(u, v);
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Members&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;メンバ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;disjoint_sets(Rank r, Parent p)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;コンストラクタ。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;disjoint_sets(const disjoint_sets&amp;amp; x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;コピーコンストラクタ。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void make_set(Element x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Element x&lt;/code&gt; を含む単集合を作成する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void link(Element x, Element y)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;x&lt;/code&gt; および &lt;code&gt;y&lt;/code&gt; で表わされる 2つの集合を結合する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void union_set(Element x, Element y)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素 &lt;code&gt;x&lt;/code&gt; および &lt;code&gt;y&lt;/code&gt; を含む 2つの集合を結合する。 これは、&lt;code&gt;link(find_set(x),find_set(y))&lt;/code&gt; に相当する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Element&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;Element find_set(Element x)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素 &lt;code&gt;x&lt;/code&gt; を含む集合のための代表値を返す。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;std::size_t count_sets(ElementIterator first, ElementIterator last)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;素集合の個数を返す。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class ElementIterator&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;void compress_sets(ElementIterator first, ElementIterator last)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;すべての要素の親がその代表値であるように親ツリーを平滑化する。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Complexity&lt;/h2&gt;
+&lt;p&gt;時間計算量は、O(m alpha(m,n)) である。alpha は逆アッカーマン関数、 m は disjoint-set の演算（&lt;code&gt;make_set()&lt;/code&gt;、&lt;code&gt;find_set()&lt;/code&gt;、および &lt;code&gt;link()&lt;/code&gt;）の総数、n は要素数である。 alpha 関数はとても遅く、log 関数よりもはるかに遅くなる。&lt;/p&gt;
+&lt;p&gt;参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_connected_components.md.nolink&#34;&gt;&lt;code&gt;incremental_connected_components()&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;disjoint_sets_with_storage&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ID,InverseID,FindCompress&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このクラスは、順位および親のプロパティのための記憶領域を内部で管理する。 記憶領域は、要素IDにより索引付けされた配列の中にある。ゆえに、ID および InverseID ファンクタを必要とする。 順位および親のプロパティは、構築中に初期化される、 したがって、各要素は自動的に集合の中にある（従って、このクラスのオブジェクトを &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/incremental_components.md.nolink#sec:initialize-incremental-components&#34;&gt;&lt;code&gt;initialize_incremental_components()&lt;/code&gt;&lt;/a&gt; 関数で初期化することは必要でない。）。 このクラスは、頂点プロパティを格納する場所を提供しない &lt;code&gt;edge_list&lt;/code&gt; グラフの（動的）接続している構成要素を計算する場合に特に有用である。&lt;/p&gt;
+&lt;h2&gt;Template Parameters&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;パラメータ&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;th&gt;デフォルト&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;ID&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;0からN（集合中の要素の総数）までの整数に要素を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.md.nolink&#34;&gt;&lt;code&gt;ReadablePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::identity_property_map&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;InverseID&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;要素に整数を対応付ける &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadablePropertyMap.md.nolink&#34;&gt;&lt;code&gt;ReadablePropertyMap&lt;/code&gt;&lt;/a&gt; のモデルでなければならない。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;boost::identity_property_map&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;FindCompress&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;代表値の検索およびパス圧縮関数オブジェクトのうちの 1つであるべきだ。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;representative_with_full_path_compression&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Members&lt;/h2&gt;
+&lt;p&gt;このクラスは、以下のメンバだけでなく &lt;code&gt;disjoint_sets&lt;/code&gt; のすべてのメンバも持っている。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;disjoint_sets_with_storage(size_type n &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;,
+                           ID id &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; ID(),
+                           InverseID inv &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; InverseID())
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;コンストラクタ。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ElementIterator&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; disjoint_sets_with_storage&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;
+  normalize_sets(ElementIterator first, ElementIterator last)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;各集合の代表値が最も小さな ID を備えた要素になるように代表値を再整理する。 &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事後条件: &lt;code&gt;v &amp;gt;= parent[v]&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;事前条件: 素集合の構造は圧縮されていなければならない。 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;representative_with_path_halving&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Parent&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;これは、要素 &lt;code&gt;x&lt;/code&gt; と同じ構成要素のための代表的な頂点を検索するファンクタである。 代表値木を横断している間、ファンクタは、さらに木の高さを短くするためにパス二分技術を適用する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Element &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Parent p, Element x)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;representative_with_full_path_compression&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Parent&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;これは、要素 &lt;code&gt;x&lt;/code&gt; が属する集合のための代表的な要素を検索するファンクタである。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;Element &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(Parent p, Element x)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Copyright © 2000&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;mailto:jsiek@lsc.nd.edu&#34;&gt;jsiek@lsc.nd.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.lsc.nd.edu/~llee1&#34; target=&#34;_blank&#34;&gt;Lie-Quan Lee&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;mailto:llee1@lsc.nd.edu&#34;&gt;llee1@lsc.nd.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.lsc.nd.edu/~lums&#34; target=&#34;_blank&#34;&gt;Andrew Lumsdaine&lt;/a&gt;, Univ.of Notre Dame (&lt;a href=&#34;mailto:lums@lsc.nd.edu&#34;&gt;lums@lsc.nd.edu&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 IKOMA Yoshiki &lt;a href=&#34;mailto:ikoma@mb.i-chubu.ne.jp&#34;&gt;ikoma@mb.i-chubu.ne.jp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Improved Function Object Adapters -- functional : リンク切れを修正</title>
@@ -1764,105 +1956,6 @@ get_property(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const
 &lt;/ul&gt;
 &lt;p&gt;Japanese Translation Copyright © 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/takashi-it@po6.nsk.ne.jp&#34;&gt;Takashi Itou&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>コンセプト・チェックの利用 -- concept check : リンク切れを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/using_concept_check.html"/>
-      <id>dbf1389e022545699b9e9f8bd3fa70c82b57acf7:archive/boost_docs/libs/concept_check/using_concept_check.md</id>
-      <updated>2015-01-17 00:12:13 +0900</updated>
-      
-        <content type="html">&lt;h1&gt;コンセプト・チェックの利用&lt;/h1&gt;
-&lt;p&gt;各コンセプトに対して、与えられた型 (あるいは型の集合) がコンセプトをモデル化していることを確かめるために使用することができる、何らかのコンセプト・チェック用クラスが存在する。 Boost コンセプト・チェック・ライブラリ (BCCL) は、C++ 標準ライブラリの中で使用される全てのコンセプト＋αを対象とした、コンセプト・チェック用クラスを含んでいる。 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/reference.html&#34;&gt;リファレンス&lt;/a&gt; セクションに、このコンセプト・チェック用クラスをリストしてある。 さらに、他の Boost ライブラリも、ライブラリ独自の特別なコンセプトに対応するコンセプト・チェック用クラスを付随している。 例えば、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/graph/graph_concepts.html&#34;&gt;graph concept&lt;/a&gt; および &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/property_map.html&#34;&gt;property map concept&lt;/a&gt; がある。 さらに、クラス・テンプレートや関数テンプレートを記述する者は、既存のコンセプトでカバーされていない要求事項を表現する必要のある場合は常に、新しいコンセプト・チェック用クラスを作成すべきである。 その方法は &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;コンセプト・チェック用クラスの作成&lt;/a&gt; セクションで説明する。&lt;/p&gt;
-&lt;p&gt;BCCL のコンセプト・チェック用クラスの例として、&lt;code&gt;EqualityComparableConcept&lt;/code&gt; クラスを挙げる。 このクラスは、C++ 標準 20.1.1 に記述されている &lt;code&gt;EqualityComparable&lt;/code&gt; (等値比較可能) 要求事項および、SGI STL で文書化されている &lt;a href=&#34;http://www.sgi.com/tech/stl/EqualityComparable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;EqualityComparable&lt;/code&gt;&lt;/a&gt; (等値比較可能) コンセプトに相当する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; EqualityComparableConcept;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;テンプレート引数 &lt;code&gt;T&lt;/code&gt; はチェック対象の型と意図されている。 すなわち、&lt;code&gt;EqualityComparableConcept&lt;/code&gt; の目的は、&lt;code&gt;T&lt;/code&gt; に対して与えられたテンプレート引数が 等値比較可能コンセプトをモデル化しているかどうか確認することである。&lt;/p&gt;
-&lt;p&gt;個々のコンセプト・チェック用クラスには、該当するコンセプトにおいて有効な式を内包する &lt;code&gt;constraints()&lt;/code&gt; という名前のメンバー関数がある。 ある型が &lt;code&gt;EqualityComparable&lt;/code&gt; (等値比較可能) であるかどうかチェックするためには、その型でコンセプト・チェック用クラスのインスタンスを生成し、次に、コンパイラに、実際に &lt;code&gt;constraints()&lt;/code&gt; 関数を実行することなくコンパイルさせる方法を見つける必要がある。 Boost コンセプト・チェック・ライブラリは、これを容易にする2つのユーティリティ： &lt;code&gt;function_requires()&lt;/code&gt; と &lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; を定義している。&lt;/p&gt;
-&lt;h2&gt;&lt;code&gt;function_requires()&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;function_requires()&lt;/code&gt; 関数は関数本体の中で使用できる。また、&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; マクロはクラス定義本体で使用できる。 &lt;code&gt;function_requires()&lt;/code&gt; 関数は引数をとらないが、コンセプト・チェック用クラスを受けるためのテンプレート・パラメータを有する。 これは、以下に示すように、インスタンス化されたコンセプト・チェック用クラスを明示的にテンプレート引数として与えられなければならないことを意味する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In my library:&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; generic_library_function(T x)
-{
-  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; EqualityComparableConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-};
-
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In the user&#39;s code:  &lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;foo&lt;/span&gt; {
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//... &lt;/span&gt;
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;() {
-  foo f;
-  generic_library_function(f);
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; マクロは、ある型がコンセプトをモデル化しているかどうかチェックするために、クラス定義の内部で使用することができる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In my library:&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; generic_library_class
-{
-  BOOST_CLASS_REQUIRE(T, boost, EqualityComparableConcept);
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-};
-
-&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// In the user&#39;s code:  &lt;/span&gt;
-&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;foo&lt;/span&gt; {
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//... &lt;/span&gt;
-};
-
-&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;() {
-  generic_library_class&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; glc;
-  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ...&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;;
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;例&lt;/h2&gt;
-&lt;p&gt;以前の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html#motivating_example&#34;&gt;動機の例&lt;/a&gt; に対してコンセプト・チェックを応用する場合、良いやり方として、テンプレート・パラメータ型が &lt;a href=&#34;http://www.sgi.com/tech/stl/RandomAccessIterator.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;RandomAccessIterator&lt;/code&gt;&lt;/a&gt; をモデル化していることを確認するために &lt;code&gt;std::stable_sort()&lt;/code&gt; の一番上に &lt;code&gt;function_requires()&lt;/code&gt; を挿入することが一つ挙げられる。 さらに、&lt;code&gt;std::stable_sort()&lt;/code&gt; は、イレテータの &lt;code&gt;value_type&lt;/code&gt; が&lt;a href=&#34;http://www.sgi.com/tech/stl/LessThanComparable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;LessThanComparable&lt;/code&gt; (未満比較可能)&lt;/a&gt; を満足することが必要であるから、これをチェックするために、重ねて &lt;code&gt;function_requires()&lt;/code&gt; を使用する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;RandomAccessIter&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; stable_sort(RandomAccessIter first, RandomAccessIter last)
-{
-  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; RandomAccessIteratorConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;RandomAccessIter&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;iterator_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;RandomAccessIter&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;value_type value_type;
-  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; LessThanComparableConcept&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;value_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-  ...
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;コンセプトによっては複数の型を処理するものがある。 この場合、対応するコンセプト・チェック用クラスは複数のテンプレート・パラメータを持つことになる。 以下の例は、&lt;code&gt;function_requires()&lt;/code&gt; を、２つの型パラメータ（プロパティ・マップ型とそのキーとなる型）をとる &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/property_map/ReadWritePropertyMap.html&#34;&gt;&lt;code&gt;ReadWritePropertyMap&lt;/code&gt;&lt;/a&gt; コンセプトに対して使用する方法を示す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;IncidenceGraph&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Buffer&lt;/span&gt;, &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;BFSVisitor&lt;/span&gt;, 
-          &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;ColorMap&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; breadth_first_search(IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; g, 
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor s, 
-  Buffer&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; Q, BFSVisitor vis, ColorMap color)
-{
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; graph_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;IncidenceGraph&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;vertex_descriptor Vertex;
-  function_requires&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt; ReadWritePropertyMap&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;ColorMap, Vertex&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
-  ...
-}
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;BOOST_CLASS_REQUIRE&lt;/code&gt; の使用例として、&lt;code&gt;std::vector&lt;/code&gt; が有すべきコンセプト・チェックを考察する。 要素型に対して当てはめる要求事項の一つは、それが &lt;a href=&#34;http://www.sgi.com/tech/stl/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Assignable&lt;/code&gt; (割当可能)&lt;/a&gt;でなければならない、ということである。 これは、&lt;code&gt;std::vector&lt;/code&gt; の定義の一番上に&lt;code&gt;BOOST_CLASS_REQUIRE(T, boost, AssignableConcept)&lt;/code&gt;を挿入することにより、チェックすることができる。&lt;/p&gt;
-&lt;p&gt;コンセプト・チェックは、ジェネリック・ライブラリの実装者が使用するために設計されているが、エンドユーザーにおいても有用である。 往々にして、ある型が特定のコンセプトをモデル化しているかどうか、不明確な場合がある。 こういうケースでは、問題の型とコンセプトを対象として &lt;code&gt;function_requires()&lt;/code&gt; を使用する、小さなプログラムを作成することで容易にチェックできる。 ファイル &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_check.cpp.html&#34;&gt;stl_concept_checks.cpp&lt;/a&gt; は、STL コンテナにコンセプト・チェックを適応する実例となっている。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;次へ：「コンセプト・チェック用クラスの作成」&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check.html&#34;&gt;前へ：「はじめに」&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;(&lt;a href=&#34;mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;) Andrew Lumsdaine(&lt;a href=&#34;mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
