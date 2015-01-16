@@ -2,9 +2,77 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-01-17T00:06:51.391569</updated>
-  <id>07e218f4-2d5c-4c64-af5c-4e6a179d44e3</id>
+  <updated>2015-01-17T00:08:07.567542</updated>
+  <id>786cdf4e-3b06-46f5-b743-654fdcea3889</id>
 
+  
+    <entry>
+      <title>全体的な設計の目標 -- 表示崩れを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/DesignGoals.html"/>
+      <id>9037274a16cd1e631be784ffeb3d703a5fbf876f:archive/boost_docs/libs/date_time/DesignGoals.md</id>
+      <updated>2015-01-17 00:07:50 +0900</updated>
+      
+        <content type="html">&lt;h1&gt;全体的な設計の目標&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;分類&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;th&gt;機能&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;インタフェース&lt;/td&gt;
+&lt;td&gt;日付と時間を操作するための具体的なクラスを提供する&lt;/td&gt;
+&lt;td&gt;・&lt;code&gt;date&lt;/code&gt;, &lt;code&gt;time&lt;/code&gt;, &lt;code&gt;date_duration&lt;/code&gt;, &lt;code&gt;time_duration&lt;/code&gt;, &lt;code&gt;date_period&lt;/code&gt;, &lt;code&gt;time_period&lt;/code&gt;, ほかにも&lt;br /&gt; 無限数のサポート - 正の無限大, 負の無限大&lt;br /&gt; ・時間と日付の範囲に対するイテレータ&lt;br /&gt; ・日付と時間の実装を可能な限り分離するよう考慮する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;計算&lt;/td&gt;
+&lt;td&gt;効率的な時間計算を行うための基盤を提供する&lt;/td&gt;
+&lt;td&gt;・日付の間の日数&lt;br /&gt; ・時間の差&lt;br /&gt; ・日付と時間を併せた時間長(durations)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表現の柔軟性&lt;/td&gt;
+&lt;td&gt;最大限の再利用性と柔軟性を提供する&lt;/td&gt;
+&lt;td&gt;・サイズと分解能を制御するための、traits に基づいた内部表現のカスタマイズ&lt;br /&gt; 異なるエポック(epoch)と分解能の使用が可能 (例:秒とマイクロ秒、2000年から始まる日付と1700年から始まる日付)&lt;br /&gt; ・独特な暦法の内部表現を設定するためのオプション (グレゴリオ暦 + その他)&lt;br /&gt; ・ユリウス通日(Julian Day Number)の使用、および、ユリウス通日とグレゴリオ暦/ユリウス暦との日付変換&lt;br /&gt; ・うるう秒を含む柔軟な調整を考慮する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;日付の計算&lt;/td&gt;
+&lt;td&gt;日付計算用のツールを提供&lt;/td&gt;
+&lt;td&gt;・祝祭日のような複雑な行事予定を計算するための基盤を提供する&lt;br /&gt; ・ある暦法から別の暦法への変換&lt;br /&gt; ・新たな暦法系に拡張するための能力を提供&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;時間の計算&lt;/td&gt;
+&lt;td&gt;時間を操作するための具体的なクラスを提供&lt;/td&gt;
+&lt;td&gt;・異なった時間帯にまたがる問題を取り扱うための能力を提供&lt;br /&gt; ・昼時間の調整(サマータイム)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;クロックインタフェース&lt;/td&gt;
+&lt;td&gt;現在の時刻を取得するクラスを提供&lt;/td&gt;
+&lt;td&gt;・ネットワーク、高分解能時間源(time source)へのアクセス&lt;br /&gt; ・クラスに代入するための、現在の日付時間情報を取得する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;I/O インタフェース&lt;/td&gt;
+&lt;td&gt;時間を含む入出力を提供&lt;br /&gt;&lt;/td&gt;
+&lt;td&gt;・多言語サポート&lt;br /&gt; ・ISO8601 に準拠した時間面&lt;br /&gt; ・異なるローカル(環境)での振る舞いのためにI/O面を使用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;p&gt;Last modified: Wed Aug 21 15:42:19 MST 2002 by &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002&lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost Date-Time Library Documentation -- Date Time : リンク切れを修正。DesignGoalsを移植し忘れていた。</title>
@@ -842,65 +910,6 @@ player thePlayer;
 &lt;p&gt;以下、未翻訳。&lt;/p&gt;
 &lt;hr /&gt;
 &lt;p&gt;Copyright © 2001, 2002 by Peter Dimov and Multi Media Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>template_page.md -- 逆引きリファレンスのテンプレートページは、いらなくなったので削除。(#29)</title>
-      <link href="http://boostjp.github.io/tips/template_page.html"/>
-      <id>4f43989f90a40a06b2cb0db8b466743047ec67cb:tips/template_page.md</id>
-      <updated>2015-01-16 23:43:03 +0900</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/template_page.md b/tips/template_page.md
-deleted file mode 100644
-index 41df4ff..0000000
---- a/tips/template_page.md
-+++ /dev/null
-@@ -1,39 +0,0 @@
--#テンプレートページ
--逆引きリファレンスを書く上での、雛型と、Google Sitesの使い方を説明します。
--まず、ページの先頭に概要を書いてください。
--
--目次は、メニューから「挿入」→「目次」を選択してください。
--書式設定で「見出しN」を付けられた項目が自動的に目次になります。
--
--
--Contents
--&amp;lt;ol class=&amp;#39;goog-toc&amp;#39;&amp;gt;&amp;lt;li class=&amp;#39;goog-toc&amp;#39;&amp;gt;[&amp;lt;strong&amp;gt;1 &amp;lt;/strong&amp;gt;項目](#TOC--)&amp;lt;/li&amp;gt;&amp;lt;/ol&amp;gt;
--
--
--
--&amp;lt;h4&amp;gt;項目&amp;lt;/h4&amp;gt;項目は、メニューから「書式」→「準見出し(H4)」を選択して書式を設定します。
--
--ソースコードは、以下のようにプレーンテキストで記述し、
--
--#include &amp;lt;iostream&amp;gt;
--
--int main()
--{
--    std::cout &amp;lt;&amp;lt; &amp;#34;Hello&amp;#34; &amp;lt;&amp;lt; std::endl;}
--
--次に、そのコードを選択し、メニューから「書式」→「コードを引用」を選択します。
--
--```cpp
--#include &amp;lt;iostream&amp;gt;
--
--int main()
--{
--    std::cout &amp;lt;&amp;lt; &amp;#34;Hello&amp;#34; &amp;lt;&amp;lt; std::endl;}
--```
--
--するとコードが緑色になってしまうので、ソースコードを選択し、メニュー下の書式設定バーから「A▼」で黒を選択します。
--たまに緑色になったままになってしまうので、試行錯誤してください。
--ソースを張り付け直したりタブをスペースに直したり。
--
--HTMLソースを編集してしまうのも一つの手段でしょう。
--
-&lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
         <name>Akira Takahashi</name>
