@@ -210,7 +210,7 @@ function tree_onclick(e) {
 <span style="color: #408080; font-style: italic">// std::list用のオーバーロード</span>
 <span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Container</span><span style="color: #666666">&gt;</span>
 <span style="color: #B00040">void</span> sort(Container<span style="color: #666666">&amp;</span> c,
-        FMFLuGxtFYaPQONFNVkAaRlHdPdJJyHgtypename boost<span style="color: #666666">::</span>enable_if<span style="color: #666666">&lt;</span>is_list<span style="color: #666666">&lt;</span>Container<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;::</span>type<span style="color: #666666">*</span> <span style="color: #666666">=</span> <span style="color: #666666">0F</span>MFLuGxtFYaPQONFNVkAaRlHdPdJJyHg)
+        <span style=color:#ff0000>typename boost<span style="color: #666666">::</span>enable_if<span style="color: #666666">&lt;</span>is_list<span style="color: #666666">&lt;</span>Container<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;::</span>type<span style="color: #666666">*</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span></span>)
 {
     c.sort();
 }
@@ -218,7 +218,7 @@ function tree_onclick(e) {
 <span style="color: #408080; font-style: italic">// std::list以外のためのオーバーロード</span>
 <span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Container</span><span style="color: #666666">&gt;</span>
 <span style="color: #B00040">void</span> sort(Container<span style="color: #666666">&amp;</span> c,
-        UMkCJZJfIfDoROusqJLuAgLEyEWEvOoEtypename boost<span style="color: #666666">::</span>disable_if<span style="color: #666666">&lt;</span>is_list<span style="color: #666666">&lt;</span>Container<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;::</span>type<span style="color: #666666">*</span> <span style="color: #666666">=</span> <span style="color: #666666">0U</span>MkCJZJfIfDoROusqJLuAgLEyEWEvOoE)
+        <span style=color:#ff0000>typename boost<span style="color: #666666">::</span>disable_if<span style="color: #666666">&lt;</span>is_list<span style="color: #666666">&lt;</span>Container<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;::</span>type<span style="color: #666666">*</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span></span>)
 {
     std<span style="color: #666666">::</span>sort(boost<span style="color: #666666">::</span>begin(c), boost<span style="color: #666666">::</span>end(c));
 }
