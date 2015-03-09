@@ -2,9 +2,153 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-03-09T16:37:57.982359</updated>
-  <id>74461807-21c6-40f8-aa0d-7f5f782a3cfd</id>
+  <updated>2015-03-09T16:41:42.322260</updated>
+  <id>e3ec281e-1bdd-4137-9d0f-34ca11d2f040</id>
 
+  
+    <entry>
+      <title>Boost 1.58.0リリースノート -- Boost 1.58.0リリースノート： 翻訳者に、自分を追加</title>
+      <link href="http://boostjp.github.io/document/version/1_58_0.html"/>
+      <id>a208457606eaa8132cf413b019e7d1c65d2cc06e:document/version/1_58_0.md</id>
+      <updated>2015-03-09 16:41:44 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.58.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_58_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_58_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_58_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_58_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#one&#34;&gt;One&lt;/a&gt; # example&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#two&#34;&gt;Two&lt;/a&gt; # example&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#three&#34;&gt;Three&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#chrono&#34; name=&#34;Chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;バージョン2.0.5&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10778&#34; target=&#34;_blank&#34;&gt;#10778&lt;/a&gt; &lt;code&gt;boost::chrono&lt;/code&gt;の&lt;code&gt;duration&lt;/code&gt;クラスが、&lt;code&gt;TriviallyCopyable&lt;/code&gt;でないために&lt;code&gt;std::atomic&lt;/code&gt;に格納できない問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10840&#34; target=&#34;_blank&#34;&gt;#10840&lt;/a&gt; テストコードtest_7868.cppにおいて、&lt;code&gt;puts()&lt;/code&gt;関数の呼び出しが&lt;code&gt;std::&lt;/code&gt;修飾されていなかった問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10851&#34; target=&#34;_blank&#34;&gt;#10851&lt;/a&gt; テストコードtime_point_output.cppにおいて、&lt;code&gt;puts()&lt;/code&gt;関数の呼び出しが&lt;code&gt;std::&lt;/code&gt;修飾されていなかった問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10893&#34; target=&#34;_blank&#34;&gt;#10893&lt;/a&gt; ドキュメントの細かな誤字を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10992&#34; target=&#34;_blank&#34;&gt;#10992&lt;/a&gt; ChronoのIO state saverが、Boost.IO state saverと一貫していない問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/10995&#34; target=&#34;_blank&#34;&gt;#10995&lt;/a&gt; &lt;code&gt;duration_put::put_value()&lt;/code&gt;で、少数が切り捨てられる問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/11006&#34; target=&#34;_blank&#34;&gt;#11006&lt;/a&gt; &lt;code&gt;time_fmt_io_saver&lt;/code&gt;のインスタンス化がコンパイルエラーになる問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/11012&#34; target=&#34;_blank&#34;&gt;#11012&lt;/a&gt; chrono_io v2において、&lt;code&gt;boost::chrono::duration&amp;lt; boost::rational&amp;lt;int&amp;gt; &amp;gt;&lt;/code&gt;がコンパイルエラーになる問題を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#one&#34; name=&#34;One&#34;&gt;One&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;blahblahblah&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;something&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.58.0リリースノート -- Boost 1.58.0リリースノート： 雛形復活</title>
@@ -568,186 +712,6 @@
       <author>
         <name>Kohei Takahashi</name>
         <email>flast@flast.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Date-Time Build-Compiler Information -- 不正なリンクを解消</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html"/>
-      <id>738a312268b17912e7d754acfa635e9de3173ba7:archive/boost_docs/libs/date_time/build_info.md</id>
-      <updated>2015-01-19 23:02:36 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Date-Time Build-Compiler Information&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Build-Compiler Information&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#compilation-options&#34;&gt;Compilation Options&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#compiler-portability-notes&#34;&gt;Compiler/Portability Notes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#directory-structure&#34;&gt;Directory Structure&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#required-boost-libraries&#34;&gt;Required Boost Libraries&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#overview&#34; name=&#34;overview&#34;&gt;Overview&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;ライブラリ関数のいくつかはライブラリファイルを作成する必要がある。 これらの関数を含むライブラリ( &lt;strong&gt;libboost_date_time&lt;/strong&gt; )を作成するには、buildディレクトリにあるJamfileを使う。&lt;/p&gt;
-&lt;p&gt;変数&lt;code&gt;DATE_TIME_INLINE&lt;/code&gt;は、ある特定のコア関数のインライン化を制御する。 デフォルトでこの変数はライブラリのコンパイル時に定義されている。 ライブラリを使っている全てのコンパイル単位でこの定義を含んでいなければ、リンクエラーになるだろう。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#compilation-options&#34; name=&#34;compilation-options&#34;&gt;Compilation Options&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;デフォルトでは &lt;code&gt;posix_time&lt;/code&gt; はナノ秒レベルの精度を提供するために内部で 64bit整数と32bit整数を使う。 選択肢として、一つの 64bit整数でマイクロ秒レベルの精度を提供することもできる。 この代替実装は、ナノ秒精度を必要としない多くのアプリケーションでパフォーマンスの向上と省メモリが期待できる。&lt;/p&gt;
-&lt;p&gt;変数&lt;code&gt;BOOST_DATE_TIME_POSIX_TIME_STD_CONFIG&lt;/code&gt;はbuild/Jamfileで定義されており、これらのオプションを選択する。 64bit整数版を使う場合、単にJamfileからこの定義を削除する。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#compiler-portability-notes&#34; name=&#34;compiler-portability-notes&#34;&gt;Compiler/Portability Notes&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost Date-Time libraryは、多くのコンパイラでビルドされテストされた。 しかしながら、いくつかのコンパイラと標準ライブラリで問題がある。 これらの問題のいくつかは回避可能であるが、回避できない問題も残っている。 以下のコンパイラはライブラリの機能を完全にサポートしている。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;GCC 3.0.3 on Linux&lt;/li&gt;
-&lt;li&gt;GCC 3.1 (cygwin)&lt;/li&gt;
-&lt;li&gt;MSVC 7&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;特に、標準ロケールに対するサポートが完全でないと &lt;code&gt;iostream&lt;/code&gt; ベースの入出力サポートが制約される事がある。そういったコンパイラのために、より限定された文字列ベースの入出力を提供している。&lt;/p&gt;
-&lt;p&gt;以下のコンパイラ及び標準ライブラリはこの制約を含む&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;GCC 2.9x on Linux&lt;/li&gt;
-&lt;li&gt;Borland 5.1.1 and 5.6&lt;/li&gt;
-&lt;li&gt;MSVC 6 SP5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;ComeauやMetroworksといった他のコンパイラでは、ライブラリの初期バージョンでテストに成功している。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#directory-structure&#34; name=&#34;directory-structure&#34;&gt;Directory Structure&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;date_time&lt;/code&gt;のディレクトリ構成はBoostに合わせて変更された。&lt;/p&gt;
-&lt;p&gt;ディレクトリ構成は次のようになっている&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;ディレクトリ&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;/boost/date_time&lt;/td&gt;
-&lt;td&gt;共通ヘッダ及びテンプレート&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/boost/date_time/gregoran&lt;/td&gt;
-&lt;td&gt;グレゴリオ暦システムのヘッダファイル&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/boost/date_time/posix_time&lt;/td&gt;
-&lt;td&gt;Posix Time系のヘッダファイル&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/build&lt;/td&gt;
-&lt;td&gt;ビルドファイルと出力ディレクトリ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/test&lt;/td&gt;
-&lt;td&gt;ジェネリックコードに関するテスト一式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/test/gregorian&lt;/td&gt;
-&lt;td&gt;グレゴリオ暦に関するテスト一式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/examples/gregorian&lt;/td&gt;
-&lt;td&gt;グレゴリオ暦に関する良いコード例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/src/gregorian&lt;/td&gt;
-&lt;td&gt;libboost_date_time用のcppファイル&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/test/posix_time&lt;/td&gt;
-&lt;td&gt;Posix Time系に関するテスト一式&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/examples/posix_time&lt;/td&gt;
-&lt;td&gt;時間に関する良いコード例&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;/libs/date_time/src/posix_time&lt;/td&gt;
-&lt;td&gt;空 (ファイルが一つあるが、ソースコードではない)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/date_time/build_info.html#required-boost-libraries&#34; name=&#34;required-boost-libraries&#34;&gt;Required Boost Libraries&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;このライブラリは以下のライブラリに依存している。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;boost.tokenizer&lt;/li&gt;
-&lt;li&gt;boost.integer(cstdint)&lt;/li&gt;
-&lt;li&gt;boost.operators&lt;/li&gt;
-&lt;li&gt;boost::lexical_cast&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;よって、最低限これらのライブラリがインストールされている必要がある。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Last modified: Wed Aug 28 17:52:03 MST 2002 by &lt;a href=&#34;mailto:jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002 &lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;mailto:sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon</name>
-        <email>melt@e-ml.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Negators -- 不正なリンクを解消</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html"/>
-      <id>738a312268b17912e7d754acfa635e9de3173ba7:archive/boost_docs/libs/functional/negators.md</id>
-      <updated>2015-01-19 23:02:36 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Negators&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;functional.hpp ヘッダは C++ 標準 (§20.3.5) 由来のネゲータアダプタの両方の強化バージョンを提供する:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;unary_negate&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;binary_negate&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;同様に対応するヘルパ関数も提供する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;not1&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;not2&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;このライブラリのネゲータは標準バージョンを二つの方法で改良する。&lt;/p&gt;
-&lt;p&gt;適合関数オブジェクトではなく関数を否定する時、それらは &lt;code&gt;ptr_fun&lt;/code&gt; の必要を回避するために、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/function_traits.html&#34;&gt;function object traits&lt;/a&gt; を用いる。&lt;/p&gt;
-&lt;p&gt;それらは引数や適合された関数に渡す引数を宣言する最上の方法を決するため、Boost の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.md.nolink&#34;&gt;call traits&lt;/a&gt; を用いる。(&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html#arguments&#34;&gt;下記&lt;/a&gt;参照)&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html#usage&#34; name=&#34;usage&#34;&gt;Usage&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;使い型は標準ネゲータと同様である。例えば、&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;bad&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Foo &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;foo) { ... }
-...
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;vector&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Foo&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; c;
-...
-std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;find_if(c.begin(), c.end(), boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;not1(bad));
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html#arguments&#34; name=&#34;arguments&#34;&gt;Argument Types&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;C++ 標準 (§20.3.5) は unary negate をこのように定義 している。(binary negate も似ている):&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Predicate&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;unary_negate&lt;/span&gt;
-    &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;public&lt;/span&gt; unary_function&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type,&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; {
-&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
-  &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;explicit&lt;/span&gt; unary_negate(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; pred);
-  &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;;
-};
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; が参照であった場合、 &lt;code&gt;operator()&lt;/code&gt; の引数の型は参照の参照になることに注意しなさい。これは、現在の C++ では非合法である。(ただし &lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106&#34; target=&#34;_blank&#34;&gt;C++ 言語中核の問題点 106 番目&lt;/a&gt; を参照せよ)。&lt;/p&gt;
-&lt;p&gt;しかしながら、もし代わりに &lt;code&gt;operator()&lt;/code&gt; を &lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; を変更せずにそのまま採用して定義すると、それが値型であった場合不必要に非効率になってしまう。それは引数が二度コピーされることによる。一度は &lt;code&gt;unary_negate&lt;/code&gt; の &lt;code&gt;operator()&lt;/code&gt; を呼ぶ時、さらに適合された関数で &lt;code&gt;operator()&lt;/code&gt; を呼ぶ時にもう一度である。&lt;/p&gt;
-&lt;p&gt;つまり&lt;code&gt;operator()&lt;/code&gt; を宣言する望ましい方法は、 &lt;code&gt;Predicate&lt;/code&gt; の &lt;code&gt;argument_type&lt;/code&gt; が参照であるか否かに依 る。もしそれが参照であれば、単純に &lt;code&gt;argument_type&lt;/code&gt; として宣言したいし、それが値であれば &lt;code&gt;const argument_type&amp;amp;&lt;/code&gt; として宣言したいのである。&lt;/p&gt;
-&lt;p&gt;Boost の &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.md.nolink&#34;&gt;&lt;code&gt;call_traits&lt;/code&gt;&lt;/a&gt; クラステンプレートは &lt;code&gt;param_type&lt;/code&gt; &lt;code&gt;typedef&lt;/code&gt; を含んでいて、それは部分特 殊化版を用いて正確にこの判断を行う。&lt;code&gt;operator()&lt;/code&gt; を 以下のように宣言することによって。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; call_traits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; Predicate&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;argument_type&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;param_type x) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;我々は望ましい結果を引き出した - 参照の参照を生み出すことなく、効率性を得たのだ。実のところ、実際の宣言は関数オブジェクト特性を使うためもう少し複雑である。しかし効果は同様である。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/functional/negators.html#limitations&#34; name=&#34;limitations&#34;&gt;Limitations&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;この関数オブジェクト特性の両方と call traits はこの改良を実現するために使われる関数オブジェクト特性と &lt;code&gt;call_traits&lt;/code&gt; の両方が部分特殊化版に頼っているので、この改良は部分特殊化版の機能を持つコンパイラでのみ有効である。 そうでないコンパイラでは、このライブラリのネゲータは標準内のそれらと非常に似た振る舞いをする - 関数に適合するために &lt;code&gt;ptr_fun&lt;/code&gt; が必要であるし、参照の参照は避けられないだろう。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Copyright © 2000 Cadenza New Zealand Ltd. Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies. This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
-&lt;p&gt;Revised 28 June 2000&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Japanese Translation Copyright (C) 2003 shinichiro.h &lt;a href=&#34;mailto:g940455@mail.ecc.u-tokyo.ac.jp&#34;&gt;g940455@mail.ecc.u-tokyo.ac.jp&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の 複製、利用、変更、販売そして配布を認める。このドキュメントは「あるがまま」 に提供されており、いかなる明示的、暗黙的保証も行わない。また、 いかなる目的に対しても、その利用が適していることを関知しない。&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon</name>
-        <email>melt@e-ml.jp</email>
       </author>
     </entry>
   
