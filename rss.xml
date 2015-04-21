@@ -2,9 +2,1189 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-04-20T23:02:25.547502</updated>
-  <id>d062d066-ccb5-4e9c-b9d3-3bee4cf99653</id>
+  <updated>2015-04-21T17:57:20.499635</updated>
+  <id>f471e7f4-c648-4178-9ace-78020bd74eb1</id>
 
+  
+    <entry>
+      <title>シグナル／スロット -- Merge pull request #32 from P-tan/patch-1
+</title>
+      <link href="http://boostjp.github.io/tips/signals.html"/>
+      <id>21e9ce127745f9ff6055d3147f8040de7c2ffeb8:tips/signals.md</id>
+      <updated>2015-04-21 17:57:01 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シグナル／スロット&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;イベント処理などで使われるシグナル／スロットには、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/signals2.html&#34; target=&#34;_blank&#34;&gt;Boost Signals2 Library&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34; name=&#34;connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Signals2のシグナルには、&lt;code&gt;connect()&lt;/code&gt;関数によって、複数の関数を接続することができる。&lt;/p&gt;
+&lt;p&gt;シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;)); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 呼び出し&lt;/span&gt;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントの登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+SubView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34; name=&#34;disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スロットを切断するには、&lt;code&gt;connect()&lt;/code&gt;関数の戻り値であるコネクションを保持しておき、コネクションの&lt;code&gt;disconnect()&lt;/code&gt;メンバ関数を呼び出すことで、切断する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;));
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントを登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;connection con &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;
+        button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// SubViewのスロットを切断&lt;/span&gt;
+    con.disconnect();
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34; name=&#34;return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の&lt;code&gt;optional&lt;/code&gt;となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/html/boost/signals2/optional_last_value.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;optional_last_value()&lt;/code&gt;&lt;/a&gt;を参照。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// boost::optional&amp;lt;int&amp;gt;が戻ってくる&lt;/span&gt;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 無効値&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_result &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; non_connect_sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;);
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;non_connect_result) {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;invalid value&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
+invalid value
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34; name=&#34;customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::signals2::signal&lt;/code&gt;クラスの2番目のテンプレート引数&lt;code&gt;Combiner&lt;/code&gt;を変更することで、戻り値のカスタムが可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;numeric&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続された複数の関数の戻り値の合計を戻す&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; T result_type;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; InputIterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+    result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(InputIterator first, InputIterator last) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;( first &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; last ) {
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; result_type();
+        }
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;accumulate(first, last, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;);
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;), &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;45
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34; name=&#34;automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、&lt;code&gt;boost::signals2::signal::slot_type::track&lt;/code&gt;を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。&lt;/p&gt;
+&lt;p&gt;参照: http://www.boost.org/doc/libs/release/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/make_shared.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Fuga&lt;/span&gt;{};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Hoge&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; Func(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;){
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Hoge::func()&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; signal_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal型 &lt;/span&gt;
+    signal_type sig;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal オブジェクト &lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga fuga;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 引数用 &lt;/span&gt;
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block start.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// shared_ptrで管理しているオブジェクトのメンバ関数を登録  &lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_typeはbindのように引数の部分適用が可能.&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_type::trackにスマートポインタを渡す事で&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オブジェクトが破棄されるタイミングで切断される &lt;/span&gt;
+        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;shared_ptr&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; hoge &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_shared&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+        sig.connect(
+            signal_type&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;slot_type(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;Func, hoge.get(), _1).track(hoge) 
+        );
+        sig(fuga);        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 登録した関数が正しく呼ばれる &lt;/span&gt;
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block end.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される &lt;/span&gt;
+    sig(fuga);  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 切断後なので何もしない  &lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;block start.
+Hoge::func()
+block end.
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Usagi Ito
+</name>
+        <email>usagi@WonderRabbitProject.net
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>シグナル／スロット -- 修正間違い。最新版のリファレンスへリンクを修正</title>
+      <link href="http://boostjp.github.io/tips/signals.html"/>
+      <id>a377957bec1ea9aa680b461c4f34aff1a8c54440:tips/signals.md</id>
+      <updated>2015-04-21 17:10:33 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シグナル／スロット&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;イベント処理などで使われるシグナル／スロットには、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/signals2.html&#34; target=&#34;_blank&#34;&gt;Boost Signals2 Library&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34; name=&#34;connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Signals2のシグナルには、&lt;code&gt;connect()&lt;/code&gt;関数によって、複数の関数を接続することができる。&lt;/p&gt;
+&lt;p&gt;シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;)); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 呼び出し&lt;/span&gt;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントの登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+SubView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34; name=&#34;disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スロットを切断するには、&lt;code&gt;connect()&lt;/code&gt;関数の戻り値であるコネクションを保持しておき、コネクションの&lt;code&gt;disconnect()&lt;/code&gt;メンバ関数を呼び出すことで、切断する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;));
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントを登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;connection con &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;
+        button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// SubViewのスロットを切断&lt;/span&gt;
+    con.disconnect();
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34; name=&#34;return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の&lt;code&gt;optional&lt;/code&gt;となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/html/boost/signals2/optional_last_value.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;optional_last_value()&lt;/code&gt;&lt;/a&gt;を参照。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// boost::optional&amp;lt;int&amp;gt;が戻ってくる&lt;/span&gt;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 無効値&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_result &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; non_connect_sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;);
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;non_connect_result) {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;invalid value&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
+invalid value
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34; name=&#34;customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::signals2::signal&lt;/code&gt;クラスの2番目のテンプレート引数&lt;code&gt;Combiner&lt;/code&gt;を変更することで、戻り値のカスタムが可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;numeric&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続された複数の関数の戻り値の合計を戻す&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; T result_type;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; InputIterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+    result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(InputIterator first, InputIterator last) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;( first &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; last ) {
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; result_type();
+        }
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;accumulate(first, last, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;);
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;), &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;45
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34; name=&#34;automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、&lt;code&gt;boost::signals2::signal::slot_type::track&lt;/code&gt;を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。&lt;/p&gt;
+&lt;p&gt;参照: http://www.boost.org/doc/libs/release/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/make_shared.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Fuga&lt;/span&gt;{};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Hoge&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; Func(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;){
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Hoge::func()&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; signal_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal型 &lt;/span&gt;
+    signal_type sig;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal オブジェクト &lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga fuga;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 引数用 &lt;/span&gt;
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block start.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// shared_ptrで管理しているオブジェクトのメンバ関数を登録  &lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_typeはbindのように引数の部分適用が可能.&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_type::trackにスマートポインタを渡す事で&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オブジェクトが破棄されるタイミングで切断される &lt;/span&gt;
+        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;shared_ptr&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; hoge &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_shared&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+        sig.connect(
+            signal_type&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;slot_type(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;Func, hoge.get(), _1).track(hoge) 
+        );
+        sig(fuga);        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 登録した関数が正しく呼ばれる &lt;/span&gt;
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block end.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される &lt;/span&gt;
+    sig(fuga);  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 切断後なので何もしない  &lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;block start.
+Hoge::func()
+block end.
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>P-tan</name>
+        <email>ptanmail@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>シグナル／スロット -- Boostのドキュメントへのリンクを最新版へ修正</title>
+      <link href="http://boostjp.github.io/tips/signals.html"/>
+      <id>4fdd20b66c518eaa88e49fc14ea2ae1753505f88:tips/signals.md</id>
+      <updated>2015-04-21 17:07:54 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シグナル／スロット&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;イベント処理などで使われるシグナル／スロットには、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/signals2.html&#34; target=&#34;_blank&#34;&gt;Boost Signals2 Library&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34; name=&#34;connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Signals2のシグナルには、&lt;code&gt;connect()&lt;/code&gt;関数によって、複数の関数を接続することができる。&lt;/p&gt;
+&lt;p&gt;シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;)); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 呼び出し&lt;/span&gt;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントの登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+SubView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34; name=&#34;disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スロットを切断するには、&lt;code&gt;connect()&lt;/code&gt;関数の戻り値であるコネクションを保持しておき、コネクションの&lt;code&gt;disconnect()&lt;/code&gt;メンバ関数を呼び出すことで、切断する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;));
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントを登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;connection con &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;
+        button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// SubViewのスロットを切断&lt;/span&gt;
+    con.disconnect();
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34; name=&#34;return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の&lt;code&gt;optional&lt;/code&gt;となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/html/boost/signals2/optional_last_value.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;optional_last_value()&lt;/code&gt;&lt;/a&gt;を参照。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// boost::optional&amp;lt;int&amp;gt;が戻ってくる&lt;/span&gt;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 無効値&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_result &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; non_connect_sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;);
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;non_connect_result) {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;invalid value&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
+invalid value
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34; name=&#34;customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::signals2::signal&lt;/code&gt;クラスの2番目のテンプレート引数&lt;code&gt;Combiner&lt;/code&gt;を変更することで、戻り値のカスタムが可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;numeric&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続された複数の関数の戻り値の合計を戻す&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; T result_type;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; InputIterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+    result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(InputIterator first, InputIterator last) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;( first &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; last ) {
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; result_type();
+        }
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;accumulate(first, last, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;);
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;), &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;45
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34; name=&#34;automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、&lt;code&gt;boost::signals2::signal::slot_type::track&lt;/code&gt;を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。&lt;/p&gt;
+&lt;p&gt;参照: http://www.boost.org/doc/libs/relaease/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/make_shared.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Fuga&lt;/span&gt;{};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Hoge&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; Func(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;){
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Hoge::func()&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; signal_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal型 &lt;/span&gt;
+    signal_type sig;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal オブジェクト &lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga fuga;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 引数用 &lt;/span&gt;
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block start.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// shared_ptrで管理しているオブジェクトのメンバ関数を登録  &lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_typeはbindのように引数の部分適用が可能.&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_type::trackにスマートポインタを渡す事で&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オブジェクトが破棄されるタイミングで切断される &lt;/span&gt;
+        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;shared_ptr&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; hoge &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_shared&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+        sig.connect(
+            signal_type&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;slot_type(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;Func, hoge.get(), _1).track(hoge) 
+        );
+        sig(fuga);        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 登録した関数が正しく呼ばれる &lt;/span&gt;
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block end.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される &lt;/span&gt;
+    sig(fuga);  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 切断後なので何もしない  &lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;block start.
+Hoge::func()
+block end.
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>P-tan</name>
+        <email>ptanmail@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>シグナル／スロット -- 自動コネクション管理の項目追加</title>
+      <link href="http://boostjp.github.io/tips/signals.html"/>
+      <id>70e93a02d50928f0bfba610b0effe47798541cb8:tips/signals.md</id>
+      <updated>2015-04-21 09:42:03 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シグナル／スロット&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;イベント処理などで使われるシグナル／スロットには、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/signals2.html&#34; target=&#34;_blank&#34;&gt;Boost Signals2 Library&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#connect-multiple-functions&#34; name=&#34;connect-multiple-functions&#34;&gt;複数の関数を登録する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Signals2のシグナルには、&lt;code&gt;connect()&lt;/code&gt;関数によって、複数の関数を接続することができる。&lt;/p&gt;
+&lt;p&gt;シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;)); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 呼び出し&lt;/span&gt;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントの登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+SubView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#disconnect&#34; name=&#34;disconnect&#34;&gt;スロットを切断する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スロットを切断するには、&lt;code&gt;connect()&lt;/code&gt;関数の戻り値であるコネクションを保持しておき、コネクションの&lt;code&gt;disconnect()&lt;/code&gt;メンバ関数を呼び出すことで、切断する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/bind.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; Point {
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, y;
+    Point(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y) &lt;span style=&#34;color: #666666&#34;&gt;:&lt;/span&gt; x(x), y(y) {}
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Button&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; clicked;
+
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;click&lt;/span&gt;()
+    {
+        clicked(Point(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;));
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;MainView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;MainView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;SubView&lt;/span&gt; {
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; on_clicked(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Point&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt; p)
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;SubView : clicked&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    MainView mainView;
+    SubView subView;
+
+    Button button;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックイベントを登録&lt;/span&gt;
+    button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;MainView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;mainView, _1));
+
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;connection con &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt;
+        button.clicked.connect(boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;bind(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;SubView&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;on_clicked, &lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;subView, _1));
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// SubViewのスロットを切断&lt;/span&gt;
+    con.disconnect();
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// クリックした&lt;/span&gt;
+    button.click();
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;MainView : clicked
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#return-value&#34; name=&#34;return-value&#34;&gt;シグナル呼び出しの戻り値&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の&lt;code&gt;optional&lt;/code&gt;となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/html/boost/signals2/optional_last_value.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;optional_last_value()&lt;/code&gt;&lt;/a&gt;を参照。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// boost::optional&amp;lt;int&amp;gt;が戻ってくる&lt;/span&gt;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt;sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 無効値&lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;optional&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; non_connect_result &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; non_connect_sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;);
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;!&lt;/span&gt;non_connect_result) {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;invalid value&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
+invalid value
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#customize-return-value&#34; name=&#34;customize-return-value&#34;&gt;シグナル呼び出しの戻り値をカスタマイズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::signals2::signal&lt;/code&gt;クラスの2番目のテンプレート引数&lt;code&gt;Combiner&lt;/code&gt;を変更することで、戻り値のカスタムが可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;numeric&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 接続された複数の関数の戻り値の合計を戻す&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; T&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; T result_type;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;template&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typename&lt;/span&gt; InputIterator&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;
+    result_type &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;operator&lt;/span&gt;()(InputIterator first, InputIterator last) &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;if&lt;/span&gt;( first &lt;span style=&#34;color: #666666&#34;&gt;==&lt;/span&gt; last ) {
+            &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; result_type();
+        }
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;accumulate(first, last, &lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;);
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;add&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;+&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;minus&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;-&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;multiply&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;*&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;divide&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; x, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; y)
+{
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;return&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;/&lt;/span&gt; y;
+}
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;(&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;, &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;), &lt;span style=&#34;color:#ff0000&#34;&gt;custom_result_value&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; sig;
+
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;add);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;minus);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;multiply);
+    sig.connect(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;divide);
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; sig(&lt;span style=&#34;color: #666666&#34;&gt;10&lt;/span&gt;, &lt;span style=&#34;color: #666666&#34;&gt;2&lt;/span&gt;) &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;45
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/signals.html#automatic-connection-management&#34; name=&#34;automatic-connection-management&#34;&gt;自動コネクション管理&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、&lt;code&gt;boost::signals2::signal::slot_type::track&lt;/code&gt;を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。&lt;/p&gt;
+&lt;p&gt;参照: http://www.boost.org/doc/libs/1_58_0/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/signals2/signal.hpp&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/make_shared.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Fuga&lt;/span&gt;{};
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #0000FF; font-weight: bold&#34;&gt;Hoge&lt;/span&gt;
+{
+&lt;span style=&#34;color: #A0A000&#34;&gt;public:&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt; Func(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;){
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;Hoge::func()&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+};
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;(){
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;typedef&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signals2&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;signal&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;void&lt;/span&gt;(&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;)&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; signal_type; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal型 &lt;/span&gt;
+    signal_type sig;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal オブジェクト &lt;/span&gt;
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; Fuga fuga;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 引数用 &lt;/span&gt;
+    {
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block start.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// shared_ptrで管理しているオブジェクトのメンバ関数を登録  &lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_typeはbindのように引数の部分適用が可能.&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// signal::slot_type::trackにスマートポインタを渡す事で&lt;/span&gt;
+        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// オブジェクトが破棄されるタイミングで切断される &lt;/span&gt;
+        boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;shared_ptr&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt; hoge &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;make_shared&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;();
+        sig.connect(
+            signal_type&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;slot_type(&lt;span style=&#34;color: #666666&#34;&gt;&amp;amp;&lt;/span&gt;Hoge&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;Func, hoge.get(), _1).track(hoge) 
+        );
+        sig(fuga);        &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 登録した関数が正しく呼ばれる &lt;/span&gt;
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #BA2121&#34;&gt;&#34;block end.&#34;&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }   &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される &lt;/span&gt;
+    sig(fuga);  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 切断後なので何もしない  &lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;実行結果：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;block start.
+Hoge::func()
+block end.
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>P-tan</name>
+        <email>ptanmail@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost.勉強会 #17 東京 -- Boost.勉強会 #17のタイムテーブルを更新。発表者が埋まった。</title>
@@ -103,831 +1283,6 @@
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost.勉強会 -- Boost.勉強会 #17 東京のページを作成</title>
-      <link href="http://boostjp.github.io/study_meeting.html"/>
-      <id>9fd3ffe16effc4958a7e52ef7d2b872e064aed16:study_meeting.md</id>
-      <updated>2015-04-20 15:05:22 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost.勉強会&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;a href=&#34;http://www.boost.org/&#34; target=&#34;_blank&#34;&gt;Boost C++ Libraries&lt;/a&gt;という、C++の有名なライブラリ群を中心とした、C++全般の勉強会です。&lt;/p&gt;
-&lt;p&gt;Boostに限らず、C++全般の話、QtやOpenCVのような他のライブラリ、自分が作ったプログラムの紹介、その他C++プログラマに知っておいてもらいたいことの紹介(データ構造やアルゴリズム、イディオム、プログラムの設計やデザインパターン、他の言語での考え方やアプローチ)など、幅広いテーマを扱っています。 &lt;/p&gt;
-&lt;p&gt;このページでは、開催履歴やネタ帳を置いていきます。&lt;/p&gt;
-&lt;h2&gt;Boost.勉強会の主催者は誰？&lt;/h2&gt;
-&lt;p&gt;Boost.勉強会は、各地のやる気のある人が主催しています。&lt;/p&gt;
-&lt;p&gt;「自分のいる地域でもBoost.勉強会を開催したい」という方や、「自分が開催している勉強会をBoost.勉強会という名前にしたい」という方は、&lt;a href=&#34;https://groups.google.com/group/boostjp&#34; target=&#34;_blank&#34;&gt;boostjp Google Group&lt;/a&gt;や、Twitterの&lt;a href=&#34;http://twitter.com/search?q=%23boostjp&#34; target=&#34;_blank&#34;&gt;#boostjp&lt;/a&gt;ハッシュタグでご相談ください。 &lt;/p&gt;
-&lt;p&gt;各地の主催者は、&lt;a href=&#34;http://boostjp.github.io/the-team.html&#34;&gt;運営メンバページ&lt;/a&gt;に記載してあります。&lt;/p&gt;
-&lt;h2&gt;英語表記&lt;/h2&gt;
-&lt;p&gt;Boost.勉強会の英語表記は「Boost.StudyMeeting」です。英語圏でもぜひBoost.勉強会を紹介してください。&lt;/p&gt;
-&lt;h2&gt;その他、Boost.勉強会情報&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/idea.html&#34;&gt;ネタ帳&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style=&#34;color:red;&#34;&gt;↑みんな書いてね！&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/reversed_index.html&#34;&gt;ライブラリ逆引き&lt;/a&gt; (どの回でどのライブラリが誰によって発表されたかの表）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/code_of_conduct.html&#34;&gt;行動規範&lt;/a&gt; (Boost.勉強会の参加者に守ってほしいこと)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;開催予定&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study17.html&#34;&gt;Boost.勉強会 #17 東京 (2015/05/30(土))&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;開催履歴&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study1.html&#34;&gt;Boost.勉強会 #1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study2.html&#34;&gt;Boost.勉強会 #2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study3.html&#34;&gt;Boost.勉強会 #3 関西&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-nagoya.html&#34;&gt;Boost.忘年会 2010@名古屋(2010/12/04(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-sapporo.html&#34;&gt;Boost.忘年会 2010@札幌(2010/12/10(金))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-tokyo.html&#34;&gt;Boost.忘年会 2010@東京(2010/12/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://atnd.org/events/10128&#34; target=&#34;_blank&#34;&gt;Boost.忘年会 2010@関西(2010/12/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study4.html&#34;&gt;Boost.勉強会 #4 東京&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study5.html&#34;&gt;Boost.勉強会 #5 名古屋(2011/5/14)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study6.html&#34;&gt;Boost.勉強会 #6 札幌 (2011/11/05(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study7.html&#34;&gt;Boost.勉強会 #7 東京 (2011/12/03(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study8.html&#34;&gt;Boost.勉強会 #8 大阪 (2012/02/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study9.html&#34;&gt;Boost.勉強会 #9 つくば (2012/05/26(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study10.html&#34;&gt;Boost.勉強会 #10 東京(2012/07/28(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study11.html&#34;&gt;Boost.勉強会 #11 東京(2013/06/01(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study12.html&#34;&gt;Boost.勉強会 #12 大阪(2013/06/22(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study13.html&#34;&gt;Boost.勉強会 #13 仙台(2013/10/19)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study14.html&#34;&gt;Boost.勉強会 #14 東京 (2014/03/01(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study15.html&#34;&gt;Boost.勉強会 #15 札幌 (2014/05/24(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study16.html&#34;&gt;Boost.勉強会 #16 大阪 (2014/09/20(土))&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost.勉強会 #17 東京 -- Boost.勉強会 #17 東京のページを作成</title>
-      <link href="http://boostjp.github.io/study_meeting/study17.html"/>
-      <id>9fd3ffe16effc4958a7e52ef7d2b872e064aed16:study_meeting/study17.md</id>
-      <updated>2015-04-20 15:05:22 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost.勉強会 #17 東京&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;h2&gt;開催日時&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;2015/05/30(土) 11:00〜18:00&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;開催場所&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;株式会社インターネットイニシアティブ (IIJ) 本社&lt;/li&gt;
-&lt;li&gt;〒102-0071 東京都千代田区富士見2-10-2 飯田橋グラン・ブルーム 13F&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;募集ページ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://connpass.com/event/14355/&#34; target=&#34;_blank&#34;&gt;Boost.勉強会 #17 東京 - connpass&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;主催者&amp;amp;スタッフ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;高橋 晶(@cpp_akira)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;タイムテーブル&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;時間&lt;/th&gt;
-&lt;th&gt;発表内容&lt;/th&gt;
-&lt;th&gt;発表者&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;10:30〜&lt;/td&gt;
-&lt;td&gt;開場&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;11:00〜11:10&lt;/td&gt;
-&lt;td&gt;オープニング。Boost.勉強会について。会場の諸注意&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;11:10〜11:40&lt;/td&gt;
-&lt;td&gt;Boostライブラリ一周の旅 1.54.0-1.58.0&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;12:00〜12:30&lt;/td&gt;
-&lt;td&gt;(募集中)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;12:30〜13:45&lt;/td&gt;
-&lt;td&gt;昼休み&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;13:45〜14:15&lt;/td&gt;
-&lt;td&gt;(募集中)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14:30〜15:00&lt;/td&gt;
-&lt;td&gt;(募集中)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;15:15〜15:45&lt;/td&gt;
-&lt;td&gt;(募集中)&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;16:00〜16:30&lt;/td&gt;
-&lt;td&gt;(MessagePack for C++関係の話)&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/redboltz&#34; target=&#34;_blank&#34;&gt;redboltz&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;16:45〜17:15&lt;/td&gt;
-&lt;td&gt;Boost.Containerの特徴&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;17:30〜18:00&lt;/td&gt;
-&lt;td&gt;C++11やEmscriptenと付き合って１年間の振り返り(仮)&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/kou_yeung&#34; target=&#34;_blank&#34;&gt;kou_yeung&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/paosidufygthrj&#34; target=&#34;_blank&#34;&gt;paosidufygthrj&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;Twitterハッシュタグ&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://twitter.com/search?q=%23boostjp&#34; target=&#34;_blank&#34;&gt;#boostjp&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost.勉強会 -- Boost.勉強会の行動規範を追加。</title>
-      <link href="http://boostjp.github.io/study_meeting.html"/>
-      <id>0c5e5cf1d8351f2331e93f7616fe1174b688d2f7:study_meeting.md</id>
-      <updated>2015-04-10 15:13:02 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost.勉強会&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;a href=&#34;http://www.boost.org/&#34; target=&#34;_blank&#34;&gt;Boost C++ Libraries&lt;/a&gt;という、C++の有名なライブラリ群を中心とした、C++全般の勉強会です。&lt;/p&gt;
-&lt;p&gt;Boostに限らず、C++全般の話、QtやOpenCVのような他のライブラリ、自分が作ったプログラムの紹介、その他C++プログラマに知っておいてもらいたいことの紹介(データ構造やアルゴリズム、イディオム、プログラムの設計やデザインパターン、他の言語での考え方やアプローチ)など、幅広いテーマを扱っています。 &lt;/p&gt;
-&lt;p&gt;このページでは、開催履歴やネタ帳を置いていきます。&lt;/p&gt;
-&lt;h2&gt;Boost.勉強会の主催者は誰？&lt;/h2&gt;
-&lt;p&gt;Boost.勉強会は、各地のやる気のある人が主催しています。&lt;/p&gt;
-&lt;p&gt;「自分のいる地域でもBoost.勉強会を開催したい」という方や、「自分が開催している勉強会をBoost.勉強会という名前にしたい」という方は、&lt;a href=&#34;https://groups.google.com/group/boostjp&#34; target=&#34;_blank&#34;&gt;boostjp Google Group&lt;/a&gt;や、Twitterの&lt;a href=&#34;http://twitter.com/search?q=%23boostjp&#34; target=&#34;_blank&#34;&gt;#boostjp&lt;/a&gt;ハッシュタグでご相談ください。 &lt;/p&gt;
-&lt;p&gt;各地の主催者は、&lt;a href=&#34;http://boostjp.github.io/the-team.html&#34;&gt;運営メンバページ&lt;/a&gt;に記載してあります。&lt;/p&gt;
-&lt;h2&gt;英語表記&lt;/h2&gt;
-&lt;p&gt;Boost.勉強会の英語表記は「Boost.StudyMeeting」です。英語圏でもぜひBoost.勉強会を紹介してください。&lt;/p&gt;
-&lt;h2&gt;その他、Boost.勉強会情報&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/idea.html&#34;&gt;ネタ帳&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;span style=&#34;color:red;&#34;&gt;↑みんな書いてね！&lt;/span&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/reversed_index.html&#34;&gt;ライブラリ逆引き&lt;/a&gt; (どの回でどのライブラリが誰によって発表されたかの表）&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/code_of_conduct.html&#34;&gt;行動規範&lt;/a&gt; (Boost.勉強会の参加者に守ってほしいこと)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;開催予定&lt;/h3&gt;
-&lt;h3&gt;開催履歴&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study1.html&#34;&gt;Boost.勉強会 #1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study2.html&#34;&gt;Boost.勉強会 #2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study3.html&#34;&gt;Boost.勉強会 #3 関西&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-nagoya.html&#34;&gt;Boost.忘年会 2010@名古屋(2010/12/04(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-sapporo.html&#34;&gt;Boost.忘年会 2010@札幌(2010/12/10(金))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/year-end-party2010-tokyo.html&#34;&gt;Boost.忘年会 2010@東京(2010/12/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://atnd.org/events/10128&#34; target=&#34;_blank&#34;&gt;Boost.忘年会 2010@関西(2010/12/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study4.html&#34;&gt;Boost.勉強会 #4 東京&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study5.html&#34;&gt;Boost.勉強会 #5 名古屋(2011/5/14)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study6.html&#34;&gt;Boost.勉強会 #6 札幌 (2011/11/05(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study7.html&#34;&gt;Boost.勉強会 #7 東京 (2011/12/03(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study8.html&#34;&gt;Boost.勉強会 #8 大阪 (2012/02/11(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study9.html&#34;&gt;Boost.勉強会 #9 つくば (2012/05/26(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study10.html&#34;&gt;Boost.勉強会 #10 東京(2012/07/28(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study11.html&#34;&gt;Boost.勉強会 #11 東京(2013/06/01(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study12.html&#34;&gt;Boost.勉強会 #12 大阪(2013/06/22(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study13.html&#34;&gt;Boost.勉強会 #13 仙台(2013/10/19)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study14.html&#34;&gt;Boost.勉強会 #14 東京 (2014/03/01(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study15.html&#34;&gt;Boost.勉強会 #15 札幌 (2014/05/24(土))&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/study_meeting/study16.html&#34;&gt;Boost.勉強会 #16 大阪 (2014/09/20(土))&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>行動規範(Code of Conduct) -- Boost.勉強会の行動規範を追加。</title>
-      <link href="http://boostjp.github.io/study_meeting/code_of_conduct.html"/>
-      <id>0c5e5cf1d8351f2331e93f7616fe1174b688d2f7:study_meeting/code_of_conduct.md</id>
-      <updated>2015-04-10 15:13:02 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;行動規範(Code of Conduct)&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;ここでは、Boost.勉強会の参加者がどのような振る舞いをすべきかを記述します。その目的は、参加者間のトラブル防止です。&lt;/p&gt;
-&lt;p&gt;Boost.勉強会の参加者に守ってほしいことは、簡潔にまとめると以下の2点です。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;周りの人々への配慮をしましょう。&lt;/li&gt;
-&lt;li&gt;技術交流の場にふさわしい行動をしましょう。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Boost.勉強会には、様々なバックグラウンドを持つ人々が参加します。デリケートな問題に配慮し、過度な意見の押し付けととられる行動は控えてください。&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boostライブラリのビルド方法 -- ヘッダーオンリーで十分な場合向けに b2 headers の解説をちょこっと追加</title>
-      <link href="http://boostjp.github.io/howtobuild.html"/>
-      <id>2411cc43591ef05ba685a2da341089c8724426c2:howtobuild.md</id>
-      <updated>2015-04-09 12:07:43 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boostライブラリのビルド方法&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;ここではBoostライブラリのビルド方法について説明します。&lt;/p&gt;
-&lt;p&gt;Windowsとそれ以外に分けて説明します。また、LinuxではBoostライブラリがディストリビューションによって提供されていることがありますが、ここではビルド方法のみを扱います。&lt;/p&gt;
-&lt;p&gt;1.47.0からbjamだけではなく、b2も生成されるようになりました。また、公式がbjamからb2での説明に切り替わっています。なので、こちらもそれに合わせることにします。&lt;/p&gt;
-&lt;h2&gt;ダウンロード&lt;/h2&gt;
-&lt;p&gt;現在の最新バージョンは、以下からダウンロードできます：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/download/#live&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/download/#live&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;開発バージョンは、Githubから取得できます：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Github から clone する場合、具体的には &lt;a href=&#34;https://github.com/boostorg/boost&#34; target=&#34;_blank&#34;&gt;boostorg/boost&lt;/a&gt; を clone し、実際の Boost ライブラリ群は &lt;code&gt;git submodule&lt;/code&gt; で扱います。新たに clone する場合は次のように &lt;code&gt;--recursive&lt;/code&gt; オプションを付けて clone します。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;git clone --recursive git@github.com:boostorg/boost.git
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;もし、 &lt;code&gt;--recursive&lt;/code&gt; せずに clone した場合や、&lt;code&gt;checkout&lt;/code&gt; に伴い必要な場合には次のようにします。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;cd boost
-git submodule --init --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;Windowsの場合&lt;/h2&gt;
-&lt;p&gt;手順はここ(&lt;a href=&#34;http://www.boost.org/doc/libs/release/more/getting_started/windows.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/release/more/getting_started/windows.html&lt;/a&gt;)に書かれていますのでそれを翻訳します。&lt;/p&gt;
-&lt;p&gt;解凍したディレクトリに移動します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; cd (解凍したディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;以下のコマンドを実行します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; bootstrap.bat
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;すると、b2.exe,bjam.exeが生成されます。&lt;/p&gt;
-&lt;p&gt;単になんの指定もしないビルドでは：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; b2.exe install -j2 --prefix=(インストールしたいディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;となります。これでビルドし、インストールされるのを待つだけです。&lt;/p&gt;
-&lt;p&gt;Vista/7以降のWindows OSを使っている場合は、&lt;code&gt;--prefix=&lt;/code&gt;で指定するディレクトリにはProgram FilesのようなCドライブの管理者権限が必要になるディレクトリは避けてください。権限がない場合はインストールに失敗しますのでご注意を。&lt;/p&gt;
-&lt;h2&gt;Windows以外、Linux/Macなどの場合&lt;/h2&gt;
-&lt;p&gt;手順はここ(&lt;a href=&#34;http://www.boost.org/doc/libs/release/more/getting_started/unix-variants.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/release/more/getting_started/unix-variants.html&lt;/a&gt;)に書かれているのでそれを翻訳します。&lt;/p&gt;
-&lt;p&gt;解凍したディレクトリに移動します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ cd (解凍したディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;以下のコマンドを実行します：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ bootstrap.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;これで実行可能ファイルのbjamおよびb2が生成されます。&lt;/p&gt;
-&lt;p&gt;単になんの指定もしないビルドでは：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ ./b2 install -j2 --prefix=(インストールしたいディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;となります。&lt;/p&gt;
-&lt;p&gt;Linuxを使っており、ディストリビューション提供のboostライブラリをインストールしている場合は、&lt;code&gt;--prefix&lt;/code&gt;で&lt;u&gt;&lt;code&gt;/usr&lt;/code&gt;以外を必ず指定&lt;/u&gt;してください。&lt;code&gt;--prefix&lt;/code&gt;を省略した場合&lt;code&gt;/usr/local&lt;/code&gt;が選択されますが、多くの環境では$PATHの解決順序の関係上無条件で/usr/local上のBoostが選択されてしまうでしょう。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/usr&lt;/code&gt;以下を使用すると環境を壊すことになりかねないので、通常は&lt;code&gt;$HOME/local&lt;/code&gt;や&lt;code&gt;$HOME/boost_1_51_0&lt;/code&gt;といったディレクトリを用意するのが良いでしょう。&lt;/p&gt;
-&lt;p&gt;一部のディストリビューションでは$HOME/localを$PATHにデフォルトで登録しているものもあるので、複数人で共用している場合には便利です。&lt;/p&gt;
-&lt;h3&gt;ヘッダーオンリーで使う場合&lt;/h3&gt;
-&lt;p&gt;事前にビルドの必要の無い、またはマクロによりヘッダーオンリーで使用可能なライブラリーのみを使いたい場合には、 &lt;code&gt;bootstrap&lt;/code&gt; を実行の後、&lt;code&gt;b2&lt;/code&gt; へ &lt;code&gt;headers&lt;/code&gt; を引数として渡す事で、インクルード用のヘッダーファイル構造のみ構築できます。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;./b2 headers
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h3&gt;並列ビルド&lt;/h3&gt;
-&lt;p&gt;一般的なmake同様に、複数CPUを使ってビルドできます。&lt;code&gt;-j 8&lt;/code&gt;のように、&lt;code&gt;-j N&lt;/code&gt;と指定するとN個並列でビルド処理が実行されます。&lt;strong&gt;これを指定しないとビルドが非常に遅くなるので、基本的に常に指定することをおすすめします。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Nの数は、一般的にはCPUの物理コア数または物理コア数+1を指定することが多いようです。経験的に+1することでIO waitが隠蔽されるのを期待できます。&lt;/p&gt;
-&lt;p&gt;ノートPCだと熱が大変なことになるので、気になるようなら少し少なめにしても良いかもしれません。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;※ここからは完全に蛇足です。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;b2/bjamが受け取るコマンド&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;b2 --help&lt;/code&gt;では多くのユーザーが期待するヘルプを参照することはできません。&lt;/p&gt;
-&lt;p&gt;b2およびbjamに関するヘルプを参照するにはboostを解凍したディレクトリ上で&lt;code&gt;b2 --help&lt;/code&gt;を行なってください。&lt;/p&gt;
-&lt;p&gt;以下に紹介するb2/bjamへの引数に順序はありません。どのような順で指定しても正しく解釈されます。&lt;/p&gt;
-&lt;p&gt;コマンドラインの例:&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;./b2 toolset=msvc link=static,shared address-model=64 install
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3&gt;プロパティ&lt;/h3&gt;
-&lt;h4&gt;toolset&lt;/h4&gt;
-&lt;p&gt;ひとつのマシンに複数種類のコンパイラがインストールされている場合はtoolsetコマンドで指定ができます。例えば、以下の指定が可能です。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;コンパイラ指定&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;borland&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Borland社のコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;dmc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Digital Mars社のコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;darwin&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Apple社の手によるgccコンパイラ(Mac OS)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;gcc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;GNU プロジェクトによるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;intel&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Intel社によるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;msvc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Microsoft社によるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;msvc-9.0 (Visual C++ 2008)、msvc-10.0 (Visual C++ 2010)のように、コンパイラのバージョン指定も可能です。&lt;/p&gt;
-&lt;h4&gt;link&lt;/h4&gt;
-&lt;p&gt;これはstatic, sharedライブラリを作るかどうかの指定をするコマンドです。以下のように指定して使用します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static,shared
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;環境によって、以下のようなライブラリファイルを生成します。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;Windows&lt;/th&gt;
-&lt;th&gt;Mac OSX&lt;/th&gt;
-&lt;th&gt;Other Systems&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;static&lt;/td&gt;
-&lt;td&gt;.lib&lt;/td&gt;
-&lt;td&gt;.a&lt;/td&gt;
-&lt;td&gt;.a&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;shared&lt;/td&gt;
-&lt;td&gt;.dll&lt;/td&gt;
-&lt;td&gt;.dylib&lt;/td&gt;
-&lt;td&gt;.so&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4&gt;threading&lt;/h4&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;multi&lt;/td&gt;
-&lt;td&gt;マルチスレッドなライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;single&lt;/td&gt;
-&lt;td&gt;シングルスレッドなライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;筆者の環境ではsingleがエラーが出てコンパイルできなかった。 (~~&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/7105&#34; target=&#34;_blank&#34;&gt;#7105&lt;/a&gt;~~)&lt;/p&gt;
-&lt;p&gt;trunkで修正済み 1.53.0で修正されると思われる&lt;/p&gt;
-&lt;h4&gt;variant&lt;/h4&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;debug&lt;/td&gt;
-&lt;td&gt;デバッグビルドを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;release&lt;/td&gt;
-&lt;td&gt;リリースビルドを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4&gt;デフォルトプロパティ&lt;/h4&gt;
-&lt;p&gt;Windows環境においてはデフォルトで以下のプロパティが使用されます。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static threading=multi variant=debug,release runtime-link=shared
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;Linux環境においてはデフォルトで以下のプロパティが使用されます。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static,shared threading=multi variant=release
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;その他の環境についてはアンドキュメントとなっているので注意してください。&lt;/p&gt;
-&lt;h3&gt;アーキテクチャ&lt;/h3&gt;
-&lt;p&gt;ターゲットアーキテクチャが異なる場合には、b2/bjamに&lt;code&gt;architecture=&amp;lt;target-architecture&amp;gt;&lt;/code&gt;を指定すればよい。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;target-architecture&amp;gt;&lt;/code&gt;に指定できる値は以下のとおりです。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;x86&lt;/td&gt;
-&lt;td&gt;IA-32/x86_64向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ia64&lt;/td&gt;
-&lt;td&gt;IA-64向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;arm&lt;/td&gt;
-&lt;td&gt;Arm向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;power&lt;/td&gt;
-&lt;td&gt;Power-PC向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;sparc&lt;/td&gt;
-&lt;td&gt;Sparc向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;ただしtoolsetによってはサポートされていない場合があります。&lt;/p&gt;
-&lt;h3&gt;アドレスモデル&lt;/h3&gt;
-&lt;p&gt;異なるアドレスモデルでビルドするにはb2/bjamに以下を指定する。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;address-model=32&lt;/td&gt;
-&lt;td&gt;32ビットのライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;address-model=64&lt;/td&gt;
-&lt;td&gt;64ビットのライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;レイアウト&lt;/h3&gt;
-&lt;p&gt;Boostをビルドする際にb2/bjamが生成するバイナリファイル名はデフォルトで環境によって異なります。&lt;/p&gt;
-&lt;p&gt;これは&lt;code&gt;--layout=&amp;lt;layout&amp;gt;&lt;/code&gt;を渡すことで変更できます。&lt;code&gt;&amp;lt;layout&amp;gt;&lt;/code&gt;に渡すことのできる値は以下のとおりです。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;versioned&lt;/td&gt;
-&lt;td&gt;バイナリファイル名にバージョンが入ります。Windowsではデフォルトでversionedが選択されます。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;tagged&lt;/td&gt;
-&lt;td&gt;ビルド時に指定したプロパティ（variantやthreading等）がバイナリファイル名に含まれます。ただし、コンパイラ名、コンパイラのバージョン、Boostのバージョンは入りません。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;system&lt;/td&gt;
-&lt;td&gt;システムへインテグレートするためにバージョン番号などは入りません。Unixではデフォルトでsystemが選択されます。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;ビルドのクリーン&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;--clean&lt;/code&gt;を渡すことでビルドをクリーンすることが可能です。&lt;/p&gt;
-&lt;p&gt;ただし、b2/bjamはプロパティなどの差から異なるビルドを生成します。その為クリーン対象のビルドと同一のプロパティを指定した上で&lt;code&gt;--clean&lt;/code&gt;を渡す必要があります。&lt;/p&gt;
-&lt;h3&gt;コンパイラオプション、リンカオプション&lt;/h3&gt;
-&lt;p&gt;ビルドする際にコンパイラやリンカにオプションを渡す必要がある場合は、b2/bjamの引数に以下を指定できます。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;cflags=(Cコンパイラオプション)&lt;/li&gt;
-&lt;li&gt;cxxflags=(C++コンパイラオプション)&lt;/li&gt;
-&lt;li&gt;linkflags=(リンカオプション)&lt;/li&gt;
-&lt;li&gt;define=(プリプロセッサシンボル）&lt;/li&gt;
-&lt;li&gt;include=(追加インクルードパス）&lt;/li&gt;
-&lt;li&gt;library-path=(追加ライブラリパス）&lt;/li&gt;
-&lt;li&gt;library-file=(追加オブジェクトファイル）&lt;/li&gt;
-&lt;li&gt;find-static-library=(静的ライブラリ）&lt;/li&gt;
-&lt;li&gt;find-shared-library=(動的ライブラリ）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;この他にも多くのオプションを指定することができますが、toolsetによってはサポートされていないものもあります。&lt;/p&gt;
-&lt;h3&gt;特定のライブラリだけビルドする/ビルドしない&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;--with-&lt;/code&gt;&lt;em&gt;library&lt;/em&gt; や &lt;code&gt;--without-&lt;/code&gt;&lt;em&gt;library&lt;/em&gt; と書くことで、特定のライブラリだけビルドする/ビルドしないを切り替えられます。&lt;/p&gt;
-&lt;p&gt;例えば &lt;code&gt;--with-python&lt;/code&gt; とすれば、python ライブラリだけをビルドします。 &lt;code&gt;--without-iostreams&lt;/code&gt; とすれば、iostreams ライブラリをビルドしません。&lt;/p&gt;
-&lt;p&gt;documented boost version is 1.53.0&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Usagi Ito</name>
-        <email>usagi@WonderRabbitProject.net</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boostライブラリのビルド方法 -- Githubからのビルド方法について具体的な解説を追加。若干の表現の統一</title>
-      <link href="http://boostjp.github.io/howtobuild.html"/>
-      <id>fabfc3902073240910c6879ab6221437b7fa4b35:howtobuild.md</id>
-      <updated>2015-04-09 11:58:10 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boostライブラリのビルド方法&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;ここではBoostライブラリのビルド方法について説明します。&lt;/p&gt;
-&lt;p&gt;Windowsとそれ以外に分けて説明します。また、LinuxではBoostライブラリがディストリビューションによって提供されていることがありますが、ここではビルド方法のみを扱います。&lt;/p&gt;
-&lt;p&gt;1.47.0からbjamだけではなく、b2も生成されるようになりました。また、公式がbjamからb2での説明に切り替わっています。なので、こちらもそれに合わせることにします。&lt;/p&gt;
-&lt;h2&gt;ダウンロード&lt;/h2&gt;
-&lt;p&gt;現在の最新バージョンは、以下からダウンロードできます：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/download/#live&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/download/#live&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;開発バージョンは、Githubから取得できます：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Github から clone する場合、具体的には &lt;a href=&#34;https://github.com/boostorg/boost&#34; target=&#34;_blank&#34;&gt;boostorg/boost&lt;/a&gt; を clone し、実際の Boost ライブラリ群は &lt;code&gt;git submodule&lt;/code&gt; で扱います。新たに clone する場合は次のように &lt;code&gt;--recursive&lt;/code&gt; オプションを付けて clone します。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;git clone --recursive git@github.com:boostorg/boost.git
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;もし、 &lt;code&gt;--recursive&lt;/code&gt; せずに clone した場合や、&lt;code&gt;checkout&lt;/code&gt; に伴い必要な場合には次のようにします。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;cd boost
-git submodule --init --recursive
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;Windowsの場合&lt;/h2&gt;
-&lt;p&gt;手順はここ(&lt;a href=&#34;http://www.boost.org/doc/libs/release/more/getting_started/windows.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/release/more/getting_started/windows.html&lt;/a&gt;)に書かれていますのでそれを翻訳します。&lt;/p&gt;
-&lt;p&gt;解凍したディレクトリに移動します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; cd (解凍したディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;以下のコマンドを実行します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; bootstrap.bat
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;すると、b2.exe,bjam.exeが生成されます。&lt;/p&gt;
-&lt;p&gt;単になんの指定もしないビルドでは：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;&amp;gt; b2.exe install -j2 --prefix=(インストールしたいディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;となります。これでビルドし、インストールされるのを待つだけです。&lt;/p&gt;
-&lt;p&gt;Vista/7以降のWindows OSを使っている場合は、&lt;code&gt;--prefix=&lt;/code&gt;で指定するディレクトリにはProgram FilesのようなCドライブの管理者権限が必要になるディレクトリは避けてください。権限がない場合はインストールに失敗しますのでご注意を。&lt;/p&gt;
-&lt;h2&gt;Windows以外、Linux/Macなどの場合&lt;/h2&gt;
-&lt;p&gt;手順はここ(&lt;a href=&#34;http://www.boost.org/doc/libs/release/more/getting_started/unix-variants.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/doc/libs/release/more/getting_started/unix-variants.html&lt;/a&gt;)に書かれているのでそれを翻訳します。&lt;/p&gt;
-&lt;p&gt;解凍したディレクトリに移動します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ cd (解凍したディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;以下のコマンドを実行します：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ bootstrap.sh
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;これで実行可能ファイルのbjamおよびb2が生成されます。&lt;/p&gt;
-&lt;p&gt;単になんの指定もしないビルドでは：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;$ ./b2 install -j2 --prefix=(インストールしたいディレクトリ)
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;となります。&lt;/p&gt;
-&lt;p&gt;Linuxを使っており、ディストリビューション提供のboostライブラリをインストールしている場合は、&lt;code&gt;--prefix&lt;/code&gt;で&lt;u&gt;&lt;code&gt;/usr&lt;/code&gt;以外を必ず指定&lt;/u&gt;してください。&lt;code&gt;--prefix&lt;/code&gt;を省略した場合&lt;code&gt;/usr/local&lt;/code&gt;が選択されますが、多くの環境では$PATHの解決順序の関係上無条件で/usr/local上のBoostが選択されてしまうでしょう。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;/usr&lt;/code&gt;以下を使用すると環境を壊すことになりかねないので、通常は&lt;code&gt;$HOME/local&lt;/code&gt;や&lt;code&gt;$HOME/boost_1_51_0&lt;/code&gt;といったディレクトリを用意するのが良いでしょう。&lt;/p&gt;
-&lt;p&gt;一部のディストリビューションでは$HOME/localを$PATHにデフォルトで登録しているものもあるので、複数人で共用している場合には便利です。&lt;/p&gt;
-&lt;h3&gt;並列ビルド&lt;/h3&gt;
-&lt;p&gt;一般的なmake同様に、複数CPUを使ってビルドできます。&lt;code&gt;-j 8&lt;/code&gt;のように、&lt;code&gt;-j N&lt;/code&gt;と指定するとN個並列でビルド処理が実行されます。&lt;strong&gt;これを指定しないとビルドが非常に遅くなるので、基本的に常に指定することをおすすめします。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Nの数は、一般的にはCPUの物理コア数または物理コア数+1を指定することが多いようです。経験的に+1することでIO waitが隠蔽されるのを期待できます。&lt;/p&gt;
-&lt;p&gt;ノートPCだと熱が大変なことになるので、気になるようなら少し少なめにしても良いかもしれません。&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;&lt;strong&gt;※ここからは完全に蛇足です。&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;b2/bjamが受け取るコマンド&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;b2 --help&lt;/code&gt;では多くのユーザーが期待するヘルプを参照することはできません。&lt;/p&gt;
-&lt;p&gt;b2およびbjamに関するヘルプを参照するにはboostを解凍したディレクトリ上で&lt;code&gt;b2 --help&lt;/code&gt;を行なってください。&lt;/p&gt;
-&lt;p&gt;以下に紹介するb2/bjamへの引数に順序はありません。どのような順で指定しても正しく解釈されます。&lt;/p&gt;
-&lt;p&gt;コマンドラインの例:&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;./b2 toolset=msvc link=static,shared address-model=64 install
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3&gt;プロパティ&lt;/h3&gt;
-&lt;h4&gt;toolset&lt;/h4&gt;
-&lt;p&gt;ひとつのマシンに複数種類のコンパイラがインストールされている場合はtoolsetコマンドで指定ができます。例えば、以下の指定が可能です。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;コンパイラ指定&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;borland&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Borland社のコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;dmc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Digital Mars社のコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;darwin&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Apple社の手によるgccコンパイラ(Mac OS)&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;gcc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;GNU プロジェクトによるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;intel&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Intel社によるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;msvc&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Microsoft社によるコンパイラ&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;msvc-9.0 (Visual C++ 2008)、msvc-10.0 (Visual C++ 2010)のように、コンパイラのバージョン指定も可能です。&lt;/p&gt;
-&lt;h4&gt;link&lt;/h4&gt;
-&lt;p&gt;これはstatic, sharedライブラリを作るかどうかの指定をするコマンドです。以下のように指定して使用します。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static,shared
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;環境によって、以下のようなライブラリファイルを生成します。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;&lt;/th&gt;
-&lt;th&gt;Windows&lt;/th&gt;
-&lt;th&gt;Mac OSX&lt;/th&gt;
-&lt;th&gt;Other Systems&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;static&lt;/td&gt;
-&lt;td&gt;.lib&lt;/td&gt;
-&lt;td&gt;.a&lt;/td&gt;
-&lt;td&gt;.a&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;shared&lt;/td&gt;
-&lt;td&gt;.dll&lt;/td&gt;
-&lt;td&gt;.dylib&lt;/td&gt;
-&lt;td&gt;.so&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4&gt;threading&lt;/h4&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;multi&lt;/td&gt;
-&lt;td&gt;マルチスレッドなライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;single&lt;/td&gt;
-&lt;td&gt;シングルスレッドなライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;筆者の環境ではsingleがエラーが出てコンパイルできなかった。 (~~&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/7105&#34; target=&#34;_blank&#34;&gt;#7105&lt;/a&gt;~~)&lt;/p&gt;
-&lt;p&gt;trunkで修正済み 1.53.0で修正されると思われる&lt;/p&gt;
-&lt;h4&gt;variant&lt;/h4&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;debug&lt;/td&gt;
-&lt;td&gt;デバッグビルドを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;release&lt;/td&gt;
-&lt;td&gt;リリースビルドを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h4&gt;デフォルトプロパティ&lt;/h4&gt;
-&lt;p&gt;Windows環境においてはデフォルトで以下のプロパティが使用されます。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static threading=multi variant=debug,release runtime-link=shared
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;Linux環境においてはデフォルトで以下のプロパティが使用されます。&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;link=static,shared threading=multi variant=release
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;その他の環境についてはアンドキュメントとなっているので注意してください。&lt;/p&gt;
-&lt;h3&gt;アーキテクチャ&lt;/h3&gt;
-&lt;p&gt;ターゲットアーキテクチャが異なる場合には、b2/bjamに&lt;code&gt;architecture=&amp;lt;target-architecture&amp;gt;&lt;/code&gt;を指定すればよい。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;&amp;lt;target-architecture&amp;gt;&lt;/code&gt;に指定できる値は以下のとおりです。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;x86&lt;/td&gt;
-&lt;td&gt;IA-32/x86_64向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;ia64&lt;/td&gt;
-&lt;td&gt;IA-64向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;arm&lt;/td&gt;
-&lt;td&gt;Arm向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;power&lt;/td&gt;
-&lt;td&gt;Power-PC向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;sparc&lt;/td&gt;
-&lt;td&gt;Sparc向け&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;ただしtoolsetによってはサポートされていない場合があります。&lt;/p&gt;
-&lt;h3&gt;アドレスモデル&lt;/h3&gt;
-&lt;p&gt;異なるアドレスモデルでビルドするにはb2/bjamに以下を指定する。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;address-model=32&lt;/td&gt;
-&lt;td&gt;32ビットのライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;address-model=64&lt;/td&gt;
-&lt;td&gt;64ビットのライブラリを生成します。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;レイアウト&lt;/h3&gt;
-&lt;p&gt;Boostをビルドする際にb2/bjamが生成するバイナリファイル名はデフォルトで環境によって異なります。&lt;/p&gt;
-&lt;p&gt;これは&lt;code&gt;--layout=&amp;lt;layout&amp;gt;&lt;/code&gt;を渡すことで変更できます。&lt;code&gt;&amp;lt;layout&amp;gt;&lt;/code&gt;に渡すことのできる値は以下のとおりです。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;引数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;versioned&lt;/td&gt;
-&lt;td&gt;バイナリファイル名にバージョンが入ります。Windowsではデフォルトでversionedが選択されます。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;tagged&lt;/td&gt;
-&lt;td&gt;ビルド時に指定したプロパティ（variantやthreading等）がバイナリファイル名に含まれます。ただし、コンパイラ名、コンパイラのバージョン、Boostのバージョンは入りません。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;system&lt;/td&gt;
-&lt;td&gt;システムへインテグレートするためにバージョン番号などは入りません。Unixではデフォルトでsystemが選択されます。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3&gt;ビルドのクリーン&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;--clean&lt;/code&gt;を渡すことでビルドをクリーンすることが可能です。&lt;/p&gt;
-&lt;p&gt;ただし、b2/bjamはプロパティなどの差から異なるビルドを生成します。その為クリーン対象のビルドと同一のプロパティを指定した上で&lt;code&gt;--clean&lt;/code&gt;を渡す必要があります。&lt;/p&gt;
-&lt;h3&gt;コンパイラオプション、リンカオプション&lt;/h3&gt;
-&lt;p&gt;ビルドする際にコンパイラやリンカにオプションを渡す必要がある場合は、b2/bjamの引数に以下を指定できます。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;cflags=(Cコンパイラオプション)&lt;/li&gt;
-&lt;li&gt;cxxflags=(C++コンパイラオプション)&lt;/li&gt;
-&lt;li&gt;linkflags=(リンカオプション)&lt;/li&gt;
-&lt;li&gt;define=(プリプロセッサシンボル）&lt;/li&gt;
-&lt;li&gt;include=(追加インクルードパス）&lt;/li&gt;
-&lt;li&gt;library-path=(追加ライブラリパス）&lt;/li&gt;
-&lt;li&gt;library-file=(追加オブジェクトファイル）&lt;/li&gt;
-&lt;li&gt;find-static-library=(静的ライブラリ）&lt;/li&gt;
-&lt;li&gt;find-shared-library=(動的ライブラリ）&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;この他にも多くのオプションを指定することができますが、toolsetによってはサポートされていないものもあります。&lt;/p&gt;
-&lt;h3&gt;特定のライブラリだけビルドする/ビルドしない&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;--with-&lt;/code&gt;&lt;em&gt;library&lt;/em&gt; や &lt;code&gt;--without-&lt;/code&gt;&lt;em&gt;library&lt;/em&gt; と書くことで、特定のライブラリだけビルドする/ビルドしないを切り替えられます。&lt;/p&gt;
-&lt;p&gt;例えば &lt;code&gt;--with-python&lt;/code&gt; とすれば、python ライブラリだけをビルドします。 &lt;code&gt;--without-iostreams&lt;/code&gt; とすれば、iostreams ライブラリをビルドしません。&lt;/p&gt;
-&lt;p&gt;documented boost version is 1.53.0&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Usagi Ito</name>
-        <email>usagi@WonderRabbitProject.net</email>
       </author>
     </entry>
   
