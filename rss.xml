@@ -2,9 +2,132 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-07-20T22:15:42.601364</updated>
-  <id>221410a6-ec8f-48d3-bd51-31f6c4e674f2</id>
+  <updated>2015-07-20T22:44:06.390918</updated>
+  <id>236d1eb0-57a9-4207-8df6-dfbb142e488e</id>
 
+  
+    <entry>
+      <title>Boost 1.59.0リリースノート -- 1.59リリースノート：Containerを追加</title>
+      <link href="http://boostjp.github.io/document/version/1_59_0.html"/>
+      <id>9b75c593853a6abcb6ca12271aeefa20c431d70f:document/version/1_59_0.md</id>
+      <updated>2015-07-20 22:43:32 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.59.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_59_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_59_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#container&#34;&gt;Container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#container&#34; name=&#34;container&#34;&gt;Container&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/26&#34; target=&#34;_blank&#34;&gt;GitHub #26&lt;/a&gt;: &lt;code&gt;stable_vector::capacity()&lt;/code&gt;のバグを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/timsong-cpp&#34; target=&#34;_blank&#34;&gt;Arindam Mukerjee&lt;/a&gt;に感謝&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/27&#34; target=&#34;_blank&#34;&gt;GitHub #27&lt;/a&gt;: &lt;code&gt;stable_vector::index_of&lt;/code&gt;のdoxygenコメントを修正&lt;/li&gt;
+&lt;li&gt;kariya-mitsuruに感謝&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11380&#34; target=&#34;_blank&#34;&gt;#11380&lt;/a&gt;: &lt;code&gt;gcc&lt;/code&gt;と&lt;code&gt;libc++&lt;/code&gt;の組み合わせ下において&lt;code&gt;std_fwd.hpp&lt;/code&gt;内のコンテナの前方宣言が正しくなかったのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11388&#34; target=&#34;_blank&#34;&gt;#11388&lt;/a&gt;: Visual Studio 2010において&lt;code&gt;boost::container::list::emplace_back&lt;/code&gt;が壊れいていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11339&#34; target=&#34;_blank&#34;&gt;#11339&lt;/a&gt;: &lt;code&gt;VC12 LNK2005 error&lt;/code&gt;が&lt;code&gt;boost::container::adaptive_pool&lt;/code&gt;で起きていたのを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11223&#34; target=&#34;_blank&#34;&gt;#11223&lt;/a&gt; &lt;code&gt;std::integer_sequence&lt;/code&gt;サポートのチェックを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_USE_WINFIBERS&lt;/code&gt;をdefineすると、&lt;code&gt;execution_context&lt;/code&gt;の内部でWindowsのFiberを使用するようにした&lt;/li&gt;
+&lt;li&gt;32ビットWindows上のMinGWでのアセンブラをサポート&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10978&#34; target=&#34;_blank&#34;&gt;#10978&lt;/a&gt; 不要なセミコロンを削除&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11230&#34; target=&#34;_blank&#34;&gt;#11230&lt;/a&gt; &lt;code&gt;coroutine_error&lt;/code&gt;のエラーメッセージがダングリングポインタとなっていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11234&#34; target=&#34;_blank&#34;&gt;#11234&lt;/a&gt; &lt;code&gt;boost::range::algorithms&lt;/code&gt;との組み合わせでコンパイルエラーとなっていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11356&#34; target=&#34;_blank&#34;&gt;#11356&lt;/a&gt;  &lt;code&gt;BOOST_USE_SEGMENTED_STACKS&lt;/code&gt;でコルーチンがセグメンテーションフォルトしていたのを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.59.0リリースノート -- 1.59リリースノート： Coroutineを追記</title>
@@ -515,162 +638,6 @@
       <author>
         <name>Kohei Takahashi</name>
         <email>flast@flast.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost.勉強会 #17 東京 -- Boost.勉強会 17 : C++11/Emscriptenの資料へのリンクを再追加</title>
-      <link href="http://boostjp.github.io/study_meeting/study17.html"/>
-      <id>387fbd495e7143461e9fe5bfdcf10fad314afbc9:study_meeting/study17.md</id>
-      <updated>2015-06-05 00:24:11 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost.勉強会 #17 東京&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;h2&gt;開催日時&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;2015/05/30(土) 11:00〜18:00&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;開催場所&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;株式会社インターネットイニシアティブ (IIJ) 本社&lt;/li&gt;
-&lt;li&gt;〒102-0071 東京都千代田区富士見2-10-2 飯田橋グラン・ブルーム 13F&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;募集ページ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://connpass.com/event/14355/&#34; target=&#34;_blank&#34;&gt;Boost.勉強会 #17 東京 - connpass&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://connpass.com/event/15094/&#34; target=&#34;_blank&#34;&gt;Boost.懇親会 #17 東京 - connpass&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;主催者&amp;amp;スタッフ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;高橋 晶(@cpp_akira)&lt;/li&gt;
-&lt;li&gt;@Flast_RO, @fadis_, @k_katsuhiro&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;タイムテーブル&lt;/h2&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;時間&lt;/th&gt;
-&lt;th&gt;発表内容&lt;/th&gt;
-&lt;th&gt;発表者&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;10:30〜&lt;/td&gt;
-&lt;td&gt;開場&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;11:00〜11:10&lt;/td&gt;
-&lt;td&gt;オープニング。Boost.勉強会について。会場の諸注意&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;11:10〜11:40&lt;/td&gt;
-&lt;td&gt;Boostライブラリ一周の旅 1.54.0-1.58.0&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;12:00〜12:30&lt;/td&gt;
-&lt;td&gt;LINQ for C++のご紹介&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/mikiemon_h&#34; target=&#34;_blank&#34;&gt;mikiemon_h&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;12:30〜13:45&lt;/td&gt;
-&lt;td&gt;昼休み&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;13:45〜14:15&lt;/td&gt;
-&lt;td&gt;Siv3D で楽しむゲームとメディアアート開発&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/Reputeless&#34; target=&#34;_blank&#34;&gt;Reputeless&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;14:30〜15:00&lt;/td&gt;
-&lt;td&gt;Boost.Logとfluentdで始めるログ活用術&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/termoshtt&#34; target=&#34;_blank&#34;&gt;termoshtt&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;15:15〜15:45&lt;/td&gt;
-&lt;td&gt;Boost.odeintで遊ぼう&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/rydotyosh&#34; target=&#34;_blank&#34;&gt;rydotyosh&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;16:00〜16:30&lt;/td&gt;
-&lt;td&gt;MessagePackとAPIバージョニング&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/redboltz&#34; target=&#34;_blank&#34;&gt;redboltz&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;16:45〜17:15&lt;/td&gt;
-&lt;td&gt;Boost.Container特有の機能&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;cpp_akira&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;17:30〜18:00&lt;/td&gt;
-&lt;td&gt;C++11やEmscriptenと付き合って１年間の振り返り&lt;/td&gt;
-&lt;td&gt;&lt;a href=&#34;https://twitter.com/kou_yeung&#34; target=&#34;_blank&#34;&gt;kou_yeung&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/paosidufygthrj&#34; target=&#34;_blank&#34;&gt;paosidufygthrj&lt;/a&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;Twitterハッシュタグ&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;http://twitter.com/search?q=%23boostjp&#34; target=&#34;_blank&#34;&gt;#boostjp&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Boostライブラリ一周の旅 1.54.0-1.58.0&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : 高橋 晶, &lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;@cpp_akira&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ブログ : &lt;a href=&#34;http://faithandbrave.hateblo.jp/&#34; target=&#34;_blank&#34;&gt;Faith and Brave - C++で遊ぼう&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 :&lt;ul&gt;
-&lt;li&gt;差分版 [&lt;a href=&#34;http://www.slideshare.net/faithandbrave/boost-tour-1580&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;][&lt;a href=&#34;https://dl.dropboxusercontent.com/u/1682460/presentation/boost_17/boost_tour_1_58_0.pdf&#34; target=&#34;_blank&#34;&gt;pdf&lt;/a&gt;]&lt;/li&gt;
-&lt;li&gt;マージ版 [&lt;a href=&#34;http://www.slideshare.net/faithandbrave/boost-tour-1580-merge&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;][&lt;a href=&#34;https://dl.dropboxusercontent.com/u/1682460/presentation/boost_17/boost_tour_1_58_0_merge.pdf&#34; target=&#34;_blank&#34;&gt;pdf&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;LINQ for C++のご紹介&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : &lt;a href=&#34;https://twitter.com/mikiemon_h&#34; target=&#34;_blank&#34;&gt;mikiemon_h&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/miki_hirofumi/boost17-cpplinq&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Siv3D で楽しむゲームとメディアアート開発&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : 鈴木 遼, &lt;a href=&#34;https://twitter.com/Reputeless&#34; target=&#34;_blank&#34;&gt;@Reputeless&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ブログ :&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://siv3d.hateblo.jp/&#34; target=&#34;_blank&#34;&gt;Siv3D 開発ブログ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://play-siv3d.hateblo.jp/&#34; target=&#34;_blank&#34;&gt;Play Siv3D!&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/Reputeless/siv3d&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;]&lt;/li&gt;
-&lt;li&gt;デモのコード : &lt;a href=&#34;http://play-siv3d.hateblo.jp/entry/boost17&#34; target=&#34;_blank&#34;&gt;Boost. 勉強会 Siv3D デモ - Play Siv3D!&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost.Logとfluentdで始めるログ活用術&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : &lt;a href=&#34;https://twitter.com/termoshtt&#34; target=&#34;_blank&#34;&gt;@termoshtt&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/termoshtt/boostlogfluentd&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost.odeintで遊ぼう&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : Ryogo Yoshimura, &lt;a href=&#34;https://twitter.com/rydotyosh&#34; target=&#34;_blank&#34;&gt;@rydotyosh&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ブログ : &lt;a href=&#34;http://rydot.hatenablog.com/&#34; target=&#34;_blank&#34;&gt;rydotの呟&#39;&#39;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 : &lt;a href=&#34;http://rydotyosh.github.io/docs/odeintintro/&#34; target=&#34;_blank&#34;&gt;http://rydotyosh.github.io/docs/odeintintro/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;MessagePackとAPIバージョニング&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : 近藤貴俊, &lt;a href=&#34;https://twitter.com/redboltz&#34; target=&#34;_blank&#34;&gt;@redboltz&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ブログ : &lt;a href=&#34;http://d.hatena.ne.jp/redboltz/&#34; target=&#34;_blank&#34;&gt;redboltzの日記&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/taka111/boost-sg-msgpack&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost.Container特有の機能&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : 高橋 晶, &lt;a href=&#34;https://twitter.com/cpp_akira&#34; target=&#34;_blank&#34;&gt;@cpp_akira&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ブログ : &lt;a href=&#34;http://faithandbrave.hateblo.jp/&#34; target=&#34;_blank&#34;&gt;Faith and Brave - C++で遊ぼう&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/faithandbrave/boost-container-feature&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;][&lt;a href=&#34;https://dl.dropboxusercontent.com/u/1682460/presentation/boost_17/boost_container_feature.pdf&#34; target=&#34;_blank&#34;&gt;pdf&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;C++11やEmscriptenと付き合って１年間の振り返り&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;発表者 : 楊 志恒(&lt;a href=&#34;https://twitter.com/kou_yeung&#34; target=&#34;_blank&#34;&gt;@kou_yeung&lt;/a&gt;), ウラ サトシ(&lt;a href=&#34;https://twitter.com/paosidufygthrj&#34; target=&#34;_blank&#34;&gt;@paosidufygthrj&lt;/a&gt;)&lt;/li&gt;
-&lt;li&gt;発表資料 : [&lt;a href=&#34;http://www.slideshare.net/paosidufgythrj/c11emscripten-48972842&#34; target=&#34;_blank&#34;&gt;slideshare&lt;/a&gt;]&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
       </author>
     </entry>
   
