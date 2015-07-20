@@ -2,9 +2,156 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-07-20T23:12:33.009042</updated>
-  <id>7de78878-59a4-4811-94dd-6152ddcb1b9e</id>
+  <updated>2015-07-20T23:15:42.437103</updated>
+  <id>eceb27e8-70e8-4f4e-938d-f8ec11d9fd35</id>
 
+  
+    <entry>
+      <title>Boost 1.59.0リリースノート -- 1.59リリースノート：箇条書きのインデントをtabに修正</title>
+      <link href="http://boostjp.github.io/document/version/1_59_0.html"/>
+      <id>670c82c4a6f012316ba67f7450f3af08c78a8b5c:document/version/1_59_0.md</id>
+      <updated>2015-07-20 23:15:35 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.59.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_59_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_59_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#container&#34;&gt;Container&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#container&#34; name=&#34;container&#34;&gt;Container&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/26&#34; target=&#34;_blank&#34;&gt;GitHub #26&lt;/a&gt;: &lt;code&gt;stable_vector::capacity()&lt;/code&gt;のバグを修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/timsong-cpp&#34; target=&#34;_blank&#34;&gt;Arindam Mukerjee&lt;/a&gt;に感謝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/27&#34; target=&#34;_blank&#34;&gt;GitHub #27&lt;/a&gt;: &lt;code&gt;stable_vector::index_of&lt;/code&gt;のdoxygenコメントを修正&lt;ul&gt;
+&lt;li&gt;kariya-mitsuruに感謝&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11380&#34; target=&#34;_blank&#34;&gt;#11380&lt;/a&gt;: &lt;code&gt;gcc&lt;/code&gt;と&lt;code&gt;libc++&lt;/code&gt;の組み合わせ下において&lt;code&gt;std_fwd.hpp&lt;/code&gt;内のコンテナの前方宣言が正しくなかったのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11388&#34; target=&#34;_blank&#34;&gt;#11388&lt;/a&gt;: Visual Studio 2010において&lt;code&gt;boost::container::list::emplace_back&lt;/code&gt;が壊れいていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11339&#34; target=&#34;_blank&#34;&gt;#11339&lt;/a&gt;: &lt;code&gt;VC12 LNK2005 error&lt;/code&gt;が&lt;code&gt;boost::container::adaptive_pool&lt;/code&gt;で起きていたのを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11223&#34; target=&#34;_blank&#34;&gt;#11223&lt;/a&gt; &lt;code&gt;std::integer_sequence&lt;/code&gt;サポートのチェックを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_USE_WINFIBERS&lt;/code&gt;をdefineすると、&lt;code&gt;execution_context&lt;/code&gt;の内部でWindowsのFiberを使用するようにした&lt;/li&gt;
+&lt;li&gt;32ビットWindows上のMinGWでのアセンブラをサポート&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10978&#34; target=&#34;_blank&#34;&gt;#10978&lt;/a&gt; 不要なセミコロンを削除&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11230&#34; target=&#34;_blank&#34;&gt;#11230&lt;/a&gt; &lt;code&gt;coroutine_error&lt;/code&gt;のエラーメッセージがダングリングポインタとなっていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11234&#34; target=&#34;_blank&#34;&gt;#11234&lt;/a&gt; &lt;code&gt;boost::range::algorithms&lt;/code&gt;との組み合わせでコンパイルエラーとなっていたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11356&#34; target=&#34;_blank&#34;&gt;#11356&lt;/a&gt;  &lt;code&gt;BOOST_USE_SEGMENTED_STACKS&lt;/code&gt;でコルーチンがセグメンテーションフォルトしていたのを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;新しいコンセプトが追加された。シーケンスには&lt;code&gt;Unbounded Sequence&lt;/code&gt;、イテレータには&lt;code&gt;Unbounded Iterator&lt;/code&gt;が追加された (&lt;a href=&#34;https://github.com/boostorg/fusion/pull/85&#34; target=&#34;_blank&#34;&gt;pull-request 85&lt;/a&gt;)&lt;ul&gt;
+&lt;li&gt;現在、&lt;code&gt;Unbounded Sequence&lt;/code&gt;は&lt;code&gt;fusion::(value_)at(_c)&lt;/code&gt;及び&lt;code&gt;fusion::(value_)at_key&lt;/code&gt;の挙動に影響を与える&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Unbounded Iterator&lt;/code&gt;は現在効果を持たない（今後のリリースのために予約されている）&lt;/li&gt;
+&lt;li&gt;詳細はそれぞれ次のドキュメントを参照のこと：&lt;a href=&#34;http://www.boost.org/doc/libs/1_59_0/libs/fusion/doc/html/fusion/sequence/concepts/unbounded_sequence.html&#34; target=&#34;_blank&#34;&gt;Unbounded Sequence&lt;/a&gt;及び&lt;a href=&#34;http://www.boost.org/doc/libs/1_59_0/libs/fusion/doc/html/fusion/iterator/concepts/unbounded_iterator.html&#34; target=&#34;_blank&#34;&gt;Unbounded Iterator&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fusion::list&lt;/code&gt;がC++11の可変長テンプレートに対応した (&lt;a href=&#34;https://github.com/boostorg/fusion/pull/84&#34; target=&#34;_blank&#34;&gt;pull-request 84&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&amp;lt;utility&amp;gt;&lt;/code&gt;のインクルード忘れを修正 (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11161&#34; target=&#34;_blank&#34;&gt;#11161&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;いくつかの&lt;code&gt;constexpr&lt;/code&gt;のサポートを差し戻した (&lt;strong&gt;1.58.0でのリグレッション&lt;/strong&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11211&#34; target=&#34;_blank&#34;&gt;#11211&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11267&#34; target=&#34;_blank&#34;&gt;#11267&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;インクルード忘れによる&lt;code&gt;fold&lt;/code&gt;のコンパイルエラーを修正 (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11249&#34; target=&#34;_blank&#34;&gt;#11249&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;空の構造体がアダプトできなくなっていたのを修正 (&lt;strong&gt;1.58.0でのリグレッション&lt;/strong&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11269&#34; target=&#34;_blank&#34;&gt;#11269&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;古すぎる（そして既に正しくない）回避策を削除。これはMSVC-8もしくはそれ以前にのみ影響がある (&lt;a href=&#34;https://github.com/boostorg/fusion/pull/78&#34; target=&#34;_blank&#34;&gt;pull-request 78&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;fusion::list&lt;/code&gt;から派生したシーケンスをコピーする際に起こっていたコンパイルエラーを修正 (&lt;strong&gt;1.58.0でのリグレッション&lt;/strong&gt;, &lt;a href=&#34;https://github.com/boostorg/fusion/pull/87&#34; target=&#34;_blank&#34;&gt;pull-request 87&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.59.0リリースノート -- 1.59リリースノート：Fusionを追加</title>
@@ -510,143 +657,6 @@
 &lt;/ul&gt;
 &lt;h2&gt;翻訳&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.59.0リリースノート -- Boost 1.59.0 : Contextのリリースノートを追加</title>
-      <link href="http://boostjp.github.io/document/version/1_59_0.html"/>
-      <id>923cfba4b1e9d1fd13eb1754db9c0d650070892f:document/version/1_59_0.md</id>
-      <updated>2015-07-17 18:24:11 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.59.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_59_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_59_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_59_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#one&#34;&gt;One&lt;/a&gt; # example&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#two&#34;&gt;Two&lt;/a&gt; # example&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#three&#34;&gt;Three&lt;/a&gt; # example&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11223&#34; target=&#34;_blank&#34;&gt;#11223&lt;/a&gt; &lt;code&gt;std::integer_sequence&lt;/code&gt;サポートのチェックを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOOST_USE_WINFIBERS&lt;/code&gt;をdefineすると、&lt;code&gt;execution_context&lt;/code&gt;の内部でWindowsのFiberを使用するようにした&lt;/li&gt;
-&lt;li&gt;32ビットWindows上のMinGWでのアセンブラをサポート&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#one&#34; name=&#34;One&#34;&gt;One&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;blahblahblah&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;something&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
