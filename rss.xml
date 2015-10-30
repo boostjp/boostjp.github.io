@@ -2,9 +2,704 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2015-10-30T14:06:05.493827</updated>
-  <id>6940ad8d-efa7-4956-8685-af799cebf511</id>
+  <updated>2015-10-30T16:02:30.919219</updated>
+  <id>00d80b8d-9855-4d76-a264-0b82c43b87bd</id>
 
+  
+    <entry>
+      <title>多倍長整数 -- Fix a link of tips/multiprec-int.md</title>
+      <link href="http://boostjp.github.io/tips/multiprec-int.html"/>
+      <id>d568dade14572afad2d24d65920af567c401d463:tips/multiprec-int.md</id>
+      <updated>2015-10-30 16:02:20 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;多倍長整数&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;多倍長整数を使用するには、&lt;a href=&#34;http://www.boost.org/libs/multiprecision/&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision Library&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長整数の、基本的な使い方を示す。&lt;/p&gt;
+&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;boost::multiprecision::cpp_int&lt;/code&gt;&lt;/a&gt;クラスを使用して、100の階乗を求めるプログラムである。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/&lt;span style=&#34;color:#ff0000&#34;&gt;cpp_int&lt;/span&gt;.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;cpp_int&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;;
+
+    &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;for&lt;/span&gt; (&lt;span style=&#34;color: #B00040&#34;&gt;unsigned&lt;/span&gt; &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;1&lt;/span&gt;; i &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;100&lt;/span&gt;; &lt;span style=&#34;color: #666666&#34;&gt;++&lt;/span&gt;i)
+       x &lt;span style=&#34;color: #666666&#34;&gt;*=&lt;/span&gt; i;
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;cpp_int&lt;/code&gt;は、Boost.Multiprecisionが独自実装した演算をバックエンドに持つ、任意精度の多倍長整数である。この型は、メモリが許す限り無限の桁数を扱える。Boost.Multiprecisionが提供する全ての機能は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間以下で定義される。&lt;/p&gt;
+&lt;p&gt;Boost.Multiprecisionの多倍長整数は、組み込みの整数型と同じ演算をサポートする。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;式&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a + b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a += b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;加算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a - b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a -= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;減算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a * b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a *= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;乗算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a / b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a /= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;除算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a % b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a %= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;剰余算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;+a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;符号をプラスにする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;-a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;符号をマイナスにする&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a++;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;++a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;インクリメント&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a--;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;--a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;デクリメント&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;amp; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;amp;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ビットAND&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a | b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a |= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ビットOR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a ^ b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a ^= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ビットXOR&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt;&amp;lt; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;lt;&amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;左ビットシフト&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt;&amp;gt; b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a &amp;gt;&amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;右ビットシフト&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a == b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;等値比較&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a != b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;非等値比較&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より小さいかの判定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以下かの判定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt; b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より大きいかの判定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;a &amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以上かの判定&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;os &amp;lt;&amp;lt; a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ストリームへの出力&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;is &amp;gt;&amp;gt; a;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ストリームからの入力&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#variation&#34; name=&#34;variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;以下に、Boost.Multiprecisionから提供される多倍長整数の種類を示す。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision独自実装の多倍長整数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;符号付きチェックなし整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cpp_int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;任意精度の符号付き多倍長整数。 メモリが許す限り、無限の桁数を扱える。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;int128_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;128ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;int256_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;256ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;int512_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;512ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;int1024_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1024ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;符号なしチェックなし整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uint128_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;128ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uint256_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;256ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uint512_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;512ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;uint1024_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1024ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;符号付きチェック付き整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_cpp_int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;任意精度の符号付き多倍長整数。 メモリが許す限り、無限の精度を扱える。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_int128_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;128ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_int256_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;256ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_int512_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;512ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_int1024_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1024ビット精度の符号付き整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;符号なしチェック付き整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_uint128_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;128ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;cheked_uint256_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;256ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_uint512_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;512ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;checked_uint1024_t&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1024ビット精度の符号なし整数。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;チェック付き整数は、値が不正になる演算を行った際に例外を送出する。&lt;/p&gt;
+&lt;p&gt;チェックなし整数が送出する例外：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;条件&lt;/th&gt;
+&lt;th&gt;送出する例外&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ゼロ割り時&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;チェック付き整数が送出する例外：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;条件&lt;/th&gt;
+&lt;th&gt;送出する例外&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ゼロ割り時&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;符号なしなのにマイナス値になった&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::range_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;オーバーフロー時&lt;/td&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::overflow_error&lt;/code&gt;&lt;/a&gt;例外が送出される&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/gmp_int.html&#34; target=&#34;_blank&#34;&gt;GMPバックエンドの多倍長整数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/gmp.hpp&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;符号ありチェックなし整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;mpz_int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;任意精度の符号付き多倍長整数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/tom_int.html&#34; target=&#34;_blank&#34;&gt;libtommathバックエンドの多倍長整数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/tommath.hpp&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;符号ありチェックなし整数：&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;型&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;tom_int&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;任意精度の符号付き多倍長整数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列から多倍長整数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;a href=&#34;http://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::string&lt;/code&gt;&lt;/a&gt;を受け取ることができる。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    cpp_int x(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;123&#34;&lt;/span&gt;);              &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// char配列から変換&lt;/span&gt;
+    cpp_int y(std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;456&#34;&lt;/span&gt;)); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// std::stringから変換&lt;/span&gt;
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
+456
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;assign()&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    cpp_int x;
+    x.assign(&lt;span style=&#34;color: #BA2121&#34;&gt;&#34;123&#34;&lt;/span&gt;);
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;変換できない文字列が渡された場合は、&lt;a href=&#34;http://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::runtime_error&lt;/code&gt;&lt;/a&gt;例外が送出される。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長整数の文字列表現を返す。&lt;/p&gt;
+&lt;p&gt;デフォルトでは10進数表現の文字列が返されるが、以下の引数を設定することで、精度と基数、その他出力方法を選択できる。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第1引数： 出力する精度。整数では単に無視されるので、0を指定すればよい。&lt;/li&gt;
+&lt;li&gt;第2引数： 出力フラグ。基数の選択。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    cpp_int x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;123&lt;/span&gt;;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 10進数&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; x.&lt;span style=&#34;color:#ff0000&#34;&gt;str&lt;/span&gt;();
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; s &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 8進数&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; x.&lt;span style=&#34;color:#ff0000&#34;&gt;str&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ios_base&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;oct);
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; s &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 16進数&lt;/span&gt;
+    {
+        &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;const&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;string s &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; x.&lt;span style=&#34;color:#ff0000&#34;&gt;str&lt;/span&gt;(&lt;span style=&#34;color: #666666&#34;&gt;0&lt;/span&gt;, std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;ios_base&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;hex);
+        std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; s &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;123
+173
+7B
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34; name=&#34;convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Multiprecisionの多倍長整数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;小さい整数型から大きい整数型への変換&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;int&lt;/code&gt;や&lt;code&gt;long&lt;/code&gt;型といった組み込みの整数型から、&lt;code&gt;int128_t&lt;/code&gt;や&lt;code&gt;cpp_int&lt;/code&gt;といった多倍長整数への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;また、&lt;code&gt;int128_t&lt;/code&gt;から&lt;code&gt;int256&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// intからint128_tへの暗黙変換&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; i &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;;
+    &lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt; i128 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; i; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+
+    &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// int128_tからint256_tへの暗黙変換&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;int256_t&lt;/span&gt; i256 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; i128; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;大きい精度から小さい精度への変換&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;小さい精度への変換は、データが失われる可能性があるため、暗黙の型変換はサポートしない。&lt;/p&gt;
+&lt;p&gt;明示的な型変換を使用する場合のみ変換可能である。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;using&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    &lt;span style=&#34;color: #B00040&#34;&gt;int256_t&lt;/span&gt; i256 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #666666&#34;&gt;3&lt;/span&gt;;
+
+&lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;//  int128_t i128 = i256; // コンパイルエラー！変換できない&lt;/span&gt;
+    &lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt; i128 &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;static_cast&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;&lt;/span&gt;(i256); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// OK&lt;/span&gt;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#min&#34; name=&#34;min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;多倍長整数の最小値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/min.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;min()&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最小値は取得できなかったものとして、0を返す。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int  x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;min&lt;/span&gt;();  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 任意精度&lt;/span&gt;
+    mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;min&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 固定精度&lt;/span&gt;
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;0
+-340282366920938463463374607431768211455
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#max&#34; name=&#34;max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;多倍長整数の最大値を取得するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/max.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;max()&lt;/code&gt;&lt;/a&gt;静的メンバ関数を使用する。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最大値は取得できなかったものとして、0を返す。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int  x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;max&lt;/span&gt;();  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 任意精度&lt;/span&gt;
+    mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;max&lt;/span&gt;(); &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 固定精度&lt;/span&gt;
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;0
+340282366920938463463374607431768211455
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34; name=&#34;is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;多倍長整数型の表す値が有限かどうかを判定するには、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;std::numeric_limits&lt;/code&gt;&lt;/a&gt;クラスの&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;定数を取得する。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;bool&lt;/code&gt;型で定義され、有限であれば&lt;code&gt;true&lt;/code&gt;、無限であれば&lt;code&gt;false&lt;/code&gt;が設定される。&lt;/p&gt;
+&lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;false&lt;/code&gt;となる。&lt;/p&gt;
+&lt;p&gt;固定精度整数の&lt;code&gt;int128_t&lt;/code&gt;、&lt;code&gt;int256_t&lt;/code&gt;といった型の場合、&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;is_bounded&lt;/code&gt;&lt;/a&gt;は&lt;code&gt;true&lt;/code&gt;となる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34; style=&#34;background: #f8f8f8&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span style=&#34;color: #BC7A00&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span style=&#34;color: #008000; font-weight: bold&#34;&gt;namespace&lt;/span&gt; mp &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; boost&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;multiprecision;
+
+&lt;span style=&#34;color: #B00040&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #0000FF&#34;&gt;main&lt;/span&gt;()
+{
+    constexpr &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cpp_int&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;is_bounded&lt;/span&gt;;  &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 任意精度&lt;/span&gt;
+    constexpr &lt;span style=&#34;color: #B00040&#34;&gt;bool&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;=&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;numeric_limits&lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&lt;/span&gt;mp&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color: #B00040&#34;&gt;int128_t&lt;/span&gt;&lt;span style=&#34;color: #666666&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;is_bounded&lt;/span&gt;; &lt;span style=&#34;color: #408080; font-style: italic&#34;&gt;// 固定精度&lt;/span&gt;
+
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;boolalpha;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; x &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+    std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;cout &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; y &lt;span style=&#34;color: #666666&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; std&lt;span style=&#34;color: #666666&#34;&gt;::&lt;/span&gt;endl;
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;false
+true
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長整数でも使用できる。&lt;/p&gt;
+&lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;関数&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T abs(T x);&lt;/code&gt;&lt;br /&gt; &lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/fabs.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T fabs(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;絶対値&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sqrt.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sqrt(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;平方根&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T floor(T x);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;床関数（引数より大きくない最近傍の整数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T ceil(T x);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;天井関数（引数より小さくない最近傍の整数）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T trunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T itrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T ltrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lltrunc(T x);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ゼロ方向への丸め&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T round(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lround(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T llround(T x);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;四捨五入による丸め&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/exp.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T exp(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;e (ネイピア数) を底とする指数関数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/log.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;e (ネイピア数) を底とする自然対数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/log10.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T log10(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;10 を底とする常用対数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/cos.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;余弦関数（コサイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sin.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;正弦関数（サイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/tan.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;正接関数（タンジェント）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/acos.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T acos(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;逆余弦関数（アークコサイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/asin.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T asin(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;逆正弦関数（アークサイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/atan.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;逆正接関数（アークタンジェント）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/cosh.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T cosh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;双曲線余弦関数（ハイパボリックコサイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sinh.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T sinh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;双曲線正弦関数（ハイパボリックサイン）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/tanh.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T tanh(T x);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;双曲線正接関数（ハイパボリックタンジェント）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T ldexp(T x, int);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2 の冪乗との乗算&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T frexp(T x, int*);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;仮数部と 2 の冪乗への分解&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/pow.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T pow(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;冪乗&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T fmod(T x, T y);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;浮動小数点剰余&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/atan2.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T atan2(T x, T y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;対辺と隣辺からの逆正接関数（アークタンジェント）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;整数に特化した数学関数サポート&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;以下の関数は、Boost.Multiprecisionで整数演算に特化したものとして、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;関数&lt;/th&gt;
+&lt;th&gt;説明&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/pow.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;T pow(T x, unsigned int y);&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+&lt;td&gt;冪乗&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T powm(T b, T p, T m);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;冪剰余&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;void divide_qr(T x, y, T&amp;amp; q, T&amp;amp; r);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;除算と剰余算を同時に行う&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Integer&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;Integer integer_modulus(T x, Integer val);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;剰余の絶対値&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;unsigned int lsb(T x);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;1に設定されている最下位ビットのインデックスを取得する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool bit_test(T val, unsigned index);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定されたインデックスのビットが1に設定されているかを判定する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_set(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定されたインデックスのビットを1に設定する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_unset(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定されたインデックスのビットを0に設定する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;T&amp;amp; bit_flip(T&amp;amp; val, unsigned index);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;指定されたインデックスのビットを反転する&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;template &amp;lt;class Engine&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;bool miller_rabin_test(T n, unsigned trials, Engine&amp;amp; gen);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;bool miller_rabin_test(T n, unsigned trials);&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ミラー・ラビン素数判定&lt;br /&gt; 参照： &lt;a href=&#34;http://d.hatena.ne.jp/faith_and_brave/20130222/1361516978&#34; target=&#34;_blank&#34;&gt;Boost.Multiprecision ミラー・ラビン法による素数判定 - Faith and Brave - C++で遊ぼう&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;参照： &lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/ref/number.html#boost_multiprecision.ref.number.integer_functions&#34; target=&#34;_blank&#34;&gt;Integer functions - Boost Multiprecision Library&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;documented boost version is 1.53.0&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>E Kawashima</name>
+        <email>e-kwsm@users.noreply.github.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.60.0リリースノート -- Boost 1.60.0リリースノート : Logを追加(fix #38)</title>
@@ -1380,120 +2075,6 @@ true
 &lt;li&gt;MSVC-8でのARM向けのコンパイルエラーを修正。&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10994&#34; target=&#34;_blank&#34;&gt;#10994&lt;/a&gt; 128ビットアトミック操作を使用したときの、gcc 4.4でのx86-64向けのコンパイルエラーを修正。&lt;/li&gt;
 &lt;li&gt;x86/x86-64向けのgccアセンブラブロックを最適化し、使用するレジスタ数を減らした。これはbinutils 2.10以降を必要とする。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11603&#34; target=&#34;_blank&#34;&gt;#11603&lt;/a&gt; PPC32/MACH-Oアセンブラの誤字を修正&lt;/li&gt;
-&lt;li&gt;Cygwinをサポート&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#flyweight&#34; name=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス上の修正を行った&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#multi-index&#34; name=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;オプショナルな定義である&lt;code&gt;foreach&lt;/code&gt;マクロ名による、&lt;a href=&#34;http://www.qt.io/&#34; target=&#34;_blank&#34;&gt;Qtフレームワーク&lt;/a&gt;との相互運用の問題を修正&lt;/li&gt;
-&lt;li&gt;メンテナンス上の修正を行った&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.60.0リリースノート -- Boost 1.60.0リリースノート : Multi-indexを更新</title>
-      <link href="http://boostjp.github.io/document/version/1_60_0.html"/>
-      <id>f103546e00168d0ad2f24c4bfb6e74453a9d5fb1:document/version/1_60_0.md</id>
-      <updated>2015-10-28 13:01:38 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.60.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_60_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_60_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_60_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_60_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
