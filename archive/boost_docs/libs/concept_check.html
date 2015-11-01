@@ -123,6 +123,11 @@ a code {
 .content-body > h1:first-child {
     margin-top: 0px;
 }
+.content-body h2 {
+  border-left: solid 8px skyblue;
+  padding-left: 5px;
+  border-bottom: solid 2px skyblue;
+}
 .edit {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -235,7 +240,7 @@ stl_algo.h:1485:   instantiated from `__stable_sort_adaptive&lt;
 stl_algo.h:1524:   instantiated from here
 stl_algo.h:1377: no match for `_List_iterator&lt;int,int &amp;,int *&gt; &amp; -
   _List_iterator&lt;int,int &amp;,int *&gt; &amp;'
-</code></pre></p> <p>この場合、根本的なエラーの原因は、<code>std:list::iterator</code> が <a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank><code>RandomAccessIterator</code></a> コンセプトをモデル化していないことにある。 リストのイテレータは双方向でしかなく、(ベクタのイテレータのように) 完全なランダム・アクセスが可能なわけではない。 残念ながら、このエラーメッセージには、ユーザーにこの事実を示すものは何もない。</p> <p>C++ プログラマがテンプレート・ライブラリに十分な経験を持っていれば、この手のエラーに惑うことは無いかもしれない。 しかし未熟な者にとっては、次のような理由で、このメッセージが理解し難いものとなっている。</p> <ol> <li>エラーが生じる位置、bad_error_eg.cpp の６行目は、Gnu C++ がインスタンス化スタックを４レベルも深くまで探索して表示するという事実にもかかわらず、エラーメッセージで示されていない。</li> <li>エラーメッセージと、<code>std::stable_sort()</code> および <a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank><code>RandomAccessIterator</code></a> に関する文書化された要求事項との間に、文面上の相関がない。</li> <li>エラーメッセージが過度に長く、ユーザーの知らない(かつ知るべきでない！) STL 内部実装用の関数がリストされている。</li> <li>エラーメッセージに、ライブラリ内部の実装用関数が数多くリストアップされているため、プログラマが、エラーの原因は自分のコードではなくライブラリ側にあるとの結論に、誤って飛びついてしまう可能性がある。</li> </ol> <p>次の例示は、より有用なメッセージとして斯くあるべきと我々が考えるものだ (また実際に Boost コンセプト・チェック・ライブラリが生成するものでもある)。</p> <p><pre><code>boost/concept_check.hpp: In method `void LessThanComparableConcept
+</code></pre></p> <p>この場合、根本的なエラーの原因は、<code>std:list::iterator</code> が <code><a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank>RandomAccessIterator</a></code> コンセプトをモデル化していないことにある。 リストのイテレータは双方向でしかなく、(ベクタのイテレータのように) 完全なランダム・アクセスが可能なわけではない。 残念ながら、このエラーメッセージには、ユーザーにこの事実を示すものは何もない。</p> <p>C++ プログラマがテンプレート・ライブラリに十分な経験を持っていれば、この手のエラーに惑うことは無いかもしれない。 しかし未熟な者にとっては、次のような理由で、このメッセージが理解し難いものとなっている。</p> <ol> <li>エラーが生じる位置、bad_error_eg.cpp の６行目は、Gnu C++ がインスタンス化スタックを４レベルも深くまで探索して表示するという事実にもかかわらず、エラーメッセージで示されていない。</li> <li>エラーメッセージと、<code>std::stable_sort()</code> および <code><a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank>RandomAccessIterator</a></code> に関する文書化された要求事項との間に、文面上の相関がない。</li> <li>エラーメッセージが過度に長く、ユーザーの知らない(かつ知るべきでない！) STL 内部実装用の関数がリストされている。</li> <li>エラーメッセージに、ライブラリ内部の実装用関数が数多くリストアップされているため、プログラマが、エラーの原因は自分のコードではなくライブラリ側にあるとの結論に、誤って飛びついてしまう可能性がある。</li> </ol> <p>次の例示は、より有用なメッセージとして斯くあるべきと我々が考えるものだ (また実際に Boost コンセプト・チェック・ライブラリが生成するものでもある)。</p> <p><pre><code>boost/concept_check.hpp: In method `void LessThanComparableConcept
   &lt;_List_iterator&lt;int,int &amp;,int *&gt; &gt;::constraints()':
 boost/concept_check.hpp:334:   instantiated from `RandomAccessIteratorConcept
   &lt;_List_iterator&lt;int,int &amp;,int *&gt; &gt;::constraints()'

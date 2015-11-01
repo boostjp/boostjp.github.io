@@ -123,6 +123,11 @@ a code {
 .content-body > h1:first-child {
     margin-top: 0px;
 }
+.content-body h2 {
+  border-left: solid 8px skyblue;
+  padding-left: 5px;
+  border-bottom: solid 2px skyblue;
+}
 .edit {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -240,7 +245,7 @@ function tree_onclick(e) {
   Iter i;
   ...
 };
-</pre></div> </p> <p>これでメンバ関数ポインタを扱わなくてはならなくなったが、制約関数の実体化を引き起こすために関数ポインタ・メカニズムを使用することは、依然として可能である。 ライブラリ実装者がコンセプト・チェックを呼出すことを簡便にするために、<code>function_requires()</code> という名前の関数の中に、メンバ関数ポインタ機構を隠蔽した。 以下のコード片は、イテレータが <a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank><code>RandomAccessIterator</code></a> であることを確かめるために <code>function_requires()</code> を使用する方法を提示する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Iter</span><span style="color: #666666">&gt;</span>
+</pre></div> </p> <p>これでメンバ関数ポインタを扱わなくてはならなくなったが、制約関数の実体化を引き起こすために関数ポインタ・メカニズムを使用することは、依然として可能である。 ライブラリ実装者がコンセプト・チェックを呼出すことを簡便にするために、<code>function_requires()</code> という名前の関数の中に、メンバ関数ポインタ機構を隠蔽した。 以下のコード片は、イテレータが <code><a href=http://www.sgi.com/tech/stl/RandomAccessIterator.html target=_blank>RandomAccessIterator</a></code> であることを確かめるために <code>function_requires()</code> を使用する方法を提示する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Iter</span><span style="color: #666666">&gt;</span>
 <span style="color: #B00040">void</span> stable_sort(Iter first, Iter last)
 {
   function_requires<span style="color: #666666">&lt;</span> RandomAccessIteratorConcept<span style="color: #666666">&lt;</span>Iter<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span>();

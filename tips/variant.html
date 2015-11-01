@@ -123,6 +123,11 @@ a code {
 .content-body > h1:first-child {
     margin-top: 0px;
 }
+.content-body h2 {
+  border-left: solid 8px skyblue;
+  padding-left: 5px;
+  border-bottom: solid 2px skyblue;
+}
 .edit {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -240,7 +245,7 @@ function tree_onclick(e) {
 }
 </pre></div> </p> <p>出力：</p> <p><pre><code>3
 hello
-</code></pre></p> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>クラステンプレートが、型安全に抽象化された共用体である。そのテンプレート引数として、格納されうる型を列挙する。</p> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>クラスは、テンプレートパラメータで指定された型のオブジェクトを、コピー／ムーブコンストラクタおよび代入演算子で代入できる。</p> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/apply_visitor.html target=_blank><code>boost::apply_visitor()</code></a>関数に指定する関数オブジェクトは、<a href=http://www.boost.org/doc/libs/release/doc/html/boost/static_visitor.html target=_blank><code>boost::static_visitor</code></a>クラスから派生したクラスであり、<a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>オブジェクトにどの型のオブジェクトが格納されているのかによって、関数呼び出し演算子を適切にオーバーロードしてくれる。</p> <h2><a href=http://boostjp.github.io/tips/variant.html#which-type name=which-type>どの型が格納されているかを判定する</a></h2> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>オブジェクトにどの型が格納されているか判定するには<code>which()</code>メンバ関数、もしくは<code>type()</code>メンバ関数を使用する。</p> <p><code>which()</code>メンバ関数は、格納されている型の、<code>0</code>から始まるインデックスを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>クラステンプレートが、型安全に抽象化された共用体である。そのテンプレート引数として、格納されうる型を列挙する。</p> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>クラスは、テンプレートパラメータで指定された型のオブジェクトを、コピー／ムーブコンストラクタおよび代入演算子で代入できる。</p> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/apply_visitor.html target=_blank>boost::apply_visitor()</a></code>関数に指定する関数オブジェクトは、<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/static_visitor.html target=_blank>boost::static_visitor</a></code>クラスから派生したクラスであり、<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>オブジェクトにどの型のオブジェクトが格納されているのかによって、関数呼び出し演算子を適切にオーバーロードしてくれる。</p> <h2><a href=http://boostjp.github.io/tips/variant.html#which-type name=which-type>どの型が格納されているかを判定する</a></h2> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>オブジェクトにどの型が格納されているか判定するには<code>which()</code>メンバ関数、もしくは<code>type()</code>メンバ関数を使用する。</p> <p><code>which()</code>メンバ関数は、格納されている型の、<code>0</code>から始まるインデックスを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/variant.hpp&gt;</span>
 
@@ -260,7 +265,7 @@ hello
 </pre></div> </p> <p>出力：</p> <p><pre><code>0
 0
 2
-</code></pre></p> <p><code>type()</code>メンバ関数は、格納されている型の<a href=http://cpprefjp.github.io/reference/typeinfo/type_info.html target=_blank><code>std::type_info</code></a>オブジェクトへの<code>const</code>左辺値参照を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <p><code>type()</code>メンバ関数は、格納されている型の<code><a href=http://cpprefjp.github.io/reference/typeinfo/type_info.html target=_blank>std::type_info</a></code>オブジェクトへの<code>const</code>左辺値参照を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/variant.hpp&gt;</span>
 
@@ -280,7 +285,7 @@ hello
 }
 </pre></div> </p> <p>出力：</p> <p><pre><code>int
 double
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/variant.html#get-value name=get-value>格納されている値を取り出す</a></h2> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>オブジェクトに格納されている値を取り出すには、<a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank><code>boost::get()</code></a>非メンバ関数を使用する。 この関数には参照版とポインタ版の2種類が用意されている。それぞれの特徴は以下の通り：</p> <ul> <li>参照版 ： <a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank><code>boost::get()</code></a>非メンバ関数に<a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>オブジェクトへの参照を渡すと、格納されている値への参照を返す。指定された型が格納されている型と同じではない場合、<a href=http://www.boost.org/doc/libs/release/doc/html/boost/bad_get.html target=_blank><code>boost::bad_get</code></a>型の例外を送出する。</li> <li>ポインタ版 ： <a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank><code>boost::get()</code></a>非メンバ関数に<a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>オブジェクトへのポインタを渡すと、格納されている値へのポインタを返す。指定された型が格納されている型と同じではない場合、ヌルポインタを返す。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/variant.html#get-value name=get-value>格納されている値を取り出す</a></h2> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>オブジェクトに格納されている値を取り出すには、<code><a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank>boost::get()</a></code>非メンバ関数を使用する。 この関数には参照版とポインタ版の2種類が用意されている。それぞれの特徴は以下の通り：</p> <ul> <li>参照版 ： <code><a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank>boost::get()</a></code>非メンバ関数に<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>オブジェクトへの参照を渡すと、格納されている値への参照を返す。指定された型が格納されている型と同じではない場合、<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/bad_get.html target=_blank>boost::bad_get</a></code>型の例外を送出する。</li> <li>ポインタ版 ： <code><a href=http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html target=_blank>boost::get()</a></code>非メンバ関数に<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>オブジェクトへのポインタを渡すと、格納されている値へのポインタを返す。指定された型が格納されている型と同じではない場合、ヌルポインタを返す。</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/variant.hpp&gt;</span>
 
@@ -308,7 +313,7 @@ double
 }
 </pre></div> </p> <p>出力：</p> <p><pre><code>1
 1
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/variant.html#clear name=clear>値をクリアする</a></h2> <p>Boost.Variantには<a href=http://www.boost.org/doc/libs/release/doc/html/variant/design.html#variant.design.never-empty target=_blank>決して空にはならない保証</a>という考え方があるため、他の値を入れることはできてもクリアはできない。<code>clear()</code>関数は用意されておらず、<code>empty()</code>メンバ関数は常に<code>false</code>を返す。</p> <p>どうしてもクリアしたい場合は、<code>boost::blank</code>という型を<code>variant</code>に格納できるように指定する。これは単なる中身が空のクラスである。</p> <p><code>which()</code>メンバ関数や<code>type()</code>メンバ関数を使用して、<code>boost::blank</code>オブジェクトが格納されているかどうかで、空かどうかを判定する。</p> <p><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank><code>boost::variant</code></a>クラスは、そのデフォルトコンストラクタで第1テンプレートパラメータのオブジェクトを構築するので、<code>boost::blank</code>は第1テンプレートパラメータとして指定することを推奨する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/variant.html#clear name=clear>値をクリアする</a></h2> <p>Boost.Variantには<a href=http://www.boost.org/doc/libs/release/doc/html/variant/design.html#variant.design.never-empty target=_blank>決して空にはならない保証</a>という考え方があるため、他の値を入れることはできてもクリアはできない。<code>clear()</code>関数は用意されておらず、<code>empty()</code>メンバ関数は常に<code>false</code>を返す。</p> <p>どうしてもクリアしたい場合は、<code>boost::blank</code>という型を<code>variant</code>に格納できるように指定する。これは単なる中身が空のクラスである。</p> <p><code>which()</code>メンバ関数や<code>type()</code>メンバ関数を使用して、<code>boost::blank</code>オブジェクトが格納されているかどうかで、空かどうかを判定する。</p> <p><code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/variant.html target=_blank>boost::variant</a></code>クラスは、そのデフォルトコンストラクタで第1テンプレートパラメータのオブジェクトを構築するので、<code>boost::blank</code>は第1テンプレートパラメータとして指定することを推奨する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
 <span style="color: #BC7A00">#include &lt;string&gt;</span>
 <span style="color: #BC7A00">#include &lt;boost/variant.hpp&gt;</span>
 

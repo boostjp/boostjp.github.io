@@ -123,6 +123,11 @@ a code {
 .content-body > h1:first-child {
     margin-top: 0px;
 }
+.content-body h2 {
+  border-left: solid 8px skyblue;
+  padding-left: 5px;
+  border-bottom: solid 2px skyblue;
+}
 .edit {
   -webkit-border-radius:4px;
   -moz-border-radius:4px;
@@ -239,7 +244,7 @@ std<span style="color: #666666">::</span>for_each(c.begin(), c.end(),
   binder2nd(<span style="color: #008000; font-weight: bold">const</span> Operation<span style="color: #666666">&amp;</span> x,
             <span style="color: #008000; font-weight: bold">const</span> <span style="color: #008000; font-weight: bold">typename</span> Operation<span style="color: #666666">::</span>second_argument_type<span style="color: #666666">&amp;</span> y);
   ...
-</pre></div> </p> <p>我々の <code>Operation</code> の <code>second_argument_type</code> は <code>std::ostream&amp;</code> であるから、コンストラクタの中の <code>y</code> の型は <code>std::ostream&amp;&amp;</code> となるだろう。参照の参照を作ることはできないから、参照の参照は C++ では非合法であるとしてこの時点でコンパイルエラーになる。(ただし <a href=http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106 target=_blank>C++ 言語中核の問題点 106 番目</a> を参照せよ)。</p> <p>このライブラリのバインダは Boost <span href=http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.md.nolink><code>call_traits</code></span> テンプレートを使うことによってこの問題を回避している。</p> <p>コンストラクタは以下のように宣言される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">binder2nd(<span style="color: #008000; font-weight: bold">const</span> Operation<span style="color: #666666">&amp;</span> x,
+</pre></div> </p> <p>我々の <code>Operation</code> の <code>second_argument_type</code> は <code>std::ostream&amp;</code> であるから、コンストラクタの中の <code>y</code> の型は <code>std::ostream&amp;&amp;</code> となるだろう。参照の参照を作ることはできないから、参照の参照は C++ では非合法であるとしてこの時点でコンパイルエラーになる。(ただし <a href=http://www.open-std.org/jtc1/sc22/wg21/docs/cwg_defects.html#106 target=_blank>C++ 言語中核の問題点 106 番目</a> を参照せよ)。</p> <p>このライブラリのバインダは Boost <code><span href=http://boostjp.github.io/archive/boost_docs/libs/utility/call_traits.md.nolink>call_traits</span></code> テンプレートを使うことによってこの問題を回避している。</p> <p>コンストラクタは以下のように宣言される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%">binder2nd(<span style="color: #008000; font-weight: bold">const</span> Operation<span style="color: #666666">&amp;</span> x,
           <span style="color: #008000; font-weight: bold">typename</span> call_traits<span style="color: #666666">&lt;</span>
              <span style="color: #008000; font-weight: bold">typename</span> binary_traits<span style="color: #666666">&lt;</span>Operation<span style="color: #666666">&gt;::</span>second_argument_type
           <span style="color: #666666">&gt;::</span>param_type y)
