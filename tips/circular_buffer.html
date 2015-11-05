@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>循環バッファ - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="循環バッファ - boostjp"><meta itemprop=name content="循環バッファ - boostjp"><meta property=og:title content="循環バッファ - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/circular_buffer.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content><meta name=twitter:card content=summary><meta name=twitter:title content="循環バッファ - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/circular_buffer.html><meta name=twitter:description content><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="循環バッファ - boostjp"><meta itemprop=name content="循環バッファ - boostjp"><meta property=og:title content="循環バッファ - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/circular_buffer.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content><meta name=twitter:card content=summary><meta name=twitter:title content="循環バッファ - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/circular_buffer.html><meta name=twitter:description content><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -236,32 +238,32 @@ push_front( 'c' )
 push_front( 'd' )
  ___ ___ ___ 
 |_d_|_c_|_b_|  &lt;--- 'a'が消える
-</code></pre></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf(<span style="color: #666666">3</span>);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
 
-    <span style=color:#ff0000>c_buf.push_front</span>( <span style="color: #BA2121">'a'</span> );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">0</span>] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;                  <span style="color: #408080; font-style: italic">// バッファ内の任意の位置を指定可能</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );   <span style="color: #408080; font-style: italic">// arry同様開始/終了の指定も可能</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>                  <span class=c1>// バッファ内の任意の位置を指定可能</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>   <span class=c1>// arry同様開始/終了の指定も可能</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style=color:#ff0000>c_buf.push_front</span>( <span style="color: #BA2121">'b'</span> );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">0</span>] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">" "</span> <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">1</span>] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style=color:#ff0000>c_buf.push_front</span>( <span style="color: #BA2121">'c'</span> );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">0</span>] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">" "</span> <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">1</span>] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">" "</span> <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">2</span>] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style=color:#ff0000>c_buf.push_front</span>( <span style="color: #BA2121">'d'</span> );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">0</span>] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">" "</span> <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">1</span>] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">" "</span> <span style="color: #666666">&lt;&lt;</span> c_buf[<span style="color: #666666">2</span>] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'d'</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>a
 a
 b a
@@ -286,87 +288,87 @@ push_back( 'z' )
 push_back( '1' )
  ___ ___ ___ 
 |_y_|_z_|_1_|  &lt;--- 'x'が消える
-</code></pre></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf(<span style="color: #666666">3</span>);
-    <span style=color:#ff0000>c_buf.push_back</span>( <span style="color: #BA2121">'x'</span> );
-    <span style=color:#ff0000>c_buf.push_back</span>( <span style="color: #BA2121">'y'</span> );
-    <span style=color:#ff0000>c_buf.push_back</span>( <span style="color: #BA2121">'z'</span> );
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'x'</span> <span class=p>);</span>
+    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'y'</span> <span class=p>);</span>
+    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'z'</span> <span class=p>);</span>
 
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
 
-    <span style=color:#ff0000>c_buf.push_back</span>( <span style="color: #BA2121">'1'</span> );
+    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'1'</span> <span class=p>);</span>
 
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>x y z 
 y z 1 
-</code></pre></p> <h3>バッファの削除をする場合</h3> <p><code>std::vector</code>と同じく、popも利用可能</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <h3>バッファの削除をする場合</h3> <p><code>std::vector</code>と同じく、popも利用可能</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf(<span style="color: #666666">3</span>);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 末尾に追加していく</span>
-    c_buf.push_back( <span style="color: #BA2121">'x'</span> );
-    c_buf.push_back( <span style="color: #BA2121">'y'</span> );
-    c_buf.push_back( <span style="color: #BA2121">'z'</span> );
+    <span class=c1>// 末尾に追加していく</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'x'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'y'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'z'</span> <span class=p>);</span>
 
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    c_buf.pop_back();   <span style="color: #408080; font-style: italic">// 末尾バッファ 'z' が削除</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>pop_back</span><span class=p>();</span>   <span class=c1>// 末尾バッファ 'z' が削除</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    c_buf.pop_front();  <span style="color: #408080; font-style: italic">// 先頭バッファ 'x' が削除</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>pop_front</span><span class=p>();</span>  <span class=c1>// 先頭バッファ 'x' が削除</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>x y z 
 x y 
 y 
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#iterator name=iterator>イテレータ/逆イテレータ</a></h2> <p>標準コンテナと同様に、イテレータと逆イテレータも利用可能</p> <p><pre><code> [0] [1] [2] 
  ___ ___ ___ 
 |_c_|_b_|_a_|
-</code></pre></p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>メンバ関数</th> <th>効果</th> </tr> </thead> <tbody> <tr> <td><code>begin()</code></td> <td><code>[0]</code>位置を指すイテレータが返る、値は <code>'c'</code></td> </tr> <tr> <td><code>end()</code></td> <td><code>[2]</code>位置の次を指すイテレータが返る</td> </tr> <tr> <td><code>rbegin()</code></td> <td><code>[2]</code>位置を指す逆イテレータが返る、値は <code>'a'</code></td> </tr> <tr> <td><code>rend()</code></td> <td><code>[0]</code>位置の前を指す逆イテレータが返る</td> </tr> </tbody> </table> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>メンバ関数</th> <th>効果</th> </tr> </thead> <tbody> <tr> <td><code>begin()</code></td> <td><code>[0]</code>位置を指すイテレータが返る、値は <code>'c'</code></td> </tr> <tr> <td><code>end()</code></td> <td><code>[2]</code>位置の次を指すイテレータが返る</td> </tr> <tr> <td><code>rbegin()</code></td> <td><code>[2]</code>位置を指す逆イテレータが返る、値は <code>'a'</code></td> </tr> <tr> <td><code>rend()</code></td> <td><code>[0]</code>位置の前を指す逆イテレータが返る</td> </tr> </tbody> </table> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf( <span style="color: #666666">3</span> );
-    c_buf.push_front( <span style="color: #BA2121">'a'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'b'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'c'</span> );
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
 
-    std<span style="color: #666666">::</span>for_each( <span style=color:#ff0000>c_buf.begin</span>(), <span style=color:#ff0000>c_buf.end</span>(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.begin</span></span><span class=p>(),</span> <span class=n><span style=color:#ff0000>c_buf.end</span></span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    std<span style="color: #666666">::</span>for_each( <span style=color:#ff0000>c_buf.rbegin</span>(), <span style=color:#ff0000>c_buf.rend</span>(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.rbegin</span></span><span class=p>(),</span> <span class=n><span style=color:#ff0000>c_buf.rend</span></span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>c b a 
 a b c 
 </code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#law-layer-api name=law-layer-api>実メモリアドレスとC API対応</a></h2> <p><code>boost::circular_buffer</code>クラスには、循環バッファの中身をサイズ指定で一括出力させたいときなどに利用するメンバ関数として、<code>array_one()</code>と<code>array_two()</code>が用意されている。</p> <p>また、<code>printf()</code>や<code>fwrite()</code>のようなC APIとやりとりするためのメンバ関数として、<code>linearize()</code>が用意されている。</p> <p>＊循環バッファのメモリアドレスイメージ</p> <p><pre><code>___ ___ ___ ___ ___
@@ -377,94 +379,94 @@ a b c
   |                      array_one().second:その位置からの個数取得
   +--------------------&gt; array_two().first :位置取得
                          array_two().second:先頭位置からの個数取得
-</code></pre></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/lambda/lambda.hpp&gt;</span>
+</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
+<span class=cp>#include &lt;boost/lambda/lambda.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>lambda;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>lambda</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">// メモリ表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">mem_dump</span>( <span style="color: #B00040">char</span> <span style="color: #666666">*</span>p, <span style="color: #B00040">int</span> num )
-{
-    std<span style="color: #666666">::</span>for_each( p, p<span style="color: #666666">+</span>num, ( std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> _1 <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span> ));
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+<span class=c1>// メモリ表示</span>
+<span class=kt>void</span> <span class=nf>mem_dump</span><span class=p>(</span> <span class=kt>char</span> <span class=o>*</span><span class=n>p</span><span class=p>,</span> <span class=kt>int</span> <span class=n>num</span> <span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>p</span><span class=p>,</span> <span class=n>p</span><span class=o>+</span><span class=n>num</span><span class=p>,</span> <span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>_1</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span> <span class=p>));</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf( <span style="color: #666666">5</span> );
-    c_buf.push_front( <span style="color: #BA2121">'A'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'B'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'C'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'D'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'E'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'F'</span> );    <span style="color: #408080; font-style: italic">// これ以降、先の'A'から消える</span>
-    c_buf.push_front( <span style="color: #BA2121">'G'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'H'</span> );
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span> <span class=mi>5</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'A'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'B'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'C'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'D'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'E'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'F'</span> <span class=p>);</span>    <span class=c1>// これ以降、先の'A'から消える</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'G'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'H'</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    <span style="color: #408080; font-style: italic">// 循環バッファのメモリアドレスイメージ</span>
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_H_|_G_|_F_|_E_|_G_|</span>
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), ( std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> _1 <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span> ));
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=c1>// 循環バッファのメモリアドレスイメージ</span>
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_H_|_G_|_F_|_E_|_G_|</span>
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>_1</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span> <span class=p>));</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// ------------------------------</span>
-    <span style="color: #408080; font-style: italic">// 実メモリアドレスを意識</span>
-    <span style="color: #408080; font-style: italic">// ------------------------------</span>
-    <span style="color: #B00040">int</span> num1 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_one().second</span>;    <span style="color: #408080; font-style: italic">// begin()から終端までの個数 '3'</span>
-    <span style="color: #B00040">int</span> num2 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_two().second</span>;    <span style="color: #408080; font-style: italic">// 実メモリ先頭からend()までの個数 '2'</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> num1 <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> num2 <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// ------------------------------</span>
+    <span class=c1>// 実メモリアドレスを意識</span>
+    <span class=c1>// ------------------------------</span>
+    <span class=kt>int</span> <span class=n>num1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().second</span></span><span class=p>;</span>    <span class=c1>// begin()から終端までの個数 '3'</span>
+    <span class=kt>int</span> <span class=n>num2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().second</span></span><span class=p>;</span>    <span class=c1>// 実メモリ先頭からend()までの個数 '2'</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num1</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num2</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    <span style="color: #408080; font-style: italic">// 実メモリアドレス</span>
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_E_|_D_|_H_|_F_|_G_|</span>
-    <span style="color: #408080; font-style: italic">//       |   +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
-    <span style="color: #408080; font-style: italic">//       +------------------- 'D'がend()  位置、先頭'E'を含めて2つ続く</span>
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    <span style="color: #B00040">char</span><span style="color: #666666">*</span> p1 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_one().first</span>;
-    <span style="color: #B00040">char</span><span style="color: #666666">*</span> p2 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_two().first</span>;
-    mem_dump( p1, num1 );                <span style="color: #408080; font-style: italic">// begin()から実メモリ末尾までの出力</span>
-    mem_dump( p2, num2 );                <span style="color: #408080; font-style: italic">// 実メモリ先頭からend()までの出力</span>
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=c1>// 実メモリアドレス</span>
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_E_|_D_|_H_|_F_|_G_|</span>
+    <span class=c1>//       |   +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
+    <span class=c1>//       +------------------- 'D'がend()  位置、先頭'E'を含めて2つ続く</span>
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=kt>char</span><span class=o>*</span> <span class=n>p1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().first</span></span><span class=p>;</span>
+    <span class=kt>char</span><span class=o>*</span> <span class=n>p2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().first</span></span><span class=p>;</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p1</span><span class=p>,</span> <span class=n>num1</span> <span class=p>);</span>                <span class=c1>// begin()から実メモリ末尾までの出力</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p2</span><span class=p>,</span> <span class=n>num2</span> <span class=p>);</span>                <span class=c1>// 実メモリ先頭からend()までの出力</span>
 
-    <span style=color:#ff0000>c_buf.pop_back();</span>                    <span style="color: #408080; font-style: italic">// 末尾を消してみる</span>
+    <span class=n><span style=color:#ff0000>c_buf.pop_back();</span></span>                    <span class=c1>// 末尾を消してみる</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
 
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    <span style="color: #408080; font-style: italic">// 循環バッファのメモリアドレスイメージ</span>
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_H_|_G_|_F_|_E_|___|</span>
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), ( std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> _1 <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span> ));
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=c1>// 循環バッファのメモリアドレスイメージ</span>
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_H_|_G_|_F_|_E_|___|</span>
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>_1</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span> <span class=p>));</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    num1 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_one().second</span>;     <span style="color: #408080; font-style: italic">// 再取得してみる</span>
-    num2 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_two().second</span>;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> num1  <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> num2  <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>num1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().second</span></span><span class=p>;</span>     <span class=c1>// 再取得してみる</span>
+    <span class=n>num2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().second</span></span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num1</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num2</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    <span style="color: #408080; font-style: italic">// 実メモリアドレス</span>
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_E_|___|_H_|_F_|_G_|</span>
-    <span style="color: #408080; font-style: italic">//   |       +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
-    <span style="color: #408080; font-style: italic">//   +----------------------- 'E'がend()  位置、先頭'E'を含めて1つ続く</span>
-    <span style="color: #408080; font-style: italic">// --------------------------------------------------------------------------</span>
-    p1 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_one().first</span>;        <span style="color: #408080; font-style: italic">// 再取得してみる</span>
-    p2 <span style="color: #666666">=</span> <span style=color:#ff0000>c_buf.array_two().first</span>;
-    mem_dump( p1, num1 );
-    mem_dump( p2, num2 );
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=c1>// 実メモリアドレス</span>
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_E_|___|_H_|_F_|_G_|</span>
+    <span class=c1>//   |       +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
+    <span class=c1>//   +----------------------- 'E'がend()  位置、先頭'E'を含めて1つ続く</span>
+    <span class=c1>// --------------------------------------------------------------------------</span>
+    <span class=n>p1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().first</span></span><span class=p>;</span>        <span class=c1>// 再取得してみる</span>
+    <span class=n>p2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().first</span></span><span class=p>;</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p1</span><span class=p>,</span> <span class=n>num1</span> <span class=p>);</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p2</span><span class=p>,</span> <span class=n>num2</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// linearize()を使えば、レガシーCの様な記載も可能</span>
-    mem_dump( <span style=color:#ff0000>c_buf.linearize()</span>, <span style="color: #666666">4</span> );
+    <span class=c1>// linearize()を使えば、レガシーCの様な記載も可能</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.linearize()</span></span><span class=p>,</span> <span class=mi>4</span> <span class=p>);</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>H G F E D
 3
 2
@@ -477,55 +479,55 @@ H G F E
 H G F
 E
 H G F E
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#monitor name=monitor>バッファの使用状況を確認する</a></h2> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#monitor name=monitor>バッファの使用状況を確認する</a></h2> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #408080; font-style: italic">// サイズ関連</span>
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf( <span style="color: #666666">3</span> );
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=c1>// サイズ関連</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>
 
-    <span style=color:#ff0000>c_buf.set_capacity</span>( <span style="color: #666666">7</span> );                            <span style="color: #408080; font-style: italic">// バッファの許容サイズを7に拡張</span>
+    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>7</span> <span class=p>);</span>                            <span class=c1>// バッファの許容サイズを7に拡張</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.size()</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;             <span style="color: #408080; font-style: italic">// 今は空なのでサイズ0</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.capacity()</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;         <span style="color: #408080; font-style: italic">// バッファの許容サイズ7</span>
-    <span style="color: #008000; font-weight: bold">if</span>( <span style=color:#ff0000>c_buf.empty()</span> ){                                <span style="color: #408080; font-style: italic">// empty()==trueでバッファが空</span>
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"buffer empty."</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 今は空なのでサイズ0</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.capacity()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// バッファの許容サイズ7</span>
+    <span class=k>if</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.empty()</span></span> <span class=p>){</span>                                <span class=c1>// empty()==trueでバッファが空</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"buffer empty."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    c_buf.push_front( <span style="color: #BA2121">'a'</span> );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.size()</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;             <span style="color: #408080; font-style: italic">// 1つ入れたのでサイズ1</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 1つ入れたのでサイズ1</span>
 
-    <span style=color:#ff0000>c_buf.set_capacity</span>( <span style="color: #666666">5</span> );                            <span style="color: #408080; font-style: italic">// 許容サイズを5に小さくする</span>
+    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>5</span> <span class=p>);</span>                            <span class=c1>// 許容サイズを5に小さくする</span>
 
-    <span style="color: #408080; font-style: italic">// あと、どれくらい入れれるの？</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.reserve()</span>  <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;         <span style="color: #408080; font-style: italic">// capacity()-size() の意味</span>
+    <span class=c1>// あと、どれくらい入れれるの？</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.reserve()</span></span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// capacity()-size() の意味</span>
 
-    c_buf.push_front( <span style="color: #BA2121">'b'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'c'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'d'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'e'</span> );
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'d'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'e'</span> <span class=p>);</span>
 
-    <span style="color: #008000; font-weight: bold">if</span>( <span style=color:#ff0000>c_buf.full()</span> ){                               <span style="color: #408080; font-style: italic">// full()==trueでバッファが全て埋まっている</span>
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"buffer full."</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-                                                        <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );  <span style="color: #408080; font-style: italic">// |_e_|_d_|_c_|_b_|_a_|</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.size()</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;             <span style="color: #408080; font-style: italic">// サイズは5</span>
+    <span class=k>if</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.full()</span></span> <span class=p>){</span>                               <span class=c1>// full()==trueでバッファが全て埋まっている</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"buffer full."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+                                                        <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>  <span class=c1>// |_e_|_d_|_c_|_b_|_a_|</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは5</span>
 
 
-    <span style=color:#ff0000>c_buf.set_capacity</span>( <span style="color: #666666">3</span> );                            <span style="color: #408080; font-style: italic">// バッファの値が埋まっていても容量を3にできる</span>
-                                                        <span style="color: #408080; font-style: italic">//  ___ ___ ___ </span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );  <span style="color: #408080; font-style: italic">// |_e_|_d_|_c_|</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.size()</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;             <span style="color: #408080; font-style: italic">// サイズは3</span>
+    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>                            <span class=c1>// バッファの値が埋まっていても容量を3にできる</span>
+                                                        <span class=c1>//  ___ ___ ___ </span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>  <span class=c1>// |_e_|_d_|_c_|</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは3</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>0
 7
 buffer empty.
@@ -536,68 +538,68 @@ e d c b a
 5
 e d c
 3
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#element-access name=element-access>バッファの先頭/末尾/任意の位置にアクセスする</a></h2> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/circular_buffer.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/circular_buffer.html#element-access name=element-access>バッファの先頭/末尾/任意の位置にアクセスする</a></h2> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// コンソール表示</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">disp</span>( <span style="color: #B00040">char</span> x ) { std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> x <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">' '</span>; }
+<span class=c1>// コンソール表示</span>
+<span class=kt>void</span> <span class=nf>disp</span><span class=p>(</span> <span class=kt>char</span> <span class=n>x</span> <span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #408080; font-style: italic">// サイズ設定</span>
-    boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;</span> c_buf( <span style="color: #666666">5</span> );
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=c1>// サイズ設定</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span> <span class=mi>5</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// イテレータ、begin/end</span>
-    c_buf.push_front( <span style="color: #BA2121">'A'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'B'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'C'</span> );
+    <span class=c1>// イテレータ、begin/end</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'A'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'B'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'C'</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_C_|_B_|_A_|___|___|</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_C_|_B_|_A_|___|___|</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style=color:#ff0000>boost<span style="color: #666666">::</span>circular_buffer<span style="color: #666666">&lt;</span><span style="color: #B00040">char</span><span style="color: #666666">&gt;::</span>iterator it</span> <span style="color: #666666">=</span> c_buf.begin();
+    <span class=n><span style=color:#ff0000>boost::circular_buffer&lt;char&gt;::iterator it</span></span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>();</span>
 
-    <span style="color: #408080; font-style: italic">// 先頭の要素を取得</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf.front()  <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;       <span style="color: #408080; font-style: italic">// 'C'</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>it            <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;       <span style="color: #408080; font-style: italic">// front()と同じ意味 'C'</span>
+    <span class=c1>// 先頭の要素を取得</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>front</span><span class=p>()</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>       <span class=c1>// 'C'</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=n>it</span>            <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>       <span class=c1>// front()と同じ意味 'C'</span>
 
-     <span style="color: #408080; font-style: italic">// 末尾の要素を取得</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> c_buf.back()   <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;       <span style="color: #408080; font-style: italic">// 'A'</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>( c_buf.end() <span style="color: #666666">-</span> <span style="color: #666666">1</span> ) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// back()と同じ意味 'A'</span>
-<span style="color: #408080; font-style: italic">//  std::cout &lt;&lt; *c_buf.end()   &lt;&lt; std::endl;       // これはできない</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+     <span class=c1>// 末尾の要素を取得</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>back</span><span class=p>()</span>   <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>       <span class=c1>// 'A'</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>()</span> <span class=o>-</span> <span class=mi>1</span> <span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// back()と同じ意味 'A'</span>
+<span class=c1>//  std::cout &lt;&lt; *c_buf.end()   &lt;&lt; std::endl;       // これはできない</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    c_buf.push_front( <span style="color: #BA2121">'D'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'E'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'F'</span> );
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'D'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'E'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'F'</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_F_|_E_|_D_|_C_|_B_|</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp );
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_F_|_E_|_D_|_C_|_B_|</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>it <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// かつての先頭だった'C' </span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=n>it</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// かつての先頭だった'C' </span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    c_buf.push_front( <span style="color: #BA2121">'G'</span> );
-    c_buf.push_front( <span style="color: #BA2121">'H'</span> );
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'G'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'H'</span> <span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">//  ___ ___ ___ ___ ___</span>
-    <span style="color: #408080; font-style: italic">// |_H_|_G_|_F_|_E_|_D_|</span>
-    std<span style="color: #666666">::</span>for_each( c_buf.begin(), c_buf.end(), disp ); 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>//  ___ ___ ___ ___ ___</span>
+    <span class=c1>// |_H_|_G_|_F_|_E_|_D_|</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span> 
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">//  std::cout &lt;&lt; *it &lt;&lt; std::endl; // 'C' は消えたので、イテレータが無効になった</span>
+<span class=c1>//  std::cout &lt;&lt; *it &lt;&lt; std::endl; // 'C' は消えたので、イテレータが無効になった</span>
 
-    <span style="color: #408080; font-style: italic">// ランダムアクセス</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf[<span style="color: #666666">0</span>]</span>     <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 'H'</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>c_buf.at</span>(<span style="color: #666666">0</span>)  <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 範囲チェック付きランダムアクセス 'H' </span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// ランダムアクセス</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf[0]</span></span>     <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 'H'</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.at</span></span><span class=p>(</span><span class=mi>0</span><span class=p>)</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 範囲チェック付きランダムアクセス 'H' </span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
-}
+    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>C B A 
 C
 C

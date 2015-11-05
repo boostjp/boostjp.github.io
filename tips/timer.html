@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>処理時間の計測 - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="処理時間の計測 - boostjp"><meta itemprop=name content="処理時間の計測 - boostjp"><meta property=og:title content="処理時間の計測 - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/timer.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="処理時間の計測 処理時間の計測には、 Boost Timer Library のboost::timer::cpu_timerクラスを使用する。 インデックス  基本的な使い方 開始、停止、再開を制御する 処理時間の値を個別に取得する [出力結果のフォーマットをカスタマイズする]  基本的な使い方 cpu_timerクラスでは、コンストラクタで時間計測が開始され、format()メンバ関数で計測結"><meta name=twitter:card content=summary><meta name=twitter:title content="処理時間の計測 - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/timer.html><meta name=twitter:description content="処理時間の計測 処理時間の計測には、 Boost Timer Library のboost::timer::cpu_timerクラスを使用する。 インデックス  基本的な使い方 開始、停止、再開を制御する 処理時間の値を個別に取得する [出力結果のフォーマットをカスタマイズする]  基本的な使い方 cpu_timerクラスでは、コンストラクタで時間計測が開始され、format()メンバ関数で計測結"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="処理時間の計測 - boostjp"><meta itemprop=name content="処理時間の計測 - boostjp"><meta property=og:title content="処理時間の計測 - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/timer.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="処理時間の計測 処理時間の計測には、 Boost Timer Library のboost::timer::cpu_timerクラスを使用する。 インデックス  基本的な使い方 開始、停止、再開を制御する 処理時間の値を個別に取得する [出力結果のフォーマットをカスタマイズする]  基本的な使い方 cpu_timerクラスでは、コンストラクタで時間計測が開始され、format()メンバ関数で計測結"><meta name=twitter:card content=summary><meta name=twitter:title content="処理時間の計測 - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/timer.html><meta name=twitter:description content="処理時間の計測 処理時間の計測には、 Boost Timer Library のboost::timer::cpu_timerクラスを使用する。 インデックス  基本的な使い方 開始、停止、再開を制御する 処理時間の値を個別に取得する [出力結果のフォーマットをカスタマイズする]  基本的な使い方 cpu_timerクラスでは、コンストラクタで時間計測が開始され、format()メンバ関数で計測結"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,98 +219,98 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 処理時間の計測 </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/timer.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/timer.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>処理時間の計測</h1> <div itemprop=articleBody><p>処理時間の計測には、 <a href=http://www.boost.org/doc/libs/release/libs/timer/doc/index.html target=_blank>Boost Timer Library</a> の<code>boost::timer::cpu_timer</code>クラスを使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/timer.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/timer.html#start-stop-resume>開始、停止、再開を制御する</a></li> <li><a href=http://boostjp.github.io/tips/timer.html#elapsed-values>処理時間の値を個別に取得する</a></li> <li>[出力結果のフォーマットをカスタマイズする]</li> </ul> <h2><a href=http://boostjp.github.io/tips/timer.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p><code>cpu_timer</code>クラスでは、コンストラクタで時間計測が開始され、<code>format()</code>メンバ関数で計測結果の<code>std::string</code>を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cmath&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/timer/timer.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 処理時間の計測 </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/timer.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/timer.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>処理時間の計測</h1> <div itemprop=articleBody><p>処理時間の計測には、 <a href=http://www.boost.org/doc/libs/release/libs/timer/doc/index.html target=_blank>Boost Timer Library</a> の<code>boost::timer::cpu_timer</code>クラスを使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/timer.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/timer.html#start-stop-resume>開始、停止、再開を制御する</a></li> <li><a href=http://boostjp.github.io/tips/timer.html#elapsed-values>処理時間の値を個別に取得する</a></li> <li>[出力結果のフォーマットをカスタマイズする]</li> </ul> <h2><a href=http://boostjp.github.io/tips/timer.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p><code>cpu_timer</code>クラスでは、コンストラクタで時間計測が開始され、<code>format()</code>メンバ関数で計測結果の<code>std::string</code>を返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;cmath&gt;</span>
+<span class=cp>#include &lt;boost/timer/timer.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span> ()
-{
-    boost<span style="color: #666666">::</span>timer<span style="color: #666666">::</span><span style=color:#ff0000>cpu_timer</span> timer; <span style="color: #408080; font-style: italic">// 時間計測を開始</span>
+<span class=kt>int</span> <span class=nf>main</span> <span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n><span style=color:#ff0000>cpu_timer</span></span> <span class=n>timer</span><span class=p>;</span> <span class=c1>// 時間計測を開始</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">long</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000000</span>; <span style="color: #666666">++</span>i) {
-        std<span style="color: #666666">::</span>sqrt(<span style="color: #666666">123.456</span>L); <span style="color: #408080; font-style: italic">// 時間のかかる処理</span>
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
+    <span class=p>}</span>
 
-    std<span style="color: #666666">::</span>string result <span style="color: #666666">=</span> timer.format(); <span style="color: #408080; font-style: italic">// 結果文字列を取得する</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> result <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>result</span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n>format</span><span class=p>();</span> <span class=c1>// 結果文字列を取得する</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果</p> <p><pre><code> 5.636670s wall, 5.600436s user + 0.000000s system = 5.600436s CPU (99.4%)
-</code></pre></p> <p>実行結果文字列には、以下の値が印字される：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>フォーマット</th> <th>分解能</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>wall</td> <td>ナノ秒</td> <td>実際の経過時間(wall clock time)</td> </tr> <tr> <td>user</td> <td>ナノ秒</td> <td>ユーザーCPU処理時間</td> </tr> <tr> <td>system</td> <td>ナノ秒</td> <td>システムCPU処理時間</td> </tr> <tr> <td>=後</td> <td>ナノ秒</td> <td>ユーザーCPU処理時間とシステムCPU処理時間の合計時間</td> </tr> <tr> <td>%表記</td> <td></td> <td>ユーザーCPU処理時間 + システムCPU処理時間の合計時間による、実際の経過時間の%表現</td> </tr> </tbody> </table> <h2><a href=http://boostjp.github.io/tips/timer.html#start-stop-resume name=start-stop-resume>開始、停止、再開を制御する</a></h2> <p><code>cpu_timer</code>の開始、停止、再開を制御するには、それぞれ<code>start()</code>、<code>stop()</code>、<code>resume()</code>メンバ関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cmath&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/timer/timer.hpp&gt;</span>
+</code></pre></p> <p>実行結果文字列には、以下の値が印字される：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>フォーマット</th> <th>分解能</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>wall</td> <td>ナノ秒</td> <td>実際の経過時間(wall clock time)</td> </tr> <tr> <td>user</td> <td>ナノ秒</td> <td>ユーザーCPU処理時間</td> </tr> <tr> <td>system</td> <td>ナノ秒</td> <td>システムCPU処理時間</td> </tr> <tr> <td>=後</td> <td>ナノ秒</td> <td>ユーザーCPU処理時間とシステムCPU処理時間の合計時間</td> </tr> <tr> <td>%表記</td> <td></td> <td>ユーザーCPU処理時間 + システムCPU処理時間の合計時間による、実際の経過時間の%表現</td> </tr> </tbody> </table> <h2><a href=http://boostjp.github.io/tips/timer.html#start-stop-resume name=start-stop-resume>開始、停止、再開を制御する</a></h2> <p><code>cpu_timer</code>の開始、停止、再開を制御するには、それぞれ<code>start()</code>、<code>stop()</code>、<code>resume()</code>メンバ関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;cmath&gt;</span>
+<span class=cp>#include &lt;boost/timer/timer.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span> ()
-{
-    boost<span style="color: #666666">::</span>timer<span style="color: #666666">::</span>cpu_timer timer;
+<span class=kt>int</span> <span class=nf>main</span> <span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_timer</span> <span class=n>timer</span><span class=p>;</span>
 
-    timer.<span style=color:#ff0000>start</span>(); <span style="color: #408080; font-style: italic">// 開始</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>start</span></span><span class=p>();</span> <span class=c1>// 開始</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">long</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000000</span>; <span style="color: #666666">++</span>i) {
-        std<span style="color: #666666">::</span>sqrt(<span style="color: #666666">123.456</span>L); <span style="color: #408080; font-style: italic">// 時間のかかる処理</span>
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
+    <span class=p>}</span>
 
-    timer.<span style=color:#ff0000>stop</span>(); <span style="color: #408080; font-style: italic">// 停止</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>stop</span></span><span class=p>();</span> <span class=c1>// 停止</span>
 
-    <span style="color: #408080; font-style: italic">// 中間結果を出力</span>
-    {
-        std<span style="color: #666666">::</span>string result <span style="color: #666666">=</span> timer.format();
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> result <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
+    <span class=c1>// 中間結果を出力</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>result</span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n>format</span><span class=p>();</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    timer.<span style=color:#ff0000>resume</span>(); <span style="color: #408080; font-style: italic">// 再開</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>resume</span></span><span class=p>();</span> <span class=c1>// 再開</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">long</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000000</span>; <span style="color: #666666">++</span>i) {
-        std<span style="color: #666666">::</span>sqrt(<span style="color: #666666">123.456</span>L); <span style="color: #408080; font-style: italic">// 時間のかかる処理</span>
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// 最終結果を出力</span>
-    {
-        std<span style="color: #666666">::</span>string result <span style="color: #666666">=</span> timer.format();
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> result <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
-</pre></div> </p> <p>実行例</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #666666">5.942355</span>s wall, <span style="color: #666666">5.569236</span>s user <span style="color: #666666">+</span> <span style="color: #666666">0.000000</span>s system <span style="color: #666666">=</span> <span style="color: #666666">5.569236</span>s CPU (<span style="color: #666666">93.7%</span>)
+    <span class=c1>// 最終結果を出力</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>result</span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n>format</span><span class=p>();</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div> </p> <p>実行例</p> <p><div class=codehilite><pre> <span class=mf>5.942355</span><span class=n>s</span> <span class=n>wall</span><span class=p>,</span> <span class=mf>5.569236</span><span class=n>s</span> <span class=n>user</span> <span class=o>+</span> <span class=mf>0.000000</span><span class=n>s</span> <span class=n>system</span> <span class=o>=</span> <span class=mf>5.569236</span><span class=n>s</span> <span class=n>CPU</span> <span class=p>(</span><span class=mf>93.7</span><span class=o>%</span><span class=p>)</span>
 
- <span style="color: #666666">11.981387</span>s wall, <span style="color: #666666">11.247672</span>s user <span style="color: #666666">+</span> <span style="color: #666666">0.000000</span>s system <span style="color: #666666">=</span> <span style="color: #666666">11.247672</span>s CPU (<span style="color: #666666">93.9%</span>)
-</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/timer.html#elapsed-values name=elapsed-values>処理時間の値を個別に取得する</a></h2> <p>処理時間の値を個別に取得するには、<code>elapsed()</code>メンバ関数を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cmath&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/timer/timer.hpp&gt;</span>
+ <span class=mf>11.981387</span><span class=n>s</span> <span class=n>wall</span><span class=p>,</span> <span class=mf>11.247672</span><span class=n>s</span> <span class=n>user</span> <span class=o>+</span> <span class=mf>0.000000</span><span class=n>s</span> <span class=n>system</span> <span class=o>=</span> <span class=mf>11.247672</span><span class=n>s</span> <span class=n>CPU</span> <span class=p>(</span><span class=mf>93.9</span><span class=o>%</span><span class=p>)</span>
+</pre></div> </p> <h2><a href=http://boostjp.github.io/tips/timer.html#elapsed-values name=elapsed-values>処理時間の値を個別に取得する</a></h2> <p>処理時間の値を個別に取得するには、<code>elapsed()</code>メンバ関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;cmath&gt;</span>
+<span class=cp>#include &lt;boost/timer/timer.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span> ()
-{
-    boost<span style="color: #666666">::</span>timer<span style="color: #666666">::</span>cpu_timer timer;
+<span class=kt>int</span> <span class=nf>main</span> <span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_timer</span> <span class=n>timer</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">long</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000000</span>; <span style="color: #666666">++</span>i) {
-        std<span style="color: #666666">::</span>sqrt(<span style="color: #666666">123.456</span>L); <span style="color: #408080; font-style: italic">// 時間のかかる処理</span>
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
+    <span class=p>}</span>
 
-    boost<span style="color: #666666">::</span>timer<span style="color: #666666">::</span>cpu_times <span style=color:#ff0000>elapsed</span> <span style="color: #666666">=</span> timer.<span style=color:#ff0000>elapsed</span>();
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_times</span> <span class=n><span style=color:#ff0000>elapsed</span></span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>();</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"wall : "</span> <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>elapsed</span>.wall <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"user : "</span> <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>elapsed</span>.user <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"system : "</span> <span style="color: #666666">&lt;&lt;</span> <span style=color:#ff0000>elapsed</span>.system <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"wall : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>wall</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"user : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>user</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"system : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>system</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行例：</p> <p><pre><code>wall : 5622194896
 user : 5553635600
 system : 0
-</code></pre></p> <p><code>elapsed()</code>メンバ関数は、<code>boost::timer::cpu_times</code>クラスのオブジェクトを返す。</p> <p><code>boost::timer::cpu_times</code>クラスは以下の<code>public</code>メンバ変数を持つ：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>変数名</th> <th>型</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>wall</td> <td><code>boost::timer::nanosecond_type</code></td> <td>実際の経過時間(wall clock time)</td> </tr> <tr> <td>user</td> <td><code>boost::timer::nanosecond_type</code></td> <td>ユーザーCPU処理時間</td> </tr> <tr> <td>system</td> <td><code>boost::timer::nanosecond_type</code></td> <td>システムCPU処理時間</td> </tr> </tbody> </table> <p>これらのメンバ変数は、ナノ秒分解能を表現する整数型である。</p> <h2><a href=http://boostjp.github.io/tips/timer.html#customize-format name=customize-format>出力結果のフォーマットをカスタマイズする</a></h2> <p><code>cpu_timer::format()</code>メンバ関数は、デフォルトでは以下のようなフォーマットで印字される。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"> <span style="color: #666666">5.636670</span>s wall, <span style="color: #666666">5.600436</span>s user <span style="color: #666666">+</span> <span style="color: #666666">0.000000</span>s system <span style="color: #666666">=</span> <span style="color: #666666">5.600436</span>s CPU (<span style="color: #666666">99.4%</span>)
-</pre></div> </p> <p><code>format()</code>メンバ関数に以下のように指定することでフォーマットをカスタマイズできる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cmath&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/timer/timer.hpp&gt;</span>
+</code></pre></p> <p><code>elapsed()</code>メンバ関数は、<code>boost::timer::cpu_times</code>クラスのオブジェクトを返す。</p> <p><code>boost::timer::cpu_times</code>クラスは以下の<code>public</code>メンバ変数を持つ：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>変数名</th> <th>型</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>wall</td> <td><code>boost::timer::nanosecond_type</code></td> <td>実際の経過時間(wall clock time)</td> </tr> <tr> <td>user</td> <td><code>boost::timer::nanosecond_type</code></td> <td>ユーザーCPU処理時間</td> </tr> <tr> <td>system</td> <td><code>boost::timer::nanosecond_type</code></td> <td>システムCPU処理時間</td> </tr> </tbody> </table> <p>これらのメンバ変数は、ナノ秒分解能を表現する整数型である。</p> <h2><a href=http://boostjp.github.io/tips/timer.html#customize-format name=customize-format>出力結果のフォーマットをカスタマイズする</a></h2> <p><code>cpu_timer::format()</code>メンバ関数は、デフォルトでは以下のようなフォーマットで印字される。</p> <p><div class=codehilite><pre> <span class=mf>5.636670</span><span class=n>s</span> <span class=n>wall</span><span class=p>,</span> <span class=mf>5.600436</span><span class=n>s</span> <span class=n>user</span> <span class=o>+</span> <span class=mf>0.000000</span><span class=n>s</span> <span class=n>system</span> <span class=o>=</span> <span class=mf>5.600436</span><span class=n>s</span> <span class=n>CPU</span> <span class=p>(</span><span class=mf>99.4</span><span class=o>%</span><span class=p>)</span>
+</pre></div> </p> <p><code>format()</code>メンバ関数に以下のように指定することでフォーマットをカスタマイズできる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;cmath&gt;</span>
+<span class=cp>#include &lt;boost/timer/timer.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span> ()
-{
-    boost<span style="color: #666666">::</span>timer<span style="color: #666666">::</span>cpu_timer timer;
+<span class=kt>int</span> <span class=nf>main</span> <span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_timer</span> <span class=n>timer</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">long</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000000</span>; <span style="color: #666666">++</span>i) {
-        std<span style="color: #666666">::</span>sqrt(<span style="color: #666666">123.456</span>L); <span style="color: #408080; font-style: italic">// 時間のかかる処理</span>
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
+    <span class=p>}</span>
 
-    std<span style="color: #666666">::</span>string result <span style="color: #666666">=</span> timer.format(<span style="color: #666666">9</span>, <span style="color: #BA2121">"経過時間：%w秒</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">"</span>
-                                         <span style="color: #BA2121">"ユーザーCPU処理時間：%u秒</span><span style="color: #BB6622; font-weight: bold">\n</span><span style="color: #BA2121">"</span>
-                                         <span style="color: #BA2121">"プロセスCPU処理時間：%s秒"</span>);
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> result <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>result</span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n>format</span><span class=p>(</span><span class=mi>9</span><span class=p>,</span> <span class=s>"経過時間：%w秒</span><span class=se>\n</span><span class=s>"</span>
+                                         <span class=s>"ユーザーCPU処理時間：%u秒</span><span class=se>\n</span><span class=s>"</span>
+                                         <span class=s>"プロセスCPU処理時間：%s秒"</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行例</p> <p><pre><code>経過時間：5.985288294秒
 ユーザーCPU処理時間：5.647236200秒
 プロセスCPU処理時間：0.000000000秒

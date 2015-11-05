@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>優先順位を付けて並べ替える - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="優先順位を付けて並べ替える - boostjp"><meta itemprop=name content="優先順位を付けて並べ替える - boostjp"><meta property=og:title content="優先順位を付けて並べ替える - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/priority_sort.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="優先順位を付けて並べ替える ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。 優先順位付きの比較には、Boost Fusion Libra"><meta name=twitter:card content=summary><meta name=twitter:title content="優先順位を付けて並べ替える - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/priority_sort.html><meta name=twitter:description content="優先順位を付けて並べ替える ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。 優先順位付きの比較には、Boost Fusion Libra"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="優先順位を付けて並べ替える - boostjp"><meta itemprop=name content="優先順位を付けて並べ替える - boostjp"><meta property=og:title content="優先順位を付けて並べ替える - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/priority_sort.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="優先順位を付けて並べ替える ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。 優先順位付きの比較には、Boost Fusion Libra"><meta name=twitter:card content=summary><meta name=twitter:title content="優先順位を付けて並べ替える - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/priority_sort.html><meta name=twitter:description content="優先順位を付けて並べ替える ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。 優先順位付きの比較には、Boost Fusion Libra"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,45 +219,45 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 優先順位を付けて並べ替える </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2015-01-17T00:39:06> 2015年01月17日 00時39分06秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/priority_sort.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/priority_sort.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>優先順位を付けて並べ替える</h1> <div itemprop=articleBody><p>ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。</p> <p>優先順位付きの比較には、<a href=http://www.boost.org/doc/libs/release/libs/fusion/doc/html/ target=_blank>Boost Fusion Library</a>が提供するタプル型を使用する。タプルとは、異なる複数の型からなるシーケンスである。<code><a href=http://cpprefjp.github.io/reference/utility/pair.html target=_blank>std::pair</a></code>が2つの異なる型のオブジェクトを格納するのに対して、タプルは任意個のオブジェクトを格納できる。</p> <p><a href=http://www.boost.org/doc/libs/release/libs/fusion/doc/html/ target=_blank>Boost.Fusion</a>が提供するタプルは比較演算子を持っており、それがちょうど前述した「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」という意味論での比較を行う。</p> <p>クラスのメンバ変数をタプルに変換することにより、優先順位付きの比較が可能となる。</p> <p>以下がその例である：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;algorithm&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 優先順位を付けて並べ替える </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2015-01-17T00:39:06> 2015年01月17日 00時39分06秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/priority_sort.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/priority_sort.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>優先順位を付けて並べ替える</h1> <div itemprop=articleBody><p>ここでは、優先順位を付きのオブジェクト比較と、それによる並べ替えの方法を示す。優先順位付きの比較とは、Windowsのエクスプローラで言うところの「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」というようなものである。 このような比較方法は、一覧画面のようなものを作る場合に必要となる。</p> <p>優先順位付きの比較には、<a href=http://www.boost.org/doc/libs/release/libs/fusion/doc/html/ target=_blank>Boost Fusion Library</a>が提供するタプル型を使用する。タプルとは、異なる複数の型からなるシーケンスである。<code><a href=http://cpprefjp.github.io/reference/utility/pair.html target=_blank>std::pair</a></code>が2つの異なる型のオブジェクトを格納するのに対して、タプルは任意個のオブジェクトを格納できる。</p> <p><a href=http://www.boost.org/doc/libs/release/libs/fusion/doc/html/ target=_blank>Boost.Fusion</a>が提供するタプルは比較演算子を持っており、それがちょうど前述した「ファイル種別順に並べて、同じファイル種別のものはファイル名順に並べる」という意味論での比較を行う。</p> <p>クラスのメンバ変数をタプルに変換することにより、優先順位付きの比較が可能となる。</p> <p>以下がその例である：</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;algorithm&gt;</span>
 
-<span style="color: #BC7A00">#include &lt;boost/fusion/include/comparison.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/fusion/include/<span style=color:#ff0000>vector_tie</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/fusion/include/comparison.hpp&gt;</span>
+<span class=cp>#include &lt;boost/fusion/include/<span style=color:#ff0000>vector_tie</span>.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> File {
-    std<span style="color: #666666">::</span>string type;
-    std<span style="color: #666666">::</span>string name;
+<span class=k>struct</span> <span class=n>File</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>type</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span><span class=p>;</span>
 
-    File(<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string<span style="color: #666666">&amp;</span> type, <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string<span style="color: #666666">&amp;</span> name)
-        <span style="color: #666666">:</span> type(type), name(name) {}
-};
+    <span class=n>File</span><span class=p>(</span><span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>type</span><span class=p>,</span> <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&amp;</span> <span class=n>name</span><span class=p>)</span>
+        <span class=o>:</span> <span class=n>type</span><span class=p>(</span><span class=n>type</span><span class=p>),</span> <span class=n>name</span><span class=p>(</span><span class=n>name</span><span class=p>)</span> <span class=p>{}</span>
+<span class=p>};</span>
 
-<span style="color: #B00040">bool</span> <span style="color: #008000; font-weight: bold">operator</span><span style="color: #666666">&lt;</span>(<span style="color: #008000; font-weight: bold">const</span> File<span style="color: #666666">&amp;</span> a, <span style="color: #008000; font-weight: bold">const</span> File<span style="color: #666666">&amp;</span> b)
-{
-    <span style="color: #408080; font-style: italic">// ファイル種別、ファイル名の順番で優先順位を付けて比較</span>
-    <span style="color: #008000; font-weight: bold">namespace</span> fusion <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>fusion;
-    <span style="color: #008000; font-weight: bold">return</span> fusion<span style="color: #666666">::</span><span style=color:#ff0000>vector_tie</span>(a.type, a.name) <span style="color: #666666">&lt;</span> fusion<span style="color: #666666">::</span><span style=color:#ff0000>vector_tie</span>(b.type, b.name);
-}
+<span class=kt>bool</span> <span class=k>operator</span><span class=o>&lt;</span><span class=p>(</span><span class=k>const</span> <span class=n>File</span><span class=o>&amp;</span> <span class=n>a</span><span class=p>,</span> <span class=k>const</span> <span class=n>File</span><span class=o>&amp;</span> <span class=n>b</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=c1>// ファイル種別、ファイル名の順番で優先順位を付けて比較</span>
+    <span class=k>namespace</span> <span class=n>fusion</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>fusion</span><span class=p>;</span>
+    <span class=k>return</span> <span class=n>fusion</span><span class=o>::</span><span class=n><span style=color:#ff0000>vector_tie</span></span><span class=p>(</span><span class=n>a</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>a</span><span class=p>.</span><span class=n>name</span><span class=p>)</span> <span class=o>&lt;</span> <span class=n>fusion</span><span class=o>::</span><span class=n><span style=color:#ff0000>vector_tie</span></span><span class=p>(</span><span class=n>b</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>b</span><span class=p>.</span><span class=n>name</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> main()
-{
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>File<span style="color: #666666">&gt;</span> files <span style="color: #666666">=</span> {
-        {<span style="color: #BA2121">"text"</span>, <span style="color: #BA2121">"b.txt"</span>},
-        {<span style="color: #BA2121">"application"</span>, <span style="color: #BA2121">"b.exe"</span>},
-        {<span style="color: #BA2121">"application"</span>, <span style="color: #BA2121">"a.exe"</span>},
-        {<span style="color: #BA2121">"text"</span>, <span style="color: #BA2121">"a.txt"</span>}
-    };
+<span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>File</span><span class=o>&gt;</span> <span class=n>files</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=s>"text"</span><span class=p>,</span> <span class=s>"b.txt"</span><span class=p>},</span>
+        <span class=p>{</span><span class=s>"application"</span><span class=p>,</span> <span class=s>"b.exe"</span><span class=p>},</span>
+        <span class=p>{</span><span class=s>"application"</span><span class=p>,</span> <span class=s>"a.exe"</span><span class=p>},</span>
+        <span class=p>{</span><span class=s>"text"</span><span class=p>,</span> <span class=s>"a.txt"</span><span class=p>}</span>
+    <span class=p>};</span>
 
-    <span style="color: #408080; font-style: italic">// 並べ替え</span>
-    std<span style="color: #666666">::</span>sort(files.begin(), files.end());
+    <span class=c1>// 並べ替え</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>sort</span><span class=p>(</span><span class=n>files</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>files</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">const</span> File<span style="color: #666666">&amp;</span> file <span style="color: #666666">:</span> files) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> file.type <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">", "</span> <span style="color: #666666">&lt;&lt;</span> file.name <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>File</span><span class=o>&amp;</span> <span class=n>file</span> <span class=o>:</span> <span class=n>files</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>file</span><span class=p>.</span><span class=n>type</span> <span class=o>&lt;&lt;</span> <span class=s>", "</span> <span class=o>&lt;&lt;</span> <span class=n>file</span><span class=p>.</span><span class=n>name</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>application, a.exe
 application, b.exe
 text, a.txt

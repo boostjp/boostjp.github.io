@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>グラフ - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="グラフ - boostjp"><meta itemprop=name content="グラフ - boostjp"><meta property=og:title content="グラフ - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/graph.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="グラフ グラフ構造とそれに対する操作を行うには、Boost Graph Libraryを使用する。 インデックス  グラフ型を定義する 頂点と辺を追加する 任意のクラスをプロパティにする ダイクストラ法で最短経路を求める 最短経路の長さ(重みの合計)を求める ある頂点に到達可能かどうかを調べる 通過する辺が最も少ない経路を求める 2つのグラフが同型か判定する 最小全域木を作る トポロジカルソート "><meta name=twitter:card content=summary><meta name=twitter:title content="グラフ - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/graph.html><meta name=twitter:description content="グラフ グラフ構造とそれに対する操作を行うには、Boost Graph Libraryを使用する。 インデックス  グラフ型を定義する 頂点と辺を追加する 任意のクラスをプロパティにする ダイクストラ法で最短経路を求める 最短経路の長さ(重みの合計)を求める ある頂点に到達可能かどうかを調べる 通過する辺が最も少ない経路を求める 2つのグラフが同型か判定する 最小全域木を作る トポロジカルソート "><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="グラフ - boostjp"><meta itemprop=name content="グラフ - boostjp"><meta property=og:title content="グラフ - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/graph.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="グラフ グラフ構造とそれに対する操作を行うには、Boost Graph Libraryを使用する。 インデックス  グラフ型を定義する 頂点と辺を追加する 任意のクラスをプロパティにする ダイクストラ法で最短経路を求める 最短経路の長さ(重みの合計)を求める ある頂点に到達可能かどうかを調べる 通過する辺が最も少ない経路を求める 2つのグラフが同型か判定する 最小全域木を作る トポロジカルソート "><meta name=twitter:card content=summary><meta name=twitter:title content="グラフ - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/graph.html><meta name=twitter:description content="グラフ グラフ構造とそれに対する操作を行うには、Boost Graph Libraryを使用する。 インデックス  グラフ型を定義する 頂点と辺を追加する 任意のクラスをプロパティにする ダイクストラ法で最短経路を求める 最短経路の長さ(重みの合計)を求める ある頂点に到達可能かどうかを調べる 通過する辺が最も少ない経路を求める 2つのグラフが同型か判定する 最小全域木を作る トポロジカルソート "><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,328 +219,328 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> グラフ </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-24T17:18:40> 2014年12月24日 17時18分40秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/graph.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/graph.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>グラフ</h1> <div itemprop=articleBody><p>グラフ構造とそれに対する操作を行うには、<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/index.html target=_blank>Boost Graph Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/graph.html#define-graph>グラフ型を定義する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#add-vertex-edge>頂点と辺を追加する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#bundle-property>任意のクラスをプロパティにする</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#dijkstra-shortest-paths>ダイクストラ法で最短経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#distance-map>最短経路の長さ(重みの合計)を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#is-reachable>ある頂点に到達可能かどうかを調べる</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#simple-shortest-path>通過する辺が最も少ない経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#isomorphism>2つのグラフが同型か判定する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#minimum-spanning-tree>最小全域木を作る</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#topological-sort>トポロジカルソート</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#euler-path>一筆書きの経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#write-graphviz>グラフをGraphviz形式(.dot)で出力する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#read-graphviz>Graphviz形式(.dot)のデータを読み込む</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#define-graph name=define-graph>グラフ型を定義する</a></h2> <p>Boost.Graphで標準的に使用する、グラフ構造のためのクラス<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/using_adjacency_list.html target=_blank>boost::adjacency_list</a></code>は、様々な目的に利用できるようカスタマイズが可能になっている。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">OutEdgeListS</span> <span style="color: #666666">=</span> vecS,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">VertexListS</span> <span style="color: #666666">=</span> vecS,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">DirectedS</span> <span style="color: #666666">=</span> directedS,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">VertexProperties</span> <span style="color: #666666">=</span> no_property,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">EdgeProperties</span> <span style="color: #666666">=</span> no_property,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">GraphProperties</span> <span style="color: #666666">=</span> no_property,
-          <span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">EdgeListS</span> <span style="color: #666666">=</span> listS<span style="color: #666666">&gt;</span>
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">adjacency_list</span>;
-</pre></div> </p> <p>設定例：</p> <p>以下は、無向グラフを定義する例：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">typedef</span>
-    boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>
-        boost<span style="color: #666666">::</span>listS,
-        boost<span style="color: #666666">::</span>vecS,
-        boost<span style="color: #666666">::</span>undirectedS
-    <span style="color: #666666">&gt;</span>
-Graph;
-</pre></div> </p> <p>有向グラフで、辺に重みを付ける例：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #008000; font-weight: bold">typedef</span>
-    boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>
-        boost<span style="color: #666666">::</span>listS,
-        boost<span style="color: #666666">::</span>vecS,
-        boost<span style="color: #666666">::</span>directedS,
-        boost<span style="color: #666666">::</span>no_property,
-        boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>
-    <span style="color: #666666">&gt;</span>
-Graph;
-</pre></div> </p> <p>テンプレートパラメータの説明：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>パラメータ</th> <th>説明</th> <th>デフォルト</th> </tr> </thead> <tbody> <tr> <td><code>OutEdgeList</code></td> <td>グラフの隣接構造(入辺と出辺)を表すためのコンテナを指定する</td> <td><code>vecS</code> (<code>std::vector</code>)</td> </tr> <tr> <td><code>VertexList</code></td> <td>グラフの頂点集合を表すためのコンテナを指定する</td> <td><code>vecS</code> (<code>std::vector</code>)</td> </tr> <tr> <td><code>DirectedS</code></td> <td>有向グラフか無向グラフかを選択する。<br> <code>directedS</code> : 有向グラフ<br> <code>undirectedS</code> : 無向グラフ<br> <code>bidirectionalS</code> : 双方向グラフ(有向で、辺が2本)</td> <td><code>directedS</code> (有向グラフ)</td> </tr> <tr> <td><code>VertexProperties</code></td> <td>頂点のカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>EdgeProperties</code></td> <td>辺のカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>GraphProperties</code></td> <td>グラフオブジェクトのカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>EdgeListS</code></td> <td>グラフの辺リストを表すためのコンテナを指定する。 このコンテナは、<code>bidirectionalS</code>もしくは<code>undirectedS</code>の場合に実際に辺を格納するために使用され、<code>OutEdgeList</code>はコンテナの要素を指すオブジェクトを格納する。<code>directedS</code>の場合は<code>OutEdgeList</code>に直接格納されるため、このパラメータは使用しない。</td> <td><code>listS</code> (<code>std::list</code>)</td> </tr> </tbody> </table> <p><strong>コンテナの選択</strong></p> <p><code>OutEdgeList</code>, <code>VertexList</code>, <code>EdgeListS</code>パラメータでのコンテナの指定には、以下を指定できる：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>指定可能なパラメータ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>vecS</code></td> <td><code>std::vector</code></td> </tr> <tr> <td><code>listS</code></td> <td><code>std::list</code></td> </tr> <tr> <td><code>slistS</code></td> <td><code>std::slist</code> (非標準)</td> </tr> <tr> <td><code>setS</code></td> <td><code>std::set</code></td> </tr> <tr> <td><code>multisetS</code></td> <td><code>std::multiset</code></td> </tr> <tr> <td><code>hash_setS</code></td> <td><code>boost::unordered_set</code></td> </tr> <tr> <td><code>hash_multisetS</code></td> <td><code>boost::unordered_multiset</code></td> </tr> </tbody> </table> <p><strong>プロパティの選択</strong></p> <p><code>VertexProperties</code>, <code>EdgeProperties</code>, <code>GraphProperties</code>に指定可能な、標準提供されているプロパティは以下：</p> <p>頂点プロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>vertex_index_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_index1_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_index2_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>vertex_distance_t</code></td> <td>距離</td> </tr> <tr> <td><code>vertex_root_t</code></td> <td>ダイクストラや幅優先木での根を示す</td> </tr> <tr> <td><code>vertex_all_t</code></td> <td>頂点に関連づけられた全てのプロパティ</td> </tr> <tr> <td><code>vertex_color_t</code></td> <td>色</td> </tr> <tr> <td><code>vertex_rank_t</code></td> <td>ランク</td> </tr> <tr> <td><code>vertex_predecessor_t</code></td> <td>先行ノード</td> </tr> <tr> <td><code>vertex_isomorphism_t</code></td> <td>同型情報</td> </tr> <tr> <td><code>vertex_invariant_t</code></td> <td>不変量(<a href=http://ja.wikipedia.org/wiki/%E4%B8%8D%E5%A4%89%E9%87%8F target=_blank>Wikipedia:不変量</a>)</td> </tr> <tr> <td><code>vertex_invariant1_t</code></td> <td>不変量</td> </tr> <tr> <td><code>vertex_invariant2_t</code></td> <td>不変量</td> </tr> <tr> <td><code>vertex_degree_t</code></td> <td>次数(節点についてる辺の数)</td> </tr> <tr> <td><code>vertex_out_degree_t</code></td> <td>出次数(節点から出てる辺の数。無向の場合は次数と同じ)</td> </tr> <tr> <td><code>vertex_in_degree_t</code></td> <td>入次数(節点に入る辺の数。無効の場合は次数と同じ)</td> </tr> <tr> <td><code>vertex_discover_time_t</code></td> <td>深さ優先探索などでの発見された順番</td> </tr> <tr> <td><code>vertex_finish_time_t</code></td> <td>深さ優先探索などでの探索が終わった順番</td> </tr> </tbody> </table> <p>辺プロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>edge_index_t</code></td> <td>順番</td> </tr> <tr> <td><code>edge_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>edge_weight_t</code></td> <td>重み</td> </tr> <tr> <td><code>edge_weight2_t</code></td> <td>重み</td> </tr> <tr> <td><code>edge_capacity_t</code></td> <td>キャパシティ</td> </tr> <tr> <td><code>edge_residual_capacity_t</code></td> <td>残りキャパシティ</td> </tr> <tr> <td><code>edge_reverse_t</code></td> <td>最大流アルゴリズムで使用する、向きが逆になった辺か否かを示す</td> </tr> <tr> <td><code>edge_all_t</code></td> <td>辺に関連づけられた全てのプロパティ</td> </tr> </tbody> </table> <p>グラフプロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>graph_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>graph_all_t</code></td> <td>グラフ自体に関連づけられた全てのプロパティ</td> </tr> </tbody> </table> <h2><a href=http://boostjp.github.io/tips/graph.html#add-vertex-edge name=add-vertex-edge>頂点と辺を追加する</a></h2> <p>頂点と辺を追加する方法としては、コンストラクタを使用するものと、<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/MutableGraph.html target=_blank><code>boost::add_vertex()</code>関数と<code>boost::add_edge()</code>関数</a>を使用して動的に追加するものの2つがある。</p> <p><strong>1. コンストラクタを使用する</strong></p> <p>Boost.Graphのグラフ構造クラスは、コンストラクタで辺の範囲と頂点数をとる。</p> <p>これを使用することで、シンプルにグラフを構築できる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;utility&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graph_utility.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> グラフ </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-24T17:18:40> 2014年12月24日 17時18分40秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/graph.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/graph.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>グラフ</h1> <div itemprop=articleBody><p>グラフ構造とそれに対する操作を行うには、<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/index.html target=_blank>Boost Graph Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/graph.html#define-graph>グラフ型を定義する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#add-vertex-edge>頂点と辺を追加する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#bundle-property>任意のクラスをプロパティにする</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#dijkstra-shortest-paths>ダイクストラ法で最短経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#distance-map>最短経路の長さ(重みの合計)を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#is-reachable>ある頂点に到達可能かどうかを調べる</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#simple-shortest-path>通過する辺が最も少ない経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#isomorphism>2つのグラフが同型か判定する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#minimum-spanning-tree>最小全域木を作る</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#topological-sort>トポロジカルソート</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#euler-path>一筆書きの経路を求める</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#write-graphviz>グラフをGraphviz形式(.dot)で出力する</a></li> <li><a href=http://boostjp.github.io/tips/graph.html#read-graphviz>Graphviz形式(.dot)のデータを読み込む</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#define-graph name=define-graph>グラフ型を定義する</a></h2> <p>Boost.Graphで標準的に使用する、グラフ構造のためのクラス<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/using_adjacency_list.html target=_blank>boost::adjacency_list</a></code>は、様々な目的に利用できるようカスタマイズが可能になっている。</p> <p><div class=codehilite><pre><span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>OutEdgeListS</span> <span class=o>=</span> <span class=n>vecS</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>VertexListS</span> <span class=o>=</span> <span class=n>vecS</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>DirectedS</span> <span class=o>=</span> <span class=n>directedS</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>VertexProperties</span> <span class=o>=</span> <span class=n>no_property</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>EdgeProperties</span> <span class=o>=</span> <span class=n>no_property</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>GraphProperties</span> <span class=o>=</span> <span class=n>no_property</span><span class=p>,</span>
+          <span class=k>class</span> <span class=nc>EdgeListS</span> <span class=o>=</span> <span class=n>listS</span><span class=o>&gt;</span>
+<span class=k>class</span> <span class=nc>adjacency_list</span><span class=p>;</span>
+</pre></div> </p> <p>設定例：</p> <p>以下は、無向グラフを定義する例：</p> <p><div class=codehilite><pre><span class=k>typedef</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span>
+    <span class=o>&gt;</span>
+<span class=n>Graph</span><span class=p>;</span>
+</pre></div> </p> <p>有向グラフで、辺に重みを付ける例：</p> <p><div class=codehilite><pre><span class=k>typedef</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span>
+    <span class=o>&gt;</span>
+<span class=n>Graph</span><span class=p>;</span>
+</pre></div> </p> <p>テンプレートパラメータの説明：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>パラメータ</th> <th>説明</th> <th>デフォルト</th> </tr> </thead> <tbody> <tr> <td><code>OutEdgeList</code></td> <td>グラフの隣接構造(入辺と出辺)を表すためのコンテナを指定する</td> <td><code>vecS</code> (<code>std::vector</code>)</td> </tr> <tr> <td><code>VertexList</code></td> <td>グラフの頂点集合を表すためのコンテナを指定する</td> <td><code>vecS</code> (<code>std::vector</code>)</td> </tr> <tr> <td><code>DirectedS</code></td> <td>有向グラフか無向グラフかを選択する。<br> <code>directedS</code> : 有向グラフ<br> <code>undirectedS</code> : 無向グラフ<br> <code>bidirectionalS</code> : 双方向グラフ(有向で、辺が2本)</td> <td><code>directedS</code> (有向グラフ)</td> </tr> <tr> <td><code>VertexProperties</code></td> <td>頂点のカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>EdgeProperties</code></td> <td>辺のカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>GraphProperties</code></td> <td>グラフオブジェクトのカスタムプロパティを指定する</td> <td><code>no_property</code></td> </tr> <tr> <td><code>EdgeListS</code></td> <td>グラフの辺リストを表すためのコンテナを指定する。 このコンテナは、<code>bidirectionalS</code>もしくは<code>undirectedS</code>の場合に実際に辺を格納するために使用され、<code>OutEdgeList</code>はコンテナの要素を指すオブジェクトを格納する。<code>directedS</code>の場合は<code>OutEdgeList</code>に直接格納されるため、このパラメータは使用しない。</td> <td><code>listS</code> (<code>std::list</code>)</td> </tr> </tbody> </table> <p><strong>コンテナの選択</strong></p> <p><code>OutEdgeList</code>, <code>VertexList</code>, <code>EdgeListS</code>パラメータでのコンテナの指定には、以下を指定できる：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>指定可能なパラメータ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>vecS</code></td> <td><code>std::vector</code></td> </tr> <tr> <td><code>listS</code></td> <td><code>std::list</code></td> </tr> <tr> <td><code>slistS</code></td> <td><code>std::slist</code> (非標準)</td> </tr> <tr> <td><code>setS</code></td> <td><code>std::set</code></td> </tr> <tr> <td><code>multisetS</code></td> <td><code>std::multiset</code></td> </tr> <tr> <td><code>hash_setS</code></td> <td><code>boost::unordered_set</code></td> </tr> <tr> <td><code>hash_multisetS</code></td> <td><code>boost::unordered_multiset</code></td> </tr> </tbody> </table> <p><strong>プロパティの選択</strong></p> <p><code>VertexProperties</code>, <code>EdgeProperties</code>, <code>GraphProperties</code>に指定可能な、標準提供されているプロパティは以下：</p> <p>頂点プロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>vertex_index_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_index1_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_index2_t</code></td> <td>順番</td> </tr> <tr> <td><code>vertex_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>vertex_distance_t</code></td> <td>距離</td> </tr> <tr> <td><code>vertex_root_t</code></td> <td>ダイクストラや幅優先木での根を示す</td> </tr> <tr> <td><code>vertex_all_t</code></td> <td>頂点に関連づけられた全てのプロパティ</td> </tr> <tr> <td><code>vertex_color_t</code></td> <td>色</td> </tr> <tr> <td><code>vertex_rank_t</code></td> <td>ランク</td> </tr> <tr> <td><code>vertex_predecessor_t</code></td> <td>先行ノード</td> </tr> <tr> <td><code>vertex_isomorphism_t</code></td> <td>同型情報</td> </tr> <tr> <td><code>vertex_invariant_t</code></td> <td>不変量(<a href=http://ja.wikipedia.org/wiki/%E4%B8%8D%E5%A4%89%E9%87%8F target=_blank>Wikipedia:不変量</a>)</td> </tr> <tr> <td><code>vertex_invariant1_t</code></td> <td>不変量</td> </tr> <tr> <td><code>vertex_invariant2_t</code></td> <td>不変量</td> </tr> <tr> <td><code>vertex_degree_t</code></td> <td>次数(節点についてる辺の数)</td> </tr> <tr> <td><code>vertex_out_degree_t</code></td> <td>出次数(節点から出てる辺の数。無向の場合は次数と同じ)</td> </tr> <tr> <td><code>vertex_in_degree_t</code></td> <td>入次数(節点に入る辺の数。無効の場合は次数と同じ)</td> </tr> <tr> <td><code>vertex_discover_time_t</code></td> <td>深さ優先探索などでの発見された順番</td> </tr> <tr> <td><code>vertex_finish_time_t</code></td> <td>深さ優先探索などでの探索が終わった順番</td> </tr> </tbody> </table> <p>辺プロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>edge_index_t</code></td> <td>順番</td> </tr> <tr> <td><code>edge_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>edge_weight_t</code></td> <td>重み</td> </tr> <tr> <td><code>edge_weight2_t</code></td> <td>重み</td> </tr> <tr> <td><code>edge_capacity_t</code></td> <td>キャパシティ</td> </tr> <tr> <td><code>edge_residual_capacity_t</code></td> <td>残りキャパシティ</td> </tr> <tr> <td><code>edge_reverse_t</code></td> <td>最大流アルゴリズムで使用する、向きが逆になった辺か否かを示す</td> </tr> <tr> <td><code>edge_all_t</code></td> <td>辺に関連づけられた全てのプロパティ</td> </tr> </tbody> </table> <p>グラフプロパティ</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>プロパティ</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code>graph_name_t</code></td> <td>名前</td> </tr> <tr> <td><code>graph_all_t</code></td> <td>グラフ自体に関連づけられた全てのプロパティ</td> </tr> </tbody> </table> <h2><a href=http://boostjp.github.io/tips/graph.html#add-vertex-edge name=add-vertex-edge>頂点と辺を追加する</a></h2> <p>頂点と辺を追加する方法としては、コンストラクタを使用するものと、<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/MutableGraph.html target=_blank><code>boost::add_vertex()</code>関数と<code>boost::add_edge()</code>関数</a>を使用して動的に追加するものの2つがある。</p> <p><strong>1. コンストラクタを使用する</strong></p> <p>Boost.Graphのグラフ構造クラスは、コンストラクタで辺の範囲と頂点数をとる。</p> <p>これを使用することで、シンプルにグラフを構築できる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;utility&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graph_utility.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { A, B, C, D, E, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {A, B}, {A, C}, {A, D},
-        {B, E}, {C, E}, {D, E}
-    };
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>}</span>
+    <span class=p>};</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> Graph g(edges.begin(), edges.end(), N);
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
 
-    boost<span style="color: #666666">::</span>print_graph(g, name.c_str());
-}
+    <span class=n>boost</span><span class=o>::</span><span class=n>print_graph</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>name</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>A --&gt; B C D 
 B --&gt; E 
 C --&gt; E 
 D --&gt; E 
 E --&gt; 
-</code></pre></p> <p><strong>2. 動的に追加する</strong></p> <p>コンストラクタは初期化時のみ使用可能なため、動的に頂点や辺を追加する必要がある場合には、頂点と追加する<code>boost::add_vertex()</code>関数、辺を追加する<code>boost::add_edge()</code>関数を使用する。</p> <p>頂点を追加する<code>boost::add_vertex()</code>関数は、<code>for</code>文や<code>while</code>文でループして、必要な頂点数分だけ呼び出して使用する。戻り値として、頂点記述子が返される。</p> <p>辺を追加する<code>boost::add_edge()</code>関数は、追加する辺の2つの頂点を指定して使用する。順番は、<code>source</code>、<code>target</code>の順である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;utility&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graph_utility.hpp&gt;</span>
+</code></pre></p> <p><strong>2. 動的に追加する</strong></p> <p>コンストラクタは初期化時のみ使用可能なため、動的に頂点や辺を追加する必要がある場合には、頂点と追加する<code>boost::add_vertex()</code>関数、辺を追加する<code>boost::add_edge()</code>関数を使用する。</p> <p>頂点を追加する<code>boost::add_vertex()</code>関数は、<code>for</code>文や<code>while</code>文でループして、必要な頂点数分だけ呼び出して使用する。戻り値として、頂点記述子が返される。</p> <p>辺を追加する<code>boost::add_edge()</code>関数は、追加する辺の2つの頂点を指定して使用する。順番は、<code>source</code>、<code>target</code>の順である。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;utility&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graph_utility.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { A, B, C, D, E, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    Graph g;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>Graph</span> <span class=n>g</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// 頂点を追加</span>
-    std<span style="color: #666666">::</span>map<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, Graph<span style="color: #666666">::</span>vertex_descriptor<span style="color: #666666">&gt;</span> desc;
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #B00040">int</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> N; <span style="color: #666666">++</span>i) {
-        desc[i] <span style="color: #666666">=</span> add_vertex(g);
-    }
+    <span class=c1>// 頂点を追加</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>map</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>Graph</span><span class=o>::</span><span class=n>vertex_descriptor</span><span class=o>&gt;</span> <span class=n>desc</span><span class=p>;</span>
+    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>desc</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=n>add_vertex</span><span class=p>(</span><span class=n>g</span><span class=p>);</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// 辺を追加</span>
-    <span style=color:#ff0000>add_edge</span>(desc[A], desc[B], g);
-    <span style=color:#ff0000>add_edge</span>(desc[A], desc[C], g);
-    <span style=color:#ff0000>add_edge</span>(desc[A], desc[D], g);
-    <span style=color:#ff0000>add_edge</span>(desc[B], desc[E], g);
-    <span style=color:#ff0000>add_edge</span>(desc[C], desc[E], g);
-    <span style=color:#ff0000>add_edge</span>(desc[D], desc[E], g);
+    <span class=c1>// 辺を追加</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>A</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>B</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>A</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>C</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>A</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>D</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>B</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>E</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>C</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>E</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
+    <span class=n><span style=color:#ff0000>add_edge</span></span><span class=p>(</span><span class=n>desc</span><span class=p>[</span><span class=n>D</span><span class=p>],</span> <span class=n>desc</span><span class=p>[</span><span class=n>E</span><span class=p>],</span> <span class=n>g</span><span class=p>);</span>
 
-    boost<span style="color: #666666">::</span>print_graph(g, name.c_str());
-}
+    <span class=n>boost</span><span class=o>::</span><span class=n>print_graph</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>name</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>A --&gt; B C D 
 B --&gt; E 
 C --&gt; E 
 D --&gt; E 
 E --&gt; 
-</code></pre></p> <p>※<code>add_vertex()</code>関数と<code>add_edge()</code>は、<code>boost::adjacency_list</code>以外のグラフ構造にも適用できるようにするため、名前空間の修飾なしで呼び出す。</p> <p>参考：</p> <ul> <li><a href=http://d.hatena.ne.jp/eagle_raptor/20111221/1324478088 target=_blank>Boost.Graphで動的な頂点の追加削除 - ばるの日記</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#bundle-property name=bundle-property>任意のクラスをプロパティにする</a></h2> <p>Boost.Graphのグラフ構造には、Property Mapによって頂点・辺・グラフに任意のプロパティを持たせられる。しかしながらこの方法は、プロパティが増えてくると管理しきれなくなってくるので、ひとまとめにしたくなるだろう。</p> <p>そこで、Boost.Graphには<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/bundles.html target=_blank>Bundleプロパティ</a>という機能が用意されている。これは、グラフ構造のプロパティ指定の場所にユーザー定義クラスを指定するという機能である。</p> <p>後述のサンプルでは、以下のプロパティを設定している。</p> <ul> <li>頂点のBundleプロパティとして「名前」「人口」「郵便番号一覧」を持つ<code>City</code>(街)クラス</li> <li>辺のBundleプロパティとして「名前」と「距離」を持つ<code>Highway</code>(高速道路)クラス</li> <li>グラフのBundleプロパティとして「名前」を持つ<code>Country</code>(国)クラス</li> </ul> <p>そして、最短経路の計算の際に、<code>Highway</code>クラスの<code>distance</code>メンバ変数を辺の重みとして使用している。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
+</code></pre></p> <p>※<code>add_vertex()</code>関数と<code>add_edge()</code>は、<code>boost::adjacency_list</code>以外のグラフ構造にも適用できるようにするため、名前空間の修飾なしで呼び出す。</p> <p>参考：</p> <ul> <li><a href=http://d.hatena.ne.jp/eagle_raptor/20111221/1324478088 target=_blank>Boost.Graphで動的な頂点の追加削除 - ばるの日記</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#bundle-property name=bundle-property>任意のクラスをプロパティにする</a></h2> <p>Boost.Graphのグラフ構造には、Property Mapによって頂点・辺・グラフに任意のプロパティを持たせられる。しかしながらこの方法は、プロパティが増えてくると管理しきれなくなってくるので、ひとまとめにしたくなるだろう。</p> <p>そこで、Boost.Graphには<a href=http://www.boost.org/doc/libs/release/libs/graph/doc/bundles.html target=_blank>Bundleプロパティ</a>という機能が用意されている。これは、グラフ構造のプロパティ指定の場所にユーザー定義クラスを指定するという機能である。</p> <p>後述のサンプルでは、以下のプロパティを設定している。</p> <ul> <li>頂点のBundleプロパティとして「名前」「人口」「郵便番号一覧」を持つ<code>City</code>(街)クラス</li> <li>辺のBundleプロパティとして「名前」と「距離」を持つ<code>Highway</code>(高速道路)クラス</li> <li>グラフのBundleプロパティとして「名前」を持つ<code>Country</code>(国)クラス</li> </ul> <p>そして、最短経路の計算の際に、<code>Highway</code>クラスの<code>distance</code>メンバ変数を辺の重みとして使用している。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> <span style=color:#ff0000>City</span> {
-    std<span style="color: #666666">::</span>string name;
-    <span style="color: #B00040">int</span> population;
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> zipcodes;
-};
+<span class=k>struct</span> <span class=n><span style=color:#ff0000>City</span></span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span><span class=p>;</span>
+    <span class=kt>int</span> <span class=n>population</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>zipcodes</span><span class=p>;</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> <span style=color:#ff0000>Highway</span> {
-    std<span style="color: #666666">::</span>string name;
-    <span style="color: #B00040">double</span> distance; <span style="color: #408080; font-style: italic">// km</span>
-};
+<span class=k>struct</span> <span class=n><span style=color:#ff0000>Highway</span></span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span><span class=p>;</span>
+    <span class=kt>double</span> <span class=n>distance</span><span class=p>;</span> <span class=c1>// km</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> <span style=color:#ff0000>Country</span> {
-    std<span style="color: #666666">::</span>string name;
-};
+<span class=k>struct</span> <span class=n><span style=color:#ff0000>Country</span></span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span><span class=p>;</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>
-    boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>bidirectionalS,
-    <span style=color:#ff0000>City</span>,    <span style="color: #408080; font-style: italic">// 頂点のBundleプロパティ</span>
-    <span style=color:#ff0000>Highway</span>, <span style="color: #408080; font-style: italic">// 辺のBundleプロパティ</span>
-    <span style=color:#ff0000>Country</span>  <span style="color: #408080; font-style: italic">// グラフのBundleプロパティ</span>
-<span style="color: #666666">&gt;</span> Map;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>bidirectionalS</span><span class=p>,</span>
+    <span class=n><span style=color:#ff0000>City</span></span><span class=p>,</span>    <span class=c1>// 頂点のBundleプロパティ</span>
+    <span class=n><span style=color:#ff0000>Highway</span></span><span class=p>,</span> <span class=c1>// 辺のBundleプロパティ</span>
+    <span class=n><span style=color:#ff0000>Country</span></span>  <span class=c1>// グラフのBundleプロパティ</span>
+<span class=o>&gt;</span> <span class=n>Map</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    Map map;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>Map</span> <span class=n>map</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// グラフのBundleプロパティを設定</span>
-    map[boost<span style="color: #666666">::</span>graph_bundle].name <span style="color: #666666">=</span> <span style="color: #BA2121">"Japan"</span>;
+    <span class=c1>// グラフのBundleプロパティを設定</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>boost</span><span class=o>::</span><span class=n>graph_bundle</span><span class=p>].</span><span class=n>name</span> <span class=o>=</span> <span class=s>"Japan"</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// 街(頂点)を2つ追加</span>
-    Map<span style="color: #666666">::</span>vertex_descriptor v1 <span style="color: #666666">=</span> add_vertex(map);
-    Map<span style="color: #666666">::</span>vertex_descriptor v2 <span style="color: #666666">=</span> add_vertex(map);
+    <span class=c1>// 街(頂点)を2つ追加</span>
+    <span class=n>Map</span><span class=o>::</span><span class=n>vertex_descriptor</span> <span class=n>v1</span> <span class=o>=</span> <span class=n>add_vertex</span><span class=p>(</span><span class=n>map</span><span class=p>);</span>
+    <span class=n>Map</span><span class=o>::</span><span class=n>vertex_descriptor</span> <span class=n>v2</span> <span class=o>=</span> <span class=n>add_vertex</span><span class=p>(</span><span class=n>map</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 頂点のBundleプロパティを設定</span>
-    map[v1].name <span style="color: #666666">=</span> <span style="color: #BA2121">"Tokyo"</span>;
-    map[v1].population <span style="color: #666666">=</span> <span style="color: #666666">13221169</span>;
-    map[v1].zipcodes.push_back(<span style="color: #666666">1500013</span>);
+    <span class=c1>// 頂点のBundleプロパティを設定</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>v1</span><span class=p>].</span><span class=n>name</span> <span class=o>=</span> <span class=s>"Tokyo"</span><span class=p>;</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>v1</span><span class=p>].</span><span class=n>population</span> <span class=o>=</span> <span class=mi>13221169</span><span class=p>;</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>v1</span><span class=p>].</span><span class=n>zipcodes</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mi>1500013</span><span class=p>);</span>
 
-    map[v2].name <span style="color: #666666">=</span> <span style="color: #BA2121">"Nagoya"</span>;
-    map[v2].population <span style="color: #666666">=</span> <span style="color: #666666">2267048</span>;
-    map[v2].zipcodes.push_back(<span style="color: #666666">4600006</span>);
+    <span class=n>map</span><span class=p>[</span><span class=n>v2</span><span class=p>].</span><span class=n>name</span> <span class=o>=</span> <span class=s>"Nagoya"</span><span class=p>;</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>v2</span><span class=p>].</span><span class=n>population</span> <span class=o>=</span> <span class=mi>2267048</span><span class=p>;</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>v2</span><span class=p>].</span><span class=n>zipcodes</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mi>4600006</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 辺を追加</span>
-    <span style="color: #B00040">bool</span> inserted <span style="color: #666666">=</span> <span style="color: #008000">false</span>;
-    Map<span style="color: #666666">::</span>edge_descriptor e;
-    boost<span style="color: #666666">::</span>tie(e, inserted) <span style="color: #666666">=</span> add_edge(v1, v2, map);
+    <span class=c1>// 辺を追加</span>
+    <span class=kt>bool</span> <span class=n>inserted</span> <span class=o>=</span> <span class=nb>false</span><span class=p>;</span>
+    <span class=n>Map</span><span class=o>::</span><span class=n>edge_descriptor</span> <span class=n>e</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>tie</span><span class=p>(</span><span class=n>e</span><span class=p>,</span> <span class=n>inserted</span><span class=p>)</span> <span class=o>=</span> <span class=n>add_edge</span><span class=p>(</span><span class=n>v1</span><span class=p>,</span> <span class=n>v2</span><span class=p>,</span> <span class=n>map</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 辺のBundleプロパティを設定</span>
-    map[e].name <span style="color: #666666">=</span> <span style="color: #BA2121">"Tomei Expessway"</span>;
-    map[e].distance <span style="color: #666666">=</span> <span style="color: #666666">325.5</span>;
+    <span class=c1>// 辺のBundleプロパティを設定</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>e</span><span class=p>].</span><span class=n>name</span> <span class=o>=</span> <span class=s>"Tomei Expessway"</span><span class=p>;</span>
+    <span class=n>map</span><span class=p>[</span><span class=n>e</span><span class=p>].</span><span class=n>distance</span> <span class=o>=</span> <span class=mf>325.5</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// <span style=color:#ff0000>Highway</span>クラスのdistanceメンバを辺の重みとして計算</span>
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span><span style="color: #666666">&gt;</span> distance(boost<span style="color: #666666">::</span>num_vertices(map));
-    boost<span style="color: #666666">::</span>dijkstra_shortest_paths(map, v1,
-            boost<span style="color: #666666">::</span>weight_map(boost<span style="color: #666666">::</span>get(<span style="color: #666666">&amp;</span><span style=color:#ff0000>Highway</span><span style="color: #666666">::</span>distance, map)).
-            distance_map(<span style="color: #666666">&amp;</span>distance[<span style="color: #666666">0</span>]));
+    <span class=c1>// <span style=color:#ff0000>Highway</span>クラスのdistanceメンバを辺の重みとして計算</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>map</span><span class=p>));</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>map</span><span class=p>,</span> <span class=n>v1</span><span class=p>,</span>
+            <span class=n>boost</span><span class=o>::</span><span class=n>weight_map</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>get</span><span class=p>(</span><span class=o>&amp;</span><span class=n><span style=color:#ff0000>Highway</span></span><span class=o>::</span><span class=n>distance</span><span class=p>,</span> <span class=n>map</span><span class=p>)).</span>
+            <span class=n>distance_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>distance</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Tokyo-Nagoya : "</span> <span style="color: #666666">&lt;&lt;</span> distance[v2] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"km"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"Tokyo-Nagoya : "</span> <span class=o>&lt;&lt;</span> <span class=n>distance</span><span class=p>[</span><span class=n>v2</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>"km"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力</p> <p><pre><code>Tokyo-Nagoya : 325.5km
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#dijkstra-shortest-paths name=dijkstra-shortest-paths>ダイクストラ法で最短経路を求める</a></h2> <p>ダイクストラ法で最短経路を求めるには、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/dijkstra_shortest_paths.html target=_blank>boost::dijkstra_shortest_paths()</a></code>関数を使用する。</p> <p>ここでは、以下の経路図で、頂点Sから頂点Zへの最短経路を求める。</p> <p>経路図：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/dijkstra_shortest_paths.png></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;deque&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/<span style=color:#ff0000>dijkstra_shortest_paths</span>.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#dijkstra-shortest-paths name=dijkstra-shortest-paths>ダイクストラ法で最短経路を求める</a></h2> <p>ダイクストラ法で最短経路を求めるには、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/dijkstra_shortest_paths.html target=_blank>boost::dijkstra_shortest_paths()</a></code>関数を使用する。</p> <p>ここでは、以下の経路図で、頂点Sから頂点Zへの最短経路を求める。</p> <p>経路図：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/dijkstra_shortest_paths.png></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;deque&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/<span style=color:#ff0000>dijkstra_shortest_paths</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS,
-    boost<span style="color: #666666">::</span>no_property, boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>                             Edge;
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>vertex_descriptor   Vertex;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=p>,</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span>                             <span class=n>Edge</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span>   <span class=n>Vertex</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { S, A, B, C, D, E, F, Z, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string Names <span style="color: #666666">=</span> <span style="color: #BA2121">"SABCDEFZ"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Names</span> <span class=o>=</span> <span class=s>"SABCDEFZ"</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">// グラフを作る</span>
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>assign<span style="color: #666666">::</span>list_of<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span>
-        (S, A)
-        (A, B)
-        (B, C)
-        (B, D)
-        (C, E)
-        (C, F)
-        (D, F)
-        (E, D)
-        (F, E)
-        (E, Z)
-        (F, Z)
-    ;
+<span class=c1>// グラフを作る</span>
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+        <span class=p>(</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>C</span><span class=p>,</span> <span class=n>F</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>D</span><span class=p>,</span> <span class=n>F</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>E</span><span class=p>,</span> <span class=n>D</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>E</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
+    <span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> weights <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>assign<span style="color: #666666">::</span>list_of
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">1</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">7</span>)
-        (<span style="color: #666666">12</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">11</span>)
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">2</span>)
-    ;
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>7</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>12</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>11</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+    <span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), weights.begin(), N);
-}
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>weights</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g <span style="color: #666666">=</span> make_graph();
-    <span style="color: #008000; font-weight: bold">const</span> Vertex from <span style="color: #666666">=</span> S; <span style="color: #408080; font-style: italic">// 開始地点</span>
-    <span style="color: #008000; font-weight: bold">const</span> Vertex to <span style="color: #666666">=</span> Z; <span style="color: #408080; font-style: italic">// 目的地</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>from</span> <span class=o>=</span> <span class=n>S</span><span class=p>;</span> <span class=c1>// 開始地点</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を計算</span>
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> parents(boost<span style="color: #666666">::</span>num_vertices(g));
-    boost<span style="color: #666666">::</span><span style=color:#ff0000>dijkstra_shortest_paths</span>(g, from,
-                boost<span style="color: #666666">::</span>predecessor_map(<span style="color: #666666">&amp;</span>parents[<span style="color: #666666">0</span>]));
+    <span class=c1>// 最短経路を計算</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>dijkstra_shortest_paths</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
+                <span class=n>boost</span><span class=o>::</span><span class=n>predecessor_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
-    <span style="color: #408080; font-style: italic">// 経路なし</span>
-    <span style="color: #008000; font-weight: bold">if</span> (parents[to] <span style="color: #666666">==</span> to) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"no path"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>;
-    }
+    <span class=c1>// 経路なし</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>parents</span><span class=p>[</span><span class=n>to</span><span class=p>]</span> <span class=o>==</span> <span class=n>to</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"no path"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=k>return</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路の頂点リストを作成</span>
-    std<span style="color: #666666">::</span>deque<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> route;
-    <span style="color: #008000; font-weight: bold">for</span> (Vertex v <span style="color: #666666">=</span> to; v <span style="color: #666666">!=</span> from; v <span style="color: #666666">=</span> parents[v]) {
-        route.push_front(v);
-    }
-    route.push_front(from);
+    <span class=c1>// 最短経路の頂点リストを作成</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>deque</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>route</span><span class=p>;</span>
+    <span class=k>for</span> <span class=p>(</span><span class=n>Vertex</span> <span class=n>v</span> <span class=o>=</span> <span class=n>to</span><span class=p>;</span> <span class=n>v</span> <span class=o>!=</span> <span class=n>from</span><span class=p>;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>parents</span><span class=p>[</span><span class=n>v</span><span class=p>])</span> <span class=p>{</span>
+        <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>from</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を出力</span>
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">const</span> Vertex v <span style="color: #666666">:</span> route) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> Names[v] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=c1>// 最短経路を出力</span>
+    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>Vertex</span> <span class=n>v</span> <span class=o>:</span> <span class=n>route</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>Names</span><span class=p>[</span><span class=n>v</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力</p> <p><pre><code>S
 A
 B
 D
 F
 Z
-</code></pre></p> <p>この場合、SからZへの最短経路は、S, A, B, D, F, Zの順となる。</p> <p><code>dijkstra_shortest_paths()</code>関数の第1引数はグラフ構造を表す変数への<code>const</code>参照、第2引数は開始地点の頂点、第3引数は先行ノードを格納する変数へのポインタである。</p> <p>目的地から開始地点まで先行ノードを辿っていくことにより、最短経路を求めることができる。</p> <h2><a href=http://boostjp.github.io/tips/graph.html#distance-map name=distance-map>最短経路の長さ(重みの合計)を求める</a></h2> <p>最短経路の長さを求めるには<code>DistanceMap</code>を使用する。<code>DistanceMap</code>は、最短経路探索の結果として取得できる、開始地点から最短経路のある頂点までの距離を保存したものである。</p> <p><code>DistanceMap</code>は、最短経路探索アルゴリズムに<code>boost::distance_map()</code>関数を使用して取得できる(他の名前付き引数に続けて記述する場合は、「<code>named_param.distance_map(...);</code>」のようにする)。</p> <p>ここでは、先行ノードも一緒に求めているが、経路長のみが必要であれば、<code>DistanceMap</code>のみを計算してもよい。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;deque&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
+</code></pre></p> <p>この場合、SからZへの最短経路は、S, A, B, D, F, Zの順となる。</p> <p><code>dijkstra_shortest_paths()</code>関数の第1引数はグラフ構造を表す変数への<code>const</code>参照、第2引数は開始地点の頂点、第3引数は先行ノードを格納する変数へのポインタである。</p> <p>目的地から開始地点まで先行ノードを辿っていくことにより、最短経路を求めることができる。</p> <h2><a href=http://boostjp.github.io/tips/graph.html#distance-map name=distance-map>最短経路の長さ(重みの合計)を求める</a></h2> <p>最短経路の長さを求めるには<code>DistanceMap</code>を使用する。<code>DistanceMap</code>は、最短経路探索の結果として取得できる、開始地点から最短経路のある頂点までの距離を保存したものである。</p> <p><code>DistanceMap</code>は、最短経路探索アルゴリズムに<code>boost::distance_map()</code>関数を使用して取得できる(他の名前付き引数に続けて記述する場合は、「<code>named_param.distance_map(...);</code>」のようにする)。</p> <p>ここでは、先行ノードも一緒に求めているが、経路長のみが必要であれば、<code>DistanceMap</code>のみを計算してもよい。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;deque&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
+<span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS,
-    boost<span style="color: #666666">::</span>no_property, boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>                             Edge;
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>vertex_descriptor   Vertex;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=p>,</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span>                             <span class=n>Edge</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span>   <span class=n>Vertex</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { S, A, B, C, D, E, F, Z, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string Names <span style="color: #666666">=</span> <span style="color: #BA2121">"SABCDEFZ"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Names</span> <span class=o>=</span> <span class=s>"SABCDEFZ"</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">// グラフを作る</span>
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>assign<span style="color: #666666">::</span>list_of<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span>
-        (S, A)
-        (A, B)
-        (B, C)
-        (B, D)
-        (C, E)
-        (C, F)
-        (D, F)
-        (E, D)
-        (F, E)
-        (E, Z)
-        (F, Z)
-    ;
+<span class=c1>// グラフを作る</span>
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+        <span class=p>(</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>C</span><span class=p>,</span> <span class=n>F</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>D</span><span class=p>,</span> <span class=n>F</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>E</span><span class=p>,</span> <span class=n>D</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>E</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
+    <span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> weights <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>assign<span style="color: #666666">::</span>list_of
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">1</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">7</span>)
-        (<span style="color: #666666">12</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">11</span>)
-        (<span style="color: #666666">3</span>)
-        (<span style="color: #666666">2</span>)
-        (<span style="color: #666666">2</span>)
-    ;
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>1</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>7</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>12</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>11</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+        <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
+    <span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), weights.begin(), N);
-}
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>weights</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g <span style="color: #666666">=</span> make_graph();
-    <span style="color: #008000; font-weight: bold">const</span> Vertex from <span style="color: #666666">=</span> S; <span style="color: #408080; font-style: italic">// 開始地点</span>
-    <span style="color: #008000; font-weight: bold">const</span> Vertex to <span style="color: #666666">=</span> Z; <span style="color: #408080; font-style: italic">// 目的地</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>from</span> <span class=o>=</span> <span class=n>S</span><span class=p>;</span> <span class=c1>// 開始地点</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> parents(boost<span style="color: #666666">::</span>num_vertices(g));
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span><span style="color: #666666">&gt;</span> distance(boost<span style="color: #666666">::</span>num_vertices(g));
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を計算</span>
-    boost<span style="color: #666666">::</span>dijkstra_shortest_paths(g, from,
-                boost<span style="color: #666666">::</span>predecessor_map(<span style="color: #666666">&amp;</span>parents[<span style="color: #666666">0</span>]).distance_map(<span style="color: #666666">&amp;</span>distance[<span style="color: #666666">0</span>]));
+    <span class=c1>// 最短経路を計算</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
+                <span class=n>boost</span><span class=o>::</span><span class=n>predecessor_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]).</span><span class=n>distance_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>distance</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
-    <span style="color: #408080; font-style: italic">// 経路なし</span>
-    <span style="color: #008000; font-weight: bold">if</span> (parents[to] <span style="color: #666666">==</span> to) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"no path"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>;
-    }
+    <span class=c1>// 経路なし</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>parents</span><span class=p>[</span><span class=n>to</span><span class=p>]</span> <span class=o>==</span> <span class=n>to</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"no path"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=k>return</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路の頂点リストを作成</span>
-    std<span style="color: #666666">::</span>deque<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> route;
-    <span style="color: #008000; font-weight: bold">for</span> (Vertex v <span style="color: #666666">=</span> to; v <span style="color: #666666">!=</span> from; v <span style="color: #666666">=</span> parents[v]) {
-        route.push_front(v);
-    }
-    route.push_front(from);
+    <span class=c1>// 最短経路の頂点リストを作成</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>deque</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>route</span><span class=p>;</span>
+    <span class=k>for</span> <span class=p>(</span><span class=n>Vertex</span> <span class=n>v</span> <span class=o>=</span> <span class=n>to</span><span class=p>;</span> <span class=n>v</span> <span class=o>!=</span> <span class=n>from</span><span class=p>;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>parents</span><span class=p>[</span><span class=n>v</span><span class=p>])</span> <span class=p>{</span>
+        <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>from</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 経路の長さを計算</span>
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> n <span style="color: #666666">=</span> <span style=color:#ff0000>distance[to]</span>;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"route length:"</span> <span style="color: #666666">&lt;&lt;</span> n <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// 経路の長さを計算</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>n</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>distance[to]</span></span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"route length:"</span> <span class=o>&lt;&lt;</span> <span class=n>n</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を出力</span>
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">const</span> Vertex v <span style="color: #666666">:</span> route) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> Names[v] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=c1>// 最短経路を出力</span>
+    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>Vertex</span> <span class=n>v</span> <span class=o>:</span> <span class=n>route</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>Names</span><span class=p>[</span><span class=n>v</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>route length:11
 S
 A
@@ -546,369 +548,369 @@ B
 D
 F
 Z
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#is-reachable name=is-reachable>ある頂点に到達可能かどうかを調べる</a></h2> <p>ある頂点に到達可能かどうかを調べるには、<code>&lt;boost/graph/graph_utility.hpp&gt;</code>で定義される<code>boost::is_reachable()</code>関数を使用する。この関数は、グラフ構造<code>g</code>において、頂点<code>x</code>が頂点<code>y</code>に到達可能かどうかを調べ、到達可能であれば<code>true</code>、そうでなければ<code>false</code>を返す。</p> <p><code>boost::is_reachable()</code>の定義：</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">// &lt;boost/graph/graph_utility.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#is-reachable name=is-reachable>ある頂点に到達可能かどうかを調べる</a></h2> <p>ある頂点に到達可能かどうかを調べるには、<code>&lt;boost/graph/graph_utility.hpp&gt;</code>で定義される<code>boost::is_reachable()</code>関数を使用する。この関数は、グラフ構造<code>g</code>において、頂点<code>x</code>が頂点<code>y</code>に到達可能かどうかを調べ、到達可能であれば<code>true</code>、そうでなければ<code>false</code>を返す。</p> <p><code>boost::is_reachable()</code>の定義：</p> <p><div class=codehilite><pre><span class=c1>// &lt;boost/graph/graph_utility.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">namespace</span> boost {
-  <span style="color: #408080; font-style: italic">// xからyに到達可能?</span>
-  <span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">typename</span> IncidenceGraph, <span style="color: #008000; font-weight: bold">typename</span> VertexColorMap<span style="color: #666666">&gt;</span>
-  <span style="color: #B00040">bool</span> is_reachable(
-           <span style="color: #008000; font-weight: bold">typename</span> graph_traits<span style="color: #666666">&lt;</span>IncidenceGraph<span style="color: #666666">&gt;::</span>vertex_descriptor x,
-           <span style="color: #008000; font-weight: bold">typename</span> graph_traits<span style="color: #666666">&lt;</span>IncidenceGraph<span style="color: #666666">&gt;::</span>vertex_descriptor y,
-           <span style="color: #008000; font-weight: bold">const</span> IncidenceGraph<span style="color: #666666">&amp;</span> g,
-           VertexColorMap color <span style="color: #408080; font-style: italic">// 各頂点が白で開始しなければならない</span>
-        );
-}
-</pre></div> </p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cassert&gt;</span>
+<span class=k>namespace</span> <span class=n>boost</span> <span class=p>{</span>
+  <span class=c1>// xからyに到達可能?</span>
+  <span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>IncidenceGraph</span><span class=p>,</span> <span class=k>typename</span> <span class=n>VertexColorMap</span><span class=o>&gt;</span>
+  <span class=kt>bool</span> <span class=n>is_reachable</span><span class=p>(</span>
+           <span class=k>typename</span> <span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>IncidenceGraph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span> <span class=n>x</span><span class=p>,</span>
+           <span class=k>typename</span> <span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>IncidenceGraph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span> <span class=n>y</span><span class=p>,</span>
+           <span class=k>const</span> <span class=n>IncidenceGraph</span><span class=o>&amp;</span> <span class=n>g</span><span class=p>,</span>
+           <span class=n>VertexColorMap</span> <span class=n>color</span> <span class=c1>// 各頂点が白で開始しなければならない</span>
+        <span class=p>);</span>
+<span class=p>}</span>
+</pre></div> </p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;cassert&gt;</span>
 
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graph_utility.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/assign/list_of.hpp&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graph_utility.hpp&gt;</span>
+<span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
-<span style="color: #BC7A00">#include &lt;boost/detail/lightweight_test.hpp&gt;</span>
+<span class=cp>#include &lt;boost/detail/lightweight_test.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>undirectedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { A, B, C, D, E, N };
-<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">int</span> vertex_count <span style="color: #666666">=</span> N;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=kt>int</span> <span class=n>vertex_count</span> <span class=o>=</span> <span class=n>N</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>assign<span style="color: #666666">::</span>list_of<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span>
-        (A, B)(B, E)
-        (A, C)(C, E)
-    ; <span style="color: #408080; font-style: italic">// Dはどこにも繋がっていない</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+        <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)(</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+        <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>)(</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
+    <span class=p>;</span> <span class=c1>// Dはどこにも繋がっていない</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> Graph g(edges.begin(), edges.end(), vertex_count);
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>vertex_count</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 全部白のカラーマップを作って渡す</span>
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>default_color_type<span style="color: #666666">&gt;</span> color(vertex_count, boost<span style="color: #666666">::</span>white_color);
+    <span class=c1>// 全部白のカラーマップを作って渡す</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>default_color_type</span><span class=o>&gt;</span> <span class=n>color</span><span class=p>(</span><span class=n>vertex_count</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>white_color</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// AからEに到達可能か調べる</span>
-    <span style="color: #008000; font-weight: bold">if</span> (boost<span style="color: #666666">::</span><span style=color:#ff0000>is_reachable</span>(A, E, g, color.data())) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"AからEに到達可能"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-    <span style="color: #008000; font-weight: bold">else</span> {
-        assert(<span style="color: #008000">false</span>);
-    }
+    <span class=c1>// AからEに到達可能か調べる</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>is_reachable</span></span><span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>g</span><span class=p>,</span> <span class=n>color</span><span class=p>.</span><span class=n>data</span><span class=p>()))</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"AからEに到達可能"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>else</span> <span class=p>{</span>
+        <span class=n>assert</span><span class=p>(</span><span class=nb>false</span><span class=p>);</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// AからDに到達可能か調べる</span>
-    <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">!</span>boost<span style="color: #666666">::</span><span style=color:#ff0000>is_reachable</span>(A, D, g, color.data())) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"AからDに到達不可能"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-    <span style="color: #008000; font-weight: bold">else</span> {
-        assert(<span style="color: #008000">false</span>);
-    }
-}
+    <span class=c1>// AからDに到達可能か調べる</span>
+    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>is_reachable</span></span><span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>g</span><span class=p>,</span> <span class=n>color</span><span class=p>.</span><span class=n>data</span><span class=p>()))</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"AからDに到達不可能"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+    <span class=k>else</span> <span class=p>{</span>
+        <span class=n>assert</span><span class=p>(</span><span class=nb>false</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>AからEに到達可能
 AからDに到達不可能
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#simple-shortest-path name=simple-shortest-path>通過する辺が最も少ない経路を求める</a></h2> <p>辺に重みのないグラフから最短経路を求めると、「最短単純路」という通過する辺が最も少ない経路が得られる。これは、たとえばソーシャルグラフから「Twitterで何回のRTで特定の情報に辿りつけたか」というような情報を抽出する用途に使える。</p> <p>&lt;strike&gt;Boost.Graphの<code>boost::dijkstra_shortest_paths()</code>は重みのないグラフを与えるとコンパイルエラーになるので、辺の重みを全て1に設定することで代用できる。&lt;/strike&gt;</p> <p><span style=color:red;>※2014/02/16 修正：そのような場面では <a href=http://www.boost.org/doc/libs/1_55_0/libs/graph/doc/breadth_first_search.html target=_blank>Breadth-First Search</a> を使うべきである。</span></p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/simple_shortest_path.png></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;deque&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#simple-shortest-path name=simple-shortest-path>通過する辺が最も少ない経路を求める</a></h2> <p>辺に重みのないグラフから最短経路を求めると、「最短単純路」という通過する辺が最も少ない経路が得られる。これは、たとえばソーシャルグラフから「Twitterで何回のRTで特定の情報に辿りつけたか」というような情報を抽出する用途に使える。</p> <p>&lt;strike&gt;Boost.Graphの<code>boost::dijkstra_shortest_paths()</code>は重みのないグラフを与えるとコンパイルエラーになるので、辺の重みを全て1に設定することで代用できる。&lt;/strike&gt;</p> <p><span style=color:red;>※2014/02/16 修正：そのような場面では <a href=http://www.boost.org/doc/libs/1_55_0/libs/graph/doc/breadth_first_search.html target=_blank>Breadth-First Search</a> を使うべきである。</span></p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/simple_shortest_path.png></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;deque&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/dijkstra_shortest_paths.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS,
-    boost<span style="color: #666666">::</span>no_property, boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span>                             Edge;
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>vertex_descriptor   Vertex;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=p>,</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span>                             <span class=n>Edge</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span>   <span class=n>Vertex</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { S, A, B, C, D, E, F, G, Z, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string Names <span style="color: #666666">=</span> <span style="color: #BA2121">"SABCDEFGZ"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>F</span><span class=p>,</span> <span class=n>G</span><span class=p>,</span> <span class=n>Z</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Names</span> <span class=o>=</span> <span class=s>"SABCDEFGZ"</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">// グラフを作る</span>
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {S, A},
-        {A, B},
-        {B, C},
-        {B, D},
-        {C, E},
-        {D, G},
-        {E, D},
-        {G, E},
-        {E, F},
-        {F, Z},
-        {G, Z},
-    };
+<span class=c1>// グラフを作る</span>
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>G</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>G</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>F</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>G</span><span class=p>,</span> <span class=n>Z</span><span class=p>},</span>
+    <span class=p>};</span>
 
-    <span style="color: #408080; font-style: italic">// 辺の重みは1</span>
-    <span style=color:#ff0000>const std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> weights(edges.size(), <span style="color: #666666">1</span>);</span>
+    <span class=c1>// 辺の重みは1</span>
+    <span class=n><span style=color:#ff0000>const std::vector&lt;int&gt; weights(edges.size(), 1);</span></span>
 
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), weights.begin(), N);
-}
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>weights</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g <span style="color: #666666">=</span> make_graph();
-    <span style="color: #008000; font-weight: bold">const</span> Vertex from <span style="color: #666666">=</span> S; <span style="color: #408080; font-style: italic">// 開始地点</span>
-    <span style="color: #008000; font-weight: bold">const</span> Vertex to <span style="color: #666666">=</span> Z; <span style="color: #408080; font-style: italic">// 目的地</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>from</span> <span class=o>=</span> <span class=n>S</span><span class=p>;</span> <span class=c1>// 開始地点</span>
+    <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を計算</span>
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> parents(boost<span style="color: #666666">::</span>num_vertices(g));
-    boost<span style="color: #666666">::</span>dijkstra_shortest_paths(g, from,
-                boost<span style="color: #666666">::</span>predecessor_map(<span style="color: #666666">&amp;</span>parents[<span style="color: #666666">0</span>]));
+    <span class=c1>// 最短経路を計算</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
+                <span class=n>boost</span><span class=o>::</span><span class=n>predecessor_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
-    <span style="color: #408080; font-style: italic">// 経路なし</span>
-    <span style="color: #008000; font-weight: bold">if</span> (parents[to] <span style="color: #666666">==</span> to) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"no path"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>;
-    }
+    <span class=c1>// 経路なし</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>parents</span><span class=p>[</span><span class=n>to</span><span class=p>]</span> <span class=o>==</span> <span class=n>to</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"no path"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=k>return</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路の頂点リストを作成</span>
-    std<span style="color: #666666">::</span>deque<span style="color: #666666">&lt;</span>Vertex<span style="color: #666666">&gt;</span> route;
-    <span style="color: #008000; font-weight: bold">for</span> (Vertex v <span style="color: #666666">=</span> to; v <span style="color: #666666">!=</span> from; v <span style="color: #666666">=</span> parents[v]) {
-        route.push_front(v);
-    }
-    route.push_front(from);
+    <span class=c1>// 最短経路の頂点リストを作成</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>deque</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>route</span><span class=p>;</span>
+    <span class=k>for</span> <span class=p>(</span><span class=n>Vertex</span> <span class=n>v</span> <span class=o>=</span> <span class=n>to</span><span class=p>;</span> <span class=n>v</span> <span class=o>!=</span> <span class=n>from</span><span class=p>;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>parents</span><span class=p>[</span><span class=n>v</span><span class=p>])</span> <span class=p>{</span>
+        <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>
+    <span class=p>}</span>
+    <span class=n>route</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>from</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 最短経路を出力</span>
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">const</span> Vertex v <span style="color: #666666">:</span> route) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> Names[v] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=c1>// 最短経路を出力</span>
+    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>Vertex</span> <span class=n>v</span> <span class=o>:</span> <span class=n>route</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>Names</span><span class=p>[</span><span class=n>v</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>S
 A
 B
 D
 G
 Z
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#isomorphism name=isomorphism>2つのグラフが同型か判定する</a></h2> <p>2つのグラフが同型かを判定するには、<code>&lt;boost/graph/isomorphism.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/isomorphism.html target=_blank>boost::isomorphism()</a></code>関数を使用する。この関数は、引数として2つのグラフをとり、それらが同型であれば<code>true</code>、そうでなければ<code>false</code>を返す。 ここでは、以下の2つのグラフを比較する。</p> <p>g1:</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/isomorphism_1.png></p> <p>g2:</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/isomorphism_2.png></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;utility&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/<span style=color:#ff0000>isomorphism</span>.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#isomorphism name=isomorphism>2つのグラフが同型か判定する</a></h2> <p>2つのグラフが同型かを判定するには、<code>&lt;boost/graph/isomorphism.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/isomorphism.html target=_blank>boost::isomorphism()</a></code>関数を使用する。この関数は、引数として2つのグラフをとり、それらが同型であれば<code>true</code>、そうでなければ<code>false</code>を返す。 ここでは、以下の2つのグラフを比較する。</p> <p>g1:</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/isomorphism_1.png></p> <p>g2:</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/isomorphism_2.png></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;utility&gt;</span>
+<span class=cp>#include &lt;boost/graph/<span style=color:#ff0000>isomorphism</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>undirectedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">int</span> vertex_count <span style="color: #666666">=</span> <span style="color: #666666">12</span>;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>const</span> <span class=kt>int</span> <span class=n>vertex_count</span> <span class=o>=</span> <span class=mi>12</span><span class=p>;</span>
 
-Graph <span style="color: #0000FF">make_graph1</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;&gt;</span> edges <span style="color: #666666">=</span> {
-        { <span style="color: #666666">0</span>,  <span style="color: #666666">1</span>}, { <span style="color: #666666">1</span>, <span style="color: #666666">2</span>},
-        { <span style="color: #666666">0</span>,  <span style="color: #666666">2</span>},
-        { <span style="color: #666666">3</span>,  <span style="color: #666666">4</span>}, { <span style="color: #666666">4</span>, <span style="color: #666666">5</span>},
-        { <span style="color: #666666">5</span>,  <span style="color: #666666">6</span>}, { <span style="color: #666666">6</span>, <span style="color: #666666">3</span>},
-        { <span style="color: #666666">7</span>,  <span style="color: #666666">8</span>}, { <span style="color: #666666">8</span>, <span style="color: #666666">9</span>},
-        { <span style="color: #666666">9</span>, <span style="color: #666666">10</span>},
-        {<span style="color: #666666">10</span>, <span style="color: #666666">11</span>}, {<span style="color: #666666">11</span>, <span style="color: #666666">7</span>}
-    };
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), vertex_count);
-}
+<span class=n>Graph</span> <span class=nf>make_graph1</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>1</span><span class=p>},</span> <span class=p>{</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>2</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>3</span><span class=p>,</span>  <span class=mi>4</span><span class=p>},</span> <span class=p>{</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>5</span><span class=p>,</span>  <span class=mi>6</span><span class=p>},</span> <span class=p>{</span> <span class=mi>6</span><span class=p>,</span> <span class=mi>3</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>7</span><span class=p>,</span>  <span class=mi>8</span><span class=p>},</span> <span class=p>{</span> <span class=mi>8</span><span class=p>,</span> <span class=mi>9</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>9</span><span class=p>,</span> <span class=mi>10</span><span class=p>},</span>
+        <span class=p>{</span><span class=mi>10</span><span class=p>,</span> <span class=mi>11</span><span class=p>},</span> <span class=p>{</span><span class=mi>11</span><span class=p>,</span> <span class=mi>7</span><span class=p>}</span>
+    <span class=p>};</span>
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>vertex_count</span><span class=p>);</span>
+<span class=p>}</span>
 
-Graph <span style="color: #0000FF">make_graph2</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;&gt;</span> edges <span style="color: #666666">=</span> {
-        { <span style="color: #666666">9</span>, <span style="color: #666666">10</span>}, {<span style="color: #666666">10</span>, <span style="color: #666666">11</span>},
-        {<span style="color: #666666">11</span>,  <span style="color: #666666">9</span>},
-        { <span style="color: #666666">0</span>,  <span style="color: #666666">1</span>}, { <span style="color: #666666">1</span>,  <span style="color: #666666">3</span>},
-        { <span style="color: #666666">3</span>,  <span style="color: #666666">2</span>}, { <span style="color: #666666">2</span>,  <span style="color: #666666">0</span>},
-        { <span style="color: #666666">4</span>,  <span style="color: #666666">5</span>}, { <span style="color: #666666">5</span>,  <span style="color: #666666">7</span>},
-        { <span style="color: #666666">7</span>,  <span style="color: #666666">8</span>},
-        { <span style="color: #666666">8</span>,  <span style="color: #666666">6</span>}, { <span style="color: #666666">6</span>,  <span style="color: #666666">4</span>}
-    };
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), vertex_count);
-}
+<span class=n>Graph</span> <span class=nf>make_graph2</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span> <span class=mi>9</span><span class=p>,</span> <span class=mi>10</span><span class=p>},</span> <span class=p>{</span><span class=mi>10</span><span class=p>,</span> <span class=mi>11</span><span class=p>},</span>
+        <span class=p>{</span><span class=mi>11</span><span class=p>,</span>  <span class=mi>9</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>1</span><span class=p>},</span> <span class=p>{</span> <span class=mi>1</span><span class=p>,</span>  <span class=mi>3</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>3</span><span class=p>,</span>  <span class=mi>2</span><span class=p>},</span> <span class=p>{</span> <span class=mi>2</span><span class=p>,</span>  <span class=mi>0</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>4</span><span class=p>,</span>  <span class=mi>5</span><span class=p>},</span> <span class=p>{</span> <span class=mi>5</span><span class=p>,</span>  <span class=mi>7</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>7</span><span class=p>,</span>  <span class=mi>8</span><span class=p>},</span>
+        <span class=p>{</span> <span class=mi>8</span><span class=p>,</span>  <span class=mi>6</span><span class=p>},</span> <span class=p>{</span> <span class=mi>6</span><span class=p>,</span>  <span class=mi>4</span><span class=p>}</span>
+    <span class=p>};</span>
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>vertex_count</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g1 <span style="color: #666666">=</span> make_graph1();
-    <span style="color: #008000; font-weight: bold">const</span> Graph g2 <span style="color: #666666">=</span> make_graph2();
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g1</span> <span class=o>=</span> <span class=n>make_graph1</span><span class=p>();</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g2</span> <span class=o>=</span> <span class=n>make_graph2</span><span class=p>();</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">bool</span> result <span style="color: #666666">=</span> boost<span style="color: #666666">::</span><span style=color:#ff0000>isomorphism</span>(g1, g2);
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"isomorphic? "</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>boolalpha <span style="color: #666666">&lt;&lt;</span> result <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>isomorphism</span></span><span class=p>(</span><span class=n>g1</span><span class=p>,</span> <span class=n>g2</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"isomorphic? "</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>boolalpha</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>isomorphic? true
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#minimum-spanning-tree name=minimum-spanning-tree>最小全域木を作る</a></h2> <p>グラフに含まれるすべての頂点を含む最小の部分グラフを、最小全域木(minimum spanning tree)と言う。</p> <p>Boost.Graphには、最小全域木を作るためのアルゴリズムとして、以下の2つの関数が用意されている。</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>関数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code><a href=http://boostjp.github.com/libs/graph/doc/kruskal_min_spanning_tree.html target=_blank>boost::kruskal_minimum_spanning_tree()</a></code></td> <td>クラスカル法</td> </tr> <tr> <td><code><a href=http://boostjp.github.com/libs/graph/doc/prim_minimum_spanning_tree.html target=_blank>boost::prim_minimum_spanning_tree()</a></code></td> <td>プリム法</td> </tr> </tbody> </table> <p>これらを以下のグラフに適用すると</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/minimum_spanning_tree_1.png></p> <p>以下のような最小全域木(赤の太線部分)が手に入る。</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/minimum_spanning_tree_2.png></p> <p>それぞれの使い方は以下のようになる。</p> <p><strong>クラスカル法</strong></p> <p>クラスカル法によって最小全域木を求める<code>boost::kruskal_minimum_spanning_tree()</code>関数は、Output Iteratorで最小全域木の辺記述子(edge descriptor)を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/kruskal_min_spanning_tree.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#minimum-spanning-tree name=minimum-spanning-tree>最小全域木を作る</a></h2> <p>グラフに含まれるすべての頂点を含む最小の部分グラフを、最小全域木(minimum spanning tree)と言う。</p> <p>Boost.Graphには、最小全域木を作るためのアルゴリズムとして、以下の2つの関数が用意されている。</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>関数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td><code><a href=http://boostjp.github.com/libs/graph/doc/kruskal_min_spanning_tree.html target=_blank>boost::kruskal_minimum_spanning_tree()</a></code></td> <td>クラスカル法</td> </tr> <tr> <td><code><a href=http://boostjp.github.com/libs/graph/doc/prim_minimum_spanning_tree.html target=_blank>boost::prim_minimum_spanning_tree()</a></code></td> <td>プリム法</td> </tr> </tbody> </table> <p>これらを以下のグラフに適用すると</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/minimum_spanning_tree_1.png></p> <p>以下のような最小全域木(赤の太線部分)が手に入る。</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/minimum_spanning_tree_2.png></p> <p>それぞれの使い方は以下のようになる。</p> <p><strong>クラスカル法</strong></p> <p>クラスカル法によって最小全域木を求める<code>boost::kruskal_minimum_spanning_tree()</code>関数は、Output Iteratorで最小全域木の辺記述子(edge descriptor)を返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/kruskal_min_spanning_tree.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>undirectedS,
-    boost<span style="color: #666666">::</span>no_property, boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>edge_descriptor EdgeDesc;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=p>,</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>edge_descriptor</span> <span class=n>EdgeDesc</span><span class=p>;</span>
 
-std<span style="color: #666666">::</span>string Name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
-<span style="color: #008000; font-weight: bold">enum</span> {A, B, C, D, E, N};
+<span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
+<span class=k>enum</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span><span class=p>};</span>
 
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {A, C},
-        {B, D},
-        {B, E},
-        {C, B},
-        {C, D},
-        {D, E},
-        {E, A}
-    };
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>A</span><span class=p>}</span>
+    <span class=p>};</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> weights <span style="color: #666666">=</span> {
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">2</span>,
-        <span style="color: #666666">7</span>,
-        <span style="color: #666666">3</span>,
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">1</span>
-    };
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), weights.begin(), N);
-}
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>2</span><span class=p>,</span>
+        <span class=mi>7</span><span class=p>,</span>
+        <span class=mi>3</span><span class=p>,</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>1</span>
+    <span class=p>};</span>
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>weights</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g <span style="color: #666666">=</span> make_graph();
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>EdgeDesc<span style="color: #666666">&gt;</span> spanning_tree;
-    boost<span style="color: #666666">::</span><span style=color:#ff0000>kruskal_minimum_spanning_tree</span>(g, std<span style="color: #666666">::</span>back_inserter(spanning_tree));
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>EdgeDesc</span><span class=o>&gt;</span> <span class=n>spanning_tree</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>kruskal_minimum_spanning_tree</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>back_inserter</span><span class=p>(</span><span class=n>spanning_tree</span><span class=p>));</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (<span style="color: #008000; font-weight: bold">const</span> EdgeDesc<span style="color: #666666">&amp;</span> e <span style="color: #666666">:</span> spanning_tree) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"("</span> <span style="color: #666666">&lt;&lt;</span> Name[boost<span style="color: #666666">::</span>source(e, g)] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">","</span>
-                         <span style="color: #666666">&lt;&lt;</span> Name[boost<span style="color: #666666">::</span>target(e, g)] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">")"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>EdgeDesc</span><span class=o>&amp;</span> <span class=n>e</span> <span class=o>:</span> <span class=n>spanning_tree</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"("</span> <span class=o>&lt;&lt;</span> <span class=n>Name</span><span class=p>[</span><span class=n>boost</span><span class=o>::</span><span class=n>source</span><span class=p>(</span><span class=n>e</span><span class=p>,</span> <span class=n>g</span><span class=p>)]</span> <span class=o>&lt;&lt;</span> <span class=s>","</span>
+                         <span class=o>&lt;&lt;</span> <span class=n>Name</span><span class=p>[</span><span class=n>boost</span><span class=o>::</span><span class=n>target</span><span class=p>(</span><span class=n>e</span><span class=p>,</span> <span class=n>g</span><span class=p>)]</span> <span class=o>&lt;&lt;</span> <span class=s>")"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>(A,C)
 (D,E)
 (E,A)
 (B,D)
-</code></pre></p> <p><strong>プリム法</strong></p> <p>プリム法によって最小全域木を求める<code>boost::prim_minimum_spanning_tree()</code>関数は、先行ノードマップ(predecessor map)として最小全域木を返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/prim_minimum_spanning_tree.hpp&gt;</span>
+</code></pre></p> <p><strong>プリム法</strong></p> <p>プリム法によって最小全域木を求める<code>boost::prim_minimum_spanning_tree()</code>関数は、先行ノードマップ(predecessor map)として最小全域木を返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/prim_minimum_spanning_tree.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>undirectedS,
-    boost<span style="color: #666666">::</span>no_property, boost<span style="color: #666666">::</span>property<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span><span style="color: #B00040">edge_weight_t</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>vertex_descriptor VertexDesc;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=p>,</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>no_property</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>property</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=kt>edge_weight_t</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span> <span class=n>VertexDesc</span><span class=p>;</span>
 
-std<span style="color: #666666">::</span>string Name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
-<span style="color: #008000; font-weight: bold">enum</span> {A, B, C, D, E, N};
+<span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>Name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
+<span class=k>enum</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span><span class=p>};</span>
 
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {A, C},
-        {B, D},
-        {B, E},
-        {C, B},
-        {C, D},
-        {D, E},
-        {E, A},
-    }
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
+    <span class=p>}</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> weights <span style="color: #666666">=</span> {
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">2</span>,
-        <span style="color: #666666">7</span>,
-        <span style="color: #666666">3</span>,
-        <span style="color: #666666">1</span>,
-        <span style="color: #666666">1</span>,
-    };
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), weights.begin(), N);
-}
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>2</span><span class=p>,</span>
+        <span class=mi>7</span><span class=p>,</span>
+        <span class=mi>3</span><span class=p>,</span>
+        <span class=mi>1</span><span class=p>,</span>
+        <span class=mi>1</span><span class=p>,</span>
+    <span class=p>};</span>
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>weights</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    Graph g <span style="color: #666666">=</span> make_graph();
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>VertexDesc<span style="color: #666666">&gt;</span> parents(N);
-    boost<span style="color: #666666">::</span>prim_minimum_spanning_tree(g, <span style="color: #666666">&amp;</span>parents[<span style="color: #666666">0</span>]);
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>VertexDesc</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>prim_minimum_spanning_tree</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> N; <span style="color: #666666">++</span>i) {
-        <span style="color: #008000; font-weight: bold">if</span> (parents[i] <span style="color: #666666">!=</span> i) {
-            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"parent["</span> <span style="color: #666666">&lt;&lt;</span> Name[i] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"] = "</span> <span style="color: #666666">&lt;&lt;</span> Name[parents[i]] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        }
-        <span style="color: #008000; font-weight: bold">else</span> {
-            std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"parent["</span> <span style="color: #666666">&lt;&lt;</span> Name[i] <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"] = no parent"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        }
-    }
-}
+    <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>parents</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>!=</span> <span class=n>i</span><span class=p>)</span> <span class=p>{</span>
+            <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"parent["</span> <span class=o>&lt;&lt;</span> <span class=n>Name</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>"] = "</span> <span class=o>&lt;&lt;</span> <span class=n>Name</span><span class=p>[</span><span class=n>parents</span><span class=p>[</span><span class=n>i</span><span class=p>]]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=p>}</span>
+        <span class=k>else</span> <span class=p>{</span>
+            <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"parent["</span> <span class=o>&lt;&lt;</span> <span class=n>Name</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>"] = no parent"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>parent[A] = no parent
 parent[B] = D
 parent[C] = A
 parent[D] = E
 parent[E] = A
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#topological-sort name=topological-sort>トポロジカルソート</a></h2> <p>無閉路有向グラフ(DAG : Directed Acyclic Graph)に順序を付けるトポロジカルソートは、<code>&lt;boost/graph/topological_sort.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/topological_sort.html target=_blank>boost::topological_sort()</a></code>関数を使用する。</p> <p>この関数は引数として、グラフ構造への<code>const</code>参照と、頂点リストを出力するOutput Iteratorをとる。(頂点リストは逆順で返されるため、<code>boost::adaptors::reversed</code>や<code>rbegin()</code>/<code>rend()</code>などで正順に直して使用する。)</p> <p>ここでは、以下のグラフにトポロジカルソートを適用する：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/topological_sort.png></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;iterator&gt;</span>
-<span style="color: #BC7A00">#include &lt;utility&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/<span style=color:#ff0000>topological_sort</span>.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/range/adaptor/reversed.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/graph.html#topological-sort name=topological-sort>トポロジカルソート</a></h2> <p>無閉路有向グラフ(DAG : Directed Acyclic Graph)に順序を付けるトポロジカルソートは、<code>&lt;boost/graph/topological_sort.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/topological_sort.html target=_blank>boost::topological_sort()</a></code>関数を使用する。</p> <p>この関数は引数として、グラフ構造への<code>const</code>参照と、頂点リストを出力するOutput Iteratorをとる。(頂点リストは逆順で返されるため、<code>boost::adaptors::reversed</code>や<code>rbegin()</code>/<code>rend()</code>などで正順に直して使用する。)</p> <p>ここでは、以下のグラフにトポロジカルソートを適用する：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/topological_sort.png></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;iterator&gt;</span>
+<span class=cp>#include &lt;utility&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/<span style=color:#ff0000>topological_sort</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
+<span class=cp>#include &lt;boost/range/adaptor/reversed.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
 
-Graph <span style="color: #0000FF">make_graph</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {<span style="color: #666666">0</span>, <span style="color: #666666">1</span>}, {<span style="color: #666666">2</span>, <span style="color: #666666">4</span>},
-        {<span style="color: #666666">2</span>, <span style="color: #666666">5</span>},
-        {<span style="color: #666666">0</span>, <span style="color: #666666">3</span>}, {<span style="color: #666666">1</span>, <span style="color: #666666">4</span>},
-        {<span style="color: #666666">4</span>, <span style="color: #666666">3</span>}
-    };
-    <span style="color: #008000; font-weight: bold">return</span> Graph(edges.begin(), edges.end(), <span style="color: #666666">6</span>);
-}
+<span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>},</span> <span class=p>{</span><span class=mi>2</span><span class=p>,</span> <span class=mi>4</span><span class=p>},</span>
+        <span class=p>{</span><span class=mi>2</span><span class=p>,</span> <span class=mi>5</span><span class=p>},</span>
+        <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>3</span><span class=p>},</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>4</span><span class=p>},</span>
+        <span class=p>{</span><span class=mi>4</span><span class=p>,</span> <span class=mi>3</span><span class=p>}</span>
+    <span class=p>};</span>
+    <span class=k>return</span> <span class=n>Graph</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=mi>6</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> Graph g <span style="color: #666666">=</span> make_graph();
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> result;
-    boost<span style="color: #666666">::</span><span style=color:#ff0000>topological_sort</span>(g, std<span style="color: #666666">::</span>back_inserter(result));
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>topological_sort</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>back_inserter</span><span class=p>(</span><span class=n>result</span><span class=p>));</span>
 
-    boost<span style="color: #666666">::</span>for_each(result <span style="color: #666666">|</span> boost<span style="color: #666666">::</span>adaptors<span style="color: #666666">::</span>reversed, [](<span style="color: #B00040">int</span> vertex) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> vertex <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    });
-}
+    <span class=n>boost</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>result</span> <span class=o>|</span> <span class=n>boost</span><span class=o>::</span><span class=n>adaptors</span><span class=o>::</span><span class=n>reversed</span><span class=p>,</span> <span class=p>[](</span><span class=kt>int</span> <span class=n>vertex</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>vertex</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>});</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>2
 5
 0
 1
 4
 3
-</code></pre></p> <p>出力から、有向グラフgがトポロジカルソートによって「2 → 5 → 0 → 1 → 4 → 3」の順序が付けられたことがわかる。</p> <p>なお、<code>boost::topological_sort()</code>関数に、閉路のある有向グラフを指定した場合、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/exception.html#not_a_dag target=_blank>boost::not_a_dag</a></code>例外が投げられる。</p> <h2><a href=http://boostjp.github.io/tips/graph.html#euler-path name=euler-path>一筆書きの経路を求める</a></h2> <p>オイラー閉路というのを求めると、グラフの一筆書きの経路を得ることができる。ここでは、「サンタクロースの家」と呼ばれる無向グラフの一筆書きを求める。</p> <p>Boost.Graphにはオイラー閉路のためのアルゴリズムは用意されていないが、以下のGitHubにある<code>shand::graph::euler_path()</code>関数を利用することで、一筆書きを容易に求められる。</p> <ul> <li><a href=https://github.com/faithandbrave/Shand/blob/master/shand/graph/euler_path.hpp target=_blank>shand/graph/euler_path.hpp</a></li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;deque&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;shand/graph/<span style=color:#ff0000>euler_path</span>.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+</code></pre></p> <p>出力から、有向グラフgがトポロジカルソートによって「2 → 5 → 0 → 1 → 4 → 3」の順序が付けられたことがわかる。</p> <p>なお、<code>boost::topological_sort()</code>関数に、閉路のある有向グラフを指定した場合、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/exception.html#not_a_dag target=_blank>boost::not_a_dag</a></code>例外が投げられる。</p> <h2><a href=http://boostjp.github.io/tips/graph.html#euler-path name=euler-path>一筆書きの経路を求める</a></h2> <p>オイラー閉路というのを求めると、グラフの一筆書きの経路を得ることができる。ここでは、「サンタクロースの家」と呼ばれる無向グラフの一筆書きを求める。</p> <p>Boost.Graphにはオイラー閉路のためのアルゴリズムは用意されていないが、以下のGitHubにある<code>shand::graph::euler_path()</code>関数を利用することで、一筆書きを容易に求められる。</p> <ul> <li><a href=https://github.com/faithandbrave/Shand/blob/master/shand/graph/euler_path.hpp target=_blank>shand/graph/euler_path.hpp</a></li> </ul> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;deque&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;shand/graph/<span style=color:#ff0000>euler_path</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> {A, B, C, D, E, N};
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
+<span class=k>enum</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span><span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>undirectedS<span style="color: #666666">&gt;</span> Graph;
-    <span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>graph_traits<span style="color: #666666">&lt;</span>Graph<span style="color: #666666">&gt;::</span>vertex_descriptor vertex_desc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+    <span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span> <span class=n>vertex_desc</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {A, B},
-        {B, C},
-        {C, A},
-        {B, D},
-        {B, E},
-        {C, D},
-        {D, E},
-        {E, C}
-    };
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>C</span><span class=p>}</span>
+    <span class=p>};</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> Graph g(edges.begin(), edges.end(), N);
-    std<span style="color: #666666">::</span>deque<span style="color: #666666">&lt;</span>vertex_desc<span style="color: #666666">&gt;</span> path;
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>deque</span><span class=o>&lt;</span><span class=n>vertex_desc</span><span class=o>&gt;</span> <span class=n>path</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">if</span> (<span style="color: #666666">!</span>shand<span style="color: #666666">::</span>graph<span style="color: #666666">::</span><span style=color:#ff0000>euler_path</span>(g, E, [<span style="color: #666666">&amp;</span>path](vertex_desc v) { path.push_front(v); })) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"euler path failed"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span>;
-    }
+    <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>shand</span><span class=o>::</span><span class=n>graph</span><span class=o>::</span><span class=n><span style=color:#ff0000>euler_path</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=p>[</span><span class=o>&amp;</span><span class=n>path</span><span class=p>](</span><span class=n>vertex_desc</span> <span class=n>v</span><span class=p>)</span> <span class=p>{</span> <span class=n>path</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span><span class=n>v</span><span class=p>);</span> <span class=p>}))</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"euler path failed"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=k>return</span> <span class=mi>1</span><span class=p>;</span>
+    <span class=p>}</span>
 
-    BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> vertex_desc<span style="color: #666666">&amp;</span> v, path) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> name[v] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=n>BOOST_FOREACH</span> <span class=p>(</span><span class=k>const</span> <span class=n>vertex_desc</span><span class=o>&amp;</span> <span class=n>v</span><span class=p>,</span> <span class=n>path</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>name</span><span class=p>[</span><span class=n>v</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>E
 B
 A
@@ -918,31 +920,31 @@ D
 C
 E
 D
-</code></pre></p> <p>E, B, A, C, B, D, C, E, Dの順に頂点をたどれば一筆書きになることがわかった。</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/euler_path.png></p> <h2><a href=http://boostjp.github.io/tips/graph.html#write-graphviz name=write-graphviz>グラフをGraphviz形式(.dot)で出力する</a></h2> <p>グラフをGraphviz形式(.dot)で出力するには、<code>&lt;boost/graph/graphviz.hpp&gt;</code>をインクルードし、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/write-graphviz.html target=_blank>boost::write_graphviz()</a></code>関数を使用する。この機能のために、別途ライブラリは必要としない。</p> <p><code>write_graphviz()</code>関数の引数：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>第1引数</td> <td>出力先の<code>std::ostream&amp;</code></td> </tr> <tr> <td>第2引数</td> <td>グラフ構造への<code>const&amp;</code></td> </tr> <tr> <td>第3引数</td> <td>出力方法のカスタマイズ方法 (ここでは、頂点名を出力するために<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/write-graphviz.html#concept:PropertyWriter target=_blank>make_label_writer()</a></code>を使用している)</td> </tr> </tbody> </table> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;fstream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graphviz.hpp&gt;</span>
+</code></pre></p> <p>E, B, A, C, B, D, C, E, Dの順に頂点をたどれば一筆書きになることがわかった。</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/euler_path.png></p> <h2><a href=http://boostjp.github.io/tips/graph.html#write-graphviz name=write-graphviz>グラフをGraphviz形式(.dot)で出力する</a></h2> <p>グラフをGraphviz形式(.dot)で出力するには、<code>&lt;boost/graph/graphviz.hpp&gt;</code>をインクルードし、<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/write-graphviz.html target=_blank>boost::write_graphviz()</a></code>関数を使用する。この機能のために、別途ライブラリは必要としない。</p> <p><code>write_graphviz()</code>関数の引数：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>第1引数</td> <td>出力先の<code>std::ostream&amp;</code></td> </tr> <tr> <td>第2引数</td> <td>グラフ構造への<code>const&amp;</code></td> </tr> <tr> <td>第3引数</td> <td>出力方法のカスタマイズ方法 (ここでは、頂点名を出力するために<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/write-graphviz.html#concept:PropertyWriter target=_blank>make_label_writer()</a></code>を使用している)</td> </tr> </tbody> </table> <p><div class=codehilite><pre><span class=cp>#include &lt;fstream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graphviz.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS<span style="color: #666666">&gt;</span> Graph;
-<span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> Edge;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
+<span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=n>Edge</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { A, B, C, D, E, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>Edge<span style="color: #666666">&gt;</span> edges <span style="color: #666666">=</span> {
-        {A, B}, {A, C}, {A, D},
-        {B, E}, {C, E}, {D, E}
-    };
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
+        <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>}</span>
+    <span class=p>};</span>
 
-    <span style="color: #008000; font-weight: bold">const</span> Graph g(edges.begin(), edges.end(), N);
+    <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>N</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// graphvizの形式(*.dot)で出力</span>
-    std<span style="color: #666666">::</span>ofstream file(<span style="color: #BA2121">"test.dot"</span>);
-    boost<span style="color: #666666">::</span>write_graphviz(file, g, boost<span style="color: #666666">::</span>make_label_writer(name.c_str()));
-}
+    <span class=c1>// graphvizの形式(*.dot)で出力</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>file</span><span class=p>(</span><span class=s>"test.dot"</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>write_graphviz</span><span class=p>(</span><span class=n>file</span><span class=p>,</span> <span class=n>g</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>make_label_writer</span><span class=p>(</span><span class=n>name</span><span class=p>.</span><span class=n>c_str</span><span class=p>()));</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力されたtest.dotファイル：</p> <p><pre><code>digraph G {
 0[label="A"];
 1[label="B"];
@@ -957,27 +959,27 @@ D
 3-&gt;4 ;
 }
 </code></pre></p> <p>Graphvizのdotコマンドを使用してpngに変換：</p> <p><pre><code>dot -Tpng test.dot -o test.png
-</code></pre></p> <p>出力されたtest.png：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/graphviz.png></p> <p>追加資料：</p> <ul> <li><a href=http://d.hatena.ne.jp/faith_and_brave/20100416/1271388752 target=_blank>Boost.Graph Graphviz形式で重みを出力</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#read-graphviz name=read-graphviz>Graphviz形式(.dot)のデータを読み込む</a></h2> <p>Graphviz形式(.dot)のデータを読み込むには、<code>&lt;boost/graph/graphviz.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/read_graphviz.html target=_blank>boost::read_graphviz()</a></code>関数を使用する。この関数を使用するには、Boost Regex Libraryをリンクする必要がある。</p> <p>ここでは、「[グラフをGraphviz形式(.dot)で出力する](#write-graphviz」で出力したtest.dotファイルを読み込む。</p> <p><code>read_graphviz()</code>関数の引数：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>第1引数</td> <td>入力元の<code>std::istream&amp;</code></td> </tr> <tr> <td>第2引数</td> <td>グラフ構造への参照</td> </tr> <tr> <td>第3引数</td> <td>DOT言語のプロパティを処理するための<code>boost::dynamic_properties</code>型変数への参照</td> </tr> </tbody> </table> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;fstream&gt;</span>
-<span style="color: #BC7A00">#include &lt;string&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graphviz.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/graph/graph_utility.hpp&gt;</span>
+</code></pre></p> <p>出力されたtest.png：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/graph/graphviz.png></p> <p>追加資料：</p> <ul> <li><a href=http://d.hatena.ne.jp/faith_and_brave/20100416/1271388752 target=_blank>Boost.Graph Graphviz形式で重みを出力</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/graph.html#read-graphviz name=read-graphviz>Graphviz形式(.dot)のデータを読み込む</a></h2> <p>Graphviz形式(.dot)のデータを読み込むには、<code>&lt;boost/graph/graphviz.hpp&gt;</code>で定義される<code><a href=http://www.boost.org/doc/libs/release/libs/graph/doc/read_graphviz.html target=_blank>boost::read_graphviz()</a></code>関数を使用する。この関数を使用するには、Boost Regex Libraryをリンクする必要がある。</p> <p>ここでは、「[グラフをGraphviz形式(.dot)で出力する](#write-graphviz」で出力したtest.dotファイルを読み込む。</p> <p><code>read_graphviz()</code>関数の引数：</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>第1引数</td> <td>入力元の<code>std::istream&amp;</code></td> </tr> <tr> <td>第2引数</td> <td>グラフ構造への参照</td> </tr> <tr> <td>第3引数</td> <td>DOT言語のプロパティを処理するための<code>boost::dynamic_properties</code>型変数への参照</td> </tr> </tbody> </table> <p><div class=codehilite><pre><span class=cp>#include &lt;fstream&gt;</span>
+<span class=cp>#include &lt;string&gt;</span>
+<span class=cp>#include &lt;boost/graph/adjacency_list.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graphviz.hpp&gt;</span>
+<span class=cp>#include &lt;boost/graph/graph_utility.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>adjacency_list<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>listS, boost<span style="color: #666666">::</span>vecS, boost<span style="color: #666666">::</span>directedS<span style="color: #666666">&gt;</span> Graph;
+<span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>directedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
 
-<span style="color: #008000; font-weight: bold">enum</span> { A, B, C, D, E, N };
-<span style="color: #008000; font-weight: bold">const</span> std<span style="color: #666666">::</span>string name <span style="color: #666666">=</span> <span style="color: #BA2121">"ABCDE"</span>;
+<span class=k>enum</span> <span class=p>{</span> <span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>,</span> <span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>N</span> <span class=p>};</span>
+<span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span> <span class=o>=</span> <span class=s>"ABCDE"</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    std<span style="color: #666666">::</span>ifstream file(<span style="color: #BA2121">"test.dot"</span>);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>ifstream</span> <span class=n>file</span><span class=p>(</span><span class=s>"test.dot"</span><span class=p>);</span>
 
-    Graph g;
-    boost<span style="color: #666666">::</span>dynamic_properties dp(boost<span style="color: #666666">::</span>ignore_other_properties);
-    boost<span style="color: #666666">::</span>read_graphviz(file, g, dp);
+    <span class=n>Graph</span> <span class=n>g</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>dynamic_properties</span> <span class=n>dp</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>ignore_other_properties</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>read_graphviz</span><span class=p>(</span><span class=n>file</span><span class=p>,</span> <span class=n>g</span><span class=p>,</span> <span class=n>dp</span><span class=p>);</span>
 
-    boost<span style="color: #666666">::</span>print_graph(g, name.c_str());
-}
+    <span class=n>boost</span><span class=o>::</span><span class=n>print_graph</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>name</span><span class=p>.</span><span class=n>c_str</span><span class=p>());</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>A --&gt; B C D
 B --&gt; E
 C --&gt; E

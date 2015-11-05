@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>実行時アサート - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="実行時アサート - boostjp"><meta itemprop=name content="実行時アサート - boostjp"><meta property=og:title content="実行時アサート - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/dynamic_assert.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="実行時アサート 実行時アサートには、BOOST_ASSERTマクロ、もしくはBOOST_ASSERT_MSGマクロを使用する。これらのマクロは、&lt;boost/assert.hpp&gt;ヘッダで定義される。 インデックス  式を検証する メッセージ付きで式を検証する 検証失敗時の動作をカスタマイズする  式を検証する 式を検証するには、BOOST_ASSERTマクロを使用する。このマクロは引"><meta name=twitter:card content=summary><meta name=twitter:title content="実行時アサート - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/dynamic_assert.html><meta name=twitter:description content="実行時アサート 実行時アサートには、BOOST_ASSERTマクロ、もしくはBOOST_ASSERT_MSGマクロを使用する。これらのマクロは、&lt;boost/assert.hpp&gt;ヘッダで定義される。 インデックス  式を検証する メッセージ付きで式を検証する 検証失敗時の動作をカスタマイズする  式を検証する 式を検証するには、BOOST_ASSERTマクロを使用する。このマクロは引"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="実行時アサート - boostjp"><meta itemprop=name content="実行時アサート - boostjp"><meta property=og:title content="実行時アサート - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/dynamic_assert.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="実行時アサート 実行時アサートには、BOOST_ASSERTマクロ、もしくはBOOST_ASSERT_MSGマクロを使用する。これらのマクロは、&lt;boost/assert.hpp&gt;ヘッダで定義される。 インデックス  式を検証する メッセージ付きで式を検証する 検証失敗時の動作をカスタマイズする  式を検証する 式を検証するには、BOOST_ASSERTマクロを使用する。このマクロは引"><meta name=twitter:card content=summary><meta name=twitter:title content="実行時アサート - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/dynamic_assert.html><meta name=twitter:description content="実行時アサート 実行時アサートには、BOOST_ASSERTマクロ、もしくはBOOST_ASSERT_MSGマクロを使用する。これらのマクロは、&lt;boost/assert.hpp&gt;ヘッダで定義される。 インデックス  式を検証する メッセージ付きで式を検証する 検証失敗時の動作をカスタマイズする  式を検証する 式を検証するには、BOOST_ASSERTマクロを使用する。このマクロは引"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,16 +219,16 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 実行時アサート </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/dynamic_assert.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/dynamic_assert.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>実行時アサート</h1> <div itemprop=articleBody><p>実行時アサートには、<code>BOOST_ASSERT</code>マクロ、もしくは<code>BOOST_ASSERT_MSG</code>マクロを使用する。これらのマクロは、<code><a href=http://www.boost.org/doc/libs/release/libs/utility/assert.html target=_blank>&lt;boost/assert.hpp&gt;</a></code>ヘッダで定義される。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-expression>式を検証する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message>メッセージ付きで式を検証する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-expression name=assertion-expression>式を検証する</a></h2> <p>式を検証するには、<code>BOOST_ASSERT</code>マクロを使用する。このマクロは引数として条件式をとる。条件式が<code>true</code>に評価される場合は検証成功となり、<code>false</code>の場合は検証失敗と見なされる。</p> <p>検証失敗時は、プログラムが異常終了する。</p> <p>デフォルトでは、<code>NDEBUG</code>が<code>#define</code>されていない場合(デバッグモード)のみ検証が行われる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/assert.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 実行時アサート </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/dynamic_assert.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/dynamic_assert.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>実行時アサート</h1> <div itemprop=articleBody><p>実行時アサートには、<code>BOOST_ASSERT</code>マクロ、もしくは<code>BOOST_ASSERT_MSG</code>マクロを使用する。これらのマクロは、<code><a href=http://www.boost.org/doc/libs/release/libs/utility/assert.html target=_blank>&lt;boost/assert.hpp&gt;</a></code>ヘッダで定義される。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-expression>式を検証する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message>メッセージ付きで式を検証する</a></li> <li><a href=http://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-expression name=assertion-expression>式を検証する</a></h2> <p>式を検証するには、<code>BOOST_ASSERT</code>マクロを使用する。このマクロは引数として条件式をとる。条件式が<code>true</code>に評価される場合は検証成功となり、<code>false</code>の場合は検証失敗と見なされる。</p> <p>検証失敗時は、プログラムが異常終了する。</p> <p>デフォルトでは、<code>NDEBUG</code>が<code>#define</code>されていない場合(デバッグモード)のみ検証が行われる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #408080; font-style: italic">// 検証に成功するケース</span>
-    <span style=color:#ff0000>BOOST_ASSERT</span>(<span style="color: #666666">1</span> <span style="color: #666666">==</span> <span style="color: #666666">1</span>);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=c1>// 検証に成功するケース</span>
+    <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=mi>1</span> <span class=o>==</span> <span class=mi>1</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// 検証に失敗するケース</span>
-    <span style=color:#ff0000>BOOST_ASSERT</span>(<span style="color: #666666">1</span> <span style="color: #666666">!=</span> <span style="color: #666666">1</span>);
-}
+    <span class=c1>// 検証に失敗するケース</span>
+    <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=mi>1</span> <span class=o>!=</span> <span class=mi>1</span><span class=p>);</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
 Assertion failed!
@@ -235,75 +237,75 @@ Program: main.exe
 File: main.cpp, Line 9
 
 Expression: 1 != 1
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message name=assertion-with-message>メッセージ付きで式を検証する</a></h2> <p>検証失敗時にコンパイルエラーにエラーメッセージを出力するには、<code>BOOST_ASSERT_MSG</code>マクロを使用する。基本的な使い方は<code>BOOST_ASSERT</code>と同様で、第2引数にメッセージの文字列を取る。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;boost/assert.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message name=assertion-with-message>メッセージ付きで式を検証する</a></h2> <p>検証失敗時にコンパイルエラーにエラーメッセージを出力するには、<code>BOOST_ASSERT_MSG</code>マクロを使用する。基本的な使い方は<code>BOOST_ASSERT</code>と同様で、第2引数にメッセージの文字列を取る。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>(<span style="color: #B00040">int</span> argc, <span style="color: #B00040">char</span><span style="color: #666666">*</span> argv[])
-{
-    <span style=color:#ff0000>BOOST_ASSERT_MSG</span>(argc <span style="color: #666666">&gt;</span> <span style="color: #666666">1</span>, <span style="color: #BA2121">"you must specify at least one option"</span>);
-}
-</pre></div> </p> <p>また、式を評価する必要が無く、該当箇所を通過した場合に単にデバッグ用途で無条件に落としたい場合、文字列を示すポインタの評価結果は常に真になることを利用して、イディオム的に以下のような書き方もできる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/assert.hpp&gt;</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span><span class=o>*</span> <span class=n>argv</span><span class=p>[])</span>
+<span class=p>{</span>
+    <span class=n><span style=color:#ff0000>BOOST_ASSERT_MSG</span></span><span class=p>(</span><span class=n>argc</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>,</span> <span class=s>"you must specify at least one option"</span><span class=p>);</span>
+<span class=p>}</span>
+</pre></div> </p> <p>また、式を評価する必要が無く、該当箇所を通過した場合に単にデバッグ用途で無条件に落としたい場合、文字列を示すポインタの評価結果は常に真になることを利用して、イディオム的に以下のような書き方もできる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>(<span style="color: #B00040">int</span> argc, <span style="color: #B00040">char</span><span style="color: #666666">*</span> argv[])
-{
-    <span style="color: #008000; font-weight: bold">if</span> (argc <span style="color: #666666">==</span> <span style="color: #666666">1</span> <span style="color: #666666">+</span> <span style="color: #666666">1</span>) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"option 1: "</span> <span style="color: #666666">&lt;&lt;</span> argv[<span style="color: #666666">1</span>] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    } <span style="color: #008000; font-weight: bold">else</span> {
-        <span style=color:#ff0000>BOOST_ASSERT</span>(<span style="color: #666666">!</span><span style="color: #BA2121">"unknown extra option specified"</span>);
-    }
-}
-</pre></div> </p> <p>これは<code>NDEBUG</code>が<code>#define</code>されているビルド（リリースビルド）では暗黙のうちに通過してしまいバグの原因となるので、あくまで簡易的なデバッグ用途に留めるべきである。</p> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior name=customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></h2> <p><code>BOOST_ASSERT</code>での検証失敗時の動作をカスタマイズしたい場合は、以下の方法をとる：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed()</code>関数を定義する</li> </ul> <p>この方法をとることによって、検証失敗時に、自分で定義した<code>assertion_failed()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
-<span style="color: #BC7A00">#include &lt;boost/assert.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;fstream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cstdlib&gt;</span>
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span><span class=o>*</span> <span class=n>argv</span><span class=p>[])</span>
+<span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>argc</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"option 1: "</span> <span class=o>&lt;&lt;</span> <span class=n>argv</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+        <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=o>!</span><span class=s>"unknown extra option specified"</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div> </p> <p>これは<code>NDEBUG</code>が<code>#define</code>されているビルド（リリースビルド）では暗黙のうちに通過してしまいバグの原因となるので、あくまで簡易的なデバッグ用途に留めるべきである。</p> <h2><a href=http://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior name=customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></h2> <p><code>BOOST_ASSERT</code>での検証失敗時の動作をカスタマイズしたい場合は、以下の方法をとる：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed()</code>関数を定義する</li> </ul> <p>この方法をとることによって、検証失敗時に、自分で定義した<code>assertion_failed()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp>#define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
+<span class=cp>#include &lt;boost/assert.hpp&gt;</span>
+<span class=cp>#include &lt;fstream&gt;</span>
+<span class=cp>#include &lt;cstdlib&gt;</span>
 
-<span style="color: #008000; font-weight: bold">namespace</span> boost {
-    <span style="color: #B00040">void</span> <span style=color:#ff0000>assertion_failed</span>(<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> expr, <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> function, <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> file, <span style="color: #B00040">long</span> line)
-    {
-        <span style="color: #408080; font-style: italic">// ログに出力して、アプリケーションを異常終了させる</span>
-        std<span style="color: #666666">::</span>ofstream log(<span style="color: #BA2121">"log.txt"</span>, std<span style="color: #666666">::</span>ios<span style="color: #666666">::</span>out <span style="color: #666666">|</span> std<span style="color: #666666">::</span>ios<span style="color: #666666">::</span>app);
-        log <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Expression : "</span> <span style="color: #666666">&lt;&lt;</span> expr <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Function : "</span> <span style="color: #666666">&lt;&lt;</span> function <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"File : "</span> <span style="color: #666666">&lt;&lt;</span> file <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Line : "</span> <span style="color: #666666">&lt;&lt;</span> line <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        std<span style="color: #666666">::</span>abort();
-    }
-}
+<span class=k>namespace</span> <span class=n>boost</span> <span class=p>{</span>
+    <span class=kt>void</span> <span class=n><span style=color:#ff0000>assertion_failed</span></span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>file</span><span class=p>,</span> <span class=kt>long</span> <span class=n>line</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=c1>// ログに出力して、アプリケーションを異常終了させる</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>log</span><span class=p>(</span><span class=s>"log.txt"</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>out</span> <span class=o>|</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>app</span><span class=p>);</span>
+        <span class=n>log</span> <span class=o>&lt;&lt;</span> <span class=s>"Expression : "</span> <span class=o>&lt;&lt;</span> <span class=n>expr</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"Function : "</span> <span class=o>&lt;&lt;</span> <span class=n>function</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"File : "</span> <span class=o>&lt;&lt;</span> <span class=n>file</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"Line : "</span> <span class=o>&lt;&lt;</span> <span class=n>line</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>abort</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> main()
-{
-    BOOST_ASSERT(<span style="color: #666666">1</span> <span style="color: #666666">==</span> <span style="color: #666666">2</span>);
-}
+<span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=mi>1</span> <span class=o>==</span> <span class=mi>2</span><span class=p>);</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
 </code></pre></p> <p>log.txt：</p> <p><pre><code>Expression : 1 == 2
 Function : int main()
 File : C:\language\cpp\main.cpp
 Line : 21
-</code></pre></p> <p><code>BOOST_ASSERT_MSG</code>の場合は、以下のようにする：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed_msg()</code>関数を定義する</li> </ul> <p>これによって、<code>BOOST_ASSERT_MSG</code>での検証失敗時に、自分で定義した<code>assertion_failed_msg()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>メッセージ</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
-<span style="color: #BC7A00">#include &lt;boost/assert.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;fstream&gt;</span>
-<span style="color: #BC7A00">#include &lt;cstdlib&gt;</span>
+</code></pre></p> <p><code>BOOST_ASSERT_MSG</code>の場合は、以下のようにする：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed_msg()</code>関数を定義する</li> </ul> <p>これによって、<code>BOOST_ASSERT_MSG</code>での検証失敗時に、自分で定義した<code>assertion_failed_msg()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>メッセージ</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp>#define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
+<span class=cp>#include &lt;boost/assert.hpp&gt;</span>
+<span class=cp>#include &lt;fstream&gt;</span>
+<span class=cp>#include &lt;cstdlib&gt;</span>
 
-<span style="color: #008000; font-weight: bold">namespace</span> boost {
-    <span style="color: #B00040">void</span> <span style=color:#ff0000>assertion_failed_msg</span>(<span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> expr, <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> msg, <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> function,
-                              <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">char</span><span style="color: #666666">*</span> file, <span style="color: #B00040">long</span> line)
-    {
-        <span style="color: #408080; font-style: italic">// ログに出力して、アプリケーションを異常終了させる</span>
-        std<span style="color: #666666">::</span>ofstream log(<span style="color: #BA2121">"log.txt"</span>, std<span style="color: #666666">::</span>ios<span style="color: #666666">::</span>out <span style="color: #666666">|</span> std<span style="color: #666666">::</span>ios<span style="color: #666666">::</span>app);
-        log <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Expression : "</span> <span style="color: #666666">&lt;&lt;</span> expr <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Message : "</span> <span style="color: #666666">&lt;&lt;</span> msg <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Function : "</span> <span style="color: #666666">&lt;&lt;</span> function <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"File : "</span> <span style="color: #666666">&lt;&lt;</span> file <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">'\n'</span>
-            <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Line : "</span> <span style="color: #666666">&lt;&lt;</span> line <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        std<span style="color: #666666">::</span>abort();
-    }
-}
+<span class=k>namespace</span> <span class=n>boost</span> <span class=p>{</span>
+    <span class=kt>void</span> <span class=n><span style=color:#ff0000>assertion_failed_msg</span></span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>msg</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span>
+                              <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>file</span><span class=p>,</span> <span class=kt>long</span> <span class=n>line</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=c1>// ログに出力して、アプリケーションを異常終了させる</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>log</span><span class=p>(</span><span class=s>"log.txt"</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>out</span> <span class=o>|</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>app</span><span class=p>);</span>
+        <span class=n>log</span> <span class=o>&lt;&lt;</span> <span class=s>"Expression : "</span> <span class=o>&lt;&lt;</span> <span class=n>expr</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"Message : "</span> <span class=o>&lt;&lt;</span> <span class=n>msg</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"Function : "</span> <span class=o>&lt;&lt;</span> <span class=n>function</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"File : "</span> <span class=o>&lt;&lt;</span> <span class=n>file</span> <span class=o>&lt;&lt;</span> <span class=sc>'\n'</span>
+            <span class=o>&lt;&lt;</span> <span class=s>"Line : "</span> <span class=o>&lt;&lt;</span> <span class=n>line</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>abort</span><span class=p>();</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> main()
-{
-    BOOST_ASSERT_MSG(<span style="color: #666666">1</span> <span style="color: #666666">==</span> <span style="color: #666666">2</span>, <span style="color: #BA2121">"1 is not 2"</span>);
-}
+<span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>BOOST_ASSERT_MSG</span><span class=p>(</span><span class=mi>1</span> <span class=o>==</span> <span class=mi>2</span><span class=p>,</span> <span class=s>"1 is not 2"</span><span class=p>);</span>
+<span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
 </code></pre></p> <p>log.txt：</p> <p><pre><code>Expression : 1 == 2

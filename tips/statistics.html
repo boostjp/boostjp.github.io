@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>統計処理 - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="統計処理 - boostjp"><meta itemprop=name content="統計処理 - boostjp"><meta property=og:title content="統計処理 - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/statistics.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="統計処理 統計処理には、Boost Accumulators Libraryを使用する。 インデックス  基本的な使い方 既存のコンテナにあるデータから統計をとる 要素数を求める - count 共分散を求める - covariance 密度を求める - density 拡張カイ二乗を求める - extended_q_square 尖度を求める - kurtosis 最小値を求める - min 最"><meta name=twitter:card content=summary><meta name=twitter:title content="統計処理 - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/statistics.html><meta name=twitter:description content="統計処理 統計処理には、Boost Accumulators Libraryを使用する。 インデックス  基本的な使い方 既存のコンテナにあるデータから統計をとる 要素数を求める - count 共分散を求める - covariance 密度を求める - density 拡張カイ二乗を求める - extended_q_square 尖度を求める - kurtosis 最小値を求める - min 最"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="統計処理 - boostjp"><meta itemprop=name content="統計処理 - boostjp"><meta property=og:title content="統計処理 - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/statistics.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="統計処理 統計処理には、Boost Accumulators Libraryを使用する。 インデックス  基本的な使い方 既存のコンテナにあるデータから統計をとる 要素数を求める - count 共分散を求める - covariance 密度を求める - density 拡張カイ二乗を求める - extended_q_square 尖度を求める - kurtosis 最小値を求める - min 最"><meta name=twitter:card content=summary><meta name=twitter:title content="統計処理 - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/statistics.html><meta name=twitter:description content="統計処理 統計処理には、Boost Accumulators Libraryを使用する。 インデックス  基本的な使い方 既存のコンテナにあるデータから統計をとる 要素数を求める - count 共分散を求める - covariance 密度を求める - density 拡張カイ二乗を求める - extended_q_square 尖度を求める - kurtosis 最小値を求める - min 最"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,145 +219,145 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 統計処理 </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/statistics.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/statistics.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>統計処理</h1> <div itemprop=articleBody><p>統計処理には、<a href=http://www.boost.org/doc/libs/release/doc/html/accumulators.html target=_blank>Boost Accumulators Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/statistics.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#container-stats>既存のコンテナにあるデータから統計をとる</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#count>要素数を求める - <code>count</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#covariance>共分散を求める - <code>covariance</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#density>密度を求める - <code>density</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square>拡張カイ二乗を求める - <code>extended_q_square</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#kurtosis>尖度を求める - <code>kurtosis</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#min>最小値を求める - <code>min</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#max>最大値を求める - <code>max</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#mean>平均値を求める - <code>mean</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#median>中央値を求める - <code>median</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#pot_quantile>閾値法 POT:Peak Over Threshold</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#skewness>歪度を求める - <code>skewness</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#sum>合計値を求める - <code>sum</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#weighted-stats>重み付きサンプルやヒストグラムの統計量を求める - <code>weighted_*</code></a></li> </ul> <h2><a href=http://boostjp.github.io/tips/statistics.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p>Boost.Accumulatorsを使用した統計処理には、<code>boost::accumulators::accumulator_set</code>というコンテナを使用し、そのテンプレートパラメータとして、統計したい処理を指定することで、内部でそれらの統計処理の組み合わせを効率よく処理してくれる。</p> <p>以下は、最小値(min)、平均値(mean)、合計値(sum)を求める例である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 統計処理 </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2014-12-18T01:11:44> 2014年12月18日 01時11分44秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/statistics.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/statistics.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>統計処理</h1> <div itemprop=articleBody><p>統計処理には、<a href=http://www.boost.org/doc/libs/release/doc/html/accumulators.html target=_blank>Boost Accumulators Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/statistics.html#basic-usage>基本的な使い方</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#container-stats>既存のコンテナにあるデータから統計をとる</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#count>要素数を求める - <code>count</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#covariance>共分散を求める - <code>covariance</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#density>密度を求める - <code>density</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square>拡張カイ二乗を求める - <code>extended_q_square</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#kurtosis>尖度を求める - <code>kurtosis</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#min>最小値を求める - <code>min</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#max>最大値を求める - <code>max</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#mean>平均値を求める - <code>mean</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#median>中央値を求める - <code>median</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#pot_quantile>閾値法 POT:Peak Over Threshold</a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#skewness>歪度を求める - <code>skewness</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#sum>合計値を求める - <code>sum</code></a></li> <li><a href=http://boostjp.github.io/tips/statistics.html#weighted-stats>重み付きサンプルやヒストグラムの統計量を求める - <code>weighted_*</code></a></li> </ul> <h2><a href=http://boostjp.github.io/tips/statistics.html#basic-usage name=basic-usage>基本的な使い方</a></h2> <p>Boost.Accumulatorsを使用した統計処理には、<code>boost::accumulators::accumulator_set</code>というコンテナを使用し、そのテンプレートパラメータとして、統計したい処理を指定することで、内部でそれらの統計処理の組み合わせを効率よく処理してくれる。</p> <p>以下は、最小値(min)、平均値(mean)、合計値(sum)を求める例である。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>min, tag<span style="color: #666666">::</span>mean, tag<span style="color: #666666">::</span>sum<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>min</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>mean</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>sum</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">3.0</span>);
-    acc(<span style="color: #666666">1.0</span>);
-    acc(<span style="color: #666666">4.0</span>);
-    acc(<span style="color: #666666">2.0</span>);
-    acc(<span style="color: #666666">5.0</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mf>3.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>1.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>4.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>2.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>5.0</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>min(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 最小値</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 平均値</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 合計値</span>
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>min</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>  <span class=c1>// 最小値</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 平均値</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>sum</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>  <span class=c1>// 合計値</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>1
 3
 15
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#container-stats name=container-stats>既存のコンテナにあるデータから統計をとる</a></h2> <p><code>std::vector</code>や配列のようなコンテナに、統計したいデータが入っていることがある。</p> <p>そういったデータをBoost.Accumulatorsで統計をとるには、<code>for_each()</code>アルゴリズムを使用して<code>accumulator_set</code>にデータを入れる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/array.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/random.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/range/algorithm/generate.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#container-stats name=container-stats>既存のコンテナにあるデータから統計をとる</a></h2> <p><code>std::vector</code>や配列のようなコンテナに、統計したいデータが入っていることがある。</p> <p>そういったデータをBoost.Accumulatorsで統計をとるには、<code>for_each()</code>アルゴリズムを使用して<code>accumulator_set</code>にデータを入れる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/array.hpp&gt;</span>
+<span class=cp>#include &lt;boost/random.hpp&gt;</span>
+<span class=cp>#include &lt;boost/range/algorithm/generate.hpp&gt;</span>
+<span class=cp>#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
 
-<span style="color: #BC7A00">#include &lt;boost/bind.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/ref.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+<span class=cp>#include &lt;boost/bind.hpp&gt;</span>
+<span class=cp>#include &lt;boost/ref.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #408080; font-style: italic">// てきとうなデータを用意</span>
-<span style="color: #B00040">void</span> <span style="color: #0000FF">load</span>(boost<span style="color: #666666">::</span>array<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #666666">100&gt;&amp;</span> ar)
-{
-    boost<span style="color: #666666">::</span>mt19937 engine;
-    boost<span style="color: #666666">::</span>uniform_int<span style="color: #666666">&lt;&gt;</span> distribution(<span style="color: #666666">1</span>, <span style="color: #666666">1000</span>);
-    boost<span style="color: #666666">::</span>variate_generator<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>mt19937, boost<span style="color: #666666">::</span>uniform_int<span style="color: #666666">&lt;&gt;</span> <span style="color: #666666">&gt;</span> generator(engine, distribution);
+<span class=c1>// てきとうなデータを用意</span>
+<span class=kt>void</span> <span class=nf>load</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>array</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=mi>100</span><span class=o>&gt;&amp;</span> <span class=n>ar</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>mt19937</span> <span class=n>engine</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>uniform_int</span><span class=o>&lt;&gt;</span> <span class=n>distribution</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1000</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>variate_generator</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>mt19937</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>uniform_int</span><span class=o>&lt;&gt;</span> <span class=o>&gt;</span> <span class=n>generator</span><span class=p>(</span><span class=n>engine</span><span class=p>,</span> <span class=n>distribution</span><span class=p>);</span>
 
-    boost<span style="color: #666666">::</span>generate(ar, generator);
-}
+    <span class=n>boost</span><span class=o>::</span><span class=n>generate</span><span class=p>(</span><span class=n>ar</span><span class=p>,</span> <span class=n>generator</span><span class=p>);</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>array<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, <span style="color: #666666">100&gt;</span> ar;
-    load(ar);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>array</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=mi>100</span><span class=o>&gt;</span> <span class=n>ar</span><span class=p>;</span>
+    <span class=n>load</span><span class=p>(</span><span class=n>ar</span><span class=p>);</span>
 
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>min, tag<span style="color: #666666">::</span>mean, tag<span style="color: #666666">::</span>sum<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>min</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>mean</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>sum</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    boost<span style="color: #666666">::</span>for_each(ar, boost<span style="color: #666666">::</span>bind(boost<span style="color: #666666">::</span>ref(acc), _1));
+    <span class=n>boost</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>ar</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>acc</span><span class=p>),</span> <span class=n>_1</span><span class=p>));</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>min(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 最小値</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; <span style="color: #408080; font-style: italic">// 中間値</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;  <span style="color: #408080; font-style: italic">// 合計値</span>
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>min</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>  <span class=c1>// 最小値</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 中間値</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>sum</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>  <span class=c1>// 合計値</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果の例：</p> <p><pre><code>5
 544.24
 54424
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#count name=count>要素数を求める - count</a></h2> <p>要素数を求めるには、<code>count</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#count name=count>要素数を求める - count</a></h2> <p>要素数を求めるには、<code>count</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>count<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>count</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">4</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>count(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>count</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#covariance name=covariance>共分散を求める - covariance</a></h2> <p>共分散を求めるには、<code>covariance</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#covariance name=covariance>共分散を求める - covariance</a></h2> <p>共分散を求めるには、<code>covariance</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>covariance<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, tag<span style="color: #666666">::</span>covariate1<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>covariance</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>covariate1</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">1.0</span>, covariate1 <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>);
-    acc(<span style="color: #666666">1.0</span>, covariate1 <span style="color: #666666">=</span> <span style="color: #666666">4.0</span>);
-    acc(<span style="color: #666666">2.0</span>, covariate1 <span style="color: #666666">=</span> <span style="color: #666666">3.0</span>);
-    acc(<span style="color: #666666">6.0</span>, covariate1 <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mf>1.0</span><span class=p>,</span> <span class=n>covariate1</span> <span class=o>=</span> <span class=mf>2.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>1.0</span><span class=p>,</span> <span class=n>covariate1</span> <span class=o>=</span> <span class=mf>4.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>2.0</span><span class=p>,</span> <span class=n>covariate1</span> <span class=o>=</span> <span class=mf>3.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>6.0</span><span class=p>,</span> <span class=n>covariate1</span> <span class=o>=</span> <span class=mf>1.0</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>covariance(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>covariance</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>-1.75
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#density name=density>密度を求める - density</a></h2> <p>密度を求めるには、<code>density</code>を使用する。</p> <p><code>density</code>は、サンプル分布のヒストグラムを返す。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;utility&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/bind.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/ref.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#density name=density>密度を求める - density</a></h2> <p>密度を求めるには、<code>density</code>を使用する。</p> <p><code>density</code>は、サンプル分布のヒストグラムを返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;utility&gt;</span>
+<span class=cp>#include &lt;boost/range/algorithm/for_each.hpp&gt;</span>
+<span class=cp>#include &lt;boost/bind.hpp&gt;</span>
+<span class=cp>#include &lt;boost/ref.hpp&gt;</span>
+<span class=cp>#include &lt;boost/foreach.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>() {
-    <span style="color: #008000; font-weight: bold">const</span> <span style="color: #B00040">double</span> data[<span style="color: #666666">21</span>] <span style="color: #666666">=</span> {
-        <span style="color: #666666">0</span>,     <span style="color: #666666">0.5</span>,    <span style="color: #666666">0.65</span>,
-        <span style="color: #666666">0.45</span>,  <span style="color: #666666">0.7</span>,    <span style="color: #666666">0.65</span>,
-        <span style="color: #666666">0.45</span>,  <span style="color: #666666">0.7</span>,    <span style="color: #666666">0.59</span>,
-        <span style="color: #666666">0</span>,     <span style="color: #666666">0.05</span>,   <span style="color: #666666">0.60</span>,
-        <span style="color: #666666">0.605</span>, <span style="color: #666666">0.405</span>,  <span style="color: #666666">0.78</span>,
-        <span style="color: #666666">0.61</span>,  <span style="color: #666666">0.605</span> , <span style="color: #666666">0.405</span>,
-        <span style="color: #666666">0.71</span>,  <span style="color: #666666">0.509</span> , <span style="color: #666666">0.52</span>
-    };
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=kt>double</span> <span class=n>data</span><span class=p>[</span><span class=mi>21</span><span class=p>]</span> <span class=o>=</span> <span class=p>{</span>
+        <span class=mi>0</span><span class=p>,</span>     <span class=mf>0.5</span><span class=p>,</span>    <span class=mf>0.65</span><span class=p>,</span>
+        <span class=mf>0.45</span><span class=p>,</span>  <span class=mf>0.7</span><span class=p>,</span>    <span class=mf>0.65</span><span class=p>,</span>
+        <span class=mf>0.45</span><span class=p>,</span>  <span class=mf>0.7</span><span class=p>,</span>    <span class=mf>0.59</span><span class=p>,</span>
+        <span class=mi>0</span><span class=p>,</span>     <span class=mf>0.05</span><span class=p>,</span>   <span class=mf>0.60</span><span class=p>,</span>
+        <span class=mf>0.605</span><span class=p>,</span> <span class=mf>0.405</span><span class=p>,</span>  <span class=mf>0.78</span><span class=p>,</span>
+        <span class=mf>0.61</span><span class=p>,</span>  <span class=mf>0.605</span> <span class=p>,</span> <span class=mf>0.405</span><span class=p>,</span>
+        <span class=mf>0.71</span><span class=p>,</span>  <span class=mf>0.509</span> <span class=p>,</span> <span class=mf>0.52</span>
+    <span class=p>};</span>
 
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>density <span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span>
-        acc(tag<span style="color: #666666">::</span>density<span style="color: #666666">::</span>cache_size<span style="color: #666666">=10</span>, tag<span style="color: #666666">::</span>density<span style="color: #666666">::</span>num_bins<span style="color: #666666">=5</span>);
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>density</span> <span class=o>&gt;</span> <span class=o>&gt;</span>
+        <span class=n>acc</span><span class=p>(</span><span class=n>tag</span><span class=o>::</span><span class=n>density</span><span class=o>::</span><span class=n>cache_size</span><span class=o>=</span><span class=mi>10</span><span class=p>,</span> <span class=n>tag</span><span class=o>::</span><span class=n>density</span><span class=o>::</span><span class=n>num_bins</span><span class=o>=</span><span class=mi>5</span><span class=p>);</span>
 
-    boost<span style="color: #666666">::</span>for_each(data, boost<span style="color: #666666">::</span>bind(boost<span style="color: #666666">::</span>ref(acc), _1));
+    <span class=n>boost</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>ref</span><span class=p>(</span><span class=n>acc</span><span class=p>),</span> <span class=n>_1</span><span class=p>));</span>
 
-    <span style="color: #008000; font-weight: bold">typedef</span>
-        boost<span style="color: #666666">::</span>iterator_range<span style="color: #666666">&lt;</span>
-            std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span>std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, <span style="color: #B00040">double</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;::</span>iterator
-        <span style="color: #666666">&gt;</span>
-    histogram_type;
+    <span class=k>typedef</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>iterator_range</span><span class=o>&lt;</span>
+            <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=kt>double</span><span class=o>&gt;</span> <span class=o>&gt;::</span><span class=n>iterator</span>
+        <span class=o>&gt;</span>
+    <span class=n>histogram_type</span><span class=p>;</span>
 
-    histogram_type histogram <span style="color: #666666">=</span> density(acc);
+    <span class=n>histogram_type</span> <span class=n>histogram</span> <span class=o>=</span> <span class=n>density</span><span class=p>(</span><span class=n>acc</span><span class=p>);</span>
 
-    <span style="color: #008000; font-weight: bold">typedef</span> std<span style="color: #666666">::</span>pair<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, <span style="color: #B00040">double</span><span style="color: #666666">&gt;</span> value_type;
-    BOOST_FOREACH (<span style="color: #008000; font-weight: bold">const</span> value_type<span style="color: #666666">&amp;</span> x, histogram) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"First: "</span> <span style="color: #666666">&lt;&lt;</span> x.first <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"</span><span style="color: #BB6622; font-weight: bold">\t</span><span style="color: #BA2121"> Second: "</span> <span style="color: #666666">&lt;&lt;</span> x.second <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
+    <span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=kt>double</span><span class=o>&gt;</span> <span class=n>value_type</span><span class=p>;</span>
+    <span class=n>BOOST_FOREACH</span> <span class=p>(</span><span class=k>const</span> <span class=n>value_type</span><span class=o>&amp;</span> <span class=n>x</span><span class=p>,</span> <span class=n>histogram</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"First: "</span> <span class=o>&lt;&lt;</span> <span class=n>x</span><span class=p>.</span><span class=n>first</span> <span class=o>&lt;&lt;</span> <span class=s>"</span><span class=se>\t</span><span class=s> Second: "</span> <span class=o>&lt;&lt;</span> <span class=n>x</span><span class=p>.</span><span class=n>second</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
 
-}
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>First: -0.14 Second: 0
 First: 0     Second: 0.142857
 First: 0.14  Second: 0
@@ -363,41 +365,41 @@ First: 0.28  Second: 0.0952381
 First: 0.42  Second: 0.238095
 First: 0.56  Second: 0.333333
 First: 0.7   Second: 0.190476
-</code></pre></p> <p>ソースの参考元： <a href=http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/ target=_blank>http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/</a></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square name=extended_q_square>拡張カイ二乗を求める - extended_q_square</a></h2> <p>拡張カイ二乗を求めるには、<code>extended_q_square</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;vector&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/random.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/foreach.hpp&gt;</span>
+</code></pre></p> <p>ソースの参考元： <a href=http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/ target=_blank>http://www.dreamincode.net/forums/topic/151359-boost-accumulator-help/</a></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#extended_q_square name=extended_q_square>拡張カイ二乗を求める - extended_q_square</a></h2> <p>拡張カイ二乗を求めるには、<code>extended_q_square</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;vector&gt;</span>
+<span class=cp>#include &lt;boost/random.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+<span class=cp>#include &lt;boost/foreach.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>lagged_fibonacci607 rng;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>lagged_fibonacci607</span> <span class=n>rng</span><span class=p>;</span>
 
-    std<span style="color: #666666">::</span>vector<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span><span style="color: #666666">&gt;</span> probs;
-    probs.push_back(<span style="color: #666666">0.001</span>);
-    probs.push_back(<span style="color: #666666">0.01</span> );
-    probs.push_back(<span style="color: #666666">0.1</span>  );
-    probs.push_back(<span style="color: #666666">0.25</span> );
-    probs.push_back(<span style="color: #666666">0.5</span>  );
-    probs.push_back(<span style="color: #666666">0.75</span> );
-    probs.push_back(<span style="color: #666666">0.9</span>  );
-    probs.push_back(<span style="color: #666666">0.99</span> );
-    probs.push_back(<span style="color: #666666">0.999</span>);
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>probs</span><span class=p>;</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.001</span><span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.01</span> <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.1</span>  <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.25</span> <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.5</span>  <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.75</span> <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.9</span>  <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.99</span> <span class=p>);</span>
+    <span class=n>probs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mf>0.999</span><span class=p>);</span>
 
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>extended_p_square<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span>
-        acc(extended_p_square_probabilities <span style="color: #666666">=</span> probs);
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>extended_p_square</span><span class=o>&gt;</span> <span class=o>&gt;</span>
+        <span class=n>acc</span><span class=p>(</span><span class=n>extended_p_square_probabilities</span> <span class=o>=</span> <span class=n>probs</span><span class=p>);</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">10000</span>; <span style="color: #666666">++</span>i)
-        acc(rng());
+    <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>10000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+        <span class=n>acc</span><span class=p>(</span><span class=n>rng</span><span class=p>());</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> probs.size(); <span style="color: #666666">++</span>i)
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>extended_p_square(acc)[i] <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>probs</span><span class=p>.</span><span class=n>size</span><span class=p>();</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>extended_p_square</span><span class=p>(</span><span class=n>acc</span><span class=p>)[</span><span class=n>i</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>0.00120014
 0.00940417
 0.0965609
@@ -407,244 +409,244 @@ First: 0.7   Second: 0.190476
 0.899161
 0.990776
 0.999397
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#kurtosis name=kurtosis>尖度を求める - kurtosis</a></h2> <p>尖度を求めるには、<code>kurtosis</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#kurtosis name=kurtosis>尖度を求める - kurtosis</a></h2> <p>尖度を求めるには、<code>kurtosis</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>kurtosis <span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>kurtosis</span> <span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">2</span>);
-    acc(<span style="color: #666666">7</span>);
-    acc(<span style="color: #666666">4</span>);
-    acc(<span style="color: #666666">9</span>);
-    acc(<span style="color: #666666">3</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>7</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>9</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;2&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;3&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;4&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>kurtosis(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>moment</span><span class=o>&lt;</span><span class=mi>2</span><span class=o>&gt;</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>moment</span><span class=o>&lt;</span><span class=mi>3</span><span class=o>&gt;</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>moment</span><span class=o>&lt;</span><span class=mi>4</span><span class=o>&gt;</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>kurtosis</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>5
 31.8
 234.2
 1863
 -1.39965
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#min name=min>最小値を求める - min</a></h2> <p>最小値を求めるには、<code>min</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#min name=min>最小値を求める - min</a></h2> <p>最小値を求めるには、<code>min</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>min<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>min</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">2</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>min(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>min</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>1
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#max name=max>最大値を求める - max</a></h2> <p>最大値を求めるには、<code>max</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#max name=max>最大値を求める - max</a></h2> <p>最大値を求めるには、<code>max</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>max<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>max</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">2</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>max(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>max</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#mean name=mean>平均値を求める - mean</a></h2> <p>平均値を求めるには、<code>mean</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#mean name=mean>平均値を求める - mean</a></h2> <p>平均値を求めるには、<code>mean</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>mean<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>mean</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">2</span>);
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">4</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>2.5
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#median name=median>中央値を求める - median</a></h2> <p>中央値を求めるには、<code>median</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#median name=median>中央値を求める - median</a></h2> <p>中央値を求めるには、<code>median</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>median<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>median</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">2</span>);
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">4</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>median(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>median</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3
-</code></pre></p> <p>注意：本処理で返される値は推定値であり、厳密な中央値ではない場合がある。参照： </p> <ul> <li><a href=http://www.boost.org/doc/libs/release/doc/html/accumulators/user_s_guide.html#accumulators.user_s_guide.the_statistical_accumulators_library.median target=_blank>median and variants - Boost Accumulators Library Documentation</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/statistics.html#pot_quantile name=pot_quantile>閾値法 POT:Peak Over Threshold</a></h2> <p>閾値法を使用するには、<code>pot_quantile</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/random.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <p>注意：本処理で返される値は推定値であり、厳密な中央値ではない場合がある。参照： </p> <ul> <li><a href=http://www.boost.org/doc/libs/release/doc/html/accumulators/user_s_guide.html#accumulators.user_s_guide.the_statistical_accumulators_library.median target=_blank>median and variants - Boost Accumulators Library Documentation</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/statistics.html#pot_quantile name=pot_quantile>閾値法 POT:Peak Over Threshold</a></h2> <p>閾値法を使用するには、<code>pot_quantile</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/random.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    <span style="color: #408080; font-style: italic">// 2つの擬似乱数生成器を用意</span>
-    boost<span style="color: #666666">::</span>lagged_fibonacci607 rng;
-    boost<span style="color: #666666">::</span>normal_distribution<span style="color: #666666">&lt;&gt;</span> mean_sigma(<span style="color: #666666">0</span>,<span style="color: #666666">1</span>);
-    boost<span style="color: #666666">::</span>exponential_distribution<span style="color: #666666">&lt;&gt;</span> lambda(<span style="color: #666666">1</span>);
-    boost<span style="color: #666666">::</span>variate_generator<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>lagged_fibonacci607<span style="color: #666666">&amp;</span>, boost<span style="color: #666666">::</span>normal_distribution<span style="color: #666666">&lt;&gt;</span> <span style="color: #666666">&gt;</span> normal(rng, mean_sigma);
-    boost<span style="color: #666666">::</span>variate_generator<span style="color: #666666">&lt;</span>boost<span style="color: #666666">::</span>lagged_fibonacci607<span style="color: #666666">&amp;</span>, boost<span style="color: #666666">::</span>exponential_distribution<span style="color: #666666">&lt;&gt;</span> <span style="color: #666666">&gt;</span> exponential(rng, lambda);
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=c1>// 2つの擬似乱数生成器を用意</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>lagged_fibonacci607</span> <span class=n>rng</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>normal_distribution</span><span class=o>&lt;&gt;</span> <span class=n>mean_sigma</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>exponential_distribution</span><span class=o>&lt;&gt;</span> <span class=n>lambda</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>variate_generator</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>lagged_fibonacci607</span><span class=o>&amp;</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>normal_distribution</span><span class=o>&lt;&gt;</span> <span class=o>&gt;</span> <span class=n>normal</span><span class=p>(</span><span class=n>rng</span><span class=p>,</span> <span class=n>mean_sigma</span><span class=p>);</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>variate_generator</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>lagged_fibonacci607</span><span class=o>&amp;</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>exponential_distribution</span><span class=o>&lt;&gt;</span> <span class=o>&gt;</span> <span class=n>exponential</span><span class=p>(</span><span class=n>rng</span><span class=p>,</span> <span class=n>lambda</span><span class=p>);</span>
 
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>right<span style="color: #666666">&gt;</span>(with_threshold_value)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc1(
-        pot_threshold_value <span style="color: #666666">=</span> <span style="color: #666666">3.</span>
-    );
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>right<span style="color: #666666">&gt;</span>(with_threshold_probability)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc2(
-        right_tail_cache_size <span style="color: #666666">=</span> <span style="color: #666666">2000</span>
-      , pot_threshold_probability <span style="color: #666666">=</span> <span style="color: #666666">0.99</span>
-    );
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>left<span style="color: #666666">&gt;</span>(with_threshold_value)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc3(
-        pot_threshold_value <span style="color: #666666">=</span> <span style="color: #666666">-3.</span>
-    );
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>left<span style="color: #666666">&gt;</span>(with_threshold_probability)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc4(
-        left_tail_cache_size <span style="color: #666666">=</span> <span style="color: #666666">2000</span>
-      , pot_threshold_probability <span style="color: #666666">=</span> <span style="color: #666666">0.01</span>
-    );
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>right</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_value</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc1</span><span class=p>(</span>
+        <span class=n>pot_threshold_value</span> <span class=o>=</span> <span class=mf>3.</span>
+    <span class=p>);</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>right</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_probability</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc2</span><span class=p>(</span>
+        <span class=n>right_tail_cache_size</span> <span class=o>=</span> <span class=mi>2000</span>
+      <span class=p>,</span> <span class=n>pot_threshold_probability</span> <span class=o>=</span> <span class=mf>0.99</span>
+    <span class=p>);</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>left</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_value</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc3</span><span class=p>(</span>
+        <span class=n>pot_threshold_value</span> <span class=o>=</span> <span class=o>-</span><span class=mf>3.</span>
+    <span class=p>);</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>left</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_probability</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc4</span><span class=p>(</span>
+        <span class=n>left_tail_cache_size</span> <span class=o>=</span> <span class=mi>2000</span>
+      <span class=p>,</span> <span class=n>pot_threshold_probability</span> <span class=o>=</span> <span class=mf>0.01</span>
+    <span class=p>);</span>
 
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>right<span style="color: #666666">&gt;</span>(with_threshold_value)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc5(
-        pot_threshold_value <span style="color: #666666">=</span> <span style="color: #666666">5.</span>
-    );
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>pot_quantile<span style="color: #666666">&lt;</span>right<span style="color: #666666">&gt;</span>(with_threshold_probability)<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc6(
-        right_tail_cache_size <span style="color: #666666">=</span> <span style="color: #666666">2000</span>
-      , pot_threshold_probability <span style="color: #666666">=</span> <span style="color: #666666">0.995</span>
-    );
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>right</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_value</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc5</span><span class=p>(</span>
+        <span class=n>pot_threshold_value</span> <span class=o>=</span> <span class=mf>5.</span>
+    <span class=p>);</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>pot_quantile</span><span class=o>&lt;</span><span class=n>right</span><span class=o>&gt;</span><span class=p>(</span><span class=n>with_threshold_probability</span><span class=p>)</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc6</span><span class=p>(</span>
+        <span class=n>right_tail_cache_size</span> <span class=o>=</span> <span class=mi>2000</span>
+      <span class=p>,</span> <span class=n>pot_threshold_probability</span> <span class=o>=</span> <span class=mf>0.995</span>
+    <span class=p>);</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000</span>; <span style="color: #666666">++</span>i)
-    {
-        <span style="color: #B00040">double</span> sample <span style="color: #666666">=</span> normal();
-        acc1(sample);
-        acc2(sample);
-        acc3(sample);
-        acc4(sample);
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=kt>double</span> <span class=n>sample</span> <span class=o>=</span> <span class=n>normal</span><span class=p>();</span>
+        <span class=n>acc1</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+        <span class=n>acc2</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+        <span class=n>acc3</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+        <span class=n>acc4</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+    <span class=p>}</span>
 
-    <span style="color: #008000; font-weight: bold">for</span> (std<span style="color: #666666">::</span><span style="color: #B00040">size_t</span> i <span style="color: #666666">=</span> <span style="color: #666666">0</span>; i <span style="color: #666666">&lt;</span> <span style="color: #666666">100000</span>; <span style="color: #666666">++</span>i)
-    {
-        <span style="color: #B00040">double</span> sample <span style="color: #666666">=</span> exponential();
-        acc5(sample);
-        acc6(sample);
-    }
+    <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=kt>double</span> <span class=n>sample</span> <span class=o>=</span> <span class=n>exponential</span><span class=p>();</span>
+        <span class=n>acc5</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+        <span class=n>acc6</span><span class=p>(</span><span class=n>sample</span><span class=p>);</span>
+    <span class=p>}</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc1, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc2, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc3, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.001</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc4, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.001</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc1</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.999</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc2</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.999</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc3</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.001</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc4</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.001</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc5, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>quantile(acc6, quantile_probability <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc5</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.999</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>quantile</span><span class=p>(</span><span class=n>acc6</span><span class=p>,</span> <span class=n>quantile_probability</span> <span class=o>=</span> <span class=mf>0.999</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>3.10319
 3.09056
 -3.09408
 -3.08917
 6.93361
 6.8952
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#skewness name=skewness>歪度を求める - skewness</a></h2> <p>歪度を求めるには、<code>skewness</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#skewness name=skewness>歪度を求める - skewness</a></h2> <p>歪度を求めるには、<code>skewness</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>skewness <span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>skewness</span> <span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">2</span>);
-    acc(<span style="color: #666666">7</span>);
-    acc(<span style="color: #666666">4</span>);
-    acc(<span style="color: #666666">9</span>);
-    acc(<span style="color: #666666">3</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>7</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>9</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;2&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>moment<span style="color: #666666">&lt;3&gt;</span>(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>skewness(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>moment</span><span class=o>&lt;</span><span class=mi>2</span><span class=o>&gt;</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>moment</span><span class=o>&lt;</span><span class=mi>3</span><span class=o>&gt;</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>skewness</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>5
 31.8
 234.2
 0.40604
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#sum name=sum>合計値を求める - sum</a></h2> <p>合計値を求めるには、<code>sum</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#sum name=sum>合計値を求める - sum</a></h2> <p>合計値を求めるには、<code>sum</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>, stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>sum<span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>sum</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-    acc(<span style="color: #666666">3</span>);
-    acc(<span style="color: #666666">1</span>);
-    acc(<span style="color: #666666">4</span>);
+    <span class=n>acc</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mi>4</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>sum</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>8
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#weighted-stats name=weighted-stats>重み付きサンプルやヒストグラムの統計量を求める - <code>weighted_*</code></a></h2> <p>重み付きサンプルやヒストグラムの統計量を求めるには、各種<code>weighted_*</code>を使用する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/accumulators/statistics.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/statistics.html#weighted-stats name=weighted-stats>重み付きサンプルやヒストグラムの統計量を求める - <code>weighted_*</code></a></h2> <p>重み付きサンプルやヒストグラムの統計量を求めるには、各種<code>weighted_*</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/accumulators.hpp&gt;</span>
+<span class=cp>#include &lt;boost/accumulators/statistics.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">using</span> <span style="color: #008000; font-weight: bold">namespace</span> boost<span style="color: #666666">::</span>accumulators;
+<span class=k>using</span> <span class=k>namespace</span> <span class=n>boost</span><span class=o>::</span><span class=n>accumulators</span><span class=p>;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    accumulator_set<span style="color: #666666">&lt;</span><span style="color: #B00040">double</span>,            <span style="color: #408080; font-style: italic">// サンプルの型</span>
-        stats<span style="color: #666666">&lt;</span>tag<span style="color: #666666">::</span>weighted_sum,       <span style="color: #408080; font-style: italic">// 重み付き和</span>
-              tag<span style="color: #666666">::</span>weighted_mean,      <span style="color: #408080; font-style: italic">// 重み付き平均</span>
-              tag<span style="color: #666666">::</span>weighted_variance,  <span style="color: #408080; font-style: italic">// 重み付き分散</span>
-              tag<span style="color: #666666">::</span>weighted_skewness,  <span style="color: #408080; font-style: italic">// 重み付き歪度</span>
-              tag<span style="color: #666666">::</span>weighted_kurtosis   <span style="color: #408080; font-style: italic">// 重み付き尖度</span>
-        <span style="color: #666666">&gt;</span>,
-        <span style="color: #B00040">double</span>                         <span style="color: #408080; font-style: italic">// 重みの型</span>
-    <span style="color: #666666">&gt;</span> acc;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>accumulator_set</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span>            <span class=c1>// サンプルの型</span>
+        <span class=n>stats</span><span class=o>&lt;</span><span class=n>tag</span><span class=o>::</span><span class=n>weighted_sum</span><span class=p>,</span>       <span class=c1>// 重み付き和</span>
+              <span class=n>tag</span><span class=o>::</span><span class=n>weighted_mean</span><span class=p>,</span>      <span class=c1>// 重み付き平均</span>
+              <span class=n>tag</span><span class=o>::</span><span class=n>weighted_variance</span><span class=p>,</span>  <span class=c1>// 重み付き分散</span>
+              <span class=n>tag</span><span class=o>::</span><span class=n>weighted_skewness</span><span class=p>,</span>  <span class=c1>// 重み付き歪度</span>
+              <span class=n>tag</span><span class=o>::</span><span class=n>weighted_kurtosis</span>   <span class=c1>// 重み付き尖度</span>
+        <span class=o>&gt;</span><span class=p>,</span>
+        <span class=kt>double</span>                         <span class=c1>// 重みの型</span>
+    <span class=o>&gt;</span> <span class=n>acc</span><span class=p>;</span>
 
-      <span style="color: #408080; font-style: italic">// 重みは weight で指定</span>
-    acc(<span style="color: #666666">1.0</span>, weight <span style="color: #666666">=</span> <span style="color: #666666">2.0</span>);
-    acc(<span style="color: #666666">2.0</span>, weight <span style="color: #666666">=</span> <span style="color: #666666">3.0</span>);
-    acc(<span style="color: #666666">3.0</span>, weight <span style="color: #666666">=</span> <span style="color: #666666">4.0</span>);
+      <span class=c1>// 重みは weight で指定</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>1.0</span><span class=p>,</span> <span class=n>weight</span> <span class=o>=</span> <span class=mf>2.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>2.0</span><span class=p>,</span> <span class=n>weight</span> <span class=o>=</span> <span class=mf>3.0</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>(</span><span class=mf>3.0</span><span class=p>,</span> <span class=n>weight</span> <span class=o>=</span> <span class=mf>4.0</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum_of_weights(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;    <span style="color: #408080; font-style: italic">// 重みの総和</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>sum(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>mean(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>variance(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>skewness(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl; 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> extract<span style="color: #666666">::</span>kurtosis(acc) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>sum_of_weights</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>    <span class=c1>// 重みの総和</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>sum</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>mean</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>variance</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> 
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>skewness</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> 
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extract</span><span class=o>::</span><span class=n>kurtosis</span><span class=p>(</span><span class=n>acc</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>9
 20
 2.22222
