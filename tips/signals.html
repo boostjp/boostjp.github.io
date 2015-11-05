@@ -1,7 +1,7 @@
 <!doctype html>
 <!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]--><!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]--><!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]--><!--[if gt IE 8]><!--><html class=no-js lang=ja itemscope itemtype=http://schema.org/WebPage> <!--<![endif]--> <head><meta charset=UTF-8><title>シグナル／スロット - boostjp</title><meta name=viewport content="width=device-width,initial-scale=1"><meta name=keywords content="
   C++,Boost,リファレンス,ドキュメント,
-"><meta name=title content="シグナル／スロット - boostjp"><meta itemprop=name content="シグナル／スロット - boostjp"><meta property=og:title content="シグナル／スロット - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/signals.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="シグナル／スロット イベント処理などで使われるシグナル／スロットには、Boost Signals2 Libraryを使用する。 インデックス  複数の関数を登録する スロットを切断する シグナル呼び出しの戻り値 シグナル呼び出しの戻り値をカスタマイズする 自動コネクション管理  複数の関数を登録する Boost.Signals2のシグナルには、connect()関数によって、複数の関数を接続するこ"><meta name=twitter:card content=summary><meta name=twitter:title content="シグナル／スロット - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/signals.html><meta name=twitter:description content="シグナル／スロット イベント処理などで使われるシグナル／スロットには、Boost Signals2 Libraryを使用する。 インデックス  複数の関数を登録する スロットを切断する シグナル呼び出しの戻り値 シグナル呼び出しの戻り値をカスタマイズする 自動コネクション管理  複数の関数を登録する Boost.Signals2のシグナルには、connect()関数によって、複数の関数を接続するこ"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
+"><meta name=title content="シグナル／スロット - boostjp"><meta itemprop=name content="シグナル／スロット - boostjp"><meta property=og:title content="シグナル／スロット - boostjp"><meta property=og:url content=http://boostjp.github.io//tips/signals.html><meta property=og:site_name content="boostjp : Boost日本語情報サイト"><meta property=og:type content=article><meta property=og:description content="シグナル／スロット イベント処理などで使われるシグナル／スロットには、Boost Signals2 Libraryを使用する。 インデックス  複数の関数を登録する スロットを切断する シグナル呼び出しの戻り値 シグナル呼び出しの戻り値をカスタマイズする 自動コネクション管理  複数の関数を登録する Boost.Signals2のシグナルには、connect()関数によって、複数の関数を接続するこ"><meta name=twitter:card content=summary><meta name=twitter:title content="シグナル／スロット - boostjp"><meta name=twitter:url content=http://boostjp.github.io//tips/signals.html><meta name=twitter:description content="シグナル／スロット イベント処理などで使われるシグナル／スロットには、Boost Signals2 Libraryを使用する。 インデックス  複数の関数を登録する スロットを切断する シグナル呼び出しの戻り値 シグナル呼び出しの戻り値をカスタマイズする 自動コネクション管理  複数の関数を登録する Boost.Signals2のシグナルには、connect()関数によって、複数の関数を接続するこ"><link rel=alternate type=application/atom+xml title=Atom href=http://boostjp.github.io/rss.xml><link rel=stylesheet href=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css><link rel=stylesheet href=/static/pygments/default.css><!-- <link rel="stylesheet" href="/static/css/root.css"> --><script src=//code.jquery.com/jquery-2.1.1.min.js></script><script src=//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js></script><!-- <script src="//platform.twitter.com/widgets.js"></script> --><!-- <script src="/static/js/root.js"></script> --><!--[if lt IE 9]>
         <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]--><script>
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
@@ -176,6 +176,8 @@ h1 .cpp {
   font-size: 10px;
 }
 
+pre .err { border: 0px } /* Error */
+.syntax pre .err { border: 0px } /* Error */
         </style><script>
 function tree_onclick(e) {
     var children = $(this).parent('li.parent_li').find(' > ul > li');
@@ -217,241 +219,241 @@ function tree_onclick(e) {
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
   })();
-</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> シグナル／スロット </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2015-04-21T18:31:13> 2015年04月21日 18時31分13秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/signals.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/signals.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>シグナル／スロット</h1> <div itemprop=articleBody><p>イベント処理などで使われるシグナル／スロットには、<a href=http://www.boost.org/doc/libs/release/doc/html/signals2.html target=_blank>Boost Signals2 Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions>複数の関数を登録する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#disconnect>スロットを切断する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#return-value>シグナル呼び出しの戻り値</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#automatic-connection-management>自動コネクション管理</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions name=connect-multiple-functions>複数の関数を登録する</a></h2> <p>Boost.Signals2のシグナルには、<code>connect()</code>関数によって、複数の関数を接続することができる。</p> <p>シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/bind.hpp&gt;</span>
+</script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> シグナル／スロット </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2015-04-21T18:31:13> 2015年04月21日 18時31分13秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/signals.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/signals.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>シグナル／スロット</h1> <div itemprop=articleBody><p>イベント処理などで使われるシグナル／スロットには、<a href=http://www.boost.org/doc/libs/release/doc/html/signals2.html target=_blank>Boost Signals2 Library</a>を使用する。</p> <h2>インデックス</h2> <ul> <li><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions>複数の関数を登録する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#disconnect>スロットを切断する</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#return-value>シグナル呼び出しの戻り値</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></li> <li><a href=http://boostjp.github.io/tips/signals.html#automatic-connection-management>自動コネクション管理</a></li> </ul> <h2><a href=http://boostjp.github.io/tips/signals.html#connect-multiple-functions name=connect-multiple-functions>複数の関数を登録する</a></h2> <p>Boost.Signals2のシグナルには、<code>connect()</code>関数によって、複数の関数を接続することができる。</p> <p>シグナルの関数呼び出し演算子によって、接続した関数全てを呼び出すことができる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/signals2/signal.hpp&gt;</span>
+<span class=cp>#include &lt;boost/bind.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> Point {
-    <span style="color: #B00040">int</span> x, y;
-    Point(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y) <span style="color: #666666">:</span> x(x), y(y) {}
-};
+<span class=k>struct</span> <span class=n>Point</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>;</span>
+    <span class=n>Point</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span> <span class=o>:</span> <span class=n>x</span><span class=p>(</span><span class=n>x</span><span class=p>),</span> <span class=n>y</span><span class=p>(</span><span class=n>y</span><span class=p>)</span> <span class=p>{}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Button</span> {
-<span style="color: #A0A000">public:</span>
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">void</span>(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span>)<span style="color: #666666">&gt;</span> clicked;
+<span class=k>class</span> <span class=nc>Button</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>clicked</span><span class=p>;</span>
 
-    <span style="color: #B00040">void</span> <span style="color: #0000FF">click</span>()
-    {
-        clicked(Point(<span style="color: #666666">10</span>, <span style="color: #666666">10</span>)); <span style="color: #408080; font-style: italic">// 呼び出し</span>
-    }
-};
+    <span class=kt>void</span> <span class=nf>click</span><span class=p>()</span>
+    <span class=p>{</span>
+        <span class=n>clicked</span><span class=p>(</span><span class=n>Point</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>10</span><span class=p>));</span> <span class=c1>// 呼び出し</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MainView</span> {
-<span style="color: #A0A000">public:</span>
-    <span style="color: #B00040">void</span> on_clicked(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p)
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"MainView : clicked"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-};
+<span class=k>class</span> <span class=nc>MainView</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=kt>void</span> <span class=n>on_clicked</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span> <span class=n>p</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"MainView : clicked"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">SubView</span> {
-<span style="color: #A0A000">public:</span>
-    <span style="color: #B00040">void</span> on_clicked(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p)
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"SubView : clicked"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-};
+<span class=k>class</span> <span class=nc>SubView</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=kt>void</span> <span class=n>on_clicked</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span> <span class=n>p</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"SubView : clicked"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    MainView mainView;
-    SubView subView;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>MainView</span> <span class=n>mainView</span><span class=p>;</span>
+    <span class=n>SubView</span> <span class=n>subView</span><span class=p>;</span>
 
-    Button button;
+    <span class=n>Button</span> <span class=n>button</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// クリックイベントの登録</span>
-    button.clicked.connect(boost<span style="color: #666666">::</span>bind(<span style="color: #666666">&amp;</span>MainView<span style="color: #666666">::</span>on_clicked, <span style="color: #666666">&amp;</span>mainView, _1));
-    button.clicked.connect(boost<span style="color: #666666">::</span>bind(<span style="color: #666666">&amp;</span>SubView<span style="color: #666666">::</span>on_clicked, <span style="color: #666666">&amp;</span>subView, _1));
+    <span class=c1>// クリックイベントの登録</span>
+    <span class=n>button</span><span class=p>.</span><span class=n>clicked</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>MainView</span><span class=o>::</span><span class=n>on_clicked</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>mainView</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
+    <span class=n>button</span><span class=p>.</span><span class=n>clicked</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>SubView</span><span class=o>::</span><span class=n>on_clicked</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>subView</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
 
-    <span style="color: #408080; font-style: italic">// クリックした</span>
-    button.click();
-}
+    <span class=c1>// クリックした</span>
+    <span class=n>button</span><span class=p>.</span><span class=n>click</span><span class=p>();</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>MainView : clicked
 SubView : clicked
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#disconnect name=disconnect>スロットを切断する</a></h2> <p>スロットを切断するには、<code>connect()</code>関数の戻り値であるコネクションを保持しておき、コネクションの<code>disconnect()</code>メンバ関数を呼び出すことで、切断する。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/bind.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#disconnect name=disconnect>スロットを切断する</a></h2> <p>スロットを切断するには、<code>connect()</code>関数の戻り値であるコネクションを保持しておき、コネクションの<code>disconnect()</code>メンバ関数を呼び出すことで、切断する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/signals2/signal.hpp&gt;</span>
+<span class=cp>#include &lt;boost/bind.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">struct</span> Point {
-    <span style="color: #B00040">int</span> x, y;
-    Point(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y) <span style="color: #666666">:</span> x(x), y(y) {}
-};
+<span class=k>struct</span> <span class=n>Point</span> <span class=p>{</span>
+    <span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>;</span>
+    <span class=n>Point</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span> <span class=o>:</span> <span class=n>x</span><span class=p>(</span><span class=n>x</span><span class=p>),</span> <span class=n>y</span><span class=p>(</span><span class=n>y</span><span class=p>)</span> <span class=p>{}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Button</span> {
-<span style="color: #A0A000">public:</span>
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">void</span>(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span>)<span style="color: #666666">&gt;</span> clicked;
+<span class=k>class</span> <span class=nc>Button</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>clicked</span><span class=p>;</span>
 
-    <span style="color: #B00040">void</span> <span style="color: #0000FF">click</span>()
-    {
-        clicked(Point(<span style="color: #666666">10</span>, <span style="color: #666666">10</span>));
-    }
-};
+    <span class=kt>void</span> <span class=nf>click</span><span class=p>()</span>
+    <span class=p>{</span>
+        <span class=n>clicked</span><span class=p>(</span><span class=n>Point</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>10</span><span class=p>));</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">MainView</span> {
-<span style="color: #A0A000">public:</span>
-    <span style="color: #B00040">void</span> on_clicked(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p)
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"MainView : clicked"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-};
+<span class=k>class</span> <span class=nc>MainView</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=kt>void</span> <span class=n>on_clicked</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span> <span class=n>p</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"MainView : clicked"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">SubView</span> {
-<span style="color: #A0A000">public:</span>
-    <span style="color: #B00040">void</span> on_clicked(<span style="color: #008000; font-weight: bold">const</span> Point<span style="color: #666666">&amp;</span> p)
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"SubView : clicked"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-};
+<span class=k>class</span> <span class=nc>SubView</span> <span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=kt>void</span> <span class=n>on_clicked</span><span class=p>(</span><span class=k>const</span> <span class=n>Point</span><span class=o>&amp;</span> <span class=n>p</span><span class=p>)</span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"SubView : clicked"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    MainView mainView;
-    SubView subView;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>MainView</span> <span class=n>mainView</span><span class=p>;</span>
+    <span class=n>SubView</span> <span class=n>subView</span><span class=p>;</span>
 
-    Button button;
+    <span class=n>Button</span> <span class=n>button</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// クリックイベントを登録</span>
-    button.clicked.connect(boost<span style="color: #666666">::</span>bind(<span style="color: #666666">&amp;</span>MainView<span style="color: #666666">::</span>on_clicked, <span style="color: #666666">&amp;</span>mainView, _1));
+    <span class=c1>// クリックイベントを登録</span>
+    <span class=n>button</span><span class=p>.</span><span class=n>clicked</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>MainView</span><span class=o>::</span><span class=n>on_clicked</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>mainView</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
 
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>connection con <span style="color: #666666">=</span>
-        button.clicked.connect(boost<span style="color: #666666">::</span>bind(<span style="color: #666666">&amp;</span>SubView<span style="color: #666666">::</span>on_clicked, <span style="color: #666666">&amp;</span>subView, _1));
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>connection</span> <span class=n>con</span> <span class=o>=</span>
+        <span class=n>button</span><span class=p>.</span><span class=n>clicked</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>SubView</span><span class=o>::</span><span class=n>on_clicked</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>subView</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
 
-    <span style="color: #408080; font-style: italic">// SubViewのスロットを切断</span>
-    con.disconnect();
+    <span class=c1>// SubViewのスロットを切断</span>
+    <span class=n>con</span><span class=p>.</span><span class=n>disconnect</span><span class=p>();</span>
 
-    <span style="color: #408080; font-style: italic">// クリックした</span>
-    button.click();
-}
+    <span class=c1>// クリックした</span>
+    <span class=n>button</span><span class=p>.</span><span class=n>click</span><span class=p>();</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>MainView : clicked
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#return-value name=return-value>シグナル呼び出しの戻り値</a></h2> <p>特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の<code>optional</code>となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。</p> <p><code><a href=http://www.boost.org/doc/html/boost/signals2/optional_last_value.html target=_blank>optional_last_value()</a></code>を参照。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#return-value name=return-value>シグナル呼び出しの戻り値</a></h2> <p>特に指定しなければ、シグナルを呼び出した時の戻り値は接続する関数の戻り値の<code>optional</code>となり、最後に登録した関数の戻り値が戻される。また、関数が接続されていなければ無効値を戻す。</p> <p><code><a href=http://www.boost.org/doc/html/boost/signals2/optional_last_value.html target=_blank>optional_last_value()</a></code>を参照。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/signals2/signal.hpp&gt;</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">add</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> y;
-}
+<span class=kt>int</span> <span class=nf>add</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>+</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">minus</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">-</span> y;
-}
+<span class=kt>int</span> <span class=nf>minus</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>-</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">multiply</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">*</span> y;
-}
+<span class=kt>int</span> <span class=nf>multiply</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">divide</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">/</span> y;
-}
+<span class=kt>int</span> <span class=nf>divide</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>/</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>(<span style="color: #B00040">int</span>, <span style="color: #B00040">int</span>)<span style="color: #666666">&gt;</span> sig;
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>(<span style="color: #B00040">int</span>, <span style="color: #B00040">int</span>)<span style="color: #666666">&gt;</span> non_connect_sig;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>sig</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>non_connect_sig</span><span class=p>;</span>
 
-    sig.connect(<span style="color: #666666">&amp;</span>add);
-    sig.connect(<span style="color: #666666">&amp;</span>minus);
-    sig.connect(<span style="color: #666666">&amp;</span>multiply);
-    sig.connect(<span style="color: #666666">&amp;</span>divide);
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>add</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>minus</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>multiply</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>divide</span><span class=p>);</span>
 
-    <span style="color: #408080; font-style: italic">// boost::optional&lt;int&gt;が戻ってくる</span>
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #666666">*</span>sig(<span style="color: #666666">10</span>, <span style="color: #666666">2</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
+    <span class=c1>// boost::optional&lt;int&gt;が戻ってくる</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=n>sig</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span style="color: #408080; font-style: italic">// 無効値</span>
-    <span style="color: #008000; font-weight: bold">const</span> boost<span style="color: #666666">::</span>optional<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> non_connect_result <span style="color: #666666">=</span> non_connect_sig(<span style="color: #666666">10</span>, <span style="color: #666666">2</span>);
-    <span style="color: #008000; font-weight: bold">if</span>(<span style="color: #666666">!</span>non_connect_result) {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"invalid value"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-}
+    <span class=c1>// 無効値</span>
+    <span class=k>const</span> <span class=n>boost</span><span class=o>::</span><span class=n>optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>non_connect_result</span> <span class=o>=</span> <span class=n>non_connect_sig</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>2</span><span class=p>);</span>
+    <span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=n>non_connect_result</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"invalid value"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>5
 invalid value
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#customize-return-value name=customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></h2> <p><code>boost::signals2::signal</code>クラスの2番目のテンプレート引数<code>Combiner</code>を変更することで、戻り値のカスタムが可能である。</p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;numeric&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#customize-return-value name=customize-return-value>シグナル呼び出しの戻り値をカスタマイズする</a></h2> <p><code>boost::signals2::signal</code>クラスの2番目のテンプレート引数<code>Combiner</code>を変更することで、戻り値のカスタムが可能である。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;numeric&gt;</span>
+<span class=cp>#include &lt;boost/signals2/signal.hpp&gt;</span>
 
-<span style="color: #408080; font-style: italic">// 接続された複数の関数の戻り値の合計を戻す</span>
-<span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">typename</span> T<span style="color: #666666">&gt;</span>
-<span style="color: #008000; font-weight: bold">struct</span> <span style=color:#ff0000>custom_result_value</span>
-{
-    <span style="color: #008000; font-weight: bold">typedef</span> T result_type;
+<span class=c1>// 接続された複数の関数の戻り値の合計を戻す</span>
+<span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
+<span class=k>struct</span> <span class=n><span style=color:#ff0000>custom_result_value</span></span>
+<span class=p>{</span>
+    <span class=k>typedef</span> <span class=n>T</span> <span class=n>result_type</span><span class=p>;</span>
 
-    <span style="color: #008000; font-weight: bold">template</span> <span style="color: #666666">&lt;</span><span style="color: #008000; font-weight: bold">typename</span> InputIterator<span style="color: #666666">&gt;</span>
-    result_type <span style="color: #008000; font-weight: bold">operator</span>()(InputIterator first, InputIterator last) <span style="color: #008000; font-weight: bold">const</span>
-    {
-        <span style="color: #008000; font-weight: bold">if</span>( first <span style="color: #666666">==</span> last ) {
-            <span style="color: #008000; font-weight: bold">return</span> result_type();
-        }
-        <span style="color: #008000; font-weight: bold">return</span> std<span style="color: #666666">::</span>accumulate(first, last, <span style="color: #666666">0</span>);
-    }
-};
+    <span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>InputIterator</span><span class=o>&gt;</span>
+    <span class=n>result_type</span> <span class=k>operator</span><span class=p>()(</span><span class=n>InputIterator</span> <span class=n>first</span><span class=p>,</span> <span class=n>InputIterator</span> <span class=n>last</span><span class=p>)</span> <span class=k>const</span>
+    <span class=p>{</span>
+        <span class=k>if</span><span class=p>(</span> <span class=n>first</span> <span class=o>==</span> <span class=n>last</span> <span class=p>)</span> <span class=p>{</span>
+            <span class=k>return</span> <span class=n>result_type</span><span class=p>();</span>
+        <span class=p>}</span>
+        <span class=k>return</span> <span class=n>std</span><span class=o>::</span><span class=n>accumulate</span><span class=p>(</span><span class=n>first</span><span class=p>,</span> <span class=n>last</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">add</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">+</span> y;
-}
+<span class=kt>int</span> <span class=nf>add</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>+</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">minus</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">-</span> y;
-}
+<span class=kt>int</span> <span class=nf>minus</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>-</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">multiply</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">*</span> y;
-}
+<span class=kt>int</span> <span class=nf>multiply</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>*</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">divide</span>(<span style="color: #B00040">int</span> x, <span style="color: #B00040">int</span> y)
-{
-    <span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">/</span> y;
-}
+<span class=kt>int</span> <span class=nf>divide</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>,</span> <span class=kt>int</span> <span class=n>y</span><span class=p>)</span>
+<span class=p>{</span>
+    <span class=k>return</span> <span class=n>x</span> <span class=o>/</span> <span class=n>y</span><span class=p>;</span>
+<span class=p>}</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>()
-{
-    boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">int</span>(<span style="color: #B00040">int</span>, <span style="color: #B00040">int</span>), <span style=color:#ff0000>custom_result_value</span><span style="color: #666666">&lt;</span><span style="color: #B00040">int</span><span style="color: #666666">&gt;</span> <span style="color: #666666">&gt;</span> sig;
+<span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
+<span class=p>{</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=p>),</span> <span class=n><span style=color:#ff0000>custom_result_value</span></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>sig</span><span class=p>;</span>
 
-    sig.connect(<span style="color: #666666">&amp;</span>add);
-    sig.connect(<span style="color: #666666">&amp;</span>minus);
-    sig.connect(<span style="color: #666666">&amp;</span>multiply);
-    sig.connect(<span style="color: #666666">&amp;</span>divide);
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>add</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>minus</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>multiply</span><span class=p>);</span>
+    <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>divide</span><span class=p>);</span>
 
-    std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> sig(<span style="color: #666666">10</span>, <span style="color: #666666">2</span>) <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-}
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>sig</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>45
-</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#automatic-connection-management name=automatic-connection-management>自動コネクション管理</a></h2> <p>スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、<code>boost::signals2::signal::slot_type::track</code>を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。</p> <p>参照: <a href=http://www.boost.org/doc/libs/release/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management target=_blank>Automatic Connection Management (Intermediate) - Boost Signals 2 Library</a></p> <p><div class=codehilite style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #BC7A00">#include &lt;iostream&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/signals2/signal.hpp&gt;</span>
-<span style="color: #BC7A00">#include &lt;boost/make_shared.hpp&gt;</span>
+</code></pre></p> <h2><a href=http://boostjp.github.io/tips/signals.html#automatic-connection-management name=automatic-connection-management>自動コネクション管理</a></h2> <p>スマートポインタで管理されたオブジェクトのメンバ関数を登録する場合、<code>boost::signals2::signal::slot_type::track</code>を用いることで、オブジェクトが破棄されるタイミングで自動的に切断させることができる。</p> <p>参照: <a href=http://www.boost.org/doc/libs/release/doc/html/signals2/tutorial.html#signals2.tutorial.connection-management target=_blank>Automatic Connection Management (Intermediate) - Boost Signals 2 Library</a></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+<span class=cp>#include &lt;boost/signals2/signal.hpp&gt;</span>
+<span class=cp>#include &lt;boost/make_shared.hpp&gt;</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Fuga</span>{};
+<span class=k>class</span> <span class=nc>Fuga</span><span class=p>{};</span>
 
-<span style="color: #008000; font-weight: bold">class</span> <span style="color: #0000FF; font-weight: bold">Hoge</span>
-{
-<span style="color: #A0A000">public:</span>
-    <span style="color: #B00040">void</span> Func(<span style="color: #008000; font-weight: bold">const</span> Fuga<span style="color: #666666">&amp;</span>){
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"Hoge::func()"</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }
-};
+<span class=k>class</span> <span class=nc>Hoge</span>
+<span class=p>{</span>
+<span class=nl>public:</span>
+    <span class=kt>void</span> <span class=n>Func</span><span class=p>(</span><span class=k>const</span> <span class=n>Fuga</span><span class=o>&amp;</span><span class=p>){</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"Hoge::func()"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>
+<span class=p>};</span>
 
-<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>(){
-    <span style="color: #008000; font-weight: bold">typedef</span> boost<span style="color: #666666">::</span>signals2<span style="color: #666666">::</span>signal<span style="color: #666666">&lt;</span><span style="color: #B00040">void</span>(<span style="color: #008000; font-weight: bold">const</span> Fuga<span style="color: #666666">&amp;</span>)<span style="color: #666666">&gt;</span> signal_type; <span style="color: #408080; font-style: italic">// signal型 </span>
-    signal_type sig;  <span style="color: #408080; font-style: italic">// signal オブジェクト </span>
-    <span style="color: #008000; font-weight: bold">const</span> Fuga fuga;  <span style="color: #408080; font-style: italic">// 引数用 </span>
-    {
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"block start."</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-        <span style="color: #408080; font-style: italic">// shared_ptrで管理しているオブジェクトのメンバ関数を登録  </span>
-        <span style="color: #408080; font-style: italic">// signal::slot_typeはbindのように引数の部分適用が可能.</span>
-        <span style="color: #408080; font-style: italic">// signal::slot_type::trackにスマートポインタを渡す事で</span>
-        <span style="color: #408080; font-style: italic">// オブジェクトが破棄されるタイミングで切断される </span>
-        boost<span style="color: #666666">::</span>shared_ptr<span style="color: #666666">&lt;</span>Hoge<span style="color: #666666">&gt;</span> hoge <span style="color: #666666">=</span> boost<span style="color: #666666">::</span>make_shared<span style="color: #666666">&lt;</span>Hoge<span style="color: #666666">&gt;</span>();
-        sig.connect(
-            signal_type<span style="color: #666666">::</span>slot_type(<span style="color: #666666">&amp;</span>Hoge<span style="color: #666666">::</span>Func, hoge.get(), _1).track(hoge) 
-        );
-        sig(fuga);        <span style="color: #408080; font-style: italic">// 登録した関数が正しく呼ばれる </span>
-        std<span style="color: #666666">::</span>cout <span style="color: #666666">&lt;&lt;</span> <span style="color: #BA2121">"block end."</span> <span style="color: #666666">&lt;&lt;</span> std<span style="color: #666666">::</span>endl;
-    }   <span style="color: #408080; font-style: italic">// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される </span>
-    sig(fuga);  <span style="color: #408080; font-style: italic">// 切断後なので何もしない  </span>
-}
+<span class=kt>int</span> <span class=nf>main</span><span class=p>(){</span>
+    <span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>void</span><span class=p>(</span><span class=k>const</span> <span class=n>Fuga</span><span class=o>&amp;</span><span class=p>)</span><span class=o>&gt;</span> <span class=n>signal_type</span><span class=p>;</span> <span class=c1>// signal型 </span>
+    <span class=n>signal_type</span> <span class=n>sig</span><span class=p>;</span>  <span class=c1>// signal オブジェクト </span>
+    <span class=k>const</span> <span class=n>Fuga</span> <span class=n>fuga</span><span class=p>;</span>  <span class=c1>// 引数用 </span>
+    <span class=p>{</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"block start."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=c1>// shared_ptrで管理しているオブジェクトのメンバ関数を登録  </span>
+        <span class=c1>// signal::slot_typeはbindのように引数の部分適用が可能.</span>
+        <span class=c1>// signal::slot_type::trackにスマートポインタを渡す事で</span>
+        <span class=c1>// オブジェクトが破棄されるタイミングで切断される </span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>Hoge</span><span class=o>&gt;</span> <span class=n>hoge</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>make_shared</span><span class=o>&lt;</span><span class=n>Hoge</span><span class=o>&gt;</span><span class=p>();</span>
+        <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span>
+            <span class=n>signal_type</span><span class=o>::</span><span class=n>slot_type</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Hoge</span><span class=o>::</span><span class=n>Func</span><span class=p>,</span> <span class=n>hoge</span><span class=p>.</span><span class=n>get</span><span class=p>(),</span> <span class=n>_1</span><span class=p>).</span><span class=n>track</span><span class=p>(</span><span class=n>hoge</span><span class=p>)</span> 
+        <span class=p>);</span>
+        <span class=n>sig</span><span class=p>(</span><span class=n>fuga</span><span class=p>);</span>        <span class=c1>// 登録した関数が正しく呼ばれる </span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"block end."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=p>}</span>   <span class=c1>// ここで hoge が管理するオブジェクトが破棄され、自動的にsigから切断される </span>
+    <span class=n>sig</span><span class=p>(</span><span class=n>fuga</span><span class=p>);</span>  <span class=c1>// 切断後なので何もしない  </span>
+<span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>block start.
 Hoge::func()
 block end.
