@@ -2,16 +2,16 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-03-07T13:00:27.006917</updated>
-  <id>c5c0c9cc-4373-4915-bbc0-d8038235f1b5</id>
+  <updated>2016-03-07T13:51:51.318192</updated>
+  <id>e37e71a7-6c52-49ae-910b-719329af6cdd</id>
 
   
     <entry>
       <title>Boost 1.61.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
 </title>
       <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
-      <id>98ecb34f8d2a2f69359fa0d807b8c633470d8760:document/version/1_61_0.md</id>
-      <updated>2016-03-07 13:00:14 +0900
+      <id>6d7260e0b448a8f02a55f3403d5ceab1a31d57d6:document/version/1_61_0.md</id>
+      <updated>2016-03-07 13:51:44 +0900
 </updated>
       
         <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.61.0リリースノート&lt;/h1&gt;
@@ -66,10 +66,27 @@
 &lt;/ul&gt;
 &lt;h2&gt;更新ライブラリ&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11246&#34; target=&#34;_blank&#34;&gt;#11246&lt;/a&gt; 未定義のシンボルがあったためMinGWでビルドできなかったのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11365&#34; target=&#34;_blank&#34;&gt;#11365&lt;/a&gt; VS2015RCにおいて、execution_context.hppでエラーが発生していたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11652&#34; target=&#34;_blank&#34;&gt;#11652&lt;/a&gt; &lt;code&gt;__cpp_lib_integer_sequence&lt;/code&gt;を確認するようにした&lt;/li&gt;
+&lt;li&gt;fcontext_t: 公開APIではなくなった&lt;/li&gt;
+&lt;li&gt;execution_context: 仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
+&lt;li&gt;execution_context: 新しい実装を追加した&lt;ul&gt;
+&lt;li&gt;型安全にデータを転送可能&lt;/li&gt;
+&lt;li&gt;スタックの先頭で関数が実行される&lt;/li&gt;
+&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
+&lt;li&gt;静的メンバの&lt;code&gt;current()&lt;/code&gt;は削除された&lt;/li&gt;
+&lt;li&gt;訳者注: これまでの実装(version 1)と新しい実装(version 2)はクラス名が同一だが互換は無い&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
@@ -207,6 +224,223 @@
 </name>
         <email>melt@e-ml.jp
 </email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.61.0リリースノート -- 1.61.0リリースノート: Contextを記載</title>
+      <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
+      <id>2a9d2bea7cd98e8376c717689acbb309edd2005b:document/version/1_61_0.md</id>
+      <updated>2016-03-07 13:50:49 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.61.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_61_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_61_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/compute&#34; target=&#34;_blank&#34;&gt;Compute&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;並列及びGPU計算のためのライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/dll&#34; target=&#34;_blank&#34;&gt;DLL&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DLLとDSOを容易に扱うためのライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/haan&#34; target=&#34;_blank&#34;&gt;Hana&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++14以降必須&lt;/li&gt;
+&lt;li&gt;近代的なC++のメタプログラミングライブラリ&lt;/li&gt;
+&lt;li&gt;高水準での異種型シーケンスへのアルゴリズムを提供する&lt;ul&gt;
+&lt;li&gt;自然な構文での型レベルでの計算や、ユーザー定義型への操作可能にする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/metaparse&#34; target=&#34;_blank&#34;&gt;Metaparse&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++11以降必須&lt;/li&gt;
+&lt;li&gt;コンパイル時構文解析器をコンパイル時に構築するためのライブラリ&lt;ul&gt;
+&lt;li&gt;Spirit似ているが、Spiritがコンパイル時にパーサを構築し実行時にパースするのに対し、Metaparseはコンパイル時に構築、パースを実施する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11246&#34; target=&#34;_blank&#34;&gt;#11246&lt;/a&gt; 未定義のシンボルがあったためMinGWでビルドできなかったのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11365&#34; target=&#34;_blank&#34;&gt;#11365&lt;/a&gt; VS2015RCにおいて、execution_context.hppでエラーが発生していたのを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11652&#34; target=&#34;_blank&#34;&gt;#11652&lt;/a&gt; &lt;code&gt;__cpp_lib_integer_sequence&lt;/code&gt;を確認するようにした&lt;/li&gt;
+&lt;li&gt;fcontext_t: 公開APIではなくなった&lt;/li&gt;
+&lt;li&gt;execution_context: 仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
+&lt;li&gt;execution_context: 新しい実装を追加した&lt;ul&gt;
+&lt;li&gt;型安全にデータを転送可能&lt;/li&gt;
+&lt;li&gt;スタックの先頭で関数が実行される&lt;/li&gt;
+&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
+&lt;li&gt;静的メンバの&lt;code&gt;current()&lt;/code&gt;は削除された&lt;/li&gt;
+&lt;li&gt;訳者注: これまでの実装(version 1)と新しい実装(version 2)はクラス名が同一だが互換は無い&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
+&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
+&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
+&lt;li&gt;仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_IS_EMPTY&lt;/code&gt;を使用したことによる、MSVC8での大量の警告を低減 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11157&#34; target=&#34;_blank&#34;&gt;#11157&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コンテナの変換コンストラクタとSFINAEでコンパイルエラーが発生する場合があったのを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11766&#34; target=&#34;_blank&#34;&gt;#11766&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;C++11版の&lt;code&gt;fusion::vector&lt;/code&gt;から末尾&lt;code&gt;fusion::void_&lt;/code&gt;の特別扱いを削除した &lt;a href=&#34;https://github.com/boostorg/fusion/pull/120&#34; target=&#34;_blank&#34;&gt;pull request 120&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::optional&lt;/code&gt;を参照パラメータで特殊化した。それにあたって、いくつかの問題を修正した：&lt;ul&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;に対する&lt;code&gt;sizeof&lt;/code&gt;がポインタのものとなるようにした&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;をコピーして接続した際の、いくつかのバグを修正した&lt;/li&gt;
+&lt;li&gt;いくつかのコンパイラで、正しくない参照の束縛によって発生していた全ての実行時バグが、コンパイルエラーとして検出できるようにした&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;を&lt;code&gt;swap&lt;/code&gt;できるようにした。これはポインタの浅いswapであり、元となるオブジェクトには影響がない&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;が抽象型に対して動作するようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;入れ子型のドキュメントを記載した(&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/5193&#34; target=&#34;_blank&#34;&gt;Trac #5193&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;完全転送のコンストラクタをSFINAEフレンドリーになるよう修正した(&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12002&#34; target=&#34;_blank&#34;&gt;Trac #12002&lt;/a&gt;)。ただし、これはC++11の&lt;code&gt;&amp;lt;type_traits&amp;gt;&lt;/code&gt;を正しく実装した新しめのプラットフォームでのみ機能する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;!--
+## &amp;lt;a name=&#34;One&#34; href=&#34;#one&#34;&amp;gt;One&amp;lt;/a&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blahblahblah&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;something&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;
+--&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
       </author>
     </entry>
   
@@ -414,6 +648,210 @@
       <title>Boost 1.61.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
 </title>
       <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
+      <id>98ecb34f8d2a2f69359fa0d807b8c633470d8760:document/version/1_61_0.md</id>
+      <updated>2016-03-07 13:00:14 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.61.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_61_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_61_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/compute&#34; target=&#34;_blank&#34;&gt;Compute&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;並列及びGPU計算のためのライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/dll&#34; target=&#34;_blank&#34;&gt;DLL&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;DLLとDSOを容易に扱うためのライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/haan&#34; target=&#34;_blank&#34;&gt;Hana&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++14以降必須&lt;/li&gt;
+&lt;li&gt;近代的なC++のメタプログラミングライブラリ&lt;/li&gt;
+&lt;li&gt;高水準での異種型シーケンスへのアルゴリズムを提供する&lt;ul&gt;
+&lt;li&gt;自然な構文での型レベルでの計算や、ユーザー定義型への操作可能にする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/metaparse&#34; target=&#34;_blank&#34;&gt;Metaparse&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C++11以降必須&lt;/li&gt;
+&lt;li&gt;コンパイル時構文解析器をコンパイル時に構築するためのライブラリ&lt;ul&gt;
+&lt;li&gt;Spirit似ているが、Spiritがコンパイル時にパーサを構築し実行時にパースするのに対し、Metaparseはコンパイル時に構築、パースを実施する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
+&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
+&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
+&lt;li&gt;仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_IS_EMPTY&lt;/code&gt;を使用したことによる、MSVC8での大量の警告を低減 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11157&#34; target=&#34;_blank&#34;&gt;#11157&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;コンテナの変換コンストラクタとSFINAEでコンパイルエラーが発生する場合があったのを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11766&#34; target=&#34;_blank&#34;&gt;#11766&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;C++11版の&lt;code&gt;fusion::vector&lt;/code&gt;から末尾&lt;code&gt;fusion::void_&lt;/code&gt;の特別扱いを削除した &lt;a href=&#34;https://github.com/boostorg/fusion/pull/120&#34; target=&#34;_blank&#34;&gt;pull request 120&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::optional&lt;/code&gt;を参照パラメータで特殊化した。それにあたって、いくつかの問題を修正した：&lt;ul&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;に対する&lt;code&gt;sizeof&lt;/code&gt;がポインタのものとなるようにした&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;をコピーして接続した際の、いくつかのバグを修正した&lt;/li&gt;
+&lt;li&gt;いくつかのコンパイラで、正しくない参照の束縛によって発生していた全ての実行時バグが、コンパイルエラーとして検出できるようにした&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;を&lt;code&gt;swap&lt;/code&gt;できるようにした。これはポインタの浅いswapであり、元となるオブジェクトには影響がない&lt;/li&gt;
+&lt;li&gt;参照&lt;code&gt;optional&lt;/code&gt;が抽象型に対して動作するようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;入れ子型のドキュメントを記載した(&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/5193&#34; target=&#34;_blank&#34;&gt;Trac #5193&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;完全転送のコンストラクタをSFINAEフレンドリーになるよう修正した(&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12002&#34; target=&#34;_blank&#34;&gt;Trac #12002&lt;/a&gt;)。ただし、これはC++11の&lt;code&gt;&amp;lt;type_traits&amp;gt;&lt;/code&gt;を正しく実装した新しめのプラットフォームでのみ機能する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;lt;!--
+## &amp;lt;a name=&#34;One&#34; href=&#34;#one&#34;&amp;gt;One&amp;lt;/a&amp;gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blahblahblah&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;something&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;
+--&amp;gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>melpon
+</name>
+        <email>melt@e-ml.jp
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.61.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
+</title>
+      <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
       <id>58db14ca3d16f90b0d15b0051de3f59cb34f216a:document/version/1_61_0.md</id>
       <updated>2016-03-06 12:54:14 +0900
 </updated>
@@ -495,375 +933,6 @@
 &lt;li&gt;&lt;code&gt;BOOST_PP_IS_EMPTY&lt;/code&gt;を使用したことによる、MSVC8での大量の警告を低減 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11157&#34; target=&#34;_blank&#34;&gt;#11157&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;コンテナの変換コンストラクタとSFINAEでコンパイルエラーが発生する場合があったのを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11766&#34; target=&#34;_blank&#34;&gt;#11766&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;C++11版の&lt;code&gt;fusion::vector&lt;/code&gt;から末尾&lt;code&gt;fusion::void_&lt;/code&gt;の特別扱いを削除した &lt;a href=&#34;https://github.com/boostorg/fusion/pull/120&#34; target=&#34;_blank&#34;&gt;pull request 120&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;lt;!--
-## &amp;lt;a name=&#34;One&#34; href=&#34;#one&#34;&amp;gt;One&amp;lt;/a&amp;gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;blahblahblah&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;something&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;
---&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon
-</name>
-        <email>melt@e-ml.jp
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.61.0リリースノート -- 1.61.0リリースノート: Fusionを記載</title>
-      <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
-      <id>33a676a1890e84e914cd1c61885c1017d7c41631:document/version/1_61_0.md</id>
-      <updated>2016-03-06 12:53:12 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.61.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_61_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_61_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/compute&#34; target=&#34;_blank&#34;&gt;Compute&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;並列及びGPU計算のためのライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/dll&#34; target=&#34;_blank&#34;&gt;DLL&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DLLとDSOを容易に扱うためのライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/haan&#34; target=&#34;_blank&#34;&gt;Hana&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C++14以降必須&lt;/li&gt;
-&lt;li&gt;近代的なC++のメタプログラミングライブラリ&lt;/li&gt;
-&lt;li&gt;高水準での異種型シーケンスへのアルゴリズムを提供する&lt;ul&gt;
-&lt;li&gt;自然な構文での型レベルでの計算や、ユーザー定義型への操作可能にする&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/metaparse&#34; target=&#34;_blank&#34;&gt;Metaparse&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C++11以降必須&lt;/li&gt;
-&lt;li&gt;コンパイル時構文解析器をコンパイル時に構築するためのライブラリ&lt;ul&gt;
-&lt;li&gt;Spirit似ているが、Spiritがコンパイル時にパーサを構築し実行時にパースするのに対し、Metaparseはコンパイル時に構築、パースを実施する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
-&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
-&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BOOST_PP_IS_EMPTY&lt;/code&gt;を使用したことによる、MSVC8での大量の警告を低減 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11157&#34; target=&#34;_blank&#34;&gt;#11157&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;コンテナの変換コンストラクタとSFINAEでコンパイルエラーが発生する場合があったのを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11766&#34; target=&#34;_blank&#34;&gt;#11766&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;C++11版の&lt;code&gt;fusion::vector&lt;/code&gt;から末尾&lt;code&gt;fusion::void_&lt;/code&gt;の特別扱いを削除した &lt;a href=&#34;https://github.com/boostorg/fusion/pull/120&#34; target=&#34;_blank&#34;&gt;pull request 120&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&amp;lt;!--
-## &amp;lt;a name=&#34;One&#34; href=&#34;#one&#34;&amp;gt;One&amp;lt;/a&amp;gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;blahblahblah&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#two&#34; name=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;something&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#three&#34; name=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;
---&amp;gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Kohei Takahashi</name>
-        <email>flast@flast.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.61.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
-</title>
-      <link href="http://boostjp.github.io/document/version/1_61_0.html"/>
-      <id>838c6b87f40c2e53ad3ad4d8a40bce20e49a6702:document/version/1_61_0.md</id>
-      <updated>2016-03-06 12:45:54 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.61.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_61_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_61_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_61_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/compute&#34; target=&#34;_blank&#34;&gt;Compute&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;並列及びGPU計算のためのライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/dll&#34; target=&#34;_blank&#34;&gt;DLL&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;DLLとDSOを容易に扱うためのライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/haan&#34; target=&#34;_blank&#34;&gt;Hana&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C++14以降必須&lt;/li&gt;
-&lt;li&gt;近代的なC++のメタプログラミングライブラリ&lt;/li&gt;
-&lt;li&gt;高水準での異種型シーケンスへのアルゴリズムを提供する&lt;ul&gt;
-&lt;li&gt;自然な構文での型レベルでの計算や、ユーザー定義型への操作可能にする&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/metaparse&#34; target=&#34;_blank&#34;&gt;Metaparse&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;C++11以降必須&lt;/li&gt;
-&lt;li&gt;コンパイル時構文解析器をコンパイル時に構築するためのライブラリ&lt;ul&gt;
-&lt;li&gt;Spirit似ているが、Spiritがコンパイル時にパーサを構築し実行時にパースするのに対し、Metaparseはコンパイル時に構築、パースを実施する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
-&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;浮動小数点数レジスタに関するアトリビュートを削除&lt;ul&gt;
-&lt;li&gt;訳者注: Boost.Contextで浮動小数点数レジスタの保存を制御できなくなったことにより、浮動小数点数レジスタは常に保存されなくなった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;パフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;仕様要求レベルをC++14からC++11に引き下げ&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&amp;lt;!--
 ## &amp;lt;a name=&#34;One&#34; href=&#34;#one&#34;&amp;gt;One&amp;lt;/a&amp;gt;&lt;/p&gt;
