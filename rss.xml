@@ -2,9 +2,271 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-08-23T13:37:56.536804</updated>
-  <id>3ea5da02-f4c1-47d6-a79b-3d1a8c085475</id>
+  <updated>2016-08-23T13:42:34.526114</updated>
+  <id>9549fe8c-f481-460d-bc4f-41427c6029f8</id>
 
+  
+    <entry>
+      <title>Boost 1.62.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
+</title>
+      <link href="http://boostjp.github.io/document/version/1_62_0.html"/>
+      <id>c4ea8445171c3d8974900854bdb1b42d7377f532:document/version/1_62_0.md</id>
+      <updated>2016-08-23 13:42:32 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.62.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_62_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_62_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fiber&#34; target=&#34;_blank&#34;&gt;Fiber&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ユーザースレッド／ファイバーのフレームワーク&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/qvm&#34; target=&#34;_blank&#34;&gt;QVM&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフィック処理、ビデオゲーム、シミュレーションアプリケーションなどで必要となる、2、3、4次元の静的なサイズを持つクォータニオン、ベクトル、行列を操作するためのジェネリックライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34; name=&#34;chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11330&#34; target=&#34;_blank&#34;&gt;#11330&lt;/a&gt; &lt;code&gt;duration&lt;/code&gt;をゼロ初期化するのは、C++98モードもしくは&lt;code&gt;BOOST_CHRONO_DURATION_DEFAULTS_TO_ZERO&lt;/code&gt;がdefineされたときのみとし、それ以外は未初期化とした&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11618&#34; target=&#34;_blank&#34;&gt;#11618&lt;/a&gt; Chrono IO V2のドキュメントで「ios_state.hpp」というヘッダが記載されていたが、正しくは「ios_base_state.hpp」&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11631&#34; target=&#34;_blank&#34;&gt;#11631&lt;/a&gt; Chrono IO V2で&lt;code&gt;clock_string&lt;/code&gt;をカスタマイズできなくなっていた問題を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34; name=&#34;circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6277&#34; target=&#34;_blank&#34;&gt;#6277&lt;/a&gt; デバッグ実装がデバッグモードで使用されなくなる。デバッグ実装には、通常の実装と同じレベルのスレッド安全性の保証がない。この変更により&lt;code&gt;BOOST_CB_DISABLE_DEBUG&lt;/code&gt;マクロは使用されなくなり、代わりに&lt;code&gt;BOOST_CB_ENABLE_DEBUG&lt;/code&gt;マクロを定義することでデバッグ実装が有効になる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34; name=&#34;functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++11でのコンパイルエラーを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>melpon
+</name>
+        <email>melt@e-ml.jp
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.62.0リリースノート -- Boost 1.62.0リリースノート : Circular Bufferを追加 (close #83)</title>
+      <link href="http://boostjp.github.io/document/version/1_62_0.html"/>
+      <id>e9c4eebdf656b14a578e41072ee09aeeeaf13b9f:document/version/1_62_0.md</id>
+      <updated>2016-08-23 13:42:22 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.62.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_62_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_62_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fiber&#34; target=&#34;_blank&#34;&gt;Fiber&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ユーザースレッド／ファイバーのフレームワーク&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/qvm&#34; target=&#34;_blank&#34;&gt;QVM&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;グラフィック処理、ビデオゲーム、シミュレーションアプリケーションなどで必要となる、2、3、4次元の静的なサイズを持つクォータニオン、ベクトル、行列を操作するためのジェネリックライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34; name=&#34;chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11330&#34; target=&#34;_blank&#34;&gt;#11330&lt;/a&gt; &lt;code&gt;duration&lt;/code&gt;をゼロ初期化するのは、C++98モードもしくは&lt;code&gt;BOOST_CHRONO_DURATION_DEFAULTS_TO_ZERO&lt;/code&gt;がdefineされたときのみとし、それ以外は未初期化とした&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11618&#34; target=&#34;_blank&#34;&gt;#11618&lt;/a&gt; Chrono IO V2のドキュメントで「ios_state.hpp」というヘッダが記載されていたが、正しくは「ios_base_state.hpp」&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11631&#34; target=&#34;_blank&#34;&gt;#11631&lt;/a&gt; Chrono IO V2で&lt;code&gt;clock_string&lt;/code&gt;をカスタマイズできなくなっていた問題を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34; name=&#34;circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6277&#34; target=&#34;_blank&#34;&gt;#6277&lt;/a&gt; デバッグ実装がデバッグモードで使用されなくなる。デバッグ実装には、通常の実装と同じレベルのスレッド安全性の保証がない。この変更により&lt;code&gt;BOOST_CB_DISABLE_DEBUG&lt;/code&gt;マクロは使用されなくなり、代わりに&lt;code&gt;BOOST_CB_ENABLE_DEBUG&lt;/code&gt;マクロを定義することでデバッグ実装が有効になる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34; name=&#34;functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++11でのコンパイルエラーを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.62.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
@@ -1167,1085 +1429,6 @@ This document is provided &#34;as is&#34; without express or implied warranty, a
 &lt;p&gt;&lt;em&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。&lt;/em&gt;
 &lt;em&gt;このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。&lt;/em&gt;
 &lt;em&gt;また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon
-</name>
-        <email>melt@e-ml.jp
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Header &amp;lt;[boost/type_traits.hpp](http://www.boost.org/doc/libs/1_31_0/boost/type_traits.hpp)&amp;gt; -- パースエラーを修正</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/type_traits.html"/>
-      <id>93ae73a976eb1b89be9358fda10d75eb65ae69cb:archive/boost_docs/libs/type_traits.md</id>
-      <updated>2016-08-23 13:29:52 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Header &amp;lt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/boost/type_traits.hpp&#34; target=&#34;_blank&#34;&gt;boost/type_traits.hpp&lt;/a&gt;&amp;gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&amp;lt;boost/type_traits.hpp&amp;gt; の内容は boost 名前空間内で宣言される。&lt;/p&gt;
-&lt;p&gt;ファイル &amp;lt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/boost/type_traits.hpp&#34; target=&#34;_blank&#34;&gt;boost/type_traits.hpp&lt;/a&gt;&amp;gt; は、型の基本的な特徴を説明する様々なテンプレートクラスを含んでいる。
-各クラスは単一の型の特徴または単一の型の変形を意味する。
-本ライブラリに不慣れであれば、付随する &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/type_traits/c++_type_traits.htm&#34; target=&#34;_blank&#34;&gt;記事&lt;/a&gt; を最初に読むこと。&lt;/p&gt;
-&lt;p&gt;このドキュメントは以下のセクションに分割される。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#primary&#34;&gt;Primary Type Categorisation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#secondary&#34;&gt;Secondary Type Categorisation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#properties&#34;&gt;Type Properties&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#relationships&#34;&gt;Relationships Between Types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#transformations&#34;&gt;Transformations Between Types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#synthesized&#34;&gt;Synthesizing Types&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#function_traits&#34;&gt;Function Traits&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#compiler&#34;&gt;Compiler Support Information&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#headers&#34;&gt;Type traits headers&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/type_traits.html#example&#34;&gt;Example Code&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;本ライブラリにおける汎整数式はすべて &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/more/int_const_guidelines.htm&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;汎整数定数式&lt;/em&gt;&lt;/a&gt; である。
-それらの使用は時折コンパイラの問題に遭遇する原因となるため, 本ライブラリを用いて移植性のあるコードを書くための手引きとして &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/more/int_const_guidelines.htm&#34; target=&#34;_blank&#34;&gt;コーディングガイドライン&lt;/a&gt; に関連した事項がある。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;primary&#34;&gt;Primary Type Categorisation&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下の型特性（type traits）テンプレートは型がどの型分類に属しているかを識別する。
-どんな型を与えた場合でも、以下の式のうちのひとつは確実に真に評価される。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;is_integral&amp;lt;T&amp;gt;::value&lt;/code&gt; と &lt;code&gt;is_float&amp;lt;T&amp;gt;::value&lt;/code&gt; は組み込み型についてのみ当てはまることに注意。
-あたかも汎整数型や浮動小数点型のように振舞うユーザ定義型を調べるのであれば、代わりに &lt;code&gt;std::numeric_limits&lt;/code&gt; テンプレートを使うこと。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_void&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された void 型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.1p9&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_integral&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された汎整数型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.1p7&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_float&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された浮動小数点型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.1p8&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_pointer&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾されたポインタ型であれば真に評価する（関数ポインタは含まれるが、メンバへのポインタは含まない）。&lt;/td&gt;
-&lt;td&gt;3.9.2p2, 8.3.1&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_reference&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が参照型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 8.3.2&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_member_pointer&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾されたデータメンバまたはメンバ関数へのポインタであれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 8.3.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_array&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が配列型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 8.3.4&lt;/td&gt;
-&lt;td&gt;コンパイラがクラステンプレートの部分特殊化版をサポートしていない場合、型によっては間違って配列と認識されることがある（主に関数型）。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_union&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が共用体型であれば真に評価する。現時点ではある種のコンパイラのサポートを必要とし、それ以外では共用体はクラスとして識別される。&lt;/td&gt;
-&lt;td&gt;3.9.2, 9.5&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_class&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; がクラス/構造体型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 9.2&lt;/td&gt;
-&lt;td&gt;C&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_enum&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が列挙型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 7.2&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;is_convertible&lt;/code&gt; テンプレートが正しく機能することが必要（現時点では &lt;code&gt;is_enum&lt;/code&gt; が Borland C++ では使えないという意味）。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_function&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が関数型であれば真に評価する（関数への参照やポインタではない）。&lt;/td&gt;
-&lt;td&gt;3.9.2p1, 8.3.5&lt;/td&gt;
-&lt;td&gt;部分特殊化版がサポートされない場合、このテンプレートは参照型についてはコンパイルできない。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;secondary&#34;&gt;Secondary Type Categorisation&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下の型分類は１つ以上の primary type categorisations を組み合わせて作られている。
-ある型は、primary type categorisations の分類に加えて、これらの分類のうちの１つ以上に属している可能性がある。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_arithmetic&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された算術型であれば真に評価する。汎整数型か浮動小数点型のいずれかがこれにあたる。&lt;/td&gt;
-&lt;td&gt;3.9.1p8&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_fundamental&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された基本型であれば真に評価する。汎整数型、浮動小数点型、void 型のいずれかがこれにあたる。&lt;/td&gt;
-&lt;td&gt;3.9.1&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_object&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾されたオブジェクト型であれば真に評価する。関数型、参照型、void 型以外がこれにあたる。&lt;/td&gt;
-&lt;td&gt;3.9p9&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_scalar&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾されたスカラ型であれば真に評価する。算術型、ポインタ型、メンバへのポインタ型がこれにあたる。&lt;/td&gt;
-&lt;td&gt;3.9p10&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_compound&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が複合型であれば真に評価する。関数型、ポインタ型、参照型、列挙型、共用体型、クラス型、メンバ関数型がこれにあたる。&lt;/td&gt;
-&lt;td&gt;3.9.2&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_member_function_pointer&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; がメンバ関数へのポインタ型（メンバオブジェクトへのポインタではない）であれば真に評価する。このテンプレートは &lt;code&gt;is_member_pointer&lt;/code&gt; を２つの副分類に分割する。&lt;/td&gt;
-&lt;td&gt;3.9.2, 8.3.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;properties&#34;&gt;Type Properties&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下のテンプレートは型が持っている特徴を識別する。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::alignment_of&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が必要とするアラインメントを識別する。実際に返される値は、Tが必要とする実際のアラインメントの倍数となることが保証される。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_empty&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が空の構造体やクラスである場合に真。コンパイラが &#34;空の基底クラスのサイズを 0 にする&#34; 最適化を実装しているのであれば、 &lt;code&gt;is_empty&lt;/code&gt; は &lt;code&gt;T&lt;/code&gt; が空であることを正しく推察する。 &lt;code&gt;is_class&lt;/code&gt; が &lt;code&gt;T&lt;/code&gt; がクラス型であることを判別できることが前提。&lt;/td&gt;
-&lt;td&gt;10p5&lt;/td&gt;
-&lt;td&gt;PCD&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_const&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; がトップレベルで const 修飾されている場合に真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_volatile&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が volatile 修飾されていれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_POD&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が const/volatile 修飾された POD 型（訳註:Plain Old Data。非静的データメンバ、仮想関数、基本クラス、ユーザー定義コンストラクタ、コピーコンストラクタ、コピー代入演算子、およびデストラクタが含まれる）であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;3.9p10, 9p4&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_trivial_constructor&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が自明なデフォルトコンストラクタを持っている、すなわち &lt;code&gt;T()&lt;/code&gt; が &lt;code&gt;memset&lt;/code&gt; と同等であれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_trivial_copy&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が自明なコピーコンストラクタを持っている、すなわち &lt;code&gt;T(const T&amp;amp;)&lt;/code&gt; が &lt;code&gt;memcpy&lt;/code&gt; と同等であれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_trivial_assign&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が自明な代入演算子を持っている、すなわち &lt;code&gt;T::operator=(const T&amp;amp;)&lt;/code&gt; が &lt;code&gt;memcpy&lt;/code&gt; と同等であれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_trivial_destructor&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が自明なデストラクタを持っている、すなわち &lt;code&gt;T::~T()&lt;/code&gt; が効果なしであれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_stateless&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が実体を持たない、要するに &lt;code&gt;T&lt;/code&gt; が記憶領域を持たず、コンストラクタとデストラクタがトリビアルであれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_nothrow_constructor&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が例外を発生させないデフォルトコンストラクタを持っていれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_nothrow_copy&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が例外を発生させないコピーコンストラクタを持っていれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::has_nothrow_assign&amp;lt;T&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が例外を発生させない代入演算子を持っていれば真。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;PC&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;relationships&#34;&gt;Relationships Between Types&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下のテンプレートは２つの型の間に関連性があるかどうかを調べる。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_same&amp;lt;T,U&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; と &lt;code&gt;U&lt;/code&gt; が同じ型であれば真に評価する。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_convertible&amp;lt;T,U&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型 &lt;code&gt;T&lt;/code&gt; が型 &lt;code&gt;U&lt;/code&gt; に変換できるのであれば真に評価する。&lt;/td&gt;
-&lt;td&gt;4, 8.5&lt;/td&gt;
-&lt;td&gt;このテンプレートは、Borland のコンパイラではコンストラクタベースの変換について、Metrowerks のコンパイラではすべての場合について、現時点では使用できないことに注意。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::is_base_and_derived&amp;lt;T,U&amp;gt;::value&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;型 &lt;code&gt;T&lt;/code&gt; が型 &lt;code&gt;U&lt;/code&gt; の基底クラスであれば真に評価する。&lt;/td&gt;
-&lt;td&gt;10&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;&lt;code&gt;is_convertible&lt;/code&gt; および &lt;code&gt;is_base_and_derived&lt;/code&gt; では、変換があいまいな場合にはコンパイラがエラーを出すので注意すること。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{};&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{};&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;C&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{};&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;D&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;B&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;C&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{};&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_base_and_derived&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// エラー&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_convertible&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;D&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;     &lt;span class=&#34;c1&#34;&gt;// エラー&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;transformations&#34;&gt;Transformations Between Types&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下のテンプレートは、ある型を別の型に、いくつかの明確な規則に基づいて変形する。
-各テンプレートにはテンプレート引数 &lt;code&gt;T&lt;/code&gt; を変形した結果である &lt;code&gt;type&lt;/code&gt; という名のメンバがひとつだけ含まれている。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_const&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; と同じ型であるが、トップレベルの const 修飾子を取り除いた型を作る。例えば、&lt;code&gt;const int&lt;/code&gt; は &lt;code&gt;int&lt;/code&gt; になるが、&lt;code&gt;const int*&lt;/code&gt; は変化しないままとなる。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_volatile&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; と同じ型であるが、トップレベルの volatile 修飾子を取り除いた型を作る。例えば、&lt;code&gt;volatile int&lt;/code&gt; は &lt;code&gt;int&lt;/code&gt; になる。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_cv&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; と同じ型であるが、トップレベルの const/volatile 修飾子を取り除いた型を作る。例えば、&lt;code&gt;const volatile int&lt;/code&gt; は &lt;code&gt;int&lt;/code&gt; になるが、&lt;code&gt;const int*&lt;/code&gt; は変化せずそのままとなる。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_reference&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が参照型であれば参照を取り除き、そうでなければ &lt;code&gt;T&lt;/code&gt; は変化せずそのままとなる。例えば、&lt;code&gt;int&amp;amp;&lt;/code&gt; は &lt;code&gt;int&lt;/code&gt; になるが、&lt;code&gt;int*&lt;/code&gt; は変化しないままである。&lt;/td&gt;
-&lt;td&gt;8.3.2&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_bounds&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が配列型であれば &lt;code&gt;T&lt;/code&gt; からトップレベルの配列修飾子を取り除き、そうでなければ &lt;code&gt;T&lt;/code&gt; は変化せずそのままとなる。例えば、&lt;code&gt;int[2][3]&lt;/code&gt; は &lt;code&gt;int[3]&lt;/code&gt; になる。&lt;/td&gt;
-&lt;td&gt;8.3.4&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::remove_pointer&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; がポインタ型であれば &lt;code&gt;T&lt;/code&gt; から間接修飾を取り除き、そうでなければ &lt;code&gt;T&lt;/code&gt; は変化せずそのままとなる。例えば、&lt;code&gt;int*&lt;/code&gt; は &lt;code&gt;int&lt;/code&gt; になるが、&lt;code&gt;int&amp;amp;&lt;/code&gt; は変化しないままである。&lt;/td&gt;
-&lt;td&gt;8.3.1&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::add_reference&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;T&lt;/code&gt; が参照型であれば &lt;code&gt;T&lt;/code&gt; は変化せずそのままとなり、そうでなければ &lt;code&gt;T&lt;/code&gt; への参照型に変換する。例えば、&lt;code&gt;int&amp;amp;&lt;/code&gt; は変化せずにそのままであるが、&lt;code&gt;double&lt;/code&gt; は &lt;code&gt;double&amp;amp;&lt;/code&gt; になる。&lt;/td&gt;
-&lt;td&gt;8.3.2&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::add_pointer&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;t&lt;/code&gt; が &lt;code&gt;T&lt;/code&gt; のインスタンスであるとき、&lt;code&gt;add_pointer&amp;lt;T&amp;gt;::type&lt;/code&gt; は &lt;code&gt;&amp;amp;t&lt;/code&gt; が返す型である。例えば、&lt;code&gt;int&lt;/code&gt; と &lt;code&gt;int&amp;amp;&lt;/code&gt; はともに &lt;code&gt;int*&lt;/code&gt; になる。&lt;/td&gt;
-&lt;td&gt;8.3.1&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::add_const&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;あらゆる &lt;code&gt;T&lt;/code&gt; に対して &lt;code&gt;T const&lt;/code&gt; と同じ。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::add_volatile&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;あらゆる &lt;code&gt;T&lt;/code&gt; に対して &lt;code&gt;T volatile&lt;/code&gt; と同じ。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::add_cv&amp;lt;T&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;あらゆる &lt;code&gt;T&lt;/code&gt; に対して &lt;code&gt;T const volatile&lt;/code&gt; と同じ。&lt;/td&gt;
-&lt;td&gt;3.9.3&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;上記の表が示すように、型変形テンプレートを正しく実装するには部分特殊化版のサポートが必要である。
-一方で、経験上この分類に属するテンプレートの多くは非常に有益であり、ジェネリックライブラリの実装においてしばしば必須となる。
-これらのテンプレートが不足していると、それらのライブラリを部分特殊化版の言語仕様をまだサポートしていないコンパイラに移植する上で大きな制約要因となる。
-そうしたコンパイラの中にはしばらく部分特殊化版をサポートしないものがあり、少なくともそのうちの１つは非常に広く普及しているため、ライブラリでは移植を実現させるための回避手段を提供することにした。
-回避手段を裏付ける基本的なアイデアは以下の通り。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;全ての基本型と、それらから導かれる１段階および２段階の const/volatile 修飾された（または修飾されていない）全てポインタ型についての全型変形テンプレートの完全な特殊化版を手作業で定義する。そして、&lt;/li&gt;
-&lt;li&gt;いかなるユーザ定義型 &lt;code&gt;T&lt;/code&gt; に対してそうした明示的な特殊化版を定義できるようようにユーザレベルマクロを提供する。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;最初の内容はこのようなものであり、コンパイルに成功することが保証されている。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;volatile&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;そして次の内容は &lt;code&gt;char&lt;/code&gt;、&lt;code&gt;int&lt;/code&gt; や他の組み込み型だけでなく、独自に定義された型に対しても上記のコードを働かせるための仕組みをライブラリのユーザに提供する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;my&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{};&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_BROKEN_COMPILER_TYPE_TRAITS_SPECIALIZATION&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;my&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;my&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;my&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;((&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;my&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;remove_const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;my&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// etc.&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;部分特殊化版がサポートされないコンパイラでは、&lt;code&gt;BOOST_BROKEN_COMPILER_TYPE_TRAITS_SPECIALIZATION&lt;/code&gt; は中身のないマクロとして評価されることに注意。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;synthesized&#34;&gt;Synthesizing Types&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下のテンプレートは要求した特徴を持った型を作り出す。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::type_with_alignment&amp;lt;Align&amp;gt;::type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;Align の倍数に整列された組み込み型または POD 型を見つける。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;function_traits&#34;&gt;Function Traits&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;::boost::function_traits&lt;/code&gt; クラステンプレートは関数型から情報を取り出す。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Expression&lt;/th&gt;
-&lt;th&gt;Description&lt;/th&gt;
-&lt;th&gt;Reference&lt;/th&gt;
-&lt;th&gt;Compiler requirements&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::function_traits&amp;lt;F&amp;gt;::arity&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;関数型 &lt;code&gt;F&lt;/code&gt; の引数の数を調べる。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;部分特殊化版がサポートされない場合、このテンプレートは参照型についてはコンパイルできない。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::function_traits&amp;lt;F&amp;gt;::result_type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;関数型 &lt;code&gt;F&lt;/code&gt; が返す型。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;::boost::function_traits&amp;lt;F&amp;gt;::argN_type&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;関数型 &lt;code&gt;F&lt;/code&gt; の第 &lt;em&gt;N&lt;/em&gt; （1≦N≦Fの引数の数）引数の型。&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;P&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;compiler&#34;&gt;Compiler Support Information&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;上の表中にある記号の意味は以下の通り。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;P&lt;/strong&gt;: クラスが正しく働くためにはクラステンプレートの部分特殊化版のサポートを必要としていることを示す。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;C&lt;/strong&gt;: その特性クラスのためにコンパイラの直接的なサポートが必要であることを示す。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;D&lt;/strong&gt;: 特性クラスがコンパイラの直接的なサポートを必要とするクラスに依存していることを示す。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;D や C の印が付いたクラスに対して、コンパイラのサポートが受けられなければ、この型特性は実際には &#34;真&#34; が正しい場合に &#34;偽&#34; を返すことがある。
-この規則の唯一の例外は &lt;code&gt;is_class&lt;/code&gt; で、&lt;code&gt;T&lt;/code&gt; が本当にクラスかどうかの推量を試みるにあたって、実際には &#34;偽&#34; が正しい場合に &#34;真&#34; を返すことがある。
-こうしたことが起こるのは、&lt;code&gt;T&lt;/code&gt; が共用体あるいはコンパイラ独自のスカラ型（それらの型特性が特化されていない）の場合である。&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;コンパイラがサポートしていない場合&lt;/em&gt;、これらの特性が &lt;em&gt;常に&lt;/em&gt; 正しい値を返すことを保証するには、ユーザ定義のそれぞれの共用体型に対して &lt;code&gt;is_union&lt;/code&gt; を、ユーザ定義のそれぞれの空の複合型に対して &lt;code&gt;is_empty&lt;/code&gt; を、そしてユーザ定義のそれぞれの POD 型に対して &lt;code&gt;is_POD&lt;/code&gt; を特化しなければならない。
-ユーザ定義型が &lt;code&gt;has_*&lt;/code&gt; 特性を持っており POD &lt;em&gt;はない&lt;/em&gt; 場合には、&lt;code&gt;has_*&lt;/code&gt; 特性もまた特化すべきである。&lt;/p&gt;
-&lt;p&gt;以下の規則が自動的に当てはまる。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;is_enum&lt;/code&gt; は &lt;code&gt;is_POD&lt;/code&gt; でもある。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_POD&lt;/code&gt; は &lt;code&gt;has_*&lt;/code&gt; でもある。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;これが意味するのは、例えば、空の POD 構造体がある場合には、&lt;code&gt;is_empty&lt;/code&gt; と &lt;code&gt;is_POD&lt;/code&gt; を特化し、すべての &lt;code&gt;has_*&lt;/code&gt; が真を返すようにするということである。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;headers&#34;&gt;Type Traits Headers&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;型特性ライブラリは通常下記をインクルードする。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/type_traits.hpp&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;とはいえ、ライブラリは実際にはいくつかのより小さいヘッダに分かれており、ときには実際に必要な型特性クラスを得るためにその中のひとつを直接インクルードする方が便利なことがある。
-しかし型特性クラスは相互依存性が高いことに注意すること。
-したがって、この方法は意外に節減にはならないかもしれない。
-以下の表では型特性クラスをアルファベット順に、各テンプレートが収められたヘッダとともに並べる。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;Template class&lt;/th&gt;
-&lt;th&gt;Header&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;add_const&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;add_const&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;add_pointer&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;add_reference&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;add_volatile&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;alignment_of&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/alignment_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;has_trivial_assign&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;function_traits&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/function_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;has_trivial_constructor&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;has_trivial_copy&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;has_trivial_destructor&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_arithmetic&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/arithmetic_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_array&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_base_and_derived&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_class&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_compound&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_const&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/cv_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_convertible&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/conversion_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_empty&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_enum&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_float&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/arithmetic_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_function&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/function_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_fundamental&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/arithmetic_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_integral&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/arithmetic_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_member_pointer&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_member_function_pointer&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_object&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_POD&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_pointer&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_reference&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_same&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/same_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_scalar&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/object_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_union&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/composite_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_void&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/arithmetic_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is_volatile&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/cv_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_bounds&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_const&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/cv_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_cv&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/cv_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_pointer&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_reference&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/transform_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;remove_volatile&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/cv_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;type_with_alignment&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;&amp;lt;boost/type_traits/alignment_traits.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a name=&#34;example&#34;&gt;Example code&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;型特性テンプレートを使用できるいくつかの方法を説明したプログラム例が４つある。&lt;/p&gt;
-&lt;h3&gt;Copy_example.cpp&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;std::copy&lt;/code&gt; のコピー操作を最適化するために適宜 &lt;code&gt;memcpy&lt;/code&gt; を使用するバージョンを示す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// opt::copy&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// std::copy と同じセマンティクス&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// 適宜 memcpy を呼び出す。&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copy_imp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copier&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_copy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copy_imp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_copy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;memcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kr&#34;&gt;inline&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;copy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove_cv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterator_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;v1_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove_cv&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterator_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;v2_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;copier&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ice_and&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;v1_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;v2_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_pointer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_pointer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;has_trivial_assign&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;v1_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;do_copy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;out&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h3&gt;fill_example.cpp&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;std::fill&lt;/code&gt; の充填操作を最適化するために適宜 &lt;code&gt;memset&lt;/code&gt; を使用するバージョンを示す。
-また、エイリアシング問題を避けるため、引数の受け渡しを最適化するために &lt;code&gt;call_traits&lt;/code&gt; を使用する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;opt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// fill&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// std::fill と同じ。引数の受け渡しの&#34;最適化&#34;のために&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// call_traits とともに適宜 memset を使用する。&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_fill_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;call_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;param_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;opt&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filler&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rebind&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_fill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;call_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;param_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_fill_&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;filler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rebind&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_fill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;memset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kr&#34;&gt;inline&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;fill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;filler&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ice_and&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_pointer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_arithmetic&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;filler_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;filler_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rebind&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;binder&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;binder&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;do_fill&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;val&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// namespace opt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h3&gt;iter_swap_example.cpp&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;std::iter_swap&lt;/code&gt; の正規のものと同様の代替イテレータとともに動作するバージョンを示す。
-それは、正規のイテレータに対して &lt;code&gt;std::swap&lt;/code&gt; を呼び出すか、あるいは &#34;遅いけれども安全&#34; な &lt;code&gt;swap&lt;/code&gt; を呼び出す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;opt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// iter_swap:&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// イテレータが代替イテレータかどうかを調べ、&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// それに応じて最適な形式を使う。&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;swapper&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterator_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value_type&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;v_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;kt&#34;&gt;v_t&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;one&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;two&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;swapper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kr&#34;&gt;inline&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;iter_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterator_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reference&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;r1_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterator_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;I2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reference&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;r2_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;swapper&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type_traits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ice_and&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;r1_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_reference&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;r2_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;r1_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;r2_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;do_swap&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;one&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;two&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// namespace opt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h3&gt;Trivial_destructor_example.cpp&lt;/h3&gt;
-&lt;p&gt;このアルゴリズムは &lt;code&gt;std::uninitialized_copy&lt;/code&gt; の逆である。
-初期化済みのメモリブロックを受け取り、その中のすべてのオブジェクトに対してデストラクタを呼び出す。
-これは一般には自分自身でメモリ管理を行うコンテナクラスの内部で使われる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;opt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// アルゴリズムdestroy_array:&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// std::unitialized_copyの逆で、初期化済みのメモリブロックを受け取り、&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;// その中の全オブジェクトに対してデストラクタを呼び出す。&lt;/span&gt;
-&lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_destroyer&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_destroyer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;static&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;do_destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;while&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;last&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace detail&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kr&#34;&gt;inline&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;detail&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_destroyer&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;has_trivial_destructor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy_array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace opt&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;Revised 22 April 2001&lt;/p&gt;
-&lt;p&gt;Documentation (c) Copyright John Maddock 2001.
-Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies.
-This document is provided &#34;as is&#34; without express or implied warranty, and with no claim as to its suitability for any purpose.&lt;/p&gt;
-&lt;p&gt;The type traits library is based on contributions by Steve Cleary, Beman Dawes, Aleksey Gurtovoy, Howard Hinnant, Jesse Jones, Mat Marcus, John Maddock and Jeremy Siek.&lt;/p&gt;
-&lt;p&gt;Mat Marcus and Jesse Jones have worked on, and published a &lt;a href=&#34;http://opensource.adobe.com/project4/project.shtml&#34; target=&#34;_blank&#34;&gt;paper&lt;/a&gt; describing the partial specialisation workarounds used in this library.&lt;/p&gt;
-&lt;p&gt;The is_convertible template is based on code originally devised by Andrei Alexandrescu, see &#34;&lt;a href=&#34;http://www.cuj.com/experts/1810/alexandr.htm?topic=experts&#34; target=&#34;_blank&#34;&gt;Generic&amp;lt;Programming&amp;gt;: Mappings between Types and Values&lt;/a&gt;&#34;.&lt;/p&gt;
-&lt;p&gt;Maintained by &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/john_maddock.htm&#34; target=&#34;_blank&#34;&gt;John Maddock&lt;/a&gt;, the latest version of this file can be found at &lt;a href=&#34;http://www.boost.org/&#34; target=&#34;_blank&#34;&gt;www.boost.org&lt;/a&gt;, and the boost discussion list at &lt;a href=&#34;http://www.yahoogroups.com/list/boost&#34; target=&#34;_blank&#34;&gt;www.yahoogroups.com/list/boost&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Japanese Translation Copyright (c) 2003 &lt;a href=&#34;mailto:yusei-t@mx15.freecom.ne.jp&#34;&gt;Takagi,Yusei&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;オリジナルの、及びこの著作権表示が全ての複製の中に現れる限り、この文書の複製、利用、変更、販売そして配布を認める。&lt;/em&gt;
-&lt;em&gt;このドキュメントは「あるがまま」に提供されており、いかなる明示的、暗黙的保証も行わない。&lt;/em&gt;
-&lt;em&gt;また、いかなる目的に対しても、その利用が適していることを関知しない。&lt;/em&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
-</title>
-      <link href="http://boostjp.github.io/document/version.html"/>
-      <id>6962ab1e046074623f31c036bdef4added143888:document/version.md</id>
-      <updated>2016-08-22 23:41:59 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;以下は、Boostの各バージョンのリリースノートを翻訳、情報補完したドキュメントです。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/template.html&#34;&gt;雛形ページ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html&#34;&gt;1.62.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html&#34;&gt;1.61.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html&#34;&gt;1.60.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html&#34;&gt;1.59.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html&#34;&gt;1.58.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_57_0.html&#34;&gt;1.57.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_56_0.html&#34;&gt;1.56.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_55_0.html&#34;&gt;1.55.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_54_0.html&#34;&gt;1.54.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_53_0.html&#34;&gt;1.53.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_52_0.html&#34;&gt;1.52.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_51_0.html&#34;&gt;1.51.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_50_0.html&#34;&gt;1.50.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_49_0.html&#34;&gt;1.49.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_48_0.html&#34;&gt;1.48.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_47_0.html&#34;&gt;1.47.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_46_1.html&#34;&gt;1.46.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_46_0.html&#34;&gt;1.46.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_45_0.html&#34;&gt;1.45.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon
-</name>
-        <email>melt@e-ml.jp
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.62.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
-</title>
-      <link href="http://boostjp.github.io/document/version/1_62_0.html"/>
-      <id>6962ab1e046074623f31c036bdef4added143888:document/version/1_62_0.md</id>
-      <updated>2016-08-22 23:41:59 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.62.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_62_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_62_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fiber&#34; target=&#34;_blank&#34;&gt;Fiber&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ユーザースレッド／ファイバーのフレームワーク&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/qvm&#34; target=&#34;_blank&#34;&gt;QVM&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;グラフィック処理、ビデオゲーム、シミュレーションアプリケーションなどで必要となる、2、3、4次元の静的なサイズを持つクォータニオン、ベクトル、行列を操作するためのジェネリックライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34; name=&#34;functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++11でのコンパイルエラーを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>melpon
