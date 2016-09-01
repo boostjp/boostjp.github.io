@@ -243,7 +243,7 @@ function tree_onclick(e) {
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
   <span class=k>const</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>3</span><span class=p>;</span>
-  <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>region1</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
+  <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>region1</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
   <span class=n>std</span><span class=o>::</span><span class=n>list</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>region2</span><span class=p>;</span>
 
   <span class=n>region2</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=mi>1</span><span class=p>);</span>
@@ -313,7 +313,7 @@ function tree_onclick(e) {
 </pre></div> </p> <h2><a href=http://boostjp.github.io/archive/boost_docs/document/generic_programming.html#object-generators name=object-generators>オブジェクト生成器(Object Generators)</a></h2> <p><em>オブジェクト生成器</em> は関数テンプレートであり、唯一の目的は、 引数から新しいオブジェクトを構築することである。 汎用コンストラクタの一種として考えることが出来るだろう。 オブジェクト生成器は、生成される実際の型を表現するのが難しかったり、出来なかったりするときに、 単なるコンストラクタよりも役立つだろう。 そして生成器の結果は変数に格納するのではなく、直接関数に渡すことも出来る。 多くの Boost オブジェクト生成器は接頭辞 "<code>make_</code>" がつけられている。 これは、<code>std::make_pair(const T&amp;, constU&amp;)</code> に倣ってのことである。</p> <p>たとえば、次のようなものを考えてみる:</p> <p><div class=codehilite><pre><span class=k>struct</span> <span class=n>widget</span> <span class=p>{</span>
   <span class=kt>void</span> <span class=n>tweak</span><span class=p>(</span><span class=kt>int</span><span class=p>);</span>
 <span class=p>};</span>
-<span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>widget</span> <span class=o>*&gt;</span> <span class=n>widget_ptrs</span><span class=p>;</span>
+<span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>widget</span> <span class=o>*&gt;</span> <span class=n>widget_ptrs</span><span class=p>;</span>
 </pre></div> </p> <p>2つの標準のオブジェクト生成器、 <code>std::bind2nd()</code> と <code>std::mem_fun()</code> を連鎖することで、全ての装置を簡単につまむことが出来る:</p> <p><div class=codehilite><pre><span class=kt>void</span> <span class=nf>tweak_all_widgets1</span><span class=p>(</span><span class=kt>int</span> <span class=n>arg</span><span class=p>)</span>
 <span class=p>{</span>
    <span class=n>for_each</span><span class=p>(</span><span class=n>widget_ptrs</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>widget_ptrs</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span>

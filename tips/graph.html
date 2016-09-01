@@ -256,7 +256,7 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>}</span>
     <span class=p>};</span>
@@ -314,7 +314,7 @@ E --&gt;
 <span class=k>struct</span> <span class=n><span style=color:#ff0000>City</span></span> <span class=p>{</span>
     <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>name</span><span class=p>;</span>
     <span class=kt>int</span> <span class=n>population</span><span class=p>;</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>zipcodes</span><span class=p>;</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>zipcodes</span><span class=p>;</span>
 <span class=p>};</span>
 
 <span class=k>struct</span> <span class=n><span style=color:#ff0000>Highway</span></span> <span class=p>{</span>
@@ -363,7 +363,7 @@ E --&gt;
     <span class=n>map</span><span class=p>[</span><span class=n>e</span><span class=p>].</span><span class=n>distance</span> <span class=o>=</span> <span class=mf>325.5</span><span class=p>;</span>
 
     <span class=c1>// <span style=color:#ff0000>Highway</span>クラスのdistanceメンバを辺の重みとして計算</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>map</span><span class=p>));</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>map</span><span class=p>));</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>map</span><span class=p>,</span> <span class=n>v1</span><span class=p>,</span>
             <span class=n>boost</span><span class=o>::</span><span class=n>weight_map</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>get</span><span class=p>(</span><span class=o>&amp;</span><span class=n><span style=color:#ff0000>Highway</span></span><span class=o>::</span><span class=n>distance</span><span class=p>,</span> <span class=n>map</span><span class=p>)).</span>
             <span class=n>distance_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>distance</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
@@ -390,7 +390,7 @@ E --&gt;
 <span class=c1>// グラフを作る</span>
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
         <span class=p>(</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>)</span>
         <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)</span>
         <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>)</span>
@@ -404,7 +404,7 @@ E --&gt;
         <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
     <span class=p>;</span>
 
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
         <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
         <span class=p>(</span><span class=mi>1</span><span class=p>)</span>
         <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
@@ -428,7 +428,7 @@ E --&gt;
     <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
     <span class=c1>// 最短経路を計算</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
     <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>dijkstra_shortest_paths</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
                 <span class=n>boost</span><span class=o>::</span><span class=n>predecessor_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
@@ -475,7 +475,7 @@ Z
 <span class=c1>// グラフを作る</span>
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
         <span class=p>(</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>)</span>
         <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)</span>
         <span class=p>(</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>)</span>
@@ -489,7 +489,7 @@ Z
         <span class=p>(</span><span class=n>F</span><span class=p>,</span> <span class=n>Z</span><span class=p>)</span>
     <span class=p>;</span>
 
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span>
         <span class=p>(</span><span class=mi>3</span><span class=p>)</span>
         <span class=p>(</span><span class=mi>1</span><span class=p>)</span>
         <span class=p>(</span><span class=mi>2</span><span class=p>)</span>
@@ -512,8 +512,8 @@ Z
     <span class=k>const</span> <span class=n>Vertex</span> <span class=n>from</span> <span class=o>=</span> <span class=n>S</span><span class=p>;</span> <span class=c1>// 開始地点</span>
     <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span><span class=o>&gt;</span> <span class=n>distance</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
 
     <span class=c1>// 最短経路を計算</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
@@ -578,7 +578,7 @@ Z
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span>
         <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>)(</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
         <span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>)(</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>)</span>
     <span class=p>;</span> <span class=c1>// Dはどこにも繋がっていない</span>
@@ -586,7 +586,7 @@ Z
     <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span><span class=p>(</span><span class=n>edges</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>edges</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>vertex_count</span><span class=p>);</span>
 
     <span class=c1>// 全部白のカラーマップを作って渡す</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>default_color_type</span><span class=o>&gt;</span> <span class=n>color</span><span class=p>(</span><span class=n>vertex_count</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>white_color</span><span class=p>);</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>default_color_type</span><span class=o>&gt;</span> <span class=n>color</span><span class=p>(</span><span class=n>vertex_count</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>white_color</span><span class=p>);</span>
 
     <span class=c1>// AからEに到達可能か調べる</span>
     <span class=k>if</span> <span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>is_reachable</span></span><span class=p>(</span><span class=n>A</span><span class=p>,</span> <span class=n>E</span><span class=p>,</span> <span class=n>g</span><span class=p>,</span> <span class=n>color</span><span class=p>.</span><span class=n>data</span><span class=p>()))</span> <span class=p>{</span>
@@ -624,7 +624,7 @@ AからDに到達不可能
 <span class=c1>// グラフを作る</span>
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>S</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
@@ -651,7 +651,7 @@ AからDに到達不可能
     <span class=k>const</span> <span class=n>Vertex</span> <span class=n>to</span> <span class=o>=</span> <span class=n>Z</span><span class=p>;</span> <span class=c1>// 目的地</span>
 
     <span class=c1>// 最短経路を計算</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>g</span><span class=p>));</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>dijkstra_shortest_paths</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>from</span><span class=p>,</span>
                 <span class=n>boost</span><span class=o>::</span><span class=n>predecessor_map</span><span class=p>(</span><span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]));</span>
 
@@ -690,7 +690,7 @@ Z
 
 <span class=n>Graph</span> <span class=nf>make_graph1</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>1</span><span class=p>},</span> <span class=p>{</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>2</span><span class=p>},</span>
         <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>2</span><span class=p>},</span>
         <span class=p>{</span> <span class=mi>3</span><span class=p>,</span>  <span class=mi>4</span><span class=p>},</span> <span class=p>{</span> <span class=mi>4</span><span class=p>,</span> <span class=mi>5</span><span class=p>},</span>
@@ -704,7 +704,7 @@ Z
 
 <span class=n>Graph</span> <span class=nf>make_graph2</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span> <span class=mi>9</span><span class=p>,</span> <span class=mi>10</span><span class=p>},</span> <span class=p>{</span><span class=mi>10</span><span class=p>,</span> <span class=mi>11</span><span class=p>},</span>
         <span class=p>{</span><span class=mi>11</span><span class=p>,</span>  <span class=mi>9</span><span class=p>},</span>
         <span class=p>{</span> <span class=mi>0</span><span class=p>,</span>  <span class=mi>1</span><span class=p>},</span> <span class=p>{</span> <span class=mi>1</span><span class=p>,</span>  <span class=mi>3</span><span class=p>},</span>
@@ -739,7 +739,7 @@ Z
 
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
@@ -749,7 +749,7 @@ Z
         <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>A</span><span class=p>}</span>
     <span class=p>};</span>
 
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
         <span class=mi>1</span><span class=p>,</span>
         <span class=mi>1</span><span class=p>,</span>
         <span class=mi>2</span><span class=p>,</span>
@@ -765,7 +765,7 @@ Z
 <span class=p>{</span>
     <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>EdgeDesc</span><span class=o>&gt;</span> <span class=n>spanning_tree</span><span class=p>;</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>EdgeDesc</span><span class=o>&gt;</span> <span class=n>spanning_tree</span><span class=p>;</span>
     <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>kruskal_minimum_spanning_tree</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>back_inserter</span><span class=p>(</span><span class=n>spanning_tree</span><span class=p>));</span>
 
     <span class=k>for</span> <span class=p>(</span><span class=k>const</span> <span class=n>EdgeDesc</span><span class=o>&amp;</span> <span class=n>e</span> <span class=o>:</span> <span class=n>spanning_tree</span><span class=p>)</span> <span class=p>{</span>
@@ -791,7 +791,7 @@ Z
 
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span>
@@ -801,7 +801,7 @@ Z
         <span class=p>{</span><span class=n>E</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
     <span class=p>}</span>
 
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>weights</span> <span class=o>=</span> <span class=p>{</span>
         <span class=mi>1</span><span class=p>,</span>
         <span class=mi>1</span><span class=p>,</span>
         <span class=mi>2</span><span class=p>,</span>
@@ -817,7 +817,7 @@ Z
 <span class=p>{</span>
     <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>VertexDesc</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>VertexDesc</span><span class=o>&gt;</span> <span class=n>parents</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>prim_minimum_spanning_tree</span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>parents</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span>
 
     <span class=k>for</span> <span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=kt>size_t</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>N</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
@@ -848,7 +848,7 @@ parent[E] = A
 
 <span class=n>Graph</span> <span class=nf>make_graph</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>1</span><span class=p>},</span> <span class=p>{</span><span class=mi>2</span><span class=p>,</span> <span class=mi>4</span><span class=p>},</span>
         <span class=p>{</span><span class=mi>2</span><span class=p>,</span> <span class=mi>5</span><span class=p>},</span>
         <span class=p>{</span><span class=mi>0</span><span class=p>,</span> <span class=mi>3</span><span class=p>},</span> <span class=p>{</span><span class=mi>1</span><span class=p>,</span> <span class=mi>4</span><span class=p>},</span>
@@ -861,7 +861,7 @@ parent[E] = A
 <span class=p>{</span>
     <span class=k>const</span> <span class=n>Graph</span> <span class=n>g</span> <span class=o>=</span> <span class=n>make_graph</span><span class=p>();</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
     <span class=n>boost</span><span class=o>::</span><span class=n><span style=color:#ff0000>topological_sort</span></span><span class=p>(</span><span class=n>g</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>back_inserter</span><span class=p>(</span><span class=n>result</span><span class=p>));</span>
 
     <span class=n>boost</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>result</span> <span class=o>|</span> <span class=n>boost</span><span class=o>::</span><span class=n>adaptors</span><span class=o>::</span><span class=n>reversed</span><span class=p>,</span> <span class=p>[](</span><span class=kt>int</span> <span class=n>vertex</span><span class=p>)</span> <span class=p>{</span>
@@ -888,7 +888,7 @@ parent[E] = A
     <span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>adjacency_list</span><span class=o>&lt;</span><span class=n>boost</span><span class=o>::</span><span class=n>listS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>vecS</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>undirectedS</span><span class=o>&gt;</span> <span class=n>Graph</span><span class=p>;</span>
     <span class=k>typedef</span> <span class=n>boost</span><span class=o>::</span><span class=n>graph_traits</span><span class=o>&lt;</span><span class=n>Graph</span><span class=o>&gt;::</span><span class=n>vertex_descriptor</span> <span class=n>vertex_desc</span><span class=p>;</span>
 
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>pair</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span>
         <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>A</span><span class=p>},</span>
@@ -934,7 +934,7 @@ D
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Edge</span><span class=o>&gt;</span> <span class=n>edges</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>B</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>C</span><span class=p>},</span> <span class=p>{</span><span class=n>A</span><span class=p>,</span> <span class=n>D</span><span class=p>},</span>
         <span class=p>{</span><span class=n>B</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>C</span><span class=p>,</span> <span class=n>E</span><span class=p>},</span> <span class=p>{</span><span class=n>D</span><span class=p>,</span> <span class=n>E</span><span class=p>}</span>
     <span class=p>};</span>

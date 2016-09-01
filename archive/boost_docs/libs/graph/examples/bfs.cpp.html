@@ -354,10 +354,10 @@ function tree_onclick(e) {
   <span class=n>Graph</span> <span class=nf>G_copy</span><span class=p>(</span><span class=mi>5</span><span class=p>);</span>
   <span class=c1>// Array to store predecessor (parent) of each vertex. This will be</span>
   <span class=c1>// used as a Decorator (actually, its iterator will be).</span>
-  <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>p</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>G</span><span class=p>));</span>
-  <span class=c1>// VC++ version of std::vector has no ::pointer, so</span>
+  <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;</span> <span class=n>p</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>num_vertices</span><span class=p>(</span><span class=n>G</span><span class=p>));</span>
+  <span class=c1>// VC++ version of <a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a> has no ::pointer, so</span>
   <span class=c1>// I use ::value_type* instead.</span>
-  <span class=k>typedef</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;::</span><span class=n>value_type</span><span class=o>*</span> <span class=n>Piter</span><span class=p>;</span>
+  <span class=k>typedef</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Vertex</span><span class=o>&gt;::</span><span class=n>value_type</span><span class=o>*</span> <span class=n>Piter</span><span class=p>;</span>
 
   <span class=c1>// Array to store distances from the source to each vertex .  We use</span>
   <span class=c1>// a built-in array here just for variety. This will also be used as</span>
