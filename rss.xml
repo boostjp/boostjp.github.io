@@ -2,9 +2,379 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-10-31T23:02:38.670855</updated>
-  <id>cb21a2f8-1eb9-4b01-9605-5eee304a7ff1</id>
+  <updated>2016-11-01T15:49:05.850219</updated>
+  <id>26adb9a1-b501-4eaa-b0fb-2ff154b6d695</id>
 
+  
+    <entry>
+      <title>シリアライズ -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
+</title>
+      <link href="http://boostjp.github.io/tips/serialize.html"/>
+      <id>6fa178500d7e3be046527ba3eb9c7d3d8c9d8604:tips/serialize.md</id>
+      <updated>2016-11-01 15:48:44 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シリアライズ&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;データの保存、ネットワーク通信でのデータの送受信といった場面において、任意の型の特定のフォーマットへのシリアライズ、デシリアライズが必要になることがある。&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/serialization/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Serialization Library&lt;/a&gt;は、標準ライブラリやBoostライブラリのあらゆる型へのシリアライズとデシリアライズと、ユーザー定義型のシリアライズ方法を提供するライブラリである。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#support-format&#34;&gt;サポートされているフォーマット&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#serialize-user-defined-type&#34;&gt;ユーザー定義型をシリアライズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#non-intrusive&#34;&gt;非侵入型のシリアライズ関数を定義する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize&#34;&gt;非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#support-format&#34; name=&#34;support-format&#34;&gt;サポートされているフォーマット&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Serializationでは、以下のフォーマットへのシリアライズ、デシリアライズをサポートしている。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;フォーマット&lt;/th&gt;
+&lt;th&gt;インクルード&lt;/th&gt;
+&lt;th&gt;補足&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;バイナリ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/binary_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/binary_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;プラットフォーム間の互換性なし&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;テキスト&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/text_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/text_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;XML&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/xml_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/xml_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#serialize-user-defined-type&#34; name=&#34;serialize-user-defined-type&#34;&gt;ユーザー定義型をシリアライズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Serializationでは、ユーザー定義型に、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::serialization::access&lt;/code&gt;への&lt;code&gt;friend&lt;/code&gt;指定を行い、&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;serialize()&lt;/code&gt;メンバ関数を持たせ、&lt;code&gt;Archive&lt;/code&gt;にシリアライズするメンバ変数を登録&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;することで、ユーザー定義型をシリアライズとデシリアライズが可能な型にすることができる。&lt;/p&gt;
+&lt;p&gt;次に、各フォーマットのアーカイブ型は、コンストラクタで&lt;code&gt;std::istream&lt;/code&gt;もしくは&lt;code&gt;std::ostream&lt;/code&gt;を取る。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;std::fstream&lt;/code&gt;を渡すことでファイルに出力、&lt;code&gt;std::stringstream&lt;/code&gt;を渡すことで文字列に出力することができる。&lt;/p&gt;
+&lt;p&gt;アーカイブに対してシリアライズ可能な型をストリームで渡すことにより、ユーザー定義型をシリアライズ、デシリアライズすることができる。&lt;/p&gt;
+&lt;p&gt;ここでは、&lt;code&gt;Data&lt;/code&gt;型をテキスト形式でシリアライズ、デシリアライズしている。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;fstream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/archive/text_oarchive.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/archive/text_iarchive.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/nvp.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/string.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;nl&#34;&gt;public:&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nl&#34;&gt;private:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;friend&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;access&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/*version*/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;value&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;str&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ofstream&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;a.txt&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text_oarchive&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;abc&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;Data&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ifstream&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;a.txt&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text_iarchive&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;Data&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力ファイル a.txt：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;22 serialization::archive 9 0 0 3 3 abc
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;実行結果(出力ファイルの読込結果)：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3
+abc
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;boost::serialization::make_nvp&lt;/code&gt;の&lt;code&gt;nvp&lt;/code&gt;はName Value Pairの略で、値に対して名前を関連付けている。&lt;/p&gt;
+&lt;p&gt;これは、XML形式のようなアーカイブを使用する際に、要素名として使用される。&lt;/p&gt;
+&lt;p&gt;ここでは&lt;code&gt;boost::archive::text_oarchive&lt;/code&gt;を使用してテキスト形式にシリアライズしているが、これを&lt;code&gt;boost::archive::xml_oarchive&lt;/code&gt;に変えるだけでXML形式にシリアライズされる。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#non-intrusive&#34; name=&#34;non-intrusive&#34;&gt;非侵入型のシリアライズ関数を定義する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;すでに作成されたクラス、またはサードパーティで用意されているクラスをシリアライズしたい場合がある。&lt;/p&gt;
+&lt;p&gt;その場合は非侵入型のシリアライズを定義するのが良いだろう。&lt;/p&gt;
+&lt;p&gt;非侵入型シリアライズは &lt;code&gt;boost::serialization&lt;/code&gt; 名前空間にシリアライズしたい型を受け取る &lt;code&gt;serialize()&lt;/code&gt; 関数を定義することで実現できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/nvp.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;real&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;number&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;real&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;real&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace boost::serialization&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;当然ながら、非侵入型シリアライズが正しく動作するのは、クラス外部からアクセスできるデータでインスタンスが再構成可能なクラスに限られる。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize&#34; name=&#34;different-bahavior-serialize-deserialize&#34;&gt;非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;サードパーティで用意されているクラスをシリアライズする場合、専用の関数などをつかって構築する場合など、&lt;code&gt;serialize()&lt;/code&gt; 関数だけでは実装しにくい場合がある。&lt;/p&gt;
+&lt;p&gt;そのため、非侵入型でも &lt;code&gt;save()&lt;/code&gt;/&lt;code&gt;load()&lt;/code&gt; 関数に分解して保存時と読み込み時の動作を分ける方法が用意されている。使用するには &lt;code&gt;split_free()&lt;/code&gt; 関数を用いる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/split_free.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;split_free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xFFFFFFFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xFFFFFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace boost::serialization&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>melpon
+</name>
+        <email>melt@e-ml.jp
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>シリアライズ -- 誤字修正 &#34;Arhive&#34;-&gt;&#34;Archive&#34;</title>
+      <link href="http://boostjp.github.io/tips/serialize.html"/>
+      <id>12dc73ac9074f2fac5df894bca4bda92e35afa83:tips/serialize.md</id>
+      <updated>2016-11-01 15:48:22 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;シリアライズ&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;データの保存、ネットワーク通信でのデータの送受信といった場面において、任意の型の特定のフォーマットへのシリアライズ、デシリアライズが必要になることがある。&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/serialization/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Serialization Library&lt;/a&gt;は、標準ライブラリやBoostライブラリのあらゆる型へのシリアライズとデシリアライズと、ユーザー定義型のシリアライズ方法を提供するライブラリである。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#support-format&#34;&gt;サポートされているフォーマット&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#serialize-user-defined-type&#34;&gt;ユーザー定義型をシリアライズする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#non-intrusive&#34;&gt;非侵入型のシリアライズ関数を定義する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize&#34;&gt;非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#support-format&#34; name=&#34;support-format&#34;&gt;サポートされているフォーマット&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Serializationでは、以下のフォーマットへのシリアライズ、デシリアライズをサポートしている。&lt;/p&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;フォーマット&lt;/th&gt;
+&lt;th&gt;インクルード&lt;/th&gt;
+&lt;th&gt;補足&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;バイナリ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/binary_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/binary_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;プラットフォーム間の互換性なし&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;テキスト&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/text_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/text_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;XML&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;&amp;lt;boost/archive/xml_iarchive.hpp&amp;gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&amp;lt;boost/archive/xml_oarchive.hpp&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#serialize-user-defined-type&#34; name=&#34;serialize-user-defined-type&#34;&gt;ユーザー定義型をシリアライズする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Serializationでは、ユーザー定義型に、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::serialization::access&lt;/code&gt;への&lt;code&gt;friend&lt;/code&gt;指定を行い、&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;serialize()&lt;/code&gt;メンバ関数を持たせ、&lt;code&gt;Archive&lt;/code&gt;にシリアライズするメンバ変数を登録&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;することで、ユーザー定義型をシリアライズとデシリアライズが可能な型にすることができる。&lt;/p&gt;
+&lt;p&gt;次に、各フォーマットのアーカイブ型は、コンストラクタで&lt;code&gt;std::istream&lt;/code&gt;もしくは&lt;code&gt;std::ostream&lt;/code&gt;を取る。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;std::fstream&lt;/code&gt;を渡すことでファイルに出力、&lt;code&gt;std::stringstream&lt;/code&gt;を渡すことで文字列に出力することができる。&lt;/p&gt;
+&lt;p&gt;アーカイブに対してシリアライズ可能な型をストリームで渡すことにより、ユーザー定義型をシリアライズ、デシリアライズすることができる。&lt;/p&gt;
+&lt;p&gt;ここでは、&lt;code&gt;Data&lt;/code&gt;型をテキスト形式でシリアライズ、デシリアライズしている。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;fstream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/archive/text_oarchive.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/archive/text_iarchive.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/nvp.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/string.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;nl&#34;&gt;public:&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{}&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;nl&#34;&gt;private:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;friend&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;access&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/*version*/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;value&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;str&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ofstream&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;a.txt&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text_oarchive&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;abc&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;Data&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ifstream&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;a.txt&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;text_iarchive&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;Data&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+        &lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;出力ファイル a.txt：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;22 serialization::archive 9 0 0 3 3 abc
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;実行結果(出力ファイルの読込結果)：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;3
+abc
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;boost::serialization::make_nvp&lt;/code&gt;の&lt;code&gt;nvp&lt;/code&gt;はName Value Pairの略で、値に対して名前を関連付けている。&lt;/p&gt;
+&lt;p&gt;これは、XML形式のようなアーカイブを使用する際に、要素名として使用される。&lt;/p&gt;
+&lt;p&gt;ここでは&lt;code&gt;boost::archive::text_oarchive&lt;/code&gt;を使用してテキスト形式にシリアライズしているが、これを&lt;code&gt;boost::archive::xml_oarchive&lt;/code&gt;に変えるだけでXML形式にシリアライズされる。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#non-intrusive&#34; name=&#34;non-intrusive&#34;&gt;非侵入型のシリアライズ関数を定義する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;すでに作成されたクラス、またはサードパーティで用意されているクラスをシリアライズしたい場合がある。&lt;/p&gt;
+&lt;p&gt;その場合は非侵入型のシリアライズを定義するのが良いだろう。&lt;/p&gt;
+&lt;p&gt;非侵入型シリアライズは &lt;code&gt;boost::serialization&lt;/code&gt; 名前空間にシリアライズしたい型を受け取る &lt;code&gt;serialize()&lt;/code&gt; 関数を定義することで実現できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/nvp.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;real&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;number&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_nvp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;real&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;real&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace boost::serialization&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;当然ながら、非侵入型シリアライズが正しく動作するのは、クラス外部からアクセスできるデータでインスタンスが再構成可能なクラスに限られる。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/serialize.html#different-bahavior-serialize-deserialize&#34; name=&#34;different-bahavior-serialize-deserialize&#34;&gt;非侵入型のシリアライズ関数で保存と読み込みで違う動作をさせる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;サードパーティで用意されているクラスをシリアライズする場合、専用の関数などをつかって構築する場合など、&lt;code&gt;serialize()&lt;/code&gt; 関数だけでは実装しにくい場合がある。&lt;/p&gt;
+&lt;p&gt;そのため、非侵入型でも &lt;code&gt;save()&lt;/code&gt;/&lt;code&gt;load()&lt;/code&gt; 関数に分解して保存時と読み込み時の動作を分ける方法が用意されている。使用するには &lt;code&gt;split_free()&lt;/code&gt; 関数を用いる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/serialization.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/serialization/split_free.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialization&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;serialize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;split_free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;version&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;save&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xFFFFFFFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Archive&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;load&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Archive&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Data&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;unsigned&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;cm&#34;&gt;/* version */&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ar&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;v&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0xFFFFFF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// namespace boost::serialization&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>らいどっと</name>
+        <email>ryogo.yoshimura@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>グラフ -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
@@ -3114,753 +3484,6 @@ E --&amp;gt;
 &lt;li&gt;SunOS:&lt;ul&gt;
 &lt;li&gt;Oracle Solaris Studio: 12.5&lt;/li&gt;
 &lt;li&gt;Oracle Solaris Studio, C++11: 12.5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon
-</name>
-        <email>melt@e-ml.jp
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.62.0リリースノート -- Boost 1.62.0リリースノート : テストコンパイラを記載</title>
-      <link href="http://boostjp.github.io/document/version/1_62_0.html"/>
-      <id>681734621a764aaba95854acf0820ad5a264a450:document/version/1_62_0.md</id>
-      <updated>2016-09-23 13:16:04 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.62.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_62_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_62_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fiber&#34; target=&#34;_blank&#34;&gt;Fiber&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ユーザースレッド／ファイバーのフレームワーク&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/qvm&#34; target=&#34;_blank&#34;&gt;QVM&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;グラフィック処理、ビデオゲーム、シミュレーションアプリケーションなどで必要となる、2、3、4次元の静的なサイズを持つクォータニオン、ベクトル、行列を操作するためのジェネリックライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#container&#34;&gt;Container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#dll&#34;&gt;DLL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#interprocess&#34;&gt;Interprocess&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#intrusive&#34;&gt;Intrusive&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#lexical-cast&#34;&gt;Lexical Cast&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#math&#34;&gt;Math&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#regex&#34;&gt;Regex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#test&#34;&gt;Test&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#thread&#34;&gt;Thread&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#variant&#34;&gt;Variant&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Oracle StudioとSPARCのサポートを改善。SPARCv8+に対するネイティブのアトミック操作を提供するようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34; name=&#34;chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11330&#34; target=&#34;_blank&#34;&gt;#11330&lt;/a&gt; &lt;code&gt;duration&lt;/code&gt;をゼロ初期化するのは、C++98モードもしくは&lt;code&gt;BOOST_CHRONO_DURATION_DEFAULTS_TO_ZERO&lt;/code&gt;がdefineされたときのみとし、それ以外は未初期化とした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11618&#34; target=&#34;_blank&#34;&gt;#11618&lt;/a&gt; Chrono IO V2のドキュメントで「ios_state.hpp」というヘッダが記載されていたが、正しくは「ios_base_state.hpp」&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11631&#34; target=&#34;_blank&#34;&gt;#11631&lt;/a&gt; Chrono IO V2で&lt;code&gt;clock_string&lt;/code&gt;をカスタマイズできなくなっていた問題を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34; name=&#34;circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6277&#34; target=&#34;_blank&#34;&gt;#6277&lt;/a&gt; デバッグ実装がデバッグモードで使用されなくなる。デバッグ実装には、通常の実装と同じレベルのスレッド安全性の保証がない。この変更により&lt;code&gt;BOOST_CB_DISABLE_DEBUG&lt;/code&gt;マクロは使用されなくなり、代わりに&lt;code&gt;BOOST_CB_ENABLE_DEBUG&lt;/code&gt;マクロを定義することでデバッグ実装が有効になる。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#container&#34; name=&#34;container&#34;&gt;Container&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/9481&#34; target=&#34;_blank&#34;&gt;Trac #9481&lt;/a&gt; コメントの誤字を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/9689&#34; target=&#34;_blank&#34;&gt;Trac #9689&lt;/a&gt; &lt;code&gt;pair&lt;/code&gt;に&lt;code&gt;piecewise_construct&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11170&#34; target=&#34;_blank&#34;&gt;Trac #11170&lt;/a&gt; &lt;code&gt;index_of()&lt;/code&gt;のドキュメント間違いを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11802&#34; target=&#34;_blank&#34;&gt;Trac #11802&lt;/a&gt; &lt;code&gt;flat_multimap&lt;/code&gt;の&lt;code&gt;ordered_range_t&lt;/code&gt;付き&lt;code&gt;insert()&lt;/code&gt;において、非デフォルトのソート順を使用した場合に挿入後の並び順がおかしくなる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12117&#34; target=&#34;_blank&#34;&gt;Trac #12117&lt;/a&gt; &lt;code&gt;flat_set&lt;/code&gt;の&lt;code&gt;ordered_unique_range&lt;/code&gt;付きの挿入操作において、順序付けされていない範囲が渡されたらアサート失敗するようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12177&#34; target=&#34;_blank&#34;&gt;Trac #12177&lt;/a&gt; &lt;code&gt;vector::priv_merge()&lt;/code&gt;のなかで&lt;code&gt;uintptr_t&lt;/code&gt;を名前空間修飾せずに使っていたので修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12183&#34; target=&#34;_blank&#34;&gt;Trac #12183&lt;/a&gt; GCC 6.1で&lt;code&gt;string&lt;/code&gt;の実装がstrict aliasing違反であると見なされていたので修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12256&#34; target=&#34;_blank&#34;&gt;Trac #12256&lt;/a&gt; &lt;code&gt;set&amp;lt;std::pair&amp;lt;int,int&amp;gt;&amp;gt;::insert()&lt;/code&gt;がVS2012のデバッグモードでコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12273&#34; target=&#34;_blank&#34;&gt;Trac #12273&lt;/a&gt; &lt;code&gt;static_vector&lt;/code&gt;と&lt;code&gt;small_vector&lt;/code&gt;に、&lt;code&gt;capacity()&lt;/code&gt;の定数版である&lt;code&gt;static_capacity&lt;/code&gt;静的メンバ定数を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12286&#34; target=&#34;_blank&#34;&gt;Trac #12286&lt;/a&gt; &lt;code&gt;pmr::flat_map&lt;/code&gt;がコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12296&#34; target=&#34;_blank&#34;&gt;Trac #12296&lt;/a&gt; &lt;code&gt;deque&lt;/code&gt;のメモリリークを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12319&#34; target=&#34;_blank&#34;&gt;Trac #12319&lt;/a&gt; &lt;code&gt;flat_set&lt;/code&gt;は例外送出なしにムーブ構築できるべき&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;全てのコンテナのデフォルトコンストラクタとムーブコンストラクタの&lt;code&gt;noexcept&lt;/code&gt;式を改訂&lt;/li&gt;
-&lt;li&gt;C++17の&lt;code&gt;insert_or_assign()&lt;/code&gt;と&lt;code&gt;try_emplace()&lt;/code&gt;を&lt;code&gt;map&lt;/code&gt;と&lt;code&gt;flat_map&lt;/code&gt;に実装&lt;/li&gt;
-&lt;li&gt;C++17の&lt;code&gt;extract()&lt;/code&gt;／&lt;code&gt;insert(node)&lt;/code&gt;を&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;multimap&lt;/code&gt;、&lt;code&gt;set&lt;/code&gt;、&lt;code&gt;multiset&lt;/code&gt;に実装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12215&#34; target=&#34;_blank&#34;&gt;#12215&lt;/a&gt; 一部のフィールドがゼロ初期化されていなかったために、Windows環境でクラッシュする問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12242&#34; target=&#34;_blank&#34;&gt;#12242&lt;/a&gt; MacOS上のIntel C++ Compilerでのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;execution_context_v1&lt;/code&gt;のスタック巻き戻しを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Coroutine2を推奨するために、Coroutineライブラリを非推奨化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12221&#34; target=&#34;_blank&#34;&gt;#12221&lt;/a&gt; &lt;code&gt;coroutine&amp;lt;&amp;gt;::push_type&lt;/code&gt;のコンストラクタがコルーチン関数を実行しないようにした。Coroutine2の前メジャーバージョンであるCoroutineライブラリでは元々実行しないようになっていた。この問題のために、コンストラクタ時点でコルーチン関数が最後まで到達して実行が終了し、関数呼び出し演算子で改めてコルーチン関数を実行する際に、終了済みの関数実行を再開してしまうという動作になっていた&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;coroutine&amp;lt;&amp;gt;::push_type&lt;/code&gt;の構築時に発生した例外を飲み込まないようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#dll&#34; name=&#34;dll&#34;&gt;DLL&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;マングリングされたシンボルとクラスの読み込みを実装。Klemens Morgensternのコントリビュート&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;detail::aggressive_ptr_cast&lt;/code&gt;中の使用されない変数の警告を抑制 &lt;a href=&#34;https://github.com/apolukhin/Boost.DLL/pull/9&#34; target=&#34;_blank&#34;&gt;pull-request 9&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;存在しないセクションを問い合わせることを許可 &lt;a href=&#34;https://github.com/apolukhin/Boost.DLL/pull/32&#34; target=&#34;_blank&#34;&gt;pull-request 32&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;テストとドキュメントの追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34; name=&#34;functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++11でのコンパイルエラーを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#interprocess&#34; name=&#34;interprocess&#34;&gt;Interprocess&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/interprocess/pull/27&#34; target=&#34;_blank&#34;&gt;GitHub PR #27&lt;/a&gt; 未定義動作を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#intrusive&#34; name=&#34;intrusive&#34;&gt;Intrusive&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11476&#34; target=&#34;_blank&#34;&gt;#11476&lt;/a&gt; &lt;code&gt;BOOST_NO_CXX11_DECLTYPE&lt;/code&gt;を定義した場合に&lt;code&gt;has_member_function_callable_with.hpp&lt;/code&gt;がコンパイル出来なかったのを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11994&#34; target=&#34;_blank&#34;&gt;#11994&lt;/a&gt; 侵入型コンテナに使用するキー抽出器が値でキーを返せるように&lt;ul&gt;
-&lt;li&gt;訳註: これまでは参照を返していたため、値を返す抽出器を用いた場合に寿命の問題があった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12184&#34; target=&#34;_blank&#34;&gt;#12184&lt;/a&gt; clangが&lt;code&gt;-Wdocumentation&lt;/code&gt;で発する警告を抑制&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12190&#34; target=&#34;_blank&#34;&gt;#12190&lt;/a&gt; 侵入型リストと&lt;code&gt;flat_map&lt;/code&gt;の組み合わせがコンパイルできなかったのを修正&lt;ul&gt;
-&lt;li&gt;訳註: &lt;a href=&#34;http://www.boost.org/doc/html/container/non_standard_containers.html#container.non_standard_containers.flat_xxx&#34; target=&#34;_blank&#34;&gt;flat_map&lt;/a&gt;はBoost.Containerが提供する連想コンテナの一種である&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12229&#34; target=&#34;_blank&#34;&gt;#12229&lt;/a&gt; 動的にキーが変化する場合に&lt;code&gt;intrusive::unordered_set&amp;lt;T&amp;gt;::rehash()&lt;/code&gt;が動作しなかった問題の対応&lt;ul&gt;
-&lt;li&gt;訳註: 通常キーが変更されることは想定されていないため、&lt;code&gt;rehash()&lt;/code&gt;それ自体に変更は加えられなかった。代わりに&lt;code&gt;full_rehash()&lt;/code&gt;が追加されたのでその様な場合はそちらを使用すること&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12245&#34; target=&#34;_blank&#34;&gt;#12245&lt;/a&gt; &lt;code&gt;bstree&lt;/code&gt;が静的な&lt;code&gt;size_traits&lt;/code&gt;を使用していることによるデータレースを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#lexical-cast&#34; name=&#34;lexical-cast&#34;&gt;Lexical-Cast&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;正しくない静的アサーションを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11759&#34; target=&#34;_blank&#34;&gt;#11759&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;ローカルマシンに対するプロセス間ロギングの新たなツールを追加。この実装は、resource name wrapper、プロセス間メッセージキュー、sink backendを含む&lt;/li&gt;
-&lt;li&gt;新たな文字デコレーター&lt;code&gt;max_size_decor&lt;/code&gt;を追加。このデコレーターは、指定の長さまでフォーマッタの出力を制限できる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12178&#34; target=&#34;_blank&#34;&gt;#12178&lt;/a&gt; ロギングストリームが異なるログレコード間でフォーマット設定を維持できるよう修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;詳細は &lt;a href=&#34;http://www.boost.org/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt; を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#math&#34; name=&#34;math&#34;&gt;Math&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;全ての特殊関数に対して、(たとえばBoost.MultiPrecisionの&lt;code&gt;mpfr_float&lt;/code&gt;型で)実行時に正しく精度を変更できるようにした。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;修正&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tgamma_delta_ratio&lt;/code&gt;について、&lt;code&gt;base&lt;/code&gt;が&lt;code&gt;delta&lt;/code&gt;より小さい場合の比較を修正&lt;/li&gt;
-&lt;li&gt;GCC 4.4でのテスト失敗を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#regex&#34; name=&#34;regex&#34;&gt;Regex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12222&#34; target=&#34;_blank&#34;&gt;#12222&lt;/a&gt; いくつかの不正な正規表現を解析したときのバッファオーバーランを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12152&#34; target=&#34;_blank&#34;&gt;#12152&lt;/a&gt; ライブラリビルドでのICUの検出を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11940&#34; target=&#34;_blank&#34;&gt;#11940&lt;/a&gt; 大文字・小文字の区別を変更した際に発生するバグを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11988&#34; target=&#34;_blank&#34;&gt;#11988&lt;/a&gt; &lt;code&gt;\x{}&lt;/code&gt;式で、&lt;code&gt;int&lt;/code&gt;より広い型を許可した (たとえば&lt;code&gt;char32_t&lt;/code&gt;など)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12179&#34; target=&#34;_blank&#34;&gt;Trac #12179&lt;/a&gt; &lt;code&gt;optional_fwd.hpp&lt;/code&gt;を最初にインクルードするとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;MSVC 10環境下で非順序連想コンテナの前方宣言に問題があった &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/18&#34; target=&#34;_blank&#34;&gt;GitHub PR #18&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;使用されていないプリプロセス済みファイルを削除した &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/28&#34; target=&#34;_blank&#34;&gt;GitHub PR #28&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;switch_&lt;/code&gt;のドキュメントミスを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8156&#34; target=&#34;_blank&#34;&gt;#8156&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;非順序連想コンテナの設定をクリーンアップ &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/33&#34; target=&#34;_blank&#34;&gt;GitHub PR #33&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;未使用のプレースホルダの警告を抑制&lt;/li&gt;
-&lt;li&gt;2引数を受ける数学関数に与える引数が不足していたのを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#test&#34; name=&#34;test&#34;&gt;Test&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Boost.Test v3.3&lt;ul&gt;
-&lt;li&gt;詳細は&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/test/doc/html/boost_test/change_log.html&#34; target=&#34;_blank&#34;&gt;Change log&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;データセット駆動の各テストケースが一意な名前を持つようにし、データセットの全てのサンプルテストを同じテストスイートで動かすようにした&lt;/li&gt;
-&lt;li&gt;新たなコマンドラインスイッチ&lt;code&gt;--logger&lt;/code&gt;でテストロガーを設定できるようにした&lt;/li&gt;
-&lt;li&gt;同時に複数のロガーを持てるようにし、それぞれのロガーがログレベルと出力ストリームを持てるようにした&lt;/li&gt;
-&lt;li&gt;新たなロガーとして&lt;code&gt;JUNIT&lt;/code&gt;を追加した。これは、Junit/xUnit互換の出力できるストリームである&lt;/li&gt;
-&lt;li&gt;環境変数&lt;code&gt;BOOST_TEST_RUN_FILTERS&lt;/code&gt;で複数のテストに対するフィルターを設定できるようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/test/pull/81&#34; target=&#34;_blank&#34;&gt;GitHub PR #81&lt;/a&gt; ESXiコンパイラで&lt;code&gt;BOOST_TEST_DISABLE_ALT_STACK&lt;/code&gt;フラグを使用できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8707&#34; target=&#34;_blank&#34;&gt;#8707&lt;/a&gt; Boost.TestからxUnitのXMLを出力したい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8834&#34; target=&#34;_blank&#34;&gt;#8834&lt;/a&gt; Boost.TestのレポートとしてXMLとHRFを生成したい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11128&#34; target=&#34;_blank&#34;&gt;#11128&lt;/a&gt; BB10/QNXでのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11845&#34; target=&#34;_blank&#34;&gt;#11845&lt;/a&gt; データセットのテストケースに一意な名前がほしい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11859&#34; target=&#34;_blank&#34;&gt;#11859&lt;/a&gt; 実行パラメータ中のカンマに対するハンドリングが間違っていた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12024&#34; target=&#34;_blank&#34;&gt;#12024&lt;/a&gt; Android環境に存在しない&lt;code&gt;abi::__cxa_demangle&lt;/code&gt;関数に依存していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12093&#34; target=&#34;_blank&#34;&gt;#12093&lt;/a&gt; GCC 4.6.3でのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12103&#34; target=&#34;_blank&#34;&gt;#12103&lt;/a&gt; C標準ライブラリの実装uClibc-0.9.33.2で&lt;code&gt;getchar&lt;/code&gt;関数がマクロになっていたため、名前解決に失敗していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12224&#34; target=&#34;_blank&#34;&gt;#12224&lt;/a&gt; MSVCでRTTIを無効にするとクラッシュする問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12241&#34; target=&#34;_blank&#34;&gt;#12241&lt;/a&gt; データ駆動テストで&lt;code&gt;std::tuple&lt;/code&gt;の範囲を指定するとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12257&#34; target=&#34;_blank&#34;&gt;#12257&lt;/a&gt; &lt;code&gt;test_case_gen&lt;/code&gt;クラスのコンストラクタで一部のメンバ変数が初期化されない問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12378&#34; target=&#34;_blank&#34;&gt;#12378&lt;/a&gt; Clang 3.8でのコンパイルエラーを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#thread&#34; name=&#34;thread&#34;&gt;Thread&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12102&#34; target=&#34;_blank&#34;&gt;Trac #12102&lt;/a&gt; &lt;code&gt;BOOST_THREAD_PROVIDES_INTERRUPTIONS&lt;/code&gt;が無効なときにcondition_variable_fwd.hppのコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12120&#34; target=&#34;_blank&#34;&gt;Trac #12120&lt;/a&gt; thread/barrier.hppのパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12146&#34; target=&#34;_blank&#34;&gt;Trac #12146&lt;/a&gt; &lt;code&gt;make_exceptional_future()&lt;/code&gt;のドキュメントが誤って&lt;code&gt;make_exceptional()&lt;/code&gt;と記載していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12202&#34; target=&#34;_blank&#34;&gt;Trac #12202&lt;/a&gt; &lt;code&gt;shared_lock&lt;/code&gt;はC++14に合わせてshared_mutex.hppで定義すべきというリクエストだが、対応せず終了&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12371&#34; target=&#34;_blank&#34;&gt;Trac #12371&lt;/a&gt; thread/future.hppのコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/88&#34; target=&#34;_blank&#34;&gt;GitHub #88&lt;/a&gt; &lt;code&gt;upgrade_lock&lt;/code&gt;から送出される例外のメッセージにあった誤字を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/89&#34; target=&#34;_blank&#34;&gt;GitHub #89&lt;/a&gt; &lt;code&gt;upgrade_to_unique_lock&amp;lt;&amp;gt;::operator=()&lt;/code&gt;内でムーブしていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/90&#34; target=&#34;_blank&#34;&gt;GitHub #90&lt;/a&gt; &lt;code&gt;try_lock_wrapper&amp;lt;&amp;gt;::operator=()&lt;/code&gt;内でムーブしていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/91&#34; target=&#34;_blank&#34;&gt;GitHub #91&lt;/a&gt; locks.hppで&lt;code&gt;shared_lock_guard.hpp&lt;/code&gt;をインクルードするよう修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/92&#34; target=&#34;_blank&#34;&gt;GitHub #92&lt;/a&gt; MSVC8でのコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/93&#34; target=&#34;_blank&#34;&gt;GitHub #93&lt;/a&gt; 変数名が重なっていたことによるClangの警告を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/94&#34; target=&#34;_blank&#34;&gt;GitHub #94&lt;/a&gt; &lt;code&gt;boost::barrier&lt;/code&gt;内で関数の戻り値型が正しく取得できていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/95&#34; target=&#34;_blank&#34;&gt;GitHub #95&lt;/a&gt; &lt;code&gt;completion_latch&lt;/code&gt;のコンストラクタで使用していないテンプレートパラメータがあったので削除&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/96&#34; target=&#34;_blank&#34;&gt;GitHub #96&lt;/a&gt; async_func.hppをinvoker.hppに名前変更&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/97&#34; target=&#34;_blank&#34;&gt;GitHub #97&lt;/a&gt; &lt;code&gt;sync_timed_queue&amp;lt;&amp;gt;::pull_until()&lt;/code&gt;内で&lt;code&gt;wait_until()&lt;/code&gt;の戻り値と比較する型が間違っていたので修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ctti_type_index&lt;/code&gt;はC++14環境下において&lt;code&gt;constexpr&lt;/code&gt;となった&lt;ul&gt;
-&lt;li&gt;実際の型名をコンパイル時に&lt;code&gt;const char*&lt;/code&gt;で得ることが出来るようになった&lt;/li&gt;
-&lt;li&gt;これにより様々な興味深い（例えば以下の様な）事をコンパイル時に実施できる&lt;ul&gt;
-&lt;li&gt;名前空間を検査する&lt;/li&gt;
-&lt;li&gt;辞書順で型名をソートする&lt;/li&gt;
-&lt;li&gt;型がテンプレート型か検査する&lt;/li&gt;
-&lt;li&gt;等々...&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;いくつかの例を提供している&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;MSVC環境下において&lt;code&gt;noexcept&lt;/code&gt;を使用した場合の問題、及び型名に空白があった場合の問題を修正した（&lt;a href=&#34;https://github.com/klemens-morgenstern/type_index/tree/develop&#34; target=&#34;_blank&#34;&gt;klemens-morgenstern/develop&lt;/a&gt;よりpullした）&lt;/li&gt;
-&lt;li&gt;タイプミスの修正 &lt;a href=&#34;https://github.com/boostorg/type_index/pull/7&#34; target=&#34;_blank&#34;&gt;GitHub PR #7&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CIテストの改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;非推奨な&lt;code&gt;boost::iterator&lt;/code&gt;を使用している箇所を削除&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;unordered_multiset&lt;/code&gt;と&lt;code&gt;unordered_multimap&lt;/code&gt;の代入時における例外安全性に関する問題を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#variant&#34; name=&#34;variant&#34;&gt;Variant&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/7120&#34; target=&#34;_blank&#34;&gt;#7120&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10278&#34; target=&#34;_blank&#34;&gt;#10278&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12155&#34; target=&#34;_blank&#34;&gt;#12155&lt;/a&gt; &lt;code&gt;variant&lt;/code&gt;を、&lt;code&gt;variant&lt;/code&gt;から継承した型のオブジェクトから構築できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/5871&#34; target=&#34;_blank&#34;&gt;#5871&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11602&#34; target=&#34;_blank&#34;&gt;#11602&lt;/a&gt; &lt;code&gt;variant&lt;/code&gt;のテンプレートパラメータに含まれていない型のオブジェクトが代入されようとした場合に、オーバーロード解決に参加しないようにした (SFINAEフレンドリーにした)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8555&#34; target=&#34;_blank&#34;&gt;#8555&lt;/a&gt; C++11モードで&lt;code&gt;variant&lt;/code&gt;を暗黙の型変換演算子で返すとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11751&#34; target=&#34;_blank&#34;&gt;#11751&lt;/a&gt; 非&lt;code&gt;const&lt;/code&gt;参照のオブジェクトを持つ&lt;code&gt;variant&lt;/code&gt;で比較演算子がアサート失敗になる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11696&#34; target=&#34;_blank&#34;&gt;#11696&lt;/a&gt; &lt;code&gt;variant::operator=(variant&amp;amp;&amp;amp;)&lt;/code&gt;がGCCの場合だけ&lt;code&gt;noexcept&lt;/code&gt;が付いていたので、Clangにも対応&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12057&#34; target=&#34;_blank&#34;&gt;#12057&lt;/a&gt; Boostのヘッダファイルは、ダブルクォートではなく山カッコでインクルードするようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12250&#34; target=&#34;_blank&#34;&gt;#12250&lt;/a&gt; &lt;code&gt;BOOST_VARIANT_NO_REFERENCE_SUPPORT&lt;/code&gt;マクロと、SFINAEをサポートしていないコンパイラのサポートをやめた&lt;/li&gt;
-&lt;li&gt;MPL終端イテレータの、暗黙のインスタンス化を抑制した&lt;/li&gt;
-&lt;li&gt;小さな間違いをいろいろ修正 (誤字、インクルード不足)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang: 3.0, 3.8.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 3.0, 3.1, 3.2, 3.3, 3.4, 3.8.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 3.5, 3.6, 3.7, 3.8.0, 3.8.1, 3.9.0&lt;/li&gt;
-&lt;li&gt;GCC: 4.4.7, 4.5.3, 4.6.3, 4.7.2, 5.2.0, 6.1.1&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.4.7, 4.7.2, 4.7.3, 4.8.5, 4.9.3, 5.2.0, 6.1.1&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.2.0, 5.3.0, 5.4.1, 6.1.1&lt;/li&gt;
-&lt;li&gt;Intel: 16.0&lt;/li&gt;
-&lt;li&gt;Intel, C++11: 16.0&lt;/li&gt;
-&lt;li&gt;Intel, C++14: 16.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, C++03, mingw: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0&lt;/li&gt;
-&lt;li&gt;GCC, C++11, mingw: 4.6.4, 4.7.3, 4.8.1&lt;/li&gt;
-&lt;li&gt;GCC, C++14, mingw: 6.1.0&lt;/li&gt;
-&lt;li&gt;Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Android:&lt;ul&gt;
-&lt;li&gt;Clang: 3.6, 3.7, 3.8&lt;/li&gt;
-&lt;li&gt;GCC: 4.9, 5.4, 6.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;Clang: 3.4.1, 3.7&lt;/li&gt;
-&lt;li&gt;GCC: 4.8.5, 5.4.0, 6.1.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC: 4.4.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;SunOS:&lt;ul&gt;
-&lt;li&gt;Oracle Solaris Studio: 12.5&lt;/li&gt;
-&lt;li&gt;Oracle Solaris Studio, C++11: 12.5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang: 3.0, 3.8&lt;/li&gt;
-&lt;li&gt;Clang, c++11: 3.0, 3.1, 3.2, 3.3, 3.4, 3.8&lt;/li&gt;
-&lt;li&gt;Clang, c++14: 3.5, 3.6, 3.7, 3.8, 3.9&lt;/li&gt;
-&lt;li&gt;GCC: 4.4.7, 4.5.3, 4.6.3, 4.7.2, 4.8.4, 5.2.0, 6.1.1&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.4.7, 4.7.2, 4.7.3, 4.8.5, 4.9.3, 5.2.0, 6.1.1&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.2.0, 5.3.0, 5.4.1, 6.1.1, 7.0.0 (experimental)&lt;/li&gt;
-&lt;li&gt;Intel: 16.0&lt;/li&gt;
-&lt;li&gt;Intel, C++11: 16.0&lt;/li&gt;
-&lt;li&gt;Intel, C++14: 16.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang: 7.3.0&lt;/li&gt;
-&lt;li&gt;GCC: 6.1.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;Clang: 3.8.1&lt;/li&gt;
-&lt;li&gt;GCC, C++03, mingw: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0&lt;/li&gt;
-&lt;li&gt;GCC, C++11, mingw: 4.6.4, 4.7.3, 4.8.1&lt;/li&gt;
-&lt;li&gt;GCC, C++14, mingw: 4.9.3, 5.1.0, 5.2.0, 5.3.0, 6.1.0&lt;/li&gt;
-&lt;li&gt;GCC, cygwin: 5.4.0&lt;/li&gt;
-&lt;li&gt;Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Android:&lt;ul&gt;
-&lt;li&gt;Clang: 3.6, 3.7, 3.8&lt;/li&gt;
-&lt;li&gt;GCC: 4.9, 5.4, 6.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;Clang, C++11: 3.4.1, 3.7.0&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.8.5. 5.4.0, 6.1.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Haiku:&lt;ul&gt;
-&lt;li&gt;GCC, C++11: 5.4.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC: 4.4.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;SunOS:&lt;ul&gt;
-&lt;li&gt;Oracle Solaris Studio: 12.5&lt;/li&gt;
-&lt;li&gt;Oracle Solaris Studio, C++11: 12.5&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.62.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
-</title>
-      <link href="http://boostjp.github.io/document/version/1_62_0.html"/>
-      <id>5ea324f93e88764400d3f55d6ff2b12092ac5d3c:document/version/1_62_0.md</id>
-      <updated>2016-09-21 12:14:11 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.62.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_62_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_62_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_62_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/fiber&#34; target=&#34;_blank&#34;&gt;Fiber&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;ユーザースレッド／ファイバーのフレームワーク&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/qvm&#34; target=&#34;_blank&#34;&gt;QVM&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;グラフィック処理、ビデオゲーム、シミュレーションアプリケーションなどで必要となる、2、3、4次元の静的なサイズを持つクォータニオン、ベクトル、行列を操作するためのジェネリックライブラリ&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#container&#34;&gt;Container&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#context&#34;&gt;Context&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#dll&#34;&gt;DLL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#interprocess&#34;&gt;Interprocess&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#intrusive&#34;&gt;Intrusive&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#lexical-cast&#34;&gt;Lexical Cast&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#math&#34;&gt;Math&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#regex&#34;&gt;Regex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#test&#34;&gt;Test&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#thread&#34;&gt;Thread&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#variant&#34;&gt;Variant&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Oracle StudioとSPARCのサポートを改善。SPARCv8+に対するネイティブのアトミック操作を提供するようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#chrono&#34; name=&#34;chrono&#34;&gt;Chrono&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11330&#34; target=&#34;_blank&#34;&gt;#11330&lt;/a&gt; &lt;code&gt;duration&lt;/code&gt;をゼロ初期化するのは、C++98モードもしくは&lt;code&gt;BOOST_CHRONO_DURATION_DEFAULTS_TO_ZERO&lt;/code&gt;がdefineされたときのみとし、それ以外は未初期化とした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11618&#34; target=&#34;_blank&#34;&gt;#11618&lt;/a&gt; Chrono IO V2のドキュメントで「ios_state.hpp」というヘッダが記載されていたが、正しくは「ios_base_state.hpp」&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11631&#34; target=&#34;_blank&#34;&gt;#11631&lt;/a&gt; Chrono IO V2で&lt;code&gt;clock_string&lt;/code&gt;をカスタマイズできなくなっていた問題を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#circular-buffer&#34; name=&#34;circular-buffer&#34;&gt;Circular Buffer&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6277&#34; target=&#34;_blank&#34;&gt;#6277&lt;/a&gt; デバッグ実装がデバッグモードで使用されなくなる。デバッグ実装には、通常の実装と同じレベルのスレッド安全性の保証がない。この変更により&lt;code&gt;BOOST_CB_DISABLE_DEBUG&lt;/code&gt;マクロは使用されなくなり、代わりに&lt;code&gt;BOOST_CB_ENABLE_DEBUG&lt;/code&gt;マクロを定義することでデバッグ実装が有効になる。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#container&#34; name=&#34;container&#34;&gt;Container&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/9481&#34; target=&#34;_blank&#34;&gt;Trac #9481&lt;/a&gt; コメントの誤字を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/9689&#34; target=&#34;_blank&#34;&gt;Trac #9689&lt;/a&gt; &lt;code&gt;pair&lt;/code&gt;に&lt;code&gt;piecewise_construct&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11170&#34; target=&#34;_blank&#34;&gt;Trac #11170&lt;/a&gt; &lt;code&gt;index_of()&lt;/code&gt;のドキュメント間違いを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11802&#34; target=&#34;_blank&#34;&gt;Trac #11802&lt;/a&gt; &lt;code&gt;flat_multimap&lt;/code&gt;の&lt;code&gt;ordered_range_t&lt;/code&gt;付き&lt;code&gt;insert()&lt;/code&gt;において、非デフォルトのソート順を使用した場合に挿入後の並び順がおかしくなる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12117&#34; target=&#34;_blank&#34;&gt;Trac #12117&lt;/a&gt; &lt;code&gt;flat_set&lt;/code&gt;の&lt;code&gt;ordered_unique_range&lt;/code&gt;付きの挿入操作において、順序付けされていない範囲が渡されたらアサート失敗するようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12177&#34; target=&#34;_blank&#34;&gt;Trac #12177&lt;/a&gt; &lt;code&gt;vector::priv_merge()&lt;/code&gt;のなかで&lt;code&gt;uintptr_t&lt;/code&gt;を名前空間修飾せずに使っていたので修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12183&#34; target=&#34;_blank&#34;&gt;Trac #12183&lt;/a&gt; GCC 6.1で&lt;code&gt;string&lt;/code&gt;の実装がstrict aliasing違反であると見なされていたので修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12256&#34; target=&#34;_blank&#34;&gt;Trac #12256&lt;/a&gt; &lt;code&gt;set&amp;lt;std::pair&amp;lt;int,int&amp;gt;&amp;gt;::insert()&lt;/code&gt;がVS2012のデバッグモードでコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12273&#34; target=&#34;_blank&#34;&gt;Trac #12273&lt;/a&gt; &lt;code&gt;static_vector&lt;/code&gt;と&lt;code&gt;small_vector&lt;/code&gt;に、&lt;code&gt;capacity()&lt;/code&gt;の定数版である&lt;code&gt;static_capacity&lt;/code&gt;静的メンバ定数を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12286&#34; target=&#34;_blank&#34;&gt;Trac #12286&lt;/a&gt; &lt;code&gt;pmr::flat_map&lt;/code&gt;がコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12296&#34; target=&#34;_blank&#34;&gt;Trac #12296&lt;/a&gt; &lt;code&gt;deque&lt;/code&gt;のメモリリークを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12319&#34; target=&#34;_blank&#34;&gt;Trac #12319&lt;/a&gt; &lt;code&gt;flat_set&lt;/code&gt;は例外送出なしにムーブ構築できるべき&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;全てのコンテナのデフォルトコンストラクタとムーブコンストラクタの&lt;code&gt;noexcept&lt;/code&gt;式を改訂&lt;/li&gt;
-&lt;li&gt;C++17の&lt;code&gt;insert_or_assign()&lt;/code&gt;と&lt;code&gt;try_emplace()&lt;/code&gt;を&lt;code&gt;map&lt;/code&gt;と&lt;code&gt;flat_map&lt;/code&gt;に実装&lt;/li&gt;
-&lt;li&gt;C++17の&lt;code&gt;extract()&lt;/code&gt;／&lt;code&gt;insert(node)&lt;/code&gt;を&lt;code&gt;map&lt;/code&gt;、&lt;code&gt;multimap&lt;/code&gt;、&lt;code&gt;set&lt;/code&gt;、&lt;code&gt;multiset&lt;/code&gt;に実装&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#context&#34; name=&#34;context&#34;&gt;Context&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12215&#34; target=&#34;_blank&#34;&gt;#12215&lt;/a&gt; 一部のフィールドがゼロ初期化されていなかったために、Windows環境でクラッシュする問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12242&#34; target=&#34;_blank&#34;&gt;#12242&lt;/a&gt; MacOS上のIntel C++ Compilerでのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;execution_context_v1&lt;/code&gt;のスタック巻き戻しを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine&#34; name=&#34;coroutine&#34;&gt;Coroutine&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Coroutine2を推奨するために、Coroutineライブラリを非推奨化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#coroutine2&#34; name=&#34;coroutine2&#34;&gt;Coroutine2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12221&#34; target=&#34;_blank&#34;&gt;#12221&lt;/a&gt; &lt;code&gt;coroutine&amp;lt;&amp;gt;::push_type&lt;/code&gt;のコンストラクタがコルーチン関数を実行しないようにした。Coroutine2の前メジャーバージョンであるCoroutineライブラリでは元々実行しないようになっていた。この問題のために、コンストラクタ時点でコルーチン関数が最後まで到達して実行が終了し、関数呼び出し演算子で改めてコルーチン関数を実行する際に、終了済みの関数実行を再開してしまうという動作になっていた&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;coroutine&amp;lt;&amp;gt;::push_type&lt;/code&gt;の構築時に発生した例外を飲み込まないようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#dll&#34; name=&#34;dll&#34;&gt;DLL&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;マングリングされたシンボルとクラスの読み込みを実装。Klemens Morgensternのコントリビュート&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;detail::aggressive_ptr_cast&lt;/code&gt;中の使用されない変数の警告を抑制 &lt;a href=&#34;https://github.com/apolukhin/Boost.DLL/pull/9&#34; target=&#34;_blank&#34;&gt;pull-request 9&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;存在しないセクションを問い合わせることを許可 &lt;a href=&#34;https://github.com/apolukhin/Boost.DLL/pull/32&#34; target=&#34;_blank&#34;&gt;pull-request 32&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;テストとドキュメントの追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#functional-forward&#34; name=&#34;functional-forward&#34;&gt;Functional/Forward&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++11でのコンパイルエラーを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#interprocess&#34; name=&#34;interprocess&#34;&gt;Interprocess&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/interprocess/pull/27&#34; target=&#34;_blank&#34;&gt;GitHub PR #27&lt;/a&gt; 未定義動作を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#intrusive&#34; name=&#34;intrusive&#34;&gt;Intrusive&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11476&#34; target=&#34;_blank&#34;&gt;#11476&lt;/a&gt; &lt;code&gt;BOOST_NO_CXX11_DECLTYPE&lt;/code&gt;を定義した場合に&lt;code&gt;has_member_function_callable_with.hpp&lt;/code&gt;がコンパイル出来なかったのを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11994&#34; target=&#34;_blank&#34;&gt;#11994&lt;/a&gt; 侵入型コンテナに使用するキー抽出器が値でキーを返せるように&lt;ul&gt;
-&lt;li&gt;訳註: これまでは参照を返していたため、値を返す抽出器を用いた場合に寿命の問題があった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12184&#34; target=&#34;_blank&#34;&gt;#12184&lt;/a&gt; clangが&lt;code&gt;-Wdocumentation&lt;/code&gt;で発する警告を抑制&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12190&#34; target=&#34;_blank&#34;&gt;#12190&lt;/a&gt; 侵入型リストと&lt;code&gt;flat_map&lt;/code&gt;の組み合わせがコンパイルできなかったのを修正&lt;ul&gt;
-&lt;li&gt;訳註: &lt;a href=&#34;http://www.boost.org/doc/html/container/non_standard_containers.html#container.non_standard_containers.flat_xxx&#34; target=&#34;_blank&#34;&gt;flat_map&lt;/a&gt;はBoost.Containerが提供する連想コンテナの一種である&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12229&#34; target=&#34;_blank&#34;&gt;#12229&lt;/a&gt; 動的にキーが変化する場合に&lt;code&gt;intrusive::unordered_set&amp;lt;T&amp;gt;::rehash()&lt;/code&gt;が動作しなかった問題の対応&lt;ul&gt;
-&lt;li&gt;訳註: 通常キーが変更されることは想定されていないため、&lt;code&gt;rehash()&lt;/code&gt;それ自体に変更は加えられなかった。代わりに&lt;code&gt;full_rehash()&lt;/code&gt;が追加されたのでその様な場合はそちらを使用すること&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12245&#34; target=&#34;_blank&#34;&gt;#12245&lt;/a&gt; &lt;code&gt;bstree&lt;/code&gt;が静的な&lt;code&gt;size_traits&lt;/code&gt;を使用していることによるデータレースを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#lexical-cast&#34; name=&#34;lexical-cast&#34;&gt;Lexical-Cast&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;正しくない静的アサーションを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11759&#34; target=&#34;_blank&#34;&gt;#11759&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;ローカルマシンに対するプロセス間ロギングの新たなツールを追加。この実装は、resource name wrapper、プロセス間メッセージキュー、sink backendを含む&lt;/li&gt;
-&lt;li&gt;新たな文字デコレーター&lt;code&gt;max_size_decor&lt;/code&gt;を追加。このデコレーターは、指定の長さまでフォーマッタの出力を制限できる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12178&#34; target=&#34;_blank&#34;&gt;#12178&lt;/a&gt; ロギングストリームが異なるログレコード間でフォーマット設定を維持できるよう修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;詳細は &lt;a href=&#34;http://www.boost.org/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt; を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#math&#34; name=&#34;math&#34;&gt;Math&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;全ての特殊関数に対して、(たとえばBoost.MultiPrecisionの&lt;code&gt;mpfr_float&lt;/code&gt;型で)実行時に正しく精度を変更できるようにした。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;修正&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;tgamma_delta_ratio&lt;/code&gt;について、&lt;code&gt;base&lt;/code&gt;が&lt;code&gt;delta&lt;/code&gt;より小さい場合の比較を修正&lt;/li&gt;
-&lt;li&gt;GCC 4.4でのテスト失敗を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#regex&#34; name=&#34;regex&#34;&gt;Regex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12222&#34; target=&#34;_blank&#34;&gt;#12222&lt;/a&gt; いくつかの不正な正規表現を解析したときのバッファオーバーランを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12152&#34; target=&#34;_blank&#34;&gt;#12152&lt;/a&gt; ライブラリビルドでのICUの検出を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11940&#34; target=&#34;_blank&#34;&gt;#11940&lt;/a&gt; 大文字・小文字の区別を変更した際に発生するバグを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11988&#34; target=&#34;_blank&#34;&gt;#11988&lt;/a&gt; &lt;code&gt;\x{}&lt;/code&gt;式で、&lt;code&gt;int&lt;/code&gt;より広い型を許可した (たとえば&lt;code&gt;char32_t&lt;/code&gt;など)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12179&#34; target=&#34;_blank&#34;&gt;Trac #12179&lt;/a&gt; &lt;code&gt;optional_fwd.hpp&lt;/code&gt;を最初にインクルードするとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;MSVC 10環境下で非順序連想コンテナの前方宣言に問題があった &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/18&#34; target=&#34;_blank&#34;&gt;GitHub PR #18&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;使用されていないプリプロセス済みファイルを削除した &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/28&#34; target=&#34;_blank&#34;&gt;GitHub PR #28&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;switch_&lt;/code&gt;のドキュメントミスを修正 &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8156&#34; target=&#34;_blank&#34;&gt;#8156&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;非順序連想コンテナの設定をクリーンアップ &lt;a href=&#34;https://github.com/boostorg/phoenix/pull/33&#34; target=&#34;_blank&#34;&gt;GitHub PR #33&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;未使用のプレースホルダの警告を抑制&lt;/li&gt;
-&lt;li&gt;2引数を受ける数学関数に与える引数が不足していたのを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#test&#34; name=&#34;test&#34;&gt;Test&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Boost.Test v3.3&lt;ul&gt;
-&lt;li&gt;詳細は&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/test/doc/html/boost_test/change_log.html&#34; target=&#34;_blank&#34;&gt;Change log&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;新機能&lt;ul&gt;
-&lt;li&gt;データセット駆動の各テストケースが一意な名前を持つようにし、データセットの全てのサンプルテストを同じテストスイートで動かすようにした&lt;/li&gt;
-&lt;li&gt;新たなコマンドラインスイッチ&lt;code&gt;--logger&lt;/code&gt;でテストロガーを設定できるようにした&lt;/li&gt;
-&lt;li&gt;同時に複数のロガーを持てるようにし、それぞれのロガーがログレベルと出力ストリームを持てるようにした&lt;/li&gt;
-&lt;li&gt;新たなロガーとして&lt;code&gt;JUNIT&lt;/code&gt;を追加した。これは、Junit/xUnit互換の出力できるストリームである&lt;/li&gt;
-&lt;li&gt;環境変数&lt;code&gt;BOOST_TEST_RUN_FILTERS&lt;/code&gt;で複数のテストに対するフィルターを設定できるようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/test/pull/81&#34; target=&#34;_blank&#34;&gt;GitHub PR #81&lt;/a&gt; ESXiコンパイラで&lt;code&gt;BOOST_TEST_DISABLE_ALT_STACK&lt;/code&gt;フラグを使用できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8707&#34; target=&#34;_blank&#34;&gt;#8707&lt;/a&gt; Boost.TestからxUnitのXMLを出力したい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8834&#34; target=&#34;_blank&#34;&gt;#8834&lt;/a&gt; Boost.TestのレポートとしてXMLとHRFを生成したい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11128&#34; target=&#34;_blank&#34;&gt;#11128&lt;/a&gt; BB10/QNXでのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11845&#34; target=&#34;_blank&#34;&gt;#11845&lt;/a&gt; データセットのテストケースに一意な名前がほしい&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11859&#34; target=&#34;_blank&#34;&gt;#11859&lt;/a&gt; 実行パラメータ中のカンマに対するハンドリングが間違っていた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12024&#34; target=&#34;_blank&#34;&gt;#12024&lt;/a&gt; Android環境に存在しない&lt;code&gt;abi::__cxa_demangle&lt;/code&gt;関数に依存していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12093&#34; target=&#34;_blank&#34;&gt;#12093&lt;/a&gt; GCC 4.6.3でのビルドエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12103&#34; target=&#34;_blank&#34;&gt;#12103&lt;/a&gt; C標準ライブラリの実装uClibc-0.9.33.2で&lt;code&gt;getchar&lt;/code&gt;関数がマクロになっていたため、名前解決に失敗していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12224&#34; target=&#34;_blank&#34;&gt;#12224&lt;/a&gt; MSVCでRTTIを無効にするとクラッシュする問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12241&#34; target=&#34;_blank&#34;&gt;#12241&lt;/a&gt; データ駆動テストで&lt;code&gt;std::tuple&lt;/code&gt;の範囲を指定するとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12257&#34; target=&#34;_blank&#34;&gt;#12257&lt;/a&gt; &lt;code&gt;test_case_gen&lt;/code&gt;クラスのコンストラクタで一部のメンバ変数が初期化されない問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12378&#34; target=&#34;_blank&#34;&gt;#12378&lt;/a&gt; Clang 3.8でのコンパイルエラーを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#thread&#34; name=&#34;thread&#34;&gt;Thread&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12102&#34; target=&#34;_blank&#34;&gt;Trac #12102&lt;/a&gt; &lt;code&gt;BOOST_THREAD_PROVIDES_INTERRUPTIONS&lt;/code&gt;が無効なときにcondition_variable_fwd.hppのコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12120&#34; target=&#34;_blank&#34;&gt;Trac #12120&lt;/a&gt; thread/barrier.hppのパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12146&#34; target=&#34;_blank&#34;&gt;Trac #12146&lt;/a&gt; &lt;code&gt;make_exceptional_future()&lt;/code&gt;のドキュメントが誤って&lt;code&gt;make_exceptional()&lt;/code&gt;と記載していた&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12202&#34; target=&#34;_blank&#34;&gt;Trac #12202&lt;/a&gt; &lt;code&gt;shared_lock&lt;/code&gt;はC++14に合わせてshared_mutex.hppで定義すべきというリクエストだが、対応せず終了&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://svn.boost.org/trac/boost/ticket/12371&#34; target=&#34;_blank&#34;&gt;Trac #12371&lt;/a&gt; thread/future.hppのコンパイルに失敗する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/88&#34; target=&#34;_blank&#34;&gt;GitHub #88&lt;/a&gt; &lt;code&gt;upgrade_lock&lt;/code&gt;から送出される例外のメッセージにあった誤字を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/89&#34; target=&#34;_blank&#34;&gt;GitHub #89&lt;/a&gt; &lt;code&gt;upgrade_to_unique_lock&amp;lt;&amp;gt;::operator=()&lt;/code&gt;内でムーブしていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/90&#34; target=&#34;_blank&#34;&gt;GitHub #90&lt;/a&gt; &lt;code&gt;try_lock_wrapper&amp;lt;&amp;gt;::operator=()&lt;/code&gt;内でムーブしていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/91&#34; target=&#34;_blank&#34;&gt;GitHub #91&lt;/a&gt; locks.hppで&lt;code&gt;shared_lock_guard.hpp&lt;/code&gt;をインクルードするよう修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/92&#34; target=&#34;_blank&#34;&gt;GitHub #92&lt;/a&gt; MSVC8でのコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/93&#34; target=&#34;_blank&#34;&gt;GitHub #93&lt;/a&gt; 変数名が重なっていたことによるClangの警告を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/94&#34; target=&#34;_blank&#34;&gt;GitHub #94&lt;/a&gt; &lt;code&gt;boost::barrier&lt;/code&gt;内で関数の戻り値型が正しく取得できていなかった問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/95&#34; target=&#34;_blank&#34;&gt;GitHub #95&lt;/a&gt; &lt;code&gt;completion_latch&lt;/code&gt;のコンストラクタで使用していないテンプレートパラメータがあったので削除&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/96&#34; target=&#34;_blank&#34;&gt;GitHub #96&lt;/a&gt; async_func.hppをinvoker.hppに名前変更&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/thread/pull/97&#34; target=&#34;_blank&#34;&gt;GitHub #97&lt;/a&gt; &lt;code&gt;sync_timed_queue&amp;lt;&amp;gt;::pull_until()&lt;/code&gt;内で&lt;code&gt;wait_until()&lt;/code&gt;の戻り値と比較する型が間違っていたので修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;ctti_type_index&lt;/code&gt;はC++14環境下において&lt;code&gt;constexpr&lt;/code&gt;となった&lt;ul&gt;
-&lt;li&gt;実際の型名をコンパイル時に&lt;code&gt;const char*&lt;/code&gt;で得ることが出来るようになった&lt;/li&gt;
-&lt;li&gt;これにより様々な興味深い（例えば以下の様な）事をコンパイル時に実施できる&lt;ul&gt;
-&lt;li&gt;名前空間を検査する&lt;/li&gt;
-&lt;li&gt;辞書順で型名をソートする&lt;/li&gt;
-&lt;li&gt;型がテンプレート型か検査する&lt;/li&gt;
-&lt;li&gt;等々...&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;いくつかの例を提供している&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;MSVC環境下において&lt;code&gt;noexcept&lt;/code&gt;を使用した場合の問題、及び型名に空白があった場合の問題を修正した（&lt;a href=&#34;https://github.com/klemens-morgenstern/type_index/tree/develop&#34; target=&#34;_blank&#34;&gt;klemens-morgenstern/develop&lt;/a&gt;よりpullした）&lt;/li&gt;
-&lt;li&gt;タイプミスの修正 &lt;a href=&#34;https://github.com/boostorg/type_index/pull/7&#34; target=&#34;_blank&#34;&gt;GitHub PR #7&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;CIテストの改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;非推奨な&lt;code&gt;boost::iterator&lt;/code&gt;を使用している箇所を削除&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;unordered_multiset&lt;/code&gt;と&lt;code&gt;unordered_multimap&lt;/code&gt;の代入時における例外安全性に関する問題を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html#variant&#34; name=&#34;variant&#34;&gt;Variant&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/7120&#34; target=&#34;_blank&#34;&gt;#7120&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10278&#34; target=&#34;_blank&#34;&gt;#10278&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12155&#34; target=&#34;_blank&#34;&gt;#12155&lt;/a&gt; &lt;code&gt;variant&lt;/code&gt;を、&lt;code&gt;variant&lt;/code&gt;から継承した型のオブジェクトから構築できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/5871&#34; target=&#34;_blank&#34;&gt;#5871&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11602&#34; target=&#34;_blank&#34;&gt;#11602&lt;/a&gt; &lt;code&gt;variant&lt;/code&gt;のテンプレートパラメータに含まれていない型のオブジェクトが代入されようとした場合に、オーバーロード解決に参加しないようにした (SFINAEフレンドリーにした)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8555&#34; target=&#34;_blank&#34;&gt;#8555&lt;/a&gt; C++11モードで&lt;code&gt;variant&lt;/code&gt;を暗黙の型変換演算子で返すとコンパイルエラーになる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11751&#34; target=&#34;_blank&#34;&gt;#11751&lt;/a&gt; 非&lt;code&gt;const&lt;/code&gt;参照のオブジェクトを持つ&lt;code&gt;variant&lt;/code&gt;で比較演算子がアサート失敗になる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/11696&#34; target=&#34;_blank&#34;&gt;#11696&lt;/a&gt; &lt;code&gt;variant::operator=(variant&amp;amp;&amp;amp;)&lt;/code&gt;がGCCの場合だけ&lt;code&gt;noexcept&lt;/code&gt;が付いていたので、Clangにも対応&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12057&#34; target=&#34;_blank&#34;&gt;#12057&lt;/a&gt; Boostのヘッダファイルは、ダブルクォートではなく山カッコでインクルードするようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12250&#34; target=&#34;_blank&#34;&gt;#12250&lt;/a&gt; &lt;code&gt;BOOST_VARIANT_NO_REFERENCE_SUPPORT&lt;/code&gt;マクロと、SFINAEをサポートしていないコンパイラのサポートをやめた&lt;/li&gt;
-&lt;li&gt;MPL終端イテレータの、暗黙のインスタンス化を抑制した&lt;/li&gt;
-&lt;li&gt;小さな間違いをいろいろ修正 (誤字、インクルード不足)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
