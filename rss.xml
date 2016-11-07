@@ -2,9 +2,277 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-11-07T14:13:12.346354</updated>
-  <id>37889500-a2c0-428c-b448-bcd67187d807</id>
+  <updated>2016-11-07T14:13:43.095069</updated>
+  <id>74793dff-5bee-4847-9325-fa780c23f46a</id>
 
+  
+    <entry>
+      <title>Boost 1.63.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
+</title>
+      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <id>8e31cefb8bcac9b4e53c1337c9966c8df57f03fb:document/version/1_63_0.md</id>
+      <updated>2016-11-07 14:13:40 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
+&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
+&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
+&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
+&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>melpon
+</name>
+        <email>melt@e-ml.jp
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : 作業者として自分の名前を追加</title>
+      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <id>7b5d9524706b99f3e731ae0bc53fdc56c0682a55:document/version/1_63_0.md</id>
+      <updated>2016-11-07 14:13:31 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
+&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
+&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
+&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
+&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
@@ -151,262 +419,6 @@
 &lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
 &lt;li&gt;いくつかの警告を修正&lt;/li&gt;
 &lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>melpon
-</name>
-        <email>melt@e-ml.jp
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : Unorderedを追加 (close #111)</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
-      <id>bbf45b84f8c32d5bf96376928b6505fa20faa036:document/version/1_63_0.md</id>
-      <updated>2016-11-07 14:11:15 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
-&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
-&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
-&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
-&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
-&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.63.0リリースノート -- Merge branch &#39;master&#39; of https://github.com/boostjp/site
-</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
-      <id>48e431cc9bc1bdad2ad0a507a0f419af0d604fef:document/version/1_63_0.md</id>
-      <updated>2016-11-07 01:14:46 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
-&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
-&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
 &lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
