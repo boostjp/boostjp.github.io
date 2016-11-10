@@ -2,9 +2,1682 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-11-09T23:02:14.276000</updated>
-  <id>57006ca8-096d-433e-9591-097493310425</id>
+  <updated>2016-11-10T12:02:37.991588</updated>
+  <id>829ed481-1504-4e78-b186-75ce3e11f6cb</id>
 
+  
+    <entry>
+      <title>BOOST_PP_AND -- パースエラーを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/and.html"/>
+      <id>d543d20df48753cb7cc11c6cf4158f10013a5a62:archive/boost_docs/libs/preprocessor/ref/and.md</id>
+      <updated>2016-11-10 12:01:57 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_AND&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_AND&lt;/code&gt; マクロはオペランドの論理&lt;em&gt;積(AND)&lt;/em&gt;に展開される。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_AND&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;q&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;p&lt;/code&gt; :
+    演算における左オペランド。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;q&lt;/code&gt; :
+    演算における右オペランド。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;p&lt;/code&gt; と &lt;code&gt;q&lt;/code&gt; が共に &lt;code&gt;0&lt;/code&gt; でないならば、このマクロは &lt;code&gt;1&lt;/code&gt; に展開される。
+そうでなければ &lt;code&gt;0&lt;/code&gt; に展開される。&lt;/p&gt;
+&lt;p&gt;このマクロは論理&lt;em&gt;積(AND)&lt;/em&gt;演算を行う前に、それぞれのオペランドを boolean 変換する。
+この変換が不必要ならば、代わりに &lt;code&gt;BOOST_PP_BITAND&lt;/code&gt; を使用する。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/bitand.html&#34;&gt;BOOST_PP_BITAND&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_mag.html&#34;&gt;BOOST_PP_LIMIT_MAG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/logical/and.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/logical/and.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/and.html&#34;&gt;BOOST_PP_AND&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 1 に展開される&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/and.html&#34;&gt;BOOST_PP_AND&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 0 に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_DATA -- パースエラーを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_data.html"/>
+      <id>d543d20df48753cb7cc11c6cf4158f10013a5a62:archive/boost_docs/libs/preprocessor/ref/array_data.md</id>
+      <updated>2016-11-10 12:01:57 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_DATA&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;BOOST_PP_ARRAY_DATA マクロは&lt;em&gt;配列&lt;/em&gt;から&lt;em&gt;タプル&lt;/em&gt;のデータを抽出する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_DATA&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;array&lt;/code&gt; :
+    &lt;em&gt;タプル&lt;/em&gt;に変換される&lt;em&gt;配列&lt;/em&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;このマクロは&lt;em&gt;配列&lt;/em&gt;データの一部分であるタプル部分に展開される。&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/data.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/data.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (x, y, z))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_data.html&#34;&gt;BOOST_PP_ARRAY_DATA&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// (x, y, z) に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_ELEM -- パースエラーを修正</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_elem.html"/>
+      <id>d543d20df48753cb7cc11c6cf4158f10013a5a62:archive/boost_docs/libs/preprocessor/ref/array_elem.md</id>
+      <updated>2016-11-10 12:01:57 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_ELEM&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ARRAY_ELEM&lt;/code&gt; マクロは&lt;em&gt;配列&lt;/em&gt;からその要素を抽出する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_ELEM&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    &lt;code&gt;array&lt;/code&gt; における、抽出される要素の 0 から始まるインデックス。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    抽出される要素のもととなる:配列:。
+    この&lt;em&gt;配列&lt;/em&gt;は少なくとも &lt;code&gt;i + 1&lt;/code&gt; 個の要素を持っていなければならない。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/elem.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/elem.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (4, (a, b, c, d))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_elem.html&#34;&gt;BOOST_PP_ARRAY_ELEM&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// a に展開される&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_elem.html&#34;&gt;BOOST_PP_ARRAY_ELEM&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// d に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>メモリマップドファイル -- Merge pull request #112 from Reputeless/patch-1
+</title>
+      <link href="http://boostjp.github.io/tips/memory_mapped_file.html"/>
+      <id>10c9fb8e3f2defce19750e8b52d95ec6420d8d92:tips/memory_mapped_file.md</id>
+      <updated>2016-11-10 00:23:31 +0900
+</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;メモリマップドファイル&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;メモリマップドファイルには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/interprocess.html&#34; target=&#34;_blank&#34;&gt; Boost Interprocess Library&lt;/a&gt; を使用する。&lt;/p&gt;
+&lt;p&gt;Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/date_time.html&#34; target=&#34;_blank&#34;&gt;Boost DateTime Library&lt;/a&gt; を利用している箇所があるため注意すること。&lt;/p&gt;
+&lt;p&gt;またこのページでManaged Memory Segmentsについての記述は基本的に&lt;code&gt;managed_mapped_file&lt;/code&gt;以外のクラス(&lt;code&gt;managed_shared_memory&lt;/code&gt;など)でも同様の動作を行う。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34; name=&#34;file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;既に存在しているファイルをマッピングするには、&lt;code&gt;boost::interprocess::file_mapping&lt;/code&gt;クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、&lt;code&gt;boost::interprocess::mapped_region&lt;/code&gt;クラスでビューを作成してアクセスする。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;data.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;           &lt;span class=&#34;c1&#34;&gt;// マッピングしたファイルの先頭アドレス&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッピングした領域のサイズ&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;memcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;また、&lt;code&gt;mapped_region&lt;/code&gt;クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// マッピング領域の開始位置(ファイル先頭から)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 領域のサイズ&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34; name=&#34;file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;managed_mapped_file&lt;/code&gt;クラスの&lt;code&gt;construct()&lt;/code&gt;メンバを使用し、&lt;code&gt;find()&lt;/code&gt;メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;anonymous_instance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34; name=&#34;container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Multi-Index Containers Library&lt;/a&gt;も利用可能である。&lt;/p&gt;
+&lt;p&gt;基本的にはManaged Memory Segmentsクラスから取得できる&lt;code&gt;segment_manager&lt;/code&gt;を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/containers/vector.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/allocators/allocator.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/generate.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/for_each.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allocator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;segment_manager&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyVector&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_segment_manager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;generate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;for_each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi
+</name>
+        <email>faithandbrave@gmail.com
+</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>メモリマップドファイル -- 誤字修正</title>
+      <link href="http://boostjp.github.io/tips/memory_mapped_file.html"/>
+      <id>c1e6082785faa5a663e126d7d4b25eccfacc47c9:tips/memory_mapped_file.md</id>
+      <updated>2016-11-10 00:18:00 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;メモリマップドファイル&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;メモリマップドファイルには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/interprocess.html&#34; target=&#34;_blank&#34;&gt; Boost Interprocess Library&lt;/a&gt; を使用する。&lt;/p&gt;
+&lt;p&gt;Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/date_time.html&#34; target=&#34;_blank&#34;&gt;Boost DateTime Library&lt;/a&gt; を利用している箇所があるため注意すること。&lt;/p&gt;
+&lt;p&gt;またこのページでManaged Memory Segmentsについての記述は基本的に&lt;code&gt;managed_mapped_file&lt;/code&gt;以外のクラス(&lt;code&gt;managed_shared_memory&lt;/code&gt;など)でも同様の動作を行う。&lt;/p&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34; name=&#34;file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;既に存在しているファイルをマッピングするには、&lt;code&gt;boost::interprocess::file_mapping&lt;/code&gt;クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、&lt;code&gt;boost::interprocess::mapped_region&lt;/code&gt;クラスでビューを作成してアクセスする。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;data.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;           &lt;span class=&#34;c1&#34;&gt;// マッピングしたファイルの先頭アドレス&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッピングした領域のサイズ&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;memcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;また、&lt;code&gt;mapped_region&lt;/code&gt;クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// マッピング領域の開始位置(ファイル先頭から)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 領域のサイズ&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34; name=&#34;file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;managed_mapped_file&lt;/code&gt;クラスの&lt;code&gt;construct()&lt;/code&gt;メンバを使用し、&lt;code&gt;find()&lt;/code&gt;メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;anonymous_instance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34; name=&#34;container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Multi-Index Containers Library&lt;/a&gt;も利用可能である。&lt;/p&gt;
+&lt;p&gt;基本的にはManaged Memory Segmentsクラスから取得できる&lt;code&gt;segment_manager&lt;/code&gt;を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/containers/vector.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/allocators/allocator.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/generate.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/for_each.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allocator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;segment_manager&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyVector&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_segment_manager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;generate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;for_each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Reputeless</name>
+        <email>reputeless@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Arrays -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/data/arrays.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/data/arrays.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Arrays&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;em&gt;配列&lt;/em&gt;は二要素の&lt;em&gt;タプル&lt;/em&gt;からなるデータ構造である。
+その第一要素は&lt;em&gt;配列&lt;/em&gt;の要素数であり、第二要素は&lt;em&gt;配列&lt;/em&gt;の要素となる別の&lt;em&gt;タプル&lt;/em&gt;である。
+例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;は &lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt; の三要素からなる&lt;em&gt;配列&lt;/em&gt;である。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;配列&lt;/em&gt;の最も重要な長所は、それが自分自身のサイズを保持していることである。
+このおかげで、要素へのアクセスにはサイズを必要としない。
+必要なことは、そのインデックスに要素が存在することだけだ。&lt;/p&gt;
+&lt;p&gt;この構造により、&lt;strong&gt;マクロ引数は可変長となることができ(?)&lt;/strong&gt;、ユーザーが自力でサイズ変化を追尾することをせずとも、データのサイズを変更できる。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;配列&lt;/em&gt;の要素は &lt;code&gt;BOOST_PP_ARRAY_ELEM&lt;/code&gt;、サイズは &lt;code&gt;BOOST_PP_ARRAY_SIZE&lt;/code&gt; により展開され、さらに&lt;em&gt;配列&lt;/em&gt;は &lt;code&gt;BOOST_PP_ARRAY_DATA&lt;/code&gt; により、より基本的なデータ構造である&lt;em&gt;タプル&lt;/em&gt;に変換できる。&lt;/p&gt;
+&lt;h2&gt;Primitives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_data.html&#34;&gt;BOOST_PP_ARRAY_DATA&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_elem.html&#34;&gt;BOOST_PP_ARRAY_ELEM&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_size.html&#34;&gt;BOOST_PP_ARRAY_SIZE&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Lists -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/data/lists.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/data/lists.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Lists&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;em&gt;リスト&lt;/em&gt;は頭部と尾部による単純な cons スタイルのリストである。
+&lt;em&gt;リスト&lt;/em&gt;の頭部には要素が入り、尾部には別の&lt;em&gt;リスト&lt;/em&gt;かまたは &lt;code&gt;BOOST_PP_NIL&lt;/code&gt; が入る。
+例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_NIL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;は &lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt; の三要素からなる&lt;em&gt;リスト&lt;/em&gt;である。&lt;/p&gt;
+&lt;p&gt;この構造により、&lt;strong&gt;マクロ引数は可変長となることができ(?)&lt;/strong&gt;、ユーザーが自力でサイズ変化を追尾することをせずとも、データのサイズを変更できる。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;リスト&lt;/em&gt;の要素は &lt;code&gt;BOOST_PP_LIST_FIRST&lt;/code&gt; や &lt;code&gt;BOOST_PP_LIST_REST&lt;/code&gt; により展開される。&lt;/p&gt;
+&lt;h2&gt;Primitives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/list_first.html&#34;&gt;BOOST_PP_LIST_FIRST&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/list_rest.html&#34;&gt;BOOST_PP_LIST_REST&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/nil.html&#34;&gt;BOOST_PP_NIL&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Sequences -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/data/sequences.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/data/sequences.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Sequences&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;A &lt;em&gt;sequence&lt;/em&gt; (abbreviated to &lt;em&gt;seq&lt;/em&gt;) is a group of adjacent parenthesized elements.
+For example,&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;...is a &lt;code&gt;seq&lt;/code&gt; of &lt;code&gt;3&lt;/code&gt; elements--&lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, and &lt;code&gt;c&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sequences&lt;/em&gt; are data structures that merge the properties of both &lt;em&gt;lists&lt;/em&gt; and &lt;em&gt;tuples&lt;/em&gt; with the exception that a &lt;em&gt;seq&lt;/em&gt; cannot be empty.
+Therefore, an &#34;empty&#34; &lt;em&gt;seq&lt;/em&gt; is considered a special case scenario that must be handled separately in C++.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#define SEQ (x)(y)(z)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define REVERSE(s, state, elem) (elem) state&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// append to head                 ^&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_FOLD_LEFT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REVERSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_EMPTY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SEQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)()&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;//                          #1                  #2&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 1) placeholder for &#34;empty&#34; seq&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 2) remove placeholder&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define SEQ_B (1)(2)(3)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define INC(s, state, elem) state (BOOST_PP_INC(elem))&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// append to tail            ^&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_FOLD_RIGHT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_NIL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SEQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;//                       ^&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// special placeholder that will be &#34;eaten&#34;&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// by appending to the tail&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sequences&lt;/em&gt; are extremely efficient.
+Element access speed approaches random access--even with &lt;em&gt;seqs&lt;/em&gt; of up to &lt;em&gt;256&lt;/em&gt; elements.
+This is because element access (among other things) is implemented iteratively rather than recursively.
+Therefore, elements can be accessed at extremely high indices even on preprocessors with low maximum expansion depths.&lt;/p&gt;
+&lt;p&gt;Elements of a &lt;em&gt;seq&lt;/em&gt; can be extracted with &lt;code&gt;BOOST_PP_SEQ_ELEM&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Primitives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/seq_elem.html&#34;&gt;BOOST_PP_SEQ_ELEM&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Tuples -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/data/tuples.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/data/tuples.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Tuples&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;em&gt;タプル&lt;/em&gt;は、丸カッコの中に、要素を単純にコンマで区切って並べたものである。
+例えば、&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;は &lt;code&gt;a&lt;/code&gt;、&lt;code&gt;b&lt;/code&gt;、&lt;code&gt;c&lt;/code&gt; の三要素からなる&lt;em&gt;タプル&lt;/em&gt;である。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;タプル&lt;/em&gt;は速く、また簡単に使える。
+しかし、&lt;em&gt;タプル&lt;/em&gt;へのすべてのアクセスにはそのサイズが必要となる。&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;タプル&lt;/em&gt;の要素は &lt;code&gt;BOOST_PP_TUPLE_ELEM&lt;/code&gt; により展開される。&lt;/p&gt;
+&lt;h2&gt;Primitives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ADD -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/add.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ADD&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ADD&lt;/code&gt; マクロは引数の和に展開される。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ADD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; :
+    演算における一つ目の加数。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;y&lt;/code&gt; :
+    演算における二つ目の加数。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;もし &lt;code&gt;x&lt;/code&gt; と &lt;code&gt;y&lt;/code&gt; の和が &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; よりも大きければ、演算結果は &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; に丸められる。&lt;/p&gt;
+&lt;p&gt;以前、このマクロは &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; の中では使えなかったが、現在ではこのような制限はない。
+しかし、そのような状況では &lt;code&gt;BOOST_PP_ADD_D&lt;/code&gt; を用いたほうが効率がよい。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; が &lt;code&gt;y&lt;/code&gt; より小さいかまたは同じとき、このマクロは最も効率的である。
+しかしながら、その効率利得にはマクロ発動に先立って実際に二つの引数を比較するほどの価値はない。
+言い換えれば、&lt;code&gt;x&lt;/code&gt; は二つのオペランドのうち大きい方である可能性が&lt;em&gt;たぶん&lt;/em&gt; &lt;strong&gt;高そうな(逆じゃない?)&lt;/strong&gt;方であるべきだ。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add_d.html&#34;&gt;BOOST_PP_ADD_D&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_mag.html&#34;&gt;BOOST_PP_LIMIT_MAG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/arithmetic/add.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/arithmetic/add.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add.html&#34;&gt;BOOST_PP_ADD&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 7 に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ADD_D -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add_d.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/add_d.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ADD_D&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ADD_D&lt;/code&gt; マクロは第二引数と第三引数の和に展開される。
+これは &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; 内で呼ばれる際には最も効率よく機能する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ADD_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;d&lt;/code&gt; :
+    次の有効な &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; 反復。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; :
+    演算における一つ目の加数。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;y&lt;/code&gt; :
+    演算における二つ目の加数。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;もし &lt;code&gt;x&lt;/code&gt; と &lt;code&gt;y&lt;/code&gt; の和が &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; よりも大きければ、演算結果は &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; に丸められる。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; が&lt;code&gt;y&lt;/code&gt; より小さいかまたは同じとき、このマクロは最も効率的である。
+しかしながら、その効率利得にはマクロ発動に先立って実際に二つの引数を比較するほどの価値はない。
+言い換えれば、&lt;code&gt;x&lt;/code&gt; は二つのオペランドのうち大きい方である可能性が&lt;em&gt;たぶん&lt;/em&gt; &lt;strong&gt;高そうな(逆じゃない?)&lt;/strong&gt;方であるべきだ。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add.html&#34;&gt;BOOST_PP_ADD&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_mag.html&#34;&gt;BOOST_PP_LIMIT_MAG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/arithmetic/add.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/arithmetic/add.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/arithmetic/dec.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/control/while.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/tuple/elem.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define PRED(d, data) &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;(2, 0, data)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define OP(d, data) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/dec.html&#34;&gt;BOOST_PP_DEC&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;(2, 0, data) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        ), \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add_d.html&#34;&gt;BOOST_PP_ADD_D&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            d, \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;(2, 1, data), \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            2 \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// &#39;x&#39; を 2 &#39;n&#39; 回インクリメントする&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define STRIDE(x, n) &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;(2, 1, &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/while.html&#34;&gt;BOOST_PP_WHILE&lt;/a&gt;(PRED, OP, (n, x)))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;STRIDE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 14 に展開される&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;STRIDE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;51&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 63 に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_AND -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/and.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/and.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/preprocessor/ref/and.md b/archive/boost_docs/libs/preprocessor/ref/and.md
+new file mode 100644
+index 0000000..fcee497
+--- /dev/null
++++ b/archive/boost_docs/libs/preprocessor/ref/and.md
+@@ -0,0 +1,47 @@
++#BOOST_PP_AND
++
++`BOOST_PP_AND` マクロはオペランドの論理*積(AND)*に展開される。
++
++##Usage
++
++```cpp
++BOOST_PP_AND(p, q)
++```
++
++##Arguments
++
++- `p` :
++	演算における左オペランド。
++	有効な値の範囲は `0` から `BOOST_PP_LIMIT_MAG` まで。
++
++- `q` :
++	演算における右オペランド。
++	有効な値の範囲は `0` から `BOOST_PP_LIMIT_MAG` まで。
++
++##Remarks
++
++`p` と `q` が共に `0` でないならば、このマクロは `1` に展開される。
++そうでなければ `0` に展開される。
++
++このマクロは論理*積(AND)*演算を行う前に、それぞれのオペランドを boolean 変換する。
++この変換が不必要ならば、代わりに `BOOST_PP_BITAND` を使用する。
++
++##See Also
++
++- [`BOOST_PP_BITAND`](bitand.md)
++- [`BOOST_PP_LIMIT_MAG`](limit_mag.md)
++
++##Requirements
++
++**Header:** &amp;amp;nbsp;&amp;amp;lt;boost/preprocessor/logical/and.hpp&amp;amp;gt;
++
++##Sample Code
++
++```cpp
++#include &amp;lt;boost/preprocessor/logical/and.hpp&amp;gt;
++
++BOOST_PP_AND(4, 3) // 1 に展開される
++BOOST_PP_AND(5, 0) // 0 に展開される
++```
++* BOOST_PP_AND[link and.md]
++
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_APPLY -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/apply.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/apply.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_APPLY&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_APPLY&lt;/code&gt; マクロは、その引数と空文字との違いを吸収する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_APPLY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;x&lt;/code&gt; :
+    取り出された引数。
+    この引数は &lt;code&gt;BOOST_PP_NIL&lt;/code&gt; か、または &lt;code&gt;(arg)&lt;/code&gt; や &lt;code&gt;((a, b))&lt;/code&gt; のような一要素の&lt;em&gt;タプル&lt;/em&gt;である。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;x&lt;/code&gt; が &lt;code&gt;BOOST_PP_NIL&lt;/code&gt; ならば、このマクロは空文字に展開される。
+&lt;code&gt;x&lt;/code&gt; が一要素の&lt;em&gt;タプル&lt;/em&gt;ならば、その&lt;em&gt;タプル&lt;/em&gt;の内容に展開される。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/nil.html&#34;&gt;BOOST_PP_NIL&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/facilities/apply.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/facilities/apply.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/tuple/elem.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define CV(i) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/apply.html&#34;&gt;BOOST_PP_APPLY&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html&#34;&gt;BOOST_PP_TUPLE_ELEM&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            4, i, \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            (&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/nil.html&#34;&gt;BOOST_PP_NIL&lt;/a&gt;, (const), (volatile), (const volatile)) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;CV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 無くなる&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;CV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// const に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_DATA -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_data.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_data.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/preprocessor/ref/array_data.md b/archive/boost_docs/libs/preprocessor/ref/array_data.md
+new file mode 100644
+index 0000000..748a1e2
+--- /dev/null
++++ b/archive/boost_docs/libs/preprocessor/ref/array_data.md
+@@ -0,0 +1,34 @@
++#BOOST_PP_ARRAY_DATA
++
++BOOST_PP_ARRAY_DATA マクロは*配列*から*タプル*のデータを抽出する。
++
++##Usage
++
++```cpp
++BOOST_PP_ARRAY_DATA(array)
++```
++
++##Arguments
++
++- `array` :
++	*タプル*に変換される*配列*。
++
++##Remarks
++
++このマクロは*配列*データの一部分であるタプル部分に展開される。
++
++##Requirements
++
++**Header:** &amp;amp;nbsp;&amp;amp;lt;boost/preprocessor/array/data.hpp&amp;amp;gt;
++
++##Sample Code
++
++```cpp
++#include &amp;lt;boost/preprocessor/array/data.hpp&amp;gt;
++
++#define ARRAY (3, (x, y, z))
++
++BOOST_PP_ARRAY_DATA(ARRAY) // (x, y, z) に展開される
++```
++* BOOST_PP_ARRAY_DATA[link array_data.md]
++
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_ELEM -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_elem.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_elem.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/preprocessor/ref/array_elem.md b/archive/boost_docs/libs/preprocessor/ref/array_elem.md
+new file mode 100644
+index 0000000..37d5bb7
+--- /dev/null
++++ b/archive/boost_docs/libs/preprocessor/ref/array_elem.md
+@@ -0,0 +1,35 @@
++#BOOST_PP_ARRAY_ELEM
++
++`BOOST_PP_ARRAY_ELEM` マクロは*配列*からその要素を抽出する。
++
++##Usage
++
++```cpp
++BOOST_PP_ARRAY_ELEM(i, array)
++```
++
++##Arguments
++
++- `i` :
++	`array` における、抽出される要素の 0 から始まるインデックス。
++
++- `array` :
++	抽出される要素のもととなる:配列:。
++	この*配列*は少なくとも `i + 1` 個の要素を持っていなければならない。
++
++##Requirements
++
++**Header:** &amp;amp;nbsp;&amp;amp;lt;boost/preprocessor/array/elem.hpp&amp;amp;gt;
++
++##Sample Code
++
++```cpp
++#include &amp;lt;boost/preprocessor/array/elem.hpp&amp;gt;
++
++#define ARRAY (4, (a, b, c, d))
++
++BOOST_PP_ARRAY_ELEM(0, ARRAY) // a に展開される
++BOOST_PP_ARRAY_ELEM(3, ARRAY) // d に展開される
++```
++* BOOST_PP_ARRAY_ELEM[link array_elem.md]
++
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_INSERT -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_insert.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_insert.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_INSERT&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_INSERT&lt;/code&gt; macro inserts an element into an &lt;em&gt;array&lt;/em&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_INSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; into which an element is to be inserted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; where an element is to be inserted.
+    Valid values range from &lt;code&gt;to&lt;/code&gt;BOOST_PP_ARRAY_SIZE(array)`.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The element to insert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro inserts &lt;code&gt;elem&lt;/code&gt; before the element at index &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If the operation attempts to create an &lt;code&gt;array&lt;/code&gt; that is larger than &lt;code&gt;BOOST_PP_LIMIT_TUPLE&lt;/code&gt;, the result is undefined.&lt;/p&gt;
+&lt;p&gt;This macro uses &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; interally.
+Therefore, to use the &lt;code&gt;d&lt;/code&gt; parameter passed from other macros that use &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt;, see &lt;code&gt;BOOST_PP_ARRAY_INSERT_D&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_insert_d.html&#34;&gt;BOOST_PP_ARRAY_INSERT_D&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/insert.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/insert.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, d))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_insert.html&#34;&gt;BOOST_PP_ARRAY_INSERT&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (4, (a, b, c, d))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_INSERT_D -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_insert_d.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_insert_d.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_INSERT_D&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_INSERT_D&lt;/code&gt; macro inserts an element into an &lt;code&gt;array&lt;/code&gt;.
+It reenters &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; with maximum efficiency.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_INSERT_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;d&lt;/code&gt; :
+    The next available &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; iteration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; into which an element is to be inserted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; where an element is to be inserted.
+    Valid values range from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;BOOST_PP_ARRAY_SIZE(array)&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The element to insert.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro inserts &lt;code&gt;elem&lt;/code&gt; before the element at index &lt;code&gt;i&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If the operation attempts to create an &lt;code&gt;array&lt;/code&gt; that is larger than &lt;code&gt;BOOST_PP_LIMIT_TUPLE&lt;/code&gt;, the result is undefined.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_insert.html&#34;&gt;BOOST_PP_ARRAY_INSERT&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/insert.hpp&amp;gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_POP_BACK -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_back.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_pop_back.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_POP_BACK&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_POP_BACK&lt;/code&gt; macro pops an element from the end of an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_POP_BACK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to pop an element from.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro returns &lt;code&gt;array&lt;/code&gt; after removing the last element.
+If &lt;code&gt;array&lt;/code&gt; has no elements, the result of applying this macro is undefined.&lt;/p&gt;
+&lt;p&gt;This macro uses &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; internally.
+Therefore, to use the &lt;code&gt;z&lt;/code&gt; parameter passed from other macros that use &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt;, see &lt;code&gt;BOOST_PP_ARRAY_POP_BACK_Z&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_back_z.html&#34;&gt;BOOST_PP_ARRAY_POP_BACK_Z&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/pop_back.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/pop_back.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, c))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_back.html&#34;&gt;BOOST_PP_ARRAY_POP_BACK&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (2, (a, b))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_POP_BACK_Z -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_back_z.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_pop_back_z.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_POP_BACK_Z&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_POP_BACK_Z&lt;/code&gt; macro pops an element from the end of an &lt;code&gt;array&lt;/code&gt;.
+It reenters &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; with maximum efficiency.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_POP_BACK_Z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;z&lt;/code&gt; :
+    The next available &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; dimension.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to pop an element from.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro returns &lt;code&gt;array&lt;/code&gt; after removing the last element.
+If &lt;code&gt;array&lt;/code&gt; has no elements, the result of applying this macro is undefined.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_back.html&#34;&gt;BOOST_PP_ARRAY_POP_BACK&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/pop_back.hpp&amp;gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_POP_FRONT -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_front.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_pop_front.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_POP_FRONT&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_POP_FRONT&lt;/code&gt; macro pops an element from the end of an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_POP_FRONT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to pop an element from.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro returns &lt;code&gt;array&lt;/code&gt; after removing the first element.
+If &lt;code&gt;array&lt;/code&gt; has no elements, the result of applying this macro is undefined.&lt;/p&gt;
+&lt;p&gt;This macro uses &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; internally.
+Therefore, to use the &lt;code&gt;z&lt;/code&gt; parameter passed from other macros that use &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt;, see &lt;code&gt;BOOST_PP_ARRAY_POP_FRONT_Z&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_front_z.html&#34;&gt;BOOST_PP_ARRAY_POP_FRONT_Z&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/pop_front.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/pop_front.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, c))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_front.html&#34;&gt;BOOST_PP_ARRAY_POP_FRONT&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (2, (b, c))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_POP_FRONT_Z -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_front_z.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_pop_front_z.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_POP_FRONT_Z&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_POP_FRONT_Z&lt;/code&gt; macro pops an element from the beginning of an &lt;code&gt;array&lt;/code&gt;.
+It reenters &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; with maximum efficiency.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_POP_FRONT_Z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;z&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;z&lt;/code&gt; :
+    The next available &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; dimension.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to pop an element from.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro returns &lt;code&gt;array&lt;/code&gt; after removing the first element.
+If &lt;code&gt;array&lt;/code&gt; has no elements, the result of applying this macro is undefined.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_pop_front.html&#34;&gt;BOOST_PP_ARRAY_POP_FRONT&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/pop_front.hpp&amp;gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_PUSH_BACK -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_push_back.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_push_back.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_PUSH_BACK&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_PUSH_BACK&lt;/code&gt; macro appends an element to the end of an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_PUSH_BACK&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to append an element to.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The element to append.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/push_back.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/push_back.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, c))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_push_back.html&#34;&gt;BOOST_PP_ARRAY_PUSH_BACK&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (4, (a, b, c, d))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_PUSH_FRONT -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_push_front.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_push_front.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_PUSH_FRONT&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_PUSH_FRONT&lt;/code&gt; macro appends an element to the beginning of an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_PUSH_FRONT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; to append an element to.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The element to append.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/push_front.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/push_front.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (b, c, d))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_push_front.html&#34;&gt;BOOST_PP_ARRAY_PUSH_FRONT&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (4, (a, b, c, d))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_REMOVE -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_remove.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_remove.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_REMOVE&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_REMOVE&lt;/code&gt; macro removes an element from an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_REMOVE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; from which an element is to be removed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; of the element to be removed.
+    Valid values range from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;BOOST_PP_ARRAY_SIZE(array) - 1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro uses &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; interally.
+Therefore, to use the &lt;code&gt;d&lt;/code&gt; parameter passed from other macros that use &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt;, see &lt;code&gt;BOOST_PP_ARRAY_REMOVE_D&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_remove_d.html&#34;&gt;BOOST_PP_ARRAY_REMOVE_D&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/remove.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/remove.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, d))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_remove.html&#34;&gt;BOOST_PP_ARRAY_REMOVE&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (2, (a, b))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_REMOVE_D -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_remove_d.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_remove_d.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_REMOVE_D&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_REMOVE_D&lt;/code&gt; macro removes an element from an &lt;code&gt;array&lt;/code&gt;.
+It reenters &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; with maximum efficiency.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_REMOVE_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;d&lt;/code&gt; :
+    The next available &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; iteration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; from which an element is to be removed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; of the element to be removed.
+    Valid values range from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;BOOST_PP_ARRAY_SIZE(array) - 1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_remove.html&#34;&gt;BOOST_PP_ARRAY_REMOVE&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/remove.hpp&amp;gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_REPLACE -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_replace.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_replace.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_REPLACE&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_REPLACE&lt;/code&gt; macro replaces an element in an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_REPLACE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    An &lt;code&gt;array&lt;/code&gt; to replace an element in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; of the element to be replaced.
+    Valid values range from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;BOOST_PP_ARRAY_SIZE(array) - 1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The replacement element.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;This macro uses &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; interally.
+Therefore, to use the &lt;code&gt;d&lt;/code&gt; parameter passed from other macros that use &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt;, see &lt;code&gt;BOOST_PP_ARRAY_REPLACE_D&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_replace_d.html&#34;&gt;BOOST_PP_ARRAY_REPLACE_D&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Header:&lt;/strong&gt; &amp;lt;boost/preprocessor/array/replace.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/replace.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, x, c))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_replace.html&#34;&gt;BOOST_PP_ARRAY_REPLACE&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (3, (a, b, c))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_REPLACE_D -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_replace_d.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_replace_d.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_REPLACE_D&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_REPLACE_D&lt;/code&gt; macro replaces an element in an &lt;code&gt;array&lt;/code&gt;.
+It reenters &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; with maximum efficiency.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_REPLACE_D&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;d&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;elem&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;d&lt;/code&gt; :
+    The next available &lt;code&gt;BOOST_PP_WHILE&lt;/code&gt; iteration.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;array&lt;/code&gt; :
+    An &lt;code&gt;array&lt;/code&gt; to replace an element in.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;i&lt;/code&gt; :
+    The zero-based position in &lt;code&gt;array&lt;/code&gt; of the element to be replaced.
+    Valid values range from &lt;code&gt;0&lt;/code&gt; to &lt;code&gt;BOOST_PP_ARRAY_SIZE(array) - 1&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;elem&lt;/code&gt; :
+    The replacement element.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_replace.html&#34;&gt;BOOST_PP_ARRAY_REPLACE&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/array/replace.hpp&amp;gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_REVERSE -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_reverse.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_reverse.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_REVERSE&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;The &lt;code&gt;BOOST_PP_ARRAY_REVERSE&lt;/code&gt; macro reverses the elements in an &lt;code&gt;array&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_REVERSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;array&lt;/code&gt; :
+    The &lt;code&gt;array&lt;/code&gt; whose elements are to be reversed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/array/reverse.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/reverse.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (a, b, c))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_reverse.html&#34;&gt;BOOST_PP_ARRAY_REVERSE&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// expands to (3, (c, b, a))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ARRAY_SIZE -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_size.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/array_size.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ARRAY_SIZE&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ARRAY_SIZE&lt;/code&gt; マクロは渡された&lt;em&gt;配列&lt;/em&gt;のサイズに展開される。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ARRAY_SIZE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;array&lt;/code&gt; :
+    サイズが展開される&lt;em&gt;配列&lt;/em&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/array/size.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/array/size.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define ARRAY (3, (x, y, z))&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/array_size.html&#34;&gt;BOOST_PP_ARRAY_SIZE&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARRAY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 3 に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ASSERT -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/assert.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ASSERT&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ASSERT&lt;/code&gt; マクロは条件によりプリプロセッシングエラーを起こす。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cond&lt;/code&gt; :
+    アサーションを起こすかどうかを決定する条件。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;cond&lt;/code&gt; が &lt;code&gt;0&lt;/code&gt; に展開される場合、このマクロはプリプロセッシングエラーを起こす。
+そうでなければ、空文字に展開される。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert_msg.html&#34;&gt;BOOST_PP_ASSERT_MSG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_mag.html&#34;&gt;BOOST_PP_LIMIT_MAG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/debug/assert.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/cat.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/debug/assert.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/logical/bitnor.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/logical/compl.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// BOOST_PP_IS_NULLARY マクロはこのライブラリの公開された&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// インターフェースには含まれていないが、それはこれが&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// Borland 社のプリプロセッサでは動かないからである。&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// それはアサーションを例示するためにここだけで使われる。&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 実際には、それは引数が空の丸カッコであるかそれとも&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// 何らかのテキストであるかを見極める。&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/detail/is_nullary.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define IS_EDISON_DESIGN_GROUP() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/compl.html&#34;&gt;BOOST_PP_COMPL&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_IS_NULLARY( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html&#34;&gt;BOOST_PP_CAT&lt;/a&gt;(IS_EDG_CHECK, __EDG_VERSION) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define IS_EDG_CHECK__EDG_VERSION ()&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define IS_METROWERKS() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/compl.html&#34;&gt;BOOST_PP_COMPL&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_IS_NULLARY( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html&#34;&gt;BOOST_PP_CAT&lt;/a&gt;(IS_MWERKS_CHECK, __MWERKS__) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define IS_MWERKS_CHECK__MWERKS__ ()&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define IS_MICROSOFT() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/bitnor.html&#34;&gt;BOOST_PP_BITNOR&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        IS_MICROSOFT_ROOT(), \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        IS_EDISON_DESIGN_GROUP() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define IS_MICROSOFT_ROOT() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_IS_NULLARY( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html&#34;&gt;BOOST_PP_CAT&lt;/a&gt;(IS_MSVC_CHECK, _MSC_VER) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#define IS_MSVC_CHECK_MS_VER ()&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// このマクロは EDG 上では動かない...&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// (これはただの例である)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define MACRO(n) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html&#34;&gt;BOOST_PP_CAT&lt;/a&gt;( \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        MACRO_, \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        IS_EDISON_DESIGN_GROUP() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    )(n) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define MACRO_1(n) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert.html&#34;&gt;BOOST_PP_ASSERT&lt;/a&gt;(0) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &#34;Edison Design Group is not supported&#34; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define MACRO_0(n) normal mode: n&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;MACRO&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ASSERT_MSG -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert_msg.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/assert_msg.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ASSERT_MSG&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ASSERT_MSG&lt;/code&gt; マクロは条件によりデバッグ文字列を挿入する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ASSERT_MSG&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cond&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;msg&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;cond&lt;/code&gt; :
+    アサーションを起こすかどうかを決定する条件。
+    有効な値の範囲は &lt;code&gt;0&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_MAG&lt;/code&gt; まで。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;msg&lt;/code&gt; :
+    &lt;code&gt;cond&lt;/code&gt; が &lt;code&gt;0&lt;/code&gt; と評価されたときに表示するメッセージ。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;cond&lt;/code&gt; が &lt;code&gt;0&lt;/code&gt; に展開される場合、このマクロは &lt;code&gt;msg&lt;/code&gt; に展開される。
+そうでなければ、空文字に展開される。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert_msg.html&#34;&gt;BOOST_PP_ASSERT_MSG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_mag.html&#34;&gt;BOOST_PP_LIMIT_MAG&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/debug/assert.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/comparison/equal.hpp&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/preprocessor/debug/assert.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// 行番号は翻訳の第一段階でカウントされるはずだ&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#line 9&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert_msg.html&#34;&gt;BOOST_PP_ASSERT_MSG&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; \
+    &lt;span class=&#34;n&#34;&gt;BOOST_PP_EQUAL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;__LINE__&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; \
+    &lt;span class=&#34;s&#34;&gt;&#34;incorrect line numbering detected&#34;&lt;/span&gt; \
+&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ASSIGN_SLOT -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assign_slot.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/ref/assign_slot.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;BOOST_PP_ASSIGN_SLOT&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ASSIGN_SLOT&lt;/code&gt; マクロは、数値マクロかまたは数値式を完全に評価する。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include BOOST_PP_ASSIGN_SLOT(i)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Arguments&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;i&lt;/code&gt; :
+    代入されている&lt;em&gt;スロット&lt;/em&gt;番号。
+    この値は &lt;code&gt;1&lt;/code&gt; から &lt;code&gt;BOOST_PP_LIMIT_SLOT_COUNT&lt;/code&gt; までの範囲内でなければならない。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;これを使う前に、&lt;em&gt;名前付き外部引数&lt;/em&gt; &lt;code&gt;BOOST_PP_VALUE&lt;/code&gt; が定義されていなければならない。
+それもまた、&lt;code&gt;0&lt;/code&gt; から &lt;code&gt;2^32 - 1&lt;/code&gt; までの範囲内の数値に展開されなければならない。&lt;/p&gt;
+&lt;h2&gt;See Also&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/limit_slot_count.html&#34;&gt;BOOST_PP_LIMIT_SLOT_COUNT&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/value.html&#34;&gt;BOOST_PP_VALUE&lt;/a&gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/slot/slot.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include boost/preprocessor/slot/slot.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define X() 4&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#define &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/value.html&#34;&gt;BOOST_PP_VALUE&lt;/a&gt; 1 + 2 + 3 + X()&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assign_slot.html&#34;&gt;BOOST_PP_ASSIGN_SLOT&lt;/a&gt;(1)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#undef X&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/slot.html&#34;&gt;BOOST_PP_SLOT&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 10 に展開される&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>評価済み引数 -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/terms/evaluated.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/terms/evaluated.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;評価済み引数&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;em&gt;評価済み引数&lt;/em&gt; は定数式としてライブラリに評価される数値である。
+これは、式が単純な数式、論理式、条件式を含むことが出来る、ということを意味する。
+また、引数の値はもはや引数の元が何であるかに依存しない。
+言い換えれば、もし値があるマクロに依存していても、評価後にはそのマクロには依存しないということである。
+これはプリプロセッサが通常使う、遅延評価を不可能にする。&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>名前付けされた外部引数 -- Boost.Preprocessorの翻訳ドキュメントを移植（一部）</title>
+      <link href="http://boostjp.github.io/archive/boost_docs/libs/preprocessor/terms/named_external.html"/>
+      <id>f4752f9e151f796b91d4f920612f0d90a0349c32:archive/boost_docs/libs/preprocessor/terms/named_external.md</id>
+      <updated>2016-11-09 23:51:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;名前付けされた外部引数&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;em&gt;名前付けされた外部引数&lt;/em&gt;は &lt;em&gt;インクルード&lt;/em&gt;されるマクロへの引数である。
+直接ファイルに引数を渡す方法は配ので、それらはユーザ定義の既知の名前のマクロという形で、ファイルに渡されなければならない。
+このイディオムをライブラリが使うときは常に、より&lt;em&gt;通常の&lt;/em&gt;引数らしくするために、インクルードされるファイルは自動的にマクロを未定義化する。&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Shogo Furusawa</name>
+        <email>graighle@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost.勉強会 #18 大阪 -- リンクの警告を修正</title>
@@ -108,466 +1781,6 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://speakerdeck.com/fadis/proxygen&#34; target=&#34;_blank&#34;&gt;発表資料&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/facebook/proxygen&#34; target=&#34;_blank&#34;&gt;Proxygen&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : Metaparseを追加 (close #105)</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
-      <id>a02da52bda7f3c4b45ad1fa1e6b1cce05928772b:document/version/1_63_0.md</id>
-      <updated>2016-11-09 17:45:01 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
-&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
-&lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
-&lt;li&gt;文字列長の制限をコンパイル単位で変更できるようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
-&lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
-&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
-&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
-&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
-&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : Pythonを追加 (close #106)</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
-      <id>89c632fbffd9a6f778218d2d60c7c03162670e09:document/version/1_63_0.md</id>
-      <updated>2016-11-08 14:02:34 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
-&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
-&lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
-&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
-&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
-&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
-&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : 作業者として自分の名前を追加</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
-      <id>7b5d9524706b99f3e731ae0bc53fdc56c0682a55:document/version/1_63_0.md</id>
-      <updated>2016-11-07 14:13:31 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
-&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
-&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
-&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
-&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
-&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
-&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リリースノート -- Boost 1.63.0リリースノートへのリンクを追加</title>
-      <link href="http://boostjp.github.io/document/version.html"/>
-      <id>77432c1d263e3d16592b415e2ff0bcc4bdfda97b:document/version.md</id>
-      <updated>2016-11-07 14:12:56 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;以下は、Boostの各バージョンのリリースノートを翻訳、情報補完したドキュメントです。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/template.html&#34;&gt;雛形ページ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html&#34;&gt;1.63.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_62_0.html&#34;&gt;1.62.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_61_0.html&#34;&gt;1.61.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_60_0.html&#34;&gt;1.60.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_59_0.html&#34;&gt;1.59.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_58_0.html&#34;&gt;1.58.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_57_0.html&#34;&gt;1.57.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_56_0.html&#34;&gt;1.56.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_55_0.html&#34;&gt;1.55.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_54_0.html&#34;&gt;1.54.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_53_0.html&#34;&gt;1.53.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_52_0.html&#34;&gt;1.52.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_51_0.html&#34;&gt;1.51.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_50_0.html&#34;&gt;1.50.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_49_0.html&#34;&gt;1.49.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_48_0.html&#34;&gt;1.48.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_47_0.html&#34;&gt;1.47.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_46_1.html&#34;&gt;1.46.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_46_0.html&#34;&gt;1.46.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_45_0.html&#34;&gt;1.45.0&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/div&gt;</content>
       
       <author>
