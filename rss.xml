@@ -2,9 +2,346 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="http://boostjp.github.io" />
-  <updated>2016-11-13T23:03:21.087037</updated>
-  <id>8f44f172-1f4b-47a8-a809-f03298f28324</id>
+  <updated>2016-11-14T00:03:52.191398</updated>
+  <id>b4434c28-8787-4a76-8ea5-b1bdd8697aaa</id>
 
+  
+    <entry>
+      <title>Boost 1.63.0リリースノート -- 1.63リリースノート: Phoenixを追加, close #109</title>
+      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <id>1679ac13dcce8ab3b54b1bfaa52da6e56cac7dd4:document/version/1_63_0.md</id>
+      <updated>2016-11-14 00:03:08 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fusion::vector&lt;/code&gt;のバギーなコンストラクタを修正 (Lee Clagettに感謝)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FUSION_ADAPT*&lt;/code&gt;と&lt;code&gt;BOOST_FUISON_DEFINE*&lt;/code&gt;は空の構造体に適用できるようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6592&#34; target=&#34;_blank&#34;&gt;#6592&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FUSION_DEFINE*&lt;/code&gt;はムーヴ構築とムーヴ代入が出来るようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10099&#34; target=&#34;_blank&#34;&gt;#10099&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::array&lt;/code&gt;のアダプタを追加 (Mateusz Łoskotに感謝) (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8241&#34; target=&#34;_blank&#34;&gt;#8241&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;一時オブジェクトを返す警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
+&lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
+&lt;li&gt;文字列長の制限をコンパイル単位で変更できるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;多くのモジュールがC++11の可変長テンプレートをサポートした&lt;/li&gt;
+&lt;li&gt;返り値の型の推論に失敗していたのを修正&lt;/li&gt;
+&lt;li&gt;未使用の警告を抑制&lt;/li&gt;
+&lt;li&gt;二引数の数学関数で引数が足りなかったエラーを修正&lt;/li&gt;
+&lt;li&gt;古いコンパイラ用の回避策を追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
+&lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
+&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;検査の警告を修正&lt;/li&gt;
+&lt;li&gt;物理化学(physico-chemical)の定数を更新。2014年CODATA推奨値にした&lt;/li&gt;
+&lt;li&gt;biotを正しく10アンペアとして定義&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
+&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
+&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
+&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.63.0リリースノート -- 1.63リリースノート: Fusionを追加, close #108</title>
+      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <id>1ad12a5179fdebaf9bfab7b8d216e108aa4ebdaf:document/version/1_63_0.md</id>
+      <updated>2016-11-13 17:10:52 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.63.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_63_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_63_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_63_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;fusion::vector&lt;/code&gt;のバギーなコンストラクタを修正 (Lee Clagettに感謝)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FUSION_ADAPT*&lt;/code&gt;と&lt;code&gt;BOOST_FUISON_DEFINE*&lt;/code&gt;は空の構造体に適用できるようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6592&#34; target=&#34;_blank&#34;&gt;#6592&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FUSION_DEFINE*&lt;/code&gt;はムーヴ構築とムーヴ代入が出来るようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/10099&#34; target=&#34;_blank&#34;&gt;#10099&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;std::array&lt;/code&gt;のアダプタを追加 (Mateusz Łoskotに感謝) (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8241&#34; target=&#34;_blank&#34;&gt;#8241&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;一時オブジェクトを返す警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
+&lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
+&lt;li&gt;文字列長の制限をコンパイル単位で変更できるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
+&lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
+&lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;検査の警告を修正&lt;/li&gt;
+&lt;li&gt;物理化学(physico-chemical)の定数を更新。2014年CODATA推奨値にした&lt;/li&gt;
+&lt;li&gt;biotを正しく10アンペアとして定義&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
+&lt;li&gt;いくつかのアロケータを伝搬させるコンストラクタを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;insert()&lt;/code&gt;/&lt;code&gt;emplace_hint()&lt;/code&gt;でヒントイテレータを使用するようにした&lt;/li&gt;
+&lt;li&gt;ドキュメントのさまざまな部分を改善した&lt;/li&gt;
+&lt;li&gt;引数をとらないコンストラクタを非&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;いくつかの警告を修正&lt;/li&gt;
+&lt;li&gt;その他の詳細については &lt;a href=&#34;http://www.boost.org/libs/unordered/doc/html/unordered/changes.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.63.0リリースノート -- Unitsの説明を修正</title>
@@ -442,212 +779,6 @@
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>メモリマップドファイル -- Merge pull request #112 from Reputeless/patch-1
-</title>
-      <link href="http://boostjp.github.io/tips/memory_mapped_file.html"/>
-      <id>10c9fb8e3f2defce19750e8b52d95ec6420d8d92:tips/memory_mapped_file.md</id>
-      <updated>2016-11-10 00:23:31 +0900
-</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;メモリマップドファイル&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;メモリマップドファイルには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/interprocess.html&#34; target=&#34;_blank&#34;&gt; Boost Interprocess Library&lt;/a&gt; を使用する。&lt;/p&gt;
-&lt;p&gt;Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/date_time.html&#34; target=&#34;_blank&#34;&gt;Boost DateTime Library&lt;/a&gt; を利用している箇所があるため注意すること。&lt;/p&gt;
-&lt;p&gt;またこのページでManaged Memory Segmentsについての記述は基本的に&lt;code&gt;managed_mapped_file&lt;/code&gt;以外のクラス(&lt;code&gt;managed_shared_memory&lt;/code&gt;など)でも同様の動作を行う。&lt;/p&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34; name=&#34;file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;既に存在しているファイルをマッピングするには、&lt;code&gt;boost::interprocess::file_mapping&lt;/code&gt;クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、&lt;code&gt;boost::interprocess::mapped_region&lt;/code&gt;クラスでビューを作成してアクセスする。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;data.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;           &lt;span class=&#34;c1&#34;&gt;// マッピングしたファイルの先頭アドレス&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッピングした領域のサイズ&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;memcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;mapped_region&lt;/code&gt;クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// マッピング領域の開始位置(ファイル先頭から)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 領域のサイズ&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34; name=&#34;file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;managed_mapped_file&lt;/code&gt;クラスの&lt;code&gt;construct()&lt;/code&gt;メンバを使用し、&lt;code&gt;find()&lt;/code&gt;メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;anonymous_instance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34; name=&#34;container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Multi-Index Containers Library&lt;/a&gt;も利用可能である。&lt;/p&gt;
-&lt;p&gt;基本的にはManaged Memory Segmentsクラスから取得できる&lt;code&gt;segment_manager&lt;/code&gt;を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/containers/vector.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/allocators/allocator.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/generate.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/for_each.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allocator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;segment_manager&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyVector&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_segment_manager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;generate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;for_each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi
-</name>
-        <email>faithandbrave@gmail.com
-</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>メモリマップドファイル -- 誤字修正</title>
-      <link href="http://boostjp.github.io/tips/memory_mapped_file.html"/>
-      <id>c1e6082785faa5a663e126d7d4b25eccfacc47c9:tips/memory_mapped_file.md</id>
-      <updated>2016-11-10 00:18:00 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;メモリマップドファイル&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;メモリマップドファイルには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/interprocess.html&#34; target=&#34;_blank&#34;&gt; Boost Interprocess Library&lt;/a&gt; を使用する。&lt;/p&gt;
-&lt;p&gt;Boost.Interprocessは、プロセス間通信をサポートするための各種機能を提供しているライブラリである。ライブラリはビルドを必要としないが、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/date_time.html&#34; target=&#34;_blank&#34;&gt;Boost DateTime Library&lt;/a&gt; を利用している箇所があるため注意すること。&lt;/p&gt;
-&lt;p&gt;またこのページでManaged Memory Segmentsについての記述は基本的に&lt;code&gt;managed_mapped_file&lt;/code&gt;以外のクラス(&lt;code&gt;managed_shared_memory&lt;/code&gt;など)でも同様の動作を行う。&lt;/p&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-mapping&#34; name=&#34;file-mapping&#34;&gt;存在しているファイルからマッピングする&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;既に存在しているファイルをマッピングするには、&lt;code&gt;boost::interprocess::file_mapping&lt;/code&gt;クラスを用いることで単純にマッピングすることができる。しかしこれだけではファイルにアクセスできないため、&lt;code&gt;boost::interprocess::mapped_region&lt;/code&gt;クラスでビューを作成してアクセスする。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;data.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_address&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;           &lt;span class=&#34;c1&#34;&gt;// マッピングしたファイルの先頭アドレス&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッピングした領域のサイズ&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;char&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;memcpy&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dat&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;mapped_region&lt;/code&gt;クラスのコンストラクタ引数でマッピングする領域を指定して、必要な部分のみをビューとして取り出せる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// マッピング領域の開始位置(ファイル先頭から)&lt;/span&gt;
-&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;size_t&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;   &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;128&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 領域のサイズ&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mapped_region&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;map&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;read_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;offset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-&lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;size&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;view&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_size&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#file-as-temporary-buffer&#34; name=&#34;file-as-temporary-buffer&#34;&gt;ファイルをテンポラリバッファとして利用する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;メモリマップドファイルの機能をテンポラリデータ保存のために利用することもできる。Boost.InterprocessにはManaged Memory Segmentsというオブジェクト生成支援関数群が用意されており、ファイルをテンポラリバッファとして利用するのが簡単になる。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;managed_mapped_file&lt;/code&gt;クラスの&lt;code&gt;construct()&lt;/code&gt;メンバを使用し、&lt;code&gt;find()&lt;/code&gt;メンバで検索可能なnamed instanceを生成、unique instanceやanonymous instanceも生成できる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;find&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyData&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;first&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;anonymous_instance&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;BOOST_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;destroy_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/memory_mapped_file.html#container-file-mapping&#34; name=&#34;container-file-mapping&#34;&gt;ファイルをコンテナにマッピングする&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Interprocessには標準ライブラリと同様の使い方が可能なコンテナが用意されており、コンテナをManaged Memory Segmentsを使ってファイル上に直接構築することができる。また、&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multi_index/doc/index.html&#34; target=&#34;_blank&#34;&gt;Boost Multi-Index Containers Library&lt;/a&gt;も利用可能である。&lt;/p&gt;
-&lt;p&gt;基本的にはManaged Memory Segmentsクラスから取得できる&lt;code&gt;segment_manager&lt;/code&gt;を使ってアロケータを構築、そのアロケータを使ったコンテナを生成することでコンテナ並びにコンテナの要素をファイル上に構築できる。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/managed_mapped_file.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/containers/vector.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/interprocess/allocators/allocator.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/generate.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/range/algorithm/for_each.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;interprocess&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;allocator&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;segment_manager&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;allocator_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;file_mapping&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;remove&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;managed_mapped_file&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ipc&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create_only&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;tmp.dat&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4096&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;construct&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;vector_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;MyVector&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mfile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;get_segment_manager&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;resize&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;generate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](){&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;42&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;});&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;for_each&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,[](&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Reputeless</name>
-        <email>reputeless@gmail.com</email>
       </author>
     </entry>
   
