@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
-  <link href="http://boostjp.github.io" />
-  <updated>2016-11-30T18:01:00.294109</updated>
-  <id>86b50285-1549-4fb3-a847-86cbd8948674</id>
+  <link href="https://boostjp.github.io" />
+  <updated>2016-11-30T23:03:02.185355</updated>
+  <id>5bc1cb47-167d-4827-8dd9-6e48a4076680</id>
 
   
     <entry>
       <title>コンセプトの充当化と原型 -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/archive/boost_docs/libs/concept_check/concept_covering.html"/>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/concept_check/concept_covering.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:archive/boost_docs/libs/concept_check/concept_covering.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -44,7 +44,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;ジェネリック・アルゴリズムのテストとして、一般的な複数の入力型に対してインスタンスの生成を行う場合が往々にしてある。 一例として、&lt;code&gt;std::stable_sort()&lt;/code&gt; に対して、イテレータとして組み込みのポインタ型を適用することが考えられる。 これは、アルゴリズムの実行時の振る舞いをテストするには適切であるが、コンセプト充当性の保証には有用ではない。 なぜなら、C++ の組み込み型は特定のコンセプトとー致を見ることは決してなく、たいていの場合、それが提供する機能は何らかのコンセプトが単独で必要とする最小のそれを上回っている。 すなわち、たとえ与えられた型で関数テンプレートがコンパイルできたとしても、そのコンセプトの要求事項は、その関数を充当する実際の要求事項に及ばないことがありうる。 それ故に、一般的な入力型でテストすることに加えて、原型クラスでコンパイルすることは重要である。&lt;/p&gt;
-&lt;p&gt;以下は、記載されている &lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/algorithm/stable_sort.html&#34; target=&#34;_blank&#34;&gt;std::stable_sort()&lt;/a&gt;&lt;/code&gt; の要求事項をチェックするために原型を使用する方法を示す、&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html&#34;&gt;stl_concept_covering.cpp&lt;/a&gt; からの抜粋である。 この場合、&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;CopyConstructible&lt;/code&gt;（コピー・コンストラクト可能）&lt;/a&gt; と &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Assignable&lt;/code&gt;（割り当て可能）&lt;/a&gt; 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、&lt;code&gt;Base&lt;/code&gt; という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。&lt;/p&gt;
+&lt;p&gt;以下は、記載されている &lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/algorithm/stable_sort.html&#34; target=&#34;_blank&#34;&gt;std::stable_sort()&lt;/a&gt;&lt;/code&gt; の要求事項をチェックするために原型を使用する方法を示す、&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/concept_check/stl_concept_covering.cpp.html&#34;&gt;stl_concept_covering.cpp&lt;/a&gt; からの抜粋である。 この場合、&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/CopyConstructible.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;CopyConstructible&lt;/code&gt;（コピー・コンストラクト可能）&lt;/a&gt; と &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Assignable.html&#34; target=&#34;_blank&#34;&gt;&lt;code&gt;Assignable&lt;/code&gt;（割り当て可能）&lt;/a&gt; 要求事項が、SGI STL 文書から無視されているように見える (試しに、その原型を削除してみるとよい) 。 Boost の原型クラスは、階層構造が取れるように設計されている。 この例において、イテレータの値型は３つの原型から構成される。 下記で参照されている原型クラスでは、&lt;code&gt;Base&lt;/code&gt; という名前のテンプレート・パラメータが、階層化された原型を使用可能であることを示している。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
   &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;less_than_comparable_archetype&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; 
       &lt;span class=&#34;n&#34;&gt;sgi_assignable_archetype&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ValueType&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
@@ -54,8 +54,8 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/prog_with_concepts.html&#34;&gt;次へ：「コンセプトを用いたプログラミング」&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;前へ：「コンセプト・チェック用クラスの作成」&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/concept_check/prog_with_concepts.html&#34;&gt;次へ：「コンセプトを用いたプログラミング」&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/concept_check/creating_concepts.html&#34;&gt;前へ：「コンセプト・チェック用クラスの作成」&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr /&gt;
 &lt;p&gt;Copyright © 2000 &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt;(&lt;a href=&#34;mailto:jsiek@osl.iu.edu&#34;&gt;jsiek@osl.iu.edu&lt;/a&gt;) Andrew Lumsdaine(&lt;a href=&#34;mailto:lums@osl.iu.edu&#34;&gt;lums@osl.iu.edu&lt;/a&gt;)&lt;/p&gt;&lt;/div&gt;</content>
@@ -68,7 +68,7 @@
   
     <entry>
       <title>boostjp -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/index.html"/>
+      <link href="https://boostjp.github.io/index.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:index.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -106,7 +106,7 @@
   
     <entry>
       <title>コンパイラ間の差を吸収する -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/config.html"/>
+      <link href="https://boostjp.github.io/tips/config.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/config.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -114,11 +114,11 @@
 &lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;ここでは、コンパイラ間の差を吸収するための方法を挙げる。&lt;/p&gt;
 &lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#support-cpp11&#34; name=&#34;support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#support-cpp11&#34; name=&#34;support-cpp11&#34;&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;以下は可変長テンプレート引数をサポートしているコンパイラならそれを使い、そうでなければ Boost.Preprocessor などでエミュレートする例&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/config.hpp&amp;gt;&lt;/span&gt;
 
@@ -374,7 +374,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#deduced-typename&#34; name=&#34;deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#deduced-typename&#34; name=&#34;deduced-typename&#34;&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
     &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
 &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
@@ -401,7 +401,7 @@
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 &lt;p&gt;&lt;code&gt;BOOST_DEDUCED_TYPENAME&lt;/code&gt; マクロは、普通 &lt;code&gt;typename&lt;/code&gt; になるが、かかる位置での &lt;code&gt;typename&lt;/code&gt; をサポートしていないコンパイラでは空に展開される。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/config.html#nested-template&#34; name=&#34;nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html#nested-template&#34; name=&#34;nested-template&#34;&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;上記の &lt;code&gt;typename&lt;/code&gt; と似たような問題で、次のようなコードがコンパイラによって通ったり通らなかったりする：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
     &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
@@ -449,18 +449,18 @@
   
     <entry>
       <title>動的型 -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/dynamic_type.html"/>
+      <link href="https://boostjp.github.io/tips/dynamic_type.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/dynamic_type.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
         <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;動的型&lt;/h1&gt;
 &lt;div itemprop=&#34;articleBody&#34;&gt;&lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#assign&#34;&gt;あらゆる型の値を代入する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#extract-value&#34;&gt;値を取り出す&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#assign&#34;&gt;あらゆる型の値を代入する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#extract-value&#34;&gt;値を取り出す&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#assign&#34; name=&#34;assign&#34;&gt;あらゆる型の値を代入する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#assign&#34; name=&#34;assign&#34;&gt;あらゆる型の値を代入する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;boost::any&lt;/code&gt;型には、あらゆる型の値を格納することができる。&lt;/p&gt;
 &lt;p&gt;格納されている型のチェックには、&lt;code&gt;boost::any::type()&lt;/code&gt;メンバ関数を使用し、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/typeinfo/type_info.html&#34; target=&#34;_blank&#34;&gt;std::type_info&lt;/a&gt;&lt;/code&gt;型で判定することができる。&lt;/p&gt;
 &lt;p&gt;格納されている値を元の型に変換するには、&lt;code&gt;boost::any_cast()&lt;/code&gt;関数を使用する。&lt;/p&gt;
@@ -487,7 +487,7 @@
 &lt;p&gt;実行結果：&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;Hello
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#extract-value&#34; name=&#34;extract-value&#34;&gt;値を取り出す&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#extract-value&#34; name=&#34;extract-value&#34;&gt;値を取り出す&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;boost::any&lt;/code&gt;に代入した値を取り出すには、&lt;code&gt;boost::any_cast()&lt;/code&gt;関数を使用する。&lt;/p&gt;
 &lt;p&gt;この関数の使用方法は、コピーして取り出す、値を参照する、値へのポインタを取得する、の3つがある。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;方法1. 値をコピーして取り出す。&lt;/strong&gt;&lt;/p&gt;
@@ -513,7 +513,7 @@
 &lt;/p&gt;
 &lt;p&gt;この例のように、テンプレート引数に型&lt;code&gt;T&lt;/code&gt;を指定し、引数として&lt;code&gt;boost::any&lt;/code&gt;オブジェクトへのポインタを渡すことで、&lt;code&gt;boost::any&lt;/code&gt;型に格納されている型Tのオブジェクトへのポインタを取得できる。&lt;/p&gt;
 &lt;p&gt;型&lt;code&gt;T&lt;/code&gt;のオブジェクトが格納されていない場合には、ヌルポインタが返される。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/dynamic_type.html#store-to-container&#34; name=&#34;store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html#store-to-container&#34; name=&#34;store-to-container&#34;&gt;あらゆる型の値をコンテナに入れる&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;std::vector&amp;lt;boost::any&amp;gt;&lt;/code&gt;のようにすれば、あらゆる型の値をコンテナに入れることができる。&lt;/p&gt;
 &lt;p&gt;このようなコンテナは、ヘテロなコンテナ(heterogeneous containers)と呼ばれる。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -557,7 +557,7 @@
   
     <entry>
       <title>多倍長浮動小数点数 -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/multiprec-float.html"/>
+      <link href="https://boostjp.github.io/tips/multiprec-float.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/multiprec-float.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -565,14 +565,14 @@
 &lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;多倍長浮動小数点数を使用するには、&lt;a href=&#34;http://www.boost.org/libs/multiprecision/&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision Library&lt;/a&gt;を使用する。&lt;/p&gt;
 &lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長浮動小数点数の、基本的な使い方を示す。&lt;/p&gt;
 &lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;boost::multiprecision::cpp_dec_float_100&lt;/a&gt;&lt;/code&gt;クラス型を使用して、2の平方根を求めるプログラムである。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -673,7 +673,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#variation&#34; name=&#34;variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#variation&#34; name=&#34;variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;以下に、Boost.Multiprecisionから提供される多倍長整数の種類を示す。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision独自実装の多倍長浮動小数点数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
@@ -828,7 +828,7 @@
 &lt;li&gt;GMPとMPFRのグローバル設定を変更しない&lt;/li&gt;
 &lt;li&gt;0で割ると&lt;code&gt;infinity&lt;/code&gt;になる&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;文字列から多倍長浮動小数点数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。
 文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;std::string&lt;/a&gt;&lt;/code&gt;を受け取ることができる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
@@ -871,7 +871,7 @@
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;3.14
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;p&gt;変換できない文字列が渡された場合は、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;std::runtime_error&lt;/a&gt;&lt;/code&gt;例外が送出される。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長浮動小数点数の文字列表現を返す。&lt;/p&gt;
 &lt;p&gt;デフォルトでは固定小数点表記の文字列が返されるが、以下の引数を設定することで、精度と表記、その他出力方法を選択できる。&lt;/p&gt;
 &lt;ul&gt;
@@ -910,7 +910,7 @@
 3.1400000000000001243449787580175325274467468261718750000000000000000000000
 3.1400000000000001243449787580175325274467468261718750000000000000000000000e+00
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34; name=&#34;convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34; name=&#34;convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長浮動小数点数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小さい精度から大きい精度への変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;float&lt;/code&gt;や&lt;code&gt;double&lt;/code&gt;型といった組み込みの浮動小数点数型から、&lt;code&gt;cpp_dec_float_50&lt;/code&gt;や&lt;code&gt;cpp_dec_float_100&lt;/code&gt;といった多倍長浮動小数点数への暗黙変換が可能である。&lt;/p&gt;
@@ -946,7 +946,7 @@
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-float.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長浮動小数点数でも使用できる。&lt;/p&gt;
 &lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
@@ -1062,7 +1062,7 @@
   
     <entry>
       <title>多倍長整数 -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/multiprec-int.html"/>
+      <link href="https://boostjp.github.io/tips/multiprec-int.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/multiprec-int.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -1070,17 +1070,17 @@
 &lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;多倍長整数を使用するには、&lt;a href=&#34;http://www.boost.org/libs/multiprecision/&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision Library&lt;/a&gt;を使用する。&lt;/p&gt;
 &lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長整数の、基本的な使い方を示す。&lt;/p&gt;
 &lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;boost::multiprecision::cpp_int&lt;/a&gt;&lt;/code&gt;クラスを使用して、100の階乗を求めるプログラムである。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -1202,7 +1202,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#variation&#34; name=&#34;variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#variation&#34; name=&#34;variation&#34;&gt;多倍長整数の種類&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;以下に、Boost.Multiprecisionから提供される多倍長整数の種類を示す。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/ints/cpp_int.html&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision独自実装の多倍長整数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_int.hpp&amp;gt;&lt;/span&gt;
@@ -1401,7 +1401,7 @@
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;文字列から多倍長整数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
 &lt;p&gt;文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;std::string&lt;/a&gt;&lt;/code&gt;を受け取ることができる。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
@@ -1444,7 +1444,7 @@
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;123
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 &lt;p&gt;変換できない文字列が渡された場合は、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;std::runtime_error&lt;/a&gt;&lt;/code&gt;例外が送出される。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長整数の文字列表現を返す。&lt;/p&gt;
 &lt;p&gt;デフォルトでは10進数表現の文字列が返されるが、以下の引数を設定することで、精度と基数、その他出力方法を選択できる。&lt;/p&gt;
 &lt;ul&gt;
@@ -1483,7 +1483,7 @@
 173
 7B
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34; name=&#34;convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#convert-integer&#34; name=&#34;convert-integer&#34;&gt;異なる大きさの整数間で型変換する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Boost.Multiprecisionの多倍長整数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;小さい整数型から大きい整数型への変換&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;int&lt;/code&gt;や&lt;code&gt;long&lt;/code&gt;型といった組み込みの整数型から、&lt;code&gt;int128_t&lt;/code&gt;や&lt;code&gt;cpp_int&lt;/code&gt;といった多倍長整数への暗黙変換が可能である。&lt;/p&gt;
@@ -1519,7 +1519,7 @@
 &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#min&#34; name=&#34;min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#min&#34; name=&#34;min&#34;&gt;最小値を取得する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;多倍長整数の最小値を取得するには、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;std::numeric_limits&lt;/a&gt;&lt;/code&gt;クラスの&lt;code&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/min.html&#34; target=&#34;_blank&#34;&gt;min()&lt;/a&gt;&lt;/code&gt;静的メンバ関数を使用する。&lt;/p&gt;
 &lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最小値は取得できなかったものとして、0を返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -1541,7 +1541,7 @@
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;0
 -340282366920938463463374607431768211455
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#max&#34; name=&#34;max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#max&#34; name=&#34;max&#34;&gt;最大値を取得する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;多倍長整数の最大値を取得するには、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;std::numeric_limits&lt;/a&gt;&lt;/code&gt;クラスの&lt;code&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/max.html&#34; target=&#34;_blank&#34;&gt;max()&lt;/a&gt;&lt;/code&gt;静的メンバ関数を使用する。&lt;/p&gt;
 &lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、最大値は取得できなかったものとして、0を返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -1563,7 +1563,7 @@
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;0
 340282366920938463463374607431768211455
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34; name=&#34;is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#is-bounded&#34; name=&#34;is-bounded&#34;&gt;有限かどうかを判定する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;多倍長整数型の表す値が有限かどうかを判定するには、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/limits/numeric_limits.html&#34; target=&#34;_blank&#34;&gt;std::numeric_limits&lt;/a&gt;&lt;/code&gt;クラスの&lt;code&gt;&lt;a href=&#34;http://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;is_bounded&lt;/a&gt;&lt;/code&gt;定数を取得する。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;is_bounded&lt;/a&gt;&lt;/code&gt;は&lt;code&gt;bool&lt;/code&gt;型で定義され、有限であれば&lt;code&gt;true&lt;/code&gt;、無限であれば&lt;code&gt;false&lt;/code&gt;が設定される。&lt;/p&gt;
 &lt;p&gt;任意精度整数である&lt;code&gt;cpp_int&lt;/code&gt;は無限の桁数を持つため、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/limits/numeric_limits/is_bounded.html&#34; target=&#34;_blank&#34;&gt;is_bounded&lt;/a&gt;&lt;/code&gt;は&lt;code&gt;false&lt;/code&gt;となる。&lt;/p&gt;
@@ -1588,7 +1588,7 @@
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;false
 true
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/multiprec-int.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長整数でも使用できる。&lt;/p&gt;
 &lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
@@ -1757,7 +1757,7 @@ true
   
     <entry>
       <title>優先順位を付けて並べ替える -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/priority_sort.html"/>
+      <link href="https://boostjp.github.io/tips/priority_sort.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/priority_sort.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -1832,7 +1832,7 @@ text, b.txt
   
     <entry>
       <title>ユーザー定義型を扱える型安全な共用体 -- リポジトリ内のcpprefjp/boostjpへのリンクをhttpからhttpsに修正 #117</title>
-      <link href="http://boostjp.github.io/tips/variant.html"/>
+      <link href="https://boostjp.github.io/tips/variant.html"/>
       <id>19fac8e963c1451f5e046d594ca32f7ce7fcce41:tips/variant.md</id>
       <updated>2016-11-30 18:00:28 +0900</updated>
       
@@ -1840,13 +1840,13 @@ text, b.txt
 &lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;ユーザー定義型を共用体で扱うには、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/variant.html&#34; target=&#34;_blank&#34;&gt;Boost Variant Library&lt;/a&gt;を使用する。&lt;/p&gt;
 &lt;h2&gt;インデックス&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#which-type&#34;&gt;どの型が格納されているかを判定する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#get-value&#34;&gt;格納されている値を取り出す&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#clear&#34;&gt;値をクリアする&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#recursive-variant&#34;&gt;variantを再帰的にする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#which-type&#34;&gt;どの型が格納されているかを判定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#get-value&#34;&gt;格納されている値を取り出す&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#clear&#34;&gt;値をクリアする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#recursive-variant&#34;&gt;variantを再帰的にする&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;まず、Boost.Variantの基本的な使い方を以下に示す：&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
 &lt;span class=&#34;cp&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
@@ -1883,7 +1883,7 @@ hello
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;boost::variant&lt;/a&gt;&lt;/code&gt;クラステンプレートが、型安全に抽象化された共用体である。そのテンプレート引数として、格納されうる型を列挙する。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;boost::variant&lt;/a&gt;&lt;/code&gt;クラスは、テンプレートパラメータで指定された型のオブジェクトを、コピー／ムーブコンストラクタおよび代入演算子で代入できる。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/apply_visitor.html&#34; target=&#34;_blank&#34;&gt;boost::apply_visitor()&lt;/a&gt;&lt;/code&gt;関数に指定する関数オブジェクトは、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/static_visitor.html&#34; target=&#34;_blank&#34;&gt;boost::static_visitor&lt;/a&gt;&lt;/code&gt;クラスから派生したクラスであり、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;boost::variant&lt;/a&gt;&lt;/code&gt;オブジェクトにどの型のオブジェクトが格納されているのかによって、関数呼び出し演算子を適切にオーバーロードしてくれる。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#which-type&#34; name=&#34;which-type&#34;&gt;どの型が格納されているかを判定する&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#which-type&#34; name=&#34;which-type&#34;&gt;どの型が格納されているかを判定する&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;boost::variant&lt;/a&gt;&lt;/code&gt;オブジェクトにどの型が格納されているか判定するには&lt;code&gt;which()&lt;/code&gt;メンバ関数、もしくは&lt;code&gt;type()&lt;/code&gt;メンバ関数を使用する。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;which()&lt;/code&gt;メンバ関数は、格納されている型の、&lt;code&gt;0&lt;/code&gt;から始まるインデックスを返す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
@@ -1935,7 +1935,7 @@ hello
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;int
 double
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#get-value&#34; name=&#34;get-value&#34;&gt;格納されている値を取り出す&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#get-value&#34; name=&#34;get-value&#34;&gt;格納されている値を取り出す&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/variant.html&#34; target=&#34;_blank&#34;&gt;boost::variant&lt;/a&gt;&lt;/code&gt;オブジェクトに格納されている値を取り出すには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_52_0/doc/html/boost/get_id1950197.html&#34; target=&#34;_blank&#34;&gt;boost::get()&lt;/a&gt;&lt;/code&gt;非メンバ関数を使用する。
 この関数には参照版とポインタ版の2種類が用意されている。それぞれの特徴は以下の通り：&lt;/p&gt;
 &lt;ul&gt;
@@ -1974,7 +1974,7 @@ double
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;1
 1
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#clear&#34; name=&#34;clear&#34;&gt;値をクリアする&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#clear&#34; name=&#34;clear&#34;&gt;値をクリアする&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;Boost.Variantには&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/variant/design.html#variant.design.never-empty&#34; target=&#34;_blank&#34;&gt;決して空にはならない保証&lt;/a&gt;という考え方があるため、他の値を入れることはできてもクリアはできない。&lt;code&gt;clear()&lt;/code&gt;関数は用意されておらず、&lt;code&gt;empty()&lt;/code&gt;メンバ関数は常に&lt;code&gt;false&lt;/code&gt;を返す。&lt;/p&gt;
 &lt;p&gt;どうしてもクリアしたい場合は、&lt;code&gt;boost::blank&lt;/code&gt;という型を&lt;code&gt;variant&lt;/code&gt;に格納できるように指定する。これは単なる中身が空のクラスである。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;which()&lt;/code&gt;メンバ関数や&lt;code&gt;type()&lt;/code&gt;メンバ関数を使用して、&lt;code&gt;boost::blank&lt;/code&gt;オブジェクトが格納されているかどうかで、空かどうかを判定する。&lt;/p&gt;
@@ -2002,7 +2002,7 @@ double
 &lt;p&gt;出力：&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;blank
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/tips/variant.html#recursive-variant&#34; name=&#34;recursive-variant&#34;&gt;variantを再帰的にする&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html#recursive-variant&#34; name=&#34;recursive-variant&#34;&gt;variantを再帰的にする&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;boost::variant に含める型リストに boost::variant で定義したい型それ自身も含めたい場合には &lt;code&gt;boost::variant&amp;lt;...&amp;gt;&lt;/code&gt; を &lt;code&gt;boost::make_recursive_variant&amp;lt;...&amp;gt;::type&lt;/code&gt; に替えて、自身の型に相当する型引数には &lt;code&gt;boost::recursive_variant_&lt;/code&gt; を渡す事で、&lt;code&gt;boost::variant&lt;/code&gt; によって定義される型にそれ自身の型を再帰的に含む型を生成できる。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;boost::make_recursive&lt;/code&gt; を用いた再帰的な &lt;code&gt;boost::variant&lt;/code&gt; 型の定義による &lt;code&gt;float double long double bool&lt;/code&gt; を末端の値とし、 それらの &lt;code&gt;std::vector&lt;/code&gt; と &lt;code&gt;std::unordered_map&lt;/code&gt; によるコンテナーも再帰的に定義した型と、 &lt;code&gt;boost::apply_visitor&lt;/code&gt; による JSON 風の出力を行う例を示す。&lt;/p&gt;
 &lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/variant.hpp&amp;gt;&lt;/span&gt;
@@ -2139,7 +2139,7 @@ double
   
     <entry>
       <title>boostjp -- httpsのページからhttpで画像データを参照しているとmixed contentとして「安全でない」と見なされてしまう問題への対処</title>
-      <link href="http://boostjp.github.io/index.html"/>
+      <link href="https://boostjp.github.io/index.html"/>
       <id>d2280487b3840ee1a3c99e997ba898e991c403a5:index.md</id>
       <updated>2016-11-30 15:21:33 +0900</updated>
       
@@ -2175,7 +2175,7 @@ double
   
     <entry>
       <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : Optionalの追加リリースノートに対応 #116</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <link href="https://boostjp.github.io/document/version/1_63_0.html"/>
       <id>170c4cbeba89766e79b5b4c024fed8130a84ae10:document/version/1_63_0.md</id>
       <updated>2016-11-25 12:33:30 +0900</updated>
       
@@ -2195,20 +2195,20 @@ double
 &lt;/ul&gt;
 &lt;h2&gt;更新ライブラリ&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
 &lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
@@ -2216,13 +2216,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;unbounded_channel&lt;/code&gt;と&lt;code&gt;bounded_channel&lt;/code&gt;を非推奨化&lt;/li&gt;
 &lt;li&gt;新たなクラス&lt;code&gt;buffered_channel&lt;/code&gt;と&lt;code&gt;unbuffered_channel&lt;/code&gt;を追加&lt;/li&gt;
 &lt;li&gt;パフォーマンスを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;fusion::vector&lt;/code&gt;のバギーなコンストラクタを修正 (Lee Clagettに感謝)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;BOOST_FUSION_ADAPT*&lt;/code&gt;と&lt;code&gt;BOOST_FUISON_DEFINE*&lt;/code&gt;は空の構造体に適用できるようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6592&#34; target=&#34;_blank&#34;&gt;#6592&lt;/a&gt;)&lt;/li&gt;
@@ -2230,11 +2230,11 @@ double
 &lt;li&gt;&lt;code&gt;std::array&lt;/code&gt;のアダプタを追加 (Mateusz Łoskotに感謝) (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8241&#34; target=&#34;_blank&#34;&gt;#8241&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;一時オブジェクトを返す警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;いくつかの警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;一般的な変更&lt;/strong&gt;&lt;ul&gt;
 &lt;li&gt;以前のリリースで非推奨とした&lt;code&gt;type_info_wrapper&lt;/code&gt;を削除&lt;/li&gt;
@@ -2260,7 +2260,7 @@ double
 &lt;/li&gt;
 &lt;li&gt;その他の詳細な変更については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照のこと&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
 &lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
@@ -2268,7 +2268,7 @@ double
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;新しく2つのin-placeコンストラクタを追加。これらは&lt;code&gt;emplace()&lt;/code&gt;関数と同様の動作をする。以下のひとつめのコンストラクタは、値を含んだ状態(noneじゃない状態)でオブジェクトを構築する。ふたつめのコンストラクタは、&lt;code&gt;bool&lt;/code&gt;の条件が&lt;code&gt;true&lt;/code&gt;の場合にのみ、値を含んだ状態をオブジェクトを構築する：&lt;/li&gt;
 &lt;/ul&gt;
@@ -2284,7 +2284,7 @@ double
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12203&#34; target=&#34;_blank&#34;&gt;#12203&lt;/a&gt; &lt;code&gt;optional&amp;lt;optional&amp;lt;T&amp;gt;&amp;amp;&amp;gt;&lt;/code&gt;の初期化を修正&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12563&#34; target=&#34;_blank&#34;&gt;#12563&lt;/a&gt; &lt;code&gt;optional&lt;/code&gt;のコンストラクタをSFINAEフレンドリーにした。これにより、&lt;code&gt;std::tuple&lt;/code&gt;との相互作用が修正される&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;多くのモジュールがC++11の可変長テンプレートをサポートした&lt;/li&gt;
 &lt;li&gt;返り値の型の推論に失敗していたのを修正&lt;/li&gt;
@@ -2292,13 +2292,13 @@ double
 &lt;li&gt;二引数の数学関数で引数が足りなかったエラーを修正&lt;/li&gt;
 &lt;li&gt;古いコンパイラ用の回避策を追加&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
 &lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
 &lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
@@ -2306,13 +2306,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;検査の警告を修正&lt;/li&gt;
 &lt;li&gt;物理化学(physico-chemical)の定数を更新。2014年CODATA推奨値にした&lt;/li&gt;
 &lt;li&gt;biotを正しく10アンペアとして定義&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
@@ -2399,7 +2399,7 @@ double
   
     <entry>
       <title>Boost 1.63.0リリースノート -- 1.63リリースノート: Logを更新, update #104</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <link href="https://boostjp.github.io/document/version/1_63_0.html"/>
       <id>5e283926623e69a94b373759a4044e408cb0ba56:document/version/1_63_0.md</id>
       <updated>2016-11-22 09:35:30 +0900</updated>
       
@@ -2419,20 +2419,20 @@ double
 &lt;/ul&gt;
 &lt;h2&gt;更新ライブラリ&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
 &lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
@@ -2440,13 +2440,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;unbounded_channel&lt;/code&gt;と&lt;code&gt;bounded_channel&lt;/code&gt;を非推奨化&lt;/li&gt;
 &lt;li&gt;新たなクラス&lt;code&gt;buffered_channel&lt;/code&gt;と&lt;code&gt;unbuffered_channel&lt;/code&gt;を追加&lt;/li&gt;
 &lt;li&gt;パフォーマンスを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;fusion::vector&lt;/code&gt;のバギーなコンストラクタを修正 (Lee Clagettに感謝)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;BOOST_FUSION_ADAPT*&lt;/code&gt;と&lt;code&gt;BOOST_FUISON_DEFINE*&lt;/code&gt;は空の構造体に適用できるようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6592&#34; target=&#34;_blank&#34;&gt;#6592&lt;/a&gt;)&lt;/li&gt;
@@ -2454,11 +2454,11 @@ double
 &lt;li&gt;&lt;code&gt;std::array&lt;/code&gt;のアダプタを追加 (Mateusz Łoskotに感謝) (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8241&#34; target=&#34;_blank&#34;&gt;#8241&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;一時オブジェクトを返す警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;いくつかの警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;一般的な変更&lt;/strong&gt;&lt;ul&gt;
 &lt;li&gt;以前のリリースで非推奨とした&lt;code&gt;type_info_wrapper&lt;/code&gt;を削除&lt;/li&gt;
@@ -2484,7 +2484,7 @@ double
 &lt;/li&gt;
 &lt;li&gt;その他の詳細な変更については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照のこと&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
 &lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
@@ -2492,7 +2492,7 @@ double
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;新しく2つのin-placeコンストラクタを追加。これらは&lt;code&gt;emplace()&lt;/code&gt;関数と同様の動作をする。以下のひとつめのコンストラクタは、値を含んだ状態(noneじゃない状態)でオブジェクトを構築する。ふたつめのコンストラクタは、&lt;code&gt;bool&lt;/code&gt;の条件が&lt;code&gt;true&lt;/code&gt;の場合にのみ、値を含んだ状態をオブジェクトを構築する：&lt;/li&gt;
 &lt;/ul&gt;
@@ -2506,7 +2506,7 @@ double
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12203&#34; target=&#34;_blank&#34;&gt;#12203&lt;/a&gt; &lt;code&gt;optional&amp;lt;optional&amp;lt;T&amp;gt;&amp;amp;&amp;gt;&lt;/code&gt;の初期化を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;多くのモジュールがC++11の可変長テンプレートをサポートした&lt;/li&gt;
 &lt;li&gt;返り値の型の推論に失敗していたのを修正&lt;/li&gt;
@@ -2514,13 +2514,13 @@ double
 &lt;li&gt;二引数の数学関数で引数が足りなかったエラーを修正&lt;/li&gt;
 &lt;li&gt;古いコンパイラ用の回避策を追加&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
 &lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
 &lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
@@ -2528,13 +2528,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;検査の警告を修正&lt;/li&gt;
 &lt;li&gt;物理化学(physico-chemical)の定数を更新。2014年CODATA推奨値にした&lt;/li&gt;
 &lt;li&gt;biotを正しく10アンペアとして定義&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
@@ -2621,7 +2621,7 @@ double
   
     <entry>
       <title>Boost 1.63.0リリースノート -- Boost 1.63.0リリースノート : Optionalを追加 (close #116)</title>
-      <link href="http://boostjp.github.io/document/version/1_63_0.html"/>
+      <link href="https://boostjp.github.io/document/version/1_63_0.html"/>
       <id>985df50d8bc3591e0f2d6f5838bdb43ced5b287e:document/version/1_63_0.md</id>
       <updated>2016-11-21 12:47:43 +0900</updated>
       
@@ -2641,20 +2641,20 @@ double
 &lt;/ul&gt;
 &lt;h2&gt;更新ライブラリ&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34;&gt;Hash&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34;&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34;&gt;Units&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;C++17に準拠した静的な定数メンバ変数、&lt;code&gt;atomic&amp;lt;T&amp;gt;::is_always_lock_free&lt;/code&gt;を追加&lt;ul&gt;
 &lt;li&gt;この定数はその特殊化が常にロックフリーなアトミックで実装されているかどうかを示す&lt;/li&gt;
@@ -2662,13 +2662,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;x86でのOracle Studioのサポートを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;unbounded_channel&lt;/code&gt;と&lt;code&gt;bounded_channel&lt;/code&gt;を非推奨化&lt;/li&gt;
 &lt;li&gt;新たなクラス&lt;code&gt;buffered_channel&lt;/code&gt;と&lt;code&gt;unbuffered_channel&lt;/code&gt;を追加&lt;/li&gt;
 &lt;li&gt;パフォーマンスを改善&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;fusion::vector&lt;/code&gt;のバギーなコンストラクタを修正 (Lee Clagettに感謝)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;BOOST_FUSION_ADAPT*&lt;/code&gt;と&lt;code&gt;BOOST_FUISON_DEFINE*&lt;/code&gt;は空の構造体に適用できるようになった (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/6592&#34; target=&#34;_blank&#34;&gt;#6592&lt;/a&gt;)&lt;/li&gt;
@@ -2676,11 +2676,11 @@ double
 &lt;li&gt;&lt;code&gt;std::array&lt;/code&gt;のアダプタを追加 (Mateusz Łoskotに感謝) (&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/8241&#34; target=&#34;_blank&#34;&gt;#8241&lt;/a&gt;)&lt;/li&gt;
 &lt;li&gt;一時オブジェクトを返す警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#hash&#34; name=&#34;hash&#34;&gt;Hash&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;いくつかの警告を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;一般的な変更&lt;/strong&gt;&lt;ul&gt;
 &lt;li&gt;以前のリリースで非推奨とした&lt;code&gt;type_info_wrapper&lt;/code&gt;を削除&lt;/li&gt;
@@ -2705,7 +2705,7 @@ double
 &lt;/li&gt;
 &lt;li&gt;その他の詳細な変更については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照のこと&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#metaparse&#34; name=&#34;metaparse&#34;&gt;Metaparse&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;BOOST_METAPARSE_STRING&lt;/code&gt;の実装を改善&lt;ul&gt;
 &lt;li&gt;文字列長の最大を2048に増やした (Boostヘッダを生成するスクリプトで再生成した)&lt;/li&gt;
@@ -2713,7 +2713,7 @@ double
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;新しく2つのin-placeコンストラクタを追加。これらは&lt;code&gt;emplace()&lt;/code&gt;関数と同様の動作をする。以下のひとつめのコンストラクタは、値を含んだ状態(noneじゃない状態)でオブジェクトを構築する。ふたつめのコンストラクタは、&lt;code&gt;bool&lt;/code&gt;の条件が&lt;code&gt;true&lt;/code&gt;の場合にのみ、値を含んだ状態をオブジェクトを構築する：&lt;/li&gt;
 &lt;/ul&gt;
@@ -2727,7 +2727,7 @@ double
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12203&#34; target=&#34;_blank&#34;&gt;#12203&lt;/a&gt; &lt;code&gt;optional&amp;lt;optional&amp;lt;T&amp;gt;&amp;amp;&amp;gt;&lt;/code&gt;の初期化を修正&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#phoenix&#34; name=&#34;phoenix&#34;&gt;Phoenix&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;多くのモジュールがC++11の可変長テンプレートをサポートした&lt;/li&gt;
 &lt;li&gt;返り値の型の推論に失敗していたのを修正&lt;/li&gt;
@@ -2735,13 +2735,13 @@ double
 &lt;li&gt;二引数の数学関数で引数が足りなかったエラーを修正&lt;/li&gt;
 &lt;li&gt;古いコンパイラ用の回避策を追加&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#python&#34; name=&#34;python&#34;&gt;Python&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;基本的なC++11の機能として、&lt;code&gt;std::shared_ptr&lt;/code&gt;と&lt;code&gt;std::unique_ptr&lt;/code&gt;のサポートを追加&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;http://www.numpy.org/&#34; target=&#34;_blank&#34;&gt;NumPy&lt;/a&gt;をラップする拡張APIを組み込んだ&lt;/li&gt;
 &lt;li&gt;廃止済みのいくつかの機能を削除した&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#type-index&#34; name=&#34;type-index&#34;&gt;TypeIndex&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;dynamic_cast&lt;/code&gt;のエミュレーションを行う&lt;code&gt;runtime_cast&lt;/code&gt;を追加(実装したChris Gloverに感謝)&lt;ul&gt;
 &lt;li&gt;詳細については&lt;a href=&#34;http://www.boost.org/doc/libs/1_63_0/doc/html/boost_typeindex_header_reference.html#header.boost.type_index.runtime_cast_hpp&#34; target=&#34;_blank&#34;&gt;runtime_cast reference&lt;/a&gt;を参照のこと&lt;/li&gt;
@@ -2749,13 +2749,13 @@ double
 &lt;/li&gt;
 &lt;li&gt;CTTIの内部実装を&lt;code&gt;std::size_t&lt;/code&gt;から&lt;code&gt;unsigned int&lt;/code&gt;に変更することで、よりプラットフォーム非依存にした&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#units&#34; name=&#34;units&#34;&gt;Units&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;検査の警告を修正&lt;/li&gt;
 &lt;li&gt;物理化学(physico-chemical)の定数を更新。2014年CODATA推奨値にした&lt;/li&gt;
 &lt;li&gt;biotを正しく10アンペアとして定義&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;http://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html#unordered&#34; name=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;代入時の例外安全性の問題を修正&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12459&#34; target=&#34;_blank&#34;&gt;#12459&lt;/a&gt; &lt;code&gt;std::allocator_traits&lt;/code&gt;が使用可能なときには使用するようにし、現代的なrebindスタイルをサポートした&lt;/li&gt;
