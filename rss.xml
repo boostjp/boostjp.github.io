@@ -2,9 +2,226 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2017-03-11T15:31:42.664692</updated>
-  <id>3c6ff3cc-4276-4a43-8ee4-6612046b8b56</id>
+  <updated>2017-03-11T16:09:31.240971</updated>
+  <id>9a35c688-fed7-4f1c-91d3-64008c094565</id>
 
+  
+    <entry>
+      <title>Boost 1.64.0リリースノート -- 1.64.0リリースノート: TypeTraits追加, close #142</title>
+      <link href="https://boostjp.github.io/document/version/1_64_0.html"/>
+      <id>66ca9b8edc3371bbb95cb2df1ffd0b5322ecef24:document/version/1_64_0.md</id>
+      <updated>2017-03-11 16:09:14 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.64.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_64_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_64_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#type_traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34; name=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C++11 constexpr&lt;/code&gt;を実装したコンパイラにおいて&lt;code&gt;constexpr&lt;/code&gt;修飾された&lt;code&gt;addressof&lt;/code&gt;を実装した。
+  サポートされない場合には&lt;code&gt;BOOST_CORE_NO_CONSTEXPR_ADDRESSOF&lt;/code&gt;マクロが定義される&lt;/li&gt;
+&lt;li&gt;コンテナ要素をテストするための&lt;code&gt;BOOST_TEST_ALL_EQ&lt;/code&gt;マクロと&lt;code&gt;BOOST_TEST_ALL_WITH&lt;/code&gt;マクロを&lt;code&gt;lightweight_test.hpp&lt;/code&gt;に追加した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#type_traits&#34; name=&#34;type_traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;新しい型特性、&lt;code&gt;make_void&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;訳者註: これはC++17で実装される&lt;code&gt;std::void_t&lt;/code&gt;に相当し、テンプレートエイリアスが実装されたコンパイラでは&lt;code&gt;boost::void_t&lt;/code&gt;も提供される。
+  &lt;code&gt;boost::make_void&lt;/code&gt;は可変長テンプレートをサポートしないコンパイラでも提供されるが、その場合は5要素を上限とする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.64.0リリースノート -- リンク修正</title>
+      <link href="https://boostjp.github.io/document/version/1_64_0.html"/>
+      <id>99dcbeffed76097e5382a555e76feb9cec866bd6:document/version/1_64_0.md</id>
+      <updated>2017-03-11 15:39:58 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.64.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_64_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_64_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34; name=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C++11 constexpr&lt;/code&gt;を実装したコンパイラにおいて&lt;code&gt;constexpr&lt;/code&gt;修飾された&lt;code&gt;addressof&lt;/code&gt;を実装した。
+  サポートされない場合には&lt;code&gt;BOOST_CORE_NO_CONSTEXPR_ADDRESSOF&lt;/code&gt;マクロが定義される&lt;/li&gt;
+&lt;li&gt;コンテナ要素をテストするための&lt;code&gt;BOOST_TEST_ALL_EQ&lt;/code&gt;マクロと&lt;code&gt;BOOST_TEST_ALL_WITH&lt;/code&gt;マクロを&lt;code&gt;lightweight_test.hpp&lt;/code&gt;に追加した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Kohei Takahashi</name>
+        <email>flast@flast.jp</email>
+      </author>
+    </entry>
   
     <entry>
       <title>リリースノート -- リンク張り忘れ</title>
@@ -244,433 +461,6 @@
       <author>
         <name>Kohei Takahashi</name>
         <email>flast@flast.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boostを使用しているプロジェクト -- Boostを使用しているプロジェクトのページにNghttp2を追加</title>
-      <link href="https://boostjp.github.io/used_project.html"/>
-      <id>9753066e4bd320ffc0a8ce422535112816c63ee0:used_project.md</id>
-      <updated>2017-01-30 00:27:04 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boostを使用しているプロジェクト&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;見つけたら書いていってください。&lt;/p&gt;
-&lt;p&gt;Boostのどのライブラリを使用しているかも書くとさらにGood！Boostを使用したコードの参考にしてください。&lt;/p&gt;
-&lt;h2&gt;公式情報&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/uses_shrink.html&#34; target=&#34;_blank&#34;&gt;商用製品&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/uses_open.html&#34; target=&#34;_blank&#34;&gt;オープンソースプロジェクト&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/users/uses_inhouse.html&#34; target=&#34;_blank&#34;&gt;会社&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://think-async.com/Asio/WhoIsUsingAsio&#34; target=&#34;_blank&#34;&gt;Boost.Asioを使用しているプロジェクト&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://trac.osgeo.org/ggl/wiki/WhoUsesGGL&#34; target=&#34;_blank&#34;&gt;Boost.Geometry(旧名GGL)を使用しているプロジェクト&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/libs/graph/doc/users.html&#34; target=&#34;_blank&#34;&gt;Boost.Graphを使用しているプロジェクト&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;boostjp&lt;/h2&gt;
-&lt;h3&gt;オープンソースライブラリ&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.mongodb.org/&#34; target=&#34;_blank&#34;&gt;MongoDB&lt;/a&gt; [&lt;a href=&#34;https://github.com/mongodb/mongo&#34; target=&#34;_blank&#34;&gt;sourcecode&lt;/a&gt;]
-データベースライブラリ。
-Boost.Any, Boost.Asio, Boost.Bind, Boost.Filesystem, Boost.Function, Boost.ProgramOptions, Boost.SmartPtr, Boost.Spirit, Boost.Thread, Boost.Tuple, Boost.Utilityなどを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://libcinder.org/&#34; target=&#34;_blank&#34;&gt;Cinder&lt;/a&gt;
-アーティスティック系ライブラリ。
-Boost.SmartPtr, Boost.Threadなどを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.vrac.iastate.edu/%7Edkabala/OpenSGToolbox/&#34; target=&#34;_blank&#34;&gt;OpenSGToolbox&lt;/a&gt; [&lt;a href=&#34;https://github.com/djkabala/OpenSGToolbox&#34; target=&#34;_blank&#34;&gt;sourcecode&lt;/a&gt;]
-アーティスティック系ライブラリであるOpenSGの拡張ライブラリ。UI, FieldContainerEditor, Lua, ParticleSystem, ParticleTrail, 物理演算, サウンド, TextDom, ビデオ, Octree, AStarなどの機能がある。
-Boost.Any, Boost.Assign, Boost.Bind, Boost.Filesystem, Boost.Format, Boost.LexicalCast, Boost.Random, Boost.Signals2, Boost.SmartPtr, Boost.StringAlgo, Boost.Xpressive, Boost.Functionなどを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.webtoolkit.eu/wt/&#34; target=&#34;_blank&#34;&gt;Wt&lt;/a&gt;
-Web アプリケーションフレームワーク。Boost.Any, Boost.Array, Boost.Asio, Boost.Bind, Boost.DateTime, Boost.Filesystem, Boost.Function, Boost.Intrusive, Boost.Lambda, Boost.LexicalCast, Boost.Noncopyable, Boost.Optional, Boost.Pool, Boost.ProgramOptions, Boost.Regex, Boost.Ref, Boost.Range, Boost.Signals2, Boost.SmartPtr, Boost.Spirit, Boost.StringAlgo, Boost.Test, Boost.Thread, Boost.Tokenizer, Boost.Tuple, Boost.TypeTraits, Boost.uBlas, Boost.Unordered, Boost.Utilityなどを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://stlab.adobe.com/group__asl__home.html&#34; target=&#34;_blank&#34;&gt;Adobe Source Libraries&lt;/a&gt;
-クロスプラットフォームのGUI構築とそれに付随するユーティリティライブラリ群。
-GUI構築にAdam,Eveという2つの独自言語を採用しており、ウィジェット間依存関係、GUIレイアウトとロジックの記述をそれぞれと完全に分離できる。
-少なくとも Boost.Utility,Function,Signals,Range,Bind,TypeTraits,ConceptCheck,MPL,FunctionTypes,Noncopyable,Fusion,Operators,Iterator,Array,Any,Tuple,SharedPtr,Integer,StaticAssert を使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://nghttp2.org/&#34; target=&#34;_blank&#34;&gt;Nghttp2&lt;/a&gt;
-通信プロトコルHTTPの最新版であるHTTP/2の実装を提供するCライブラリおよびアプリケーションプログラム。
-C APIだけでなく、Boost.Asioベースの高水準なC++ APIが用意されている: &lt;a href=&#34;https://nghttp2.org/documentation/libnghttp2_asio.html&#34; target=&#34;_blank&#34;&gt;libnghttp2_asio: High level HTTP/2 C++ library&lt;/a&gt;。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;オープンソースソフトウェア&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://dynamomd.org/&#34; target=&#34;_blank&#34;&gt;DynamO&lt;/a&gt; [&lt;a href=&#34;https://github.com/toastedcrumpets/DynamO&#34; target=&#34;_blank&#34;&gt;sourcecode&lt;/a&gt;]
-イベント駆動シミュレータ。
-Boost.Array, Boost.CircularBuffer, Boost.DateTime, Boost.Foreach, Boost.Function, Boost.Iostreams, Boost.LexicalCast, Boost.Math, Boost.ProgramOptions, Boost.Random, Boost.SmartPtr, Boost.Tokenizer, Boost.Tuple, Boost.Unorderedなどを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Aptitude
-Debian系Linuxディストリビューションで使用されているパッケージ管理システムaptの対話的フロントエンド。
-Boost.Iostreamsを使用している。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://www.phusionpassenger.com/&#34; target=&#34;_blank&#34;&gt;Phusion Passenger&lt;/a&gt;
-Ruby, Python, Node.jsのウェブアプリケーションフレームワークを動作されるアプリケーションサーバー。mod_rails, mod_rackなどとも呼ばれる。既存のウェブサーバー（Apacheまたはnginx）のモジュールとして動作するほか、単体でもHTTPサーバーとして動作する。
-&lt;a href=&#34;https://github.com/phusion/passenger/blob/master/dev/copy_boost_headers&#34; target=&#34;_blank&#34;&gt;dev/copy_boost_headers&lt;/a&gt;を見る限り、Boost.Thread、Boost.DateTime、Boost.SmartPtr、Boost.Function、Boost.Bindあたりを使用している模様。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/facebook/hiphop-php&#34; target=&#34;_blank&#34;&gt;Hiphop for PHP&lt;/a&gt;
-PHPのソースコードからC++ソースコードを生成するトランスレータ。これ自体もC++で書かれており、Boostも使用されている模様。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://mosh.mit.edu/&#34; target=&#34;_blank&#34;&gt;Mosh: the mobile shell&lt;/a&gt;
-SSHの置き換えを狙う端末アプリケーション。回線切断からの再接続やローカルエコーにより、SSHと比べ高信頼・快適な環境を売りにしている。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://mapnik.org/&#34; target=&#34;_blank&#34;&gt;Mapnik&lt;/a&gt;
-地図データの扱い、描画に関するライブラリ。&lt;a href=&#34;https://github.com/mapnik/mapnik/blob/master/INSTALL.md&#34; target=&#34;_blank&#34;&gt;INSTALL.md&lt;/a&gt;より、Filesystem、System、Thread、Regex、ProgramOptionsを使用していることの記載あり。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://ja.libreoffice.org/&#34; target=&#34;_blank&#34;&gt;LibreOffice&lt;/a&gt;
-オフィススイート（文書作成、表計算、プレゼンテーション、etc.）。ver.4.0.1(2013/03/07)時点でのBoost使用状況をソースコードから&lt;a href=&#34;https://gist.github.com/usagi/5108142&#34; target=&#34;_blank&#34;&gt;抽出して見る&lt;/a&gt;とArray、DateTime、Foreach、Preprocessor、Random、SmartPtr、Spirit、UnorderedMapなど使われている。ver.4のCalcからはRANDOM()にBoost.Randomを用いたメルセンヌツイスターを&lt;a href=&#34;https://bugs.freedesktop.org/show_bug.cgi?id=33365&#34; target=&#34;_blank&#34;&gt;採用&lt;/a&gt;するなどBoostの利用も広まっている模様。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://www-jp.mysql.com/&#34; target=&#34;_blank&#34;&gt;MySQL&lt;/a&gt;
-リレーショナルデータベース管理システム (RDBMS)。オープンソースのRDBMSにおいて、人気がある製品の1つである。
-GIS関係の実装においてBoost.Geometoryを使用している。
-参考: &lt;a href=&#34;http://faithandbrave.hateblo.jp/entry/2014/04/28/131514&#34; target=&#34;_blank&#34;&gt;MySQLの実装にBoost.Geometryが使われはじめた - Faith and Brave - C++で遊ぼう&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;商用製品&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://shade3d.jp/&#34; target=&#34;_blank&#34;&gt;Shade&lt;/a&gt;
-e-frontier社 3DCG作成ソフト。
-プラグイン用SDKにBoostを含む。
-Boost.TypeTraits、Boost.MPLなどを使用。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;http://blog.penguin-aqua.jp/archives/2145&#34; target=&#34;_blank&#34;&gt;長崎ペンギン水族館バーチャルシアター&lt;/a&gt;
-3Dシアター。立体視CG描画のための3DエンジンにBoostを使用。
-アセット管理にBoost.Filesystem、Boost.SmartPtr、Boost.Flyweight。
-キャラクターの動きにBoost.Context、Boost.Random。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;会社&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://aiming-inc.com/ja&#34; target=&#34;_blank&#34;&gt;株式会社Aiming&lt;/a&gt;
-オンラインゲームのサーバー開発にBoost.Any、Boost.Array、Boost.Foreach、Boost.Format、Boost.Function、Boost.LexicalCast、Boost.Multi-Index、Boost.Optional、Boost.Regex、Boost.Spirit、Boost.StringAlgo、Boost.Tokenizer、Boost.Utility、Boost.Xpressiveなどを使用。&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Yusuke Ichinohe</name>
-        <email>yusuke.ichinohe@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リソースを自動的に解放する -- tips/smart_ptr：マークアップを修正</title>
-      <link href="https://boostjp.github.io/tips/smart_ptr.html"/>
-      <id>1aa0844dc8264084c34e3998e52b96911ee8cbee:tips/smart_ptr.md</id>
-      <updated>2017-01-26 09:54:48 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;リソースを自動的に解放する&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;リソースを自動的に解放するには、「スマートポインタ」と呼ばれるクラスを使用する。スマートポインタとは、&lt;code&gt;new&lt;/code&gt;のように動的に確保したオブジェクトへのポインタを保持して、自動的に解放するものである。また、通常のポインタのように利用することが可能である。&lt;/p&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#no-share-smart-pointer&#34;&gt;共有しないオブジェクトのスマートポインタ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#share-smart-pointer&#34;&gt;参照カウント方式のスマートポインタ&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#avoid-usage-shared-ptr&#34;&gt;&lt;code&gt;shared_ptr&lt;/code&gt;で避けること&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#customize-release-behavior-shared-ptr&#34;&gt;解放の方法を自分で決める&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#weak-reference&#34;&gt;弱い参照&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#intrusive-pointer&#34;&gt;侵入型参照カウント方式のスマートポインタ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#no-share-smart-pointer&#34; name=&#34;no-share-smart-pointer&#34;&gt;共有しないオブジェクトのスマートポインタ&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;共有する必要がない&lt;code&gt;new&lt;/code&gt;で確保したオブジェクト、例えばローカルスコープで&lt;code&gt;new&lt;/code&gt;と&lt;code&gt;delete&lt;/code&gt;を使うような状況では、&lt;code&gt;scoped_ptr&lt;/code&gt;、&lt;code&gt;scoped_array&lt;/code&gt;を使うことができる。&lt;code&gt;scoped_ptr&lt;/code&gt;について、以下の点に注意する。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;scoped_ptr&lt;/code&gt;同士のコピーは不可&lt;/li&gt;
-&lt;li&gt;標準コンテナで保持できない&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;new []&lt;/code&gt;で確保した配列を保持することはできない&lt;/li&gt;
-&lt;li&gt;不完全型や&lt;code&gt;void&lt;/code&gt;をテンプレート引数に与えることはできない&lt;/li&gt;
-&lt;li&gt;解放の方法を自分で決めることはできない共有する必要がない&lt;code&gt;new []&lt;/code&gt;で確保したオブジェクトを保持する場合は&lt;code&gt;scoped_array&lt;/code&gt;を使う。デリーターがどうしても必要な場合はBoost.Interprocessの&lt;code&gt;scoped_ptr&lt;/code&gt;/&lt;code&gt;scoeped_array&lt;/code&gt;を使用すると良い。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;code&gt;scoped_ptr&lt;/code&gt;のサンプル：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/scoped_ptr.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;destroy&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::scoped_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// ポインタと同じように使うことが出来る&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;// ここでpが自動的にdeleteされる&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;3
-destroy
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;scoped_array&lt;/code&gt;サンプル：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/scoped_array.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::scoped_array&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// 通常の配列のように使うことが出来る&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;N&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34; &#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;// ここでpが自動的にdelete []される&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;0 1 2 3 4
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#share-smart-pointer&#34; name=&#34;share-smart-pointer&#34;&gt;参照カウント方式のスマートポインタ&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;code&gt;shared_ptr&lt;/code&gt;は主に動的に割り当てられてたオブジェクトへのポインタを保持して、&lt;code&gt;shared_ptr&lt;/code&gt;内部の参照カウントによって管理するものである。確保したオブジェクトを指す最後の&lt;code&gt;shared_ptr&lt;/code&gt;が破棄またはリセットされるときに解放される。&lt;code&gt;shared_ptr&lt;/code&gt;は以下のことが可能である。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;標準コンテナで保持すること&lt;/li&gt;
-&lt;li&gt;テンプレート引数に不完全型や&lt;code&gt;void&lt;/code&gt;を与えること&lt;/li&gt;
-&lt;li&gt;自分で解放の方法を決めること&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;T*&lt;/code&gt;から&lt;code&gt;U*&lt;/code&gt;に暗黙の型変換が可能なとき、&lt;code&gt;shared_ptr&amp;lt;T&amp;gt;&lt;/code&gt;から&lt;code&gt;shared_ptr&amp;lt;U&amp;gt;&lt;/code&gt;の暗黙の変換&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&amp;lt;T&amp;gt;&lt;/code&gt;から&lt;code&gt;shared_ptr&amp;lt;void&amp;gt;&lt;/code&gt;の暗黙の変換&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&amp;lt;T&amp;gt;&lt;/code&gt;から&lt;code&gt;shared_ptr&amp;lt;T const&amp;gt;&lt;/code&gt;の暗黙の変換&lt;code&gt;new []&lt;/code&gt;によって確保されたオブジェクトは&lt;code&gt;shared_array&lt;/code&gt;を使う。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;vector&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/shared_ptr.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;num&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;n&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;destroy&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// ポインタのように使うことが出来る&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// p1はp0と同じオブジェクトを指すshared_ptr&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// STLで保持することも可能&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;push_back&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;front&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;num&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;// ここでp0もp1もvecも破棄されてp0で確保したオブジェクトがdeleteされる&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
-3
-3
-destroy
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#avoid-usage-shared-ptr&#34; name=&#34;avoid-usage-shared-ptr&#34;&gt;shared_ptrで避けること&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;名前のない一時的な&lt;code&gt;shared_ptr&lt;/code&gt;オブジェクトは使わないほうがよい。次の例を考える。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 例外を送出する可能性がある関数&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;ok&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;bad&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::shared_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;g&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;bad()&lt;/code&gt;関数では関数の引数が評価される順序が不定である。&lt;code&gt;new int( 2 )&lt;/code&gt;、&lt;code&gt;g()&lt;/code&gt;の順に評価されたとき、&lt;code&gt;g()&lt;/code&gt;が例外を送出すると&lt;code&gt;shared_ptr&lt;/code&gt;のコンストラクタが呼ばれなくなり、確保したオブジェクトが解放されなくなってしまう。したがって、&lt;code&gt;ok()&lt;/code&gt;関数のように名前のあるスマートポインタに格納するとよい。&lt;/p&gt;
-&lt;h3&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#customize-release-behavior-shared-ptr&#34; name=&#34;customize-release-behavior-shared-ptr&#34;&gt;解放の方法を自分で決める&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;shared_ptr&lt;/code&gt;、&lt;code&gt;shared_array&lt;/code&gt;は解放の方法を指定することが出来る。これによって&lt;code&gt;delete&lt;/code&gt;以外の解放するための関数の使用やそもそも解放しないことも可能である。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;cstdlib&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/shared_ptr.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;free_deleter&lt;/span&gt;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;operator&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;free&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;static_cast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;call deleter&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;static_cast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;malloc&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;free_deleter&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-    &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;// ここでdeleteの代わりにfree_deleterのoperator()が呼び出される&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
-call deleter
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#weak-reference&#34; name=&#34;weak-reference&#34;&gt;弱い参照&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;weak_ptr&lt;/code&gt;は&lt;code&gt;shared_ptr&lt;/code&gt;に対する弱い参照で、&lt;code&gt;shared_ptr&lt;/code&gt;の参照カウントを上げ下げせずにオブジェクトを指すものである。&lt;code&gt;weak_ptr&lt;/code&gt;単独で用いられることはない。オブジェクトへのアクセスは&lt;code&gt;weak_ptr&lt;/code&gt;の&lt;code&gt;lock()&lt;/code&gt;メンバ関数、&lt;code&gt;shared_ptr&lt;/code&gt;のコンストラクタによって対応する&lt;code&gt;shared_ptr&lt;/code&gt;を得ることで可能である。&lt;code&gt;shared_ptr&lt;/code&gt;が破棄されていた場合における動作は、&lt;code&gt;lock()&lt;/code&gt;メンバ関数の場合は空の&lt;code&gt;shared_ptr&lt;/code&gt;を返し、&lt;code&gt;shared_ptr&lt;/code&gt;のコンストラクタの場合は&lt;code&gt;bad_weak_ptr&lt;/code&gt;例外を送出する。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/shared_ptr.hpp&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/&lt;span style=&#34;color:#ff0000&#34;&gt;weak_ptr&lt;/span&gt;.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;weak_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sp&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// shared_ptrのオブジェクトがあるかないか&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;lock&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;deleted&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// ここで解放する&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;sp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reset&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// shared_ptrのオブジェクトがあるかないか&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;wp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;lock&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;deleted&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実験結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;5
-deleted
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h3&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html#intrusive-smart-pointer&#34; name=&#34;intrusive-smart-pointer&#34;&gt;侵入型参照カウント方式のスマートポインタ&lt;/a&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;intrusive_ptr&lt;/code&gt;はユーザがオブジェクトの参照カウンタを上げ下げしなければならないようなときに適用できる。オブジェクトに対応する&lt;code&gt;intrusive_ptr_add_ref()&lt;/code&gt;関数、&lt;code&gt;intrusive_ptr_release()&lt;/code&gt;関数を定義することによって、&lt;code&gt;intrusive_ptr&lt;/code&gt;が自動的に参照カウンタの上げ下げを行う。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;vector&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/intrusive_ptr.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;object&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cnt_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-        &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;cnt_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;nl&#34;&gt;public:&lt;/span&gt;
-        &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;destroy&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-        &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;exist&#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-        &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;add_ref&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cnt_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-        &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;release&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;--&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cnt_&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-                &lt;span class=&#34;k&#34;&gt;delete&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-            &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-        &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-        &lt;span class=&#34;k&#34;&gt;friend&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;nf&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;intrusive_ptr_add_ref&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;add_ref&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-    &lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;intrusive_ptr_release&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;release&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// 第2引数はコンストラクト時に参照カウントを増加させるかどうか&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::intrusive_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;create&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// コンテナに入れても大丈夫&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;vector&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;boost::intrusive_ptr&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hoge&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;object&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;vec&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;push_back&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;// ここでvecとptrが破棄され、それぞれobjectのreleaseが呼ばれてdeleteされる&lt;/span&gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;実行結果：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;exist
-destroy
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>らいどっと</name>
-        <email>ryogo.yoshimura@gmail.com</email>
       </author>
     </entry>
   
