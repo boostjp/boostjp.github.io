@@ -2,9 +2,142 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2017-03-14T14:25:58.950048</updated>
-  <id>cf023e49-7515-4e30-902e-22331452846b</id>
+  <updated>2017-03-14T14:31:21.012162</updated>
+  <id>59b442fa-2640-49b3-a6e7-012046035917</id>
 
+  
+    <entry>
+      <title>Boost 1.64.0リリースノート -- 1.64.0リリースノート : Mathを追加 (close #136)</title>
+      <link href="https://boostjp.github.io/document/version/1_64_0.html"/>
+      <id>a7fb83a8b645dfdebfa1ee0e973ea2fc9bf598a1:document/version/1_64_0.md</id>
+      <updated>2017-03-14 14:31:07 +0900</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.64.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_64_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_64_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_64_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#any&#34;&gt;Any&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#math&#34;&gt;Math&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#type_traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#any&#34; name=&#34;any&#34;&gt;Any&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;一時オブジェクトへの参照をreturnで返す際の、誤った警告を抑制した&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12615&#34; target=&#34;_blank&#34;&gt;#12615&lt;/a&gt; オブジェクトのアドレスを直接取得する代わりに、&lt;code&gt;boost::addressof&lt;/code&gt;を使用するようにした&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12053&#34; target=&#34;_blank&#34;&gt;#12053&lt;/a&gt; インクルードするBoostのヘッダファイルは、ダブルクォートで囲むのをやめて山カッコで囲むようにした&lt;/li&gt;
+&lt;li&gt;CIのテストで、&lt;code&gt;address&lt;/code&gt;、&lt;code&gt;leak&lt;/code&gt;、&lt;code&gt;undefined&lt;/code&gt;のサニタイザーを走らせるようにした&lt;/li&gt;
+&lt;li&gt;テストを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GCC 4.7以前の32bit x86コンパイラで正しくない64bitアトミック命令が出力されてしまう問題を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#core&#34; name=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;C++11 constexpr&lt;/code&gt;を実装したコンパイラにおいて&lt;code&gt;constexpr&lt;/code&gt;修飾された&lt;code&gt;addressof&lt;/code&gt;を実装した。
+  サポートされない場合には&lt;code&gt;BOOST_CORE_NO_CONSTEXPR_ADDRESSOF&lt;/code&gt;マクロが定義される&lt;/li&gt;
+&lt;li&gt;コンテナ要素をテストするための&lt;code&gt;BOOST_TEST_ALL_EQ&lt;/code&gt;マクロと&lt;code&gt;BOOST_TEST_ALL_WITH&lt;/code&gt;マクロを&lt;code&gt;lightweight_test.hpp&lt;/code&gt;に追加した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#math&#34; name=&#34;math&#34;&gt;Math&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C99にあるすべての関数がAnnex F (IEC 60559) と互換があることを確実にした&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/12066&#34; target=&#34;_blank&#34;&gt;#12066&lt;/a&gt; ベッセル関数I0、I1、K0、K1の精度を改善した&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html#type_traits&#34; name=&#34;type_traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;新しい型特性、&lt;code&gt;make_void&lt;/code&gt;を追加&lt;ul&gt;
+&lt;li&gt;訳者註: これはC++17で実装される&lt;code&gt;std::void_t&lt;/code&gt;に相当し、テンプレートエイリアスが実装されたコンパイラでは&lt;code&gt;boost::void_t&lt;/code&gt;も提供される。
+  &lt;code&gt;boost::make_void&lt;/code&gt;は可変長テンプレートをサポートしないコンパイラでも提供されるが、その場合は5要素を上限とする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.64.0リリースノート -- 1.64.0リリースノート : Anyを追加 (close #127)</title>
@@ -461,48 +594,6 @@
 &lt;/ul&gt;
 &lt;h2&gt;翻訳&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Kohei Takahashi</name>
-        <email>flast@flast.jp</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リリースノート -- リンク張り忘れ</title>
-      <link href="https://boostjp.github.io/document/version.html"/>
-      <id>452f275a868ac911b4191e92df2142d830ba7f07:document/version.md</id>
-      <updated>2017-03-11 15:31:23 +0900</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;リリースノート&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;以下は、Boostの各バージョンのリリースノートを翻訳、情報補完したドキュメントです。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/template.html&#34;&gt;雛形ページ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html&#34;&gt;1.64.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html&#34;&gt;1.63.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_62_0.html&#34;&gt;1.62.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_61_0.html&#34;&gt;1.61.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_60_0.html&#34;&gt;1.60.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_59_0.html&#34;&gt;1.59.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_58_0.html&#34;&gt;1.58.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_57_0.html&#34;&gt;1.57.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_56_0.html&#34;&gt;1.56.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_55_0.html&#34;&gt;1.55.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_54_0.html&#34;&gt;1.54.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_53_0.html&#34;&gt;1.53.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_52_0.html&#34;&gt;1.52.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_51_0.html&#34;&gt;1.51.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_50_0.html&#34;&gt;1.50.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_49_0.html&#34;&gt;1.49.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_48_0.html&#34;&gt;1.48.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_47_0.html&#34;&gt;1.47.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_46_1.html&#34;&gt;1.46.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_46_0.html&#34;&gt;1.46.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_45_0.html&#34;&gt;1.45.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Kohei Takahashi</name>
