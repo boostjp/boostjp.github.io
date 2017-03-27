@@ -237,6 +237,7 @@ Program: main.exe
 File: main.cpp, Line 9
 
 Expression: 1 != 1
+
 </code></pre></p> <h2><a href=https://boostjp.github.io/tips/dynamic_assert.html#assertion-with-message name=assertion-with-message>メッセージ付きで式を検証する</a></h2> <p>検証失敗時にコンパイルエラーにエラーメッセージを出力するには、<code>BOOST_ASSERT_MSG</code>マクロを使用する。基本的な使い方は<code>BOOST_ASSERT</code>と同様で、第2引数にメッセージの文字列を取る。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span><span class=o>*</span> <span class=n>argv</span><span class=p>[])</span>
@@ -278,6 +279,7 @@ Expression: 1 != 1
 <span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
+
 </code></pre></p> <p>log.txt：</p> <p><pre><code>Expression : 1 == 2
 Function : int main()
 File : C:\language\cpp\main.cpp
@@ -308,6 +310,7 @@ Line : 21
 <span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
+
 </code></pre></p> <p>log.txt：</p> <p><pre><code>Expression : 1 == 2
 Message : 1 is not 2
 Function : int main()
