@@ -259,7 +259,7 @@ function tree_onclick(e) {
 
     <span class=n>constexpr</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>8</span><span class=p>;</span>
     <span class=n>assert</span><span class=p>(</span><span class=n>N</span> <span class=o>%</span> <span class=n>world</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>);</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>v</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>v</span><span class=p>;</span>
 
     <span class=k>if</span><span class=p>(</span><span class=n>world</span><span class=p>.</span><span class=n>rank</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
     <span class=p>{</span>
@@ -297,7 +297,7 @@ function tree_onclick(e) {
   <span class=n>bmpi</span><span class=o>::</span><span class=n>communicator</span> <span class=n>world</span><span class=p>;</span>
 
   <span class=n>constexpr</span> <span class=kt>int</span> <span class=n>N</span> <span class=o>=</span> <span class=mi>128</span><span class=p>;</span>
-  <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>v</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
+  <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>v</span><span class=p>(</span><span class=n>N</span><span class=p>);</span>
 
   <span class=k>if</span><span class=p>(</span><span class=n>world</span><span class=p>.</span><span class=n>rank</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
   <span class=p>{</span>
@@ -320,8 +320,8 @@ function tree_onclick(e) {
     <span class=n>bmpi</span><span class=o>::</span><span class=n>environment</span> <span class=n>env</span><span class=p>(</span><span class=n>argc</span><span class=p>,</span> <span class=n>argv</span><span class=p>);</span>
     <span class=n>bmpi</span><span class=o>::</span><span class=n>communicator</span> <span class=n>world</span><span class=p>;</span>
 
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>x</span><span class=p>;</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>y</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>x</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>y</span><span class=p>;</span>
 
     <span class=k>if</span><span class=p>(</span><span class=n>world</span><span class=p>.</span><span class=n>rank</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
     <span class=p>{</span>
@@ -396,7 +396,7 @@ function tree_onclick(e) {
 
   <span class=k>if</span><span class=p>(</span><span class=n>world</span><span class=p>.</span><span class=n>rank</span><span class=p>()</span> <span class=o>==</span> <span class=mi>0</span><span class=p>)</span>
   <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>bmpi</span><span class=o>::</span><span class=n>request</span><span class=o>&gt;</span> <span class=n>reqs</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>bmpi</span><span class=o>::</span><span class=n>request</span><span class=o>&gt;</span> <span class=n>reqs</span><span class=p>;</span>
     <span class=k>for</span><span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>1</span> <span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>world</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
       <span class=kt>double</span> <span class=n>r</span> <span class=o>=</span> <span class=kt>double</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>rand</span><span class=p>())</span> <span class=o>/</span> <span class=n>RAND_MAX</span><span class=p>;</span>
       <span class=n>reqs</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>world</span><span class=p>.</span><span class=n>isend</span><span class=p>(</span><span class=n>i</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>r</span><span class=p>));</span>

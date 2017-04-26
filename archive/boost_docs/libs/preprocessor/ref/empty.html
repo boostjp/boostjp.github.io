@@ -224,7 +224,7 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/preprocessor/facilities/empty.hpp&gt;</span>
 
 <span class=cp>#define X() result</span>
-<span class=cp>#define MACRO(c) <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/if.html>BOOST_PP_IF</span>(c, X, <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/empty.html>BOOST_PP_EMPTY</a>)()</span>
+<span class=cp>#define MACRO(c) BOOST_PP_IF(c, X, BOOST_PP_EMPTY)()</span>
 
 <span class=n>MACRO</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span> <span class=c1>// 空文字に展開される</span>
 <span class=n>MACRO</span><span class=p>(</span><span class=mi>1</span><span class=p>)</span> <span class=c1>// result に展開される</span>

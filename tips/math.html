@@ -225,10 +225,10 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=nf>main</span> <span class=p>()</span>
 <span class=p>{</span>
-    <span class=kt>double</span> <span class=n><span style=color:#ff0000>pi</span></span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n>constants</span><span class=o>::</span><span class=n><span style=color:#ff0000>pi</span></span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span><span class=p>();</span>
+    <span class=kt>double</span> <span class=n>pi</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n>constants</span><span class=o>::</span><span class=n>pi</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span><span class=p>();</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=p>.</span><span class=n>precision</span><span class=p>(</span><span class=n>std</span><span class=o>::</span><span class=n>numeric_limits</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;::</span><span class=n>max_digits10</span><span class=p>);</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>pi</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>pi</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>出力：</p> <p><pre><code>3.1415926535897931
 </code></pre></p> <p>参考：</p> <ul> <li><a href=http://d.hatena.ne.jp/pepshiso/20120501 target=_blank>C++で円周率を取得する - pepshisoの日記</a></li> </ul> <h2><a href=https://boostjp.github.io/tips/math.html#gcd name=gcd>最大公約数を求める</a></h2> <p>最大公約数を求めるには、Boost Math Libraryの<code><a href=http://www.boost.org/doc/libs/release/libs/math/doc/html/math_toolkit/run_time.html target=_blank>boost::math::gcd()</a></code>関数を使用する。この関数を使用するには、<code>&lt;boost/math/common_factor_rt.hpp&gt;</code>ヘッダをインクルードする。</p> <p>この関数には、2つの整数型の値を指定する。戻り値として、その整数型としての最大公約数が返される。</p> <p><code>gcd</code>は、「the greatest common divisor(最大公約数)」の略称である。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
@@ -237,7 +237,7 @@ function tree_onclick(e) {
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
     <span class=c1>// 12と18の最大公約数を求める</span>
-    <span class=kt>int</span> <span class=n>result</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n><span style=color:#ff0000>gcd</span></span><span class=p>(</span><span class=mi>12</span><span class=p>,</span> <span class=mi>18</span><span class=p>);</span>
+    <span class=kt>int</span> <span class=n>result</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n>gcd</span><span class=p>(</span><span class=mi>12</span><span class=p>,</span> <span class=mi>18</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -248,7 +248,7 @@ function tree_onclick(e) {
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
     <span class=c1>// 2と3の最小公倍数を求める</span>
-    <span class=kt>int</span> <span class=n>result</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n><span style=color:#ff0000>lcm</span></span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>);</span>
+    <span class=kt>int</span> <span class=n>result</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>math</span><span class=o>::</span><span class=n>lcm</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>3</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>

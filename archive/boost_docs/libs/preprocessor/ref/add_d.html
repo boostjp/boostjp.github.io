@@ -225,23 +225,23 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/preprocessor/control/while.hpp&gt;</span>
 <span class=cp>#include &lt;boost/preprocessor/tuple/elem.hpp&gt;</span>
 
-<span class=cp># define PRED(d, data) <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 0, data)</span>
+<span class=cp># define PRED(d, data) BOOST_PP_TUPLE_ELEM(2, 0, data)</span>
 
 <span class=cp># define OP(d, data) \</span>
 <span class=cp>    ( \</span>
-<span class=cp>        <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/dec.html>BOOST_PP_DEC</a>( \</span>
-<span class=cp>            <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 0, data) \</span>
+<span class=cp>        BOOST_PP_DEC( \</span>
+<span class=cp>            BOOST_PP_TUPLE_ELEM(2, 0, data) \</span>
 <span class=cp>        ), \</span>
-<span class=cp>        <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add_d.html>BOOST_PP_ADD_D</a>( \</span>
+<span class=cp>        BOOST_PP_ADD_D( \</span>
 <span class=cp>            d, \</span>
-<span class=cp>            <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 1, data), \</span>
+<span class=cp>            BOOST_PP_TUPLE_ELEM(2, 1, data), \</span>
 <span class=cp>            2 \</span>
 <span class=cp>        ) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
 <span class=c1>// 'x' を 2 'n' 回インクリメントする</span>
-<span class=cp># define STRIDE(x, n) <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 1, <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/while.html>BOOST_PP_WHILE</span>(PRED, OP, (n, x)))</span>
+<span class=cp># define STRIDE(x, n) BOOST_PP_TUPLE_ELEM(2, 1, BOOST_PP_WHILE(PRED, OP, (n, x)))</span>
 
 <span class=n>STRIDE</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span> <span class=c1>// 14 に展開される</span>
 <span class=n>STRIDE</span><span class=p>(</span><span class=mi>51</span><span class=p>,</span> <span class=mi>6</span><span class=p>)</span> <span class=c1>// 63 に展開される</span>

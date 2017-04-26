@@ -226,13 +226,13 @@ function tree_onclick(e) {
 
 <span class=cp>#define MACRO(z, n, _) \</span>
 <span class=cp>    template&lt; \</span>
-<span class=cp>        class <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/enum_trailing_params_z.html>BOOST_PP_ENUM_TRAILING_PARAMS_Z</a>(z, n, class T) \</span>
+<span class=cp>        class BOOST_PP_ENUM_TRAILING_PARAMS_Z(z, n, class T) \</span>
 <span class=cp>    &gt; class X ## n { \</span>
 <span class=cp>        </span><span class=cm>/* ... */</span><span class=cp> \</span>
 <span class=cp>    }; \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
-<span class=n><span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/repeat.html>BOOST_PP_REPEAT</span></span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>MACRO</span><span class=p>,</span> <span class=n>nil</span><span class=p>)</span>
+<span class=n>BOOST_PP_REPEAT</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>MACRO</span><span class=p>,</span> <span class=n>nil</span><span class=p>)</span>
 <span class=cm>/*</span>
 <span class=cm>    template&lt;class&gt; class X0 { };</span>
 <span class=cm>    &lt;class, class T0&gt; class X1 { };</span>

@@ -238,7 +238,7 @@ function tree_onclick(e) {
 <span class=c1>// std::list用のオーバーロード</span>
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>Container</span><span class=o>&gt;</span>
 <span class=kt>void</span> <span class=n>sort</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span>
-        <span class=n><span style=color:#ff0000>typename boost::enable_if&lt;is_list&lt;Container&gt; &gt;::type* = 0</span></span><span class=p>)</span>
+        <span class=k>typename</span> <span class=n>boost</span><span class=o>::</span><span class=n>enable_if</span><span class=o>&lt;</span><span class=n>is_list</span><span class=o>&lt;</span><span class=n>Container</span><span class=o>&gt;</span> <span class=o>&gt;::</span><span class=n>type</span><span class=o>*</span> <span class=o>=</span> <span class=mi>0</span><span class=p>)</span>
 <span class=p>{</span>
     <span class=n>c</span><span class=p>.</span><span class=n>sort</span><span class=p>();</span>
 <span class=p>}</span>
@@ -246,7 +246,7 @@ function tree_onclick(e) {
 <span class=c1>// std::list以外のためのオーバーロード</span>
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>Container</span><span class=o>&gt;</span>
 <span class=kt>void</span> <span class=n>sort</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span>
-        <span class=n><span style=color:#ff0000>typename boost::disable_if&lt;is_list&lt;Container&gt; &gt;::type* = 0</span></span><span class=p>)</span>
+        <span class=k>typename</span> <span class=n>boost</span><span class=o>::</span><span class=n>disable_if</span><span class=o>&lt;</span><span class=n>is_list</span><span class=o>&lt;</span><span class=n>Container</span><span class=o>&gt;</span> <span class=o>&gt;::</span><span class=n>type</span><span class=o>*</span> <span class=o>=</span> <span class=mi>0</span><span class=p>)</span>
 <span class=p>{</span>
     <span class=n>std</span><span class=o>::</span><span class=n>sort</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>begin</span><span class=p>(</span><span class=n>c</span><span class=p>),</span> <span class=n>boost</span><span class=o>::</span><span class=n>end</span><span class=p>(</span><span class=n>c</span><span class=p>));</span>
 <span class=p>}</span>
@@ -255,7 +255,7 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>list</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>ls</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
 
     <span class=n>sort</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>  <span class=c1>// std::sortが呼ばれる</span>
@@ -275,22 +275,22 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/mpl/bool.hpp&gt;</span>
 
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>Container</span><span class=o>&gt;</span>
-<span class=k>struct</span> <span class=n>is_list</span> <span class=o>:</span> <span class=n><span style=color:#ff0000>boost::mpl::false_</span></span> <span class=p>{};</span>
+<span class=k>struct</span> <span class=n>is_list</span> <span class=o>:</span> <span class=n>boost</span><span class=o>::</span><span class=n>mpl</span><span class=o>::</span><span class=n>false_</span> <span class=p>{};</span>
 
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=p>,</span> <span class=k>class</span> <span class=nc>Alloc</span><span class=o>&gt;</span>
-<span class=k>struct</span> <span class=n>is_list</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>list</span><span class=o>&lt;</span><span class=n>T</span><span class=p>,</span> <span class=n>Alloc</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>:</span> <span class=n><span style=color:#ff0000>boost::mpl::true_</span></span> <span class=p>{};</span>
+<span class=k>struct</span> <span class=n>is_list</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>list</span><span class=o>&lt;</span><span class=n>T</span><span class=p>,</span> <span class=n>Alloc</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=o>:</span> <span class=n>boost</span><span class=o>::</span><span class=n>mpl</span><span class=o>::</span><span class=n>true_</span> <span class=p>{};</span>
 
 
 <span class=c1>// std::list用のオーバーロード</span>
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>Container</span><span class=o>&gt;</span>
-<span class=kt>void</span> <span class=n>sort_impl</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n><span style=color:#ff0000>boost::mpl::true_</span></span><span class=p>)</span>
+<span class=kt>void</span> <span class=n>sort_impl</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>mpl</span><span class=o>::</span><span class=n>true_</span><span class=p>)</span>
 <span class=p>{</span>
     <span class=n>c</span><span class=p>.</span><span class=n>sort</span><span class=p>();</span>
 <span class=p>}</span>
 
 <span class=c1>// std::list以外のためのオーバーロード</span>
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>class</span> <span class=nc>Container</span><span class=o>&gt;</span>
-<span class=kt>void</span> <span class=n>sort_impl</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n><span style=color:#ff0000>boost::mpl::false_</span></span><span class=p>)</span>
+<span class=kt>void</span> <span class=n>sort_impl</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>mpl</span><span class=o>::</span><span class=n>false_</span><span class=p>)</span>
 <span class=p>{</span>
     <span class=n>std</span><span class=o>::</span><span class=n>sort</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>begin</span><span class=p>(</span><span class=n>c</span><span class=p>),</span> <span class=n>boost</span><span class=o>::</span><span class=n>end</span><span class=p>(</span><span class=n>c</span><span class=p>));</span>
 <span class=p>}</span>
@@ -299,14 +299,14 @@ function tree_onclick(e) {
 <span class=kt>void</span> <span class=n>sort</span><span class=p>(</span><span class=n>Container</span><span class=o>&amp;</span> <span class=n>c</span><span class=p>)</span>
 <span class=p>{</span>
     <span class=c1>// std::listかどうかを判定して結果を渡す</span>
-    <span class=n>sort_impl</span><span class=p>(</span><span class=n>c</span><span class=p>,</span> <span class=n><span style=color:#ff0000>typename is_list&lt;Container&gt;::type()</span></span><span class=p>);</span>
+    <span class=n>sort_impl</span><span class=p>(</span><span class=n>c</span><span class=p>,</span> <span class=k>typename</span> <span class=n>is_list</span><span class=o>&lt;</span><span class=n>Container</span><span class=o>&gt;::</span><span class=n>type</span><span class=p>());</span>
 <span class=p>}</span>
 
 <span class=kt>void</span> <span class=n>disp</span><span class=p>(</span><span class=kt>int</span> <span class=n>x</span><span class=p>)</span> <span class=p>{</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>x</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span><span class=p>;</span> <span class=p>}</span>
 
 <span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>list</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>ls</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=p>(</span><span class=mi>3</span><span class=p>)(</span><span class=mi>1</span><span class=p>)(</span><span class=mi>2</span><span class=p>);</span>
 
     <span class=n>sort</span><span class=p>(</span><span class=n>v</span><span class=p>);</span>  <span class=c1>// std::sortが呼ばれる</span>

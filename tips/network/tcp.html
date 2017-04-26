@@ -231,10 +231,10 @@ function tree_onclick(e) {
     <span class=n>tcp</span><span class=o>::</span><span class=n>socket</span> <span class=n>socket</span><span class=p>(</span><span class=n>io_service</span><span class=p>);</span>
 
     <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span> <span class=n>error</span><span class=p>;</span>
-    <span class=n>socket</span><span class=p>.</span><span class=n><span style=color:#ff0000>connect</span></span><span class=p>(</span><span class=n>tcp</span><span class=o>::</span><span class=n>endpoint</span><span class=p>(</span><span class=n>asio</span><span class=o>::</span><span class=n>ip</span><span class=o>::</span><span class=n>address</span><span class=o>::</span><span class=n>from_string</span><span class=p>(</span><span class=s>"127.0.0.1"</span><span class=p>),</span> <span class=mi>31400</span><span class=p>),</span> <span class=n>error</span><span class=p>);</span>
+    <span class=n>socket</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=n>tcp</span><span class=o>::</span><span class=n>endpoint</span><span class=p>(</span><span class=n>asio</span><span class=o>::</span><span class=n>ip</span><span class=o>::</span><span class=n>address</span><span class=o>::</span><span class=n>from_string</span><span class=p>(</span><span class=s>"127.0.0.1"</span><span class=p>),</span> <span class=mi>31400</span><span class=p>),</span> <span class=n>error</span><span class=p>);</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=p>{</span>
-        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"<span style=color:#ff0000>connect</span> failed : "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"connect failed : "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=k>else</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"connected"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
@@ -259,7 +259,7 @@ function tree_onclick(e) {
 
     <span class=kt>void</span> <span class=n>connect</span><span class=p>()</span>
     <span class=p>{</span>
-        <span class=n>socket_</span><span class=p>.</span><span class=n><span style=color:#ff0000>async_connect</span></span><span class=p>(</span>
+        <span class=n>socket_</span><span class=p>.</span><span class=n>async_connect</span><span class=p>(</span>
                 <span class=n>tcp</span><span class=o>::</span><span class=n>endpoint</span><span class=p>(</span><span class=n>asio</span><span class=o>::</span><span class=n>ip</span><span class=o>::</span><span class=n>address</span><span class=o>::</span><span class=n>from_string</span><span class=p>(</span><span class=s>"127.0.0.1"</span><span class=p>),</span> <span class=mi>31400</span><span class=p>),</span>
                 <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_connect</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>error</span><span class=p>));</span>
     <span class=p>}</span>
@@ -294,17 +294,17 @@ function tree_onclick(e) {
 <span class=p>{</span>
     <span class=n>asio</span><span class=o>::</span><span class=n>io_service</span> <span class=n>io_service</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>tcp::acceptor</span></span> <span class=n>acc</span><span class=p>(</span><span class=n>io_service</span><span class=p>,</span> <span class=n>tcp</span><span class=o>::</span><span class=n>endpoint</span><span class=p>(</span><span class=n>tcp</span><span class=o>::</span><span class=n>v4</span><span class=p>(),</span> <span class=mi>31400</span><span class=p>));</span>
+    <span class=n>tcp</span><span class=o>::</span><span class=n>acceptor</span> <span class=n>acc</span><span class=p>(</span><span class=n>io_service</span><span class=p>,</span> <span class=n>tcp</span><span class=o>::</span><span class=n>endpoint</span><span class=p>(</span><span class=n>tcp</span><span class=o>::</span><span class=n>v4</span><span class=p>(),</span> <span class=mi>31400</span><span class=p>));</span>
     <span class=n>tcp</span><span class=o>::</span><span class=n>socket</span> <span class=n>socket</span><span class=p>(</span><span class=n>io_service</span><span class=p>);</span>
 
     <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span> <span class=n>error</span><span class=p>;</span>
-    <span class=n>acc</span><span class=p>.</span><span class=n><span style=color:#ff0000>accept</span></span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>error</span><span class=p>);</span>
+    <span class=n>acc</span><span class=p>.</span><span class=n>accept</span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>error</span><span class=p>);</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=p>{</span>
-        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"<span style=color:#ff0000>accept</span> failed: "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"accept failed: "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=k>else</span> <span class=p>{</span>
-        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"<span style=color:#ff0000>accept</span> correct!"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+        <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"accept correct!"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
 </pre></div> </p> <p><strong>非同期バージョン</strong></p> <p>非同期バージョンの接続待機には、<code>acceptor</code>クラスの<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost_asio/reference/basic_socket_acceptor/async_accept/overload1.html target=_blank>async_accept</a>()</code>メンバ関数を使用する。</p> <p>第1引数としてバインディングする<code>socket</code>オブジェクトへの参照をとり、第2引数として接続成功もしくは接続失敗時に呼ばれる関数を指定する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
@@ -327,7 +327,7 @@ function tree_onclick(e) {
 
     <span class=kt>void</span> <span class=n>start_accept</span><span class=p>()</span>
     <span class=p>{</span>
-        <span class=n>acceptor_</span><span class=p>.</span><span class=n><span style=color:#ff0000>async_accept</span></span><span class=p>(</span>
+        <span class=n>acceptor_</span><span class=p>.</span><span class=n>async_accept</span><span class=p>(</span>
             <span class=n>socket_</span><span class=p>,</span>
             <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Server</span><span class=o>::</span><span class=n>on_accept</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>error</span><span class=p>));</span>
     <span class=p>}</span>
@@ -370,7 +370,7 @@ function tree_onclick(e) {
     <span class=c1>// メッセージ送信</span>
     <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>msg</span> <span class=o>=</span> <span class=s>"ping"</span><span class=p>;</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span> <span class=n>error</span><span class=p>;</span>
-    <span class=n>asio</span><span class=o>::</span><span class=n><span style=color:#ff0000>write</span></span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>buffer</span><span class=p>(</span><span class=n>msg</span><span class=p>),</span> <span class=n>error</span><span class=p>);</span>
+    <span class=n>asio</span><span class=o>::</span><span class=n>write</span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>buffer</span><span class=p>(</span><span class=n>msg</span><span class=p>),</span> <span class=n>error</span><span class=p>);</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"send failed: "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
@@ -426,7 +426,7 @@ function tree_onclick(e) {
     <span class=kt>void</span> <span class=n>send</span><span class=p>()</span>
     <span class=p>{</span>
         <span class=n>send_data_</span> <span class=o>=</span> <span class=s>"ping"</span><span class=p>;</span>
-        <span class=n>asio</span><span class=o>::</span><span class=n><span style=color:#ff0000>async_write</span></span><span class=p>(</span>
+        <span class=n>asio</span><span class=o>::</span><span class=n>async_write</span><span class=p>(</span>
                 <span class=n>socket_</span><span class=p>,</span>
                 <span class=n>asio</span><span class=o>::</span><span class=n>buffer</span><span class=p>(</span><span class=n>send_data_</span><span class=p>),</span>
                 <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_send</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span>
@@ -476,7 +476,7 @@ function tree_onclick(e) {
     <span class=c1>// メッセージ受信</span>
     <span class=n>asio</span><span class=o>::</span><span class=n>streambuf</span> <span class=n>receive_buffer</span><span class=p>;</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span> <span class=n>error</span><span class=p>;</span>
-    <span class=n>asio</span><span class=o>::</span><span class=n><span style=color:#ff0000>read(socket, receive_buffer, asio::transfer_all(), error);</span></span>
+    <span class=n>asio</span><span class=o>::</span><span class=n>read</span><span class=p>(</span><span class=n>socket</span><span class=p>,</span> <span class=n>receive_buffer</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>transfer_all</span><span class=p>(),</span> <span class=n>error</span><span class=p>);</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=n>error</span> <span class=o>&amp;&amp;</span> <span class=n>error</span> <span class=o>!=</span> <span class=n>asio</span><span class=o>::</span><span class=n>error</span><span class=o>::</span><span class=n>eof</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"receive failed: "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
@@ -533,7 +533,7 @@ function tree_onclick(e) {
     <span class=c1>// メッセージ受信</span>
     <span class=kt>void</span> <span class=n>start_receive</span><span class=p>()</span>
     <span class=p>{</span>
-        <span class=n>boost</span><span class=o>::</span><span class=n>asio</span><span class=o>::</span><span class=n><span style=color:#ff0000>async_read</span></span><span class=p>(</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>asio</span><span class=o>::</span><span class=n>async_read</span><span class=p>(</span>
             <span class=n>socket_</span><span class=p>,</span>
             <span class=n>receive_buff_</span><span class=p>,</span>
             <span class=n>asio</span><span class=o>::</span><span class=n>transfer_all</span><span class=p>(),</span>
@@ -588,13 +588,13 @@ function tree_onclick(e) {
     <span class=kt>void</span> <span class=n>connect</span><span class=p>()</span>
     <span class=p>{</span>
         <span class=n>tcp</span><span class=o>::</span><span class=n>resolver</span> <span class=n>resolver</span><span class=p>(</span><span class=n>io_service_</span><span class=p>);</span>
-        <span class=n>tcp</span><span class=o>::</span><span class=n>resolver</span><span class=o>::</span><span class=n>query</span> <span class=n><span style=color:#ff0000>query("google.com", "http")</span></span><span class=p>;</span>
+        <span class=n>tcp</span><span class=o>::</span><span class=n>resolver</span><span class=o>::</span><span class=n>query</span> <span class=n>query</span><span class=p>(</span><span class=s>"google.com"</span><span class=p>,</span> <span class=s>"http"</span><span class=p>);</span>
 
         <span class=c1>// 同期で名前解決</span>
         <span class=c1>// 非同期で接続</span>
         <span class=n>asio</span><span class=o>::</span><span class=n>async_connect</span><span class=p>(</span>
             <span class=n>socket</span><span class=p>,</span>
-            <span class=n>resolver_</span><span class=p>.</span><span class=n><span style=color:#ff0000>resolve</span></span><span class=p>(</span><span class=n>query</span><span class=p>),</span>
+            <span class=n>resolver_</span><span class=p>.</span><span class=n>resolve</span><span class=p>(</span><span class=n>query</span><span class=p>),</span>
             <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_connect</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>error</span><span class=p>));</span>
     <span class=p>}</span>
 
@@ -644,7 +644,7 @@ function tree_onclick(e) {
         <span class=n>tcp</span><span class=o>::</span><span class=n>resolver</span><span class=o>::</span><span class=n>query</span> <span class=n>query</span><span class=p>(</span><span class=s>"google.com"</span><span class=p>,</span> <span class=s>"http"</span><span class=p>);</span>
 
         <span class=c1>// 非同期で名前解決</span>
-        <span class=n>resolver_</span><span class=p>.</span><span class=n><span style=color:#ff0000>async_resolve</span></span><span class=p>(</span>
+        <span class=n>resolver_</span><span class=p>.</span><span class=n>async_resolve</span><span class=p>(</span>
             <span class=n>query</span><span class=p>,</span>
             <span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_resolve</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span>
                         <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>error</span><span class=p>,</span>
@@ -700,7 +700,7 @@ function tree_onclick(e) {
     <span class=n>tcp</span><span class=o>::</span><span class=n>socket</span> <span class=n>socket_</span><span class=p>;</span>
     <span class=n>asio</span><span class=o>::</span><span class=n>streambuf</span> <span class=n>receive_buff_</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>asio::steady_timer</span></span> <span class=n>timer_</span><span class=p>;</span> <span class=c1>// タイムアウト用のタイマー</span>
+    <span class=n>asio</span><span class=o>::</span><span class=n>steady_timer</span> <span class=n>timer_</span><span class=p>;</span> <span class=c1>// タイムアウト用のタイマー</span>
     <span class=kt>bool</span> <span class=n>is_canceled_</span><span class=p>;</span>
 
 <span class=nl>public:</span>
@@ -747,8 +747,8 @@ function tree_onclick(e) {
                         <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>error</span><span class=p>,</span> <span class=n>asio</span><span class=o>::</span><span class=n>placeholders</span><span class=o>::</span><span class=n>bytes_transferred</span><span class=p>));</span>
 
         <span class=c1>// 5秒でタイムアウト</span>
-        <span class=n>timer_</span><span class=p>.</span><span class=n><span style=color:#ff0000>expires_from_now</span></span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>seconds</span><span class=p>(</span><span class=mi>5</span><span class=p>));</span>
-        <span class=n>timer_</span><span class=p>.</span><span class=n><span style=color:#ff0000>async_wait</span></span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_timer</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
+        <span class=n>timer_</span><span class=p>.</span><span class=n>expires_from_now</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>chrono</span><span class=o>::</span><span class=n>seconds</span><span class=p>(</span><span class=mi>5</span><span class=p>));</span>
+        <span class=n>timer_</span><span class=p>.</span><span class=n>async_wait</span><span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>bind</span><span class=p>(</span><span class=o>&amp;</span><span class=n>Client</span><span class=o>::</span><span class=n>on_timer</span><span class=p>,</span> <span class=k>this</span><span class=p>,</span> <span class=n>_1</span><span class=p>));</span>
     <span class=p>}</span>
 
     <span class=c1>// 受信完了</span>
@@ -756,13 +756,13 @@ function tree_onclick(e) {
     <span class=c1>// bytes_transferred : 送信したバイト数</span>
     <span class=kt>void</span> <span class=n>on_receive</span><span class=p>(</span><span class=k>const</span> <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span><span class=o>&amp;</span> <span class=n>error</span><span class=p>,</span> <span class=kt>size_t</span> <span class=n>bytes_transferred</span><span class=p>)</span>
     <span class=p>{</span>
-        <span class=k>if</span> <span class=p>(</span><span class=n>error</span> <span class=o>==</span> <span class=n>asio</span><span class=o>::</span><span class=n>error</span><span class=o>::</span><span class=n><span style=color:#ff0000>operation_aborted</span></span><span class=p>)</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=p>(</span><span class=n>error</span> <span class=o>==</span> <span class=n>asio</span><span class=o>::</span><span class=n>error</span><span class=o>::</span><span class=n>operation_aborted</span><span class=p>)</span> <span class=p>{</span>
             <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"タイムアウト"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
         <span class=p>}</span>
         <span class=k>else</span> <span class=p>{</span>
             <span class=c1>// タイムアウトになる前に処理が正常終了したのでタイマーを切る</span>
             <span class=c1>// タイマーのハンドラにエラーが渡される</span>
-            <span class=n>timer_</span><span class=p>.</span><span class=n><span style=color:#ff0000>cancel</span></span><span class=p>();</span>
+            <span class=n>timer_</span><span class=p>.</span><span class=n>cancel</span><span class=p>();</span>
             <span class=n>is_canceled_</span> <span class=o>=</span> <span class=nb>true</span><span class=p>;</span>
 
             <span class=k>if</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=p>{</span>
@@ -777,7 +777,7 @@ function tree_onclick(e) {
     <span class=c1>// タイマーのイベント受信</span>
     <span class=kt>void</span> <span class=n>on_timer</span><span class=p>(</span><span class=k>const</span> <span class=n>boost</span><span class=o>::</span><span class=n>system</span><span class=o>::</span><span class=n>error_code</span><span class=o>&amp;</span> <span class=n>error</span><span class=p>)</span> <span class=p>{</span>
         <span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>error</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>is_canceled_</span><span class=p>)</span> <span class=p>{</span>
-            <span class=n>socket_</span><span class=p>.</span><span class=n><span style=color:#ff0000>cancel</span></span><span class=p>();</span> <span class=c1>// 通信処理をキャンセルする。受信ハンドラがエラーになる</span>
+            <span class=n>socket_</span><span class=p>.</span><span class=n>cancel</span><span class=p>();</span> <span class=c1>// 通信処理をキャンセルする。受信ハンドラがエラーになる</span>
         <span class=p>}</span>
     <span class=p>}</span>
 <span class=p>};</span>

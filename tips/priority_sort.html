@@ -225,7 +225,7 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;algorithm&gt;</span>
 
 <span class=cp>#include &lt;boost/fusion/include/comparison.hpp&gt;</span>
-<span class=cp>#include &lt;boost/fusion/include/<span style=color:#ff0000>vector_tie</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/fusion/include/vector_tie.hpp&gt;</span>
 
 <span class=k>struct</span> <span class=n>File</span> <span class=p>{</span>
     <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>type</span><span class=p>;</span>
@@ -239,12 +239,12 @@ function tree_onclick(e) {
 <span class=p>{</span>
     <span class=c1>// ファイル種別、ファイル名の順番で優先順位を付けて比較</span>
     <span class=k>namespace</span> <span class=n>fusion</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>fusion</span><span class=p>;</span>
-    <span class=k>return</span> <span class=n>fusion</span><span class=o>::</span><span class=n><span style=color:#ff0000>vector_tie</span></span><span class=p>(</span><span class=n>a</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>a</span><span class=p>.</span><span class=n>name</span><span class=p>)</span> <span class=o>&lt;</span> <span class=n>fusion</span><span class=o>::</span><span class=n><span style=color:#ff0000>vector_tie</span></span><span class=p>(</span><span class=n>b</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>b</span><span class=p>.</span><span class=n>name</span><span class=p>);</span>
+    <span class=k>return</span> <span class=n>fusion</span><span class=o>::</span><span class=n>vector_tie</span><span class=p>(</span><span class=n>a</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>a</span><span class=p>.</span><span class=n>name</span><span class=p>)</span> <span class=o>&lt;</span> <span class=n>fusion</span><span class=o>::</span><span class=n>vector_tie</span><span class=p>(</span><span class=n>b</span><span class=p>.</span><span class=n>type</span><span class=p>,</span> <span class=n>b</span><span class=p>.</span><span class=n>name</span><span class=p>);</span>
 <span class=p>}</span>
 
 <span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>File</span><span class=o>&gt;</span> <span class=n>files</span> <span class=o>=</span> <span class=p>{</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>File</span><span class=o>&gt;</span> <span class=n>files</span> <span class=o>=</span> <span class=p>{</span>
         <span class=p>{</span><span class=s>"text"</span><span class=p>,</span> <span class=s>"b.txt"</span><span class=p>},</span>
         <span class=p>{</span><span class=s>"application"</span><span class=p>,</span> <span class=s>"b.exe"</span><span class=p>},</span>
         <span class=p>{</span><span class=s>"application"</span><span class=p>,</span> <span class=s>"a.exe"</span><span class=p>},</span>

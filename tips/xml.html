@@ -280,7 +280,7 @@ function tree_onclick(e) {
     <span class=n>ptree</span> <span class=n>pt</span><span class=p>;</span>
     <span class=n>read_xml</span><span class=p>(</span><span class=s>"data.xml"</span><span class=p>,</span> <span class=n>pt</span><span class=p>);</span>
 
-    <span class=k>if</span> <span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>id</span> <span class=o>=</span> <span class=n>pt</span><span class=p>.</span><span class=n>get_optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=p>(</span><span class=s>"root.data.<span style=color:#ff0000>&lt;xmlattr&gt;</span>.id"</span><span class=p>))</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>id</span> <span class=o>=</span> <span class=n>pt</span><span class=p>.</span><span class=n>get_optional</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span><span class=p>(</span><span class=s>"root.data.&lt;xmlattr&gt;.id"</span><span class=p>))</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>id</span><span class=p>.</span><span class=n>get</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=k>else</span> <span class=p>{</span>
@@ -288,7 +288,7 @@ function tree_onclick(e) {
     <span class=p>}</span>
 
     <span class=k>if</span> <span class=p>(</span><span class=n>boost</span><span class=o>::</span><span class=n>optional</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>name</span> <span class=o>=</span>
-            <span class=n>pt</span><span class=p>.</span><span class=n>get_optional</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span><span class=p>(</span><span class=s>"root.data.<span style=color:#ff0000>&lt;xmlattr&gt;</span>.name"</span><span class=p>))</span> <span class=p>{</span>
+            <span class=n>pt</span><span class=p>.</span><span class=n>get_optional</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span><span class=p>(</span><span class=s>"root.data.&lt;xmlattr&gt;.name"</span><span class=p>))</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>name</span><span class=p>.</span><span class=n>get</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=k>else</span> <span class=p>{</span>
@@ -317,7 +317,7 @@ str
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Book</span><span class=o>&gt;</span> <span class=n>books</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Book</span><span class=o>&gt;</span> <span class=n>books</span><span class=p>;</span>
     <span class=n>books</span><span class=p>.</span><span class=n>reserve</span><span class=p>(</span><span class=mi>2</span><span class=p>);</span>
     <span class=n>books</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>Book</span><span class=p>(</span><span class=s>"D&amp;E"</span><span class=p>,</span> <span class=s>"Bjarne Stroustrup"</span><span class=p>));</span>
     <span class=n>books</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=n>Book</span><span class=p>(</span><span class=s>"MC++D"</span><span class=p>,</span> <span class=s>"Andrei, Alexandrescu"</span><span class=p>));</span>

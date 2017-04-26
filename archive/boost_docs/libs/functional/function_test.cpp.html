@@ -320,15 +320,15 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=n>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Person</span><span class=o>&gt;</span> <span class=n>v1</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Person</span><span class=o>&gt;</span> <span class=n>v1</span><span class=p>;</span>
     <span class=n>v1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Fred"</span><span class=p>);</span>
     <span class=n>v1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Wilma"</span><span class=p>);</span>
     <span class=n>v1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Barney"</span><span class=p>);</span>
     <span class=n>v1</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Betty"</span><span class=p>);</span>
 
-    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Person</span><span class=o>&gt;</span> <span class=n>cv1</span><span class=p>(</span><span class=n>v1</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v1</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Person</span><span class=o>&gt;</span> <span class=n>cv1</span><span class=p>(</span><span class=n>v1</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v1</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
 
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>v2</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>v2</span><span class=p>;</span>
     <span class=n>v2</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Fred"</span><span class=p>);</span>
     <span class=n>v2</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Wilma"</span><span class=p>);</span>
     <span class=n>v2</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=s>"Barney"</span><span class=p>);</span>
@@ -341,14 +341,14 @@ function tree_onclick(e) {
     <span class=n>Person</span> <span class=nf>wilma</span><span class=p>(</span><span class=s>"Wilma"</span><span class=p>);</span>
     <span class=n>Person</span> <span class=nf>barney</span><span class=p>(</span><span class=s>"Barney"</span><span class=p>);</span>
     <span class=n>Person</span> <span class=nf>betty</span><span class=p>(</span><span class=s>"Betty"</span><span class=p>);</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Person</span><span class=o>*&gt;</span> <span class=n>v3</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Person</span><span class=o>*&gt;</span> <span class=n>v3</span><span class=p>;</span>
     <span class=n>v3</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=o>&amp;</span><span class=n>fred</span><span class=p>);</span>
     <span class=n>v3</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=o>&amp;</span><span class=n>wilma</span><span class=p>);</span>
     <span class=n>v3</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=o>&amp;</span><span class=n>barney</span><span class=p>);</span>
     <span class=n>v3</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span><span class=o>&amp;</span><span class=n>betty</span><span class=p>);</span>
 
-    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>Person</span><span class=o>*&gt;</span> <span class=n>cv3</span><span class=p>(</span><span class=n>v3</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v3</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=k>const</span> <span class=n>Person</span><span class=o>*&gt;</span> <span class=n>v3c</span><span class=p>(</span><span class=n>v3</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v3</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>Person</span><span class=o>*&gt;</span> <span class=n>cv3</span><span class=p>(</span><span class=n>v3</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v3</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=k>const</span> <span class=n>Person</span><span class=o>*&gt;</span> <span class=n>v3c</span><span class=p>(</span><span class=n>v3</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>v3</span><span class=p>.</span><span class=n>end</span><span class=p>());</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>ostream</span> <span class=o>&amp;</span><span class=n>os</span> <span class=o>=</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span><span class=p>;</span>
 

@@ -225,7 +225,7 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n><span style=color:#ff0000>cpu_timer</span></span> <span class=n>timer</span><span class=p>;</span> <span class=c1>// 時間計測を開始</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_timer</span> <span class=n>timer</span><span class=p>;</span> <span class=c1>// 時間計測を開始</span>
 
     <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
@@ -243,13 +243,13 @@ function tree_onclick(e) {
 <span class=p>{</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_timer</span> <span class=n>timer</span><span class=p>;</span>
 
-    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>start</span></span><span class=p>();</span> <span class=c1>// 開始</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n>start</span><span class=p>();</span> <span class=c1>// 開始</span>
 
     <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
     <span class=p>}</span>
 
-    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>stop</span></span><span class=p>();</span> <span class=c1>// 停止</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n>stop</span><span class=p>();</span> <span class=c1>// 停止</span>
 
     <span class=c1>// 中間結果を出力</span>
     <span class=p>{</span>
@@ -257,7 +257,7 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 
-    <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>resume</span></span><span class=p>();</span> <span class=c1>// 再開</span>
+    <span class=n>timer</span><span class=p>.</span><span class=n>resume</span><span class=p>();</span> <span class=c1>// 再開</span>
 
     <span class=k>for</span> <span class=p>(</span><span class=kt>long</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=mi>100000000</span><span class=p>;</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
@@ -284,11 +284,11 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>sqrt</span><span class=p>(</span><span class=mf>123.456</span><span class=n>L</span><span class=p>);</span> <span class=c1>// 時間のかかる処理</span>
     <span class=p>}</span>
 
-    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_times</span> <span class=n><span style=color:#ff0000>elapsed</span></span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>();</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>timer</span><span class=o>::</span><span class=n>cpu_times</span> <span class=n>elapsed</span> <span class=o>=</span> <span class=n>timer</span><span class=p>.</span><span class=n>elapsed</span><span class=p>();</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"wall : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>wall</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"user : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>user</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"system : "</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>elapsed</span></span><span class=p>.</span><span class=n>system</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"wall : "</span> <span class=o>&lt;&lt;</span> <span class=n>elapsed</span><span class=p>.</span><span class=n>wall</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"user : "</span> <span class=o>&lt;&lt;</span> <span class=n>elapsed</span><span class=p>.</span><span class=n>user</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"system : "</span> <span class=o>&lt;&lt;</span> <span class=n>elapsed</span><span class=p>.</span><span class=n>system</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行例：</p> <p><pre><code>wall : 5622194896
 user : 5553635600

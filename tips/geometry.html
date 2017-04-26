@@ -222,7 +222,7 @@ function tree_onclick(e) {
 </script> <gcse:searchbox></gcse:searchbox> </div> </li> <li> <a href=https://github.com/boostjp/site>GitHub Project</a> </li> </ul> </div> </div> </nav> </header> <main id=main role=main> <div class=container-fluid> <div class=row> <div class="col-sm-9 col-sm-push-3" itemscope itemtype=http://schema.org/Article> <div class=row> <div class="col-sm-12 google-search-result"> <gcse:searchresults></gcse:searchresults> </div> </div> <div class=row> <div class="col-sm-12 content-header"> <ol class=breadcrumb> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/index.html itemprop=url> <span itemprop=name> boostjp </span> </a> </span> </li> <li itemscope itemtype=http://www.schema.org/SiteNavigationElement> <a href=/tips.html itemprop=url> <span itemprop=name> Boost逆引きリファレンス </span> </a> </span> </li> <li class=active itemscope itemtype=http://www.schema.org/SiteNavigationElement> <span itemprop=name> 計算幾何 </span> </span> </li> </ol> </div> </div> <div class=row> <div class="col-sm-12 edit-button"> <p class=text-right><small> 最終更新日時: <span itemprop=datePublished content=2017-03-15T17:21:29> 2017年03月15日 17時21分29秒 </span> <br> <span itemprop=author itemscope itemtype=http://schema.org/Person> <span itemprop=name>Akira Takahashi</span> </span> が更新 </small></p> <p class=text-right> <a class=history target=_blank href=https://github.com/boostjp/site/commits/master/tips/geometry.md> <span class="glyphicon glyphicon-time"></span>履歴 </a> <a class=edit target=_blank href=https://github.com/boostjp/site/edit/master/tips/geometry.md> <span class="glyphicon glyphicon-pencil"></span>編集 </a> </p> </div> </div> <div class=row> <div class="col-sm-12 content-body"> <h1 itemprop=name>計算幾何</h1> <div itemprop=articleBody><p>計算幾何は、<a href=http://www.boost.org/libs/geometry/index.html target=_blank>Boost Geometry Library</a>によって提供される。</p> <h2>インデックス</h2> <ul> <li><a href=https://boostjp.github.io/tips/geometry.html#disjoint>2つの図形が互いに素かを判定</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#intersects>2つの図形が交点を持っているかを判定</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#within>図形がもう一方の図形の完全な内側にあるかを判定</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#equals>2つの図形が空間的に等しいかを判定</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#area>面積を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#centroid>図形の中心座標を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#convex_hull>図形の凸包を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#distance>2つの図形の距離を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#difference>2つの図形の差を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#union_>2つの図形の和を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#intersection>2つの図形の共通部分を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#envelope>図形の包絡線を計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#length>図形の長さを計算する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#reverse>図形を逆向きにする</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#simplify>図形を単純化する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#unique>図形から重複した点を削除する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#translate>図形を平行移動する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#scale>図形を拡大縮小する</a></li> <li><a href=https://boostjp.github.io/tips/geometry.html#rotate>図形を回転する</a></li> </ul> <h2><a href=https://boostjp.github.io/tips/geometry.html#disjoint name=disjoint>2つの図形が互いに素かを判定</a></h2> <p>2つの図形が互いに素かを判定するには、<code>boost::geometry::disjoint()</code>アルゴリズムを使用する。</p> <p><code>disjoint()</code>関数は、2つの図形が重なりあっていなければ<code>true</code>、重なり合っていたら<code>false</code>を返す。</p> <p><strong><code>box</code>同士が重なりあっていないかを判定：</strong></p> <p><div class=codehilite><pre><span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/point_xy.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/box.hpp&gt;</span>
-<span class=cp>#include &lt;boost/geometry/algorithms/<span style=color:#ff0000>disjoint</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/geometry/algorithms/disjoint.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>bg</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>geometry</span><span class=p>;</span>
 
@@ -231,7 +231,7 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=c1>// A. <span style=color:#ff0000>disjoint</span></span>
+    <span class=c1>// A. disjoint</span>
     <span class=c1>// a</span>
     <span class=c1>// +------+</span>
     <span class=c1>// |      |</span>
@@ -245,11 +245,11 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>box</span> <span class=n>a</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
         <span class=k>const</span> <span class=n>box</span> <span class=n>b</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>4</span><span class=p>,</span> <span class=mi>4</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>7</span><span class=p>,</span> <span class=mi>7</span><span class=p>));</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>disjoint</span></span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>disjoint</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=n>result</span><span class=p>);</span>
     <span class=p>}</span>
 
-    <span class=c1>// B. not <span style=color:#ff0000>disjoint</span></span>
+    <span class=c1>// B. not disjoint</span>
     <span class=c1>// a</span>
     <span class=c1>// +------+</span>
     <span class=c1>// |   b  |</span>
@@ -261,14 +261,14 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>box</span> <span class=n>a</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
         <span class=k>const</span> <span class=n>box</span> <span class=n>b</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>5</span><span class=p>));</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>disjoint</span></span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>disjoint</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=o>!</span><span class=n>result</span><span class=p>);</span>
     <span class=p>}</span>
 <span class=p>}</span>
 </pre></div> </p> <p><strong><code>box</code>と<code>point_xy</code>が重なりあっていないかを判定：</strong></p> <p><div class=codehilite><pre><span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/point_xy.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/box.hpp&gt;</span>
-<span class=cp>#include &lt;boost/geometry/algorithms/<span style=color:#ff0000>disjoint</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/geometry/algorithms/disjoint.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>bg</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>geometry</span><span class=p>;</span>
 
@@ -277,7 +277,7 @@ function tree_onclick(e) {
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=c1>// <span style=color:#ff0000>disjoint</span></span>
+    <span class=c1>// disjoint</span>
     <span class=c1>// a</span>
     <span class=c1>// +------+</span>
     <span class=c1>// |      |</span>
@@ -288,10 +288,10 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>box</span> <span class=n>a</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
         <span class=k>const</span> <span class=n>point</span> <span class=n>b</span><span class=p>(</span><span class=mi>4</span><span class=p>,</span> <span class=mi>4</span><span class=p>);</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>disjoint</span></span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>disjoint</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=n>result</span><span class=p>);</span>
     <span class=p>}</span>
-    <span class=c1>// not <span style=color:#ff0000>disjoint</span></span>
+    <span class=c1>// not disjoint</span>
     <span class=c1>// a</span>
     <span class=c1>// +------+</span>
     <span class=c1>// |  b   |</span>
@@ -301,7 +301,7 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>box</span> <span class=n>a</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
         <span class=k>const</span> <span class=n>point</span> <span class=n>b</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>);</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>disjoint</span></span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>disjoint</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=o>!</span><span class=n>result</span><span class=p>);</span>
     <span class=p>}</span>
 <span class=p>}</span>
@@ -325,7 +325,7 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>linestring</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>line1</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>2</span><span class=p>)(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>);</span>
         <span class=k>const</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>linestring</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>line2</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>)(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>4</span><span class=p>);</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>intersects</span></span><span class=p>(</span><span class=n>line1</span><span class=p>,</span> <span class=n>line2</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>intersects</span><span class=p>(</span><span class=n>line1</span><span class=p>,</span> <span class=n>line2</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=n>result</span><span class=p>);</span> <span class=c1>// 交点を持っている</span>
     <span class=p>}</span>
     <span class=c1>// -------- line1</span>
@@ -334,7 +334,7 @@ function tree_onclick(e) {
         <span class=k>const</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>linestring</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>line1</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
         <span class=k>const</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>linestring</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>line2</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>2</span><span class=p>)(</span><span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=p>);</span>
 
-        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>intersects</span></span><span class=p>(</span><span class=n>line1</span><span class=p>,</span> <span class=n>line2</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>intersects</span><span class=p>(</span><span class=n>line1</span><span class=p>,</span> <span class=n>line2</span><span class=p>);</span>
         <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=o>!</span><span class=n>result</span><span class=p>);</span> <span class=c1>// 交点を持っていない</span>
     <span class=p>}</span>
 <span class=p>}</span>
@@ -354,7 +354,7 @@ function tree_onclick(e) {
 
     <span class=k>const</span> <span class=n>point</span> <span class=n>p</span><span class=p>(</span><span class=mf>1.5</span><span class=p>,</span> <span class=mf>1.5</span><span class=p>);</span>
 
-    <span class=k>if</span> <span class=p>(</span><span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>within</span></span><span class=p>(</span><span class=n>p</span><span class=p>,</span> <span class=n>box</span><span class=p>))</span> <span class=p>{</span>
+    <span class=k>if</span> <span class=p>(</span><span class=n>bg</span><span class=o>::</span><span class=n>within</span><span class=p>(</span><span class=n>p</span><span class=p>,</span> <span class=n>box</span><span class=p>))</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"in"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=k>else</span> <span class=p>{</span>
@@ -364,7 +364,7 @@ function tree_onclick(e) {
 </pre></div> </p> <p>出力結果：</p> <p><pre><code>in
 </code></pre></p> <h2><a href=https://boostjp.github.io/tips/geometry.html#equals name=equals>2つの図形が空間的に等しいかを判定</a></h2> <p>2つの図形が空間的に等しいかを判定するには、<code>boost::geometry::equals()</code>アルゴリズムを使用する。</p> <p>図形の形が同じでも位置が異なれば<code>false</code>を返す。</p> <p>以下は、三角形からなる四角形と、四角形が等しいか判定する処理：</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/geometry.hpp&gt;</span>
-<span class=cp>#include &lt;boost/geometry/algorithms/<span style=color:#ff0000>equals</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/geometry/algorithms/equals.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/polygon.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/box.hpp&gt;</span>
 <span class=cp>#include &lt;boost/geometry/geometries/adapted/boost_tuple.hpp&gt;</span>
@@ -398,7 +398,7 @@ function tree_onclick(e) {
 
     <span class=k>const</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>box</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>box</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
 
-    <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>equals</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>box</span><span class=p>);</span>
+    <span class=k>const</span> <span class=kt>bool</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>equals</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>box</span><span class=p>);</span>
     <span class=k>if</span> <span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"equal"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
@@ -426,7 +426,7 @@ function tree_onclick(e) {
     <span class=p>{</span>
         <span class=k>const</span> <span class=n>box</span> <span class=n>x</span><span class=p>(</span><span class=n>point</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>),</span> <span class=n>point</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>));</span>
 
-        <span class=k>const</span> <span class=kt>double</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>area</span></span><span class=p>(</span><span class=n>x</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>double</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>area</span><span class=p>(</span><span class=n>x</span><span class=p>);</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=c1>// polygon</span>
@@ -434,7 +434,7 @@ function tree_onclick(e) {
         <span class=n>polygon</span> <span class=n>x</span><span class=p>;</span>
         <span class=n>bg</span><span class=o>::</span><span class=n>exterior_ring</span><span class=p>(</span><span class=n>x</span><span class=p>)</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>assign</span><span class=o>::</span><span class=n>list_of</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>3</span><span class=p>)(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>)(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
 
-        <span class=k>const</span> <span class=kt>double</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>area</span></span><span class=p>(</span><span class=n>x</span><span class=p>);</span>
+        <span class=k>const</span> <span class=kt>double</span> <span class=n>result</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>area</span><span class=p>(</span><span class=n>x</span><span class=p>);</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>result</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
@@ -461,7 +461,7 @@ function tree_onclick(e) {
         <span class=p>;</span>
 
     <span class=n>point</span> <span class=n>p</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>centroid</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>p</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>centroid</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>p</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>p</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -486,7 +486,7 @@ function tree_onclick(e) {
         <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>3</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=k>const</span> <span class=n>point</span> <span class=n>p</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>return_centroid&lt;point&gt;</span></span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
+    <span class=k>const</span> <span class=n>point</span> <span class=n>p</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>return_centroid</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>p</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -520,7 +520,7 @@ function tree_onclick(e) {
         <span class=p>;</span>
 
     <span class=n>polygon</span> <span class=n>hull</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>convex_hull</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>hull</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>convex_hull</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>hull</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span>
         <span class=o>&lt;&lt;</span> <span class=s>"polygon: "</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>poly</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span>
@@ -541,7 +541,7 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
     <span class=k>const</span> <span class=n>point</span> <span class=n>a</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
     <span class=k>const</span> <span class=n>point</span> <span class=n>b</span><span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>);</span>
 
-    <span class=k>const</span> <span class=kt>double</span> <span class=n>d</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>distance</span></span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
+    <span class=k>const</span> <span class=kt>double</span> <span class=n>d</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>distance</span><span class=p>(</span><span class=n>a</span><span class=p>,</span> <span class=n>b</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>d</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>4.24264
@@ -568,7 +568,7 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
         <span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>3</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=k>const</span> <span class=kt>double</span> <span class=n>d</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>distance</span></span><span class=p>(</span><span class=n>p</span><span class=p>,</span> <span class=n>poly</span><span class=p>);</span>
+    <span class=k>const</span> <span class=kt>double</span> <span class=n>d</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>distance</span><span class=p>(</span><span class=n>p</span><span class=p>,</span> <span class=n>poly</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>d</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>4.24264
@@ -599,8 +599,8 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
         <span class=p>;</span>
 
     <span class=c1>// bx - poly</span>
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>difference</span></span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>difference</span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
 <span class=p>}</span>
 </pre></div> </p> <p>計算された差の図形：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/geometry/difference.png></p> <p>点線部分が、<code>difference()</code>関数で計算された図形。</p> <h2><a href=https://boostjp.github.io/tips/geometry.html#union_ name=union_>2つの図形の和を計算する</a></h2> <p>2つの図形の和を計算するには、<code>boost::geometry::union_()</code>を使用する。</p> <p>第1引数と第2引数で渡した図形の和が、第3引数で返される。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;vector&gt;</span>
@@ -628,8 +628,8 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
         <span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>union_</span></span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>union_</span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
 <span class=p>}</span>
 </pre></div> </p> <p>計算された和の図形：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/geometry/union_.png></p> <p>点線部分が、<code>union_()</code>関数で計算された図形。</p> <p>注：<code>union_()</code>関数の名前がアンダーバーで終わっているのは、<code>union</code>がC++言語仕様において予約語と定められているためである。</p> <h2><a href=https://boostjp.github.io/tips/geometry.html#intersection name=intersection>2つの図形の共通部分を計算する</a></h2> <p>2つの図形の共通部分を計算するには、<code>boost::geometry::intersection()</code>関数を使用する。</p> <p>第1引数と第2引数で渡した図形の共通部分が、第3引数で返される。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;vector&gt;</span>
 <span class=cp>#include &lt;boost/geometry.hpp&gt;</span>
@@ -656,8 +656,8 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
         <span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>intersection</span></span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>polygon</span><span class=o>&gt;</span> <span class=n>out</span><span class=p>;</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>intersection</span><span class=p>(</span><span class=n>bx</span><span class=p>,</span> <span class=n>poly</span><span class=p>,</span> <span class=n>out</span><span class=p>);</span>
 <span class=p>}</span>
 </pre></div> </p> <p>計算された共通部分の図形：</p> <p><img alt src=https://raw.githubusercontent.com/boostjp/image/master/tips/geometry/intersection.png></p> <p>点線部分が、<code>intersection()</code>で計算された図形。</p> <h2><a href=https://boostjp.github.io/tips/geometry.html#envelope name=envelope>図形の包絡線を計算する</a></h2> <p>図形の包絡線を計算するには、<code>boost::geometry::envelope()</code>を計算する。</p> <p>第1引数として渡した図形の包絡線が、Box Conceptの型として第2引数で返される。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/geometry.hpp&gt;</span>
@@ -689,7 +689,7 @@ hull: (((2, 1.3), (2.4, 1.7), (4.1, 3), (5.3, 2.8), (5.4, 1.2), (4.9, 0.8), (3.6
         <span class=p>;</span>
 
     <span class=n>box</span> <span class=n>bx</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>envelope</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>bx</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>envelope</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>bx</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span>
         <span class=o>&lt;&lt;</span> <span class=s>"poly: "</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>poly</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span>
@@ -727,7 +727,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mf>2.0</span><span class=p>,</span> <span class=mf>1.3</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=k>const</span> <span class=n>box</span> <span class=n>bx</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>return_envelope&lt;box&gt;</span></span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
+    <span class=k>const</span> <span class=n>box</span> <span class=n>bx</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>return_envelope</span><span class=o>&lt;</span><span class=n>box</span><span class=o>&gt;</span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span>
         <span class=o>&lt;&lt;</span> <span class=s>"poly: "</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>poly</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span>
@@ -753,7 +753,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mi>3</span><span class=p>,</span> <span class=mi>2</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=k>const</span> <span class=kt>double</span> <span class=n>len</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>length</span></span><span class=p>(</span><span class=n>line</span><span class=p>);</span>
+    <span class=k>const</span> <span class=kt>double</span> <span class=n>len</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>length</span><span class=p>(</span><span class=n>line</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>len</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>15.1127
@@ -778,7 +778,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=k>const</span> <span class=kt>double</span> <span class=n>len</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>perimeter</span></span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
+    <span class=k>const</span> <span class=kt>double</span> <span class=n>len</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>perimeter</span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>len</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>13.6569
@@ -803,7 +803,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>reverse</span></span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>reverse</span><span class=p>(</span><span class=n>poly</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>poly</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -831,7 +831,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>;</span>
 
     <span class=n>linestring</span> <span class=n>result</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>simplify</span></span><span class=p>(</span><span class=n>line</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=mf>0.5</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>simplify</span><span class=p>(</span><span class=n>line</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=mf>0.5</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>line</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
@@ -859,7 +859,7 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=mi>1</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>unique</span></span><span class=p>(</span><span class=n>line</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>unique</span><span class=p>(</span><span class=n>line</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>line</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -871,7 +871,7 @@ bx: ((2, 0.7), (5.4, 3))
 <span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>bg</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>geometry</span><span class=p>;</span>
-<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>;</span>
+<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n>transform</span><span class=p>;</span>
 
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>d2</span><span class=o>::</span><span class=n>point_xy</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>point</span><span class=p>;</span>
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>polygon</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>polygon</span><span class=p>;</span>
@@ -895,10 +895,10 @@ bx: ((2, 0.7), (5.4, 3))
     <span class=c1>//   1 : xの移動量</span>
     <span class=c1>//   2 : yの移動量</span>
     <span class=c1>//   3 : zの移動量(省略可)</span>
-    <span class=n>trans</span><span class=o>::</span><span class=n><span style=color:#ff0000>translate_transformer</span></span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>1.5</span><span class=p>,</span> <span class=mf>1.5</span><span class=p>);</span>
+    <span class=n>trans</span><span class=o>::</span><span class=n>translate_transformer</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>1.5</span><span class=p>,</span> <span class=mf>1.5</span><span class=p>);</span>
 
     <span class=n>polygon</span> <span class=n>result</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>transform</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -910,7 +910,7 @@ bx: ((2, 0.7), (5.4, 3))
 <span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>bg</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>geometry</span><span class=p>;</span>
-<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>;</span>
+<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n>transform</span><span class=p>;</span>
 
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>d2</span><span class=o>::</span><span class=n>point_xy</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>point</span><span class=p>;</span>
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>polygon</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>polygon</span><span class=p>;</span>
@@ -932,10 +932,10 @@ bx: ((2, 0.7), (5.4, 3))
     <span class=c1>//   3 : 変換先の次元数</span>
     <span class=c1>// コンストラクタの引数</span>
     <span class=c1>//   1 : 倍率</span>
-    <span class=n>trans</span><span class=o>::</span><span class=n><span style=color:#ff0000>scale_transformer</span></span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>3.0</span><span class=p>);</span>
+    <span class=n>trans</span><span class=o>::</span><span class=n>scale_transformer</span><span class=o>&lt;</span><span class=kt>double</span><span class=p>,</span> <span class=mi>2</span><span class=p>,</span> <span class=mi>2</span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>3.0</span><span class=p>);</span>
 
     <span class=n>polygon</span> <span class=n>result</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>transform</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
@@ -947,7 +947,7 @@ bx: ((2, 0.7), (5.4, 3))
 <span class=cp>#include &lt;boost/assign/list_of.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>bg</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>geometry</span><span class=p>;</span>
-<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>;</span>
+<span class=k>namespace</span> <span class=n>trans</span> <span class=o>=</span> <span class=n>bg</span><span class=o>::</span><span class=n>strategy</span><span class=o>::</span><span class=n>transform</span><span class=p>;</span>
 
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>d2</span><span class=o>::</span><span class=n>point_xy</span><span class=o>&lt;</span><span class=kt>double</span><span class=o>&gt;</span> <span class=n>point</span><span class=p>;</span>
 <span class=k>typedef</span> <span class=n>bg</span><span class=o>::</span><span class=n>model</span><span class=o>::</span><span class=n>polygon</span><span class=o>&lt;</span><span class=n>point</span><span class=o>&gt;</span> <span class=n>polygon</span><span class=p>;</span>
@@ -962,10 +962,10 @@ bx: ((2, 0.7), (5.4, 3))
         <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
         <span class=p>;</span>
 
-    <span class=n>trans</span><span class=o>::</span><span class=n><span style=color:#ff0000>rotate_transformer</span></span><span class=o>&lt;</span><span class=n>point</span><span class=p>,</span> <span class=n>point</span><span class=p>,</span> <span class=n><span style=color:#ff0000>bg::degree</span></span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>90.0</span><span class=p>);</span>
+    <span class=n>trans</span><span class=o>::</span><span class=n>rotate_transformer</span><span class=o>&lt;</span><span class=n>point</span><span class=p>,</span> <span class=n>point</span><span class=p>,</span> <span class=n>bg</span><span class=o>::</span><span class=n>degree</span><span class=o>&gt;</span> <span class=n>translate</span><span class=p>(</span><span class=mf>90.0</span><span class=p>);</span>
 
     <span class=n>polygon</span> <span class=n>result</span><span class=p>;</span>
-    <span class=n>bg</span><span class=o>::</span><span class=n><span style=color:#ff0000>transform</span></span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
+    <span class=n>bg</span><span class=o>::</span><span class=n>transform</span><span class=p>(</span><span class=n>poly</span><span class=p>,</span> <span class=n>result</span><span class=p>,</span> <span class=n>translate</span><span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>bg</span><span class=o>::</span><span class=n>dsv</span><span class=p>(</span><span class=n>result</span><span class=p>)</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>

@@ -226,13 +226,13 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/preprocessor/repetition/enum_params.hpp&gt;</span>
 
 <span class=cp>#define FUNCTION(z, n, _) \</span>
-<span class=cp>    template&lt;<a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/enum_params_z.html>BOOST_PP_ENUM_PARAMS_Z</a>(z, <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/inc.html>BOOST_PP_INC</span>(n), class T)&gt; \</span>
-<span class=cp>    void f(<a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/enum_binary_params_z.html>BOOST_PP_ENUM_BINARY_PARAMS_Z</a>(z, <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/inc.html>BOOST_PP_INC</span>(n), T, p)) { \</span>
+<span class=cp>    template&lt;BOOST_PP_ENUM_PARAMS_Z(z, BOOST_PP_INC(n), class T)&gt; \</span>
+<span class=cp>    void f(BOOST_PP_ENUM_BINARY_PARAMS_Z(z, BOOST_PP_INC(n), T, p)) { \</span>
 <span class=cp>        </span><span class=cm>/* ... */</span><span class=cp> \</span>
 <span class=cp>    } \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
-<span class=n><span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/repeat.html>BOOST_PP_REPEAT</span></span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>FUNCTION</span><span class=p>,</span> <span class=n>nil</span><span class=p>)</span>
+<span class=n>BOOST_PP_REPEAT</span><span class=p>(</span><span class=mi>2</span><span class=p>,</span> <span class=n>FUNCTION</span><span class=p>,</span> <span class=n>nil</span><span class=p>)</span>
 <span class=cm>/*</span>
 <span class=cm>    template&lt;class T0&gt; void f(T0 p0) { }</span>
 <span class=cm>    template&lt;class T0, class T1&gt; void f(T0 p0, T1 p1) { }</span>

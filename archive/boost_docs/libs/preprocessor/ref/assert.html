@@ -235,32 +235,32 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/preprocessor/detail/is_nullary.hpp&gt;</span>
 
 <span class=cp># define IS_EDISON_DESIGN_GROUP() \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/compl.html>BOOST_PP_COMPL</a>( \</span>
+<span class=cp>    BOOST_PP_COMPL( \</span>
 <span class=cp>        BOOST_PP_IS_NULLARY( \</span>
-<span class=cp>            <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html>BOOST_PP_CAT</a>(IS_EDG_CHECK, __EDG_VERSION) \</span>
+<span class=cp>            BOOST_PP_CAT(IS_EDG_CHECK, __EDG_VERSION) \</span>
 <span class=cp>        ) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 <span class=cp># define IS_EDG_CHECK__EDG_VERSION ()</span>
 
 <span class=cp># define IS_METROWERKS() \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/compl.html>BOOST_PP_COMPL</a>( \</span>
+<span class=cp>    BOOST_PP_COMPL( \</span>
 <span class=cp>        BOOST_PP_IS_NULLARY( \</span>
-<span class=cp>            <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html>BOOST_PP_CAT</a>(IS_MWERKS_CHECK, __MWERKS__) \</span>
+<span class=cp>            BOOST_PP_CAT(IS_MWERKS_CHECK, __MWERKS__) \</span>
 <span class=cp>        ) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 <span class=cp># define IS_MWERKS_CHECK__MWERKS__ ()</span>
 
 <span class=cp># define IS_MICROSOFT() \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/bitnor.html>BOOST_PP_BITNOR</a>( \</span>
+<span class=cp>    BOOST_PP_BITNOR( \</span>
 <span class=cp>        IS_MICROSOFT_ROOT(), \</span>
 <span class=cp>        IS_EDISON_DESIGN_GROUP() \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 <span class=cp># define IS_MICROSOFT_ROOT() \</span>
 <span class=cp>    BOOST_PP_IS_NULLARY( \</span>
-<span class=cp>        <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html>BOOST_PP_CAT</a>(IS_MSVC_CHECK, _MSC_VER) \</span>
+<span class=cp>        BOOST_PP_CAT(IS_MSVC_CHECK, _MSC_VER) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 <span class=cp># define IS_MSVC_CHECK_MS_VER ()</span>
@@ -269,14 +269,14 @@ function tree_onclick(e) {
 <span class=c1>// (これはただの例である)</span>
 
 <span class=cp># define MACRO(n) \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/cat.html>BOOST_PP_CAT</a>( \</span>
+<span class=cp>    BOOST_PP_CAT( \</span>
 <span class=cp>        MACRO_, \</span>
 <span class=cp>        IS_EDISON_DESIGN_GROUP() \</span>
 <span class=cp>    )(n) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
 <span class=cp># define MACRO_1(n) \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/assert.html>BOOST_PP_ASSERT</a>(0) \</span>
+<span class=cp>    BOOST_PP_ASSERT(0) \</span>
 <span class=cp>    "Edison Design Group is not supported" \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 

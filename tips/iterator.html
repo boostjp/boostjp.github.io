@@ -233,7 +233,7 @@ function tree_onclick(e) {
 <span class=p>}</span>
 </pre></div> </p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数番号</th> <th>パラメータ名</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>1</td> <td><code>Derived</code></td> <td><code>iterator_facede</code>を継承するクラスの名前</td> </tr> <tr> <td>2</td> <td><code>Value</code></td> <td>イテレータの<code>value_type</code>となる型</td> </tr> <tr> <td>3</td> <td><code>CategoryOrTraversal</code></td> <td>イテレータの種類を示すタグ</td> </tr> <tr> <td>4</td> <td><code>Reference</code></td> <td>イテレートするための変数の参照型（省略可。デフォルトは<code>Value&amp;</code>）</td> </tr> <tr> <td>5</td> <td><code>Difference</code></td> <td>イテレータ間の距離を示すための型（省略可。デフォルトは<code>ptrdiff_t</code>）</td> </tr> </tbody> </table> <p>また、<code>iterator_facade</code>クラスを継承して定義するクラスには、<code>boost::iterator_core_access</code>を<code>friend</code>クラスにして、指定したイテレータの種類によって要求されている関数を定義する必要がある。</p> <p>例：</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;algorithm&gt;</span>
-<span class=n><span style=color:#ff0000>#include &lt;boost/iterator/iterator_facade.hpp&gt;</span></span>
+<span class=cp>#include &lt;boost/iterator/iterator_facade.hpp&gt;</span>
 <span class=cp>#include &lt;boost/shared_ptr.hpp&gt;</span>
 
 <span class=c1>// よくある単方向リストがあったとする</span>
@@ -261,12 +261,12 @@ function tree_onclick(e) {
     <span class=k>return</span> <span class=n>root</span><span class=p>;</span>
 <span class=p>}</span>
 
-<span class=n><span style=color:#ff0000>// my_list用のイテレータを作る</span></span>
+<span class=c1>// my_list用のイテレータを作る</span>
 <span class=k>class</span> <span class=nc>my_list_iterator</span> <span class=o>:</span>
-    <span class=k>public</span> <span class=n><span style=color:#ff0000>boost::iterator_facade</span></span><span class=o>&lt;</span>
+    <span class=k>public</span> <span class=n>boost</span><span class=o>::</span><span class=n>iterator_facade</span><span class=o>&lt;</span>
         <span class=n>my_list_iterator</span><span class=p>,</span> 
         <span class=kt>int</span><span class=p>,</span>
-        <span class=n><span style=color:#ff0000>boost::forward_traversal_tag</span></span><span class=o>&gt;</span>
+        <span class=n>boost</span><span class=o>::</span><span class=n>forward_traversal_tag</span><span class=o>&gt;</span>
 <span class=p>{</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>shared_ptr</span><span class=o>&lt;</span><span class=n>my_list_node</span><span class=o>&gt;</span> <span class=n>p_</span><span class=p>;</span>
 
@@ -279,11 +279,11 @@ function tree_onclick(e) {
     <span class=p>{</span> <span class=p>}</span>
 
 <span class=nl>private:</span>
-    <span class=n><span style=color:#ff0000>friend class boost::iterator_core_access</span></span><span class=p>;</span>
+    <span class=k>friend</span> <span class=k>class</span> <span class=nc>boost</span><span class=o>::</span><span class=n>iterator_core_access</span><span class=p>;</span>
 
-    <span class=kt>void</span> <span class=nf><span style=color:#ff0000>increment</span></span><span class=p>()</span> <span class=p>{</span> <span class=n>p_</span> <span class=o>=</span> <span class=n>p_</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span> <span class=p>}</span>
-    <span class=kt>int</span><span class=o>&amp;</span> <span class=n><span style=color:#ff0000>dereference</span></span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span> <span class=k>return</span> <span class=n>p_</span><span class=o>-&gt;</span><span class=n>data</span><span class=p>;</span> <span class=p>}</span>
-    <span class=kt>bool</span> <span class=n><span style=color:#ff0000>equal</span></span><span class=p>(</span><span class=k>const</span> <span class=n>my_list_iterator</span><span class=o>&amp;</span> <span class=n>other</span><span class=p>)</span> <span class=k>const</span> <span class=p>{</span> <span class=k>return</span> <span class=n>p_</span> <span class=o>==</span> <span class=n>other</span><span class=p>.</span><span class=n>p_</span><span class=p>;</span> <span class=p>}</span>
+    <span class=kt>void</span> <span class=nf>increment</span><span class=p>()</span> <span class=p>{</span> <span class=n>p_</span> <span class=o>=</span> <span class=n>p_</span><span class=o>-&gt;</span><span class=n>next</span><span class=p>;</span> <span class=p>}</span>
+    <span class=kt>int</span><span class=o>&amp;</span> <span class=n>dereference</span><span class=p>()</span> <span class=k>const</span> <span class=p>{</span> <span class=k>return</span> <span class=n>p_</span><span class=o>-&gt;</span><span class=n>data</span><span class=p>;</span> <span class=p>}</span>
+    <span class=kt>bool</span> <span class=n>equal</span><span class=p>(</span><span class=k>const</span> <span class=n>my_list_iterator</span><span class=o>&amp;</span> <span class=n>other</span><span class=p>)</span> <span class=k>const</span> <span class=p>{</span> <span class=k>return</span> <span class=n>p_</span> <span class=o>==</span> <span class=n>other</span><span class=p>.</span><span class=n>p_</span><span class=p>;</span> <span class=p>}</span>
 <span class=p>};</span>
 
 <span class=n>my_list_iterator</span> <span class=nf>begin</span><span class=p>(</span><span class=n>my_list</span><span class=o>&amp;</span> <span class=n>p</span><span class=p>)</span>
@@ -306,19 +306,19 @@ function tree_onclick(e) {
 <span class=p>{</span>
     <span class=n>my_list</span> <span class=n>root</span> <span class=o>=</span> <span class=n>create_list</span><span class=p>();</span>
 
-    <span class=n><span style=color:#ff0000>// よくあるイテレータを使ったループ</span></span>
+    <span class=c1>// よくあるイテレータを使ったループ</span>
     <span class=k>for</span><span class=p>(</span> <span class=n>my_list_iterator</span> <span class=n>itr</span> <span class=o>=</span> <span class=n>begin</span><span class=p>(</span> <span class=n>root</span> <span class=p>);</span> <span class=n>itr</span> <span class=o>!=</span> <span class=n>end</span><span class=p>(</span> <span class=n>root</span> <span class=p>);</span> <span class=o>++</span><span class=n>itr</span> <span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=o>*</span><span class=n>itr</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span><span class=p>;</span>
     <span class=p>}</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>// もちろんアルゴリズムにも適用可能</span></span>
+    <span class=c1>// もちろんアルゴリズムにも適用可能</span>
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>begin</span><span class=p>(</span> <span class=n>root</span> <span class=p>),</span> <span class=n>end</span><span class=p>(</span> <span class=n>root</span> <span class=p>),</span> <span class=o>&amp;</span><span class=n>print</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <h2><a href=https://boostjp.github.io/tips/iterator.html#variation name=variation>イテレータの種類と要求されるメンバ関数</a></h2> <p><strong>イテレータの種類とそのイテレータで要求されるメンバ関数の一覧</strong></p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>タグ／関数</th> <th align=center><code>dereference</code></th> <th align=center><code>equal</code></th> <th align=center><code>increment</code></th> <th align=center><code>decrement</code></th> <th align=center><code>advance</code></th> <th align=center><code>distance_to</code></th> </tr> </thead> <tbody> <tr> <td><code>incrementable_traversal_tag</code></td> <td align=center>○</td> <td align=center></td> <td align=center>○</td> <td align=center></td> <td align=center></td> <td align=center></td> </tr> <tr> <td><code>single_pass_traversal_tag</code></td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center></td> <td align=center></td> <td align=center></td> </tr> <tr> <td><code>forward_traversal_tag</code></td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center></td> <td align=center></td> <td align=center></td> </tr> <tr> <td><code>bidirectional_traversal_tag</code></td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center></td> <td align=center></td> </tr> <tr> <td><code>random_access_traversal_tag</code></td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> <td align=center>○</td> </tr> </tbody> </table> <p>Forward Traversal Iterators（<code>forward_traversal_tag</code>で表されるイテレータ）はSingle Pass Iterators（<code>single_pass_traversal_tag</code>で表されるイテレータ）の要求に加えて、イテレータについてデフォルトコンストラクタが要求される。</p> <h2><a href=https://boostjp.github.io/tips/iterator.html#iterator_adaptor name=iterator_adaptor>より楽にイテレータを作成する（iterator_adaptor）</a></h2> <p><code>boost::iterator_facade</code>では、要求される関数を自分で定義しなければならない。<code>boost::iterator_facade</code>は柔軟ではあるが、決まったパターンを書くのは面倒である。例えば、既存のイテレータやポインタを用いてイテレータを作成する場合はイテレータやポインタを変数と要求される関数をいちいち書かなければならないことがそれに当たるだろう。そこで、<code>boost::iterator_adaptor</code>を使えば、あらかじめ既存のイテレータやポインタを変数に持っており要求される関数が定義されているイテレータのクラスを作ることができる。</p> <p>端的に言えば、<code>boost::iterator_adaptor</code>は<code>boost::iterator_facade</code>を継承しており、イテレートするための変数と要求する関数が定義されているクラスである。</p> <p><code>boost::iterator_adaptor</code>のテンプレート引数は以下のようにとる。</p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>引数番号</th> <th>パラメータ名</th> <th>説明</th> </tr> </thead> <tbody> <tr> <td>1</td> <td><code>Derived</code></td> <td><code>iterator_adaptor</code>を継承するクラスの名前</td> </tr> <tr> <td>2</td> <td><code>Base</code></td> <td>イテレートするための変数の型</td> </tr> <tr> <td>3</td> <td><code>Value</code></td> <td>イテレータの<code>value_type</code>となる型<br>（省略可。デフォルトは<code>iterator_traits&lt;Base&gt;::value_type</code>）</td> </tr> <tr> <td>4</td> <td><code>CategoryOrTraversal</code></td> <td>イテレータの種類を示すタグ<br>（省略可。デフォルトは<code>iterator_traversal&lt;Base&gt;::type</code>)</td> </tr> <tr> <td>5</td> <td><code>Reference</code></td> <td>イテレートするための変数の参照型<br>（省略可。<code>Value</code>も省略した場合のデフォルトは<code>iterator_traits&lt;Base&gt;::reference</code>。<code>Value</code>が指定されている場合のデフォルトは<code>Value&amp;</code>)</td> </tr> <tr> <td>6</td> <td><code>Difference</code></td> <td>イテレータ間の距離を示すための型<br>（省略可。デフォルトは<code>iterator_traits&lt;Base&gt;::difference</code>）</td> </tr> </tbody> </table> <p>イテレートするための変数を間接参照した型がイテレータの<code>value_type</code>となる型と一致する場合は、<code>Value</code>にデフォルトが使うことできる。例えば、イテレートするための変数の型が<code>int*</code>で、間接参照した型が<code>int</code>の場合がそれにあたる。また、イテレートするための変数が既存のイテレータやポインタの場合、イテレータの種類を示すタグをデフォルトにできる。</p> <p><code>boost::iterator_adaptor</code>では、<code>increment()</code>メンバ関数や<code>decrement()</code>メンバ関数などの要求されるメンバ関数があらかじめ定義されているが、<code>boost::iterator_core_access</code>を<code>friend</code>クラスにして<code>increment()</code>メンバ関数などの要求されるメンバ関数を書くことによって動作をカスタマイズできる。また、このとき<code>boost::iterator_adaptor</code>の<code>protected</code>メンバである<code>base()</code>関数や<code>base_reference()</code>関数を使うことで指定した既存のイテレータやポインタなどのオブジェクトにアクセスして操作できる。</p> <p>例：</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;algorithm&gt;</span>
-<span class=n><span style=color:#ff0000>#include &lt;boost/iterator_adaptors.hpp&gt;</span></span>
+<span class=cp>#include &lt;boost/iterator_adaptors.hpp&gt;</span>
 
 <span class=k>class</span> <span class=nc>container</span>
 <span class=p>{</span>
@@ -326,10 +326,10 @@ function tree_onclick(e) {
 
 <span class=nl>public:</span>
     <span class=k>struct</span> <span class=n>iterator</span> <span class=o>:</span>
-        <span class=k>public</span> <span class=n><span style=color:#ff0000>boost::iterator_adaptor&lt;iterator, int *&gt;</span></span>
+        <span class=k>public</span> <span class=n>boost</span><span class=o>::</span><span class=n>iterator_adaptor</span><span class=o>&lt;</span><span class=n>iterator</span><span class=p>,</span> <span class=kt>int</span> <span class=o>*&gt;</span>
     <span class=p>{</span>
         <span class=n>iterator</span><span class=p>(</span><span class=kt>int</span> <span class=o>*</span><span class=n>p</span><span class=p>)</span> <span class=o>:</span>
-            <span class=n>iterator</span><span class=o>::</span><span class=n><span style=color:#ff0000>iterator_adaptor_</span></span><span class=p>(</span> <span class=n>p</span> <span class=p>)</span>
+            <span class=n>iterator</span><span class=o>::</span><span class=n>iterator_adaptor_</span><span class=p>(</span> <span class=n>p</span> <span class=p>)</span>
         <span class=p>{</span> <span class=p>}</span>
     <span class=p>};</span>
 

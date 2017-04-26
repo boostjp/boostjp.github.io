@@ -224,10 +224,10 @@ function tree_onclick(e) {
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
     <span class=c1>// 検証に成功するケース</span>
-    <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=mi>1</span> <span class=o>==</span> <span class=mi>1</span><span class=p>);</span>
+    <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=mi>1</span> <span class=o>==</span> <span class=mi>1</span><span class=p>);</span>
 
     <span class=c1>// 検証に失敗するケース</span>
-    <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=mi>1</span> <span class=o>!=</span> <span class=mi>1</span><span class=p>);</span>
+    <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=mi>1</span> <span class=o>!=</span> <span class=mi>1</span><span class=p>);</span>
 <span class=p>}</span>
 </pre></div> </p> <p>出力例：</p> <p><pre><code>This application has requested the Runtime to terminate it in an unusual way.
 Please contact the application's support team for more information.
@@ -242,7 +242,7 @@ Expression: 1 != 1
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>(</span><span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span><span class=o>*</span> <span class=n>argv</span><span class=p>[])</span>
 <span class=p>{</span>
-    <span class=n><span style=color:#ff0000>BOOST_ASSERT_MSG</span></span><span class=p>(</span><span class=n>argc</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>,</span> <span class=s>"you must specify at least one option"</span><span class=p>);</span>
+    <span class=n>BOOST_ASSERT_MSG</span><span class=p>(</span><span class=n>argc</span> <span class=o>&gt;</span> <span class=mi>1</span><span class=p>,</span> <span class=s>"you must specify at least one option"</span><span class=p>);</span>
 <span class=p>}</span>
 </pre></div> </p> <p>また、式を評価する必要が無く、該当箇所を通過した場合に単にデバッグ用途で無条件に落としたい場合、文字列を示すポインタの評価結果は常に真になることを利用して、イディオム的に以下のような書き方もできる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/assert.hpp&gt;</span>
@@ -252,16 +252,16 @@ Expression: 1 != 1
     <span class=k>if</span> <span class=p>(</span><span class=n>argc</span> <span class=o>==</span> <span class=mi>1</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=p>{</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"option 1: "</span> <span class=o>&lt;&lt;</span> <span class=n>argv</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-        <span class=n><span style=color:#ff0000>BOOST_ASSERT</span></span><span class=p>(</span><span class=o>!</span><span class=s>"unknown extra option specified"</span><span class=p>);</span>
+        <span class=n>BOOST_ASSERT</span><span class=p>(</span><span class=o>!</span><span class=s>"unknown extra option specified"</span><span class=p>);</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>これは<code>NDEBUG</code>が<code>#define</code>されているビルド（リリースビルド）では暗黙のうちに通過してしまいバグの原因となるので、あくまで簡易的なデバッグ用途に留めるべきである。</p> <h2><a href=https://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior name=customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></h2> <p><code>BOOST_ASSERT</code>での検証失敗時の動作をカスタマイズしたい場合は、以下の方法をとる：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed()</code>関数を定義する</li> </ul> <p>この方法をとることによって、検証失敗時に、自分で定義した<code>assertion_failed()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp># define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
+</pre></div> </p> <p>これは<code>NDEBUG</code>が<code>#define</code>されているビルド（リリースビルド）では暗黙のうちに通過してしまいバグの原因となるので、あくまで簡易的なデバッグ用途に留めるべきである。</p> <h2><a href=https://boostjp.github.io/tips/dynamic_assert.html#customize-fail-behavior name=customize-fail-behavior>検証失敗時の動作をカスタマイズする</a></h2> <p><code>BOOST_ASSERT</code>での検証失敗時の動作をカスタマイズしたい場合は、以下の方法をとる：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed()</code>関数を定義する</li> </ul> <p>この方法をとることによって、検証失敗時に、自分で定義した<code>assertion_failed()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp># define BOOST_ENABLE_ASSERT_HANDLER</span>
 <span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 <span class=cp>#include &lt;fstream&gt;</span>
 <span class=cp>#include &lt;cstdlib&gt;</span>
 
 <span class=k>namespace</span> <span class=n>boost</span> <span class=p>{</span>
-    <span class=kt>void</span> <span class=n><span style=color:#ff0000>assertion_failed</span></span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>file</span><span class=p>,</span> <span class=kt>long</span> <span class=n>line</span><span class=p>)</span>
+    <span class=kt>void</span> <span class=n>assertion_failed</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>file</span><span class=p>,</span> <span class=kt>long</span> <span class=n>line</span><span class=p>)</span>
     <span class=p>{</span>
         <span class=c1>// ログに出力して、アプリケーションを異常終了させる</span>
         <span class=n>std</span><span class=o>::</span><span class=n>ofstream</span> <span class=n>log</span><span class=p>(</span><span class=s>"log.txt"</span><span class=p>,</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>out</span> <span class=o>|</span> <span class=n>std</span><span class=o>::</span><span class=n>ios</span><span class=o>::</span><span class=n>app</span><span class=p>);</span>
@@ -284,13 +284,13 @@ Please contact the application's support team for more information.
 Function : int main()
 File : C:\language\cpp\main.cpp
 Line : 21
-</code></pre></p> <p><code>BOOST_ASSERT_MSG</code>の場合は、以下のようにする：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed_msg()</code>関数を定義する</li> </ul> <p>これによって、<code>BOOST_ASSERT_MSG</code>での検証失敗時に、自分で定義した<code>assertion_failed_msg()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>メッセージ</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp># define <span style=color:#ff0000>BOOST_ENABLE_ASSERT_HANDLER</span></span>
+</code></pre></p> <p><code>BOOST_ASSERT_MSG</code>の場合は、以下のようにする：</p> <ul> <li><code>&lt;boost/assert.hpp&gt;</code>ヘッダをインクルードする前に、<code>BOOST_ENABLE_ASSERT_HANDLER</code>を<code>#define</code>する</li> <li><code>boost</code>名前空間に<code>assertion_failed_msg()</code>関数を定義する</li> </ul> <p>これによって、<code>BOOST_ASSERT_MSG</code>での検証失敗時に、自分で定義した<code>assertion_failed_msg()</code>関数が呼ばれるようになる。この関数には、以下のパラメータが渡される：</p> <ul> <li>文字列化された式</li> <li>メッセージ</li> <li>関数名(形式は環境依存)</li> <li>ファイル名(<code>__FILE__</code>)</li> <li>行番号(<code>__LINE__</code>)</li> </ul> <p><div class=codehilite><pre><span class=cp># define BOOST_ENABLE_ASSERT_HANDLER</span>
 <span class=cp>#include &lt;boost/assert.hpp&gt;</span>
 <span class=cp>#include &lt;fstream&gt;</span>
 <span class=cp>#include &lt;cstdlib&gt;</span>
 
 <span class=k>namespace</span> <span class=n>boost</span> <span class=p>{</span>
-    <span class=kt>void</span> <span class=n><span style=color:#ff0000>assertion_failed_msg</span></span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>msg</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span>
+    <span class=kt>void</span> <span class=n>assertion_failed_msg</span><span class=p>(</span><span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>expr</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>msg</span><span class=p>,</span> <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>function</span><span class=p>,</span>
                               <span class=k>const</span> <span class=kt>char</span><span class=o>*</span> <span class=n>file</span><span class=p>,</span> <span class=kt>long</span> <span class=n>line</span><span class=p>)</span>
     <span class=p>{</span>
         <span class=c1>// ログに出力して、アプリケーションを異常終了させる</span>

@@ -307,7 +307,7 @@ function tree_onclick(e) {
 <span class=p>{</span>
     <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>s</span> <span class=o>=</span> <span class=s>"abc,123,xyz"</span><span class=p>;</span>
 
-    <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>result</span><span class=p>;</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>algorithm</span><span class=o>::</span><span class=n>split</span><span class=p>(</span><span class=n>result</span><span class=p>,</span> <span class=n>s</span><span class=p>,</span> <span class=n>boost</span><span class=o>::</span><span class=n>is_any_of</span><span class=p>(</span><span class=s>","</span><span class=p>));</span> <span class=c1>// カンマで分割</span>
 
     <span class=n>boost</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span><span class=n>result</span><span class=p>,</span> <span class=n>disp</span><span class=p>);</span>
@@ -318,14 +318,14 @@ xyz
 </code></pre></p> <h2><a href=https://boostjp.github.io/tips/string_algo.html#join name=join>区切り文字を指定して、コンテナを文字列化する</a></h2> <p>区切り文字を指定してコンテナを文字列化するには、<code><a href=http://www.boost.org/doc/libs/release/doc/html/boost/algorithm/join.html target=_blank>boost::algorithm::join()</a></code>関数を使用する。</p> <p>第1引数には文字列のコンテナ、第2引数には、区切り文字列を指定する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;vector&gt;</span>
 <span class=cp>#include &lt;string&gt;</span>
-<span class=cp>#include &lt;boost/algorithm/string/<span style=color:#ff0000>join</span>.hpp&gt;</span>
+<span class=cp>#include &lt;boost/algorithm/string/join.hpp&gt;</span>
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=k>const</span> <span class=n><a href=http://cpprefjp.github.io/reference/vector.html target=_blank>std::vector</a></span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=p>{</span><span class=s>"a"</span><span class=p>,</span> <span class=s>"b"</span><span class=p>,</span> <span class=s>"c"</span><span class=p>};</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>std</span><span class=o>::</span><span class=n>string</span><span class=o>&gt;</span> <span class=n>v</span> <span class=o>=</span> <span class=p>{</span><span class=s>"a"</span><span class=p>,</span> <span class=s>"b"</span><span class=p>,</span> <span class=s>"c"</span><span class=p>};</span>
 
     <span class=c1>// カンマ区切りの文字列にする</span>
-    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>s</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>algorithm</span><span class=o>::</span><span class=n><span style=color:#ff0000>join</span></span><span class=p>(</span><span class=n>v</span><span class=p>,</span> <span class=s>","</span><span class=p>);</span>
+    <span class=k>const</span> <span class=n>std</span><span class=o>::</span><span class=n>string</span> <span class=n>s</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>algorithm</span><span class=o>::</span><span class=n>join</span><span class=p>(</span><span class=n>v</span><span class=p>,</span> <span class=s>","</span><span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>s</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
 </pre></div> </p> <p>実行結果：</p> <p><pre><code>a,b,c

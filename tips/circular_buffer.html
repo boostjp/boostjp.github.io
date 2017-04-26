@@ -248,18 +248,18 @@ push_front( 'd' )
 <span class=p>{</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>                  <span class=c1>// バッファ内の任意の位置を指定可能</span>
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>   <span class=c1>// arry同様開始/終了の指定も可能</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.push_front</span></span><span class=p>(</span> <span class=sc>'d'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'d'</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=s>" "</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>2</span><span class=p>]</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
@@ -297,15 +297,15 @@ push_back( '1' )
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span><span class=mi>3</span><span class=p>);</span>
-    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'x'</span> <span class=p>);</span>
-    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'y'</span> <span class=p>);</span>
-    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'z'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'x'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'y'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'z'</span> <span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
 
-    <span class=n><span style=color:#ff0000>c_buf.push_back</span></span><span class=p>(</span> <span class=sc>'1'</span> <span class=p>);</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>push_back</span><span class=p>(</span> <span class=sc>'1'</span> <span class=p>);</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
@@ -361,10 +361,10 @@ y
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.begin</span></span><span class=p>(),</span> <span class=n><span style=color:#ff0000>c_buf.end</span></span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.rbegin</span></span><span class=p>(),</span> <span class=n><span style=color:#ff0000>c_buf.rend</span></span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>rbegin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>rend</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
@@ -415,8 +415,8 @@ a b c
     <span class=c1>// ------------------------------</span>
     <span class=c1>// 実メモリアドレスを意識</span>
     <span class=c1>// ------------------------------</span>
-    <span class=kt>int</span> <span class=n>num1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().second</span></span><span class=p>;</span>    <span class=c1>// begin()から終端までの個数 '3'</span>
-    <span class=kt>int</span> <span class=n>num2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().second</span></span><span class=p>;</span>    <span class=c1>// 実メモリ先頭からend()までの個数 '2'</span>
+    <span class=kt>int</span> <span class=n>num1</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_one</span><span class=p>().</span><span class=n>second</span><span class=p>;</span>    <span class=c1>// begin()から終端までの個数 '3'</span>
+    <span class=kt>int</span> <span class=n>num2</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_two</span><span class=p>().</span><span class=n>second</span><span class=p>;</span>    <span class=c1>// 実メモリ先頭からend()までの個数 '2'</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num1</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num2</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
@@ -427,12 +427,12 @@ a b c
     <span class=c1>//       |   +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
     <span class=c1>//       +------------------- 'D'がend()  位置、先頭'E'を含めて2つ続く</span>
     <span class=c1>// --------------------------------------------------------------------------</span>
-    <span class=kt>char</span><span class=o>*</span> <span class=n>p1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().first</span></span><span class=p>;</span>
-    <span class=kt>char</span><span class=o>*</span> <span class=n>p2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().first</span></span><span class=p>;</span>
+    <span class=kt>char</span><span class=o>*</span> <span class=n>p1</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_one</span><span class=p>().</span><span class=n>first</span><span class=p>;</span>
+    <span class=kt>char</span><span class=o>*</span> <span class=n>p2</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_two</span><span class=p>().</span><span class=n>first</span><span class=p>;</span>
     <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p1</span><span class=p>,</span> <span class=n>num1</span> <span class=p>);</span>                <span class=c1>// begin()から実メモリ末尾までの出力</span>
     <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p2</span><span class=p>,</span> <span class=n>num2</span> <span class=p>);</span>                <span class=c1>// 実メモリ先頭からend()までの出力</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.pop_back();</span></span>                    <span class=c1>// 末尾を消してみる</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>pop_back</span><span class=p>();</span>                    <span class=c1>// 末尾を消してみる</span>
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
@@ -445,8 +445,8 @@ a b c
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=p>(</span> <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>_1</span> <span class=o>&lt;&lt;</span> <span class=sc>' '</span> <span class=p>));</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n>num1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().second</span></span><span class=p>;</span>     <span class=c1>// 再取得してみる</span>
-    <span class=n>num2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().second</span></span><span class=p>;</span>
+    <span class=n>num1</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_one</span><span class=p>().</span><span class=n>second</span><span class=p>;</span>     <span class=c1>// 再取得してみる</span>
+    <span class=n>num2</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_two</span><span class=p>().</span><span class=n>second</span><span class=p>;</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num1</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>num2</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
@@ -457,13 +457,13 @@ a b c
     <span class=c1>//   |       +--------------- 'H'がbegin()位置、この位置を含めて3つ続く</span>
     <span class=c1>//   +----------------------- 'E'がend()  位置、先頭'E'を含めて1つ続く</span>
     <span class=c1>// --------------------------------------------------------------------------</span>
-    <span class=n>p1</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_one().first</span></span><span class=p>;</span>        <span class=c1>// 再取得してみる</span>
-    <span class=n>p2</span> <span class=o>=</span> <span class=n><span style=color:#ff0000>c_buf.array_two().first</span></span><span class=p>;</span>
+    <span class=n>p1</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_one</span><span class=p>().</span><span class=n>first</span><span class=p>;</span>        <span class=c1>// 再取得してみる</span>
+    <span class=n>p2</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>array_two</span><span class=p>().</span><span class=n>first</span><span class=p>;</span>
     <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p1</span><span class=p>,</span> <span class=n>num1</span> <span class=p>);</span>
     <span class=n>mem_dump</span><span class=p>(</span> <span class=n>p2</span><span class=p>,</span> <span class=n>num2</span> <span class=p>);</span>
 
     <span class=c1>// linearize()を使えば、レガシーCの様な記載も可能</span>
-    <span class=n>mem_dump</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.linearize()</span></span><span class=p>,</span> <span class=mi>4</span> <span class=p>);</span>
+    <span class=n>mem_dump</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>linearize</span><span class=p>(),</span> <span class=mi>4</span> <span class=p>);</span>
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
@@ -490,41 +490,41 @@ H G F E
     <span class=c1>// サイズ関連</span>
     <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;</span> <span class=n>c_buf</span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>7</span> <span class=p>);</span>                            <span class=c1>// バッファの許容サイズを7に拡張</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>set_capacity</span><span class=p>(</span> <span class=mi>7</span> <span class=p>);</span>                            <span class=c1>// バッファの許容サイズを7に拡張</span>
 
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 今は空なのでサイズ0</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.capacity()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// バッファの許容サイズ7</span>
-    <span class=k>if</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.empty()</span></span> <span class=p>){</span>                                <span class=c1>// empty()==trueでバッファが空</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 今は空なのでサイズ0</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>capacity</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// バッファの許容サイズ7</span>
+    <span class=k>if</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>empty</span><span class=p>()</span> <span class=p>){</span>                                <span class=c1>// empty()==trueでバッファが空</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"buffer empty."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'a'</span> <span class=p>);</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 1つ入れたのでサイズ1</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// 1つ入れたのでサイズ1</span>
 
-    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>5</span> <span class=p>);</span>                            <span class=c1>// 許容サイズを5に小さくする</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>set_capacity</span><span class=p>(</span> <span class=mi>5</span> <span class=p>);</span>                            <span class=c1>// 許容サイズを5に小さくする</span>
 
     <span class=c1>// あと、どれくらい入れれるの？</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.reserve()</span></span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// capacity()-size() の意味</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>reserve</span><span class=p>()</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>         <span class=c1>// capacity()-size() の意味</span>
 
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'b'</span> <span class=p>);</span>
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'c'</span> <span class=p>);</span>
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'d'</span> <span class=p>);</span>
     <span class=n>c_buf</span><span class=p>.</span><span class=n>push_front</span><span class=p>(</span> <span class=sc>'e'</span> <span class=p>);</span>
 
-    <span class=k>if</span><span class=p>(</span> <span class=n><span style=color:#ff0000>c_buf.full()</span></span> <span class=p>){</span>                               <span class=c1>// full()==trueでバッファが全て埋まっている</span>
+    <span class=k>if</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>full</span><span class=p>()</span> <span class=p>){</span>                               <span class=c1>// full()==trueでバッファが全て埋まっている</span>
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"buffer full."</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
                                                         <span class=c1>//  ___ ___ ___ ___ ___</span>
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>  <span class=c1>// |_e_|_d_|_c_|_b_|_a_|</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは5</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは5</span>
 
 
-    <span class=n><span style=color:#ff0000>c_buf.set_capacity</span></span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>                            <span class=c1>// バッファの値が埋まっていても容量を3にできる</span>
+    <span class=n>c_buf</span><span class=p>.</span><span class=n>set_capacity</span><span class=p>(</span> <span class=mi>3</span> <span class=p>);</span>                            <span class=c1>// バッファの値が埋まっていても容量を3にできる</span>
                                                         <span class=c1>//  ___ ___ ___ </span>
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>  <span class=c1>// |_e_|_d_|_c_|</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.size()</span></span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは3</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>size</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>             <span class=c1>// サイズは3</span>
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
@@ -559,7 +559,7 @@ e d c
     <span class=n>std</span><span class=o>::</span><span class=n>for_each</span><span class=p>(</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>(),</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>end</span><span class=p>(),</span> <span class=n>disp</span> <span class=p>);</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
-    <span class=n><span style=color:#ff0000>boost::circular_buffer&lt;char&gt;::iterator it</span></span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>();</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>circular_buffer</span><span class=o>&lt;</span><span class=kt>char</span><span class=o>&gt;::</span><span class=n>iterator</span> <span class=n>it</span> <span class=o>=</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>begin</span><span class=p>();</span>
 
     <span class=c1>// 先頭の要素を取得</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>front</span><span class=p>()</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>       <span class=c1>// 'C'</span>
@@ -594,8 +594,8 @@ e d c
 <span class=c1>//  std::cout &lt;&lt; *it &lt;&lt; std::endl; // 'C' は消えたので、イテレータが無効になった</span>
 
     <span class=c1>// ランダムアクセス</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf[0]</span></span>     <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 'H'</span>
-    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n><span style=color:#ff0000>c_buf.at</span></span><span class=p>(</span><span class=mi>0</span><span class=p>)</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 範囲チェック付きランダムアクセス 'H' </span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>     <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 'H'</span>
+    <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>c_buf</span><span class=p>.</span><span class=n>at</span><span class=p>(</span><span class=mi>0</span><span class=p>)</span>  <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span> <span class=c1>// 範囲チェック付きランダムアクセス 'H' </span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>

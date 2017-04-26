@@ -230,25 +230,25 @@ function tree_onclick(e) {
 <span class=cp>#include &lt;boost/preprocessor/tuple/elem.hpp&gt;</span>
 
 <span class=cp>#define RANGE(first, last) \</span>
-<span class=cp>    <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/repeat.html>BOOST_PP_REPEAT</span>( \</span>
-<span class=cp>        <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/inc.html>BOOST_PP_INC</span>( \</span>
-<span class=cp>            <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/sub.html>BOOST_PP_SUB</span>(last, first) \</span>
+<span class=cp>    BOOST_PP_REPEAT( \</span>
+<span class=cp>        BOOST_PP_INC( \</span>
+<span class=cp>            BOOST_PP_SUB(last, first) \</span>
 <span class=cp>            , \</span>
 <span class=cp>            RANGE_M, \</span>
-<span class=cp>        (first, <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/deduce_d.html>BOOST_PP_DEDUCE_D</a>()) \</span>
+<span class=cp>        (first, BOOST_PP_DEDUCE_D()) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
 <span class=cp>#define RANGE_M(z, n, data) \</span>
 <span class=cp>    RANGE_M_2( \</span>
 <span class=cp>        n, \</span>
-<span class=cp>        <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 0, data), \</span>
-<span class=cp>        <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/tuple_elem.html>BOOST_PP_TUPLE_ELEM</span>(2, 1, data) \</span>
+<span class=cp>        BOOST_PP_TUPLE_ELEM(2, 0, data), \</span>
+<span class=cp>        BOOST_PP_TUPLE_ELEM(2, 1, data) \</span>
 <span class=cp>    ) \</span>
 <span class=cp>    </span><span class=cm>/**/</span><span class=cp></span>
 
 <span class=cp>#define RANGE_M_2(n, first, d) \</span>
-<span class=cp>   <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/comma_if.html>BOOST_PP_COMMA_IF</a>(n) <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/add_d.html>BOOST_PP_ADD_D</a>(d, n, first) \</span>
+<span class=cp>   BOOST_PP_COMMA_IF(n) BOOST_PP_ADD_D(d, n, first) \</span>
 <span class=cp>   </span><span class=cm>/**/</span><span class=cp></span>
 
 <span class=n>RANGE</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>10</span><span class=p>)</span> <span class=c1>// 5, 6, 7, 8, 9, 10 に展開される</span>

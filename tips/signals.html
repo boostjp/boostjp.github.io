@@ -375,7 +375,7 @@ invalid value
 
 <span class=c1>// 接続された複数の関数の戻り値の合計を戻す</span>
 <span class=k>template</span> <span class=o>&lt;</span><span class=k>typename</span> <span class=n>T</span><span class=o>&gt;</span>
-<span class=k>struct</span> <span class=n><span style=color:#ff0000>custom_result_value</span></span>
+<span class=k>struct</span> <span class=n>custom_result_value</span>
 <span class=p>{</span>
     <span class=k>typedef</span> <span class=n>T</span> <span class=n>result_type</span><span class=p>;</span>
 
@@ -411,7 +411,7 @@ invalid value
 
 <span class=kt>int</span> <span class=nf>main</span><span class=p>()</span>
 <span class=p>{</span>
-    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=p>),</span> <span class=n><span style=color:#ff0000>custom_result_value</span></span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>sig</span><span class=p>;</span>
+    <span class=n>boost</span><span class=o>::</span><span class=n>signals2</span><span class=o>::</span><span class=n>signal</span><span class=o>&lt;</span><span class=kt>int</span><span class=p>(</span><span class=kt>int</span><span class=p>,</span> <span class=kt>int</span><span class=p>),</span> <span class=n>custom_result_value</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=o>&gt;</span> <span class=n>sig</span><span class=p>;</span>
 
     <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>add</span><span class=p>);</span>
     <span class=n>sig</span><span class=p>.</span><span class=n>connect</span><span class=p>(</span><span class=o>&amp;</span><span class=n>minus</span><span class=p>);</span>

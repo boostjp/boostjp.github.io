@@ -227,12 +227,12 @@ function tree_onclick(e) {
 <span class=cp>#define MACRO(a, b, c) (a)(b)(c)</span>
 <span class=cp>#define ARGS() (1, 2, 3)</span>
 
-<span class=n><a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/expand.html>BOOST_PP_EXPAND</a></span><span class=p>(</span><span class=n>MACRO</span> <span class=n>ARGS</span><span class=p>)</span> <span class=c1>// (1)(2)(3) に展開される</span>
+<span class=n>BOOST_PP_EXPAND</span><span class=p>(</span><span class=n>MACRO</span> <span class=n>ARGS</span><span class=p>)</span> <span class=c1>// (1)(2)(3) に展開される</span>
 
 <span class=cp>#define SAMPLE(n) \</span>
-<span class=cp>    <a href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/expand.html>BOOST_PP_EXPAND</a>( \</span>
+<span class=cp>    BOOST_PP_EXPAND( \</span>
 <span class=cp>        MACRO, \</span>
-<span class=cp>        <span href=https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/if.html>BOOST_PP_IF</span>( \</span>
+<span class=cp>        BOOST_PP_IF( \</span>
 <span class=cp>            n, \</span>
 <span class=cp>            (x, y, z), \</span>
 <span class=cp>            (a, b, c) \</span>
