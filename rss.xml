@@ -2,9 +2,134 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2017-07-10T13:56:19.874405</updated>
-  <id>7e8f9c8f-dd31-4edf-88be-ee20b7ac2a5e</id>
+  <updated>2017-07-10T15:42:25.745483</updated>
+  <id>40976580-85ff-4822-9f8e-846af9ff8507</id>
 
+  
+    <entry>
+      <title>Boost 1.65.0リリースノート -- 1.65.0リリースノート : Coreを追加 #166</title>
+      <link href="https://boostjp.github.io/document/version/1_65_0.html"/>
+      <id>c2dcf0c655936860af119f32267d32ceb5acb441:document/version/1_65_0.md</id>
+      <updated>2017-07-10T15:42:13+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;Boost 1.65.0リリースノート&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_65_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_65_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_65_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_65_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/poly_collection&#34; target=&#34;_blank&#34;&gt;PolyCollection&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Joaquín M López Muñoz氏による、多相オブジェクトに対して高速に動作するコンテナのライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/stacktrace&#34; target=&#34;_blank&#34;&gt;Stacktrace&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Antony Polukhin氏による、バックトレースの収集、コピー、表示をするライブラリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_0.html#config&#34;&gt;Config&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_0.html#config&#34; name=&#34;config&#34;&gt;Config&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;欠陥検出マクロとして、以下を追加：&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_NO_CXX11_POINTER_TRAITS&lt;/code&gt; : C++11の&lt;code&gt;std::pointer_traits&lt;/code&gt;クラス&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_NO_CXX17_FOLD_EXPRESSIONS&lt;/code&gt; : C++17の畳み込み式&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_NO_CXX17_INLINE_VARIABLES&lt;/code&gt; : C++17のインライン変数&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_NO_CXX17_STRUCTURED_BINDINGS&lt;/code&gt; : C++17の構造化束縛&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_0.html#core&#34; name=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;C++03以降向けに&lt;code&gt;pointer_traits&lt;/code&gt;を実装した。これには、&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r0.html&#34; target=&#34;_blank&#34;&gt;P0653r0&lt;/a&gt;のポインタへの変換関数が含まれる (実装者のGlen Fernandes氏に感謝)。この実装は、Align、Circular Buffer、Fiber、Geometryなどの他のライブラリで使われている&lt;/li&gt;
+&lt;li&gt;Lightweight testに&lt;code&gt;BOOST_TEST_GT&lt;/code&gt; (&lt;code&gt;operator&amp;gt;&lt;/code&gt;による比較) と&lt;code&gt;BOOST_TEST_GE&lt;/code&gt; (&lt;code&gt;operator&amp;gt;=&lt;/code&gt;による比較)を追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.65.0リリースノート -- 1.65.0リリースノート : 新ライブラリとしてStacktraceを追加 #168</title>
@@ -543,107 +668,6 @@
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>C++Now! -- 「C++Now! 2017」作成</title>
-      <link href="https://boostjp.github.io/cppnow.html"/>
-      <id>7d9319baa01b0cf62d746b87ca22179d54522526:cppnow.md</id>
-      <updated>2017-06-12T05:51:06+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;C++Now!&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;2012年から、BoostConという名前で開催されていたカンファレンスがC++Now!という名前に変わりました。ここでは、C++Now!のセッション概要の翻訳、およびセッション資料のまとめを記載していきます。&lt;/p&gt;
-&lt;p&gt;BoostConは以下のページを参照してください：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/boostcon.html&#34;&gt;BoostCon - boostjp&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;各年のセッション概要翻訳&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2012.html&#34;&gt;C++Now! 2012&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2013.html&#34;&gt;C++Now! 2013&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2014.html&#34;&gt;C++Now! 2014&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2015.html&#34;&gt;C++Now! 2015&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2016.html&#34;&gt;C++Now! 2016&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/cppnow/2017.html&#34;&gt;C++Now! 2017&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>E Kawashima</name>
-        <email>e-kwsm@users.noreply.github.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>C++Now! 2017 -- 「C++Now! 2017」作成</title>
-      <link href="https://boostjp.github.io/cppnow/2017.html"/>
-      <id>7d9319baa01b0cf62d746b87ca22179d54522526:cppnow/2017.md</id>
-      <updated>2017-06-12T05:51:06+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;C++Now! 2017&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://cppnow2017.sched.com&#34; target=&#34;_blank&#34;&gt;https://cppnow2017.sched.com&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;セッションリスト&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Rust: Hack Without Fear!&lt;/li&gt;
-&lt;li&gt;C++17 Features&lt;/li&gt;
-&lt;li&gt;Expression Templates Everywhere with C++14 and Yap&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;constexpr&lt;/code&gt; ALL the things!&lt;/li&gt;
-&lt;li&gt;Rethinking Strings&lt;/li&gt;
-&lt;li&gt;Networking TS Workshop (part 1 of 2)&lt;/li&gt;
-&lt;li&gt;Networking TS Workshop (part 2 of 2)&lt;/li&gt;
-&lt;li&gt;C++11’s Quiet Little Gem: &lt;code&gt;&amp;lt;system_error&amp;gt;&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Local (&#34;Arena&#34;) Memory Allocators&lt;/li&gt;
-&lt;li&gt;Containers &amp;amp; Strings: Why the Implementation Matters&lt;/li&gt;
-&lt;li&gt;Haskell taketh away: limiting side effects for parallel programming&lt;/li&gt;
-&lt;li&gt;(Ab)using C++17&lt;/li&gt;
-&lt;li&gt;Good FIFOs Make Good Thread Neighbors&lt;/li&gt;
-&lt;li&gt;Postmodern Immutable Data Structures&lt;/li&gt;
-&lt;li&gt;Type Based Template Metaprogramming is Not Dead&lt;/li&gt;
-&lt;li&gt;A vision for C++20 and &lt;code&gt;std2&lt;/code&gt; (part 1 of 3)&lt;/li&gt;
-&lt;li&gt;Fun with Boost.Hana&lt;/li&gt;
-&lt;li&gt;Composite Arithmetic Types Are &amp;gt; the + of Their Parts&lt;/li&gt;
-&lt;li&gt;An easy to use RPC framework implemented in C++11/14&lt;/li&gt;
-&lt;li&gt;Mocking C++ (full-length version)&lt;/li&gt;
-&lt;li&gt;The Mathematical Underpinnings of Promises in C++&lt;/li&gt;
-&lt;li&gt;Multithreading Using Lockless Lists and RCU&lt;/li&gt;
-&lt;li&gt;Call: A Library that Will Change the Way You Think about Function Invocations (part 1 of 2)&lt;/li&gt;
-&lt;li&gt;Call: A Library that Will Change the Way You Think about Function Invocations (part 2 of 2)&lt;/li&gt;
-&lt;li&gt;Postmodern C++&lt;/li&gt;
-&lt;li&gt;Promises in C++: The Universal Glue for Asynchronous Programs&lt;/li&gt;
-&lt;li&gt;A look at C++ through the glasses of a language tool&lt;/li&gt;
-&lt;li&gt;Boost vs Qt: What Could They Learn From Each Other?&lt;/li&gt;
-&lt;li&gt;A vision for C++20 and &lt;code&gt;std2&lt;/code&gt; (part 2 of 3)&lt;/li&gt;
-&lt;li&gt;Practical (?) Applications of Reflection&lt;/li&gt;
-&lt;li&gt;Towards Painless Testing&lt;/li&gt;
-&lt;li&gt;Sorting in less than O(n log n): Generalizing and optimizing radix sort&lt;/li&gt;
-&lt;li&gt;Parallel Programming with RaftLib: streaming/data-flow concurrency via concise C++ iostream-like operators&lt;/li&gt;
-&lt;li&gt;Implementing &lt;code&gt;variant&lt;/code&gt; visitation using lambdas&lt;/li&gt;
-&lt;li&gt;Testing the Limits of Allocator Awareness&lt;/li&gt;
-&lt;li&gt;Competitive Advantage with D&lt;/li&gt;
-&lt;li&gt;Effective CMake&lt;/li&gt;
-&lt;li&gt;The &#39;Detection Idiom:&#39; A Better Way to SFINAE&lt;/li&gt;
-&lt;li&gt;C++ Core Guidelines - Modernize your C++ Code Base&lt;/li&gt;
-&lt;li&gt;Restoring Your Sanity: An Approach to Dealing with Reference Types in the Generic Programming Paradigm&lt;/li&gt;
-&lt;li&gt;Locally Atomic Capabilities and How to Count Them&lt;/li&gt;
-&lt;li&gt;The Holy Grail - A Hash Array Mapped Trie for C++&lt;/li&gt;
-&lt;li&gt;A vision for C++20 and &lt;code&gt;std2&lt;/code&gt; (part 3 of 3)&lt;/li&gt;
-&lt;li&gt;No raw &lt;code&gt;std::thread&lt;/code&gt;! - Live Tweet Analysis in C++&lt;/li&gt;
-&lt;li&gt;Customization Points That Suck Less&lt;/li&gt;
-&lt;li&gt;clang-useful: Building useful tools with LLVM and clang for fun and profit&lt;/li&gt;
-&lt;li&gt;Performance analysis and optimization of C++ standard libraries&lt;/li&gt;
-&lt;li&gt;Type-safe Programming&lt;/li&gt;
-&lt;li&gt;The Lesser-Known Multicore Synchronization Primitives&lt;/li&gt;
-&lt;li&gt;CHAP: A memory analyzer for un-instrumented cores&lt;/li&gt;
-&lt;li&gt;Nbdl: Generic Library for Managing State Seamlessly Across Network&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;セッション資料&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostcon/cppnow_presentations_2017&#34; target=&#34;_blank&#34;&gt;C++Now! Presentations 2017&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>E Kawashima</name>
-        <email>e-kwsm@users.noreply.github.com</email>
       </author>
     </entry>
   
