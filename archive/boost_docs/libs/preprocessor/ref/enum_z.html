@@ -7,12 +7,24 @@
             document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/,'js');
         </script><style type=text/css>
 .navbar-brand {
-  padding: 0px;
+  line-height: 32px;
+  padding: 0.5em 15px;
 }
-.navbar-brand>img {
-  height: 100%;
-  padding: 10px;
-  width: auto;
+.navbar-brand > .title-wrapper:before {
+  content: "";
+  float: left;
+  display: inline-block;
+  overflow: hidden;
+  height: 0;
+  padding: 32px 32px 0 0;
+  margin: 0 4px 0 0;
+  background-image: url(/static/original-icons/cpprefjp-icon-v1.1-transparent.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.navbar-brand > .title-wrapper > .title {
+  float: left;
+  display: inline-block;
 }
 .tree{
   -webkit-border-radius:4px;
@@ -216,7 +228,7 @@ function tree_onclick(e) {
   ga('create', 'UA-56896607-2', 'auto');
   ga('send', 'pageview');
 
-</script></head> <body> <header> <nav class="navbar navbar-default" role=navigation> <div class=container-fluid> <div class=navbar-header> <button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a class=navbar-brand href=/><img src=/static/favicons/favicon-32x32.png>boostjp : Boost日本語情報サイト</a> </div> <div class="collapse navbar-collapse" id=navbar-collapse> <ul class="nav navbar-nav navbar-right"> <li> <div class=google-search> <script>
+</script></head> <body> <header> <nav class="navbar navbar-default" role=navigation> <div class=container-fluid> <div class=navbar-header> <button type=button class="navbar-toggle collapsed" data-toggle=collapse data-target=#navbar-collapse> <span class=sr-only>Toggle navigation</span> <span class=icon-bar></span> <span class=icon-bar></span> <span class=icon-bar></span> </button> <a class=navbar-brand href=/> <div class="title-wrapper clearfix"> <div class=title>boostjp : Boost日本語情報サイト</div> </div> </a> </div> <div class="collapse navbar-collapse" id=navbar-collapse> <ul class="nav navbar-nav navbar-right"> <li> <div class=google-search> <script>
   (function() {
     var cx = '013316413321391058734:dma_peph4n0';
     var gcse = document.createElement('script');
