@@ -2,9 +2,157 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2017-11-16T01:24:34.460013</updated>
-  <id>f2adf5bb-ddbe-4830-9650-837466aa43ea</id>
+  <updated>2017-11-16T01:29:47.383436</updated>
+  <id>fbcd6354-d495-447e-ad9c-bb0cd9c9c541</id>
 
+  
+    <entry>
+      <title>Boost 1.66.0リリースノート -- 1.66.0リリースノート : Predefを追加 #199</title>
+      <link href="https://boostjp.github.io/document/version/1_66_0.html"/>
+      <id>9cde789aaef2a538a127897f71a74e0934e9d864:document/version/1_66_0.md</id>
+      <updated>2017-11-16T10:26:30+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.66.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_66_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_66_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_66_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_66_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/beast&#34; target=&#34;_blank&#34;&gt;Beast&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;C++11以降限定のポータブルなHTTP、WebSocket、その他ネットワーク操作のライブラリ。作者Vinnie Falco氏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/callable_traits&#34; target=&#34;_blank&#34;&gt;CallableTraits&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Boost.FunctionTypesの精神的な後継ライブラリ。C++11以降限定のライブラリで、&lt;code&gt;callable&lt;/code&gt; (関数呼び出し可能) に関する全ての型検査と型操作を提供する。作者Barrett Adair氏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/mp11&#34; target=&#34;_blank&#34;&gt;Mp11&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;C++11のメタプログラミングライブラリ。作者Peter Dimov氏&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#utility&#34;&gt;Utility&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/multi-index&#34; name=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;modify()&lt;/code&gt;と&lt;code&gt;modify_key()&lt;/code&gt;をより頑強にし、Modifierで例外が送出された場合や、Rollback関数で復旧がされなかった場合に、変更要素を消去するようにした (完全な議論は &lt;a href=&#34;https://svn.boost.org/trac10/ticket/12542&#34; target=&#34;_blank&#34;&gt;Trac #12542&lt;/a&gt; を参照)。これは技術的には後方互換性がなく、以下のコードにおいて：
+  &lt;br /&gt;
+&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),[](&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;Boostの以前のバージョンでは&lt;code&gt;c&lt;/code&gt;は維持されたが、現在は&lt;code&gt;c.begin()&lt;/code&gt;の要素は消去される。この問題を提起したJon Kalb氏に感謝する
+- メンテナンス上の修正&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#poly-collection&#34; name=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GCC 4.8から4.9、Clang 3.3から3.6といった古いバージョンのコンパイラで動作するようバックポートした。GCC 4.8のlibstdc++-v3では、一部の機能が欠如しているために、以下の制限がある (Clangでlibstdc++を使用する場合も同様)。&lt;ul&gt;
+&lt;li&gt;状態を持つアロケータがない&lt;/li&gt;
+&lt;li&gt;アロケータのムーブ構築がコピー構築にdecayされる&lt;/li&gt;
+&lt;li&gt;要素のコピー中に例外が送出されると、コピー構築がクラッシュする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#predef&#34; name=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows Universal Platformの検出を改善した (James E. King, III氏に感謝)&lt;/li&gt;
+&lt;li&gt;cloudlibcを使用したCloudABIの検出を追加 (James E. King, III氏に感謝)&lt;/li&gt;
+&lt;li&gt;その他バグ修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#utility&#34; name=&#34;utility&#34;&gt;Utility&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost/next_prior.hpp&lt;/code&gt;をBoost.Iteratorモジュールに移動。ユーザーコードは変更の必要なし&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.66.0リリースノート -- 1.66.0リリースノート : PolyCollectionを追加 #193</title>
@@ -573,514 +721,6 @@
 &lt;/ul&gt;
 &lt;h2&gt;翻訳&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>多倍長浮動小数点数 -- 多倍長浮動小数点数 : 数学関数へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/multiprec-float.html"/>
-      <id>3bb31b211a82dd2b673e2466a2a4f9ba60248fe3:tips/multiprec-float.md</id>
-      <updated>2017-10-27T11:47:25+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;多倍長浮動小数点数&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;多倍長浮動小数点数を使用するには、&lt;a href=&#34;http://www.boost.org/libs/multiprecision/&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision Library&lt;/a&gt;を使用する。&lt;/p&gt;
-&lt;h2&gt;インデックス&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#basic-usage&#34; name=&#34;basic-usage&#34;&gt;基本的な使い方&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;ここでは、Boost.Multiprecisionから提供される多倍長浮動小数点数の、基本的な使い方を示す。&lt;/p&gt;
-&lt;p&gt;以下は、任意精度の符号あり多倍長整数である&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;boost::multiprecision::cpp_dec_float_100&lt;/a&gt;&lt;/code&gt;クラス型を使用して、2の平方根を求めるプログラムである。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// 仮数部100ビット、指数部32ビットの浮動小数点数&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;cpp_dec_float_100 x = 2.0f;&lt;/span&gt;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// 平方根を求める&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;sqrt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// 出力桁数を設定して出力&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;setprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;numeric_limits&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;decltype&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;digits10&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-              &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;1.4142135623730950488016887242096980785696718753769480731766797379907324784621070388503875343276415727
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;Boost.Multiprecisionの多倍長浮動小数点数は、以下の演算をサポートする。ビット演算は使用できない。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;式&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a + b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a += b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;加算&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a - b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a -= b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;減算&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a * b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a *= b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;乗算&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a / b;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;a /= b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;除算&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;+a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;符号をプラスにする&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;-a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;符号をマイナスにする&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a++;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;++a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;インクリメント&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a--;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;--a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;デクリメント&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a == b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;等値比較&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a != b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;非等値比較&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a &amp;lt; b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より小さいかの判定&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a &amp;lt;= b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以下かの判定&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a &amp;gt; b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;より大きいかの判定&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;a &amp;gt;= b;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;&lt;code&gt;a&lt;/code&gt;が&lt;code&gt;b&lt;/code&gt;以上かの判定&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;os &amp;lt;&amp;lt; a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;ストリームへの出力&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;is &amp;gt;&amp;gt; a;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;ストリームからの入力&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#variation&#34; name=&#34;variation&#34;&gt;多倍長浮動小数点数の種類&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;以下に、Boost.Multiprecisionから提供される多倍長整数の種類を示す。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/cpp_dec_float.html&#34; target=&#34;_blank&#34;&gt;Boost Multiprecision独自実装の多倍長浮動小数点数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;型&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;cpp_dec_float_50&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が50ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;cpp_dec_float_100&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が100ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;以下は、ユーザー定義の固定精度浮動小数点数型を定義する例である：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;// 仮数部1,000ビットを持つ浮動小数点数の定義&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpp_dec_float&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpp_dec_float_1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;// 仮数部1,000ビット、指数部64ビットを持つ浮動小数点数の定義&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpp_dec_float&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;uint64_t&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;cpp_dec_float_1000_64exp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;独自実装の多倍長浮動小数点数の特徴：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;デフォルト値は0である&lt;/li&gt;
-&lt;li&gt;基数は10。基数2ベースとは異なる振る舞いが可能&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;infinity&lt;/code&gt;と&lt;code&gt;NaN&lt;/code&gt;をサポートする。オーバーフローやゼロ割り時には、組み込みの浮動小数点数型と同じ振る舞いをする。&lt;/li&gt;
-&lt;li&gt;全ての操作は、常に切り捨てを行う&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/gmp_float.html&#34; target=&#34;_blank&#34;&gt;GMPバックエンドの多倍長浮動小数点数&lt;/a&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/gmp.hpp&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;型&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpf_float_50&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が50ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpf_float_100&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が100ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpf_float_500&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が500ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpf_float_1000&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が1,000ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpf_float&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が任意ビット使用可能な浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;以下は、ユーザー定義の固定精度浮動小数点数型を定義する例である：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;// 仮数部が10,000ビットの浮動小数点数型の定義&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gmp_float&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10000&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mpf_dec_float_10000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;gmp_float&lt;/code&gt;のテンプレート引数として0を指定すると、任意長の仮数部が表現可能になる。&lt;/p&gt;
-&lt;p&gt;GMP多倍長浮動小数点数の特徴：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;デフォルト値は0である&lt;/li&gt;
-&lt;li&gt;GMPのグローバル設定を変更しない&lt;/li&gt;
-&lt;li&gt;GMPは&lt;code&gt;infinity&lt;/code&gt;や&lt;code&gt;NaN&lt;/code&gt;といった概念を持たないため、可能な限りオーバーフローやゼロ割りは避けること。オーバーフロー時またはゼロ割り時には&lt;code&gt;std::overflow_error&lt;/code&gt;例外が送出される。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;MPFRバックエンドの多倍長浮動小数点数&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/mpfr.hpp&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;動的メモリ確保を行う多倍長浮動小数点数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/multiprecision/doc/html/boost_multiprecision/tut/floats/mpfr_float.html&#34; target=&#34;_blank&#34;&gt;MPFRバックエンドの多倍長浮動小数点数&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;型&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpfr_float_50&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が50ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpfr_float_100&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が100ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpfr_float_500&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が500ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpfr_float_1000&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が1,000ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;mpfr_float&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が任意ビット使用可能な浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;動的メモリ確保を行わない多倍長浮動小数点数&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;型&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;static_mpfr_float_50&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が50ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;static_mpfr_float_100&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部が100ビットの浮動小数点数型&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;以下は、ユーザー定義の、動的メモリ確保を行う固定精度浮動小数点数型を定義する例である：&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;// 仮数部を10,000ビットの浮動小数点数型の定義&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;number&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mpfr_float_backend&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;10000&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mpf_dec_float_10000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;mpfr_float_backend&lt;/code&gt;の第2テンプレート引数として&lt;code&gt;boost::multiprecision::allocate_stack&lt;/code&gt;列挙値を指定することで、動的メモリ確保を行わない多倍長浮動小数点数型の定義ができる。&lt;/p&gt;
-&lt;p&gt;MPFR多倍長浮動小数点数の特徴：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;デフォルト値は&lt;code&gt;NaN&lt;/code&gt;である&lt;/li&gt;
-&lt;li&gt;全ての操作は、最近接値への丸めを使用する&lt;/li&gt;
-&lt;li&gt;GMPとMPFRのグローバル設定を変更しない&lt;/li&gt;
-&lt;li&gt;0で割ると&lt;code&gt;infinity&lt;/code&gt;になる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#from-string&#34; name=&#34;from-string&#34;&gt;文字列からの変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列から多倍長浮動小数点数に変換するには、&lt;code&gt;explicit&lt;/code&gt;な変換コンストラクタ、もしくは&lt;code&gt;assign()&lt;/code&gt;メンバ関数を使用する。
-文字列は、&lt;code&gt;char&lt;/code&gt;配列および&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/string/basic_string.html&#34; target=&#34;_blank&#34;&gt;std::string&lt;/a&gt;&lt;/code&gt;を受け取ることができる。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;コンストラクタで文字列から変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;string&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;3.14&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;                &lt;span class=&#34;c1&#34;&gt;// char配列から変換&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;3.14&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;   &lt;span class=&#34;c1&#34;&gt;// std::stringから変換&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.14
-3.14
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;&lt;code&gt;assign()&lt;/code&gt;メンバ関数で文字列から変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;assign&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;3.14&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.14
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;p&gt;変換できない文字列が渡された場合は、&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/stdexcept.html&#34; target=&#34;_blank&#34;&gt;std::runtime_error&lt;/a&gt;&lt;/code&gt;例外が送出される。&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#to-string&#34; name=&#34;to-string&#34;&gt;文字列への変換&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;文字列への変換には、&lt;code&gt;str()&lt;/code&gt;メンバ関数を使用する。この関数は、&lt;code&gt;std::string&lt;/code&gt;型で多倍長浮動小数点数の文字列表現を返す。&lt;/p&gt;
-&lt;p&gt;デフォルトでは固定小数点表記の文字列が返されるが、以下の引数を設定することで、精度と表記、その他出力方法を選択できる。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;第1引数： 出力する精度。0を指定した場合、できるだけ多くの桁数を出力する。&lt;/li&gt;
-&lt;li&gt;第2引数： 出力フラグ。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpp_dec_float_50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_50&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// 固定小数点表記(デフォルト)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// 固定小数点表記(明示的に指定)&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ios_base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fixed&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// 科学的表記&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;x&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ios_base&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;scientific&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;s&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;出力：&lt;/p&gt;
-&lt;p&gt;&lt;pre&gt;&lt;code&gt;3.140000000000000124344978758017532527446746826171875
-3.1400000000000001243449787580175325274467468261718750000000000000000000000
-3.1400000000000001243449787580175325274467468261718750000000000000000000000e+00
-&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#convert-precision&#34; name=&#34;convert-precision&#34;&gt;異なる精度間で型変換する&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.Multiprecisionの多倍長浮動小数点数は、異なる精度間での変換をサポートしている。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;小さい精度から大きい精度への変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;float&lt;/code&gt;や&lt;code&gt;double&lt;/code&gt;型といった組み込みの浮動小数点数型から、&lt;code&gt;cpp_dec_float_50&lt;/code&gt;や&lt;code&gt;cpp_dec_float_100&lt;/code&gt;といった多倍長浮動小数点数への暗黙変換が可能である。&lt;/p&gt;
-&lt;p&gt;また、&lt;code&gt;cpp_dec_float_50&lt;/code&gt;から&lt;code&gt;cpp_dec_float_100&lt;/code&gt;へ、といったより大きい精度への暗黙変換が可能である。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// floatからcpp_dec_float_50への暗黙変換&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;float&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_50&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f50&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// OK&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// cpp_dec_float_50からcpp_dec_float_100への暗黙変換&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f100&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f50&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// OK&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;大きい精度から小さい精度への変換&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;小さい精度への変換は、データが失われる可能性があるため、暗黙の型変換はサポートしない。&lt;/p&gt;
-&lt;p&gt;明示的な型変換を使用する場合のみ変換可能である。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/multiprecision/cpp_dec_float.hpp&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multiprecision&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_100&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f100&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-&lt;span class=&#34;c1&#34;&gt;//  cpp_dec_float_50 f50 = f100; // コンパイルエラー！変換できない&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;cpp_dec_float_50&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f50&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;static_cast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cpp_dec_float_50&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;f100&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// OK&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html#math-functions&#34; name=&#34;math-functions&#34;&gt;サポートされている数学関数一覧&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;標準関数サポート&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;標準ライブラリで定義される以下の関数は、Boost.Multiprecisionの多倍長浮動小数点数でも使用できる。&lt;/p&gt;
-&lt;p&gt;これらの関数は、&lt;code&gt;boost::multiprecision&lt;/code&gt;名前空間で定義される。&lt;/p&gt;
-&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;関数&lt;/th&gt;
-&lt;th&gt;説明&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;T abs(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/fabs.html&#34; target=&#34;_blank&#34;&gt;T fabs(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;絶対値&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sqrt.html&#34; target=&#34;_blank&#34;&gt;T sqrt(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;平方根&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/floor.html&#34; target=&#34;_blank&#34;&gt;T floor(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;床関数（引数より大きくない最近傍の整数）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/ceil.html&#34; target=&#34;_blank&#34;&gt;T ceil(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;天井関数（引数より小さくない最近傍の整数）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/trunc.html&#34; target=&#34;_blank&#34;&gt;T trunc(T x);&lt;/a&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T itrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T ltrunc(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lltrunc(T x);&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;ゼロ方向への丸め&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/round.html&#34; target=&#34;_blank&#34;&gt;T round(T x);&lt;/a&gt;&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T lround(T x);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;T llround(T x);&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;四捨五入による丸め&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/exp.html&#34; target=&#34;_blank&#34;&gt;T exp(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;e (ネイピア数) を底とする指数関数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/log.html&#34; target=&#34;_blank&#34;&gt;T log(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;e (ネイピア数) を底とする自然対数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/log10.html&#34; target=&#34;_blank&#34;&gt;T log10(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;10 を底とする常用対数&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/cos.html&#34; target=&#34;_blank&#34;&gt;T cos(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;余弦関数（コサイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sin.html&#34; target=&#34;_blank&#34;&gt;T sin(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;正弦関数（サイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/tan.html&#34; target=&#34;_blank&#34;&gt;T tan(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;正接関数（タンジェント）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/acos.html&#34; target=&#34;_blank&#34;&gt;T acos(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;逆余弦関数（アークコサイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/asin.html&#34; target=&#34;_blank&#34;&gt;T asin(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;逆正弦関数（アークサイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/atan.html&#34; target=&#34;_blank&#34;&gt;T atan(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;逆正接関数（アークタンジェント）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/cosh.html&#34; target=&#34;_blank&#34;&gt;T cosh(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;双曲線余弦関数（ハイパボリックコサイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/sinh.html&#34; target=&#34;_blank&#34;&gt;T sinh(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;双曲線正弦関数（ハイパボリックサイン）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/tanh.html&#34; target=&#34;_blank&#34;&gt;T tanh(T x);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;双曲線正接関数（ハイパボリックタンジェント）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/ldexp.html&#34; target=&#34;_blank&#34;&gt;T ldexp(T x, int);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;2 の冪乗との乗算&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/frexp.html&#34; target=&#34;_blank&#34;&gt;T frexp(T x, int*);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;仮数部と 2 の冪乗への分解&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/pow.html&#34; target=&#34;_blank&#34;&gt;T pow(T x, T y);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;冪乗&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/fmod.html&#34; target=&#34;_blank&#34;&gt;T fmod(T x, T y);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;浮動小数点剰余&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;&lt;code&gt;&lt;a href=&#34;https://cpprefjp.github.io/reference/cmath/atan2.html&#34; target=&#34;_blank&#34;&gt;T atan2(T x, T y);&lt;/a&gt;&lt;/code&gt;&lt;/td&gt;
-&lt;td&gt;対辺と隣辺からの逆正接関数（アークタンジェント）&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;documented boost version is 1.53.0&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
