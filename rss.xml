@@ -2,9 +2,481 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2017-12-12T05:01:18.556980</updated>
-  <id>3f184a80-4ecb-41b7-99df-24d6d9a20ef8</id>
+  <updated>2017-12-14T04:57:37.309021</updated>
+  <id>f6b29aa8-602e-48fa-b94e-b9bfd2c03dcd</id>
 
+  
+    <entry>
+      <title>gregorian::date -- Merge pull request #207 from oki-miyuki/master</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html"/>
+      <id>841eeb91c724d970f58069573ad6f98f71aa84ba:archive/boost_docs/libs/date_time/class_date.md</id>
+      <updated>2017-12-14T13:54:02+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;gregorian::date&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Date Documentation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#header&#34;&gt;Header&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construction&#34;&gt;Construction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-string&#34;&gt;Construct from String&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-clock&#34;&gt;Construct from Clock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#accessors&#34;&gt;Accessors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#operators&#34;&gt;Operators&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#introduction&#34; name=&#34;introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::gregorian::date&lt;/code&gt; クラスはライブラリユーザーにとって主要なインタフェースである。 一般に、日付クラスは代入可能ではあるが、一度構築されると不変である事が多い。&lt;/p&gt;
+&lt;p&gt;日付の生成について別の方法が&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/date_iterators.html&#34;&gt;date iterators&lt;/a&gt;と&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/date_algorithms.html&#34;&gt;date algorithms or generators&lt;/a&gt;に含まれている。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#header&#34; name=&#34;header&#34;&gt;Header&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian.hpp&#34; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//全ての型とI/Oを含む&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;もしくは&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian_types.hpp&#34; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//型のみでI/Oは含まない&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construction&#34; name=&#34;construction&#34;&gt;Construction&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(greg_year year, greg_month month, greg_day day)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付の要素から構築する。year, month, day の範囲が不正な場合、それぞれ &lt;code&gt;std::out_of_range&lt;/code&gt; から派生した &lt;code&gt;bad_year&lt;/code&gt;, &lt;code&gt;bad_day_of_month&lt;/code&gt;, &lt;code&gt;bad_day_month&lt;/code&gt; 例外を投げる。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;コピーコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(d)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(special_values sv)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;無限大、無効値(not-a-date-time)、最大値、最小値を構築するコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(neg_infin);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2(pos_infin);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d3(not_a_date_time);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d4(max_date);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d5(min_date);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-string&#34; name=&#34;construct-from-string&#34;&gt;Construction From String&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date from_string(const std::string&amp;amp;)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年-月-日の順に区切られた文字列から　例:2002-1-25&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;std::string ds(&#34;2002/1/25&#34;);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d(from_string(ds))&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date from_undelimited_string(const std::string&amp;amp;)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年-月-日の順のISO形式から　例:20020125&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;std::string ds(&#34;20020125&#34;);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d(from_string(ds))&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-clock&#34; name=&#34;construct-from-clock&#34;&gt;Construction From Clock&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;day_clock::local_day()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;計算機に設定された時間帯に準じた地域時間を取得する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(day_clock::local_day())&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;day_clock::universal_day()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UTC 標準時を取得する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(day_clock::universal_day())&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#accessors&#34; name=&#34;accessors&#34;&gt;Accessors&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_year year() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.year() --&amp;gt; 2002;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_month month() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;月の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.month() --&amp;gt; 1;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_day day() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.day() --&amp;gt; 10;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_ymd year_month_day() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;greg_ymd&lt;/code&gt; 構造体を返す&lt;br /&gt; 日付の3つの要素全てが必要なときに便利である&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date::ymd_type ymd = d.year_month_day(); ymd.year --&amp;gt; 2002, ymd.month --&amp;gt; 1, ymd.day --&amp;gt; 10&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_day_of_week day_of_week() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;曜日を返す(例: &lt;code&gt;Sunday&lt;/code&gt;, &lt;code&gt;Monday&lt;/code&gt;, etc.&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.day() --&amp;gt; Thursday;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が正または負の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(pos_infin); d.is_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_neg_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が負の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(neg_infin); d.is_neg_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_pos_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が正の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(neg_infin); d.is_pos_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_not_a_date() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が無効値(not a date)の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(not_a_date_time); d.is_not_a_date() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#conversion-to-string&#34; name=&#34;conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_simple_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYY-mmm-DD (mmm は月名の3文字短縮形)形式に変換&lt;/td&gt;
+&lt;td&gt;2002-Jan-01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_iso_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYYMMDD 形式に変換&lt;/td&gt;
+&lt;td&gt;20020131&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_iso_extended_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYY-MM-DD 形式に変換&lt;/td&gt;
+&lt;td&gt;2002-01-31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#operators&#34; name=&#34;operators&#34;&gt;Operators&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ストリーム出力演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;std::cout &amp;lt;&amp;lt; d &amp;lt;&amp;lt; std::endl;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;operator==, operator!=,&lt;/code&gt;&lt;br /&gt; &lt;code&gt;operator&amp;gt;, operator&amp;lt;,&lt;/code&gt;&lt;br /&gt; &lt;code&gt;operator&amp;gt;=, operator&amp;lt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;サポートする比較演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;d1 == d2&lt;/code&gt;, etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date operator+(date_duration) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;オフセット日数 &lt;code&gt;date_duration&lt;/code&gt; を加えた日付を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd(1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2 = d + dd;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date operator-(date_duration) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;オフセット日数 &lt;code&gt;date_duration&lt;/code&gt; を差し引いた日付を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd(1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2 = d - dd;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date_duration operator-(date) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2つの日付を差し引いた日数(date duration)を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2(2002,Jan,2);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd = d2-d1;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;p&gt;Last modified: Wed Aug 28 17:52:03 MST 2002 by &lt;a href=&#34;mailto:jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002 &lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;mailto:sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>gregorian::date -- fix: Broken accessors table layout</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html"/>
+      <id>0daa7598004d1e0291ed4dc504c8ea02fb954501:archive/boost_docs/libs/date_time/class_date.md</id>
+      <updated>2017-12-14T13:27:51+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;gregorian::date&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time.html&#34;&gt;全体のインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/gregorian.html&#34;&gt;Gregorianのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/posix_time.html&#34;&gt;Posix Timeのインデックスへ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Date Documentation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#header&#34;&gt;Header&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construction&#34;&gt;Construction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-string&#34;&gt;Construct from String&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-clock&#34;&gt;Construct from Clock&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#accessors&#34;&gt;Accessors&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#operators&#34;&gt;Operators&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#introduction&#34; name=&#34;introduction&#34;&gt;Introduction&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;boost::gregorian::date&lt;/code&gt; クラスはライブラリユーザーにとって主要なインタフェースである。 一般に、日付クラスは代入可能ではあるが、一度構築されると不変である事が多い。&lt;/p&gt;
+&lt;p&gt;日付の生成について別の方法が&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/date_iterators.html&#34;&gt;date iterators&lt;/a&gt;と&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/date_algorithms.html&#34;&gt;date algorithms or generators&lt;/a&gt;に含まれている。&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#header&#34; name=&#34;header&#34;&gt;Header&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian.hpp&#34; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//全ての型とI/Oを含む&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;もしくは&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian_types.hpp&#34; &lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;//型のみでI/Oは含まない&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construction&#34; name=&#34;construction&#34;&gt;Construction&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(greg_year year, greg_month month, greg_day day)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付の要素から構築する。year, month, day の範囲が不正な場合、それぞれ &lt;code&gt;std::out_of_range&lt;/code&gt; から派生した &lt;code&gt;bad_year&lt;/code&gt;, &lt;code&gt;bad_day_of_month&lt;/code&gt;, &lt;code&gt;bad_day_month&lt;/code&gt; 例外を投げる。&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;コピーコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(d)&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date(special_values sv)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;無限大、無効値(not-a-date-time)、最大値、最小値を構築するコンストラクタ&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(neg_infin);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2(pos_infin);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d3(not_a_date_time);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d4(max_date);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d5(min_date);&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-string&#34; name=&#34;construct-from-string&#34;&gt;Construction From String&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date from_string(const std::string&amp;amp;)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年-月-日の順に区切られた文字列から　例:2002-1-25&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;std::string ds(&#34;2002/1/25&#34;);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d(from_string(ds))&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date from_undelimited_string(const std::string&amp;amp;)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年-月-日の順のISO形式から　例:20020125&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;std::string ds(&#34;20020125&#34;);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d(from_string(ds))&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#construct-from-clock&#34; name=&#34;construct-from-clock&#34;&gt;Construction From Clock&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;day_clock::local_day()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;計算機に設定された時間帯に準じた地域時間を取得する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(day_clock::local_day())&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;day_clock::universal_day()&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;UTC 標準時を取得する&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(day_clock::universal_day())&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#accessors&#34; name=&#34;accessors&#34;&gt;Accessors&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_year year() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;年の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.year() --&amp;gt; 2002;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_month month() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;月の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.month() --&amp;gt; 1;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_day day() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日の部分を取得&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.day() --&amp;gt; 10;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_ymd year_month_day() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;greg_ymd&lt;/code&gt; 構造体を返す&lt;br /&gt; 日付の3つの要素全てが必要なときに便利である&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date::ymd_type ymd = d.year_month_day(); ymd.year --&amp;gt; 2002, ymd.month --&amp;gt; 1, ymd.day --&amp;gt; 10&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;greg_day_of_week day_of_week() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;曜日を返す(例: &lt;code&gt;Sunday&lt;/code&gt;, &lt;code&gt;Monday&lt;/code&gt;, etc.&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,10); d.day() --&amp;gt; Thursday;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が正または負の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(pos_infin); d.is_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_neg_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が負の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(neg_infin); d.is_neg_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_pos_infinity() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が正の無限大の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(neg_infin); d.is_pos_infinity() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;bool is_not_a_date() const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;日付が無効値(not a date)の時 &lt;code&gt;true&lt;/code&gt; を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(not_a_date_time); d.is_not_a_date() --&amp;gt; true;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#conversion-to-string&#34; name=&#34;conversion-to-string&#34;&gt;Conversion To String&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_simple_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYY-mmm-DD (mmm は月名の3文字短縮形)形式に変換&lt;/td&gt;
+&lt;td&gt;2002-Jan-01&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_iso_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYYMMDD 形式に変換&lt;/td&gt;
+&lt;td&gt;20020131&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;std::string to_iso_extended_string(date d)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;YYYY-MM-DD 形式に変換&lt;/td&gt;
+&lt;td&gt;2002-01-31&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/date_time/class_date.html#operators&#34; name=&#34;operators&#34;&gt;Operators&lt;/a&gt;&lt;/h2&gt;
+&lt;table border=&#34;1&#34; bordercolor=&#34;#888&#34; style=&#34;border-collapse:collapse&#34;&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Syntax&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;ストリーム出力演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;std::cout &amp;lt;&amp;lt; d &amp;lt;&amp;lt; std::endl;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;operator==, operator!=,&lt;/code&gt;&lt;br /&gt; &lt;code&gt;operator&amp;gt;, operator&amp;lt;,&lt;/code&gt;&lt;br /&gt; &lt;code&gt;operator&amp;gt;=, operator&amp;lt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;サポートする比較演算子&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;d1 == d2&lt;/code&gt;, etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date operator+(date_duration) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;オフセット日数 &lt;code&gt;date_duration&lt;/code&gt; を加えた日付を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd(1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2 = d + dd;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date operator-(date_duration) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;オフセット日数 &lt;code&gt;date_duration&lt;/code&gt; を差し引いた日付を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd(1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2 = d - dd;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;date_duration operator-(date) const&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;2つの日付を差し引いた日数(date duration)を返す&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;date d1(2002,Jan,1);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date d2(2002,Jan,2);&lt;/code&gt;&lt;br /&gt; &lt;code&gt;date_duration dd = d2-d1;&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+&lt;p&gt;Last modified: Wed Aug 28 17:52:03 MST 2002 by &lt;a href=&#34;mailto:jeff@crystalclearsoftware.com&#34;&gt;Jeff Garland&lt;/a&gt; © 2000-2002 &lt;/p&gt;
+&lt;p&gt;Japanese Translation Copyright (C) 2003 &lt;a href=&#34;mailto:sshino@cppll.jp&#34;&gt;Shoji Shinohara&lt;/a&gt;.&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>沖 観行</name>
+        <email>oki.miyuki@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.66.0リリースノート -- 1.66.0リリースノート : Threadを追加 (close #206)</title>
@@ -1143,691 +1615,6 @@ Last modified: Tue Sep 10 11:14:15 EST 2002&lt;/p&gt;
 &lt;p&gt;Permission to use, copy, modify, distribute and sell this software and its documentation for any purpose is hereby granted without fee, provided that the above copyright notice appears in all copies and that both that copyright notice and this permission notice appear in supporting documentation.
 Jeremy Siek makes no representations about the suitability of this software for any purpose.
 It is provided &#34;as is&#34; without express or implied warranty.&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 多次元配列ライブラリ (Boost.MultiArray) -- Sample code にバグがある</title>
-      <link href="https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html"/>
-      <id>58c6151eaa82355da6e7c0bc7bdf72ce9ff74f06:archive/boost_docs/libs/multi_array/user.md</id>
-      <updated>2017-12-08T00:01:21+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 多次元配列ライブラリ (Boost.MultiArray)&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;h2&gt;Synopsis - 概要&lt;/h2&gt;
-&lt;p&gt;Boost 多次元配列ライブラリは，多次元コンテナと，意味的に等価な連続データの配列へのアダプタを提供する。
-このライブラリのクラス群は，できるだけ STL コンテナと近い振る舞いをし，また N 次元配列の慣用句 (formulation) である，
-いわゆる &#34;ベクタのベクタ&#34; より便利でかつ有効な実装を提供する。
-配列はひとたび構築されるとリサイズできないが，保持するデータへの代替ビューを提供することによって，スライス (sliced) されまた形作られ (shaped) 得る。&lt;/p&gt;
-&lt;h2&gt;Table of Contents - 目次&lt;/h2&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_rationale&#34;&gt;Rationale&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_related&#34;&gt;Related Work&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_example&#34;&gt;Short Example&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_components&#34;&gt;MultiArray Components&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_assignment&#34;&gt;Construction and Assignment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_generators&#34;&gt;Array View and Subarray Type Generators&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_dimensions&#34;&gt;Specifying Array Dimensions&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_access&#34;&gt;Accessing Elements&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_views&#34;&gt;Creating Views&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_storage&#34;&gt;Storage Ordering&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_base&#34;&gt;Setting the Array Base&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_reshape&#34;&gt;Changing an Array&#39;s Shape&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_concepts&#34;&gt;MultiArray Concept&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/multi_array/user.html#sec_testcases&#34;&gt;Test Cases&lt;/a&gt;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_rationale&#34;&gt;Rationale - 原論&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;C++ 標準ライブラリはいくつかのジェネリックなコンテナを提供するが，多次元配列型はない。
-&lt;code&gt;std::vector&lt;/code&gt; を使うと &#34;ネストしたベクタ&#34; として N 次元配列をシミュレートできるが，巧みではなく (unwieldy) またメモリのオーバヘッドがかなりのものになり得る。
-ネイティブな C++ 配列 (例えば &lt;code&gt;int arr[2][2][2];&lt;/code&gt;) を使うこともできるし，連続データの配列を動的に確保し，それを多次元配列のように見なして使うこともできる。
-&lt;code&gt;array_traits&lt;/code&gt; を使えば静的に定義された C++ 配列からその次元に関係なくイテレータを抽出できる。
-しかし，両者のケースでは，それらを受け付けるよう正しく特殊化されていない関数に渡すと，次元の情報は失われる。
-上記の他，&lt;code&gt;std::vector&lt;/code&gt; も C++ 配列ベースの解も，多次元配列の特定のサブセットや &#34;ビュー&#34; に研ぐの都合のよい方法 (a convenient method of honing in upon a specific subset or &#34;view&#34; of a multi-dimentional array) を提供しない。&lt;/p&gt;
-&lt;p&gt;Boost.MultiArray は MultiArray コンセプト (N 次元コンテナのジェネリックなインタフェース) を定義する。
-このライブラリの主なコンポーネントは MultiArray をモデル化 (model) し，同様にユーザデータを MultiArray にモデル化できるよう適合することをサポートする。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_related&#34;&gt;Related Work - 関連するモノ&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/array.html&#34;&gt;boost::array&lt;/a&gt; と &lt;a href=&#34;http://www.sgi.com/tech/stl/Vector.html&#34; target=&#34;_blank&#34;&gt;std::vector&lt;/a&gt; はユーザデータの 1 次元コンテナである。
-両者は自分自身のメモリを管理する。
-&lt;code&gt;std::valarray&lt;/code&gt; は低レベルな C++ 標準ライブラリで，数値アプリケーションに移植制のある高いパフォーマンスを提供することになっている。
-&lt;a href=&#34;http://www.oonumerics.org/blitz/&#34; target=&#34;_blank&#34;&gt;Blitz++&lt;/a&gt; は Todd Veldhuizen が開発した配列ライブラリである。
-これは配列ベースの数値アプリケーションへ FORTRAN に近いパフォーマンスを提供するために高度な C++ テクニックを使っている。
-&lt;code&gt;array_traits&lt;/code&gt; は Boost のベータ版のライブラリで，ネイティブの C++ 配列からイテレータを作成することになっている。&lt;/p&gt;
-&lt;p&gt;このライブラリは &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/array.html&#34;&gt;boost::array&lt;/a&gt; が C の 1 次元配列に対してするように C スタイルの N 次元配列を増加する。
-(;´Д｀)? .oＯ(This library is analogous to &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/array.html&#34;&gt;boost::array&lt;/a&gt; in that it augments C style N-dimensional arrays, as &lt;code&gt;boost::array&lt;/code&gt; does for C one-dimensional arrays.)&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_example&#34;&gt;Short Example - 短いサンプル&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;下は &lt;code&gt;multi_array&lt;/code&gt; を使う簡潔なサンプルである:&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/multi_array.hpp&#34;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;assert&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(){&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// Create a 3D array that is 3 x 4 x 2&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-
-  &lt;span class=&#34;c1&#34;&gt;// Assign values to the elements&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;values&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
-        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-                &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;values&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// Verify values&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;verify&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; 
-        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-                &lt;span class=&#34;n&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;verify&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_components&#34;&gt;MultiArray Components&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray は 3 つのユーザレベルクラステンプレートを提供する:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#multi_array&#34; target=&#34;_blank&#34;&gt;multi_array&lt;/a&gt;&lt;/code&gt; - defined in &#34;boost/multi_array.hpp&#34;,&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#multi_array_ref&#34; target=&#34;_blank&#34;&gt;multi_array_ref&lt;/a&gt;&lt;/code&gt; - defined in &#34;boost/multi_array_ref.hpp&#34;, and&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#const_multi_array_ref&#34; target=&#34;_blank&#34;&gt;const_multi_array_ref&lt;/a&gt;&lt;/code&gt;  - defined in &#34;boost/multi_array_ref.hpp&#34;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;code&gt;multi_array&lt;/code&gt; はコンテナテンプレートである。
-インスタンス化されると，構築時に指定された寸法（次元？）に相当する要素の個数分スペースを確保する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;multi_array_ref&lt;/code&gt; は既存データの配列が &lt;code&gt;multi_array&lt;/code&gt; インタフェースを提供するよう適合させる。
-&lt;code&gt;multi_array_ref&lt;/code&gt; は渡されたデータを所有しない。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;const_multi_array_ref&lt;/code&gt; は &lt;code&gt;multi_array_ref&lt;/code&gt; と類似しているが配列の内容が不変であることを保証する。
-従って型 &lt;code&gt;T const*&lt;/code&gt; へのポインタをラップできる。&lt;/p&gt;
-&lt;p&gt;3 つのコンポーネントはとても類似した振る舞いを示す。
-コンストラクタの引数を別にすると，&lt;code&gt;multi_array&lt;/code&gt; と &lt;code&gt;multi_array_ref&lt;/code&gt; は同じインタフェースをエクスポートする。
-&lt;code&gt;const_multi_array_ref&lt;/code&gt; は &lt;code&gt;multi_array_ref&lt;/code&gt; インタフェースの const 部分だけを提供する。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_assignment&#34;&gt;Construction and Assignment - 構築と代入&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;それぞれの配列型 - &lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#multi_array&#34; target=&#34;_blank&#34;&gt;multi_array&lt;/a&gt;&lt;/code&gt;， &lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#multi_array_ref&#34; target=&#34;_blank&#34;&gt;multi_array_ref&lt;/a&gt;&lt;/code&gt;，そして &lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#const_multi_array_ref&#34; target=&#34;_blank&#34;&gt;const_multi_array_ref&lt;/a&gt;&lt;/code&gt; - はコンストラクタの特殊化された集合を提供する。
-さらなる情報はリファレンスページを参照して欲しい。&lt;/p&gt;
-&lt;p&gt;このライブラリの非 const 配列型は全て代入演算子 &lt;code&gt;operator=()&lt;/code&gt; を提供する。
-それぞれの配列型 &lt;code&gt;multi_array&lt;/code&gt;，&lt;code&gt;multi_array_ref&lt;/code&gt;，&lt;code&gt;subarray&lt;/code&gt;，そして &lt;code&gt;array_view&lt;/code&gt; はその形 (shape) が合致する限り互いに代入できる。
-const バリエーションである &lt;code&gt;const_multi_array_ref&lt;/code&gt;，&lt;code&gt;const_subarray&lt;/code&gt;，そして &lt;code&gt;const_array_view&lt;/code&gt; は形が合致する配列にコピーする元となれる。
-代入の結果は配列中に格納されたデータの深い (要素から要素へ) コピーを成す。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_generators&#34;&gt;Array View and Subarray Type Generators - 配列ビューとサブ配列生成子&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;いくつかの場面で，&lt;code&gt;array_view&lt;/code&gt; やサブ配列型へのネストした生成子を使うことは都合が悪い。
-例えば，配列型でテンプレートパラメータ化した関数の中で余計な &#34;template&#34; キーワードが混乱を引き起こす。
-もっと言えば (more likely though)，いくつかのコンパイラは，テンプレートパラメータ中のネストしたテンプレートを扱えない。
-この理由により，型生成子 &lt;code&gt;subarray_gen&lt;/code&gt;，&lt;code&gt;const_subarray_gen&lt;/code&gt;，&lt;code&gt;array_view_gen&lt;/code&gt;，そして &lt;code&gt;const_array_view_gen&lt;/code&gt; が提供される。
-従って，以下のサンプルにあるふたつの typedef は同じ型を得る。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
-&lt;span class=&#34;kt&#34;&gt;void&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;my_function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_view&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;view1_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_view_gen&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Array&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;kt&#34;&gt;view2_t&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_dimensions&#34;&gt;Specifying Array Dimensions - 配列次元の指定&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray コンポーネントを作成するとき，次元の数とそれぞれの大きさを指定する必要がある。
-次元の数はいつもテンプレート引数として指定されるとしても，それぞれの大きさを指定するのにふたつの独立したメカニズムが提供される。&lt;/p&gt;
-&lt;p&gt;最初の方法は大きさの &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Collection.html&#34; target=&#34;_blank&#34;&gt;Collection&lt;/a&gt; (最も一般的には &lt;code&gt;boost::array&lt;/code&gt;)をコンストラクタに渡すことである。
-コンストラクタはそのコンテナから介しイテレータを取得し， N 次元の大きさに相当する N 要素を取得する。
-この方法は次元非依存のコードを書くときに役立つ。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}};&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;二番目の方法はマトリクス次元 (matrix dimentions) を指定した &lt;code&gt;extent_gen&lt;/code&gt; オブジェクトをコンストラクタに渡すことである。
-デフォルトで，ライブラリはグローバルな &lt;code&gt;extent_gen&lt;/code&gt; オブジェクトを &lt;code&gt;boost::extents&lt;/code&gt; で構築する。
-これらのオブジェクトが使用するメモリを気にするならば，ライブラリのヘッダをインクルードする前に &lt;code&gt;BOOST_MULTI_ARRAY_NO_GENERATORS&lt;/code&gt; を定義すればこれらの構築を抑止できる。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_access&#34;&gt;Accessing Elements - 要素のアクセス&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray コンポーネントは，コンテナ中の指定した要素をアクセスするのに 2 通りの方法を提供する。
-最初は &lt;code&gt;operator[]&lt;/code&gt; によって提供される伝統的な C 配列の記法を使うことである。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;二番目の方法はインデクスの &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/utility/Collection.html&#34; target=&#34;_blank&#34;&gt;Collection&lt;/a&gt; を &lt;code&gt;operator()&lt;/code&gt; に渡すことである。
-N 個のインデクスはコンテナの N 次元ぶん Collection から取得される。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}};&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;idx&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;mf&#34;&gt;3.14&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;この方法は次元非依存のコードを書くのに役立ち，いくつかのコンパイラの下では &lt;code&gt;operator[]&lt;/code&gt; よりも高いパフォーマンスをもたらす。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_views&#34;&gt;Creating Views - ビューの作成&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray は既存の配列コンポーネントのサブビュー (sub-view) を作成する方法 (facilities) を提供する。
-オリジナル配列と同じまたはより少ない次元を保持するサブビューを作成することができる。&lt;/p&gt;
-&lt;p&gt;サブビューの作成は &lt;code&gt;index_gen&lt;/code&gt; 型を渡して &lt;code&gt;operator[]&lt;/code&gt; を呼ぶことで起こる。
-&lt;code&gt;index_gen&lt;/code&gt; は &lt;code&gt;index_range&lt;/code&gt; オブジェクトを &lt;code&gt;operator[]&lt;/code&gt; へ渡すことで (populated) 。
-&lt;code&gt;boost::extents&lt;/code&gt; と類似して，デフォルトで，ライブラリは &lt;code&gt;boost::indices&lt;/code&gt; で構築する。
-ライブラリヘッダをインクルードする前に &lt;code&gt;BOOST_MULTI_ARRAY_NO_GENERATORS&lt;/code&gt; を定義することでこのオブジェクトを抑制できる。
-単純なサブビュー作成のサンプルを以下に示す。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;c1&#34;&gt;// myarray = 2 x 3 x 4&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// array_view dims: [base,bound) (dimension striding default = 1)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dim 0: [0,2)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dim 1: [1,3)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dim 2: [0,4) (strided by 2),&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_view&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myview&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;myarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;k&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-                &lt;span class=&#34;n&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myview&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;k&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;ひとつの整数値を &lt;code&gt;index_gen&lt;/code&gt; へ渡すことで，オリジナルの配列コンポーネントより少ない次元でビューを作成できる(これはスライシング (slicing) とも呼ばれる)。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;c1&#34;&gt;// myarray = 2 x 3 x 4&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// array_view dims:&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// [base,stride,bound)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// [0,1,2), 1, [0,2,4)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_gen&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_view&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myview&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;
-        &lt;span class=&#34;n&#34;&gt;myarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;i&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-        &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;j&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;!=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-            &lt;span class=&#34;n&#34;&gt;assert&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myview&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;j&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h3&gt;More on &lt;code&gt;index_range&lt;/code&gt; - もっと &lt;code&gt;index_range&lt;/code&gt;&lt;/h3&gt;
-&lt;p&gt;&lt;code&gt;index_range&lt;/code&gt; 型はサブビュー生成の範囲を指定する様々な方法を提供する。
-ここでは同じ範囲を指定するいくつかの範囲インスタンス化を示す。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;c1&#34;&gt;// [base,stride,bound)&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// [0,2,4)&lt;/span&gt;
-
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stride&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stride&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stride&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stride&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;スライス操作へ渡された &lt;code&gt;index_range&lt;/code&gt; オブジェクトは，供給されなかった開始(かつ/または)終端値をその配列から継承する。
-これは都合よく，あるケースで配列長の境界を知る必要があることから防ぐ。
-例えば，デフォルトコンストラクトされた range は，使用する際に指定された次元の全範囲に適用される。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// All elements in this dimension&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// indices i where 3 &amp;lt;= i&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;start&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;();&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// indices i where i &amp;lt; 7&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;finish&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;a_range&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;以下のサンプルは上で示したもののいくつかの代替表現を示す。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;c1&#34;&gt;// take all of dimension 1&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// take i &amp;lt; 5 for dimension 2&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// take 4 &amp;lt;= j &amp;lt;= 7 for dimension 3 with stride 2&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;myarray&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;indices&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;5&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;stride&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;];&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_storage&#34;&gt;Storage Ordering - 記憶域の順序&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;それぞれの配列クラスは，記憶域の順序を示すパラメータを受け付ける。
-これは，FORTRAN のような，標準 C と違う順序を要求するレガシーコードとの橋渡しをする際に役立つ。
-可能な値は &lt;code&gt;c_storage_order&lt;/code&gt;，&lt;code&gt;fortran_storage_order&lt;/code&gt;，そして &lt;code&gt;general_storage_order&lt;/code&gt; である。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;c_storage_order&lt;/code&gt; はデフォルトであり，要素を C 配列と同じ順序，すなわち最後の次元からから最初の次元の順番で，メモリに格納する。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;fortran_storage_order&lt;/code&gt; は要素を FORTRAN と同じ順序，すなわち最初の次元から最後の次元の順番で，メモリに格納する。
-このパラメータの使用で注意すべきは，配列インデクスは相変わらず 0 ベースであることである。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;fortran_storage_order&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt; 
-    &lt;span class=&#34;n&#34;&gt;call_fortran_function&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;data&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;());&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;general_storage_order&lt;/code&gt; はどのような順序で次元がメモリに格納されるか，また昇順でまたは降順で次元が格納されるかをカスタマイズ可能にする。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;general_storage_order&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;storage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;c1&#34;&gt;// Store last dimension, then first, then middle&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;size_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ordering&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-  &lt;span class=&#34;c1&#34;&gt;// Store the first dimension(dimension 0) in descending order&lt;/span&gt;
-  &lt;span class=&#34;kt&#34;&gt;bool&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ascending&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
-
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;],&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;storage&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ordering&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ascending&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_base&#34;&gt;Setting The Array Base - 配列起点の設定&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;いくつかの状況で，0 ベースの配列は不都合で扱いにくい。
-Boost.MultiArray コンポーネントは，配列の起点を変更するふたつの方法を提供する。
-ひとつは，起点を設定するために範囲値のペアを &lt;code&gt;extent_gen&lt;/code&gt; コンストラクタへ渡すことである。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_gen&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// dimension 0: 0-based&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dimension 1: 1-based&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dimension 2: -1 - based&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)][&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)]);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;代替の方法は，まず普通に配列を構築してから，起点を再設定することである。
-全ての起点に同じ値を設定するには，新しいインデクス値を渡して &lt;code&gt;reindex&lt;/code&gt; メンバ関数を使う。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_gen&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-  &lt;span class=&#34;c1&#34;&gt;// change to 1-based&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reindex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;もしくは，インデクス起点の Collection を &lt;code&gt;reindex&lt;/code&gt; メンバ関数に渡すこと各々の起点を別々に設定する。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_gen&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;// dimension 0: 0-based&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dimension 1: 1-based&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;// dimension 2: (-1)-based&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ndims&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;bases&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}};&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reindex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;bases&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_reshape&#34;&gt;Changing an Array&#39;s Shape - 配列形の変更&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray は配列形を変更する操作を提供する。
-次元の数が同じでなければならない，要素の総数を保持する限り，配列形は変更され得る。&lt;/p&gt;
-&lt;h3&gt;Example&lt;/h3&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;multi_array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;double&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_range&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extent_gen&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;extents&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;][&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]);&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;array_type&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;index&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ndims&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;dims&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{{&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}};&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;A&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;reshape&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;dims&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;配列の再成形はインデクス付けに影響を与えないことに注意すること。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_concepts&#34;&gt;MultiArray Concept - MultiArray コンセプト&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray は &lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/reference.html#MultiArray&#34; target=&#34;_blank&#34;&gt;MultiArray&lt;/a&gt; コンセプトを定義し，使用する。
-これは N 次元コンテナのインタフェースを指定する。&lt;/p&gt;
-&lt;h2&gt;&lt;a name=&#34;sec_testcases&#34;&gt;Test Cases - テストケース&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;Boost.MultiArray には，同ライブラリの機能とセマンティクスを学習できるテストケースが一揃い付属する。
-このテストケースの記述は&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/libs/multi_array/doc/test_cases.html&#34; target=&#34;_blank&#34;&gt;ここ&lt;/a&gt;ある。&lt;/p&gt;
-&lt;h2&gt;Credits&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;mailto:garcia@osl.iu.edu&#34;&gt;Ronald Garcia&lt;/a&gt; は，このライブラリの最初の作者である。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/1_31_0/people/jeremy_siek.htm&#34; target=&#34;_blank&#34;&gt;Jeremy Siek&lt;/a&gt; は，このライブラリを助け，またアイデア，アドバイス，そして Microsoft Visual C++ に移植する手助けのための (sounding board) を提供した。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;mailto:gbavestrelli@yahoo.com&#34;&gt;Giovanni Bavestrelli&lt;/a&gt; は，&lt;a href=&#34;http://www.boost.org/&#34; target=&#34;_blank&#34;&gt;Boost&lt;/a&gt; メーリングリストのメンバから，N 次元配列の初期の実装に対するすばらしいフィードバックを提供した。
-  この仕事におけるいくつかのデザインの決定は，この実装や引き出されたコメントに基づく。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;mailto:tveldhui@acm.org&#34;&gt;Todd Veldhuizen&lt;/a&gt; は，このデザインのいくつかの側面に影響を与えた &lt;a href=&#34;http://oonumerics.org/blitz/&#34; target=&#34;_blank&#34;&gt;Blitz++&lt;/a&gt; を書いた。
-  更に，彼はこのライブラリの実装やデザインにフィードバックをもたらした。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;mailto:jewillco@osl.iu.edu&#34;&gt;Jeremiah Willcock&lt;/a&gt; は，このライブラリの実装やデザインにフィードバックをもたらしたし，機能に対するいくつかの提案を行った。&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;mailto:bdawes@acm.org&#34;&gt;Beman Dawes&lt;/a&gt; は，このライブラリを Microsoft Windows コンパイラに移植するための，計り知れない援助をくれた。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&#34;mailto:garcia@.cs.indiana.edu&#34;&gt;Ronald Garcia&lt;/a&gt;
-Last modified: Tue Sep 10 11:14:15 EST 2002&lt;/p&gt;
-&lt;p&gt;翻訳: Tietew with BDT project&lt;/p&gt;
-&lt;p&gt;Copyright (c) Ronald Garcia, Jeremy Siek 2001&lt;/p&gt;
-&lt;p&gt;Permission to use, copy, modify, distribute and sell this software and its documentation for any purpose is hereby granted without fee, provided that the above copyright notice appears in all copies and that both that copyright notice and this permission notice appear in supporting documentation.
-Jeremy Siek makes no representations about the suitability of this software for any purpose.
-It is provided &#34;as is&#34; without express or implied warranty.&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Hiroaki Goto</name>
-        <email>goto.inct@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.66.0リリースノート -- 1.66.0リリースノート : テストコンパイラを記載 (close #204)</title>
-      <link href="https://boostjp.github.io/document/version/1_66_0.html"/>
-      <id>51f92794d0ae7dc2a876a54cea6b752b2df6d36c:document/version/1_66_0.md</id>
-      <updated>2017-12-07T17:31:56+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.66.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_66_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_66_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_66_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_66_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/beast&#34; target=&#34;_blank&#34;&gt;Beast&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;C++11以降限定のポータブルなHTTP、WebSocket、その他ネットワーク操作のライブラリ。作者Vinnie Falco氏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/callable_traits&#34; target=&#34;_blank&#34;&gt;CallableTraits&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;Boost.FunctionTypesの精神的な後継ライブラリ。C++11以降限定のライブラリで、&lt;code&gt;callable&lt;/code&gt; (関数呼び出し可能) に関する全ての型検査と型操作を提供する。作者Barrett Adair氏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/libs/mp11&#34; target=&#34;_blank&#34;&gt;Mp11&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;C++11のメタプログラミングライブラリ。作者Peter Dimov氏&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#asio&#34;&gt;Asio&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#datetime&#34;&gt;DateTime&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#format&#34;&gt;Format&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#iterator&#34;&gt;Iterator&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#math&#34;&gt;Math&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#optional&#34;&gt;Optional&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#regex&#34;&gt;Regex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#stacktrace&#34;&gt;Stacktrace&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#utility&#34;&gt;Utility&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#uuid&#34;&gt;Uuid&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#variant&#34;&gt;Variant&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#asio&#34; name=&#34;asio&#34;&gt;Asio&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Networking TSによるインタフェース変更を反映させた (&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/n4656.pdf&#34; target=&#34;_blank&#34;&gt;N4546&lt;/a&gt;)&lt;ul&gt;
-&lt;li&gt;変更リストは作成中 (TODO)&lt;/li&gt;
-&lt;li&gt;Networking TSによって置き換えられた関数とクラスは非推奨となった&lt;/li&gt;
-&lt;li&gt;サービステンプレートパラメータと対応するクラスは、デフォルトで無効となった。例として&lt;code&gt;basic_socket&amp;lt;Protocol, SocketService&amp;gt;&lt;/code&gt;の代わりにシンプルな&lt;code&gt;basic_socket&amp;lt;Protocol&amp;gt;&lt;/code&gt;がある。古いインタフェースを有効にする場合は、&lt;code&gt;BOOST_ASIO_ENABLE_OLD_SERVICES&lt;/code&gt;マクロをdefineすること&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;以前から非推奨だった関数を削除&lt;/li&gt;
-&lt;li&gt;ハンドラトラッキングのカスタマイズをサポート&lt;/li&gt;
-&lt;li&gt;ハンドラトラッキングのためにreactor関係のイベントを追加 (ディスクリプタの準備ができた、とか)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;io_context&lt;/code&gt;単位でロックを無効化するために使用する、特殊な「並行性のヒント (concurrency hint)」を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ssl::stream&amp;lt;&amp;gt;&lt;/code&gt;の最初のコンストラクタ引数の完全転送を可能にした&lt;/li&gt;
-&lt;li&gt;低レイヤーネイティブソケット (underlying native socket) の所有権を手放す機能を追加した (この機能を使用するには、Windows 8.1以降のI/O完了ポートバックエンドが必要)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#atomic&#34; name=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;整数型の拡張アトミック命令を実験的に実装&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;fetch_negate&lt;/code&gt;と&lt;code&gt;fetch_complement&lt;/code&gt;はアトミックに符号反転（2の補数）、もしくは1の補数（ビット反転）へ置換え、もとの値を返す&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;opaque_&amp;lt;op&amp;gt;&lt;/code&gt;は対応する&lt;code&gt;fetch_&amp;lt;op&amp;gt;&lt;/code&gt;に等しいが、値を返さない&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;op&amp;gt;_and_test&lt;/code&gt;は&lt;code&gt;&amp;lt;op&amp;gt;&lt;/code&gt;をアトミックに行い、結果が&lt;code&gt;0&lt;/code&gt;であるならば&lt;code&gt;true&lt;/code&gt;を返す&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bit_test_and_set&lt;/code&gt;、&lt;code&gt;bit_test_and_reset&lt;/code&gt;および&lt;code&gt;bit_test_and_complement&lt;/code&gt;はアトミックに指定したビットを&lt;code&gt;1&lt;/code&gt;にする（&lt;code&gt;set&lt;/code&gt;）、&lt;code&gt;0&lt;/code&gt;にする（&lt;code&gt;reset&lt;/code&gt;）もしくはビット反転（&lt;code&gt;complement&lt;/code&gt;）し、そのビットのもとの値を返す&lt;ul&gt;
-&lt;li&gt;訳者註: 原文ではそのビットのもとの値を返すとなっているが、戻り値の型は&lt;code&gt;bool&lt;/code&gt;型であることに注意&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0558r1.pdf&#34; target=&#34;_blank&#34;&gt;P0558R1&lt;/a&gt;で提案、C++17に採択されたポインターを介した整数演算の削除に追従。それらはもう提供されなくなった&lt;/li&gt;
-&lt;li&gt;C++17で追加された&lt;code&gt;atomic&amp;lt;T&amp;gt;::value_type&lt;/code&gt;と&lt;code&gt;atomic&amp;lt;T&amp;gt;::difference_type&lt;/code&gt;にも追従し、ユーザコードで使用可能となった&lt;/li&gt;
-&lt;li&gt;GCC 7へのサポートを改善し、x86-64環境下での128bit演算にはコンパイラ提供の&lt;code&gt;libatomic&lt;/code&gt;へのリンクは不要となった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#datetime&#34; name=&#34;datetime&#34;&gt;DateTime&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows SDKの抽象レイヤーとしてBoost.WinAPIを使用するようにした&lt;/li&gt;
-&lt;li&gt;日付から大きな年を加算・減算した際に、整数オーバーフローによって不正な結果になっていた問題を修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://stackoverflow.com/questions/45537280/boost-datetime-issue-with-adding-long-year-durations&#34; target=&#34;_blank&#34;&gt;Boost.DateTime issue with adding long year durations - StackOverflow&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#fiber&#34; name=&#34;fiber&#34;&gt;Fiber&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;CUDAストリームと同期できるようになった&lt;/li&gt;
-&lt;li&gt;ROCm/HIPストリームと同期できるようになった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#format&#34; name=&#34;format&#34;&gt;Format&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;改善&lt;ul&gt;
-&lt;li&gt;新たな変換指定子を追加&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/41&#34; target=&#34;_blank&#34;&gt;&#39;a&#39;&lt;/a&gt;&lt;/code&gt; : &lt;code&gt;fixed | scientific&lt;/code&gt;フラグを設定する (&lt;code&gt;hexfloat&lt;/code&gt;相当)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/43&#34; target=&#34;_blank&#34;&gt;&#39;b&#39;&lt;/a&gt;&lt;/code&gt; : &lt;code&gt;boolalpha&lt;/code&gt;フラグを設定する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/41&#34; target=&#34;_blank&#34;&gt;&#39;A&#39;&lt;/a&gt;&lt;/code&gt; : &lt;code&gt;a&lt;/code&gt;フラグ + &lt;code&gt;uppercase&lt;/code&gt;を設定する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/41&#34; target=&#34;_blank&#34;&gt;&#39;F&#39;&lt;/a&gt;&lt;/code&gt; : &lt;code&gt;f&lt;/code&gt;フラグ + &lt;code&gt;uppercase&lt;/code&gt;を設定する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/42&#34; target=&#34;_blank&#34;&gt;GitHub #42&lt;/a&gt; ISO 99の新たな引数型 &lt;code&gt;j&lt;/code&gt; (&lt;code&gt;intmax_t&lt;/code&gt;) と &lt;code&gt;z&lt;/code&gt; (&lt;code&gt;size_t&lt;/code&gt;) を追加。これは値の解析をし、型としては単に無視する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/format/pull/44&#34; target=&#34;_blank&#34;&gt;GitHub #44&lt;/a&gt; Microsoftの新たな引数型プレフィックス &lt;code&gt;I&lt;/code&gt; (&lt;code&gt;ptrdiff_t&lt;/code&gt;)、 &lt;code&gt;I32&lt;/code&gt; (&lt;code&gt;__int32&lt;/code&gt;)、 &lt;code&gt;I64&lt;/code&gt; (&lt;code&gt;__int64&lt;/code&gt;)、 &lt;code&gt;w&lt;/code&gt; (&lt;code&gt;wchar_t&lt;/code&gt;) を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/format/issues/33&#34; target=&#34;_blank&#34;&gt;GitHub #33&lt;/a&gt; &lt;code&gt;format_matrix&lt;/code&gt;という新たな開発ツールを追加した。これはできるだけ多くの可能なフォーマットを組み合わせて、ファイルに記録する：&lt;ul&gt;
-&lt;li&gt;Boostリリース時の回帰テストに役立つ&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;snprintf&lt;/code&gt;との比較ができる&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/format/issues/36&#34; target=&#34;_blank&#34;&gt;GitHub #36&lt;/a&gt; &lt;code&gt;volatile&lt;/code&gt;引数に対して安全に&lt;code&gt;operator%&lt;/code&gt;を使用できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/4636&#34; target=&#34;_blank&#34;&gt;Trac #4636&lt;/a&gt; MSVC環境で値の丸め処理が&lt;code&gt;/RTCc&lt;/code&gt;オプション (ランタイムエラーチェック) によって失敗していた問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/7477&#34; target=&#34;_blank&#34;&gt;Trac #7477&lt;/a&gt; MSVCの&lt;code&gt;/Za&lt;/code&gt;オプション (Microsoftの言語拡張を使用しない) との互換性を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/10324&#34; target=&#34;_blank&#34;&gt;Trac #10324&lt;/a&gt; 不正な&lt;code&gt;const_cast&lt;/code&gt;による警告を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/11632&#34; target=&#34;_blank&#34;&gt;Trac #11632&lt;/a&gt; 静的解析して問題があった&lt;code&gt;alt_sstream.hpp&lt;/code&gt;を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#fusion&#34; name=&#34;fusion&#34;&gt;Fusion&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/fusion/pull/149&#34; target=&#34;_blank&#34;&gt;PR#149&lt;/a&gt; &lt;code&gt;isspace(c)&lt;/code&gt; はVxWorksのDinkum clibではマクロとして実装されていないこと対応。Brian Kuhl(@kuhlenough)氏に感謝&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/fusion/pull/150&#34; target=&#34;_blank&#34;&gt;PR#150&lt;/a&gt; 循環したプリプロセッサのインクルードを修正。Gregor Jasny(@gjasny)氏に感謝&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/fusion/pull/151&#34; target=&#34;_blank&#34;&gt;PR#151&lt;/a&gt; &lt;code&gt;fusion::tuple&lt;/code&gt;の基底クラスが変更された&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/fusion/pull/153&#34; target=&#34;_blank&#34;&gt;PR#153&lt;/a&gt; &lt;code&gt;std::array&lt;/code&gt;でコンパイルエラーになることがあるのを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/fusion/pull/154&#34; target=&#34;_blank&#34;&gt;PR#154&lt;/a&gt; C++03において、ネストしたコンテナのコピーでバグがあったのを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#log&#34; name=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;file_collector::scan_for_files()&lt;/code&gt;のバグを修正。ユーザーアプリケーションの再起動後、ターゲットディレクトリ内のログファイル名が不正になることがあった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#iterator&#34; name=&#34;iterator&#34;&gt;Iterator&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;next()&lt;/code&gt;と&lt;code&gt;prior()&lt;/code&gt;関数は、ネストした型（例えば&lt;code&gt;iterator_category&lt;/code&gt;や&lt;code&gt;difference_type&lt;/code&gt;といったような型特性に関わる型）を定義していないようなユーザイテレータをサポートするようになった。代わりにそれらの型を扱うには&lt;code&gt;std::iterator_traits&lt;/code&gt;を特殊化すること。これが正しく動作するためにはC++17準拠の&lt;code&gt;std::iterator_traits&lt;/code&gt;をサポートした環境が必要である&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#math&#34; name=&#34;math&#34;&gt;Math&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;ガウス求積法 (Gauss quadrature) とガウス＝クロンロッド求積法 (Gauss-Kronrod quadrature) のルーチンを追加&lt;/li&gt;
-&lt;li&gt;二重指数関数型数値積分 (double-exponential quadrature) のルーチンを追加 (tanh-sinh, exp-sinh, sinh-sinh)&lt;/li&gt;
-&lt;li&gt;チェビシェフ多項式 (Chebyshev polynomial) の評価 (evaluation)、平方根 (roots)、積分 (integration)、微分 (differentiation)、内挿 (interpolation, 補間) のルーチンを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#multi-index&#34; name=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;code&gt;modify()&lt;/code&gt;と&lt;code&gt;modify_key()&lt;/code&gt;をより頑強にし、Modifierで例外が送出された場合や、Rollback関数で復旧がされなかった場合に、変更要素を消去するようにした (完全な議論は &lt;a href=&#34;https://svn.boost.org/trac10/ticket/12542&#34; target=&#34;_blank&#34;&gt;Trac #12542&lt;/a&gt; を参照)。これは技術的には後方互換性がなく、以下のコードにおいて：
-  &lt;br /&gt;
-&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;modify&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;begin&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),[](&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;auto&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;){&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;throw&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;});&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;p&gt;Boostの以前のバージョンでは&lt;code&gt;c&lt;/code&gt;は維持されたが、現在は&lt;code&gt;c.begin()&lt;/code&gt;の要素は消去される。この問題を提起したJon Kalb氏に感謝する
-- メンテナンス上の修正&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#optional&#34; name=&#34;optional&#34;&gt;Optional&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;新しいコンパイラでは、Tがスカラー型の場合 optional&amp;lt;T&amp;gt; がトリビアルコピー可能となった。これは、これまでとは異なるストレージ(aligned_storage ではなく、単なる T)を用いることで実現している。 我々はコンパイラが default宣言 された関数をサポートすることを必須としている&lt;/li&gt;
-&lt;li&gt;GCC が &lt;code&gt;-Wmaybe-uninitialized&lt;/code&gt; の警告を誤って出すのを防止するため、 &lt;code&gt;operator==&lt;/code&gt; の実装を変更&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#poly-collection&#34; name=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;GCC 4.8から4.9、Clang 3.3から3.6といった古いバージョンのコンパイラで動作するようバックポートした。GCC 4.8のlibstdc++-v3では、一部の機能が欠如しているために、以下の制限がある (Clangでlibstdc++を使用する場合も同様)。&lt;ul&gt;
-&lt;li&gt;状態を持つアロケータがない&lt;/li&gt;
-&lt;li&gt;アロケータのムーブ構築がコピー構築にdecayされる&lt;/li&gt;
-&lt;li&gt;要素のコピー中に例外が送出されると、コピー構築がクラッシュする&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#predef&#34; name=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Windows Universal Platformの検出を改善した (James E. King, III氏に感謝)&lt;/li&gt;
-&lt;li&gt;cloudlibcを使用したCloudABIの検出を追加 (James E. King, III氏に感謝)&lt;/li&gt;
-&lt;li&gt;その他バグ修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#regex&#34; name=&#34;regex&#34;&gt;Regex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;de-fuzzingによって発見されたセキュリティ問題に対する小さな修正をした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#stacktrace&#34; name=&#34;stacktrace&#34;&gt;Stacktrace&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;常識から外れたMinGW-w64環境で動作するようにした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;libbacktrace&lt;/code&gt;がインストールされたMinGW環境 (&lt;code&gt;-w64&lt;/code&gt;なし) で動作するようにした。さらなる情報は、MinGWの「MinGW specific notes」セクションを参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#utility&#34; name=&#34;utility&#34;&gt;Utility&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost/next_prior.hpp&lt;/code&gt;をBoost.Iteratorモジュールに移動。ユーザーコードは変更の必要なし&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#uuid&#34; name=&#34;uuid&#34;&gt;Uuid&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;改善&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/uuid/issues/26&#34; target=&#34;_blank&#34;&gt;GitHub #26&lt;/a&gt; &lt;code&gt;name_generator&lt;/code&gt;をリファクタし、hash provider conceptによるハッシュアルゴリズムの設定変更をできるようにした。オプション機能としてRFC-4122のMD5ハッシュ実装を追加した。この変更によって、将来の標準ハッシュアルゴリズムがサポートしやすくなった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/uuid/issues/34&#34; target=&#34;_blank&#34;&gt;GitHub #34&lt;/a&gt; &lt;a href=&#34;https://tools.ietf.org/html/rfc4122#appendix-C&#34; target=&#34;_blank&#34;&gt;RFC 4122, Appendix C&lt;/a&gt;の名前空間として&lt;code&gt;boost::uuids::ns&lt;/code&gt;を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/8630&#34; target=&#34;_blank&#34;&gt;Trac #8630&lt;/a&gt;, &lt;a href=&#34;https://svn.boost.org/trac10/ticket/11482&#34; target=&#34;_blank&#34;&gt;Trac #11482&lt;/a&gt; &lt;a href=&#34;https://svn.boost.org/trac10/ticket/12253&#34; target=&#34;_blank&#34;&gt;Trac #12253&lt;/a&gt; &lt;code&gt;string_generator&lt;/code&gt;が不正なuuidを受け付けてしまっていた問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/10665&#34; target=&#34;_blank&#34;&gt;Trac #10665&lt;/a&gt; &lt;code&gt;name_generator::operator()&lt;/code&gt;をドキュメントに合わせて&lt;code&gt;const&lt;/code&gt;メンバ関数にした&lt;/li&gt;
-&lt;li&gt;実証詳細のヘッダファイルをdetailディレクトリに移動した。ユーザーコードの変更は必要ないが、移動前の古いファイルをインクルードしたときに警告は出力される&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html#variant&#34; name=&#34;variant&#34;&gt;Variant&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/6971&#34; target=&#34;_blank&#34;&gt;Trac #6971&lt;/a&gt; &lt;code&gt;apply_visitor()&lt;/code&gt;の&lt;code&gt;visitables&lt;/code&gt;パラメータ (&lt;code&gt;variant&lt;/code&gt;オブジェクト) を完全転送するよう修正。この機能を実装してくれたLevon Tarakchyan氏に多大なる感謝を&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang: 3.0, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++0x: 3.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 3.0, 3.1, 3.2, 3.3, 3.4, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 3.5.0, 3.6.0, 3.7.1, 3.8.0, 3.9.1, 4.0.0, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++17: 5.0.1&lt;/li&gt;
-&lt;li&gt;GCC: 4.4.7, 4.5.3, 4.6.3, 4.7.2, 5.4.0, 7.2.0&lt;/li&gt;
-&lt;li&gt;GCC, C++0x: 4.4.7&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.7.2, 4.7.3, 4.8.5, 4.9.4, 6.4.0, 7.1.0, 7.2.0&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.4.1, 6.3.0, 6.4.0, 7.1.0, 7.2.0, 7.2.1&lt;/li&gt;
-&lt;li&gt;GCC, C++17: 7.2.0&lt;/li&gt;
-&lt;li&gt;Intel: 18.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Clang: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++1z: 9.0.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0, 4.5.4&lt;/li&gt;
-&lt;li&gt;GCC, C++0x: 4.6.4&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.7.3&lt;/li&gt;
-&lt;li&gt;Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0, 14.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Android:&lt;ul&gt;
-&lt;li&gt;Clang: 3.6, 3.7, 3.8&lt;/li&gt;
-&lt;li&gt;GCC: 4.9, 5.4&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 6.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;Clang: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++1z: 4.0.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC, C++0x: 4.4.2&lt;/li&gt;
-&lt;li&gt;QCC, C++11: 4.7.3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang: 3.0, 3.8.1, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++0x: 3.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 3.0, 3.1, 3.2, 3.3, 3.4, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 3.5.0, 3.6.0, 3.7.1, 3.8.0, 3.9.1, 4.0.0, 4.0.1, 5.0.1&lt;/li&gt;
-&lt;li&gt;Clang, C++17: 5.0.1&lt;/li&gt;
-&lt;li&gt;GCC: 4.4.7, 4.5.3, 4.6.3, 4.7.2, 5.4.0, 7.2.0&lt;/li&gt;
-&lt;li&gt;GCC, C++0x: 4.4.7&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.7.2, 4.7.3, 4.8.5, 4.9.4, 5.4.0, 6.4.0, 7.1.0, 7.2.0&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.4.1, 6.3.0, 6.4.0, 7.1.0, 7.2.0, 7.2.1, 8.0.0&lt;/li&gt;
-&lt;li&gt;GCC, C++17: 7.2.0&lt;/li&gt;
-&lt;li&gt;Intel: 18.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Clang: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 9.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++1z: 9.0.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0, 4.5.4&lt;/li&gt;
-&lt;li&gt;GCC, C++0x: 4.6.4&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.7.3, 4.8.1, 4.9.3&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.1.0, 5.2.0, 5.3.0, 6.1.0, 6.2.0, 6.3.0, 6.4.0, 7.1.0&lt;/li&gt;
-&lt;li&gt;Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0, 14.1&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Android:&lt;ul&gt;
-&lt;li&gt;Clang: 3.6, 3.7, 3.8&lt;/li&gt;
-&lt;li&gt;GCC: 4.9, 5.4&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 6.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;Clang: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 4.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++1z: 4.0.0&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC, C++0x: 4.4.2&lt;/li&gt;
-&lt;li&gt;QCC, C++11: 4.7.3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/Flast&#34; target=&#34;_blank&#34;&gt;Kohei Takahashi&lt;/a&gt;, &lt;a href=&#34;https://github.com/mumumu&#34; target=&#34;_blank&#34;&gt;Yoshinari Takaoka&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
