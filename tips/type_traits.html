@@ -505,7 +505,7 @@ function tree_onclick(e) {
 <span class=n>remove_reference</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&amp;&amp;&gt;::</span><span class=n>type</span>      <span class=o>:</span> <span class=kt>int</span>
 <span class=n>remove_reference</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>*&gt;::</span><span class=n>type</span>       <span class=o>:</span> <span class=kt>int</span><span class=o>*</span>
 <span class=n>remove_reference</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>*&amp;&gt;::</span><span class=n>type</span>      <span class=o>:</span> <span class=kt>int</span><span class=o>*</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/type_traits.html#synthesizing-types-with-specific-alignments id=synthesizing-types-with-specific-alignments>特定アライメントを持った型の合成</a></h2> <h3><a href=https://boostjp.github.io/tips/type_traits.html#type-with-alignment id=type-with-alignment>特定のアライメントを持つ型の取得する</a></h3> <p><code>boost::type_with_alignment&lt;Align&gt;</code>メタ関数を使用する。</p> <p>インクルード：</p> <ul> <li><code>boost/type_traits/type_with_alignment.hpp</code></li> <li><code>boost/type_traits.hpp</code></li> </ul> <p>例：</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/type_traits.html#synthesizing-types-with-specific-alignments id=synthesizing-types-with-specific-alignments>特定アライメントを持った型の合成</a></h2> <h3><a href=https://boostjp.github.io/tips/type_traits.html#type-with-alignment id=type-with-alignment>特定のアライメントを持つ型の取得する</a></h3> <p><code>boost::type_with_alignment&lt;Align&gt;</code>メタ関数を使用する。</p> <p>インクルード：</p> <ul> <li><code>boost/type_traits/type_with_alignment.hpp</code></li> <li><code>boost/type_traits.hpp</code></li> </ul> <p>例：</p> <p><div class=yata id=f333c7597c4edf1c58156a47e8210cf890a65cb8><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/type_traits/alignment_of.hpp&gt;</span>
 <span class=cp>#include &lt;boost/type_traits/type_with_alignment.hpp&gt;</span>
 
@@ -517,7 +517,7 @@ function tree_onclick(e) {
         <span class=o>&gt;::</span><span class=n>type</span>
     <span class=p>).</span><span class=n>name</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>union boost::detail::lower_alignment&lt;1&gt;
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>union boost::detail::lower_alignment&lt;1&gt;
 </code></pre></p> <h3><a href=https://boostjp.github.io/tips/type_traits.html#aligned-storage id=aligned-storage>適切にアライメントされた型を作成する</a></h3> <p><code>boost::aligned_storage&lt;Len, Align&gt;</code>メタ関数を使用する。</p> <p><code>Align</code>アライメント、<code>Len</code>サイズのPOD型を返す。</p> <p>インクルード：</p> <ul> <li><code>boost/type_traits/aligned_storage.hpp</code></li> <li><code>boost/type_traits.hpp</code></li> </ul> <p>例：</p> <p><div class=codehilite><pre><span class=c1>// via http://d.hatena.ne.jp/Cryolite/20051102#p1</span>
 
 <span class=k>template</span><span class=o>&lt;</span><span class=k>class</span> <span class=nc>T</span><span class=o>&gt;</span>

@@ -231,7 +231,7 @@ function tree_onclick(e) {
       ]
    }
 }
-</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <p><div class=yata id=ac0e6b50f8ea3199c2c6110358c7f8763aebe0bf><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;string&gt;</span>
 <span class=cp>#include &lt;boost/property_tree/ptree.hpp&gt;</span>
 <span class=cp>#include &lt;boost/property_tree/json_parser.hpp&gt;</span>
@@ -282,7 +282,7 @@ function tree_onclick(e) {
         <span class=p>}</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>value : 3
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>value : 3
 str : Hello
 id : 1
 name : Alice
@@ -292,7 +292,7 @@ name : Millia
 </pre></div> </p> <p>要素アクセスのパス指定には、ドットによるアクセスを行う。</p> <p><code>ptree</code>クラスの<code>get_optional()</code>メンバ関数によって、指定された型に変換された要素が返される。要素の取得に失敗した場合は、<code>boost::optional</code>型の無効値が返される。</p> <p>次に、「Data.info」の要素を列挙するには、<code>boost::property_tree::ptree</code>オブジェクトに対して、<code>get_child()</code>メンバ関数でパス指定し、子ツリーを取得する。取得した子ツリーを<code>BOOST_FOREACH</code>でループし、各要素を取得する。</p> <p><div class=codehilite><pre><span class=n>BOOST_FOREACH</span> <span class=p>(</span><span class=k>const</span> <span class=n>ptree</span><span class=o>::</span><span class=n>value_type</span><span class=o>&amp;</span> <span class=n>child</span><span class=p>,</span> <span class=n>pt</span><span class=p>.</span><span class=n>get_child</span><span class=p>(</span><span class=s>"Data.info"</span><span class=p>))</span> <span class=p>{</span>
     <span class=err>…</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/json.html#write id=write>JSONの書き込み</a></h2> <p>JSONを書き込むには、要素を設定するために<code>boost::property_tree::ptree</code>クラスの<code>put()</code>メンバ関数を使用し、<code>add_child()</code>メンバで子ツリーに登録する。</p> <p>保存には、<code>boost::property_tree::write_json()</code>関数に、ファイル名と<code>ptree</code>オブジェクトを指定する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/json.html#write id=write>JSONの書き込み</a></h2> <p>JSONを書き込むには、要素を設定するために<code>boost::property_tree::ptree</code>クラスの<code>put()</code>メンバ関数を使用し、<code>add_child()</code>メンバで子ツリーに登録する。</p> <p>保存には、<code>boost::property_tree::write_json()</code>関数に、ファイル名と<code>ptree</code>オブジェクトを指定する。</p> <p><div class=yata id=35cac8671d2c2b4b1a6e43faa31ac40a7cc13925><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;string&gt;</span>
 <span class=cp>#include &lt;boost/property_tree/ptree.hpp&gt;</span>
 <span class=cp>#include &lt;boost/property_tree/json_parser.hpp&gt;</span>
@@ -325,7 +325,7 @@ name : Millia
 
     <span class=n>write_json</span><span class=p>(</span><span class=s>"data_out.json"</span><span class=p>,</span> <span class=n>pt</span><span class=p>);</span>
 <span class=p>}</span>
-</pre></div> </p> <p>出力されたdata_out.json：</p> <p><pre><code>{
+</pre></div> </div></p> <p>出力されたdata_out.json：</p> <p><pre><code>{
     "Data":
     {
         "value": "3",

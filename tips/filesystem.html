@@ -234,7 +234,7 @@ function tree_onclick(e) {
 <span class=k>if</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=p>{</span>
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"エラー発生！ : "</span> <span class=o>&lt;&lt;</span> <span class=n>error</span><span class=p>.</span><span class=n>message</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#copy-file id=copy-file>ファイルをコピーする</a></h2> <p>ファイルをコピーするには、<code>boost::filesystem::copy_file()</code>関数を使用する。</p> <ul> <li>第1引数はコピー元のパス</li> <li>第2引数はコピー先のパス</li> </ul> <p>コピーに失敗した場合は例外が投げられる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#copy-file id=copy-file>ファイルをコピーする</a></h2> <p>ファイルをコピーするには、<code>boost::filesystem::copy_file()</code>関数を使用する。</p> <ul> <li>第1引数はコピー元のパス</li> <li>第2引数はコピー先のパス</li> </ul> <p>コピーに失敗した場合は例外が投げられる。</p> <p><div class=yata id=0a15ad984ebce29192b841e382f972c47347c771><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -252,7 +252,7 @@ function tree_onclick(e) {
         <span class=k>throw</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>上書きコピーをする場合は、<code>copy_file()</code>関数に、<code>boost::filesystem::copy_option::overwrite_if_exists</code>オプションを指定する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>上書きコピーをする場合は、<code>copy_file()</code>関数に、<code>boost::filesystem::copy_option::overwrite_if_exists</code>オプションを指定する。</p> <p><div class=yata id=9cd0dcd8abe66f80aa3aa3a831a428a5744ae020><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -270,7 +270,7 @@ function tree_onclick(e) {
         <span class=k>throw</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#remove-file id=remove-file>ファイルを削除する</a></h2> <p>ファイルを削除するには、<code>boost::filesystem::remove()</code>を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#remove-file id=remove-file>ファイルを削除する</a></h2> <p>ファイルを削除するには、<code>boost::filesystem::remove()</code>を使用する。</p> <p><div class=yata id=9e05ce92ba0938325b8dc684842845d506d3f1d2><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -287,7 +287,7 @@ function tree_onclick(e) {
         <span class=k>throw</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#rename id=rename>ファイルを移動する／ファイル名を変更する</a></h2> <p>ファイルの移動、ファイル名の変更には、<code>boost::filesystem::rename()</code>を使用する。</p> <ul> <li>第1引数は、元となるファイルのパス。</li> <li>第2引数は、移動先のファイルパス、もしくは新たなファイル名。</li> </ul> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#rename id=rename>ファイルを移動する／ファイル名を変更する</a></h2> <p>ファイルの移動、ファイル名の変更には、<code>boost::filesystem::rename()</code>を使用する。</p> <ul> <li>第1引数は、元となるファイルのパス。</li> <li>第2引数は、移動先のファイルパス、もしくは新たなファイル名。</li> </ul> <p><div class=yata id=be8e95c236d643b53775f85dfe87f0f2cae4b9ae><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -305,7 +305,7 @@ function tree_onclick(e) {
         <span class=k>throw</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#exists id=exists>ファイルが存在するかを調べる</a></h2> <p>ファイルが存在するか調べるには、<code>boost::filesystem::exists()</code>関数を使用する。</p> <p>この関数は、ファイルが存在する場合は<code>true</code>を返し、存在しない場合は<code>false</code>を返す。</p> <p>ファイルのステータス取得に失敗した場合はエラーを返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#exists id=exists>ファイルが存在するかを調べる</a></h2> <p>ファイルが存在するか調べるには、<code>boost::filesystem::exists()</code>関数を使用する。</p> <p>この関数は、ファイルが存在する場合は<code>true</code>を返し、存在しない場合は<code>false</code>を返す。</p> <p>ファイルのステータス取得に失敗した場合はエラーを返す。</p> <p><div class=yata id=216fce6e46c036d33d7b639f483f15a1a758c39c><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -323,7 +323,7 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"ファイルがあった"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#file-size id=file-size>ファイルサイズを取得する</a></h2> <p>ファイルサイズを取得するには、<code>boost::filesystem::file_size()</code>関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#file-size id=file-size>ファイルサイズを取得する</a></h2> <p>ファイルサイズを取得するには、<code>boost::filesystem::file_size()</code>関数を使用する。</p> <p><div class=yata id=4170ce9c42ca2cbf9dff7673c8bb0ebf1ae5fa81><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -342,8 +342,8 @@ function tree_onclick(e) {
         <span class=k>throw</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果の例:</p> <p><pre><code>ファイルサイズ: 5107200
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#last-write-time id=last-write-time>ファイルの最終更新日時を取得する</a></h2> <p>ファイルの最終更新日時を取得するには、<code>boost::filesystem::last_write_time()</code>関数を使用する。</p> <p>この関数は戻り値として、<code>std::time_t</code>型として日時を返す。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>実行結果の例:</p> <p><pre><code>ファイルサイズ: 5107200
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#last-write-time id=last-write-time>ファイルの最終更新日時を取得する</a></h2> <p>ファイルの最終更新日時を取得するには、<code>boost::filesystem::last_write_time()</code>関数を使用する。</p> <p>この関数は戻り値として、<code>std::time_t</code>型として日時を返す。</p> <p><div class=yata id=2b7b9cedc4ee55dc622b0c3ece5b32a00f6b23d2><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 <span class=cp>#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</span>
 
@@ -362,8 +362,8 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"エラー発生！ : "</span> <span class=o>&lt;&lt;</span> <span class=n>ex</span><span class=p>.</span><span class=n>what</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果の例：</p> <p><pre><code>2011-Mar-30 05:56:11
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#get-filename id=get-filename>パスのファイル名を取得する</a></h2> <p>パスのファイル名を取得するには、<code>boost::filesystem::path</code>クラスの<code>filename()</code>メンバ関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>実行結果の例：</p> <p><pre><code>2011-Mar-30 05:56:11
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#get-filename id=get-filename>パスのファイル名を取得する</a></h2> <p>パスのファイル名を取得するには、<code>boost::filesystem::path</code>クラスの<code>filename()</code>メンバ関数を使用する。</p> <p><div class=yata id=4a231a5d9927f734ce8b66c5dca2a471ce93a658><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -375,8 +375,8 @@ function tree_onclick(e) {
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>filename</span><span class=p>.</span><span class=n>generic_string</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>出力：</p> <p><pre><code>b.txt
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#get-extension id=get-extension>パスの拡張子を取得する</a></h2> <p>パスの拡張子を取得するには、<code>boost::filesystem::path</code>クラスの<code>extension()</code>メンバ関数を使用する。この関数が返すパスは、ドット(.)を含む。</p> <p>拡張子を持たないパスに対してこの関数を適用した場合は、空のパスが返る。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>出力：</p> <p><pre><code>b.txt
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#get-extension id=get-extension>パスの拡張子を取得する</a></h2> <p>パスの拡張子を取得するには、<code>boost::filesystem::path</code>クラスの<code>extension()</code>メンバ関数を使用する。この関数が返すパスは、ドット(.)を含む。</p> <p>拡張子を持たないパスに対してこの関数を適用した場合は、空のパスが返る。</p> <p><div class=yata id=47fc1d2136ab91e95848cf570876aa450e247896><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -388,8 +388,8 @@ function tree_onclick(e) {
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>extension</span><span class=p>.</span><span class=n>generic_string</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>出力：</p> <p><pre><code>.txt
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#change-extension id=change-extension>パスの拡張子を変更する</a></h2> <p>パスの拡張子を変更するには、<code>boost::filesystem::path</code>クラスの<code>replace_extension()</code>メンバ関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>出力：</p> <p><pre><code>.txt
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#change-extension id=change-extension>パスの拡張子を変更する</a></h2> <p>パスの拡張子を変更するには、<code>boost::filesystem::path</code>クラスの<code>replace_extension()</code>メンバ関数を使用する。</p> <p><div class=yata id=ae319106cc95571f90db36ab9caa632079bf6d73><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -404,8 +404,8 @@ function tree_onclick(e) {
 
     <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>p</span><span class=p>.</span><span class=n>generic_string</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>出力：</p> <p><pre><code>/a.txt/b.png
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#create-directory id=create-directory>ディレクトリを作成する</a></h2> <p>ディレクトリを作成するには、<code>boost::filesystem::create_directory()</code>関数を使用する。</p> <p>第1引数として、ディレクトリのパスを指定する。</p> <p>ネストしたディレクトリを一度に作ろうとした場合はエラーとなる。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>出力：</p> <p><pre><code>/a.txt/b.png
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#create-directory id=create-directory>ディレクトリを作成する</a></h2> <p>ディレクトリを作成するには、<code>boost::filesystem::create_directory()</code>関数を使用する。</p> <p>第1引数として、ディレクトリのパスを指定する。</p> <p>ネストしたディレクトリを一度に作ろうとした場合はエラーとなる。</p> <p><div class=yata id=2686c967ca19c9797f800e3e331de4d83a6a3d45><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -420,7 +420,7 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"ディレクトリの作成に失敗"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>ネストしたディレクトリを含めて一度に作成するには、<code>boost::filesystem::create_directories()</code>関数を使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>ネストしたディレクトリを含めて一度に作成するには、<code>boost::filesystem::create_directories()</code>関数を使用する。</p> <p><div class=yata id=fc1088c29eff838338a5a8f61d222d2d77e8194b><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 
 <span class=k>namespace</span> <span class=n>fs</span> <span class=o>=</span> <span class=n>boost</span><span class=o>::</span><span class=n>filesystem</span><span class=p>;</span>
@@ -435,7 +435,7 @@ function tree_onclick(e) {
         <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=s>"ディレクトリの作成に失敗"</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#enumerate-file id=enumerate-file>ディレクトリ内のファイルを列挙する</a></h2> <p>ディレクトリ内のファイルを列挙するには、<code>boost::filesystem::directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#enumerate-file id=enumerate-file>ディレクトリ内のファイルを列挙する</a></h2> <p>ディレクトリ内のファイルを列挙するには、<code>boost::filesystem::directory_iterator</code>クラスを使用する。</p> <p><div class=yata id=bb208b2f4e862780453690ff05494310161e167d><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 <span class=cp>#include &lt;boost/foreach.hpp&gt;</span>
 
@@ -451,9 +451,9 @@ function tree_onclick(e) {
             <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>p</span><span class=p>.</span><span class=n>filename</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果の例</p> <p><pre><code>"a.txt"
+</pre></div> </div></p> <p>実行結果の例</p> <p><pre><code>"a.txt"
 "b.png"
-</code></pre></p> <p>あるいは、上記の実装例の <code>BOOST_FOREACH</code> 部分は C++11 以降で range-based-for を使いたい場合、次のようにも書ける。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <p>あるいは、上記の実装例の <code>BOOST_FOREACH</code> 部分は C++11 以降で range-based-for を使いたい場合、次のようにも書ける。</p> <p><div class=yata id=6456d22d5bcc126f50aae7ab48a40f3de305d321><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 <span class=cp>#include &lt;boost/range/iterator_range.hpp&gt;</span>
 
@@ -468,7 +468,7 @@ function tree_onclick(e) {
         <span class=k>if</span> <span class=p>(</span> <span class=o>!</span> <span class=n>fs</span><span class=o>::</span><span class=n>is_directory</span><span class=p>(</span> <span class=n>e</span> <span class=p>)</span> <span class=p>)</span>
             <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>e</span><span class=p>.</span><span class=n>path</span><span class=p>().</span><span class=n>filename</span><span class=p>()</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果の例は先の <code>BOOST_FOREACH</code> バージョンと同様となるので省略する。</p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file id=recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙する</a></h2> <p>ディレクトリ内の全てのファイルを再帰的に列挙するには、<code>boost::filesystem::recursive_directory_iterator</code>クラスを使用する。</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</pre></div> </div></p> <p>実行結果の例は先の <code>BOOST_FOREACH</code> バージョンと同様となるので省略する。</p> <h2><a href=https://boostjp.github.io/tips/filesystem.html#recursive-enumerate-file id=recursive-enumerate-file>ディレクトリ内の全てのファイルを再帰的に列挙する</a></h2> <p>ディレクトリ内の全てのファイルを再帰的に列挙するには、<code>boost::filesystem::recursive_directory_iterator</code>クラスを使用する。</p> <p><div class=yata id=c223e72a18b14d89e276cddb199e1ec0e93afc9b><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/filesystem.hpp&gt;</span>
 <span class=cp>#include &lt;boost/foreach.hpp&gt;</span>
 
@@ -484,7 +484,7 @@ function tree_onclick(e) {
             <span class=n>std</span><span class=o>::</span><span class=n>cout</span> <span class=o>&lt;&lt;</span> <span class=n>p</span> <span class=o>&lt;&lt;</span> <span class=n>std</span><span class=o>::</span><span class=n>endl</span><span class=p>;</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果の例</p> <p><pre><code>"D:/boost_1_49_0/boost/filesystem\config.hpp"
+</pre></div> </div></p> <p>実行結果の例</p> <p><pre><code>"D:/boost_1_49_0/boost/filesystem\config.hpp"
 "D:/boost_1_49_0/boost/filesystem\convenience.hpp"
 "D:/boost_1_49_0/boost/filesystem\detail\utf8_codecvt_facet.hpp"
 "D:/boost_1_49_0/boost/filesystem\exception.hpp"

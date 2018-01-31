@@ -238,7 +238,7 @@ push_front( 'c' )
 push_front( 'd' )
  ___ ___ ___ 
 |_d_|_c_|_b_|  &lt;--- 'a'が消える
-</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <p><div class=yata id=7808fd54450b1e10574b2adb6100b8b0f78bd2aa><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -264,7 +264,7 @@ push_front( 'd' )
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>a
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>a
 a
 b a
 c b a
@@ -288,7 +288,7 @@ push_back( 'z' )
 push_back( '1' )
  ___ ___ ___ 
 |_y_|_z_|_1_|  &lt;--- 'x'が消える
-</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <p><div class=yata id=dc44c173b60bf305edb5ffc71f902656a127cbdb><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -312,9 +312,9 @@ push_back( '1' )
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>x y z 
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>x y z 
 y z 1 
-</code></pre></p> <h3>バッファの削除をする場合</h3> <p><code>std::vector</code>と同じく、popも利用可能</p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <h3>バッファの削除をする場合</h3> <p><code>std::vector</code>と同じく、popも利用可能</p> <p><div class=yata id=f9a80dc955d5cdf99d835d178059e3f446372cce><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -342,13 +342,13 @@ y z 1
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>x y z 
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>x y z 
 x y 
 y 
 </code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#iterator id=iterator>イテレータ/逆イテレータ</a></h2> <p>標準コンテナと同様に、イテレータと逆イテレータも利用可能</p> <p><pre><code> [0] [1] [2] 
  ___ ___ ___ 
 |_c_|_b_|_a_|
-</code></pre></p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>メンバ関数</th> <th>効果</th> </tr> </thead> <tbody> <tr> <td><code>begin()</code></td> <td><code>[0]</code>位置を指すイテレータが返る、値は <code>'c'</code></td> </tr> <tr> <td><code>end()</code></td> <td><code>[2]</code>位置の次を指すイテレータが返る</td> </tr> <tr> <td><code>rbegin()</code></td> <td><code>[2]</code>位置を指す逆イテレータが返る、値は <code>'a'</code></td> </tr> <tr> <td><code>rend()</code></td> <td><code>[0]</code>位置の前を指す逆イテレータが返る</td> </tr> </tbody> </table> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <table border=1 bordercolor=#888 style=border-collapse:collapse> <thead> <tr> <th>メンバ関数</th> <th>効果</th> </tr> </thead> <tbody> <tr> <td><code>begin()</code></td> <td><code>[0]</code>位置を指すイテレータが返る、値は <code>'c'</code></td> </tr> <tr> <td><code>end()</code></td> <td><code>[2]</code>位置の次を指すイテレータが返る</td> </tr> <tr> <td><code>rbegin()</code></td> <td><code>[2]</code>位置を指す逆イテレータが返る、値は <code>'a'</code></td> </tr> <tr> <td><code>rend()</code></td> <td><code>[0]</code>位置の前を指す逆イテレータが返る</td> </tr> </tbody> </table> <p><div class=yata id=dc5822ba5c3263006560eb1802b3e3a849b6ceab><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -369,7 +369,7 @@ y
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>c b a 
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>c b a 
 a b c 
 </code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#law-layer-api id=law-layer-api>実メモリアドレスとC API対応</a></h2> <p><code>boost::circular_buffer</code>クラスには、循環バッファの中身をサイズ指定で一括出力させたいときなどに利用するメンバ関数として、<code>array_one()</code>と<code>array_two()</code>が用意されている。</p> <p>また、<code>printf()</code>や<code>fwrite()</code>のようなC APIとやりとりするためのメンバ関数として、<code>linearize()</code>が用意されている。</p> <p>＊循環バッファのメモリアドレスイメージ</p> <p><pre><code>___ ___ ___ ___ ___
 |_H_|_G_|_F_|_E_|___|
@@ -379,7 +379,7 @@ a b c
   |                      array_one().second:その位置からの個数取得
   +--------------------&gt; array_two().first :位置取得
                          array_two().second:先頭位置からの個数取得
-</code></pre></p> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <p><div class=yata id=77ce04b8930d9a50e11edecbbb6c5287a28dd237><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 <span class=cp>#include &lt;boost/lambda/lambda.hpp&gt;</span>
 
@@ -467,7 +467,7 @@ a b c
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>H G F E D
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>H G F E D
 3
 2
 H G F
@@ -479,7 +479,7 @@ H G F E
 H G F
 E
 H G F E
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#monitor id=monitor>バッファの使用状況を確認する</a></h2> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#monitor id=monitor>バッファの使用状況を確認する</a></h2> <p><div class=yata id=bed230bbc85a04c3ca3b2b6e3924afae48a874ab><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -528,7 +528,7 @@ H G F E
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>0
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>0
 7
 buffer empty.
 1
@@ -538,7 +538,7 @@ e d c b a
 5
 e d c
 3
-</code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#element-access id=element-access>バッファの先頭/末尾/任意の位置にアクセスする</a></h2> <p><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
+</code></pre></p> <h2><a href=https://boostjp.github.io/tips/circular_buffer.html#element-access id=element-access>バッファの先頭/末尾/任意の位置にアクセスする</a></h2> <p><div class=yata id=278a6dbdcef48be5b956967656abb2cf176639b6><div class=codehilite><pre><span class=cp>#include &lt;iostream&gt;</span>
 <span class=cp>#include &lt;boost/circular_buffer.hpp&gt;</span>
 
 <span class=c1>// コンソール表示</span>
@@ -600,7 +600,7 @@ e d c
 
     <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
 <span class=p>}</span>
-</pre></div> </p> <p>実行結果：</p> <p><pre><code>C B A 
+</pre></div> </div></p> <p>実行結果：</p> <p><pre><code>C B A 
 C
 C
 A
