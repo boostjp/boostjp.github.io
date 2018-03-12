@@ -2,9 +2,385 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2018-03-12T06:06:42.070637</updated>
-  <id>901f8c3d-b6ac-41cf-b705-fb3b56bff818</id>
+  <updated>2018-03-12T06:09:41.408276</updated>
+  <id>9254acb0-131f-4c61-bd71-692871c2a09f</id>
 
+  
+    <entry>
+      <title>動機 -- Preprocessor : 参考文献へのリンクミスを修正 (#237)</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/preprocessor/topics/motivation.html"/>
+      <id>c614c737a9d5f1384bce0da456e3d2418f975a4e:archive/boost_docs/libs/preprocessor/topics/motivation.md</id>
+      <updated>2018-03-12T15:06:17+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;動機&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;C++ の関数やテンプレートの引数リストは特別な構文によって組み立てられるもので、C++ の式によって構成したり操作したりできない。
+このことによってコードを無駄に反復してしまうことがある。&lt;/p&gt;
+&lt;p&gt;例としてBoostの &lt;code&gt;is_function&amp;lt;&amp;gt;&lt;/code&gt; メタ関数の実装を見てみよう。
+この実装は、型が関数へのポインタへ変換できるかどうかを調べる &lt;code&gt;is_function_tester()&lt;/code&gt; 多重定義関数を使っている。
+引数リストは特別な取扱いがされるため、任意個の引数を持つ関数に直接マッチさせることはできない。
+そのかわりに、関数 &lt;code&gt;is_function_tester()&lt;/code&gt; はサポートされる全ての引数の個数ごとに別々に定義されなければならない。
+例えば次の通り:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;yes_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_function_tester&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)());&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;yes_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_function_tester&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;yes_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_function_tester&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;A2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;yes_type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_function_tester&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;A0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;A2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このような種類の繰り返しは総称的なコンポーネントやメタプログラミングのための機能の実装をする際に頻繁に起きる。&lt;/p&gt;
+&lt;h2&gt;典型的な解決法&lt;/h2&gt;
+&lt;p&gt;典型的には、このような繰り返しは手動で解決される。
+手動による繰り返しは生産的ではないが、訓練されていない人間の目にはそのようなコードが読みやすいことがある。&lt;/p&gt;
+&lt;p&gt;ほかの解決法としては、繰り返しを生成する外部プログラムを使うことや、高度なエディタなどを使う方法がある。
+残念ながら、外部の生成プログラムを使う方法はたくさんの欠点がある:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;生成プログラムを書くのは時間がかかる。(標準的な生成プログラムを使うと楽になるが。)&lt;/li&gt;
+&lt;li&gt;生成された C++ コードを直接変更できない。&lt;/li&gt;
+&lt;li&gt;生成プログラムを呼ぶのは難しいかもしれない。&lt;/li&gt;
+&lt;li&gt;特定の環境においては生成プログラムの呼び出しを自動化するのは難しいかもしれない。
+    (呼び出しの自動化は頻繁に変更されるライブラリにとっては魅力的である。)&lt;/li&gt;
+&lt;li&gt;生成プログラムの移植や配布は難しいかもしれないし、時間を消費する。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;プリプロセッサではどうか？&lt;/h2&gt;
+&lt;p&gt;C++にはプリプロセッサが付いているので、このような需要に向いていると考えるかもしれない。
+実際、プリプロセッサはこのようなケースに極めて妥当である。なぜなら:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;プリプロセッサはポータブルである。&lt;/li&gt;
+&lt;li&gt;プリプロセッサはコンパイルの一部として自動的に実行される。&lt;/li&gt;
+&lt;li&gt;プリプロセッサのコードは直接 C++ のコードに埋め込むことができる。&lt;/li&gt;
+&lt;li&gt;コンパイラは通常、プリプロセッサの出力を見ることができるようになっているが、これは生成されたコードをデバグしたりコピーするのに便利である。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;残念ながらプリプロセッサは非常に低レベルなものであり、繰り返しや再帰的マクロをサポートしていない。
+したがってライブラリによるサポートが必要である。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;詳細なプリプロセッサの機能と制限については、C++ 標準 &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/bibliography.html#std&#34;&gt;[Std]&lt;/a&gt; を参照してほしい。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;ふたたび先の例&lt;/h2&gt;
+&lt;p&gt;プリプロセッサライブラリを使用すると、 &lt;code&gt;is_function_tester()&lt;/code&gt; は次のように実装できる:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define IS_FUNCTION_TESTER(Z, N, _) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    template&amp;lt;class R BOOST_PP_COMMA_IF(N) BOOST_PP_ENUM_PARAMS(N, class A)&amp;gt; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    yes_type is_function_tester(R (*)(BOOST_PP_ENUM_PARAMS(N, A))); \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_REPEAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_INC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAX_IS_FUNCTION_TESTER_PARAMS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;IS_FUNCTION_TESTER&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# undef IS_FUNCTION_TESTER&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;サポートする引数の最大個数を変更するには、単に &lt;code&gt;MAX_IS_FUNCTION_TESTER_PARAMS&lt;/code&gt; を変更してコンパイルしなおせばよい。&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;(C) Copyright &lt;a href=&#34;http://www.housemarque.com&#34; target=&#34;_blank&#34;&gt;Housemarque Oy&lt;/a&gt; 2002&lt;/p&gt;
+&lt;p&gt;Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies.
+This document is provided &#34;as is&#34; without express or implied warranty and with no claim as to its suitability for any purpose.&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>テクニック集 -- Preprocessor : 参考文献へのリンクミスを修正 (#237)</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/preprocessor/topics/techniques.html"/>
+      <id>c614c737a9d5f1384bce0da456e3d2418f975a4e:archive/boost_docs/libs/preprocessor/topics/techniques.md</id>
+      <updated>2018-03-12T15:06:17+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;テクニック集&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;プリプロセッサメタプログラミングの技を例示する。&lt;/p&gt;
+&lt;h2&gt;例 - 小さな規模の反復を避けるために局所的なマクロを使う。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_DEF(op) &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* ..................................... */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;  \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    template&amp;lt;class T, int n&amp;gt;                                          \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    vec&amp;lt;T, n&amp;gt; operator op ## =(vec&amp;lt;T, n&amp;gt; lhs, const vec&amp;lt;T, n&amp;gt;&amp;amp; rhs) { \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        for (int i = 0; i &amp;amp;lt; n; ++i) {                              \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            lhs(i) op ## = rhs(i);                                    \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        }                                                             \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    }                                                                 \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_DEF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;+&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_DEF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_DEF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_DEF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# undef BOOST_PP_DEF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;小技:&lt;/h3&gt;
+&lt;p&gt;通常はこのような種類のコードに対して &lt;code&gt;BOOST_PP_DEF&lt;/code&gt; のような標準的なマクロの名前を使って構わない。
+なぜならこのマクロは使用される場所のすぐそばで定義されふたたび未定義にされているから。&lt;/p&gt;
+&lt;h3&gt;小技:&lt;/h3&gt;
+&lt;p&gt;継続行が正しく使用されているか確認しやすくするには継続文字(バックスラッシュ文字)の位置を揃えるとよい。&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;別の演算子を定義することによってこの例を拡張することができる。
+それをする前に、&lt;em&gt;algebraic categories&lt;/em&gt; (文献 &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/bibliography.html#barton&#34;&gt;[Barton]&lt;/a&gt; で紹介されている)や &lt;em&gt;layered architecture&lt;/em&gt; (例えば文献 &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/bibliography.html#czarnecki&#34;&gt;[Czarnecki]&lt;/a&gt;) を使うことを考慮せよ。
+しかしながら、演算子トークン &lt;code&gt;*&lt;/code&gt;, &lt;code&gt;/&lt;/code&gt;, &lt;code&gt;+&lt;/code&gt;, &lt;code&gt;-&lt;/code&gt;, 等はテンプレートによっては生成できないから、これらのトークンをどこかに書く必要が出て来るだろう。
+そのトークンの反復(&lt;em&gt;categorical repetition&lt;/em&gt;)はテンプレートメタプログラミングによって除去できる。&lt;/p&gt;
+&lt;h2&gt;例 - マクロ BOOST_PP_EMPTY を局所的なマクロのインスタンス化の際の未使用パラメータとして使用する。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_DEF(cv) &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* ... */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    template&amp;lt;class base&amp;gt;           \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    cv() typename implement_subscript_using_begin_subscript&amp;lt;base&amp;gt;::value_type&amp;amp; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    implement_subscript_using_begin_subscript&amp;lt;base&amp;gt;::operator[](index_type i) cv() { \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        return base::begin()[i];   \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    }                              \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;仕組み:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_EMPTY()&lt;/code&gt; は空に展開されるので未使用パラメータとして使用することができる。&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_EMPTY&lt;/code&gt; の後ろに () を付けないと展開されない。&lt;/p&gt;
+&lt;p&gt;関数のようなマクロを呼ぶには () が必要である。&lt;/p&gt;
+&lt;h3&gt;警告:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_EMPTY()&lt;/code&gt; を使っている場合、 連結(concatenation)は安全に使用できない。&lt;/p&gt;
+&lt;h3&gt;小技:&lt;/h3&gt;
+&lt;p&gt;時折、1～2行が他の行より極端に長くなることがある。
+継続行演算子の位置を全ての行について揃えることを &lt;em&gt;しない&lt;/em&gt; ことによって、可読性をそれほど犠牲にせずに作業を楽にすることができる。&lt;/p&gt;
+&lt;h3&gt;小技:&lt;/h3&gt;
+&lt;p&gt;プリプロセッサメタプログラミングのためのマクロ識別子をハイライト表示せよ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_DEF&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_EMPTY&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これによって可読性が向上する。&lt;/p&gt;
+&lt;h2&gt;例 - 必要なら ## のかわりに BOOST_PP_CAT を使う。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define STATIC_ASSERT(expr) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    enum { BOOST_PP_CAT(static_check_, __LINE__) = (expr) ? 1 : -1 }; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    typedef char \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_CAT(static_assert_, __LINE__)[BOOST_PP_CAT(static_check_, __LINE__)] \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;STATIC_ASSERT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;sizeof&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;long&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;理由:&lt;/h3&gt;
+&lt;p&gt;マクロ展開は(層状に)再帰的に適用される。
+トークンの結合はマクロ展開を阻害する。
+そのためトークンの結合を遅延せねばならないことがしばしば起きる。&lt;/p&gt;
+&lt;h2&gt;例 - 必要なら # のかわりに BOOST_PP_STRINGIZE を使う。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define NOTE(str) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    message(__FILE__ &#34;(&#34; BOOST_PP_STRINGIZE(__LINE__) &#34;) : &#34; str) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# pragma NOTE(&#34;TBD!&#34;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;理由:&lt;/h3&gt;
+&lt;p&gt;マクロ展開は(層状に)再帰的に適用される。
+文字列化はマクロ展開を阻害するため、文字列化を遅延せねばならないことがしばしば起きる。&lt;/p&gt;
+&lt;h2&gt;例 - BOOST_PP_ENUM_PARAMS (やその変種)や BOOST_PP_REPEAT や BOOST_PP_COMMA_IF 等を使ってリスト操作の &lt;em&gt;O&lt;/em&gt;(&lt;em&gt;n&lt;/em&gt;) 繰り返しを除去する&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_type_list_end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;BOOST_PP_ENUM_PARAMS_WITH_A_DEFAULT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;MAKE_TYPE_LIST_MAX_LENGTH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+        &lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+        &lt;span class=&#34;n&#34;&gt;make_type_list_end&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;struct&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_type_list&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;nl&#34;&gt;private:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;is_same&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;make_type_list_end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gt&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;nl&#34;&gt;public:&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type_if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type_cons_empty&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;type_cons&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;T0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+            &lt;span class=&#34;k&#34;&gt;typename&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type_inner_if&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type_identity&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                &lt;span class=&#34;n&#34;&gt;make_type_list&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;
+                    &lt;span class=&#34;n&#34;&gt;BOOST_PP_ENUM_SHIFTED_PARAMS&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+                        &lt;span class=&#34;n&#34;&gt;MAKE_TYPE_LIST_MAX_LENGTH&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+                        &lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;
+                    &lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+                &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+            &lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;
+        &lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&#34;o&#34;&gt;&amp;gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;type&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;仕組み:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; は再帰もどきを使用する (疑似コード):&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT(n, m, p) BOOST_PP_REPEAT ## n(m, p)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT0(m, p)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT1(m, p) m(0, p)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT2(m, p) m(0, p) m(1, p)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT3(m, p) BOOST_PP_REPEAT2(m, p) m(2, p)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_REPEAT4(m, p) BOOST_PP_REPEAT3(m, p) m(3, p)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;上のコードは決して &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; の実装などではなく、単に説明のためのものである！&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_ENUM_PARAMS&lt;/code&gt; とその変種は &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; を使っている。
+&lt;code&gt;BOOST_PP_COMMA_IF(I)&lt;/code&gt; は I != 0 のときコンマに展開される。
+&lt;code&gt;BOOST_PP_INC(I)&lt;/code&gt; は本質的には &#34;I+1&#34; に展開され、&lt;code&gt;BOOST_PP_DEC(I)&lt;/code&gt; は &#34;I-1&#34; に展開される。&lt;/p&gt;
+&lt;h2&gt;例 - ある上限を決めるのではなく、&lt;em&gt;条件付きのマクロ定義&lt;/em&gt; を使って、必要に応じてユーザがコードの繰り返しを制御できるようにする。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# ifndef MAKE_TYPE_LIST_MAX_LENGTH&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define MAKE_TYPE_LIST_MAX_LENGTH 8&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;このようにすれば、ライブラリのコードを変更することなくユーザが &lt;code&gt;make_type_list&lt;/code&gt; を設定することができる。&lt;/p&gt;
+&lt;h2&gt;例 - BOOST_PP_REPEAT と &lt;em&gt;トークン照合関数&lt;/em&gt; を使って categorical repetition を除去する。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;// 注意: 私のコンパイラは算術型に関して標準的ではない。&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE(I) ARITHMETIC_TYPE ## I&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE0    bool&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE1    char&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE2    signed char&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE3    unsigned char&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE4    short&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE5    unsigned short&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE6    int&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE7    unsigned int&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE8    long&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE9    unsigned long&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE10   float&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE11   double&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE12   long double&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define ARITHMETIC_TYPE_CNT 13&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_DEF(z, I, _) &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* ... */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    catch (ARITHMETIC_TYPE(I) t) {      \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        report_typeid(t);               \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        report_value(t);                \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    }                                   \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_REPEAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ARITHMETIC_TYPE_CNT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_DEF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# undef BOOST_PP_DEF&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;上の例の繰り返しはテンプレートメタプログラミング &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/bibliography.html#czarnecki&#34;&gt;[Czarnecki]&lt;/a&gt; によっても除去できる。
+しかしながら演算子トークンの categorical repetition はテンプレートメタプログラミングによっては完全に除去できない。&lt;/p&gt;
+&lt;h2&gt;例 - BOOST_PP_REPEAT を使って&lt;em&gt;O&lt;/em&gt;(&lt;em&gt;n&lt;/em&gt; * &lt;em&gt;n&lt;/em&gt;)の繰り返しを除去する。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# ifndef MAX_VEC_ARG_CNT&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define MAX_VEC_ARG_CNT 8&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# endif&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define ARG_FUN(z, i, _) BOOST_PP_COMMA_IF(i) T a ## i&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define ASSIGN_FUN(z, i, ) (*this)[i] = a ## i;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define DEF_VEC_CTOR_FUN(z, i, _) &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* ... */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    vec(BOOST_PP_REPEAT(i, ARG_FUN, _)) {   \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_REPEAT(i, ASSIGN_FUN, _)   \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    }                                       \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_REPEAT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_INC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;MAX_VEC_ARG_CNT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;DEF_VEC_CTOR_FUN&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;_&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# undef ARG_FUN&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# undef ASSIGN_FUN&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# undef DEF_VEC_CTOR_FUN&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;仕組み:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; は &lt;em&gt;自動再帰&lt;/em&gt; [訳注: ???]を起こさせるような特別な方法で実装されている。&lt;/p&gt;
+&lt;h2&gt;例 - BOOST_PP_IF を使って分岐を実現する。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define COMMA_IF(c) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_IF(c, BOOST_PP_COMMA, BOOST_PP_EMPTY)() \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_IF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_IF&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;false&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;true&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_IF&lt;/code&gt; を使えば &lt;code&gt;BOOST_PP_REPEAT&lt;/code&gt; を使ったリストの生成を簡単にできる。&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;THEN&lt;/em&gt; と &lt;em&gt;ELSE&lt;/em&gt; の部分(第2、第3引数)はマクロである必要はない。
+しかし、もしそれらの一方が関数的なマクロであって、それを条件付きで展開したいのであれば、もう一方も関数的マクロにしなければならない。
+その目的のために &lt;code&gt;BOOST_PP_IDENTITY&lt;/code&gt; を使うことができる。
+下の例 (Aleksey Gurtovoy による) を見よ:&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define NUMBERED_EXPRESSION(i, x) &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/* ... */&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt; \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_IF(                            \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        i,                                  \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_IDENTITY(x ## i)           \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_EMPTY                      \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    )()                                     \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h3&gt;注意:&lt;/h3&gt;
+&lt;p&gt;上の &lt;code&gt;COMMA_IF&lt;/code&gt; の例のように、&lt;code&gt;BOOST_PP_IF&lt;/code&gt; の結果が呼ばれても &lt;em&gt;THEN&lt;/em&gt; や &lt;em&gt;ELSE&lt;/em&gt; パラメータが呼ばれないことがある。
+もしパラメータも呼ばれるなら、&lt;code&gt;BOOST_PP_IF&lt;/code&gt; が適切に展開される前に &lt;code&gt;BOOST_PP_EMPTY&lt;/code&gt; が空に展開されるため、そのコードは正しく展開されなくなってしまう。
+[訳注: ???]&lt;/p&gt;
+&lt;h3&gt;仕組み:&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;BOOST_PP_IF&lt;/code&gt; は全ての繰り返し範囲について定義されている(疑似コード):&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_IF(c, THEN, ELSE) BOOST_PP_IF ## c(THEN, ELSE)&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_IF0(THEN, ELSE) ELSE&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_IF1(THEN, ELSE) THEN&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define BOOST_PP_IF1(THEN, ELSE) THEN&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;// ...&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;例: 算術、論理、比較演算を使う。&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define SPECIAL_NUMBERED_LIST(n, i, elem, special) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_ASSERT_MSG(                      \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_LESS(i, n),                  \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        bad params for SPECIAL_NUMBERED_LIST! \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    )                                         \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_ENUM_PARAMS(i, elem)             \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_COMMA_IF(i) special              \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_REPEAT(                          \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_SUB(BOOST_PP_DEC(n), i),     \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        SPECIAL_NUMBERED_LIST_HELPER,         \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        (elem, i)                             \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    )                                         \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define SPECIAL_NUMBERED_LIST_HELPER(z, i, elem_base) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    ,                                            \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    BOOST_PP_CAT(                                \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_TUPLE_ELEM(2, 0, elem_base),    \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        BOOST_PP_ADD(                            \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            i,                                   \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;            BOOST_PP_TUPLE_ELEM(2, 1, elem_base) \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;        )                                        \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    )                                            \&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;    &lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;/**/&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;SPECIAL_NUMBERED_LIST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;SPECIAL_NUMBERED_LIST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;SPECIAL_NUMBERED_LIST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;n&#34;&gt;SPECIAL_NUMBERED_LIST&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;E&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;S&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;(C) Copyright &lt;a href=&#34;http://www.housemarque.com&#34; target=&#34;_blank&#34;&gt;Housemarque Oy&lt;/a&gt; 2002&lt;/p&gt;
+&lt;p&gt;Permission to copy, use, modify, sell and distribute this document is granted provided this copyright notice appears in all copies.
+This document is provided &#34;as is&#34; without express or implied warranty and with no claim as to its suitability for any purpose.&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Sequences -- Preprocessor : リンク切れを解消 (close #237)</title>
@@ -835,124 +1211,6 @@ Therefore, elements can be accessed at extremely high indices even on preprocess
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.67.0リリースノート -- [1.67 リリースノート] Log の翻訳を追加</title>
-      <link href="https://boostjp.github.io/document/version/1_67_0.html"/>
-      <id>0ff38d30a5fc9d89abc54740f128484966185b81:document/version/1_67_0.md</id>
-      <updated>2018-03-11T00:25:36+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.67.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_67_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_67_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_67_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_67_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#log&#34; id=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;C++17 との互換性向上: アロケータを使うために、メンバに直にアクセスするのではなく、&lt;code&gt;allocator_traits&lt;/code&gt; を使うようにした&lt;/li&gt;
-&lt;li&gt;ABI の 名前空間の定義を更新することで、gcc 7 以降との互換性を向上させた&lt;/li&gt;
-&lt;li&gt;&#34;TextFile&#34; sink の &#34;Append&#34; 設定パラメータをドキュメントに追加した。このパラメータは以前からサポートされていたが、ドキュメントの更新だけが抜けていた&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#unordered&#34; id=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/unordered/pull/7&#34; target=&#34;_blank&#34;&gt;GitHub #7&lt;/a&gt; C++17で非推奨になった&lt;code&gt;std::iterator&lt;/code&gt;の使用をやめた&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Yoshinari Takaoka</name>
-        <email>mumumu@mumumu.org</email>
       </author>
     </entry>
   
