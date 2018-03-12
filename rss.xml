@@ -2,9 +2,103 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2018-03-12T06:00:01.146749</updated>
-  <id>ccaae115-6d69-4b8e-bc22-4d25f797b7cb</id>
+  <updated>2018-03-12T06:06:42.070637</updated>
+  <id>901f8c3d-b6ac-41cf-b705-fb3b56bff818</id>
 
+  
+    <entry>
+      <title>Sequences -- Preprocessor : リンク切れを解消 (close #237)</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/preprocessor/data/sequences.html"/>
+      <id>2db25ee5b3dbf754f3ba19f54d60896612b0235b:archive/boost_docs/libs/preprocessor/data/sequences.md</id>
+      <updated>2018-03-12T15:03:21+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Sequences&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;A &lt;em&gt;sequence&lt;/em&gt; (abbreviated to &lt;em&gt;seq&lt;/em&gt;) is a group of adjacent parenthesized elements.
+For example,&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;...is a &lt;code&gt;seq&lt;/code&gt; of &lt;code&gt;3&lt;/code&gt; elements--&lt;code&gt;a&lt;/code&gt;, &lt;code&gt;b&lt;/code&gt;, and &lt;code&gt;c&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sequences&lt;/em&gt; are data structures that merge the properties of both &lt;em&gt;lists&lt;/em&gt; and &lt;em&gt;tuples&lt;/em&gt; with the exception that a &lt;em&gt;seq&lt;/em&gt; cannot be empty.
+Therefore, an &#34;empty&#34; &lt;em&gt;seq&lt;/em&gt; is considered a special case scenario that must be handled separately in C++.&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;# define SEQ (x)(y)(z)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define REVERSE(s, state, elem) (elem) state&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// append to head                 ^&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_FOLD_LEFT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;REVERSE&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_EMPTY&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SEQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)()&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;//                          #1                  #2&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 1) placeholder for &#34;empty&#34; seq&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// 2) remove placeholder&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;# define SEQ_B (1)(2)(3)&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;# define INC(s, state, elem) state (BOOST_PP_INC(elem))&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// append to tail            ^&lt;/span&gt;
+
+&lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_FOLD_RIGHT&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;INC&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;BOOST_PP_SEQ_NIL&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SEQ&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;//                       ^&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// special placeholder that will be &#34;eaten&#34;&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// by appending to the tail&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Sequences&lt;/em&gt; are extremely efficient.
+Element access speed approaches random access--even with &lt;em&gt;seqs&lt;/em&gt; of up to &lt;em&gt;256&lt;/em&gt; elements.
+This is because element access (among other things) is implemented iteratively rather than recursively.
+Therefore, elements can be accessed at extremely high indices even on preprocessors with low maximum expansion depths.&lt;/p&gt;
+&lt;p&gt;Elements of a &lt;em&gt;seq&lt;/em&gt; can be extracted with &lt;code&gt;BOOST_PP_SEQ_ELEM&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Primitives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;BOOST_PP_SEQ_ELEM&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>BOOST_PP_ITERATION -- Preprocessor : リンク切れを解消 (close #237)</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/iteration.html"/>
+      <id>2db25ee5b3dbf754f3ba19f54d60896612b0235b:archive/boost_docs/libs/preprocessor/ref/iteration.md</id>
+      <updated>2018-03-12T15:03:21+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;BOOST_PP_ITERATION&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;&lt;code&gt;BOOST_PP_ITERATION&lt;/code&gt; マクロは現在の &lt;em&gt;ファイル繰り返し&lt;/em&gt;の深さの反復値に展開される。&lt;/p&gt;
+&lt;h2&gt;Usage&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;n&#34;&gt;BOOST_PP_ITERATION&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;h2&gt;Remarks&lt;/h2&gt;
+&lt;p&gt;このマクロは &lt;em&gt;ファイル繰り返し&lt;/em&gt; が進行中の時のみ有効である。&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;p&gt;Header: &amp;lt;boost/preprocessor/iteration/iterate.hpp&amp;gt;&lt;/p&gt;
+&lt;h2&gt;Sample Code&lt;/h2&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;c1&#34;&gt;// file.h&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#if !&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/is_iterating.html&#34;&gt;BOOST_PP_IS_ITERATING&lt;/a&gt;&lt;/span&gt;
+
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ifndef&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FILE_H_&lt;/span&gt;
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;define&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;FILE_H_&lt;/span&gt;
+
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;preprocessor&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iteration&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;/&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;iterate&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hpp&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;
+
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;define&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/iteration_params_x.html&#34;&gt;BOOST_PP_ITERATION_PARAMS_1&lt;/a&gt;&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;file.h&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt;
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;include&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/iterate.html&#34;&gt;BOOST_PP_ITERATE&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+    &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endif&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#elif &lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/iteration_depth.html&#34;&gt;BOOST_PP_ITERATION_DEPTH&lt;/a&gt;() == 1&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;value&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;==&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;&lt;a href=&#34;https://boostjp.github.io/archive/boost_docs/libs/preprocessor/ref/iteration.html&#34;&gt;BOOST_PP_ITERATION&lt;/a&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+
+&lt;span class=&#34;cp&#34;&gt;#endif&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost Preprocessor Library -- Preprocessor : 参考文献ページを作成 (#237)</title>
@@ -859,117 +953,6 @@
       <author>
         <name>Yoshinari Takaoka</name>
         <email>mumumu@mumumu.org</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.67.0リリースノート -- 1.67.0リリースノート : 翻訳者名を追加</title>
-      <link href="https://boostjp.github.io/document/version/1_67_0.html"/>
-      <id>3d9140e39f8a4bae954a27605edb111ce73c2859:document/version/1_67_0.md</id>
-      <updated>2018-03-09T14:29:14+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.67.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_67_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_67_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_67_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_67_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html#unordered&#34; id=&#34;unordered&#34;&gt;Unordered&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/unordered/pull/7&#34; target=&#34;_blank&#34;&gt;GitHub #7&lt;/a&gt; C++17で非推奨になった&lt;code&gt;std::iterator&lt;/code&gt;の使用をやめた&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
       </author>
     </entry>
   
