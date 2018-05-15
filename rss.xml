@@ -2,9 +2,303 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2018-05-14T06:21:37.938935</updated>
-  <id>a1c5c627-3261-4939-895d-3e8edae948f5</id>
+  <updated>2018-05-15T04:12:37.849297</updated>
+  <id>8b92311c-e2ad-41a4-a160-9af89b300f91</id>
 
+  
+    <entry>
+      <title>動的な正規表現 -- Merge pull request #258 from S-H-GAMELINKS/patch-1</title>
+      <link href="https://boostjp.github.io/tips/dynamic_regex.html"/>
+      <id>9bd6727fce547d82db837d1a556e58cf6230ca5b:tips/dynamic_regex.md</id>
+      <updated>2018-05-15T13:08:54+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;動的な正規表現&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;動的な正規表現には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive.html&#34; target=&#34;_blank&#34;&gt;Boost.Xpressive&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;p&gt;日本語リファレンス：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://alpha.sourceforge.jp/devel/boost.regex_ja.pdf&#34; target=&#34;_blank&#34;&gt;http://alpha.sourceforge.jp/devel/boost.regex_ja.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;静的な正規表現は以下のページを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/static_regex.html&#34;&gt;静的な正規表現&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-match&#34;&gt;文字列全体が正規表現にマッチするか調べる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-search&#34;&gt;文字列が正規表現にマッチする部分文字列を含むか調べる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-replace&#34;&gt;正規表現にマッチした部分文字列をすべて置換する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#ignore-escape-sequence&#34;&gt;正規表現の記述時に、エスケープシーケンスを無視する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-match&#34; id=&#34;regex-match&#34;&gt;文字列全体が正規表現にマッチするか調べる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列全体が正規表現にマッチするか調べるには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_match.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_match()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、マッチに成功したら&lt;code&gt;true&lt;/code&gt;を返し、そうでなければ&lt;code&gt;false&lt;/code&gt;を返す。この関数が成功するのは、文字列全体の先頭から終端までが正規表現にマッチする場合である。&lt;/p&gt;
+&lt;p&gt;この関数に&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type&#34; target=&#34;_blank&#34;&gt;boost::xpressive::smatch&lt;/a&gt;&lt;/code&gt;オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;a4f29666c21aff767d204facbb64bebec2fc6b8b&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Hello World!&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;(&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;w+) (&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;w+)!&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;regex_match&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 1 番目の捕捉&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 2 番目の捕捉&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;Hello World!
+Hello
+World
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-search&#34; id=&#34;regex-search&#34;&gt;文字列が正規表現にマッチする部分文字列を含むか調べる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列が正規表現にマッチする部分文字列を含むか調べるには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_search.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_search()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、マッチする部分文字列が見つかったら&lt;code&gt;true&lt;/code&gt;、そうでなければ&lt;code&gt;false&lt;/code&gt;を返す。対象となる文字列の次の引数として&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type&#34; target=&#34;_blank&#34;&gt;boost::xpressive::smatch&lt;/a&gt;&lt;/code&gt;オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;f136b13a83378c25b54d28c58122bede0f93c087&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;(\d{4})/(\d{1,2})/(\d{1,2})&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;regex_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 年&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 月&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 日&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1973/5/30
+1973
+5
+30
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-replace&#34; id=&#34;regex-replace&#34;&gt;正規表現にマッチした部分文字列をすべて置換する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;正規表現にマッチした部分文字列をすべて置換するには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_replace.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_replace()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、以下の引数をとる：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第1引数 ： 対象文字列&lt;/li&gt;
+&lt;li&gt;第2引数 ： 正規表現&lt;/li&gt;
+&lt;li&gt;第3引数 ： 置き換え規則&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;戻り値として、置き換え後の新たな文字列が返される。&lt;/p&gt;
+&lt;p&gt;ここでは、日付にマッチする正規表現を書き、マッチした部分を&lt;code&gt;&amp;lt;date&amp;gt;&lt;/code&gt;タグで囲む、ということをしている。&lt;code&gt;&#34;$&amp;amp;&#34;&lt;/code&gt;はマッチした全体の部分文字列を表す。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;e059fa641580d2dbb8b0a22d6f14beebe355cb86&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;\d{4}/\d{1,2}/\d{1,2}&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;format&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;&amp;lt;date&amp;gt;$&amp;amp;&amp;lt;/date&amp;gt;&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regex_replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;私は&amp;lt;date&amp;gt;1973/5/30&amp;lt;/date&amp;gt;の午前7時に生まれた。
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#ignore-escape-sequence&#34; id=&#34;ignore-escape-sequence&#34;&gt;正規表現の記述時に、エスケープシーケンスを無視する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;通常の文字列リテラルで正規表現を記述する場合、&lt;code&gt;\&lt;/code&gt;がエスケープシーケンスであることを示すため、&lt;code&gt;\d&lt;/code&gt;を&lt;code&gt;&#34;\\d&#34;&lt;/code&gt;と書かなければならない。この問題を回避するためには、生文字列リテラル(Raw String Literals)を使用する。この機能は、C++11以降で使用できる。&lt;/p&gt;
+&lt;p&gt;生文字列リテラルは、&lt;code&gt;R&lt;/code&gt;プレフィックスを付けた文字列リテラルで、丸カッコで囲まれた範囲のエスケープシーケンスを無視する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;9728aba2308d31951446d94de78efaf26b470b87&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;((\d{4})/(\d{1,2})/(\d{1,2}))&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;regex_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 年&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 月&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 日&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1973/5/30
+1973
+5
+30
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;documented boost version is 1.52.0&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>動的な正規表現 -- add &#39;\&#39;</title>
+      <link href="https://boostjp.github.io/tips/dynamic_regex.html"/>
+      <id>f3f7827017b9f3a9684efa63ac0a2496a160d057:tips/dynamic_regex.md</id>
+      <updated>2018-05-15T12:42:53+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;動的な正規表現&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;動的な正規表現には、&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive.html&#34; target=&#34;_blank&#34;&gt;Boost.Xpressive&lt;/a&gt;を使用する。&lt;/p&gt;
+&lt;p&gt;日本語リファレンス：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://alpha.sourceforge.jp/devel/boost.regex_ja.pdf&#34; target=&#34;_blank&#34;&gt;http://alpha.sourceforge.jp/devel/boost.regex_ja.pdf&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;静的な正規表現は以下のページを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/static_regex.html&#34;&gt;静的な正規表現&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;インデックス&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-match&#34;&gt;文字列全体が正規表現にマッチするか調べる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-search&#34;&gt;文字列が正規表現にマッチする部分文字列を含むか調べる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-replace&#34;&gt;正規表現にマッチした部分文字列をすべて置換する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#ignore-escape-sequence&#34;&gt;正規表現の記述時に、エスケープシーケンスを無視する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-match&#34; id=&#34;regex-match&#34;&gt;文字列全体が正規表現にマッチするか調べる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列全体が正規表現にマッチするか調べるには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_match.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_match()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、マッチに成功したら&lt;code&gt;true&lt;/code&gt;を返し、そうでなければ&lt;code&gt;false&lt;/code&gt;を返す。この関数が成功するのは、文字列全体の先頭から終端までが正規表現にマッチする場合である。&lt;/p&gt;
+&lt;p&gt;この関数に&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type&#34; target=&#34;_blank&#34;&gt;boost::xpressive::smatch&lt;/a&gt;&lt;/code&gt;オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;a4f29666c21aff767d204facbb64bebec2fc6b8b&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Hello World!&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;(&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;w+) (&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;w+)!&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;&lt;span style=&#34;color:#ff0000&#34;&gt;regex_match&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 1 番目の捕捉&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 2 番目の捕捉&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;Hello World!
+Hello
+World
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-search&#34; id=&#34;regex-search&#34;&gt;文字列が正規表現にマッチする部分文字列を含むか調べる&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;文字列が正規表現にマッチする部分文字列を含むか調べるには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_search.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_search()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、マッチする部分文字列が見つかったら&lt;code&gt;true&lt;/code&gt;、そうでなければ&lt;code&gt;false&lt;/code&gt;を返す。対象となる文字列の次の引数として&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/xpressive/user_s_guide.html#boost_xpressive.user_s_guide.quick_start.know_your_iterator_type&#34; target=&#34;_blank&#34;&gt;boost::xpressive::smatch&lt;/a&gt;&lt;/code&gt;オブジェクトへの参照を与えると、見つかったマーク済み部分式が書き込まれる。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;f136b13a83378c25b54d28c58122bede0f93c087&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;(\d{4})/(\d{1,2})/(\d{1,2})&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;regex_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 年&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 月&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 日&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1973/5/30
+1973
+5
+30
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#regex-replace&#34; id=&#34;regex-replace&#34;&gt;正規表現にマッチした部分文字列をすべて置換する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;正規表現にマッチした部分文字列をすべて置換するには、&lt;code&gt;&lt;a href=&#34;http://www.boost.org/doc/libs/release/doc/html/boost/xpressive/regex_replace.html&#34; target=&#34;_blank&#34;&gt;boost::xpressive::regex_replace()&lt;/a&gt;&lt;/code&gt;関数を使用する。&lt;/p&gt;
+&lt;p&gt;この関数は、以下の引数をとる：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第1引数 ： 対象文字列&lt;/li&gt;
+&lt;li&gt;第2引数 ： 正規表現&lt;/li&gt;
+&lt;li&gt;第3引数 ： 置き換え規則&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;戻り値として、置き換え後の新たな文字列が返される。&lt;/p&gt;
+&lt;p&gt;ここでは、日付にマッチする正規表現を書き、マッチした部分を&lt;code&gt;&amp;lt;date&amp;gt;&lt;/code&gt;タグで囲む、ということをしている。&lt;code&gt;&#34;$&amp;amp;&#34;&lt;/code&gt;はマッチした全体の部分文字列を表す。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;e059fa641580d2dbb8b0a22d6f14beebe355cb86&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;\d{4}/\d{1,2}/\d{1,2}&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;format&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;&amp;lt;date&amp;gt;$&amp;amp;&amp;lt;/date&amp;gt;&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;regex_replace&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;format&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;私は&amp;lt;date&amp;gt;1973/5/30&amp;lt;/date&amp;gt;の午前7時に生まれた。
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html#ignore-escape-sequence&#34; id=&#34;ignore-escape-sequence&#34;&gt;正規表現の記述時に、エスケープシーケンスを無視する&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;通常の文字列リテラルで正規表現を記述する場合、&lt;code&gt;\&lt;/code&gt;がエスケープシーケンスであることを示すため、&lt;code&gt;\d&lt;/code&gt;を&lt;code&gt;&#34;\\d&#34;&lt;/code&gt;と書かなければならない。この問題を回避するためには、生文字列リテラル(Raw String Literals)を使用する。この機能は、C++11以降で使用できる。&lt;/p&gt;
+&lt;p&gt;生文字列リテラルは、&lt;code&gt;R&lt;/code&gt;プレフィックスを付けた文字列リテラルで、丸カッコで囲まれた範囲のエスケープシーケンスを無視する。&lt;/p&gt;
+&lt;p&gt;&lt;div class=&#34;yata&#34; id=&#34;9728aba2308d31951446d94de78efaf26b470b87&#34;&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
+&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;boost/xpressive/xpressive.hpp&amp;gt;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xpressive&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;私は1973/5/30の午前7時に生まれた。&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+    &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;sregex&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;compile&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;R&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;((\d{4})/(\d{1,2})/(\d{1,2}))&#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;smatch&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;regex_search&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;str&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;rex&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;))&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// マッチ全体&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 年&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 月&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// 日&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+&lt;p&gt;出力：&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;1973/5/30
+1973
+5
+30
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+&lt;p&gt;documented boost version is 1.52.0&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>S.H</name>
+        <email>gamelinks007@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>実行時アサート -- 実行時アサートページのtypoを修正</title>
@@ -1240,146 +1534,6 @@ Line : 22
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>print_month.cpp -- Merge pull request #257 from tomoyuki-nakabayashi/fix_gregorian_example</title>
-      <link href="https://boostjp.github.io/archive/boost_docs/libs/date_time/print_month.cpp.html"/>
-      <id>5363526b745129626b25bc50b1beecc230ab08ac:archive/boost_docs/libs/date_time/print_month.cpp.md</id>
-      <updated>2018-04-16T13:48:06+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;print_month.cpp&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;月日を与えて月日を印字する、簡単なユーティリティ。&lt;/p&gt;
-&lt;p&gt;日付のイテレーションを示す(&lt;code&gt;date_time::date_itr&lt;/code&gt;)。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cm&#34;&gt;/*&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;This example prints all the dates in a month. It demonstrates&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;the use of iterators as well as functions of the gregorian_calendar&lt;/span&gt;
-
-&lt;span class=&#34;cm&#34;&gt;Output:&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;Enter Year: 2002&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;Enter Month(1..12): 2&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-01 [Fri]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-02 [Sat]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-03 [Sun]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-04 [Mon]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-05 [Tue]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-06 [Wed]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-07 [Thu]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
-
-&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian.hpp&#34;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;
-&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Enter Year: &#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Enter Month(1..12): &#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gregorian&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//Use the calendar to get the last day of the month&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eom_day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gregorian_calendar&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end_of_month_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endOfMonth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eom_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;//construct an iterator starting with firt day of the month&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;day_iterator&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//loop thru the days and print each one&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endOfMonth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to_simple_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34; [&#34;&lt;/span&gt;
-          &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day_of_week&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;as_short_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;]&#34;&lt;/span&gt;
-          &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exception&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Error bad date, check your entry: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;&lt;/span&gt;
-           &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;  Details: &#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Generated Wed Aug 21 16:54:33 2002 by Doxygen for CrystalClear Software © 2000-2002&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>print_month.cpp -- fix: Example code of Print Month.</title>
-      <link href="https://boostjp.github.io/archive/boost_docs/libs/date_time/print_month.cpp.html"/>
-      <id>ba3ca5f6e3c5d0182ce35807b89fd4c8f950e723:archive/boost_docs/libs/date_time/print_month.cpp.md</id>
-      <updated>2018-04-15T17:07:15+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;print_month.cpp&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;月日を与えて月日を印字する、簡単なユーティリティ。&lt;/p&gt;
-&lt;p&gt;日付のイテレーションを示す(&lt;code&gt;date_time::date_itr&lt;/code&gt;)。&lt;/p&gt;
-&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;cm&#34;&gt;/*&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;This example prints all the dates in a month. It demonstrates&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;the use of iterators as well as functions of the gregorian_calendar&lt;/span&gt;
-
-&lt;span class=&#34;cm&#34;&gt;Output:&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;Enter Year: 2002&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;Enter Month(1..12): 2&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-01 [Fri]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-02 [Sat]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-03 [Sun]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-04 [Mon]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-05 [Tue]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-06 [Wed]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;2002-Feb-07 [Thu]&lt;/span&gt;
-&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
-
-&lt;span class=&#34;cp&#34;&gt;#include &#34;boost/date_time/gregorian/gregorian.hpp&#34;&lt;/span&gt;
-&lt;span class=&#34;cp&#34;&gt;#include &amp;lt;iostream&amp;gt;&lt;/span&gt;
-
-&lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt;
-&lt;span class=&#34;nf&#34;&gt;main&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Enter Year: &#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Enter Month(1..12): &#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cin&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-
-  &lt;span class=&#34;k&#34;&gt;using&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;namespace&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;gregorian&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;n&#34;&gt;try&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//Use the calendar to get the last day of the month&lt;/span&gt;
-    &lt;span class=&#34;kt&#34;&gt;int&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;eom_day&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;gregorian_calendar&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;end_of_month_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;date&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endOfMonth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;eom_day&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
-
-    &lt;span class=&#34;c1&#34;&gt;//construct an iterator starting with firt day of the month&lt;/span&gt;
-    &lt;span class=&#34;n&#34;&gt;day_iterator&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;date&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;year&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;month&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
-    &lt;span class=&#34;c1&#34;&gt;//loop thru the days and print each one&lt;/span&gt;
-    &lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;endOfMonth&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;++&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-      &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;to_simple_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;*&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34; [&#34;&lt;/span&gt;
-          &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ditr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;day_of_week&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;as_short_string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;]&#34;&lt;/span&gt;
-          &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; 
-    &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;catch&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;exception&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
-
-    &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;cout&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;Error bad date, check your entry: &lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\n&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&#34;&lt;/span&gt;
-           &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&#34;  Details: &#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;e&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;what&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;lt;&amp;lt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;std&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;endl&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-  &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;mi&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
-&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-&lt;hr /&gt;
-&lt;p&gt;Generated Wed Aug 21 16:54:33 2002 by Doxygen for CrystalClear Software © 2000-2002&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>tomoyuki-nakabayashi</name>
-        <email>tomo.wait.for.it.yuki@gmail.com</email>
       </author>
     </entry>
   
