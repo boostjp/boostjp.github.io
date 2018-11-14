@@ -2,9 +2,304 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2018-11-14T10:05:08.027318</updated>
-  <id>b8b5a553-db59-4d3d-8ec3-32128b68f622</id>
+  <updated>2018-11-14T10:08:59.865338</updated>
+  <id>03ec3916-119f-4112-b61a-fc5856e58c49</id>
 
+  
+    <entry>
+      <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : Iteratorを追加 (close #300)</title>
+      <link href="https://boostjp.github.io/document/version/1_69_0.html"/>
+      <id>f5aa635621e3ff5901f3c9e1d46da6c8a313484f:document/version/1_69_0.md</id>
+      <updated>2018-11-14T19:04:37+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.69.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_69_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_69_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#circular-buffer&#34;&gt;CircularBuffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#integer&#34;&gt;Integer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#iterator&#34;&gt;Iterator&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#circular-buffer&#34; id=&#34;circular-buffer&#34;&gt;CircularBuffer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;空でありfinalではないアロケータを保持する際に、Empty Base Optimizationが行われるようにした (Glen Fernandes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#core&#34; id=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::empty_value&lt;/code&gt;を実装した。これは、ライブラリ作者が空の可能性がある型を保持するためにEmpty Base Optimizationを手軽に行うためにある (作者Glen Fernandes)。この機能は、Boost.Beast、Boost.CircularBuffer、Boost.MultiArrayなどで利用されている&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::quick_exit()&lt;/code&gt;を実装した。これはC++11標準ライブラリの&lt;code&gt;std::quick_exit()&lt;/code&gt;機能を提供するものである (作者Peter Dimov)&lt;/li&gt;
+&lt;li&gt;Lightweight Testでの統計数を減らし、&lt;code&gt;boost::report_errors()&lt;/code&gt;の呼び出し時にMSVCではより軽量なabort動作をするようにした (Glen Fernandes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/68&#34; target=&#34;_blank&#34;&gt;GitHub #68&lt;/a&gt; &lt;code&gt;readdir&lt;/code&gt;はすでにスレッドセーフになったので、LinuxとAndroid上では&lt;code&gt;readdir_r&lt;/code&gt;を使用しないこと&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/71&#34; target=&#34;_blank&#34;&gt;GitHub #71&lt;/a&gt; &lt;code&gt;boost::filesystem::copy()&lt;/code&gt;が未定義動作によってクラッシュしていた問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/77&#34; target=&#34;_blank&#34;&gt;GitHub #77&lt;/a&gt; &lt;code&gt;boost::filesystem::directory_iterator&lt;/code&gt;の未定義動作を修正&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FOREACH&lt;/code&gt;でディレクトリイテレータを使用した際のコンパイルエラーを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/49&#34; target=&#34;_blank&#34;&gt;GitHub #49&lt;/a&gt; 古いPGI C++コンパイラに対するワークアラウンドを削除し、新しいバージョンでのコンパイルを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/44&#34; target=&#34;_blank&#34;&gt;GitHub #44&lt;/a&gt; MSVCでの、縮小変換による警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GCCでの、Boost.MPLプレースホルダー式のハンドリングでのいくつかの問題を修正&lt;/li&gt;
+&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#integer&#34; id=&#34;integer&#34;&gt;Integer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost/pending/integer_log2.hpp&lt;/code&gt;を非推奨化した。このヘッダは将来のリリースで削除される。代わりに&lt;code&gt;boost/integer/integer_log2.hpp&lt;/code&gt;を使用すること&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#iterator&#34; id=&#34;iterator&#34;&gt;Iterator&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/iterator/issues/43&#34; target=&#34;_blank&#34;&gt;GitHub #43&lt;/a&gt; &lt;code&gt;boost&lt;/code&gt;名前空間内での、イテレータに対する非修飾の&lt;code&gt;advance&lt;/code&gt;と&lt;code&gt;distance&lt;/code&gt;の呼び出しが曖昧になっていたことによるコンパイルエラーを修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Boost.Systemライブラリをヘッダオンリーにした。スタブライブラリは互換性のためにビルドされるが、そのライブラリをリンクする必要はない&lt;/li&gt;
+&lt;li&gt;さらに多くの関数に&lt;code&gt;constexpr&lt;/code&gt;を付けた&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;クラスのデストラクタが&lt;code&gt;protected&lt;/code&gt;となり、&lt;code&gt;virtual&lt;/code&gt;ではなくなった。これは潜在的な破壊的変更だが、その影響は限定的であると予想される&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;に64ビット識別子を受け取るコンストラクタを追加し、異なるカテゴリのオブジェクトと比較できるようにした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;のコンストラクタを&lt;code&gt;protected&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message()&lt;/code&gt;メンバ関数に、メモリ確保せず、例外も投げないオーバーロードを追加した&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;failed()&lt;/code&gt;仮想メンバ関数を追加し、成功が値&lt;code&gt;0&lt;/code&gt;ではないカテゴリを定義できるようにした&lt;/li&gt;
+&lt;li&gt;非推奨だった&lt;code&gt;boost::system::throws&lt;/code&gt;オブジェクトを削除&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::throws()&lt;/code&gt;関数を非推奨化&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;system_error&lt;/code&gt;クラスの&lt;code&gt;error_code&lt;/code&gt;ひとつをとるコンストラクタを&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;system_error::code()&lt;/code&gt;が値を返すようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : Integerを追加 (close #299)</title>
+      <link href="https://boostjp.github.io/document/version/1_69_0.html"/>
+      <id>ab2466191217ec089c5d00cd2be1a548ebe8f9b0:document/version/1_69_0.md</id>
+      <updated>2018-11-14T19:01:45+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.69.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_69_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_69_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#circular-buffer&#34;&gt;CircularBuffer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#integer&#34;&gt;Integer&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#circular-buffer&#34; id=&#34;circular-buffer&#34;&gt;CircularBuffer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;空でありfinalではないアロケータを保持する際に、Empty Base Optimizationが行われるようにした (Glen Fernandes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#core&#34; id=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::empty_value&lt;/code&gt;を実装した。これは、ライブラリ作者が空の可能性がある型を保持するためにEmpty Base Optimizationを手軽に行うためにある (作者Glen Fernandes)。この機能は、Boost.Beast、Boost.CircularBuffer、Boost.MultiArrayなどで利用されている&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::quick_exit()&lt;/code&gt;を実装した。これはC++11標準ライブラリの&lt;code&gt;std::quick_exit()&lt;/code&gt;機能を提供するものである (作者Peter Dimov)&lt;/li&gt;
+&lt;li&gt;Lightweight Testでの統計数を減らし、&lt;code&gt;boost::report_errors()&lt;/code&gt;の呼び出し時にMSVCではより軽量なabort動作をするようにした (Glen Fernandes)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/68&#34; target=&#34;_blank&#34;&gt;GitHub #68&lt;/a&gt; &lt;code&gt;readdir&lt;/code&gt;はすでにスレッドセーフになったので、LinuxとAndroid上では&lt;code&gt;readdir_r&lt;/code&gt;を使用しないこと&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/71&#34; target=&#34;_blank&#34;&gt;GitHub #71&lt;/a&gt; &lt;code&gt;boost::filesystem::copy()&lt;/code&gt;が未定義動作によってクラッシュしていた問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/77&#34; target=&#34;_blank&#34;&gt;GitHub #77&lt;/a&gt; &lt;code&gt;boost::filesystem::directory_iterator&lt;/code&gt;の未定義動作を修正&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;BOOST_FOREACH&lt;/code&gt;でディレクトリイテレータを使用した際のコンパイルエラーを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/49&#34; target=&#34;_blank&#34;&gt;GitHub #49&lt;/a&gt; 古いPGI C++コンパイラに対するワークアラウンドを削除し、新しいバージョンでのコンパイルを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/44&#34; target=&#34;_blank&#34;&gt;GitHub #44&lt;/a&gt; MSVCでの、縮小変換による警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;GCCでの、Boost.MPLプレースホルダー式のハンドリングでのいくつかの問題を修正&lt;/li&gt;
+&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#integer&#34; id=&#34;integer&#34;&gt;Integer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost/pending/integer_log2.hpp&lt;/code&gt;を非推奨化した。このヘッダは将来のリリースで削除される。代わりに&lt;code&gt;boost/integer/integer_log2.hpp&lt;/code&gt;を使用すること&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Boost.Systemライブラリをヘッダオンリーにした。スタブライブラリは互換性のためにビルドされるが、そのライブラリをリンクする必要はない&lt;/li&gt;
+&lt;li&gt;さらに多くの関数に&lt;code&gt;constexpr&lt;/code&gt;を付けた&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;クラスのデストラクタが&lt;code&gt;protected&lt;/code&gt;となり、&lt;code&gt;virtual&lt;/code&gt;ではなくなった。これは潜在的な破壊的変更だが、その影響は限定的であると予想される&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;に64ビット識別子を受け取るコンストラクタを追加し、異なるカテゴリのオブジェクトと比較できるようにした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;のコンストラクタを&lt;code&gt;protected&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;message()&lt;/code&gt;メンバ関数に、メモリ確保せず、例外も投げないオーバーロードを追加した&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;failed()&lt;/code&gt;仮想メンバ関数を追加し、成功が値&lt;code&gt;0&lt;/code&gt;ではないカテゴリを定義できるようにした&lt;/li&gt;
+&lt;li&gt;非推奨だった&lt;code&gt;boost::system::throws&lt;/code&gt;オブジェクトを削除&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::throws()&lt;/code&gt;関数を非推奨化&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;system_error&lt;/code&gt;クラスの&lt;code&gt;error_code&lt;/code&gt;ひとつをとるコンストラクタを&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;system_error::code()&lt;/code&gt;が値を返すようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : Circular Bufferを追加 (close #293)</title>
@@ -335,235 +630,6 @@
 &lt;li&gt;&lt;code&gt;boost::throws()&lt;/code&gt;関数を非推奨化&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;system_error&lt;/code&gt;クラスの&lt;code&gt;error_code&lt;/code&gt;ひとつをとるコンストラクタを&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;system_error::code()&lt;/code&gt;が値を返すようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : Systemを追加 (close #310)</title>
-      <link href="https://boostjp.github.io/document/version/1_69_0.html"/>
-      <id>fd246e623ec4fac8ce3e93c4ae9390f1e6575131:document/version/1_69_0.md</id>
-      <updated>2018-11-14T18:40:24+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.69.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_69_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_69_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/68&#34; target=&#34;_blank&#34;&gt;GitHub #68&lt;/a&gt; &lt;code&gt;readdir&lt;/code&gt;はすでにスレッドセーフになったので、LinuxとAndroid上では&lt;code&gt;readdir_r&lt;/code&gt;を使用しないこと&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/71&#34; target=&#34;_blank&#34;&gt;GitHub #71&lt;/a&gt; &lt;code&gt;boost::filesystem::copy()&lt;/code&gt;が未定義動作によってクラッシュしていた問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/77&#34; target=&#34;_blank&#34;&gt;GitHub #77&lt;/a&gt; &lt;code&gt;boost::filesystem::directory_iterator&lt;/code&gt;の未定義動作を修正&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOOST_FOREACH&lt;/code&gt;でディレクトリイテレータを使用した際のコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/49&#34; target=&#34;_blank&#34;&gt;GitHub #49&lt;/a&gt; 古いPGI C++コンパイラに対するワークアラウンドを削除し、新しいバージョンでのコンパイルを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/44&#34; target=&#34;_blank&#34;&gt;GitHub #44&lt;/a&gt; MSVCでの、縮小変換による警告を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Boost.Systemライブラリをヘッダオンリーにした。スタブライブラリは互換性のためにビルドされるが、そのライブラリをリンクする必要はない&lt;/li&gt;
-&lt;li&gt;さらに多くの関数に&lt;code&gt;constexpr&lt;/code&gt;を付けた&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;クラスのデストラクタが&lt;code&gt;protected&lt;/code&gt;となり、&lt;code&gt;virtual&lt;/code&gt;ではなくなった。これは潜在的な破壊的変更だが、その影響は限定的であると予想される&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;に64ビット識別子を受け取るコンストラクタを追加し、異なるカテゴリのオブジェクトと比較できるようにした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;error_category&lt;/code&gt;のコンストラクタを&lt;code&gt;protected&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;message()&lt;/code&gt;メンバ関数に、メモリ確保せず、例外も投げないオーバーロードを追加した&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;failed()&lt;/code&gt;仮想メンバ関数を追加し、成功が値&lt;code&gt;0&lt;/code&gt;ではないカテゴリを定義できるようにした&lt;/li&gt;
-&lt;li&gt;非推奨だった&lt;code&gt;boost::system::throws&lt;/code&gt;オブジェクトを削除&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::throws()&lt;/code&gt;関数を非推奨化&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;system_error&lt;/code&gt;クラスの&lt;code&gt;error_code&lt;/code&gt;ひとつをとるコンストラクタを&lt;code&gt;explicit&lt;/code&gt;にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;system_error::code()&lt;/code&gt;が値を返すようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : Filesystemを追加 (close #297)</title>
-      <link href="https://boostjp.github.io/document/version/1_69_0.html"/>
-      <id>b3586169b84376bff0ec436a3bf2087790a88883:document/version/1_69_0.md</id>
-      <updated>2018-11-14T18:16:25+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.69.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_69_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_69_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_69_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/68&#34; target=&#34;_blank&#34;&gt;GitHub #68&lt;/a&gt; &lt;code&gt;readdir&lt;/code&gt;はすでにスレッドセーフになったので、LinuxとAndroid上では&lt;code&gt;readdir_r&lt;/code&gt;を使用しないこと&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/71&#34; target=&#34;_blank&#34;&gt;GitHub #71&lt;/a&gt; &lt;code&gt;boost::filesystem::copy()&lt;/code&gt;が未定義動作によってクラッシュしていた問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/77&#34; target=&#34;_blank&#34;&gt;GitHub #77&lt;/a&gt; &lt;code&gt;boost::filesystem::directory_iterator&lt;/code&gt;の未定義動作を修正&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;BOOST_FOREACH&lt;/code&gt;でディレクトリイテレータを使用した際のコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/49&#34; target=&#34;_blank&#34;&gt;GitHub #49&lt;/a&gt; 古いPGI C++コンパイラに対するワークアラウンドを削除し、新しいバージョンでのコンパイルを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/44&#34; target=&#34;_blank&#34;&gt;GitHub #44&lt;/a&gt; MSVCでの、縮小変換による警告を修正&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
 &lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
