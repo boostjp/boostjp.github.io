@@ -2,9 +2,127 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2019-02-25T05:01:32.232834</updated>
-  <id>7133ff9a-e1d9-4108-aefe-faf62db0de39</id>
+  <updated>2019-02-26T04:23:58.187045</updated>
+  <id>5465709e-19bf-41dd-966e-c8b9108436f8</id>
 
+  
+    <entry>
+      <title>Boost 1.70.0リリースノート -- 1.70.0リリースノート : Filesystemを追加 (close #338)</title>
+      <link href="https://boostjp.github.io/document/version/1_70_0.html"/>
+      <id>bdc39e1cf0cd1e5b61a952f2060a9b5fb75e4b5b:document/version/1_70_0.md</id>
+      <updated>2019-02-26T13:19:32+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.70.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_70_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_70_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_70_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_70_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html#integer&#34;&gt;Integer&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;path&lt;/code&gt;クラスの実装での、&lt;code&gt;std::string::end()&lt;/code&gt;を間接参照しているいくつかの箇所を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/58&#34; target=&#34;_blank&#34;&gt;GitHub #58&lt;/a&gt; &lt;code&gt;(recursive_)directory_iterator&lt;/code&gt;のコンストラクタと、&lt;code&gt;error_code&lt;/code&gt;への参照をとる操作において、メモリ不足状態でプログラムが強制終了してしまう問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac10/ticket/12759&#34; target=&#34;_blank&#34;&gt;Trac #12759&lt;/a&gt; &lt;code&gt;path&lt;/code&gt;クラスの静的メンバ変数の定義が不足していたことにより発生していたリンクエラーを修正&lt;/li&gt;
+&lt;li&gt;Linux上のdirectory iteratorのインクリメントで、未初期化データが使用される可能性があったのを修正&lt;/li&gt;
+&lt;li&gt;directory iteratorにムーブサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/55&#34; target=&#34;_blank&#34;&gt;GitHub #55&lt;/a&gt; &lt;code&gt;directory_entry&lt;/code&gt;クラス用の、file statusを問い合わせるオーバーロードを追加。これによって、directory iteratorを間接参照した結果からfile statusを問い合わせる際に、比較的負荷の高いOSクエリを回避できる&lt;/li&gt;
+&lt;li&gt;ファイルシステムが壊れたり改ざんされたりしたときに起こり得るメモリ枯渇を避けるために、&lt;code&gt;current_path()&lt;/code&gt;と&lt;code&gt;read_symlink()&lt;/code&gt;を実装を見直した。これらの関数には、OSが受け付けるパスサイズに内部的な制限があり、現在が16MiBである&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;copy_file()&lt;/code&gt;関数が使用する内部バッファのサイズを増やした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html#integer&#34; id=&#34;integer&#34;&gt;Integer&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/integer/pull/11&#34; target=&#34;_blank&#34;&gt;GitHub #11&lt;/a&gt; 拡張ユークリッドの互除法 (Extended Euclidean Algorithm) と、モジュラ逆数関数 (Modular Multiplicative Inverse function) を追加 (Nick Thompson氏)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.70.0リリースノート -- 1.70.0リリースノート : Integerを追加 (close #339)</title>
@@ -944,187 +1062,6 @@
 &lt;p&gt;実行結果：&lt;/p&gt;
 &lt;p&gt;&lt;pre&gt;&lt;code&gt;1 1 2 3 5 
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>alphya</name>
-        <email>merukun1125@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost逆引きリファレンス -- コルーチンのページを追加</title>
-      <link href="https://boostjp.github.io/tips.html"/>
-      <id>c1d1ac1a6726d34835cbb8376182826ebd1997c2:tips.md</id>
-      <updated>2019-02-17T19:11:00+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost逆引きリファレンス&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;逆引きリファレンスは、やりたいことから方法を調べるためのリファレンスです。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;目次&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#data_structure&#34;&gt;データ構造&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#concurrent_data_structure&#34;&gt;並行データ構造&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#io&#34;&gt;入出力&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#numeric&#34;&gt;数値演算&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#string&#34;&gt;文字列操作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#function&#34;&gt;関数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#class&#34;&gt;クラス&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#idiom&#34;&gt;イディオム&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#memory&#34;&gt;メモリ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#validation&#34;&gt;検証&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#process&#34;&gt;プロセス&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#math&#34;&gt;数学&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#compile_time&#34;&gt;コンパイル時処理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#concurrency&#34;&gt;並行処理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#network&#34;&gt;ネットワーク&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#datetime&#34;&gt;日付・時間&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#lang_binding&#34;&gt;言語バインディング&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#data_structure&#34; id=&#34;data_structure&#34;&gt;データ構造&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/array.html&#34;&gt;配列&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multi_array.html&#34;&gt;多次元配列&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/tuple.html&#34;&gt;タプル&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/hashmap.html&#34;&gt;ハッシュ表&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/graph.html&#34;&gt;グラフ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multi_index.html&#34;&gt;コンテナに複数の並び順を持たせる&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/foreach.html&#34;&gt;for each文&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/list.html&#34;&gt;リスト処理の遅延評価&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_type.html&#34;&gt;動的型&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_bitset.html&#34;&gt;サイズを動的に変更できるビット集合&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/circular_buffer.html&#34;&gt;循環バッファ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/priority_sort.html&#34;&gt;優先順位を付けて並べ替える&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#concurrent_data_structure&#34; id=&#34;concurrent_data_structure&#34;&gt;並行データ構造&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/lockfree-queue.html&#34;&gt;ロックフリーキュー&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/lockfree-stack.html&#34;&gt;ロックフリースタック&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#io&#34; id=&#34;io&#34;&gt;入出力&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/filesystem.html&#34;&gt;ファイル／ディレクトリ操作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/serialize.html&#34;&gt;シリアライズ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/xml.html&#34;&gt;XMLの読み込み／書き込み&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/json.html&#34;&gt;JSONの読み込み／書き込み&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/ini.html&#34;&gt;iniファイルの読み込み／書き込み&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/memory_mapped_file.html&#34;&gt;メモリマップドファイル&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/io_state.html&#34;&gt;ストリームの状態を戻す&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/logging.html&#34;&gt;ロギング&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#numeric&#34; id=&#34;numeric&#34;&gt;数値演算&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-int.html&#34;&gt;多倍長整数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/multiprec-float.html&#34;&gt;多倍長浮動小数点数&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#string&#34; id=&#34;string&#34;&gt;文字列操作&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/string_algo.html&#34;&gt;文字列操作&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/format.html&#34;&gt;文字列フォーマット&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/parser.html&#34;&gt;構文解析&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/static_regex.html&#34;&gt;静的な正規表現&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_regex.html&#34;&gt;動的な正規表現&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#function&#34; id=&#34;function&#34;&gt;関数&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/function.html&#34;&gt;関数ポインタと関数オブジェクトを統一的に扱う&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/partial_eval.html&#34;&gt;カリー化／部分適用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/lambda.html&#34;&gt;無名関数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/named_parameter.html&#34;&gt;名前付き引数&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#class&#34; id=&#34;class&#34;&gt;クラス&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/noncopyable.html&#34;&gt;クラスをコピー不可にする&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/noncopyable_container.html&#34;&gt;コピー不可なオブジェクトを持ちまわる&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/move.html&#34;&gt;ムーブ可能なクラスを定義する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/initialize.html&#34;&gt;組み込み型を必ず初期化する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/optional.html&#34;&gt;無効値の統一的な表現&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/variant.html&#34;&gt;ユーザー定義型を扱える型安全な共用体&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/uuid.html&#34;&gt;オブジェクトにユニークなIDを付ける&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/operators.html&#34;&gt;演算子自動定義する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/iterator.html&#34;&gt;イテレータを作る&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#idiom&#34; id=&#34;idiom&#34;&gt;イディオム&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/finite_state_machine.html&#34;&gt;有限状態マシン&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/scope_guard.html&#34;&gt;スコープを抜ける際に実行されるブロック&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/signals.html&#34;&gt;シグナル／スロット&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/coroutine.html&#34;&gt;コルーチン&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#memory&#34; id=&#34;memory&#34;&gt;メモリ&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/smart_ptr.html&#34;&gt;リソースを自動的に解放する&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;プロセス間共有メモリ&lt;/li&gt;
-&lt;li&gt;値の共有／Flyweightパターン&lt;/li&gt;
-&lt;li&gt;メモリプール&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#validation&#34; id=&#34;validation&#34;&gt;検証&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/unit_test.html&#34;&gt;単体テスト&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/dynamic_assert.html&#34;&gt;実行時アサート&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/static_assert.html&#34;&gt;コンパイル時アサート&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#process&#34; id=&#34;process&#34;&gt;プロセス&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/program_options.html&#34;&gt;コマンドラインオプションの定義／取得&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#math&#34; id=&#34;math&#34;&gt;数学&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/random.html&#34;&gt;乱数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/linear-algebra.html&#34;&gt;線形代数&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/math.html&#34;&gt;数学&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/units.html&#34;&gt;単位演算&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/interval_arithmetic.html&#34;&gt;区間演算&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/statistics.html&#34;&gt;統計処理&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/geometry.html&#34;&gt;計算幾何&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;常微分方程式&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#compile_time&#34; id=&#34;compile_time&#34;&gt;コンパイル時処理&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;EDSLの作成&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/type_traits.html&#34;&gt;型特性&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;型リスト操作&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/static_assert.html&#34;&gt;コンパイル時アサート&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/constcond_overload.html&#34;&gt;コンパイル時条件によるオーバーロード&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#concurrency&#34; id=&#34;concurrency&#34;&gt;並行処理&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/thread.html&#34;&gt;スレッド&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/mpi.html&#34;&gt;MPI並列計算&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#network&#34; id=&#34;network&#34;&gt;ネットワーク&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/network/tcp.html&#34;&gt;TCP&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;UDP&lt;/li&gt;
-&lt;li&gt;SSL&lt;/li&gt;
-&lt;li&gt;シリアルポート&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#datetime&#34; id=&#34;datetime&#34;&gt;日付・時間&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/date_time.html&#34;&gt;日付の計算&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/timer.html&#34;&gt;処理時間の計測&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#lang_binding&#34; id=&#34;lang_binding&#34;&gt;言語バインディング&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Pythonバインディング&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#computer_vision&#34; id=&#34;computer_vision&#34;&gt;コンピュータビジョン&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;画像処理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/tips.html#env&#34; id=&#34;env&#34;&gt;開発環境&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/version.html&#34;&gt;Boostのバージョンを調べる&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/config.html&#34;&gt;コンパイラ間の差を吸収する&lt;/a&gt;&lt;ul&gt;
-&lt;li&gt;コンパイラが、あるC++11の機能をサポートしているかどうかでコードを変更する&lt;/li&gt;
-&lt;li&gt;コンパイラによって、テンプレート中の &lt;code&gt;hoge&amp;lt;T&amp;gt;::type x;&lt;/code&gt; や &lt;code&gt;fuga.f();&lt;/code&gt; がコンパイルエラーになったりならなかったりする問題を回避する&lt;/li&gt;
-&lt;li&gt;メンバ関数テンプレートの呼び出しでコンパイルエラーになる問題を回避する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/build.html&#34;&gt;ビルドツール&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;ビルドしたバイナリを実行する&lt;/li&gt;
-&lt;li&gt;ディレクトリ構造を保存した状態でインストールを行う&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/build_link.html&#34;&gt;ヘッダオンリー or ビルドが必要なライブラリ&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/tips/cxx11-boost-mapping.html&#34;&gt;C++11にもBoostにも存在するライブラリ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
       
       <author>
         <name>alphya</name>
