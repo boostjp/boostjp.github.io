@@ -2,9 +2,211 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2019-06-27T04:02:26.545309</updated>
-  <id>1637f5d1-c012-46c5-b15a-dae3f4a7334f</id>
+  <updated>2019-06-27T04:09:28.489888</updated>
+  <id>7eb0e4ec-305b-4faa-afb2-679bcdb6d414</id>
 
+  
+    <entry>
+      <title>Boost 1.71.0リリースノート -- 1.71.0リリースノート : Filesystemを追加 (close #369)</title>
+      <link href="https://boostjp.github.io/document/version/1_71_0.html"/>
+      <id>1a5711493472a36d55e437594b63b8f732047799:document/version/1_71_0.md</id>
+      <updated>2019-06-27T13:05:08+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.71.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_71_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_71_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_71_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_71_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.boost.org/libs/variant2/&#34; target=&#34;_blank&#34;&gt;Variant2&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;valuelessにならず、強い例外安全性をもつ&lt;code&gt;std::variant&lt;/code&gt;の実装。作者Peter Dimov&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#dynamic-bitset&#34;&gt;Dynamic Bitset&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#iostreams&#34;&gt;IoStreams&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#smart-ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#uuid&#34;&gt;Uuid&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#dynamic-bitset&#34; id=&#34;dynamic-bitset&#34;&gt;Dynamic Bitset&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/38&#34; target=&#34;_blank&#34;&gt;GitHub #38&lt;/a&gt; MSVCでハードウェア支援のあるpopcountを有効にした&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/45&#34; target=&#34;_blank&#34;&gt;GitHub #45&lt;/a&gt; &lt;code&gt;boost::hash&lt;/code&gt;と&lt;code&gt;std::hash&lt;/code&gt;のサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/48&#34; target=&#34;_blank&#34;&gt;GitHub #48&lt;/a&gt; デフォルトコンストラクタを非explicitにし、コピー初期化構文を許可&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;directory iteratorのインクリメント時に&lt;code&gt;readdir_r&lt;/code&gt;が使用されていた場合に、間違った&lt;code&gt;error_code&lt;/code&gt;が返る問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/110&#34; target=&#34;_blank&#34;&gt;GitHub #110&lt;/a&gt; &lt;code&gt;path&lt;/code&gt;の右辺値版&lt;code&gt;operator/&lt;/code&gt;の戻り値型を、右辺値参照ではなく右辺値を返すよう修正。これによるぶら下がり参照 (dangling reference) の問題が起きていた&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/24&#34; target=&#34;_blank&#34;&gt;GitHub #24&lt;/a&gt; Windows CEとの互換性を向上&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/pull/106&#34; target=&#34;_blank&#34;&gt;GitHub #106&lt;/a&gt; CMakeを小さくサポート&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#iostreams&#34; id=&#34;iostreams&#34;&gt;IoStreams&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/iostreams/pull/87&#34; target=&#34;_blank&#34;&gt;GitHub #87&lt;/a&gt; マルチストリーム・ファイルの処理を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/iostreams/pull/95&#34; target=&#34;_blank&#34;&gt;GitHub #95&lt;/a&gt; LZMA圧縮のマルチスレッド・サポートを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#multi-index&#34; id=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/24&#34; target=&#34;_blank&#34;&gt;GitHub #24&lt;/a&gt; 参照修飾とCV修飾の組み合わせをサポートするため、&lt;code&gt;mem_fun&lt;/code&gt;と&lt;code&gt;const_mem_fun&lt;/code&gt;のバリエーションを追加&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cv_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const volatile&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const&amp;amp;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cvref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const volatile&amp;amp;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;volatile_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() volatile&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() &amp;amp;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;vref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() volatile&amp;amp;&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/24&#34; target=&#34;_blank&#34;&gt;GitHub #24&lt;/a&gt; &lt;code&gt;key&lt;/code&gt;が&lt;code&gt;noexcept&lt;/code&gt;付き関数を正しくハンドリングできるようにした&lt;ul&gt;
+&lt;li&gt;C++17で例外仕様が型の一部になった影響&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cpprefjp.github.io/lang/cpp17/exception_spec_be_part_of_the_type_system.html&#34; target=&#34;_blank&#34;&gt;C++17 例外仕様を型システムの一部にする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#smart_ptr&#34; id=&#34;smart_ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/boostorg/smart_ptr/issues/67&#34; target=&#34;_blank&#34;&gt;GitHub #67&lt;/a&gt; &lt;code&gt;weak_ptr&lt;/code&gt;クラスに、エイリアス・コンストラクタ (aliasing constructors) を追加
+  &lt;br /&gt;
+&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;element_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;noexcept&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;const&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;element_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;noexcept&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;template&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;element_type&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;*&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これは、&lt;code&gt;weak_from_this()&lt;/code&gt;を使用する際に必要となる。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_from_this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(),&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;これらのコンストラクタがない場合は、以下のようなコードとなる：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+    &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;static_pointer_cast&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;T&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;p&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;weak_from_this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;().&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;lock&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()));&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;weak_ptr&amp;lt;T&amp;gt;::empty()&lt;/code&gt;を追加&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;enable_shared_from&lt;/code&gt;基本クラス、&lt;code&gt;shared_from()&lt;/code&gt;、&lt;code&gt;weak_from()&lt;/code&gt;関数を追加&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;enable_shared_from&lt;/code&gt;は、&lt;code&gt;enable_shared_from_this&lt;/code&gt;と違って非テンプレートなクラスである。このクラスを基底クラスとすることで、&lt;code&gt;this&lt;/code&gt;を生ポインタ、&lt;code&gt;shared_ptr&lt;/code&gt;、&lt;code&gt;weak_ptr&lt;/code&gt;として取得する機能が使用できるようになる。新たに書くコードでは、&lt;code&gt;enable_shared_from_this&lt;/code&gt;よりもこちらを使用することを推奨する
+
+&lt;div class=&#34;codehilite&#34;&gt;&lt;pre&gt;&lt;span class=&#34;k&#34;&gt;class&lt;/span&gt; &lt;span class=&#34;nc&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;public&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;enable_shared_from&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;nl&#34;&gt;public:&lt;/span&gt;
+  &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_ptr&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Y&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;boost&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;::&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;shared_from&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;this&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#uuid&#34; id=&#34;uuid&#34;&gt;Uuid&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; : &lt;a href=&#34;https://github.com/boostorg/uuid/pull/109&#34; target=&#34;_blank&#34;&gt;GitHub #109&lt;/a&gt; MD5ベースのUUID生成が、全てのエンディアンシステムで同一となるよう修正した。1.66.0から1.70.0までの動作と互換性を保ちたい場合は、&lt;code&gt;BOOST_UUID_COMPAT_PRE_1_71_MD5&lt;/code&gt;をdefineすること。この修正は、SHA1ベースのデフォルトのUUID生成には影響しない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.71.0リリースノート -- 1.71.0リリースノート : SmartPtrを追加 (close #368)</title>
@@ -525,145 +727,6 @@
 &lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#dynamic-bitset&#34; id=&#34;dynamic-bitset&#34;&gt;Dynamic Bitset&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/38&#34; target=&#34;_blank&#34;&gt;GitHub #38&lt;/a&gt; MSVCでハードウェア支援のあるpopcountを有効にした&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/45&#34; target=&#34;_blank&#34;&gt;GitHub #45&lt;/a&gt; &lt;code&gt;boost::hash&lt;/code&gt;と&lt;code&gt;std::hash&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/48&#34; target=&#34;_blank&#34;&gt;GitHub #48&lt;/a&gt; デフォルトコンストラクタを非explicitにし、コピー初期化構文を許可&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#iostreams&#34; id=&#34;iostreams&#34;&gt;IoStreams&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/iostreams/pull/87&#34; target=&#34;_blank&#34;&gt;GitHub #87&lt;/a&gt; マルチストリーム・ファイルの処理を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/iostreams/pull/95&#34; target=&#34;_blank&#34;&gt;GitHub #95&lt;/a&gt; LZMA圧縮のマルチスレッド・サポートを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#multi-index&#34; id=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/24&#34; target=&#34;_blank&#34;&gt;GitHub #24&lt;/a&gt; 参照修飾とCV修飾の組み合わせをサポートするため、&lt;code&gt;mem_fun&lt;/code&gt;と&lt;code&gt;const_mem_fun&lt;/code&gt;のバリエーションを追加&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cv_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const volatile&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const&amp;amp;&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cvref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() const volatile&amp;amp;&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;volatile_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() volatile&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() &amp;amp;&lt;/code&gt;)&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vref_mem_fun&lt;/code&gt; (&lt;code&gt;R mf() volatile&amp;amp;&lt;/code&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/24&#34; target=&#34;_blank&#34;&gt;GitHub #24&lt;/a&gt; &lt;code&gt;key&lt;/code&gt;が&lt;code&gt;noexcept&lt;/code&gt;付き関数を正しくハンドリングできるようにした&lt;ul&gt;
-&lt;li&gt;C++17で例外仕様が型の一部になった影響&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://cpprefjp.github.io/lang/cpp17/exception_spec_be_part_of_the_type_system.html&#34; target=&#34;_blank&#34;&gt;C++17 例外仕様を型システムの一部にする&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス上の修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加して含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.71.0リリースノート -- 1.71.0リリースノート : IoStreamsを追加 (close #363)</title>
-      <link href="https://boostjp.github.io/document/version/1_71_0.html"/>
-      <id>f2f6b71d3d7e833e633aabec65022e37cd6e8e91:document/version/1_71_0.md</id>
-      <updated>2019-06-26T14:27:26+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.71.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_71_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_71_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_71_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_71_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#dynamic-bitset&#34;&gt;Dynamic Bitset&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#iostreams&#34;&gt;IoStreams&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/dynamic-bitset&#34; id=&#34;dynamic-bitset&#34;&gt;Dynamic Bitset&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/38&#34; target=&#34;_blank&#34;&gt;GitHub #38&lt;/a&gt; MSVCでハードウェア支援のあるpopcountを有効にした&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dynamic_bitset/pull/45&#34; target=&#34;_blank&#34;&gt;GitHub #45&lt;/a&gt; &lt;code&gt;boost::hash&lt;/code&gt;と&lt;code&gt;std::hash&lt;/code&gt;のサポートを追加&lt;/li&gt;
