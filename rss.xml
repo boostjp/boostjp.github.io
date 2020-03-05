@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-03-05T01:56:21.084948</updated>
-  <id>20faec49-c655-4076-8d02-3f6041e30a32</id>
+  <updated>2020-03-05T02:00:28.980159</updated>
+  <id>d5460886-8d00-4373-a499-f1afd53e58b8</id>
 
   
     <entry>
@@ -1977,120 +1977,6 @@ index 53f9455..18f0082 100644
  ## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
  
  - 新機能
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.72.0リリースノート -- 1.72.0リリースノート : Asioを追加 (close #419)</title>
-      <link href="https://boostjp.github.io/document/version/1_72_0.html"/>
-      <id>7f20370136f9689e24dedb454f9dbfc7916fcbb1:document/version/1_72_0.md</id>
-      <updated>2019-12-13T13:13:25+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_72_0.md b/document/version/1_72_0.md
-index 3fb5ef6..53f9455 100644
---- a/document/version/1_72_0.md
-+++ b/document/version/1_72_0.md
-@@ -16,13 +16,9 @@
- - 「[Modularized Boost（GitHubへ移行したリポジトリ）を使用する](http://dev.activebasic.com/egtra/2013/12/03/620/)」
- 
- 
--## 新ライブラリ
--
--- [NewOne](#newone) # example
--
--
- ## 更新ライブラリ
- 
-+- [Asio](#asio)
- - [Atomic](#atomic)
- - [Beast](#beast)
- - [CircularBuffer](#circular-buffer)
-@@ -44,6 +40,80 @@
- - [VMD](#vmd)
- 
- 
-+## &amp;lt;a id=&amp;#34;asio&amp;#34; href=&amp;#34;#asio&amp;#34;&amp;gt;Asio&amp;lt;/a&amp;gt;
-+
-+- `async_initiate`ヘルパ関数を、C++11以降向けに自動的に戻り値型を推論するよう変更した
-+- C++14向けに、全ての非同期操作で自動的に戻り値型を推論するよう変更した。これにより、完了トークンの実装によって、型消去なしで非同期操作の初期化を、初期化関数に組み込むことができる。
-+    - 戻り値型を推論する完了トークンをサポートするのがC++14以降であることに注意。C++11以前の場合、完了トークンの`async_result`特殊化は、入れ子型`result_type`を提供する必要がある
-+- `async_initiate`にコンセプトのサポートを導入した
-+    - `completion_signature&amp;lt;T&amp;gt;` : `T`が`R(Args...)`のシグニチャ形式であることをチェック
-+    - `completion_handler_for&amp;lt;T, Signature&amp;gt;` : `T`が指定されたシグニチャの完了ハンドラを使用できるかをチェック
-+    - `completion_token_for&amp;lt;T, Signature&amp;gt;` : `T`が`async_initiate`と指定されたシグニチャで使用できる完了トークンかをチェック
-+    - コンセプトのないC++での後方互換性のために、以下のマクロを提供する。`BOOST_ASIO_COMPLETION_SIGNATURE`、`BOOST_ASIO_COMPLETION_HANDLER_FOR`、`BOOST_ASIO_COMPLETION_TOKEN_FOR`。これらのマクロは、コンセプトのサポートがない環境で`typename`に展開される
-+- 全てのI/Oオブジェクト型に、入れ子テンプレート型`rebind_executor`を追加。これは以下のように使用する：
-+    ```cpp
-+    using my_socket_type = tcp::socket::rebind_executor&amp;lt;my_executor_type&amp;gt;::other;
-+    ```
-+
-+- 入れ子型`executor_type`とメンバ関数`get_executor()`を介して、関連するI/O executorに報告するよう初期化関数オブジェクトを変更した
-+    - `executor_type`と`get_executor()`はオプションとして扱われるべきであり、`associated_executor`と`get_associated_executor()`ヘルパ関数を介してそれらのアクセスすることが望ましい
-+- `default_completion_token`トレイトを追加した。これはI/O executor型に、非同期操作で使用する関連するデフォルトの完了トークン型を与える。このトレイトは、非同期操作の宣言で以下のように使用する：
-+    ```cpp
-+    template &amp;lt;
-+      typename IoObject,
-+      typename CompletionToken =
-+        typename default_completion_token&amp;lt;
-+          typename IoObject::executor_type
-+        &amp;gt;::type
-+    &amp;gt;
-+    auto async_fyz(
-+      IoObject&amp;amp; io_object,
-+      CompletionToken&amp;amp;&amp;amp; token =
-+        typename default_completion_token&amp;lt;
-+          typename IoObject::executor_type
-+        &amp;gt;::type{}
-+    );
-+    ```
-+
-+    - 特殊化されない場合、トレイトの`type`は`void`となり、I/O executorに渡されるデフォルトの完了トークンがないことを意味する。
-+    - このトレイトは`use_awaitable`完了トークン向けに特殊化されており、非同期操作を以下のように使用することを許可する：
-+    ```cpp
-+    auto socket = use_awaitable.as_default_on(tcp::socket(my_context));
-+    // …
-+    co_await socket.async_connect(my_endpoint); // デフォルトはuse_awaitable
-+    ```
-+
-+    - この例では、`socket`オブジェクトの型は`tcp::socket`から変換され、デフォルトの完了トークンが`use_awaitable`に設定されたI/O executorを持つ。ほかの方法として、ソケットの型を直接計算することもできる：
-+    ```cpp
-+    using tcp_socket = use_awaitable_t&amp;lt;&amp;gt;::as_default_on_t&amp;lt;tcp::socket&amp;gt;;
-+    tcp_socket socket(my_context);
-+    // …
-+    co_await socket.async_connect(my_endpoint); // デフォルトはuse_awaitable
-+    ```
-+
-+- `async_initiate`に、不足していたWindows固有のI/Oオブジェクトの非同期操作のサポートを追加
-+- executor型が、acceptした新たなソケットに伝播されるようにした
-+    - 新たな接続を同期もしくは非同期にacceptし、しかしexecutorもしくはexecution contextを指定しない場合に、accept操作がacceptorからsocketに、executor typeを正しく伝播するようにした。例として、以下のacceptor型の場合：
-+    ```cpp
-+    basic_socket_acceptor&amp;lt;ip::tcp, my_executor_type&amp;gt;
-+    ```
-+
-+    - acceptされたsocketの型は以下のようになる：
-+    ```cpp
-+    basic_stream_socket&amp;lt;ip::tcp, my_executor_type&amp;gt;
-+    ```
-+
-+- `Protocol`の要件として、コピーとムーブの操作が例外を送出しないよう変更した
-+- `Endpoint`の要件として、デフォルトコンストラクタとムーブの操作が例外を送出しないよう変更した
-+- protocolのアクセッサに、`noexcept`修飾を追加
-+- socketのムーブコンストラクタに、`noexcept`修飾を追加
-+- Windowsでのシリアルポートを開く操作に関連した以下のissueを修正：
-+    - RTS制御フラグを初期化するために、正しい定数を使用するようにした
-+    - デフォルトのボーレート (baud rate) を設定 (9600)
-+- 非同期のaccept操作が自動的に再起動されたときに発生する可能性のある、「未処理の作業数」が失われる問題を修正
-+
-+
-+
- ## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
- 
- - libstdc++のいくつかのバージョンで`__float128`が浮動小数点数型とみなされない問題へのワークアラウンドを追加
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
