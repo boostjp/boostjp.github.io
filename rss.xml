@@ -2,8 +2,8 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-03-05T02:00:28.980159</updated>
-  <id>d5460886-8d00-4373-a499-f1afd53e58b8</id>
+  <updated>2020-03-05T02:11:04.931306</updated>
+  <id>0980c74a-72d5-43bb-a533-253a8e174ed8</id>
 
   
     <entry>
@@ -1880,104 +1880,6 @@ index 10ab14a..49a2312 100644
 &lt;/ul&gt;
 &lt;h2&gt;翻訳&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Someone&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.71.0リリースノート -- 1.71.0リリースノート : Geometryを追加 (close #421)</title>
-      <link href="https://boostjp.github.io/document/version/1_71_0.html"/>
-      <id>85a3ee48dc13847e2a9fc5f9f8466697ee321f4e:document/version/1_71_0.md</id>
-      <updated>2019-12-13T13:32:49+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_71_0.md b/document/version/1_71_0.md
-index ffb0f77..f060a94 100644
---- a/document/version/1_71_0.md
-+++ b/document/version/1_71_0.md
-@@ -37,6 +37,7 @@
- - [Fiber](#fiber)
- - [Filesystem](#filesystem)
- - [Flyweight](#flyweight)
-+- [Geometry](#geometry)
- - [Histogram](#histogram)
- - [Interprocess](#interprocess)
- - [Intrusive](#intrusive)
-@@ -182,6 +183,19 @@
- - メンテナンス上の修正
- 
- 
-+## &amp;lt;a id=&amp;#34;geometry&amp;#34; href=&amp;#34;#geometry&amp;#34;&amp;gt;Geometry&amp;lt;/a&amp;gt;
-+
-+- 改善
-+    - [GitHub #568](https://github.com/boostorg/geometry/pull/568) `matrix_transformer`に`matrix_type`をとるコンストラクタを追加
-+    - [GitHub #605](https://github.com/boostorg/geometry/pull/605) さまざまなアルゴリズムの座標系ハンドリングを改善
-+    - 集合と関係の操作の堅牢性に関するさまざまな改善
-+- 解決した問題
-+    - [GitHub #596](https://github.com/boostorg/geometry/issues/596) `boost::geometry::buffer`がスパイク付きの`(multi)polygon`を生成する問題を修正
-+- バグ修正
-+    - [GitHub #595](https://github.com/boostorg/geometry/pull/595) geographic座標系でのpoint-segment間のdistance計算が不正確だった問題を修正
-+    - さまざまなコンパイラ警告を修正
-+
-+
- ## &amp;lt;a id=&amp;#34;histogram&amp;#34; href=&amp;#34;#histogram&amp;#34;&amp;gt;Histogram&amp;lt;/a&amp;gt;
- 
- - 新機能
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.72.0リリースノート -- 1.72.0リリースノート : Geometryを追加 (close #420)</title>
-      <link href="https://boostjp.github.io/document/version/1_72_0.html"/>
-      <id>ac971c58d4aefa823c317fba0ccbea568cbc729a:document/version/1_72_0.md</id>
-      <updated>2019-12-13T13:27:31+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_72_0.md b/document/version/1_72_0.md
-index 53f9455..18f0082 100644
---- a/document/version/1_72_0.md
-+++ b/document/version/1_72_0.md
-@@ -26,6 +26,7 @@
- - [Endian](#endian)
- - [Filesystem](#filesystem)
- - [Functional/Factory](#functional-factory)
-+- [Geometry](#geometry)
- - [GIL](#gil)
- - [Histogram](#histogram)
- - [Log](#log)
-@@ -192,6 +193,25 @@
-     - `BOOST_FUNCTIONAL_FACTORY_SUPPORT_NONE_T`による`void`の代わりの`boost::none_t`の使用
- 
- 
-+## &amp;lt;a id=&amp;#34;geometry&amp;#34; href=&amp;#34;#geometry&amp;#34;&amp;gt;Geometry&amp;lt;/a&amp;gt;
-+
-+- 改善
-+    - [GitHub #500](https://github.com/boostorg/geometry/pull/500) 剛体反転の問題 (inverse geodesic problem) に、内部でKarney&amp;#39;s solutionを使用するようにした (Adeel Ahmad氏に感謝)
-+    - [GitHub #561](https://github.com/boostorg/geometry/pull/561) 内部で使用する新たなアルゴリズム`algorithm detail::calculate_point_order()`を追加
-+    - [GitHub #584](https://github.com/boostorg/geometry/pull/584) `matrix_transformer`に任意の次元をサポート (Tinko Bartels氏に感謝)
-+    - [GitHub #616](https://github.com/boostorg/geometry/pull/616) `srs::transformation`を継続的にさまざまな改善。標準のスレッドプリミティブをサポート
-+    - [GitHub #627](https://github.com/boostorg/geometry/pull/627) 関係操作の汎用性を改善
-+    - 集合と関係の操作の堅牢性に関するさまざまな改善
-+- 解決した問題
-+    - [GitHub #557](https://github.com/boostorg/geometry/issues/557) spherical-equatorial座標系での`point`と`linestring`の`distance`が間違った結果になる問題を修正
-+    - [GitHub #612](https://github.com/boostorg/geometry/issues/612) geographic座標系での集合操作が間違った結果になる問題を修正
-+    - [GitHub #619](https://github.com/boostorg/geometry/issues/619) spherical-equatorial座標系での集合操作が間違った結果になる問題を修正
-+- バグ修正
-+    - [GitHub #479](https://github.com/boostorg/geometry/pull/479) sphericalとgeographicの座標系での集合操作のさまざまな問題を修正
-+    - [GitHub #623](https://github.com/boostorg/geometry/pull/623) 集合と関係の操作で整数オーバーフローの可能性があった問題を修正
-+    - [GitHub #632](https://github.com/boostorg/geometry/pull/632) 非対称の片側バッファ (asymmetric one-sided buffer) の生成のエラーを修正
-+
-+
- ## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
- 
- - 新機能
-&lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
         <name>Akira Takahashi</name>
