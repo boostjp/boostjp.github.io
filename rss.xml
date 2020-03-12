@@ -2,9 +2,57 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-03-12T05:11:36.855047</updated>
-  <id>06430f46-c96f-4da1-a1ec-aacd35c416cb</id>
+  <updated>2020-03-12T05:23:54.163638</updated>
+  <id>adc31a34-70da-4669-b77e-1ec0bd3f424b</id>
 
+  
+    <entry>
+      <title>Boost 1.69.0リリースノート -- 1.69.0リリースノート : GILを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_69_0.html"/>
+      <id>2beec31ea9c72b0e329caea3ad32ced985add1b9:document/version/1_69_0.md</id>
+      <updated>2020-03-12T14:22:16+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_69_0.md b/document/version/1_69_0.md
+index 0a91c30..128bdba 100644
+--- a/document/version/1_69_0.md
++++ b/document/version/1_69_0.md
+@@ -53,6 +53,7 @@ Boostのビルドシステムが可視性をサポートし、デフォルトで
+ - [Flyweight](#flyweight)
+ - [Function](#function)
+ - [Geometry](#geometry)
++- [GIL](#gil)
+ - [Integer](#integer)
+ - [Iostreams](#iostreams)
+ - [Iterator](#iterator)
+@@ -217,6 +218,21 @@ Boostのビルドシステムが可視性をサポートし、デフォルトで
+ - [GitHub #522](https://github.com/boostorg/geometry/pull/522) ビルド方法のドキュメントでpython3環境をサポート
+ 
+ 
++## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
++
++- 変更
++    - [GitHub #145](https://github.com/boostorg/gil/pull/145) `#include &amp;lt;boost/gil/...&amp;gt;`以下のインクルード構造をリファクタ
++- 削除
++    - [GitHub #145](https://github.com/boostorg/gil/pull/145) `include/boost/gil_all.hpp`ヘッダを非推奨化
++    - [GitHub #145](https://github.com/boostorg/gil/pull/145) `include/boost/gil_concepts.hpp`ヘッダを非推奨化
++    - [GitHub #144](https://github.com/boostorg/gil/pull/144) `include/boost/gil_config.hpp`ヘッダを不要にした
++- 修正
++    - [GitHub #157](https://github.com/boostorg/gil/pull/157) `point&amp;lt;T&amp;gt;`の除算と乗算を、`point&amp;lt;double&amp;gt;`としてハードコードしないよう修正
++    - [GitHub #152](https://github.com/boostorg/gil/pull/152) `std::fill_n`と`boost::range::fill_n`が衝突する問題を修正
++    - [GitHub #139](https://github.com/boostorg/gil/pull/139) `for_each_pixel`によって関数オブジェクトの再代入が行われる問題を修正
++    - [GitHub #129](https://github.com/boostorg/gil/pull/129) 依存名`axis_iterator`の前に`template`キーワードが不足していた
++
++
+ ## &amp;lt;a id=&amp;#34;integer&amp;#34; href=&amp;#34;#integer&amp;#34;&amp;gt;Integer&amp;lt;/a&amp;gt;
+ 
+ - `boost/pending/integer_log2.hpp`を非推奨化した。このヘッダは将来のリリースで削除される。代わりに`boost/integer/integer_log2.hpp`を使用すること
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.68.0リリースノート -- 1.68.0リリースノート : GILを更新</title>
@@ -575,201 +623,6 @@ index 071e86e..dcb8b2a 100644
 &lt;p&gt;アーカイブ：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://lists.boost.org/ublas/&#34; target=&#34;_blank&#34;&gt;ublas Archives&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Proto ML&lt;/h2&gt;
-&lt;p&gt;EDSL(Embedded Domain Specific Language)を定義するためのライブラリであるBoost.ProtoのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/proto&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/proto&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost AsioユーザーML&lt;/h2&gt;
-&lt;p&gt;ネットワーク通信を含む、非同期入出力ライブラリであるBoost.AsioのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://lists.sourceforge.net/lists/listinfo/asio-users&#34; target=&#34;_blank&#34;&gt;https://lists.sourceforge.net/lists/listinfo/asio-users&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://sourceforge.net/mail/?group_id=122478&#34; target=&#34;_blank&#34;&gt;SourceForge&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Geometry ML&lt;/h2&gt;
-&lt;p&gt;幾何学計算ライブラリであるBoost.GeometryのML。Boostに入る前はGeneric Geometry Library(GGL)という名前だったのでML名もそれになってる。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/geometry&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/geometry&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://boost-geometry.203548.n3.nabble.com/&#34; target=&#34;_blank&#34;&gt;Nabble&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost MPI ML&lt;/h2&gt;
-&lt;p&gt;ハイパフォーマンス並列アプリケーションのためのメッセージパッシングライブラリ、Boost.MPIのML。&lt;/p&gt;
-&lt;p&gt;参加／アーカイブ：
-- &lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-mpi&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-mpi&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;Ryppl ML&lt;/h2&gt;
-&lt;p&gt;分散クロスプラットフォームソフトウェア管理システムであるRypplのML。Boostのモジュール化の仕組みとして候補に上がっており、BoostProが開発している。&lt;/p&gt;
-&lt;p&gt;参加：
-- &lt;a href=&#34;http://groups.google.com/group/ryppl-dev&#34; target=&#34;_blank&#34;&gt;http://groups.google.com/group/ryppl-dev&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;cpp-netlib ML (Boost.Network)&lt;/h2&gt;
-&lt;p&gt;HTTP, SMTP, FTP, XMPP, ICMPのような上位層ネットワークプロトコルをサポートするライブラリ。Boost.Networkの有力な候補となっている。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/cpp-netlib&#34; target=&#34;_blank&#34;&gt;http://groups.google.com/group/cpp-netlib&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;NT2開発者 ML (Boost.SIMD)&lt;/h2&gt;
-&lt;p&gt;Boost.SIMD候補であるNT2ライブラリの開発者ML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://groups.google.com/forum/#!forum/nt2-dev&#34; target=&#34;_blank&#34;&gt;https://groups.google.com/forum/#!forum/nt2-dev&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;boostjp ML&lt;/h2&gt;
-&lt;p&gt;本サイト、およびBoost.勉強会を運営しているboostjpコミュニティのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://groups.google.com/group/boostjp&#34; target=&#34;_blank&#34;&gt;https://groups.google.com/group/boostjp&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akiko Kawai</name>
-        <email>haruka.sao@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>メーリングリスト -- Fixed to unlink url</title>
-      <link href="https://boostjp.github.io/mailing-lists.html"/>
-      <id>7c25401f8dda4278e70ed76c6449a7b1f78a38f6:mailing-lists.md</id>
-      <updated>2020-03-11T16:32:56+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;メーリングリスト&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;Boost関連のメーリングリストと参加方法を書いていきます。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;http://www.boost.org/community/groups.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/community/groups.html&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;BoostユーザーML&lt;/h2&gt;
-&lt;p&gt;Boostの全般的な話題。ユーザー寄りだが開発者寄りの話題もちらほら。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-users&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-users&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#users&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.user&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://groups.google.com/group/boost-list/topics&#34; target=&#34;_blank&#34;&gt;Google Group&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost開発者ML&lt;/h2&gt;
-&lt;p&gt;Boostの開発者ML。新たなライブラリの提案、レビュー、運用、緊急性の高いバグ報告やディスカッションなどに利用される。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#main&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.devel&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;アナウンス&lt;/h2&gt;
-&lt;p&gt;リリース情報や、ライブラリのレビュー結果の通知などに利用される。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-announce&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-announce&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Build ML&lt;/h2&gt;
-&lt;p&gt;Boost.Build, bjamなどのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-build&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-build&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#jamboost&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.build&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost CMake ML&lt;/h2&gt;
-&lt;p&gt;CMakeのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-cmake&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-cmake&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#cmake&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.cmake&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Community Maintenance ML&lt;/h2&gt;
-&lt;p&gt;個人のメンテナではなく、コミュニティによってメンテナンスしていくライブラリのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-maint&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-maint&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Python C++ SIG ML(Boost Python)&lt;/h2&gt;
-&lt;p&gt;Boost.Python関係のML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://mail.python.org/mailman/listinfo/cplusplus-sig&#34; target=&#34;_blank&#34;&gt;http://mail.python.org/mailman/listinfo/cplusplus-sig&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#cplussig&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.python&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;言語バインディングML&lt;/h2&gt;
-&lt;p&gt;Boost.Pythonやluabindなどの、言語バインディング関係のML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://lists.sourceforge.net/lists/listinfo/boost-langbinding&#34; target=&#34;_blank&#34;&gt;https://lists.sourceforge.net/lists/listinfo/boost-langbinding&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#langbinding&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.langbinding&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Spirit ML&lt;/h2&gt;
-&lt;p&gt;構文解析、ジェネレータのライブラリであるBoost.SpiritのML。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Spirit全般的な話題&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://lists.sourceforge.net/lists/listinfo/spirit-general&#34; target=&#34;_blank&#34;&gt;https://lists.sourceforge.net/lists/listinfo/spirit-general&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#spirit&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - parsers.spirit.general&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;開発者ML&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://lists.sourceforge.net/lists/listinfo/spirit-devel&#34; target=&#34;_blank&#34;&gt;https://lists.sourceforge.net/lists/listinfo/spirit-devel&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：
-- &lt;a href=&#34;https://www.boost.org/community/groups.html#spirit&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - parsers.spirit.devel&lt;/a&gt;&lt;/p&gt;
-&lt;h2&gt;BoostドキュメンテーションシステムML&lt;/h2&gt;
-&lt;p&gt;BoostBookやQuickBookのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-docs&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-docs&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#boostdocs&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.documentation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Thread ML&lt;/h2&gt;
-&lt;p&gt;Boost.Threadの開発者ML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/threads-devel&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/threads-devel&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#thread&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.threads.devel&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost Test ML&lt;/h2&gt;
-&lt;p&gt;Boostのレギュレッションテストを走らせたり、Boost.Testをいろいろなプラットフォームで動かしたりする人のためのディスカッション用ML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/boost-testing&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/boost-testing&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;Boost uBLAS ML&lt;/h2&gt;
-&lt;p&gt;線形代数ライブラリであるBoost.uBLASのML。&lt;/p&gt;
-&lt;p&gt;参加：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://lists.boost.org/mailman/listinfo.cgi/ublas&#34; target=&#34;_blank&#34;&gt;http://lists.boost.org/mailman/listinfo.cgi/ublas&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;アーカイブ：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.boost.org/community/groups.html#ublas&#34; target=&#34;_blank&#34;&gt;Boost Mailing Lists - boost.ublas&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Boost Proto ML&lt;/h2&gt;
 &lt;p&gt;EDSL(Embedded Domain Specific Language)を定義するためのライブラリであるBoost.ProtoのML。&lt;/p&gt;
