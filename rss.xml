@@ -2,9 +2,178 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-07-12T14:34:04.630150</updated>
-  <id>c908403b-1627-4ce8-b263-eaebb4b4726d</id>
+  <updated>2020-07-13T10:54:33.645276</updated>
+  <id>bc10768f-f43c-432d-921e-5c532f6e2794</id>
 
+  
+    <entry>
+      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Stacktraceを追加 (close #491)</title>
+      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
+      <id>cedce5241fe381443bda1066ce00a6248d398398:document/version/1_74_0.md</id>
+      <updated>2020-07-13T14:51:35+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
+index a291c84..54a1785 100644
+--- a/document/version/1_74_0.md
++++ b/document/version/1_74_0.md
+@@ -40,6 +40,7 @@
+ - [PolyCollection](#poly-collection)
+ - [Polygon](#polygon)
+ - [SmartPtr](#smart-ptr)
++- [Stacetrace](#stacktrace)
+ - [System](#system)
+ - [TypeTraits](#type-traits)
+ - [Variant2](#variant2)
+@@ -305,6 +306,11 @@
+ - `weak_ptr`に、`boost::hash`サポートと、`std::hash`と`std::equal_to`の特殊化を追加
+ 
+ 
++## &amp;lt;a id=&amp;#34;stacktrace&amp;#34; href=&amp;#34;#stacktrace&amp;#34;&amp;gt;Stacktrace&amp;lt;/a&amp;gt;
++
++- [GitHub #91](https://github.com/boostorg/stacktrace/pull/91) `-fno-exceptions`でコンパイルした際のビルドエラーを修正 (Jeremiah Rodriguez氏に感謝)
++
++
+ ## &amp;lt;a id=&amp;#34;system&amp;#34; href=&amp;#34;#system&amp;#34;&amp;gt;System&amp;lt;/a&amp;gt;
+ 
+ - `operator bool()`が`value() != 0`の代わりに`failed()`を返すようにした
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Asioを追加 (close #487)</title>
+      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
+      <id>ca8103e8d7d384ca8bb11def220d3d38b8be10dc:document/version/1_74_0.md</id>
+      <updated>2020-07-13T14:41:24+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
+index 8f811a6..a291c84 100644
+--- a/document/version/1_74_0.md
++++ b/document/version/1_74_0.md
+@@ -24,6 +24,7 @@
+ 
+ ## 更新ライブラリ
+ 
++- [Asio](#asio)
+ - [Beast](#beast)
+ - [Bimap](#bimap)
+ - [Config](#config)
+@@ -51,6 +52,104 @@
+ - [Boostbook](#boostbook)
+ 
+ 
++## &amp;lt;a id=&amp;#34;asio&amp;#34; href=&amp;#34;#asio&amp;#34;&amp;gt;Asio&amp;lt;/a&amp;gt;
++
++- 標準に提案されたexecutorを実装して追加
++    - [P0443r13](http://wg21.link/P0443r13), [P1348r0](http://wg21.link/P1348r0), [P1393r0](http://wg21.link/P1393r0)
++- AsioのI/O機能に、標準に提案されたexecutorへのサポートを追加
++    - Asioのexecutorが、標準に提案されたexecutorの要件を満たすようになった。これらは、Networking TSのexecutorの要件も引き続き満たす
++    - すべてのI/Oオブジェクト、非同期操作、およびユーティリティは、新たに標準に提案されたexecutorおよびNetworking TSのexecutorと相互運用できる
++    - 型の別名`any_io_executor`は、すべてのI/Oオブジェクトに対するデフォルトの実行時多態的executorとして導入された。これはデフォルトで`execution::any_executor&amp;lt;&amp;gt;`テンプレートとなる。下位互換が必要な場合は、`BOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT`を定義することで古い`asio::executor`多態ラッパーが代わりに使用される
++    - `BOOST_ASIO_NO_TS_EXECUTORS`を定義することで、既存のNetworking TSモデルexecutorのサポートを無効化できる
++- `basic_waitable_timer`に、変換ムーブ構築と代入を追加。これにより、executorの型が変換可能であれば異なるタイマー型間でもムーブによる変換ができるようになる。例として：
++    ```cpp
++    basic_waitable_timer&amp;lt;
++      clock_type,
++      traits_type,
++      io_context::executor_type
++    &amp;gt; timer1(my_io_context);
++
++    basic_waitable_timer&amp;lt;
++      clock_type,
++      traits_type,
++      any_io_executor // 多態ラッパー
++    &amp;gt; timer2(std::move(timer1));
++    ```
++
++- GCC 10でC++20コルーチンを有効化
++- `co_spawn`に、await可能なものを起動するオーバーロードを追加。以下のように記述できる：
++    ```cpp
++    co_spawn(executor,
++      echo(std::move(socket)),
++      detached);
++    ```
++
++    - 以前まで書き方は以下：
++    ```cpp
++    co_spawn(executor,
++      [socket = std::move(socket)]() mutable
++      {
++        return echo(std::move(socket));
++      },
++      detached);
++    ```
++
++- executor型の間で変換をできるようにするために、`use_awaitable_t`のデフォルトexecutorアダプタに、新たなコンストラクタオーバーロードを追加
++- メンバ`as_default_on()`と`as_default_on_t&amp;lt;&amp;gt;`を追加することによる、デフォルト完了トークンとしての`detached_t`の使用サポートを追加
++- `ssl::stream&amp;lt;&amp;gt;`にムーブコンストラクタを追加
++- `ssl::stream&amp;lt;&amp;gt;`の書き込み操作を変更し、gather-write buffer sequenceを線形化した
++- `BOOST_ASIO_NO_DEPRECATED`が定義された際の、非推奨化された`asio_handler_invoke`, `asio_handler_allocate`, and `asio_handler_deallocate`フックのコンパイル時検出を追加した
++- いくつかのパフォーマンス最適化を実装
++    - `recvmsg`の代わりに`recv`、`sendmsg`の代わりに`send`、`readv`の代わりに`read`、`writev`の代わりに`write`を使用するよう単一バッファ操作を特殊化
++    - 多態ラッパー`executor`の参照カウントによるオーバーヘッドを軽減
++    - システムコールのラッパーから早期にreturnするようにし、エラーパスがある場合のみ`errno`とエラーコードにアクセスするようにした
++    - 「ネイティブ」のI/O executor (`io_context::exeutor_type`など) が検出された場合に、追加の最適化を適用するようにした
++- ハンドラを追跡 (tracking) するためにsource locationのサポートを追加。新たなマクロ`BOOST_ASIO_HANDLER_LOCATION((file_name, line, function_name))`を使用してハンドラ追跡メカニズムにソース位置を伝えることができる。このマクロは、スタックに配置されるオブジェクトを宣言する。また、位置情報をともなって非同期操作を起動すると、非同期操作の開始を表す`[^n*m]`行のまえに`[*&amp;lt;action&amp;gt;] [^n^m]`行を使用して出力する。例として、
++    ```
++    @asio|1589423304.861944|&amp;gt;7|ec=system:0,bytes_transferred=5
++    @asio|1589423304.861952|7^8|in &amp;#39;async_write&amp;#39; (./../../../include/asio/impl/write.hpp:330)
++    @asio|1589423304.861952|7^8|called from &amp;#39;do_write&amp;#39; (handler_tracking/async_tcp_echo_server.cpp:62)
++    @asio|1589423304.861952|7^8|called from &amp;#39;operator()&amp;#39; (handler_tracking/async_tcp_echo_server.cpp:51)
++    @asio|1589423304.861952|7*8|socket@0x7ff61c008230.async_send
++    @asio|1589423304.861975|.8|non_blocking_send,ec=system:0,bytes_transferred=5
++    @asio|1589423304.861980|&amp;lt;7|
++    ```
++
++    - `std::source_location`もしくは`std::experimental::source_location`が利用可能な場合、`use_awaitable_t` も新たに作られた非同期操作ごとにハンドラ追跡にソース位置を出力する (デフォルト構築もしくはデフォルトの完了トークンとして使用された場合)。`use_awaitable_t`オブジェクトも、位置情報をともなって明示的に構築することもできる。
++- handlerviz.plツールのさまざまな改善を実装
++    - グラフの下部に、保留中のハンドラノードを赤色で追加
++    - (SVG向けに) 辺ラベルのツールチップにソース位置を表示
++    - 関連する制御フローを垂直に保つための順序強制のために、非表示のノードを使用するようにした
++- ハンドラを追跡して「生きている (live)」ハンドラのリストを生成して出力するhandlerlive.plツールを追加。生きているとは、保留中 (pending) の非同期操作に関連付けられたハンドラ、もしくは現在実行中のハンドラ。例として、以下のいずれかの形式で実行する：
++    ```
++    cat output.txt | perl handlerlive.pl
++    perl handerlive.pl &amp;lt; output.txt
++    perl handlerlive.pl output.txt
++    ```
++
++- handlertree.plツールを追加。これは指定されたハンドラ (nominated handlers) から生成されたツリーのイベントのみを含むよう、ハンドラ追跡をフィルタして出力する。例として、ハンドラ`123`と`456`およびそれらの先行タスク (predecessors) に関連付けられたイベントのみが含まれるよう出力をフィルタするには、以下のいずれかのようにする：
++    ```
++    cat output.txt | perl handlertree.pl 123 456
++    perl handlertree.pl 123 456 &amp;lt; output.txt
++    ```
++
++- これらのツールは組み合わせて使用できる：
++    ```
++    cat output.txt | \
++      perl handlertree.pl `perl handlerlive.pl output.txt` | \
++      perl handlerviz.pl | \
++      dot -Tsvg &amp;gt; output.svg
++    ```
++
++- clangベースのEmbarcadero C++コンパイラの変更を追加
++- 複数スレッドが並行にWindows I/O完了ポートバックエンドを初期化する際に発生する可能性のあったデッドロックを修正
++- 左辺値を渡されたコピー完了ハンドラで`async_compose`が動作するよう修正
++- `co_spawn`の完了シグニチャ推論を修正
++- `executor_binder`の実装から、spuriousな`Executor`基本クラスを削除
++- ドキュメントとサンプルコードのさまざまな修正と改善
++- 詳細は[Revision History](https://www.boost.org/doc/libs/release/doc/html/boost_asio/history.html)を参照
++
++
+ ## &amp;lt;a id=&amp;#34;beast&amp;#34; href=&amp;#34;#beast&amp;#34;&amp;gt;Beast&amp;lt;/a&amp;gt;
+ 
+ - AsioのAPIが変更された。詳細はAsioのリリースノートを参照
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Beastを追加 (close #466)</title>
@@ -815,510 +984,6 @@
 &lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#boostbook&#34; id=&#34;boostbook&#34;&gt;Boostbook&lt;/a&gt;&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;生成されるドキュメントの文字コードをUS-ASCIIからUTF-8に変更 (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Outcomeを追加 (close #486)</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>3cd7e31b6889af1f0dfa082e5b0a84cf9b2bcfc7:document/version/1_74_0.md</id>
-      <updated>2020-07-07T12:42:46+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.74.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_74_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_74_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_74_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_74_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#bimap&#34;&gt;Bimap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#config&#34;&gt;Config&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#endian&#34;&gt;Endian&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#format&#34;&gt;Format&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#heap&#34;&gt;Heap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#mp11&#34;&gt;Mp11&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#nowide&#34;&gt;Nowide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#outcome&#34;&gt;Outcome&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#polygon&#34;&gt;Polygon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#smart-ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#type-traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#wave&#34;&gt;Wave&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#yap&#34;&gt;YAP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#bimap&#34; id=&#34;bimap&#34;&gt;Bimap&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;アロケータを正しく使用するよう修正 (C++20でのコンパイルを修正) (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#config&#34; id=&#34;config&#34;&gt;Config&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BOOST_NO_CXX11_OVERRIDE&lt;/code&gt;と&lt;code&gt;BOOST_OVERRIDE&lt;/code&gt;を実装 (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#core&#34; id=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;allocator_traits&lt;/code&gt;の代わりに個別のトレイトと関数に対する仕組みとして、アロケータアクセスのユーティリティを実装 (Glen Fernandes氏)。これらは、使用可能な場合はC++11のアロケータモデルをサポートし、C++98互換へのフォールバックを提供する。この機能は現在、以下のライブラリで使用している：&lt;ul&gt;
-&lt;li&gt;Circular_Buffer&lt;/li&gt;
-&lt;li&gt;Wave&lt;/li&gt;
-&lt;li&gt;Lockfree&lt;/li&gt;
-&lt;li&gt;Heap&lt;/li&gt;
-&lt;li&gt;Smart_Ptr&lt;/li&gt;
-&lt;li&gt;Dynamic_Bitset&lt;/li&gt;
-&lt;li&gt;Format&lt;/li&gt;
-&lt;li&gt;Bimap&lt;/li&gt;
-&lt;li&gt;その他&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#endian&#34; id=&#34;endian&#34;&gt;Endian&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse&lt;/code&gt;でのスコープ付き列挙型を有効にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse_inplace&lt;/code&gt;での&lt;code&gt;bool&lt;/code&gt;, &lt;code&gt;enum&lt;/code&gt;, &lt;code&gt;float&lt;/code&gt;, &lt;code&gt;double&lt;/code&gt;を有効にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse_inplace&lt;/code&gt;に配列のオーバーロードを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#format&#34; id=&#34;format&#34;&gt;Format&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;アロケータを正しく使用するよう修正 (C++20でのコンパイルを修正) (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#heap&#34; id=&#34;heap&#34;&gt;Heap&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;skew_heap&lt;/code&gt;のtop nodeの破棄が正しく行われるよう修正 (Glen Fernandes氏)&lt;/li&gt;
-&lt;li&gt;アロケータを正しくかつシンプルに使用するよう修正 (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#mp11&#34; id=&#34;mp11&#34;&gt;Mp11&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;大きい&lt;code&gt;N&lt;/code&gt;での&lt;code&gt;mp_with_index&amp;lt;N&amp;gt;&lt;/code&gt;のコンパイルパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tuple_transform&lt;/code&gt;を追加 (Hans Dembinski氏によるコントリビュート)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#multi-index&#34; id=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/32&#34; target=&#34;_blank&#34;&gt;GitHub #32&lt;/a&gt; 読み書きのキー抽出器 (key extractors) に関するドキュメントを明確化&lt;/li&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#nowide&#34; id=&#34;nowide&#34;&gt;Nowide&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;このライブラリは、C++11準拠のコンパイラと標準ライブラリを要求するようになった&lt;/li&gt;
-&lt;li&gt;LFS: 基礎システムがサポートする2GBを超えるファイルのサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::nowide::utf&lt;/code&gt;名前空間で、ジェネリックなUTF変換関数を使用可能にした&lt;/li&gt;
-&lt;li&gt;UTF-8パスでの&lt;code&gt;stat&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#outcome&#34; id=&#34;outcome&#34;&gt;Outcome&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;アナウンス&lt;ul&gt;
-&lt;li&gt;v2.1ブランチは2020年末に廃止する予定で、v2.2ブランチがデフォルトになる。将来のv2.2ブランチの機能は、&lt;code&gt;&lt;a href=&#34;https://github.com/ned14/outcome/tree/better_optimisation&#34; target=&#34;_blank&#34;&gt;better_optimisation&lt;/a&gt;&lt;/code&gt;で使用できる。このブランチは、Outcome v2.1に対する主要で大きな変更がいくつかある。詳細は&lt;a href=&#34;https://ned14.github.io/outcome/&#34; target=&#34;_blank&#34;&gt;先頭ページ&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;強化&lt;ul&gt;
-&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; &lt;code&gt;void&lt;/code&gt;のresultとoutcomeからの&lt;code&gt;explicit&lt;/code&gt;構築でデフォルト構築が行われなくなった。以前はエラーのない&lt;code&gt;result&amp;lt;void&amp;gt;&lt;/code&gt;から&lt;code&gt;result&amp;lt;T&amp;gt;&lt;/code&gt;に明示的に構築した場合、&lt;code&gt;T&lt;/code&gt;がデフォルト構築されていた。これは役に立たない驚きを与えてしまっていたため、無効にした&lt;/li&gt;
-&lt;li&gt;新たなマクロ&lt;code&gt;OUTCOME_ENABLE_LEGACY_SUPPORT_FOR&lt;/code&gt;。このマクロは、新しいバージョンのOutcomeを使用する際に、古い名前で新たな機能を使用する別名を有効にすることができる&lt;/li&gt;
-&lt;li&gt;コンセプトをCamelCaseからsnake_caseにした。Outcomeが最初に実装されたとき、C++20はCamelCaseスタイルのコンセプトが入ると考えられていた。これはC++20のリリース前に変更され、Outcomeもそれに合わせて名前を変更した。互換用の別名が提供されるため、Outcome v2.1については既存コードを破壊しない。ただし、Outcome v2.2でコンパイルするコードについては、&lt;code&gt;OUTCOME_ENABLE_LEGACY_SUPPORT_FOR&lt;/code&gt;を&lt;code&gt;210&lt;/code&gt;以下に設定しない限りはアップグレードが必要になる&lt;/li&gt;
-&lt;li&gt;コンセプトを&lt;code&gt;OUTCOME_V2_NAMESPACE::concepts&lt;/code&gt;名前空間に置くようにした。以前までコンセプトは&lt;code&gt;convert&lt;/code&gt;名前空間にあったが、現在は専用の名前空間にある&lt;/li&gt;
-&lt;li&gt;新たなコンセプト&lt;code&gt;basic_result&amp;lt;T&amp;gt;&lt;/code&gt;と&lt;code&gt;basic_outcome&amp;lt;T&amp;gt;&lt;/code&gt;を追加。エンドユーザーにとって&lt;code&gt;is_basic_result &amp;lt;T&amp;gt;&lt;/code&gt;と&lt;code&gt;value_or_error &amp;lt;T&amp;gt;&lt;/code&gt;の間に役立たないギャップがあったため、&lt;code&gt;basic_result&lt;/code&gt;にマッチするコンセプトが求められていた&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;TRY&lt;/code&gt;操作は、Outcome v2.2以降では動作が異なる。&lt;code&gt;OUTCOME_TRY()&lt;/code&gt;を使用するコードが破壊的変更される大きな変更になる。コードをアップグレードする正規表現が、Outcome v2.1からv2.2への変更リストにある&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/ned14/outcome/issues/224&#34; target=&#34;_blank&#34;&gt;GitHub #224&lt;/a&gt; Xcode 11.4 (現在の最新) に含まれるclang Appleには&lt;code&gt;noexcept(std::is_constructible&amp;lt;T, void&amp;gt;)&lt;/code&gt;がコンパイルに失敗する問題を修正したパッチが適用されていない。このパッチは数年前に提出した。Appleがclangを修正するのを諦めて、Outcomeにワークアラウンドを追加した&lt;/li&gt;
-&lt;li&gt;値をもたないポリシークラスから、予備ストレージ (spare storage) を使用できなかった。当時このコードを書いたときは頭がおかしくなっており、予備ストレージAPIには間違ったプロトタイプがあり、ポリシークラス内での作業を妨げていた。申し訳ない&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/17&#34; target=&#34;_blank&#34;&gt;GitHub #17&lt;/a&gt; 内部で&lt;code&gt;boost::type_erasure::any&lt;/code&gt;と&lt;code&gt;boost::any&lt;/code&gt;があいまいになってしまう問題を修正&lt;/li&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#polygon&#34; id=&#34;polygon&#34;&gt;Polygon&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;以下の機能をC++20向けに修正 (Glen Fernandes氏)：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;event_comparison_type&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vertex_equality_predicate_type&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;voronoi_predicates&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#smart-ptr&#34; id=&#34;smart-ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;weak_ptr&lt;/code&gt;, &lt;code&gt;local_shared_ptr&lt;/code&gt;に&lt;code&gt;owner_equals&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;weak_ptr&lt;/code&gt;に&lt;code&gt;owner_hash_value&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;owner_hash&lt;/code&gt;に&lt;code&gt;owner_equal_to&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;local_shared_ptr&lt;/code&gt;に&lt;code&gt;std::hash&lt;/code&gt;の特殊化を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;weak_ptr&lt;/code&gt;に、&lt;code&gt;boost::hash&lt;/code&gt;サポートと、&lt;code&gt;std::hash&lt;/code&gt;と&lt;code&gt;std::equal_to&lt;/code&gt;の特殊化を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;operator bool()&lt;/code&gt;が&lt;code&gt;value() != 0&lt;/code&gt;の代わりに&lt;code&gt;failed()&lt;/code&gt;を返すようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#type-traits&#34; id=&#34;type-traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;以下を実装 (Glen Fernandes氏) ：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;conjunction&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;disjunction&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;negation&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_trivially_copyable&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_scoped_enum&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_unscoped_enum&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;visit&lt;/code&gt;に派生型のサポートを追加&lt;/li&gt;
-&lt;li&gt;多く (数百) の候補型を指定した場合のコンパイルパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;visit&amp;lt;R&amp;gt;&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#wave&#34; id=&#34;wave&#34;&gt;Wave&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/75&#34; target=&#34;_blank&#34;&gt;GitHub #75&lt;/a&gt; &lt;code&gt;__VA_OPT__&lt;/code&gt;を含む可変引数関係のC++20機能をを実装&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/102&#34; target=&#34;_blank&#34;&gt;GitHUb #102&lt;/a&gt; &lt;code&gt;__has_include&lt;/code&gt;を実装&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/97&#34; target=&#34;_blank&#34;&gt;GitHub #97&lt;/a&gt; Boost自体で役立つ新たなサンプルとして&lt;code&gt;check_macro_naming&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/72&#34; target=&#34;_blank&#34;&gt;GitHub #72&lt;/a&gt; C++20での&lt;code&gt;std::allocator&lt;/code&gt;クラスのメンバが削除されたことにともない、コンパイル問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/79&#34; target=&#34;_blank&#34;&gt;GitHub #79&lt;/a&gt; Xpressiveのlexerと&lt;code&gt;token_statistics&lt;/code&gt;のサンプルを修復&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/78&#34; target=&#34;_blank&#34;&gt;GitHub #78&lt;/a&gt; lexertl lexerを修復&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/87&#34; target=&#34;_blank&#34;&gt;GitHUb #87&lt;/a&gt; 事前定義マクロに対してもフックが実行されるようにした&lt;/li&gt;
-&lt;li&gt;いくつかの小さなバグを修正&lt;/li&gt;
-&lt;li&gt;C++98/03のサポートを非推奨にした。バージョン1.77でで削除する予定&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#yap&#34; id=&#34;yap&#34;&gt;YAP&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;プレースホルダーのコンパイルエラーを修正。一般的なケースで動作するようになり、とくに&lt;code&gt;yap::print()&lt;/code&gt;で使用できる&lt;/li&gt;
-&lt;li&gt;YAPのすべてをconstexprにした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;yap::print()&lt;/code&gt;で、正しい値カテゴリの出力を修正&lt;/li&gt;
-&lt;li&gt;ドキュメントを明確化&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : アンカーを修正</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>a0996a2aca9db1a526b3339901c89337b82b22e1:document/version/1_74_0.md</id>
-      <updated>2020-07-06T23:10:19+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.74.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_74_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_74_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_74_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_74_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#bimap&#34;&gt;Bimap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#config&#34;&gt;Config&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#endian&#34;&gt;Endian&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#format&#34;&gt;Format&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#heap&#34;&gt;Heap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#mp11&#34;&gt;Mp11&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#nowide&#34;&gt;Nowide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#polygon&#34;&gt;Polygon&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#smart-ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#type-traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#wave&#34;&gt;Wave&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#yap&#34;&gt;YAP&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#bimap&#34; id=&#34;bimap&#34;&gt;Bimap&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;アロケータを正しく使用するよう修正 (C++20でのコンパイルを修正) (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#config&#34; id=&#34;config&#34;&gt;Config&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BOOST_NO_CXX11_OVERRIDE&lt;/code&gt;と&lt;code&gt;BOOST_OVERRIDE&lt;/code&gt;を実装 (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#core&#34; id=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;allocator_traits&lt;/code&gt;の代わりに個別のトレイトと関数に対する仕組みとして、アロケータアクセスのユーティリティを実装 (Glen Fernandes氏)。これらは、使用可能な場合はC++11のアロケータモデルをサポートし、C++98互換へのフォールバックを提供する。この機能は現在、以下のライブラリで使用している：&lt;ul&gt;
-&lt;li&gt;Circular_Buffer&lt;/li&gt;
-&lt;li&gt;Wave&lt;/li&gt;
-&lt;li&gt;Lockfree&lt;/li&gt;
-&lt;li&gt;Heap&lt;/li&gt;
-&lt;li&gt;Smart_Ptr&lt;/li&gt;
-&lt;li&gt;Dynamic_Bitset&lt;/li&gt;
-&lt;li&gt;Format&lt;/li&gt;
-&lt;li&gt;Bimap&lt;/li&gt;
-&lt;li&gt;その他&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#endian&#34; id=&#34;endian&#34;&gt;Endian&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse&lt;/code&gt;でのスコープ付き列挙型を有効にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse_inplace&lt;/code&gt;での&lt;code&gt;bool&lt;/code&gt;, &lt;code&gt;enum&lt;/code&gt;, &lt;code&gt;float&lt;/code&gt;, &lt;code&gt;double&lt;/code&gt;を有効にした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;endian_reverse_inplace&lt;/code&gt;に配列のオーバーロードを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#flyweight&#34; id=&#34;flyweight&#34;&gt;Flyweight&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#format&#34; id=&#34;format&#34;&gt;Format&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;アロケータを正しく使用するよう修正 (C++20でのコンパイルを修正) (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#heap&#34; id=&#34;heap&#34;&gt;Heap&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;skew_heap&lt;/code&gt;のtop nodeの破棄が正しく行われるよう修正 (Glen Fernandes氏)&lt;/li&gt;
-&lt;li&gt;アロケータを正しくかつシンプルに使用するよう修正 (Glen Fernandes氏)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#mp11&#34; id=&#34;mp11&#34;&gt;Mp11&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;大きい&lt;code&gt;N&lt;/code&gt;での&lt;code&gt;mp_with_index&amp;lt;N&amp;gt;&lt;/code&gt;のコンパイルパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;tuple_transform&lt;/code&gt;を追加 (Hans Dembinski氏によるコントリビュート)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#multi-index&#34; id=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/32&#34; target=&#34;_blank&#34;&gt;GitHub #32&lt;/a&gt; 読み書きのキー抽出器 (key extractors) に関するドキュメントを明確化&lt;/li&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#nowide&#34; id=&#34;nowide&#34;&gt;Nowide&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;このライブラリは、C++11準拠のコンパイラと標準ライブラリを要求するようになった&lt;/li&gt;
-&lt;li&gt;LFS: 基礎システムがサポートする2GBを超えるファイルのサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::nowide::utf&lt;/code&gt;名前空間で、ジェネリックなUTF変換関数を使用可能にした&lt;/li&gt;
-&lt;li&gt;UTF-8パスでの&lt;code&gt;stat&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/17&#34; target=&#34;_blank&#34;&gt;GitHub #17&lt;/a&gt; 内部で&lt;code&gt;boost::type_erasure::any&lt;/code&gt;と&lt;code&gt;boost::any&lt;/code&gt;があいまいになってしまう問題を修正&lt;/li&gt;
-&lt;li&gt;メンテナンス作業&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#polygon&#34; id=&#34;polygon&#34;&gt;Polygon&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;以下の機能をC++20向けに修正 (Glen Fernandes氏)：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;event_comparison_type&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;vertex_equality_predicate_type&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;voronoi_predicates&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#smart-ptr&#34; id=&#34;smart-ptr&#34;&gt;SmartPtr&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;weak_ptr&lt;/code&gt;, &lt;code&gt;local_shared_ptr&lt;/code&gt;に&lt;code&gt;owner_equals&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;weak_ptr&lt;/code&gt;に&lt;code&gt;owner_hash_value&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;owner_hash&lt;/code&gt;に&lt;code&gt;owner_equal_to&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;shared_ptr&lt;/code&gt;, &lt;code&gt;local_shared_ptr&lt;/code&gt;に&lt;code&gt;std::hash&lt;/code&gt;の特殊化を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;weak_ptr&lt;/code&gt;に、&lt;code&gt;boost::hash&lt;/code&gt;サポートと、&lt;code&gt;std::hash&lt;/code&gt;と&lt;code&gt;std::equal_to&lt;/code&gt;の特殊化を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;operator bool()&lt;/code&gt;が&lt;code&gt;value() != 0&lt;/code&gt;の代わりに&lt;code&gt;failed()&lt;/code&gt;を返すようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#type-traits&#34; id=&#34;type-traits&#34;&gt;TypeTraits&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;以下を実装 (Glen Fernandes氏) ：&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;conjunction&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;disjunction&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;negation&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_trivially_copyable&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_scoped_enum&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;is_unscoped_enum&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;visit&lt;/code&gt;に派生型のサポートを追加&lt;/li&gt;
-&lt;li&gt;多く (数百) の候補型を指定した場合のコンパイルパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;visit&amp;lt;R&amp;gt;&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#wave&#34; id=&#34;wave&#34;&gt;Wave&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/75&#34; target=&#34;_blank&#34;&gt;GitHub #75&lt;/a&gt; &lt;code&gt;__VA_OPT__&lt;/code&gt;を含む可変引数関係のC++20機能をを実装&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/102&#34; target=&#34;_blank&#34;&gt;GitHUb #102&lt;/a&gt; &lt;code&gt;__has_include&lt;/code&gt;を実装&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/97&#34; target=&#34;_blank&#34;&gt;GitHub #97&lt;/a&gt; Boost自体で役立つ新たなサンプルとして&lt;code&gt;check_macro_naming&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/72&#34; target=&#34;_blank&#34;&gt;GitHub #72&lt;/a&gt; C++20での&lt;code&gt;std::allocator&lt;/code&gt;クラスのメンバが削除されたことにともない、コンパイル問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/79&#34; target=&#34;_blank&#34;&gt;GitHub #79&lt;/a&gt; Xpressiveのlexerと&lt;code&gt;token_statistics&lt;/code&gt;のサンプルを修復&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/78&#34; target=&#34;_blank&#34;&gt;GitHub #78&lt;/a&gt; lexertl lexerを修復&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/wave/pull/87&#34; target=&#34;_blank&#34;&gt;GitHUb #87&lt;/a&gt; 事前定義マクロに対してもフックが実行されるようにした&lt;/li&gt;
-&lt;li&gt;いくつかの小さなバグを修正&lt;/li&gt;
-&lt;li&gt;C++98/03のサポートを非推奨にした。バージョン1.77でで削除する予定&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html#yap&#34; id=&#34;yap&#34;&gt;YAP&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;プレースホルダーのコンパイルエラーを修正。一般的なケースで動作するようになり、とくに&lt;code&gt;yap::print()&lt;/code&gt;で使用できる&lt;/li&gt;
-&lt;li&gt;YAPのすべてをconstexprにした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;yap::print()&lt;/code&gt;で、正しい値カテゴリの出力を修正&lt;/li&gt;
-&lt;li&gt;ドキュメントを明確化&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
 &lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
