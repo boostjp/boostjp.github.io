@@ -2,9 +2,54 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-07-21T14:33:58.550149</updated>
-  <id>7f2a71f9-3fe2-4eff-b734-0ca804634cee</id>
+  <updated>2020-07-22T05:18:04.615494</updated>
+  <id>b42eb362-64d8-4bbe-87c5-d23db4eca811</id>
 
+  
+    <entry>
+      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Logを追加 (close #498)</title>
+      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
+      <id>2ee1ab322c17740990b149b468b92de2b9d06e53:document/version/1_74_0.md</id>
+      <updated>2020-07-22T14:16:12+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
+index b521569..003a183 100644
+--- a/document/version/1_74_0.md
++++ b/document/version/1_74_0.md
+@@ -40,6 +40,7 @@
+ - [Integer](#integer)
+ - [Iterator](#iterator)
+ - [LexicalCast](#lexical-cast)
++- [Log](#log)
+ - [Mp11](#mp11)
+ - [Multi-index](#multi-index)
+ - [Nowide](#nowide)
+@@ -351,6 +352,18 @@
+ - Embarcaderoコンパイラ向けの修正 (Edward Diener氏に感謝)
+ 
+ 
++## &amp;lt;a id=&amp;#34;log&amp;#34; href=&amp;#34;#log&amp;#34;&amp;gt;Log&amp;lt;/a&amp;gt;
++
++- バグ修正
++    - [GitHub #119](https://github.com/boostorg/log/issues/119) syslog sink backendが、ユーザーが設定したローカルアドレスとターゲットアドレスのIPバージョンを検証するようにした。そのアドレスは、sink backendを構築する際の名前付きパラメータ`ip_version`で指定されたものと同じIPバージョンを持っていなければならない (デフォルトはIPv4と仮定される)。ホスト名解決の結果としてアドレスが取得される場合は、一致するIPバージョンのアドレスのみが考慮される
++- 新機能
++    - さまざまなコンポーネントのムーブコンストラクタとムーブ代入演算子を`noexcept`にした
++    - 範囲の要素を出力するために使用できる`range_manip`ストリームマニピュレータを追加。オプションとして区切り文字を指定できる
++    - タプルおよびその他あらゆる異種混合シーケンス (構造体とか) の要素を出力するために使用できる`tuple_manip`ストリームマニピュレータを追加。オプションとして区切り文字を指定できる
++    - optionalに表現可能な値を出力するために使用できる`optional_manip`ストリームマニピュレータを追加
++- 詳細は[Changelog](https://www.boost.org/doc/libs/release/libs/log/doc/html/log/changelog.html)を参照
++
++
+ ## &amp;lt;a id=&amp;#34;mp11&amp;#34; href=&amp;#34;#mp11&amp;#34;&amp;gt;Mp11&amp;lt;/a&amp;gt;
+ 
+ - 大きい`N`での`mp_with_index&amp;lt;N&amp;gt;`のコンパイルパフォーマンスを改善
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Filesystemを追加 (close #495)</title>
@@ -192,60 +237,6 @@ index 1e03eb4..c4843ba 100644
  ## &amp;lt;a id=&amp;#34;lexical-cast&amp;#34; href=&amp;#34;#lexical-cast&amp;#34;&amp;gt;LexicalCast&amp;lt;/a&amp;gt;
  
  - [GitHub #35](https://github.com/boostorg/lexical_cast/pull/35), [GitHub #34](https://github.com/boostorg/lexical_cast/issues/34) `override`が不足していることによる警告を修正 (EugeneZelenko氏に感謝)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : GILを追加 (close #488)</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>f569ea9105befc9ff79bf02fe1b545430db5fa3e:document/version/1_74_0.md</id>
-      <updated>2020-07-15T13:01:12+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
-index 3f4e93b..1e03eb4 100644
---- a/document/version/1_74_0.md
-+++ b/document/version/1_74_0.md
-@@ -33,6 +33,7 @@
- - [Endian](#endian)
- - [Flyweight](#flyweight)
- - [Format](#format)
-+- [GIL](#gil)
- - [Heap](#heap)
- - [LexicalCast](#lexical-cast)
- - [Mp11](#mp11)
-@@ -251,6 +252,27 @@
- - アロケータを正しく使用するよう修正 (C++20でのコンパイルを修正) (Glen Fernandes氏)
- 
- 
-+## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
-+
-+- 追加
-+    - [GitHub #486](https://github.com/boostorg/gil/pull/486) 右辺値参照から`any_image`を初期化する新たなコンストラクタを追加
-+    - [GitHub #489](https://github.com/boostorg/gil/pull/489) reverse `kernel_2d`のメカニズムを実装
-+- 変更
-+    - [GitHub #474](https://github.com/boostorg/gil/pull/474) Boost.VariantからBoost.Variant2に置き換え
-+    - [GitHub #491](https://github.com/boostorg/gil/pull/491) `apply_operation`から`visit`に完全転送するようにした
-+- 削除
-+    - Boost.Variantへの依存を削除
-+- 修正
-+    - [GitHub #470](https://github.com/boostorg/gil/pull/470) RGB8からCMYK32からの不正な変換によってオーバーフローが発生していた問題を修正
-+    - [GitHUb #477](https://github.com/boostorg/gil/pull/477) 他のテンプレートパラメータをもつ`image`から`image`への変換を修正
-+    - [GitHub #481](https://github.com/boostorg/gil/pull/481) 「`plane_view_t`はクラスでも名前空間でもない」というエラーを修正
-+    - [GitHub #487](https://github.com/boostorg/gil/pull/487) 次元として`point&amp;lt;std::ptrdiff_t&amp;gt;`を使用する`interleaved_view`ファクトリを修正
-+    - [GitHub #494](https://github.com/boostorg/gil/pull/494) チュートリアルのドキュメントでMPLの代わりにMp11を使用するよう修正
-+    - [GitHub #502](https://github.com/boostorg/gil/pull/502) `numeric/kernel.hpp`内での不足ヘッダを修正して自己完結させた
-+- 謝辞
-+    - Samuel Debionne, Pranam Lashkari, Mateusz Loskot, Debabrata Mandal
-+
-+
- ## &amp;lt;a id=&amp;#34;heap&amp;#34; href=&amp;#34;#heap&amp;#34;&amp;gt;Heap&amp;lt;/a&amp;gt;
- 
- - `skew_heap`のtop nodeの破棄が正しく行われるよう修正 (Glen Fernandes氏)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
