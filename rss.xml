@@ -2,9 +2,40 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-07-27T14:34:12.852055</updated>
-  <id>1cf66ba5-5c84-4e2f-9d0d-6777a222cbda</id>
+  <updated>2020-07-28T04:55:30.843719</updated>
+  <id>b5402a60-5ed2-48ec-98db-631682eb9006</id>
 
+  
+    <entry>
+      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : GILの変更に対応 (close #488)</title>
+      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
+      <id>f610dd17ca27aa8936b85bae00a1e5113443d70a:document/version/1_74_0.md</id>
+      <updated>2020-07-28T13:53:40+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
+index 003a183..3998473 100644
+--- a/document/version/1_74_0.md
++++ b/document/version/1_74_0.md
+@@ -313,10 +313,10 @@
+     - [GitHub #486](https://github.com/boostorg/gil/pull/486) 右辺値参照から`any_image`を初期化する新たなコンストラクタを追加
+     - [GitHub #489](https://github.com/boostorg/gil/pull/489) reverse `kernel_2d`のメカニズムを実装
+ - 変更
+-    - [GitHub #474](https://github.com/boostorg/gil/pull/474) Boost.VariantからBoost.Variant2に置き換え
++    - &amp;lt;span style=&amp;#34;color:red;&amp;#34;&amp;gt;**破壊的変更**&amp;lt;/span&amp;gt; [GitHub #474](https://github.com/boostorg/gil/pull/474) Boost.VariantからBoost.Variant2に置き換え、Boost.MPLを使用している部分を完全になくした ([GitHub #274](https://github.com/boostorg/gil/pull/274) Boost 1.72.0での不足していた対応)
+     - [GitHub #491](https://github.com/boostorg/gil/pull/491) `apply_operation`から`visit`に完全転送するようにした
+ - 削除
+-    - Boost.Variantへの依存を削除
++    - &amp;lt;span style=&amp;#34;color:red;&amp;#34;&amp;gt;**破壊的変更**&amp;lt;/span&amp;gt; Boost.Variantへの依存を削除
+ - 修正
+     - [GitHub #470](https://github.com/boostorg/gil/pull/470) RGB8からCMYK32からの不正な変換によってオーバーフローが発生していた問題を修正
+     - [GitHUb #477](https://github.com/boostorg/gil/pull/477) 他のテンプレートパラメータをもつ`image`から`image`への変換を修正
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Logを追加 (close #498)</title>
@@ -193,45 +224,6 @@ index c4843ba..7d36bd4 100644
 +
 +- [GitHub #51](https://github.com/boostorg/iterator/pull/51) `boost/function_output_iterator.hpp`ヘッダを非推奨化。ユーザーは`boost/iterator/function_output_iterator.hpp`に置き換える必要がある
 +- [GitHub #55](https://github.com/boostorg/iterator/pull/55) Embarcaderoコンパイラのサポートを改善
-+
-+
- ## &amp;lt;a id=&amp;#34;lexical-cast&amp;#34; href=&amp;#34;#lexical-cast&amp;#34;&amp;gt;LexicalCast&amp;lt;/a&amp;gt;
- 
- - [GitHub #35](https://github.com/boostorg/lexical_cast/pull/35), [GitHub #34](https://github.com/boostorg/lexical_cast/issues/34) `override`が不足していることによる警告を修正 (EugeneZelenko氏に感謝)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Integerを追加 (close #496)</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>8007645e2a3397558b18bbed747c88f1ec11374d:document/version/1_74_0.md</id>
-      <updated>2020-07-15T13:03:34+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
-index 1e03eb4..c4843ba 100644
---- a/document/version/1_74_0.md
-+++ b/document/version/1_74_0.md
-@@ -35,6 +35,7 @@
- - [Format](#format)
- - [GIL](#gil)
- - [Heap](#heap)
-+- [Integer](#integer)
- - [LexicalCast](#lexical-cast)
- - [Mp11](#mp11)
- - [Multi-index](#multi-index)
-@@ -279,6 +280,12 @@
- - アロケータを正しくかつシンプルに使用するよう修正 (Glen Fernandes氏)
- 
- 
-+## &amp;lt;a id=&amp;#34;integer&amp;#34; href=&amp;#34;#integer&amp;#34;&amp;gt;Integer&amp;lt;/a&amp;gt;
-+
-+- clang 10のC++20モードでの`gcd`のコンパイルエラーを修正
-+- [GitHub #21](https://github.com/boostorg/integer/pull/21) Embarcaderoコンパイラのサポートを改善
 +
 +
  ## &amp;lt;a id=&amp;#34;lexical-cast&amp;#34; href=&amp;#34;#lexical-cast&amp;#34;&amp;gt;LexicalCast&amp;lt;/a&amp;gt;
