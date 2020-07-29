@@ -2,9 +2,36 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-07-28T14:33:59.139595</updated>
-  <id>5379a810-c585-4308-aa25-9a7485664763</id>
+  <updated>2020-07-29T05:12:40.035272</updated>
+  <id>0b083e9a-c51f-4594-8035-4e0cf0f7eed5</id>
 
+  
+    <entry>
+      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Filesystemの追加分に対応 (close #495)</title>
+      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
+      <id>1b741ec4e2abc98eec2a63627b796a6c1d4693d1:document/version/1_74_0.md</id>
+      <updated>2020-07-29T14:10:54+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
+index 3998473..3544df3 100644
+--- a/document/version/1_74_0.md
++++ b/document/version/1_74_0.md
+@@ -294,7 +294,7 @@
+ - [**追加**] [GitHub #144](https://github.com/boostorg/filesystem/pull/144) [WASI](https://wasi.dev/)プラットフォームの互換性を改善
+ - [**追加**] [GitHub #130](https://github.com/boostorg/filesystem/pull/130) Embarcaderoコンパイラのサポートを改善
+ - [**追加**] `getrandom` (Linux), `arc4random_buf` (OpenBSD/FreeBSD/CloudABI), BCrypt (Windows) システムAPI向けの`unique_path`の実装を追加
+-
++- [**非推奨化**] MSVC互換のコンパイラを使用したWindowsのシステムライブラリに対する自動リンクを非推奨とし、将来のリリースから削除することとなった。これは、Boost.Filesystemの静的ライブラリ (static library) をリンクしているユーザーに影響がある。ユーザーは、Boost.Filesystemの共有ライブラリ (shared library) を使用するようプロジェクトのビルドシステムを更新するか、リンカーのコマンドラインでBoost.Filesystemの依存関係を明示的に指定することを推奨する。Boost.Filesystemの共有ライブラリを使用しているユーザーには影響しない
+ 
+ 
+ ## &amp;lt;a id=&amp;#34;flyweight&amp;#34; href=&amp;#34;#flyweight&amp;#34;&amp;gt;Flyweight&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : GILの変更に対応 (close #488)</title>
@@ -190,45 +217,6 @@ index 7d36bd4..21c51c0 100644
  ## &amp;lt;a id=&amp;#34;beast&amp;#34; href=&amp;#34;#beast&amp;#34;&amp;gt;Beast&amp;lt;/a&amp;gt;
  
  - AsioのAPIが変更された。詳細はAsioのリリースノートを参照
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Iteratorを追加 (close #497)</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>2b379304b0068d84f4f594dad0722f1432b7ad27:document/version/1_74_0.md</id>
-      <updated>2020-07-15T13:06:05+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
-index c4843ba..7d36bd4 100644
---- a/document/version/1_74_0.md
-+++ b/document/version/1_74_0.md
-@@ -36,6 +36,7 @@
- - [GIL](#gil)
- - [Heap](#heap)
- - [Integer](#integer)
-+- [Iterator](#iterator)
- - [LexicalCast](#lexical-cast)
- - [Mp11](#mp11)
- - [Multi-index](#multi-index)
-@@ -286,6 +287,12 @@
- - [GitHub #21](https://github.com/boostorg/integer/pull/21) Embarcaderoコンパイラのサポートを改善
- 
- 
-+## &amp;lt;a id=&amp;#34;iterator&amp;#34; href=&amp;#34;#iterator&amp;#34;&amp;gt;Iterator&amp;lt;/a&amp;gt;
-+
-+- [GitHub #51](https://github.com/boostorg/iterator/pull/51) `boost/function_output_iterator.hpp`ヘッダを非推奨化。ユーザーは`boost/iterator/function_output_iterator.hpp`に置き換える必要がある
-+- [GitHub #55](https://github.com/boostorg/iterator/pull/55) Embarcaderoコンパイラのサポートを改善
-+
-+
- ## &amp;lt;a id=&amp;#34;lexical-cast&amp;#34; href=&amp;#34;#lexical-cast&amp;#34;&amp;gt;LexicalCast&amp;lt;/a&amp;gt;
- 
- - [GitHub #35](https://github.com/boostorg/lexical_cast/pull/35), [GitHub #34](https://github.com/boostorg/lexical_cast/issues/34) `override`が不足していることによる警告を修正 (EugeneZelenko氏に感謝)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
