@@ -2,9 +2,146 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-11-14T06:57:31.202548</updated>
-  <id>f6e0e7ce-39f1-4131-a923-187dbcd39d0f</id>
+  <updated>2020-11-14T07:20:12.900851</updated>
+  <id>d15f532d-41d0-4496-8589-78533fa7ad14</id>
 
+  
+    <entry>
+      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Containerを追加 (close #502)</title>
+      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
+      <id>bd483045be6655e2227b5aeb085fc345bfcda67b:document/version/1_75_0.md</id>
+      <updated>2020-11-14T16:18:17+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.75.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_75_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_75_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_75_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_75_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.boost.org/libs/json/&#34; target=&#34;_blank&#34;&gt;JSON&lt;/a&gt; C++11でのJSONの解析、シリアライズ、DOMのライブラリ (作者Vinnie FalcoとKrystian Stasiowski)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.boost.org/libs/leaf/&#34; target=&#34;_blank&#34;&gt;LEAF&lt;/a&gt; C++11での軽量なエラーハンドリングライブラリ (作者Emil Dotchevski)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.boost.org/libs/pfr/&#34; target=&#34;_blank&#34;&gt;PFR&lt;/a&gt; ユーザー定義型に対するマクロやボイラープレートコードを必要としないリフレクションのライブラリ (作者Antony Polukhin)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html#container&#34;&gt;Container&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html#atomic&#34; id=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;内部のロックプールで使用するアドレス探索アルゴリズムのSSE2とSSE4.1版を実装した。これにより、競合が激しいケースでの待機 (wait) と通知 (notify) の操作がパフォーマンス向上する可能性がある&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html#container&#34; id=&#34;container&#34;&gt;Container&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;新たな&lt;code&gt;devector&lt;/code&gt;コンテナを追加。double-ended (両端) なvectorの実装であり、後方だけでなく前方にもcapacityがあり、先頭に償却定数時間で要素の挿入ができる&lt;/li&gt;
+&lt;li&gt;バグ修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/152&#34; target=&#34;_blank&#34;&gt;GitHub #152&lt;/a&gt; ツリーベースのコンテナで、ムーブのみできる要素型のムーブ操作がコンパイルできない問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/156&#34; target=&#34;_blank&#34;&gt;GitHub #156&lt;/a&gt; &lt;code&gt;vector&lt;/code&gt;にもたせるアロケータとして16ビットの&lt;code&gt;difference_type&lt;/code&gt;を設定するとコンパイルできない問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/157&#34; target=&#34;_blank&#34;&gt;GitHub #157&lt;/a&gt; 不足していたインクルードを追加&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/159&#34; target=&#34;_blank&#34;&gt;GitHub #159&lt;/a&gt; &lt;code&gt;pmr::monotonic_buffer_resource&lt;/code&gt;で一度に大きなメモリアロケートを行うとクラッシュする問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/160&#34; target=&#34;_blank&#34;&gt;GitHub #160&lt;/a&gt; &lt;code&gt;uses_allocator&lt;/code&gt;には&lt;code&gt;remove_cvref_t&lt;/code&gt;した型を渡す必要があった&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/162&#34; target=&#34;_blank&#34;&gt;GitHub #162&lt;/a&gt; x86のMSVCで&lt;code&gt;small_vector&lt;/code&gt;を値渡しするとクラッシュする問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/161&#34; target=&#34;_blank&#34;&gt;GitHUb #161&lt;/a&gt; コンストラクタ&lt;code&gt;polymorphic_allocator(memory_resource*)&lt;/code&gt;にヌルポインタを渡すとデフォルトのメモリリソースが使われる非標準の拡張を削除&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/163&#34; target=&#34;_blank&#34;&gt;GitHub #163&lt;/a&gt; &lt;code&gt;small_vector&lt;/code&gt;を&lt;code&gt;container_rebind&lt;/code&gt;できなかった問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/165&#34; target=&#34;_blank&#34;&gt;GitHub #165&lt;/a&gt; &lt;code&gt;memory_resource&lt;/code&gt;のインラインメンバが共有ライブラリでリンクエラーになる問題を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/pull/166&#34; target=&#34;_blank&#34;&gt;GitHub #166&lt;/a&gt; ヘッダに記載されているcopyrightの文字エンコーディングを修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/167&#34; target=&#34;_blank&#34;&gt;GitHub #167&lt;/a&gt; GCC 4.4で起きていた&#34;error: the address of &#39;msg&#39; will always evaluate as &#39;true&#39; warning&#34;という警告を修正&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/container/issues/169&#34; target=&#34;_blank&#34;&gt;GitHub #169&lt;/a&gt; clang11で&lt;code&gt;dlmalloc_ext_2_8_6.c&lt;/code&gt;をビルドするとfloodで警告がでる問題を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html#three&#34; id=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : 新ライブラリを追加 (close #516)</title>
@@ -475,33 +612,6 @@ index 3544df3..35f0df3 100644
  ## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
  
  - 追加
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.74.0リリースノート -- 1.74.0リリースノート : Filesystemの追加分に対応 (close #495)</title>
-      <link href="https://boostjp.github.io/document/version/1_74_0.html"/>
-      <id>1b741ec4e2abc98eec2a63627b796a6c1d4693d1:document/version/1_74_0.md</id>
-      <updated>2020-07-29T14:10:54+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_74_0.md b/document/version/1_74_0.md
-index 3998473..3544df3 100644
---- a/document/version/1_74_0.md
-+++ b/document/version/1_74_0.md
-@@ -294,7 +294,7 @@
- - [**追加**] [GitHub #144](https://github.com/boostorg/filesystem/pull/144) [WASI](https://wasi.dev/)プラットフォームの互換性を改善
- - [**追加**] [GitHub #130](https://github.com/boostorg/filesystem/pull/130) Embarcaderoコンパイラのサポートを改善
- - [**追加**] `getrandom` (Linux), `arc4random_buf` (OpenBSD/FreeBSD/CloudABI), BCrypt (Windows) システムAPI向けの`unique_path`の実装を追加
--
-+- [**非推奨化**] MSVC互換のコンパイラを使用したWindowsのシステムライブラリに対する自動リンクを非推奨とし、将来のリリースから削除することとなった。これは、Boost.Filesystemの静的ライブラリ (static library) をリンクしているユーザーに影響がある。ユーザーは、Boost.Filesystemの共有ライブラリ (shared library) を使用するようプロジェクトのビルドシステムを更新するか、リンカーのコマンドラインでBoost.Filesystemの依存関係を明示的に指定することを推奨する。Boost.Filesystemの共有ライブラリを使用しているユーザーには影響しない
- 
- 
- ## &amp;lt;a id=&amp;#34;flyweight&amp;#34; href=&amp;#34;#flyweight&amp;#34;&amp;gt;Flyweight&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
