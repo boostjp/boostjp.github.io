@@ -2,9 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2020-12-08T14:38:06.024630</updated>
-  <id>67b79931-28d9-4d5a-96c4-dea08a95de5b</id>
+  <updated>2020-12-09T07:23:27.346835</updated>
+  <id>6f8009e4-fc3c-4b96-9b8e-8b7544a821d9</id>
 
+  
+    <entry>
+      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Boost.OperatorsとC++20の非互換性について記載 (close #526)</title>
+      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
+      <id>436c44c1d241af33accf7ccd9db1e29f2295108e:document/version/1_75_0.md</id>
+      <updated>2020-12-09T16:20:23+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
+index af88d1d..1afdaa6 100644
+--- a/document/version/1_75_0.md
++++ b/document/version/1_75_0.md
+@@ -16,6 +16,10 @@
+ - 「[Modularized Boost（GitHubへ移行したリポジトリ）を使用する](http://dev.activebasic.com/egtra/2013/12/03/620/)」
+ 
+ 
++## 既知の問題
++- Boost.Operatorsは現在、C++20コンパイラと互換性がない。比較演算子が呼ばれると実行時に無限再帰か無限ループが起きる場合がある。この問題は、C++20で導入された演算子の書き換え動作が原因で発生する。回避策として、C++17以前の標準C++をターゲットにすることを推奨する。詳細は[GitHub Utility #65](https://github.com/boostorg/utility/issues/65)を参照
++
++
+ ## 新ライブラリ
+ 
+ - [JSON](https://www.boost.org/libs/json/) C++11でのJSONの解析、シリアライズ、DOMのライブラリ (作者Vinnie FalcoとKrystian Stasiowski)
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Asioの追加に対応 #521</title>
@@ -225,86 +254,6 @@ index 27afed2..2e626bd 100644
  ## &amp;lt;a id=&amp;#34;vmd&amp;#34; href=&amp;#34;#vmd&amp;#34;&amp;gt;VMD&amp;lt;/a&amp;gt;
  
  - VMDでの数値の構文解析が更新され、エンドユーザーがプリプロセッサライブラリの数値の制限 (最大値) を変更できるようにした。`BOOST_PP_LIMIT_MAG`によって最大値を指定できる
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Asioを追加 (close #521)</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>4f3ffd53b8e29fc0a44985b91ad568663435268d:document/version/1_75_0.md</id>
-      <updated>2020-12-01T15:41:45+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index 7a7cc23..27afed2 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -34,6 +34,7 @@
- 
- ## 更新ライブラリ
- 
-+- [Asio](#asio)
- - [Atomic](#atomic)
- - [Beast](#beast)
- - [Container](#container)
-@@ -54,6 +55,53 @@
- - [VMD](#vmd)
- - [Wave](#wave)
- 
-+
-+## &amp;lt;a id=&amp;#34;asio&amp;#34; href=&amp;#34;#asio&amp;#34;&amp;gt;Asio&amp;lt;/a&amp;gt;
-+
-+- WindowsでUNIXドメインソケットのサポートを有効化。Windows 10以降、UNIXドメインソケット (別名ローカルソケット) は`connect_pair`関数を除いて (`operation_not_supported`エラーになる) サポートされる
-+- `ip::basic_resolver`にexecutorから変換するコンストラクタと代入演算子を追加
-+- polymorphic executorと (非推奨の) ハンドラ呼び出しフックに互換性を追加
-+- 完了トークンアダプタ`experimental::as_single`を追加。これを使用することによって、完了ハンドラの引数をひとつに結合できるようになる。単一パラメータをもつ完了シグニチャの場合、引数はそのまま渡される。2つ以上のパラメータの場合、引数はタプルに結合される。`as_single`アダプタは、以下のように`use_awaitable`や構造化束縛と組み合わせて使用できる：
-+    ```cpp
-+    auto [e, n] = co_await socket.async_read_some(
-+      boost::asio::buffer(data), as_single(use_awaitable));
-+    ```
-+
-+    - また、以下のようにデフォルトの完了トークンとしても使用できる：
-+    ```cpp
-+    using default_token = as_single_t&amp;lt;use_awaitable_t&amp;lt;&amp;gt;&amp;gt;;
-+    using tcp_socket = default_token::as_default_on_t&amp;lt;tcp::socket&amp;gt;;
-+    // ...
-+    awaitable&amp;lt;void&amp;gt; do_read(tcp_socket socket)
-+    {
-+      // ...
-+      auto [e, n] = co_await socket.async_read_some(boost::asio::buffer(data));
-+      // ...
-+    }
-+    ```
-+
-+- `_POSIX_VERSION`を使用してサポート状況を検出することにより、`MSG_NOSIGNAL`がより多くのプラットフォームで動作するようサポートを追加
-+- Windowsでlibpthreadを使用してコンパイルする機能を追加
-+- Intel C++ Compilerのワークアラウンドを追加
-+- カスタムexecutorをもたないハンドラの検出と最適化をさらに追加
-+- Windows環境でのタイマーキャンセル時のロック集中を減らした
-+- パフォーマンスに測定可能な影響があったため、以前削除したヌルポインタチェックを復活させた
-+- `any_executor`をRTTIのない環境でビルドできるようサポートを修正
-+- `thread_pool`の単体テストがRTTIのない環境で動作するよう修正
-+- WindowsのClangでのC++20コルーチンの互換性を修正
-+- Windowsランタイムのいくつかの互換性問題を修正
-+- `asio::query`の追加によって起こったシャドウ名の警告を修正
-+- Linuxでの「logical ‘or’ of equal expressions」警告を修正
-+- switch文でのフォールスルー警告を修正
-+- 不足していた`push/pop_options.hpp`のインクルードを追加
-+- 「zero-as-null-pointer-constant (値ゼロをヌルポインタ定数として使用している)」警告を修正
-+- カンマ演算子の警告を修正
-+- selectリアクタがWindowsでどのようなときに使用されるのかを明確にするために、ドキュメントを更新
-+- `any_executor`の比較と変換で曖昧さが発生する可能性があった問題を修正
-+- MSVC 19.8での非実験的なC++20コルーチンの検出を追加
-+- uClibcとの互換性を修正
-+
-+
- ## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
- 
- - 内部のロックプールで使用するアドレス探索アルゴリズムのSSE2とSSE4.1版を実装した。これにより、競合が激しいケースでの待機 (wait) と通知 (notify) の操作がパフォーマンス向上する可能性がある
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
