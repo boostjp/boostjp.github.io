@@ -2,9 +2,47 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2021-02-02T14:44:51.755042</updated>
-  <id>b80cb59e-e5c1-452f-9b02-e31f0695f2c3</id>
+  <updated>2021-02-03T06:49:27.021776</updated>
+  <id>7a4d40cc-2768-4b13-b1c9-ae84ae092087</id>
 
+  
+    <entry>
+      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Geometryの注意書きを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
+      <id>3db981e161bcdb013580fb649fe95819b05f6dd9:document/version/1_75_0.md</id>
+      <updated>2021-02-03T15:47:29+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
+index 1afdaa6..756a6c1 100644
+--- a/document/version/1_75_0.md
++++ b/document/version/1_75_0.md
+@@ -44,6 +44,7 @@
+ - [Container](#container)
+ - [Endian](#endian)
+ - [Filesystem](#filesystem)
++- [Geometry](#geometry)
+ - [GIL](#gil)
+ - [Histogram](#histogram)
+ - [Interprocess](#interprocess)
+@@ -172,6 +173,11 @@
+ - [GitHub #167](https://github.com/boostorg/filesystem/issues/167) Windowsにおいて、`space()`が既存ファイルを識別できない場合に、エラーを返すようにした
+ 
+ 
++## &amp;lt;a id=&amp;#34;geometry&amp;#34; href=&amp;#34;#geometry&amp;#34;&amp;gt;Geometry&amp;lt;/a&amp;gt;
++
++- 警告 : 1.73.0で通知されたC++03の非推奨に続いて、1.75.0以降には優秀なC++14コンパイラが必要となる
++
++
+ ## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
+ 
+ - &amp;lt;span style=&amp;#34;color:red;&amp;#34;&amp;gt;**破壊的変更**&amp;lt;/span&amp;gt; 次のリリースでGCC 5のサポートを終了する予定。サポートするC++の下限バージョンもC++11からC++14に変更する
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Boost.OperatorsとC++20の非互換性について記載 (close #526)</title>
@@ -216,44 +254,6 @@ index 2e626bd..7e742f0 100644
  ## &amp;lt;a id=&amp;#34;system&amp;#34; href=&amp;#34;#system&amp;#34;&amp;gt;System&amp;lt;/a&amp;gt;
  
  - プラットフォーム固有のヘッダ`windows_error.hpp`, `linux_error.hpp`, `cygwin_error.hpp`を非推奨化。将来のリリースで削除する予定
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : uBLASを追加 (close #524)</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>415981309c4f6d9d91cd16275ede222db3285b06:document/version/1_75_0.md</id>
-      <updated>2020-12-01T15:56:22+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index 27afed2..2e626bd 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -52,6 +52,7 @@
- - [Polygon](#polygon)
- - [Preprocessor](#preprocessor)
- - [System](#system)
-+- [uBLAS](#ublas)
- - [VMD](#vmd)
- - [Wave](#wave)
- 
-@@ -259,6 +260,11 @@
- - 同じ理由で、バッファをとるバージョンの`error_condition::message()`のオーバーロードを非推奨化。`error_code::message()`には影響しない
- 
- 
-+## &amp;lt;a id=&amp;#34;ublas&amp;#34; href=&amp;#34;#ublas&amp;#34;&amp;gt;uBLAS&amp;lt;/a&amp;gt;
-+
-+- C++20標準モードでのコンパイルを修正するために、C++アロケータモデルのサポートを正しくした (Glen Fernandes氏とConrad Poelman氏)
-+
-+
- ## &amp;lt;a id=&amp;#34;vmd&amp;#34; href=&amp;#34;#vmd&amp;#34;&amp;gt;VMD&amp;lt;/a&amp;gt;
- 
- - VMDでの数値の構文解析が更新され、エンドユーザーがプリプロセッサライブラリの数値の制限 (最大値) を変更できるようにした。`BOOST_PP_LIMIT_MAG`によって最大値を指定できる
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
