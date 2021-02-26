@@ -2,9 +2,63 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2021-02-25T14:43:58.019897</updated>
-  <id>04b6d535-2d02-4eab-b20a-e7e08aa2df69</id>
+  <updated>2021-02-26T06:28:13.502050</updated>
+  <id>8c872e0a-dce5-4299-9ac3-56a901bbc67d</id>
 
+  
+    <entry>
+      <title>循環バッファ -- Merge pull request #527 from KisaragiEffective/patch-2</title>
+      <link href="https://boostjp.github.io/tips/circular_buffer.html"/>
+      <id>c7a166555ffdeb7e95fe76c753241a543f274a61:tips/circular_buffer.md</id>
+      <updated>2021-02-26T15:26:37+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/circular_buffer.md b/tips/circular_buffer.md
+index cc7a44a..8689fef 100644
+--- a/tips/circular_buffer.md
++++ b/tips/circular_buffer.md
+@@ -309,7 +309,7 @@ int main()
+     // --------------------------------------------------------------------------
+     // 循環バッファのメモリアドレスイメージ
+     //  ___ ___ ___ ___ ___
+-    // |_H_|_G_|_F_|_E_|_G_|
++    // |_H_|_G_|_F_|_E_|_D_|
+     // --------------------------------------------------------------------------
+     std::for_each( c_buf.begin(), c_buf.end(), ( std::cout &amp;lt;&amp;lt; _1 &amp;lt;&amp;lt; &amp;#39; &amp;#39; ));
+     std::cout &amp;lt;&amp;lt; std::endl;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>循環バッファ -- Update circular_buffer.md</title>
+      <link href="https://boostjp.github.io/tips/circular_buffer.html"/>
+      <id>8f68bb8cc0ec628c5098035127a556891fe03d2a:tips/circular_buffer.md</id>
+      <updated>2021-02-26T14:39:29+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/circular_buffer.md b/tips/circular_buffer.md
+index cc7a44a..8689fef 100644
+--- a/tips/circular_buffer.md
++++ b/tips/circular_buffer.md
+@@ -309,7 +309,7 @@ int main()
+     // --------------------------------------------------------------------------
+     // 循環バッファのメモリアドレスイメージ
+     //  ___ ___ ___ ___ ___
+-    // |_H_|_G_|_F_|_E_|_G_|
++    // |_H_|_G_|_F_|_E_|_D_|
+     // --------------------------------------------------------------------------
+     std::for_each( c_buf.begin(), c_buf.end(), ( std::cout &amp;lt;&amp;lt; _1 &amp;lt;&amp;lt; &amp;#39; &amp;#39; ));
+     std::cout &amp;lt;&amp;lt; std::endl;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>KisaragiEffective</name>
+        <email>48310258+KisaragiEffective@users.noreply.github.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Geometryの注意書きを追加</title>
@@ -91,169 +145,6 @@ index 9ba4568..af88d1d 100644
  
  
  ## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : テスト済みコンパイラを記載 (close #525)</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>e36d09f85f549f7d626bd493417f6caf6c002285:document/version/1_75_0.md</id>
-      <updated>2020-12-02T15:05:09+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index 7e742f0..9ba4568 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -294,46 +294,70 @@
- 主要なテストコンパイラ:
- 
- - Linux:
--    - Clang:
--    - GCC:
--    - Intel:
--    - QCC:
-+    - Clang: 3.0, 4.0.1, 6.0.1
-+    - Clang, C++0x: 3.0
-+    - Clang, C++11: 3.0, 3.1, 3.2, 3.3, 3.4, 4.0.1, 6.0.1, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0
-+    - Clang, C++14: 3.5.0, 3.6.0, 3.7.1, 3.8.0, 3.9.1, 4.0.0, 4.0.1, 5.0.2, 6.0.1, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0
-+    - Clang, C++17: 5.0.2, 6.0.1, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0
-+    - GCC: 4.4.7, 4.5.3, 4.6.3, 5.4.0, 8.0.1
-+    - GCC, C++0x: 4.4.7
-+    - GCC, C++11: 4.7.3, 4.8.5, 4.9.4, 5.4.0, 6.4.0, 7.1.0, 8.0.1
-+    - GCC, C++14: 5.4.0, 5.5.0, 6.4.0, 7.1.0, 7.3.0, 8.0.1
-+    - GCC, C++17: 7.3.0, 8.0.1
-+    - Intel, C++14: 18.0
- - OS X:
--    - Apple Clang:
--    - GCC:
--    - Intel:
-+    - Apple Clang: 9.0.0, 9.1.0, 10.0.0, 11.0.0
-+    - Apple Clang, C++11: 9.0.0, 9.1.0, 10.0.0, 11.0.0
-+    - Apple Clang, C++14: 9.0.0, 9.1.0, 10.0.0, 11.0.0
-+    - Apple Clang, C++17: 9.1.0, 10.0.0, 11.0.0
-+    - Apple Clang, C++1z: 9.0.0
-+    - Apple Clang, C++2a: 10.0.0, 11.0.0
- - Windows:
--    - GCC, mingw:
--    - Visual C++:
-+    - GCC: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0, 4.5.4
-+    - GCC, C++0x: 4.6.4
-+    - GCC, C++11: 4.7.3, 4.8.1, 4.9.3
-+    - GCC, C++14: 5.1.0, 5.2.0, 5.3.0, 6.1.0, 6.2.0, 6.3.0, 6.4.0
-+    - GCC, C++17: 7.1.0, 7.2.0, 7.3.0
-+    - Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0, 14.1
- - FreeBSD:
--    - GCC:
--- QNX:
--    - QCC:
-+    - Clang: 4.0.0
-+    - Clang, C++11: 4.0.0
-+    - Clang, C++14: 4.0.0
-+    - Clang, C++1z: 4.0.0
- 
- 追加で含まれるテストコンパイラ:
- 
- - Linux:
--    - Clang:
--    - GCC:
--    - GCC, C++11:
--    - GCC, C++14:
--    - Intel:
--    - Intel, C++11:
-+    - Clang: 3.0, 3.8.1, 3.9.1, 4.0.1, 5.0.2, 6.0.1
-+    - Clang, C++0x: 3.0
-+    - Clang, C++11: 3.0, 3.1, 3.2, 3.3, 3.4, 4.0.1, 6.0.1, 7.0.0, 8.0.0
-+    - Clang, C++14: 3.5.0, 3.6.0, 3.7.1, 3.8.0, 3.9.1, 4.0.0, 4.0.1, 5.0.2, 6.0.1, 7.0.0, 8.0.0
-+    - Clang, C++17: 5.0.2, 6.0.1, 7.0.0, 8.0.0
-+    - GCC: 4.4.7, 4.5.3, 4.6.3, 4.9.4, 5.4.0, 5.5.0, 8.0.1
-+    - GCC, C++0x: 4.4.7
-+    - GCC, C++11: 4.7.3, 4.8.5, 4.9.4, 5.4.0, 6.4.0, 7.1.0, 8.0.1
-+    - GCC, C++14: 5.4.0, 5.5.0, 6.3.0, 6.4.0, 7.1.0, 7.3.0, 8.0.1, 8.1.0
-+    - GCC, C++17: 7.3.0, 8.0.1
-+    - Intel, C++14: 18.0
- - OS X:
--    - Apple Clang:
--    - Apple Clang, C++11:
--    - Apple Clang, C++14:
--    - Clang:
--    - Clang, C++11:
--    - GCC:
--    - Intel:
-+    - Apple Clang: 9.0.0, 9.1.0, 10.0.0
-+    - Apple Clang, C++11: 9.0.0, 9.1.0, 10.0.0
-+    - Apple Clang, C++14: 9.0.0, 9.1.0, 10.0.0
-+    - Apple Clang, C++17: 9.1.0, 10.0.0
-+    - Apple Clang, C++1z: 9.0.0
-+    - Apple Clang, C++2a: 10.0.0
- - Windows:
--    - GCC, mingw:
--    - Visual C++:
-+    - GCC: 3.4.5, 4.1.2, 4.2.4, 4.3.3, 4.4.0, 4.5.4
-+    - GCC, C++0x: 4.6.4
-+    - GCC, C++11: 4.7.3, 4.8.1, 4.9.3
-+    - GCC, C++14: 5.1.0, 5.2.0, 5.3.0, 6.1.0, 6.2.0, 6.3.0, 6.4.0
-+    - GCC, C++17: 7.1.0, 7.2.0, 7.3.0
-+    - Visual C++: 7.1, 8.0, 9.0, 10.0, 11.0, 12.0, 14.0, 14.1
- - FreeBSD:
--    - GCC:
--- QNX:
--    - QCC:
-+    - Clang: 4.0.0
-+    - Clang, C++11: 4.0.0
-+    - Clang, C++14: 4.0.0
-+    - Clang, C++1z: 4.0.0
- 
- ## 翻訳
- [Akira Takahashi](https://github.com/faithandbrave)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : RationalとSignals2を追加</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>9e3360c9ef6abd478dab615a07dc432720aaacb6:document/version/1_75_0.md</id>
-      <updated>2020-12-01T15:59:58+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index 2e626bd..7e742f0 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -51,6 +51,8 @@
- - [Outcome](#outcome)
- - [Polygon](#polygon)
- - [Preprocessor](#preprocessor)
-+- [Rational](#rational)
-+- [Signals2](#signals2)
- - [System](#system)
- - [uBLAS](#ublas)
- - [VMD](#vmd)
-@@ -251,6 +253,16 @@
- - あらゆるコンパイラで可変引数マクロが動作することを想定するよう更新した。表面上では、これがC++11以上を要求するようになったように思えるだろうが、GCC、Clang、VC++を含むほとんどの主要コンパイラは、C++98 / C++03に厳密には準拠しないが、C++98 / C++03モードでの可変引数マクロもサポートする
- 
- 
-+## &amp;lt;a id=&amp;#34;rational&amp;#34; href=&amp;#34;#rational&amp;#34;&amp;gt;Rational&amp;lt;/a&amp;gt;
-+
-+- 新たなC++20の`operator==`書き換えルールで壊れないよう、関係演算子を修正
-+
-+
-+## &amp;lt;a id=&amp;#34;signals2&amp;#34; href=&amp;#34;#signals2&amp;#34;&amp;gt;Signals2&amp;lt;/a&amp;gt;
-+
-+- C++20標準モードでのコンパイルを修正するために、C++アロケータモデルのサポートを正しくした (Glen Fernandes氏とConrad Poelman氏)
-+
-+
- ## &amp;lt;a id=&amp;#34;system&amp;#34; href=&amp;#34;#system&amp;#34;&amp;gt;System&amp;lt;/a&amp;gt;
- 
- - プラットフォーム固有のヘッダ`windows_error.hpp`, `linux_error.hpp`, `cygwin_error.hpp`を非推奨化。将来のリリースで削除する予定
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
