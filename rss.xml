@@ -2,9 +2,67 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2021-02-26T14:44:03.354088</updated>
-  <id>9488a338-7dc3-4c8d-aee8-0f74b3c22fa5</id>
+  <updated>2021-02-26T23:08:22.284308</updated>
+  <id>94613d64-12e7-4107-92b7-2e317a293459</id>
 
+  
+    <entry>
+      <title>Rational Numbers -- Merge pull request #528 from Jumpaku/patch-1</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/rational/rational.html"/>
+      <id>b570180b22746b1e39826c46cb99e6d1be946edc:archive/boost_docs/libs/rational/rational.md</id>
+      <updated>2021-02-27T08:06:11+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/rational/rational.md b/archive/boost_docs/libs/rational/rational.md
+index adaf24e..0180bde 100644
+--- a/archive/boost_docs/libs/rational/rational.md
++++ b/archive/boost_docs/libs/rational/rational.md
+@@ -305,8 +305,8 @@ Float rational_cast(const rational&amp;lt;Int&amp;gt;&amp;amp; src)
+ 	このほかに、コンストラクタ・代入・０との比較が行われるが、これらの負荷は剰余演算に比べると、取るに足らないものである。
+ - `lcm()` 関数は、本質的に `gcd()` を算出した後、２回の乗算と（１回の）除算を行うものである。
+ - 加算と減算は複雑である。
+-	加算と減算には基本要素となる整数型上で、平均して２回の `gcm()` 、３回の除算、３回の乗算と１回の加算が必要である。
+-- 乗算と除算には、２回の ``gcd()、２回の乗算、そして、４回の除算が必要である。
++	加算と減算には基本要素となる整数型上で、平均して２回の `gcd()` 、３回の除算、３回の乗算と１回の加算が必要である。
++- 乗算と除算には、２回の `gcd()` 、２回の乗算、そして、４回の除算が必要である。
+ - 比較演算子の実行には、最悪の場合、２回の `gcd()` , ２回の乗算、４回の除算、そして比較が必要である。
+ 	しかしながら、`int` タイプにおける比較演算のコストが低い（そして、０との比較はさらに低コストである）と仮定すると、比較演算のオーバーヘッドを下げることのできる特別なケースがいくつか存在する。
+ 	特に、 `==` と `!=` の実行時間は、基本要素となる整数型の比較時間程度のコストで終了する。
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Rational Numbers -- fix: Fix typo (gcm -&gt; gcd, ``gcd() -&gt; `gcd()`)</title>
+      <link href="https://boostjp.github.io/archive/boost_docs/libs/rational/rational.html"/>
+      <id>f4b35897f119e7b9724dc9ccf7336774c0c427f8:archive/boost_docs/libs/rational/rational.md</id>
+      <updated>2021-02-27T07:52:24+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/archive/boost_docs/libs/rational/rational.md b/archive/boost_docs/libs/rational/rational.md
+index adaf24e..0180bde 100644
+--- a/archive/boost_docs/libs/rational/rational.md
++++ b/archive/boost_docs/libs/rational/rational.md
+@@ -305,8 +305,8 @@ Float rational_cast(const rational&amp;lt;Int&amp;gt;&amp;amp; src)
+ 	このほかに、コンストラクタ・代入・０との比較が行われるが、これらの負荷は剰余演算に比べると、取るに足らないものである。
+ - `lcm()` 関数は、本質的に `gcd()` を算出した後、２回の乗算と（１回の）除算を行うものである。
+ - 加算と減算は複雑である。
+-	加算と減算には基本要素となる整数型上で、平均して２回の `gcm()` 、３回の除算、３回の乗算と１回の加算が必要である。
+-- 乗算と除算には、２回の ``gcd()、２回の乗算、そして、４回の除算が必要である。
++	加算と減算には基本要素となる整数型上で、平均して２回の `gcd()` 、３回の除算、３回の乗算と１回の加算が必要である。
++- 乗算と除算には、２回の `gcd()` 、２回の乗算、そして、４回の除算が必要である。
+ - 比較演算子の実行には、最悪の場合、２回の `gcd()` , ２回の乗算、４回の除算、そして比較が必要である。
+ 	しかしながら、`int` タイプにおける比較演算のコストが低い（そして、０との比較はさらに低コストである）と仮定すると、比較演算のオーバーヘッドを下げることのできる特別なケースがいくつか存在する。
+ 	特に、 `==` と `!=` の実行時間は、基本要素となる整数型の比較時間程度のコストで終了する。
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Jumpaku</name>
+        <email>Jumpaku@users.noreply.github.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>循環バッファ -- Merge pull request #527 from KisaragiEffective/patch-2</title>
@@ -90,61 +148,6 @@ index 1afdaa6..756a6c1 100644
  ## &amp;lt;a id=&amp;#34;gil&amp;#34; href=&amp;#34;#gil&amp;#34;&amp;gt;GIL&amp;lt;/a&amp;gt;
  
  - &amp;lt;span style=&amp;#34;color:red;&amp;#34;&amp;gt;**破壊的変更**&amp;lt;/span&amp;gt; 次のリリースでGCC 5のサポートを終了する予定。サポートするC++の下限バージョンもC++11からC++14に変更する
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Boost.OperatorsとC++20の非互換性について記載 (close #526)</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>436c44c1d241af33accf7ccd9db1e29f2295108e:document/version/1_75_0.md</id>
-      <updated>2020-12-09T16:20:23+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index af88d1d..1afdaa6 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -16,6 +16,10 @@
- - 「[Modularized Boost（GitHubへ移行したリポジトリ）を使用する](http://dev.activebasic.com/egtra/2013/12/03/620/)」
- 
- 
-+## 既知の問題
-+- Boost.Operatorsは現在、C++20コンパイラと互換性がない。比較演算子が呼ばれると実行時に無限再帰か無限ループが起きる場合がある。この問題は、C++20で導入された演算子の書き換え動作が原因で発生する。回避策として、C++17以前の標準C++をターゲットにすることを推奨する。詳細は[GitHub Utility #65](https://github.com/boostorg/utility/issues/65)を参照
-+
-+
- ## 新ライブラリ
- 
- - [JSON](https://www.boost.org/libs/json/) C++11でのJSONの解析、シリアライズ、DOMのライブラリ (作者Vinnie FalcoとKrystian Stasiowski)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.75.0リリースノート -- 1.75.0リリースノート : Asioの追加に対応 #521</title>
-      <link href="https://boostjp.github.io/document/version/1_75_0.html"/>
-      <id>5bd1371d26821f2b65ce06cb3c023bbf410ac340:document/version/1_75_0.md</id>
-      <updated>2020-12-04T15:49:17+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_75_0.md b/document/version/1_75_0.md
-index 9ba4568..af88d1d 100644
---- a/document/version/1_75_0.md
-+++ b/document/version/1_75_0.md
-@@ -103,6 +103,7 @@
- - `any_executor`の比較と変換で曖昧さが発生する可能性があった問題を修正
- - MSVC 19.8での非実験的なC++20コルーチンの検出を追加
- - uClibcとの互換性を修正
-+- 古いC++バージョンもしくは標準準拠度の低いC++コンパイラを対象にする場合の、Networking TS executorの`strand&amp;lt;&amp;gt;`アダプトを修正
- 
- 
- ## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
