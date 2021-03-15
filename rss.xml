@@ -2,9 +2,720 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2021-03-14T14:40:49.043409</updated>
-  <id>4464b0a7-4141-43c1-9b7a-c922632852ae</id>
+  <updated>2021-03-15T06:21:54.255864</updated>
+  <id>e9b1db70-9044-4a0c-81cc-c8b48ed76635</id>
 
+  
+    <entry>
+      <title>Boost 1.76.0リリースノート -- 1.76.0 : Outcomeを追加 (close #536)</title>
+      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
+      <id>a2077e441edc5b1929e75c74472b4f167e126aa1:document/version/1_76_0.md</id>
+      <updated>2021-03-15T15:19:53+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34;&gt;Beast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#gil&#34;&gt;GIL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#outcome&#34;&gt;Outcome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ツール&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34; id=&#34;beast&#34;&gt;Beast&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/issues/2139&#34; target=&#34;_blank&#34;&gt;GitHub #2139&lt;/a&gt; &lt;code&gt;test::stream&lt;/code&gt;にexecutorのrebindを追加&lt;/li&gt;
+&lt;li&gt;WebSocket async shutdown内での未使用変数の警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;改善&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2124&#34; target=&#34;_blank&#34;&gt;GitHub #2124&lt;/a&gt; Beastを使用するために浮動小数点サポートを要求しないようにした&lt;/li&gt;
+&lt;li&gt;すべての操作にcommon buffers typeを使用するようにしたことにより、websocketyのコンパイルされたコードのサイズを削減した&lt;/li&gt;
+&lt;li&gt;HTTPパーサーの誤った使い方の検出を改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;その他修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2140&#34; target=&#34;_blank&#34;&gt;GitHub #2140&lt;/a&gt; ライブラリのメタデータにcxxstdタグを追加&lt;/li&gt;
+&lt;li&gt;Drone CIに移行&lt;/li&gt;
+&lt;li&gt;小さなドキュメントフォーマットの改善&lt;/li&gt;
+&lt;li&gt;in-treeビルドでの要求されるBoost.ThreadライブラリをCMLが見つけられるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#gil&#34; id=&#34;gil&#34;&gt;GIL&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; 次のリリースでGCC 5のサポートを落とす。また、要求するC++の最低バージョンをC++11からC++14に変更する予定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#outcome&#34; id=&#34;outcome&#34;&gt;Outcome&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;アナウンス&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; 繰り返してきたこのアナウンスをはじめてから1年 (3回のBoostメジャーリリース) が経ち、今回がv2.2ブランチの最初のリリースとなる。このブランチには、Boost 1.75以前に含まれたOutcome v2.1に対する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;強化&lt;ul&gt;
+&lt;li&gt;VS2019.8でOucomeがコンパイルできなかったため、コルーチンを有効にする方法を変更した&lt;/li&gt;
+&lt;li&gt;C++20の場合、コンパイラ固有のマークアップの代わりに&lt;code&gt;[[likely]]&lt;/code&gt;属性を使用するようにして、TRYが成功・失敗する可能性が高いことを示すようにした&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; 以前まで&lt;code&gt;spare_storage(const basic_result|basic_outcome *) noexcep&lt;/code&gt;の値は&lt;code&gt;BOOST_OUTCOME_TRY&lt;/code&gt;に伝播されなかった。これによって、エラー結果を構築するためにキャプチャされたスタックバックトレースがすべて&lt;code&gt;TRY&lt;/code&gt;ごとに落とされていた。今回の修正では、&lt;code&gt;success_type&amp;lt;T&amp;gt;&lt;/code&gt;と&lt;code&gt;failure_type&amp;lt;T&amp;gt;&lt;/code&gt;、および&lt;code&gt;auto success(T &amp;amp;&amp;amp;, ...)&lt;/code&gt;と&lt;code&gt;auto failure(T &amp;amp;&amp;amp;, ...)&lt;/code&gt;にオプション&lt;code&gt;spare_storage&lt;/code&gt;を追加したことにより、この問題を修正する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;バグ修正&lt;ul&gt;
+&lt;li&gt;Boost.Outcomeが、&lt;code&gt;BOOST_NO_EXCEPTIONS&lt;/code&gt;が定義された状態でもコンパイルできるようになったはず。Boost.ExceptionのメンテなであるEmilの協力によって、Outcomeにこの修正が行われた。Boost.Outcomeは、C++例外がグローバルに無効にされた状態でもコンパイルできるべきである。ただし、その状態では&lt;code&gt;boost::exception_ptr&lt;/code&gt;は使用できない&lt;/li&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; &lt;a href=&#34;https://github.com/ned14/outcome/issues/244&#34; target=&#34;_blank&#34;&gt;GitHub #244&lt;/a&gt; このライブラリの初期リリースから、特定のコーナーケースコードで&lt;code&gt;BOOST_OUTCOME_TRY&lt;/code&gt;が壊れていたため、TRYの動作を大幅に変える必要があってショックを受けた。詳細は&lt;a href=&#34;https://boostorg.github.io/outcome/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34; id=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;バージョン1.13&lt;/li&gt;
+&lt;li&gt;事前定義マクロ&lt;code&gt;ARCH_PPC_64&lt;/code&gt;を追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ARCH_WORD_BITS*&lt;/code&gt;の再定義による警告・エラーを修正&lt;/li&gt;
+&lt;li&gt;Elbrus 2000アーキテクチャを検出する事前定義マクロ&lt;code&gt;ARCH_E2K&lt;/code&gt;を追加 (Konstantin Ivlev氏に感謝)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10.xを超える最近のC++バージョンを扱えない問題を修正&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;バージョン1.12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenBSD環境でendian.hヘッダを使用するよう変更 (Brad Smith氏に感謝)&lt;/li&gt;
+&lt;li&gt;9を超える最近のstdcxxバージョンを扱えない問題を修正&lt;/li&gt;
+&lt;li&gt;sub-BSD OSのヘッダを直接インクルードすることによる再定義警告を修正&lt;/li&gt;
+&lt;li&gt;全ヘッダをインクルードするCIテストを追加&lt;/li&gt;
+&lt;li&gt;FreeBSDでのClang or GCCのCIテストを追加&lt;/li&gt;
+&lt;li&gt;アーキテクチャのワードサイズを検出するための&lt;code&gt;WORD_BITS&lt;/code&gt;事前定義マクロ集合を追加。これはMikhail Komarov氏によって提出された初期実装に触発されたもの&lt;/li&gt;
+&lt;li&gt;Cygwin 32 or 64のCIテストを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ダブルバッファを使用するケースの生成されるコードを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34; id=&#34;build&#34;&gt;Build&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;B2バージョン4.4.1&lt;ul&gt;
+&lt;li&gt;macOSのデフォルトエンジンコンパイラ向けに、小さな間違いを修正するパッチを適用&lt;ul&gt;
+&lt;li&gt;macOS/XCode向けのエンジンビルドのデフォルトをClangからGCCに修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.76.0リリースノート -- 1.76.0 : GILを追加 (close #535)</title>
+      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
+      <id>c9e93fb943dad6030e60d56ed8e16283d83e7c4e:document/version/1_76_0.md</id>
+      <updated>2021-03-15T14:48:48+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34;&gt;Beast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#gil&#34;&gt;GIL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ツール&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34; id=&#34;beast&#34;&gt;Beast&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/issues/2139&#34; target=&#34;_blank&#34;&gt;GitHub #2139&lt;/a&gt; &lt;code&gt;test::stream&lt;/code&gt;にexecutorのrebindを追加&lt;/li&gt;
+&lt;li&gt;WebSocket async shutdown内での未使用変数の警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;改善&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2124&#34; target=&#34;_blank&#34;&gt;GitHub #2124&lt;/a&gt; Beastを使用するために浮動小数点サポートを要求しないようにした&lt;/li&gt;
+&lt;li&gt;すべての操作にcommon buffers typeを使用するようにしたことにより、websocketyのコンパイルされたコードのサイズを削減した&lt;/li&gt;
+&lt;li&gt;HTTPパーサーの誤った使い方の検出を改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;その他修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2140&#34; target=&#34;_blank&#34;&gt;GitHub #2140&lt;/a&gt; ライブラリのメタデータにcxxstdタグを追加&lt;/li&gt;
+&lt;li&gt;Drone CIに移行&lt;/li&gt;
+&lt;li&gt;小さなドキュメントフォーマットの改善&lt;/li&gt;
+&lt;li&gt;in-treeビルドでの要求されるBoost.ThreadライブラリをCMLが見つけられるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#gil&#34; id=&#34;gil&#34;&gt;GIL&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; 次のリリースでGCC 5のサポートを落とす。また、要求するC++の最低バージョンをC++11からC++14に変更する予定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34; id=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;バージョン1.13&lt;/li&gt;
+&lt;li&gt;事前定義マクロ&lt;code&gt;ARCH_PPC_64&lt;/code&gt;を追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ARCH_WORD_BITS*&lt;/code&gt;の再定義による警告・エラーを修正&lt;/li&gt;
+&lt;li&gt;Elbrus 2000アーキテクチャを検出する事前定義マクロ&lt;code&gt;ARCH_E2K&lt;/code&gt;を追加 (Konstantin Ivlev氏に感謝)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10.xを超える最近のC++バージョンを扱えない問題を修正&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;バージョン1.12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenBSD環境でendian.hヘッダを使用するよう変更 (Brad Smith氏に感謝)&lt;/li&gt;
+&lt;li&gt;9を超える最近のstdcxxバージョンを扱えない問題を修正&lt;/li&gt;
+&lt;li&gt;sub-BSD OSのヘッダを直接インクルードすることによる再定義警告を修正&lt;/li&gt;
+&lt;li&gt;全ヘッダをインクルードするCIテストを追加&lt;/li&gt;
+&lt;li&gt;FreeBSDでのClang or GCCのCIテストを追加&lt;/li&gt;
+&lt;li&gt;アーキテクチャのワードサイズを検出するための&lt;code&gt;WORD_BITS&lt;/code&gt;事前定義マクロ集合を追加。これはMikhail Komarov氏によって提出された初期実装に触発されたもの&lt;/li&gt;
+&lt;li&gt;Cygwin 32 or 64のCIテストを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ダブルバッファを使用するケースの生成されるコードを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34; id=&#34;build&#34;&gt;Build&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;B2バージョン4.4.1&lt;ul&gt;
+&lt;li&gt;macOSのデフォルトエンジンコンパイラ向けに、小さな間違いを修正するパッチを適用&lt;ul&gt;
+&lt;li&gt;macOS/XCode向けのエンジンビルドのデフォルトをClangからGCCに修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.76.0リリースノート -- 1.76.0 : Buildを追加 (close #534)</title>
+      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
+      <id>b6ffe61d0f05a54f56a4a0d51d7626a25121979f:document/version/1_76_0.md</id>
+      <updated>2021-03-15T14:46:26+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34;&gt;Beast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ツール&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34; id=&#34;beast&#34;&gt;Beast&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/issues/2139&#34; target=&#34;_blank&#34;&gt;GitHub #2139&lt;/a&gt; &lt;code&gt;test::stream&lt;/code&gt;にexecutorのrebindを追加&lt;/li&gt;
+&lt;li&gt;WebSocket async shutdown内での未使用変数の警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;改善&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2124&#34; target=&#34;_blank&#34;&gt;GitHub #2124&lt;/a&gt; Beastを使用するために浮動小数点サポートを要求しないようにした&lt;/li&gt;
+&lt;li&gt;すべての操作にcommon buffers typeを使用するようにしたことにより、websocketyのコンパイルされたコードのサイズを削減した&lt;/li&gt;
+&lt;li&gt;HTTPパーサーの誤った使い方の検出を改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;その他修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2140&#34; target=&#34;_blank&#34;&gt;GitHub #2140&lt;/a&gt; ライブラリのメタデータにcxxstdタグを追加&lt;/li&gt;
+&lt;li&gt;Drone CIに移行&lt;/li&gt;
+&lt;li&gt;小さなドキュメントフォーマットの改善&lt;/li&gt;
+&lt;li&gt;in-treeビルドでの要求されるBoost.ThreadライブラリをCMLが見つけられるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34; id=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;バージョン1.13&lt;/li&gt;
+&lt;li&gt;事前定義マクロ&lt;code&gt;ARCH_PPC_64&lt;/code&gt;を追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ARCH_WORD_BITS*&lt;/code&gt;の再定義による警告・エラーを修正&lt;/li&gt;
+&lt;li&gt;Elbrus 2000アーキテクチャを検出する事前定義マクロ&lt;code&gt;ARCH_E2K&lt;/code&gt;を追加 (Konstantin Ivlev氏に感謝)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10.xを超える最近のC++バージョンを扱えない問題を修正&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;バージョン1.12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenBSD環境でendian.hヘッダを使用するよう変更 (Brad Smith氏に感謝)&lt;/li&gt;
+&lt;li&gt;9を超える最近のstdcxxバージョンを扱えない問題を修正&lt;/li&gt;
+&lt;li&gt;sub-BSD OSのヘッダを直接インクルードすることによる再定義警告を修正&lt;/li&gt;
+&lt;li&gt;全ヘッダをインクルードするCIテストを追加&lt;/li&gt;
+&lt;li&gt;FreeBSDでのClang or GCCのCIテストを追加&lt;/li&gt;
+&lt;li&gt;アーキテクチャのワードサイズを検出するための&lt;code&gt;WORD_BITS&lt;/code&gt;事前定義マクロ集合を追加。これはMikhail Komarov氏によって提出された初期実装に触発されたもの&lt;/li&gt;
+&lt;li&gt;Cygwin 32 or 64のCIテストを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ダブルバッファを使用するケースの生成されるコードを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#build&#34; id=&#34;build&#34;&gt;Build&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;B2バージョン4.4.1&lt;ul&gt;
+&lt;li&gt;macOSのデフォルトエンジンコンパイラ向けに、小さな間違いを修正するパッチを適用&lt;ul&gt;
+&lt;li&gt;macOS/XCode向けのエンジンビルドのデフォルトをClangからGCCに修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>Boost 1.76.0リリースノート -- 1.76.0リリースノート : Beastを追加 (close #530)</title>
+      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
+      <id>669ac5b71c1629edf0d27bec3e0991d3ad05d071:document/version/1_76_0.md</id>
+      <updated>2021-03-15T14:40:42+09:00</updated>
+      
+        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
+&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリは以下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34;&gt;Beast&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#beast&#34; id=&#34;beast&#34;&gt;Beast&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/issues/2139&#34; target=&#34;_blank&#34;&gt;GitHub #2139&lt;/a&gt; &lt;code&gt;test::stream&lt;/code&gt;にexecutorのrebindを追加&lt;/li&gt;
+&lt;li&gt;WebSocket async shutdown内での未使用変数の警告を修正&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;改善&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2124&#34; target=&#34;_blank&#34;&gt;GitHub #2124&lt;/a&gt; Beastを使用するために浮動小数点サポートを要求しないようにした&lt;/li&gt;
+&lt;li&gt;すべての操作にcommon buffers typeを使用するようにしたことにより、websocketyのコンパイルされたコードのサイズを削減した&lt;/li&gt;
+&lt;li&gt;HTTPパーサーの誤った使い方の検出を改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;その他修正&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/beast/pull/2140&#34; target=&#34;_blank&#34;&gt;GitHub #2140&lt;/a&gt; ライブラリのメタデータにcxxstdタグを追加&lt;/li&gt;
+&lt;li&gt;Drone CIに移行&lt;/li&gt;
+&lt;li&gt;小さなドキュメントフォーマットの改善&lt;/li&gt;
+&lt;li&gt;in-treeビルドでの要求されるBoost.ThreadライブラリをCMLが見つけられるようにした&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#predef&#34; id=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;バージョン1.13&lt;/li&gt;
+&lt;li&gt;事前定義マクロ&lt;code&gt;ARCH_PPC_64&lt;/code&gt;を追加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ARCH_WORD_BITS*&lt;/code&gt;の再定義による警告・エラーを修正&lt;/li&gt;
+&lt;li&gt;Elbrus 2000アーキテクチャを検出する事前定義マクロ&lt;code&gt;ARCH_E2K&lt;/code&gt;を追加 (Konstantin Ivlev氏に感謝)&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;10.xを超える最近のC++バージョンを扱えない問題を修正&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;バージョン1.12&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;OpenBSD環境でendian.hヘッダを使用するよう変更 (Brad Smith氏に感謝)&lt;/li&gt;
+&lt;li&gt;9を超える最近のstdcxxバージョンを扱えない問題を修正&lt;/li&gt;
+&lt;li&gt;sub-BSD OSのヘッダを直接インクルードすることによる再定義警告を修正&lt;/li&gt;
+&lt;li&gt;全ヘッダをインクルードするCIテストを追加&lt;/li&gt;
+&lt;li&gt;FreeBSDでのClang or GCCのCIテストを追加&lt;/li&gt;
+&lt;li&gt;アーキテクチャのワードサイズを検出するための&lt;code&gt;WORD_BITS&lt;/code&gt;事前定義マクロ集合を追加。これはMikhail Komarov氏によって提出された初期実装に触発されたもの&lt;/li&gt;
+&lt;li&gt;Cygwin 32 or 64のCIテストを追加&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;ダブルバッファを使用するケースの生成されるコードを改善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
+&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux:&lt;ul&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;GCC, C++11:&lt;/li&gt;
+&lt;li&gt;GCC, C++14:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;li&gt;Intel, C++11:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS X:&lt;ul&gt;
+&lt;li&gt;Apple Clang:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
+&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
+&lt;li&gt;Clang:&lt;/li&gt;
+&lt;li&gt;Clang, C++11:&lt;/li&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;li&gt;Intel:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Windows:&lt;ul&gt;
+&lt;li&gt;GCC, mingw:&lt;/li&gt;
+&lt;li&gt;Visual C++:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;FreeBSD:&lt;ul&gt;
+&lt;li&gt;GCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;QNX:&lt;ul&gt;
+&lt;li&gt;QCC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;翻訳&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.76.0リリースノート -- 1.76.0 : Predefを追加 (close #532)</title>
@@ -137,527 +848,6 @@
 &lt;/ul&gt;
 &lt;h2&gt;翻訳&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.76.0リリースノート -- 1.76.0 : Variant2を追加 (close #533)</title>
-      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
-      <id>6aa398379fcf8589ee6a74ec7b717bcb5fe6b014:document/version/1_76_0.md</id>
-      <updated>2021-03-12T17:24:33+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;ダブルバッファを使用するケースの生成されるコードを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.76.0リリースノート -- 1.76.0 : PolyCollectionを追加 (close #531)</title>
-      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
-      <id>d9dd35634bee08eb1d4e21afd1e895e3cbf6172a:document/version/1_76_0.md</id>
-      <updated>2021-03-12T17:22:49+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34;&gt;PolyCollection&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#poly-collection&#34; id=&#34;poly-collection&#34;&gt;PollyCollection&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/poly_collection/issues/20&#34; target=&#34;_blank&#34;&gt;GitHub #20&lt;/a&gt; &lt;a href=&#34;https://gcc.gnu.org/bugzilla/show_bug.cgi?id=95888&#34; target=&#34;_blank&#34;&gt;GCCのバグ&lt;/a&gt;に対するワークアラウンドを導入。GCCのバージョン9.3から10.2に影響する&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.76.0リリースノート -- 1.76.0 : Bindを追加 (close #529)</title>
-      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
-      <id>827e6073d820cdd2fc9d8d0590c90457d6eeb3a9:document/version/1_76_0.md</id>
-      <updated>2021-03-12T17:19:41+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34;&gt;Bind&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#bind&#34; id=&#34;bind&#34;&gt;Bind&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;boost::bind&lt;/code&gt;でC++11標準のプレースホルダーを使用できるようサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::apply&lt;/code&gt;で可変引数テンプレートと完全転送を使用できるよう更新&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リリースノート -- 1.76.0のリリースノートを用意した</title>
-      <link href="https://boostjp.github.io/document/version.html"/>
-      <id>ee89944d08525d2379d192e6aa3cb8f581be59d4:document/version.md</id>
-      <updated>2021-03-12T13:25:33+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;以下は、Boostの各バージョンのリリースノートを翻訳、情報補完したドキュメントです。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/template.html&#34;&gt;雛形ページ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html&#34;&gt;1.76.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_75_0.html&#34;&gt;1.75.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_74_0.html&#34;&gt;1.74.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_73_0.html&#34;&gt;1.73.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_72_0.html&#34;&gt;1.72.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_71_0.html&#34;&gt;1.71.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_70_0.html&#34;&gt;1.70.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_69_0.html&#34;&gt;1.69.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_68_0.html&#34;&gt;1.68.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_67_0.html&#34;&gt;1.67.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_66_0.html&#34;&gt;1.66.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_1.html&#34;&gt;1.65.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_65_0.html&#34;&gt;1.65.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_64_0.html&#34;&gt;1.64.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_63_0.html&#34;&gt;1.63.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_62_0.html&#34;&gt;1.62.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_61_0.html&#34;&gt;1.61.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_60_0.html&#34;&gt;1.60.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_59_0.html&#34;&gt;1.59.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_58_0.html&#34;&gt;1.58.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_57_0.html&#34;&gt;1.57.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_56_0.html&#34;&gt;1.56.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_55_0.html&#34;&gt;1.55.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_54_0.html&#34;&gt;1.54.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_53_0.html&#34;&gt;1.53.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_52_0.html&#34;&gt;1.52.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_51_0.html&#34;&gt;1.51.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_50_0.html&#34;&gt;1.50.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_49_0.html&#34;&gt;1.49.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_48_0.html&#34;&gt;1.48.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_47_0.html&#34;&gt;1.47.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_46_1.html&#34;&gt;1.46.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_46_0.html&#34;&gt;1.46.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_45_0.html&#34;&gt;1.45.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.76.0リリースノート -- 1.76.0のリリースノートを用意した</title>
-      <link href="https://boostjp.github.io/document/version/1_76_0.html"/>
-      <id>ee89944d08525d2379d192e6aa3cb8f581be59d4:document/version/1_76_0.md</id>
-      <updated>2021-03-12T13:25:33+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.76.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_76_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_76_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_76_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#newone&#34;&gt;NewOne&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#one&#34;&gt;One&lt;/a&gt; # example&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#two&#34;&gt;Two&lt;/a&gt; # example&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#three&#34;&gt;Three&lt;/a&gt; # example&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#one&#34; id=&#34;One&#34;&gt;One&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;blahblahblah&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#two&#34; id=&#34;Two&#34;&gt;Two&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;改善&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;something&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;解決したチケット&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt; ticket&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/XXX/pull/XX&#34; target=&#34;_blank&#34;&gt;pull request XX&lt;/a&gt; GitHub PR&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_76_0.html#three&#34; id=&#34;Three&#34;&gt;Three&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;新機能&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Feature: &lt;code&gt;boost::xxx&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;バグ修正&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;trailing &lt;a href=&#34;https://svn.boost.org/trac/boost/ticket/xxxx&#34; target=&#34;_blank&#34;&gt;#xxxx&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;追加で含まれるテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;GCC, C++11:&lt;/li&gt;
-&lt;li&gt;GCC, C++14:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;li&gt;Intel, C++11:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11:&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14:&lt;/li&gt;
-&lt;li&gt;Clang:&lt;/li&gt;
-&lt;li&gt;Clang, C++11:&lt;/li&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;li&gt;Intel:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;GCC, mingw:&lt;/li&gt;
-&lt;li&gt;Visual C++:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;FreeBSD:&lt;ul&gt;
-&lt;li&gt;GCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;QNX:&lt;ul&gt;
-&lt;li&gt;QCC:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/&#34; target=&#34;_blank&#34;&gt;Someone&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
