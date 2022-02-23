@@ -2,9 +2,117 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2022-02-17T14:38:36.362315</updated>
-  <id>cde7ccbb-3727-4715-a574-5394a4fbc6da</id>
+  <updated>2022-02-23T04:16:36.441909</updated>
+  <id>c484b61b-9a4d-4265-adab-1c77229af7ab</id>
 
+  
+    <entry>
+      <title>型特性 -- Merge pull request #562 from ken-matsui/ken-matsui-patch-1</title>
+      <link href="https://boostjp.github.io/tips/type_traits.html"/>
+      <id>42a38345aa2bfe3fad389e2fee5ca6dd476ed5be:tips/type_traits.md</id>
+      <updated>2022-02-20T10:57:31+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/type_traits.md b/tips/type_traits.md
+index 49a2312..278ac9a 100644
+--- a/tips/type_traits.md
++++ b/tips/type_traits.md
+@@ -436,7 +436,7 @@ is_object&amp;lt;const void&amp;gt;::value == false // void型はオブジェクトではな
+ 
+ 
+ ### &amp;lt;a id=&amp;#34;is-reference&amp;#34; href=&amp;#34;#is-reference&amp;#34;&amp;gt;参照型かどうかを判定する&amp;lt;/a&amp;gt;
+-`boost::is_referece&amp;lt;T&amp;gt;`メタ関数を使用する。
++`boost::is_reference&amp;lt;T&amp;gt;`メタ関数を使用する。
+ 
+ インクルード：
+ 
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>型特性 -- typo修正 (`boost::is_referece` -&gt; `boost::is_reference`)</title>
+      <link href="https://boostjp.github.io/tips/type_traits.html"/>
+      <id>cc2343d74b2602f9f558dad1d8d03cb378ac8ae7:tips/type_traits.md</id>
+      <updated>2022-02-20T02:57:05+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/type_traits.md b/tips/type_traits.md
+index 49a2312..278ac9a 100644
+--- a/tips/type_traits.md
++++ b/tips/type_traits.md
+@@ -436,7 +436,7 @@ is_object&amp;lt;const void&amp;gt;::value == false // void型はオブジェクトではな
+ 
+ 
+ ### &amp;lt;a id=&amp;#34;is-reference&amp;#34; href=&amp;#34;#is-reference&amp;#34;&amp;gt;参照型かどうかを判定する&amp;lt;/a&amp;gt;
+-`boost::is_referece&amp;lt;T&amp;gt;`メタ関数を使用する。
++`boost::is_reference&amp;lt;T&amp;gt;`メタ関数を使用する。
+ 
+ インクルード：
+ 
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Ken Matsui</name>
+        <email>26405363+ken-matsui@users.noreply.github.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>無効値の統一的な表現 -- Merge pull request #561 from ken-matsui/ken-matsui-patch-1</title>
+      <link href="https://boostjp.github.io/tips/optional.html"/>
+      <id>b6c0425213a6f02137751e1764de630a52fd1a4a:tips/optional.md</id>
+      <updated>2022-02-19T00:28:03+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/optional.md b/tips/optional.md
+index cf543bd..d45e09d 100644
+--- a/tips/optional.md
++++ b/tips/optional.md
+@@ -106,7 +106,7 @@ class Viewer {
+         else
+             left_page_ = boost::none;
+ 
+-        if (right_page_ &amp;amp;&amp;amp; rigth_page_.get() + 1 &amp;lt; pages.size())
++        if (right_page_ &amp;amp;&amp;amp; right_page_.get() + 1 &amp;lt; pages.size())
+             right_page_ = right_page_.get() + 1;
+         else
+             right_page_ = boost::none;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Yoshinari Takaoka</name>
+        <email>mumumu@mumumu.org</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>無効値の統一的な表現 -- typoを修正 (rigth -&gt; right)</title>
+      <link href="https://boostjp.github.io/tips/optional.html"/>
+      <id>c7325cc25ada3d2f7f11cb9123bb601a0da13edf:tips/optional.md</id>
+      <updated>2022-02-18T21:54:56+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/optional.md b/tips/optional.md
+index cf543bd..d45e09d 100644
+--- a/tips/optional.md
++++ b/tips/optional.md
+@@ -106,7 +106,7 @@ class Viewer {
+         else
+             left_page_ = boost::none;
+ 
+-        if (right_page_ &amp;amp;&amp;amp; rigth_page_.get() + 1 &amp;lt; pages.size())
++        if (right_page_ &amp;amp;&amp;amp; right_page_.get() + 1 &amp;lt; pages.size())
+             right_page_ = right_page_.get() + 1;
+         else
+             right_page_ = boost::none;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Ken Matsui</name>
+        <email>26405363+ken-matsui@users.noreply.github.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>JSONの読み込み／書き込み -- Merge pull request #560 from suomesta/patch-1</title>
@@ -26,420 +134,6 @@ index f53f53b..73a4af6 100644
  この関数を使用するには、`&amp;lt;boost/property_tree/json_parser.hpp&amp;gt;`をインクルードする。
  
 &lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>JSONの読み込み／書き込み -- Update json.md</title>
-      <link href="https://boostjp.github.io/tips/json.html"/>
-      <id>a0d6feb045a55c55440ab4c67590906b79087fee:tips/json.md</id>
-      <updated>2021-12-27T04:28:21+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/json.md b/tips/json.md
-index f53f53b..73a4af6 100644
---- a/tips/json.md
-+++ b/tips/json.md
-@@ -11,7 +11,7 @@ JSONの読み込み、書き込みには、[Boost Property Tree Library](http://
- 
- 
- ## &amp;lt;a id=&amp;#34;read&amp;#34; href=&amp;#34;#read&amp;#34;&amp;gt;JSONの読み込み&amp;lt;/a&amp;gt;
--JSONの読み込みには、`Pboost::property_tree::read_json()`関数を使用する。
-+JSONの読み込みには、`boost::property_tree::read_json()`関数を使用する。
- 
- この関数を使用するには、`&amp;lt;boost/property_tree/json_parser.hpp&amp;gt;`をインクルードする。
- 
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>suomesta</name>
-        <email>shawn316michaels@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.78.0リリースノート -- 表示崩れを修正</title>
-      <link href="https://boostjp.github.io/document/version/1_78_0.html"/>
-      <id>fd47281362a92e63201a95ca1d6d82f91ad8f6b2:document/version/1_78_0.md</id>
-      <updated>2021-12-09T17:35:43+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_78_0.md b/document/version/1_78_0.md
-index 17e168e..c2811b6 100644
---- a/document/version/1_78_0.md
-+++ b/document/version/1_78_0.md
-@@ -76,6 +76,7 @@
-       // …
-     });
-     ```
-+
- - `experimental::coro`の改善を実装
- - MSVCランタイムを使用した際のClangでの`aligned_alloc`を無効化
- - `ip::network_v4::canonical()`に、より高速な実装を使用するよう変更
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.78.0リリースノート -- 1.78.0 : Asioを追加</title>
-      <link href="https://boostjp.github.io/document/version/1_78_0.html"/>
-      <id>55b38afdbd4ec3d4fe792e617e409e57d3545695:document/version/1_78_0.md</id>
-      <updated>2021-12-09T17:30:48+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_78_0.md b/document/version/1_78_0.md
-index c091568..17e168e 100644
---- a/document/version/1_78_0.md
-+++ b/document/version/1_78_0.md
-@@ -22,6 +22,7 @@
- 
- ## 更新ライブラリ
- 
-+- [Asio](#asio)
- - [Assert](#assert)
- - [Atomic](#atomic)
- - [Beast](#beast)
-@@ -49,6 +50,54 @@
- - [Build](#build)
- 
- 
-+## &amp;lt;a id=&amp;#34;asio&amp;#34; href=&amp;#34;#asio&amp;#34;&amp;gt;Asio&amp;lt;/a&amp;gt;
-+
-+- ソケット、タイマー、posix descriptorを含むすべてのI/Oオブジェクトに、オプションとして使用できるio\_uringバックエンドを追加
-+- ストリーム指向ファイルとランダムアクセスファイルの新たなクラスによってファイルのサポートを追加。この機能は現在のところ、WindowsではI/O完了ポート、Linuxではio\_uringをサポートしている
-+- POSIXとWindowsでの汎用パイプのサポートを追加 (I/O完了ポートが使用可能な場合に使用できる)
-+- io\_uringバックエンド使用時に最適化されるregistered bufferのサポートを追加
-+- 完了をメッセージとして送信もしくはキューに入れるために使用できるchannelを実験的にサポート
-+    ```cpp
-+    // バッファスペースのないチャネルを作成
-+    channel&amp;lt;void(error_code, size_t)&amp;gt; ch{ctx};
-+
-+    // バッファスペースがなく、待機中の受信操作がないため`try_send`は失敗する
-+    bool ok = ch.try_send(asio::error::eof, 123);
-+    assert(!ok);
-+
-+    // async_sendは、受信操作がメッセージを消費するまでブロックする
-+    ch.async_send(asio::error::eof, 123, [](error_code ec) {
-+      // …
-+    });
-+
-+    // async_receiveはメッセージを消費する。
-+    // async_send操作とasync_receive操作の両方が即座に完了する
-+    ch.async_receive([](error_code ec, size_t n) {
-+      // …
-+    });
-+    ```
-+- `experimental::coro`の改善を実装
-+- MSVCランタイムを使用した際のClangでの`aligned_alloc`を無効化
-+- `ip::network_v4::canonical()`に、より高速な実装を使用するよう変更
-+- コンパイル時間を改善するために、一般用途のテンプレート特殊化を追加
-+- `io_context` executorのサイズをポインタひとつになるよう縮小
-+- `execution::any_executor`と`any_io_executor`のsmall object bufferのサイズを増やした
-+- 可変引数テンプレートが無効なときの、複数シグニチャでのハンドリング (multi-signature handling) を修正
-+- GCCとClangの新バージョンの互換性を修正
-+- Solarisでのコンパイルを修正
-+- MSVCでビルドする際の、Qt定義のマクロに対する防御を修正
-+- `ssl`機能によって発行されるエラーメッセージを改善
-+- `bind_executor`の完了トークンとの互換性を修正
-+- `BOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT`を定義した際のビルドエラーを修正
-+- `awaitable&amp;lt;&amp;gt;`に不足していたムーブ代入演算子を追加
-+- 確保されたメモリの不適切なアライメントによる、MSVCでコルーチンを使用した際のアクセス違反を修正
-+- 並列操作がまだ保留されている状態でexecution contextがシャットダウンされた際に起きた`experimental::parallel_group`のクリーンアップの問題を修正
-+- 並行性ヒント (concurrency hints) のドキュメントに説明を追加
-+- C++20コルーチンのエラーハンドリング手法についてのドキュメントを追加
-+- さまざまな警告を修正
-+- 詳細は[Revision History](https://www.boost.org/doc/libs/release/doc/html/boost_asio/history.html)を参照
-+
-+
- ## &amp;lt;a id=&amp;#34;assert&amp;#34; href=&amp;#34;#assert&amp;#34;&amp;gt;Assert&amp;lt;/a&amp;gt;
- 
- - `source_location::to_string`を追加
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.78.0リリースノート -- 1.78.0リリースノート : 残りを追加</title>
-      <link href="https://boostjp.github.io/document/version/1_78_0.html"/>
-      <id>e1168b467e3df78b524acab684cd998fd73d362c:document/version/1_78_0.md</id>
-      <updated>2021-12-03T18:37:21+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;Boost 1.78.0リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;本家リリースノート：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/website/blob/master/feed/history/boost_1_78_0.qbk&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/website/blob/master/feed/history/boost_1_78_0.qbk&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.boost.org/users/history/version_1_78_0.html&#34; target=&#34;_blank&#34;&gt;http://www.boost.org/users/history/version_1_78_0.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリは以下：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/&#34; target=&#34;_blank&#34;&gt;https://github.com/boostorg/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;リポジトリからのビルド方法は、egtraさんのブログを参照：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;「&lt;a href=&#34;http://dev.activebasic.com/egtra/2013/12/03/620/&#34; target=&#34;_blank&#34;&gt;Modularized Boost（GitHubへ移行したリポジトリ）を使用する&lt;/a&gt;」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;新ライブラリ&lt;/h2&gt;
-&lt;p&gt;なし&lt;/p&gt;
-&lt;h2&gt;更新ライブラリ&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#assert&#34;&gt;Assert&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#beast&#34;&gt;Beast&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#core&#34;&gt;Core&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#describe&#34;&gt;Describe&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#dll&#34;&gt;DLL&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#geometry&#34;&gt;Geometry&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#json&#34;&gt;JSON&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#lambda2&#34;&gt;Lambda2&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#log&#34;&gt;Log&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#math&#34;&gt;Math&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#multiprecision&#34;&gt;Multiprecision&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#pfr&#34;&gt;PFR&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#predef&#34;&gt;Predef&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#regex&#34;&gt;Regex&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#system&#34;&gt;System&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#utility&#34;&gt;Utility&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;更新ツール&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#build&#34;&gt;Build&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#assert&#34; id=&#34;assert&#34;&gt;Assert&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;source_location::to_string&lt;/code&gt;を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#atomic&#34; id=&#34;atomic&#34;&gt;Atomic&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Androidでの非IPCのwait/notify操作には、プロセスローカルのfutex操作を使用するようにした&lt;/li&gt;
-&lt;li&gt;riscv32などのような&lt;code&gt;SYS_futex_time64&lt;/code&gt;システムコールのみを定義するLinuxターゲットのサポートを追加&lt;/li&gt;
-&lt;li&gt;32ビットx86ターゲットでのClang 8での64ビット型に対する&lt;code&gt;std::alignment_of&lt;/code&gt;が誤った結果になる問題についてワークアラウンドを追加&lt;/li&gt;
-&lt;li&gt;Mac OS 10.12, iOS 10.0, tvOS 10.0, およびwatchOS 3.0以降のDarwinシステムでのwait/notify操作のために、ulockバックエンドを追加&lt;/li&gt;
-&lt;li&gt;Windows 8以降をターゲットとした場合に、atomic-type&lt;code&gt;::always_has_native_wait_notify&lt;/code&gt;と対応する機能テストマクロの間の不一致を修正。このライブラリはパブリックヘッダから直接&lt;code&gt;WaitOnAddress&lt;/code&gt;と関連するAPIを使用するため、Windows 8以降もしくは&lt;code&gt;BOOST_USE_WINAPI_VERSION&lt;/code&gt;, &lt;code&gt;_WIN32_WINNT&lt;/code&gt;, 同様のマクロが定義されている場合、ユーザーは&lt;code&gt;synchronization.lib&lt;/code&gt;をリンクする必要がある。このライブラリは自動リンクをサポートするコンパイラ (MSVCなど) では自動的にリンクする&lt;/li&gt;
-&lt;li&gt;padding bitをクリアする方法を提供するコンパイラにおいて、unionを除くpadding bitをもつ型のサポートを追加。この機能はGCC 11とMSVC 14.2 (コンパイラバージョン19.27) 以降、および同様の組み込み関数をサポートするほかのコンパイラでサポートされる。padding bitをクリアできないコンパイラでは、x86ターゲットの80ビットの&lt;code&gt;long double&lt;/code&gt;を除いて、padding付きの型は一般にサポートされない。新たな機能マクロ&lt;code&gt;BOOST_ATOMIC_NO_CLEAR_PADDING&lt;/code&gt;が定義された場合、パディングのクリアがサポートされないことを示す&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;atomic_ref&lt;/code&gt;および&lt;code&gt;ipc_atomic_ref&lt;/code&gt;の初期化コンストラクタは、参照オブジェクトのpadding bitをクリアするためにアトミック命令を使用するのをやめた。これによりatomic refの構築コストが削減される&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;atomic&lt;/code&gt;および&lt;code&gt;ipc_atomic&lt;/code&gt;の初期化コンストラクタは、列挙型、クラス、浮動小数点数型に対して&lt;code&gt;constexpr&lt;/code&gt;になった。クラスと浮動小数点数型の場合、コンパイラが&lt;code&gt;constexpr&lt;/code&gt;の&lt;code&gt;std::bit_cast&lt;/code&gt;をサポートし、型にpadding bitがなく、ネイティブのアトミック操作を実装するためにpaddingが必要ない場合に、&lt;code&gt;constexpr&lt;/code&gt;になる&lt;/li&gt;
-&lt;li&gt;C++20に従って、&lt;code&gt;atomic&lt;/code&gt;および&lt;code&gt;ipc_atomic&lt;/code&gt;のデフォルトコンストラクタは、含まれているオブジェクトの値初期化を実行するようにした。ユーザー定義のデフォルトコンストラクタがない場合、デフォルト構築されたアトミックオブジェクトはゼロで初期化されることを意味する&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/atomic/pull/50&#34; target=&#34;_blank&#34;&gt;GitHub #50&lt;/a&gt; アセンブラツールがnumeric labelをサポートしていないために発生するAIXでのコンパイルエラーのワークアラウンドを追加&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/atomic/issues/52&#34; target=&#34;_blank&#34;&gt;GitHub #52&lt;/a&gt; Visual Studio 2015 Update 3以前でのコンパイルエラーのワークアラウンドを追加&lt;/li&gt;
-&lt;li&gt;より詳細は&lt;a href=&#34;https://www.boost.org/doc/libs/release/doc/html/atomic/limitations.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#beast&#34; id=&#34;beast&#34;&gt;Beast&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;今回は小さなバグ修正とCI報告の更新を行うメンテナンスアップデートである&lt;/li&gt;
-&lt;li&gt;zlibのセキュリティ脆弱性CVE-2016-9840を修正&lt;/li&gt;
-&lt;li&gt;WebSocketの&lt;code&gt;permessage_deflate&lt;/code&gt;の実装を修正。これにより、Beast WebSocketを使用する際の圧縮のパフォーマンスが向上するだろう&lt;/li&gt;
-&lt;li&gt;テストストリームとテストフレームワークのRTTIへの依存をなくした。これにより、自身の便利なテストストリームを使用し、埋め込まれた非同期通信コードを確認できる&lt;/li&gt;
-&lt;li&gt;完全な変更は&lt;a href=&#34;https://www.boost.org/doc/libs/release/libs/beast/doc/html/beast/release_notes.html&#34; target=&#34;_blank&#34;&gt;Release Notes&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#core&#34; id=&#34;core&#34;&gt;Core&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;BOOST_CORE_USE_GENERIC_CMATH&lt;/code&gt;が定義されるか、もしくはプラットフォームが&lt;code&gt;&amp;lt;cmath&amp;gt;&lt;/code&gt;に必要な機能を提供していない場合に有効になる汎用実装を&lt;code&gt;&amp;lt;boost/core/cmath.hpp&amp;gt;&lt;/code&gt;に追加&lt;/li&gt;
-&lt;li&gt;型の名前を文字列として返すユーティリティ関数&lt;code&gt;boost::core::type_name&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;C++20の&lt;code&gt;std::span&lt;/code&gt;のC++11実装である&lt;code&gt;boost::span&lt;/code&gt;を追加 (Glen Fernandes氏に感謝)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#describe&#34; id=&#34;describe&#34;&gt;Describe&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;has_describe_enumerators&lt;/code&gt;, &lt;code&gt;has_describe_bases&lt;/code&gt;, &lt;code&gt;has_describe_members&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;enum_to_string&lt;/code&gt;, &lt;code&gt;enum_from_string&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;関係演算子とストリーム入力演算子を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;descriptor_by_name&lt;/code&gt;, &lt;code&gt;descriptor_by_pointer&lt;/code&gt;を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#dll&#34; id=&#34;dll&#34;&gt;DLL&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/dll/pull/54&#34; target=&#34;_blank&#34;&gt;GitHub #54&lt;/a&gt; 不足していた&lt;code&gt;#include&lt;/code&gt;を修正 (Denis Blank氏に感謝)&lt;/li&gt;
-&lt;li&gt;GitHub Action CIを優先し、Travis CIを削除&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#filesystem&#34; id=&#34;filesystem&#34;&gt;Filesystem&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/193&#34; target=&#34;_blank&#34;&gt;GitHub #193&lt;/a&gt; v4 : パスがディレクトリが区切り文字でおわっている場合に、&lt;code&gt;path::filename&lt;/code&gt;と&lt;code&gt;path::iterator&lt;/code&gt;は暗黙の末尾ドット (&lt;code&gt;&#34;.&#34;&lt;/code&gt;) を返さなくなった。その代わりに、C++17の&lt;code&gt;std::filesystem&lt;/code&gt;ライブラリと同様に空のパスが返される。&lt;code&gt;path::stem&lt;/code&gt;, &lt;code&gt;path::compare&lt;/code&gt;, &lt;code&gt;lexicographical_compare&lt;/code&gt;などイテレータやファイル名で定義される関数にも影響する。例として、&lt;code&gt;path(&#34;a/b/&#34;) == path(&#34;a/b/.&#34;)&lt;/code&gt;はもはや&lt;code&gt;true&lt;/code&gt;にはならない&lt;/li&gt;
-&lt;li&gt;v4 : &lt;code&gt;path::lexically_normal&lt;/code&gt;は末尾のドット (&lt;code&gt;&#34;.&#34;&lt;/code&gt;) を生成しなくなり、正規化されたパスの末尾のドットx2 (&lt;code&gt;&#34;..&#34;&lt;/code&gt;) 要素のあとのディレクトリ区切り文字を省略するようになった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/214&#34; target=&#34;_blank&#34;&gt;GitHub #214&lt;/a&gt; v4 : &lt;code&gt;path&lt;/code&gt;のappend操作で、追加されたパスのルート名とルートディレクトリが考慮されるようになった。追加されたパスが絶対パスである場合、もしくはルート名が存在しソースパスと異なる場合、結果のパスは追加されたパスと等価 (equivalent) となる。ルートディレクトリが存在する場合、結果はソースパスのルート名に基づいてリベースされたルートディレクトリと相対パスとなる。それ以外の場合、動作はv3と同様となる&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;path::lexically_normal&lt;/code&gt;は、正規化されたパスのルート名内のディレクトリパスを推奨区切り文字 (preferred separator) に変換するようになった&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;path::assign&lt;/code&gt;, &lt;code&gt;path::append&lt;/code&gt;, &lt;code&gt;path::concat&lt;/code&gt;とそれらに対応する演算子オーバーロードを最適化し、不要なパスのコピーを回避し、コードの冗長性を減らした&lt;/li&gt;
-&lt;li&gt;POSIXシステムにおいて、パス&lt;code&gt;p&lt;/code&gt;がルートディレクトリではじまる場合、ルート名として&lt;code&gt;base.root_name()&lt;/code&gt;のパスを返す&lt;code&gt;absolute(p, base)&lt;/code&gt;を修正した。このような場合、&lt;code&gt;p&lt;/code&gt;はすでに絶対パスであるため、そのまま返す必要がある&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;create_directories(&#34;.&#34;)&lt;/code&gt;もしくは&lt;code&gt;create_directories(&#34;..&#34;)&lt;/code&gt;がエラーを報告しないようにした。実装は内部で再帰を使用しなくなったため、非常に長いパスでのスタックオーバーフローからより適切に保護される&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/216&#34; target=&#34;_blank&#34;&gt;GitHub #216&lt;/a&gt; Windowsにおいて、&lt;code&gt;remove&lt;/code&gt;が読み取り専用ファイルの削除をサポートするようになった。この操作は、削除のまえに読み取り専用属性をリセットするよう試みる。これにより、操作が失敗して属性の元の値が復元されない可能性があることに注意。これは&lt;code&gt;remove_all&lt;/code&gt;にも影響する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;remove_all&lt;/code&gt;は、C++17の&lt;code&gt;std::filesystem&lt;/code&gt;ライブラリと同様に、エラーが発生した場合に&lt;code&gt;static_cast&amp;lt; uintmax_t &amp;gt;(-1)&lt;/code&gt;を返すようになった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/215&#34; target=&#34;_blank&#34;&gt;GitHub #215&lt;/a&gt; ユーザーコードが&lt;code&gt;boost/filesystem/path.hpp&lt;/code&gt;をインクルードするが&lt;code&gt;boost/container_hash/hash.hpp&lt;/code&gt;はインクルードせず、コンパイラが未使用のインライン関数を保持する設定になっていた場合に、Boost.ContainerHashの関数への未解決参照のリンクエラーが発生する問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/filesystem/issues/217&#34; target=&#34;_blank&#34;&gt;GitHub #217&lt;/a&gt; リリースビルドでのパスのグローバルクリーンアップを排除するMSVCとその互換コンパイラに対してのワークアラウンドを追加。Boost.Fielsystemの共有ライブラリがプロセスで繰り返しロード、アンロードされた場合に、メモリリークにつながる可能性があった&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#geometry&#34; id=&#34;geometry&#34;&gt;Geometry&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;改善&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/pull/894&#34; target=&#34;_blank&#34;&gt;GitHub #894&lt;/a&gt; rtreeのクエリ操作を最適化・リファクタ&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/pull/913&#34; target=&#34;_blank&#34;&gt;GitHub #913&lt;/a&gt; DynamicGeometryとGeometryCollectionにさまざまなアルゴリズムのサポートを追加 (現在はアンドキュメント)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/pull/922&#34; target=&#34;_blank&#34;&gt;GitHub #922&lt;/a&gt; DynamicGeometryとGeometryCollectionにdistanceのサポートを追加 (現在はアンドキュメント)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;解決した問題&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/issues/867&#34; target=&#34;_blank&#34;&gt;GitHUb #867&lt;/a&gt; big kに近いpredicateをもつrtreeのクエリ操作が遅い&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/issues/870&#34; target=&#34;_blank&#34;&gt;GitHub #870&lt;/a&gt; &lt;code&gt;boost::geometry::self_turns&lt;/code&gt;でのコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/issues/896&#34; target=&#34;_blank&#34;&gt;GitHub #896&lt;/a&gt; &lt;code&gt;BOOST_GEOMETRY_NO_ROBUSTNESS&lt;/code&gt;を定義した際に&lt;code&gt;get_turns&lt;/code&gt;でアサーション失敗が発生する問題を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/pull/906&#34; target=&#34;_blank&#34;&gt;GitHub #906&lt;/a&gt; macos-11のclang-12でbufferが不正な結果となる問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/geometry/pull/921&#34; target=&#34;_blank&#34;&gt;GitHub #921&lt;/a&gt; 複数コンパイラのC++20モードとGCC 5でのコンパイルエラーを修正&lt;/li&gt;
-&lt;li&gt;集合操作とbufferにさまざまを修正行った&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#json&#34; id=&#34;json&#34;&gt;JSON&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;このライブラリのスタンドアローンモードを非推奨化&lt;/li&gt;
-&lt;li&gt;外部ライブラリでの&lt;code&gt;value_to&lt;/code&gt;と&lt;code&gt;value_from&lt;/code&gt;の先行宣言を許可&lt;/li&gt;
-&lt;li&gt;数値をパースする際の、符号付き整数のオーバーフローを修正&lt;/li&gt;
-&lt;li&gt;MSVCの&lt;code&gt;/Zc:implicitNoexcept-&lt;/code&gt;をサポート&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#lambda2&#34; id=&#34;lambda2&#34;&gt;Lambda2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;std::cout &amp;lt;&amp;lt; _1&lt;/code&gt;を許可するために、特殊ケースとして最初の引数がストリームで&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt;もしくは&lt;code&gt;operator&amp;gt;&amp;gt;&lt;/code&gt;を使用した場合に対応&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;operator-&amp;gt;*&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;first&lt;/code&gt;, &lt;code&gt;second&lt;/code&gt;を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#log&#34; id=&#34;log&#34;&gt;Log&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;全体的な変更&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/log/pull/159&#34; target=&#34;_blank&#34;&gt;GitHub #59&lt;/a&gt; C++17以降との互換性のため、&lt;code&gt;std::codecvt&lt;/code&gt;の&lt;code&gt;char16_t&lt;/code&gt;と&lt;code&gt;char32_t&lt;/code&gt;特殊化の検出を更新&lt;/li&gt;
-&lt;li&gt;プロセス間メッセージキューのreceive関数にC++17 &lt;code&gt;std::byte&lt;/code&gt;のサポートを追加&lt;/li&gt;
-&lt;li&gt;Windows 8以降でこのライブラリをビルドする際に、バージョン名前空間で&lt;code&gt;nt62&lt;/code&gt;タグを使用してターゲットOSのABIを示すようにした。例として、バージョン名前空間には&lt;code&gt;v2_mt_nt62&lt;/code&gt;という名前をつけることができる。この名前は、ライブラリによってエクスポートされるシンボルの一部となる。Boostと自身のコードをビルドする際は、&lt;code&gt;BOOST_USE_WINAPI_VERSION&lt;/code&gt;を一貫して使用し、Windowsの最小ターゲットバージョンを要求する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;dump&lt;/code&gt;ストリームマニピュレータのSSSE3とAVX2向け実装のパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;CMakeビルドシステムのサポートを追加。現時点ではライブラリのビルドのみがサポートされており、テスト実行には引き続きBoost.Buildが使用される&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;バグ修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/log/issues/162&#34; target=&#34;_blank&#34;&gt;GitHub #162&lt;/a&gt; &lt;code&gt;reliable_message_queue::open_or_create&lt;/code&gt;およびそれと等価なコンストラクタの、POSIXシステムでの競合状態を修正した。同じキューからの送受信と同時に&lt;code&gt;open_or_create&lt;/code&gt;を呼び出す複数のスレッドまたはプロセスは、キューの内容を破壊し、プロセスをクラッシュさせる可能性があった&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/log/issues/164&#34; target=&#34;_blank&#34;&gt;GitHub #164&lt;/a&gt; &lt;code&gt;BOOST_LOG_WITHOUT_SETTINGS_PARSERS&lt;/code&gt;が定義されている場合、&lt;code&gt;boost_log_setup&lt;/code&gt;が欠落しているためにWindowsで&lt;code&gt;b2 install&lt;/code&gt;が失敗する問題に対するワークアラウンドを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;詳細は&lt;a href=&#34;https://www.boost.org/doc/libs/log/libs/log/doc/html/log/changelog.html&#34; target=&#34;_blank&#34;&gt;changelog&lt;/a&gt;を参照&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#math&#34; id=&#34;math&#34;&gt;Math&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;cubic root (立方根) のサポートを追加&lt;/li&gt;
-&lt;li&gt;さまざまな標準ライブラリの数学ルーチンの&lt;code&gt;constexpr&lt;/code&gt;版のサポートを追加&lt;/li&gt;
-&lt;li&gt;Bezier polynomialsのサポートを追加&lt;/li&gt;
-&lt;li&gt;tanh-sinh integrationの最悪ケースのパフォーマンスを改善&lt;/li&gt;
-&lt;li&gt;integrationルーチンでの整数型の不注意な使用を無効化&lt;/li&gt;
-&lt;li&gt;結果が1の2ulpとなるerf近似のマイナーアップデート&lt;/li&gt;
-&lt;li&gt;Bernoulliコードをアトミック変数のないプラットフォームで使用できるようにした&lt;/li&gt;
-&lt;li&gt;非心モードのカイ二乗分布 (non-central Chi Squared distribution) を改善&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/math/issues/507&#34; target=&#34;_blank&#34;&gt;GitHub #507&lt;/a&gt; &lt;code&gt;&amp;lt;cstdfloat&amp;gt;&lt;/code&gt;の複素数値の初等関数の特定のエッジケースを改善&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#multi-index&#34; id=&#34;multi-index&#34;&gt;Multi-index&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multi_index/issues/35&#34; target=&#34;_blank&#34;&gt;GitHub #35&lt;/a&gt; キーベースのindicesに&lt;code&gt;contains&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;キーベースのindicesに&lt;code&gt;merge&lt;/code&gt;操作を追加。この機能は、いくつかの点で (非順序) 連想コンテナの標準仕様を超えている：&lt;ul&gt;
-&lt;li&gt;ソースのインデックスは、非キーベースのindicesを含むどの型でもよい&lt;/li&gt;
-&lt;li&gt;部分マージ (partial merge) を提供する。例として、&lt;code&gt;x.merge(y,first,last)&lt;/code&gt;は&lt;code&gt;y&lt;/code&gt;の要素のうち&lt;code&gt;[first, last)&lt;/code&gt;の範囲のみをマージする&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;sequenced indicesとrandom access indicesのこれまでの&lt;code&gt;splice&lt;/code&gt;は破壊的だった。つまり、要素は挿入先にコピー挿入され、ソースからは削除されていた。現在の&lt;code&gt;splice&lt;/code&gt;はキーベースのindicesの&lt;code&gt;merge&lt;/code&gt;と同様にノード転送に基づいており、それらと同様になるよう拡張され、任意の型のインデックスを受け入れる。実際、&lt;code&gt;splice&lt;/code&gt;はキーベースのindicesの&lt;code&gt;merge&lt;/code&gt;機能のフロントエンドを見なすことができる。下位互換性の理由から、コンテナ間でアロケータが異なる場合に&lt;code&gt;splice&lt;/code&gt;の破壊的動作は維持される&lt;/li&gt;
-&lt;li&gt;インデックスのイテレータ型は&lt;code&gt;node_type&lt;/code&gt;とその&lt;code&gt;multi_index_container&lt;/code&gt;内のインデックス位置にのみ依存するという事実がドキュメント化される (一意的 (uniqueness) か非一意的 (non-uniqueness) かに関わらずハッシュのindicesを除く)。これは、&lt;code&gt;merge&lt;/code&gt;や&lt;code&gt;splice&lt;/code&gt;によって転送された要素に対するイテレータの有効性に影響する。C++標準のメーリングリストでは&lt;a href=&#34;https://wg21.link/n2980&#34; target=&#34;_blank&#34;&gt;SCARY iterators&lt;/a&gt;と呼ばれるものと同種である。SCARYnessは現在 (2021年8月)、標準コンテナには義務付けられていない&lt;/li&gt;
-&lt;li&gt;イテレータのSCARYnessは&lt;a href=&#34;https://www.boost.org/doc/libs/release/libs/multi_index/doc/tutorial/debug.html#safe_mode&#34; target=&#34;_blank&#34;&gt;safe mode&lt;/a&gt;でも保持される&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#multiprecision&#34; id=&#34;multiprecision&#34;&gt;Multiprecision&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;rational_adaptor&lt;/code&gt;の再作業により、Boost.Rationalへの依存性を削除し、パフォーマンスを改善した&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multiprecision/issues/383&#34; target=&#34;_blank&#34;&gt;GitHub #383&lt;/a&gt; Clangでのtype traitsの問題を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multiprecision/issues/370&#34; target=&#34;_blank&#34;&gt;GitHub #370&lt;/a&gt; バグのあったLehmerのGCDルーチンを修正&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;mpc_complex&lt;/code&gt;のコンストラクタでの精度を落とす変換が&lt;code&gt;explicit&lt;/code&gt;になるよう修正&lt;/li&gt;
-&lt;li&gt;雑多なconfigurationの問題を修正 (Intelの組み込み関数の使い方やApple Clang)&lt;/li&gt;
-&lt;li&gt;unsigned char型のためにいくつかのiostream演算子を修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/multiprecision/issues/342&#34; target=&#34;_blank&#34;&gt;GitHub #342&lt;/a&gt; &lt;code&gt;mpq_rational&lt;/code&gt;から整数型への変換を修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#pfr&#34; id=&#34;pfr&#34;&gt;PFR&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;std::addressof&lt;/code&gt;のために不足していたインクルード&lt;code&gt;&amp;lt;memory&amp;gt;&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;空の集成体で起きていた&lt;code&gt;-Wzero-length-array&lt;/code&gt;の警告を修正&lt;/li&gt;
-&lt;li&gt;MSVCコンパイラ&amp;lt;= 1920でのコンパイルを修正 (Alexey Romanov @alexey-romanov氏に感謝)&lt;/li&gt;
-&lt;li&gt;基本的なCMakeLists.txtのサポートを追加 (Peter Dimov @pdimov氏に感謝)&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/apolukhin/pfr_non_boost&#34; target=&#34;_blank&#34;&gt;https://github.com/apolukhin/pfr_non_boost&lt;/a&gt; へのリンク追加を含む、ドキュメントの複数の改善&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;boost::&lt;/code&gt;と&lt;code&gt;BOOST_&lt;/code&gt;プレフィックスを削除する&lt;code&gt;misc/strip_boost_namespace.sh&lt;/code&gt;スクリプトを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#predef&#34; id=&#34;predef&#34;&gt;Predef&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;バージョン1.13.1&lt;/li&gt;
-&lt;li&gt;&#34;epoch&#34;のつづりを修正&lt;/li&gt;
-&lt;li&gt;sparc.h内での欠落していたカッコを追加 (tkoecker氏に感謝)&lt;/li&gt;
-&lt;li&gt;ドキュメントを更新し、RougeコードスタイルとAmber汎用スタイルを使用するようにした&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#regex&#34; id=&#34;regex&#34;&gt;Regex&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;span style=&#34;color:red;&#34;&gt;&lt;strong&gt;破壊的変更&lt;/strong&gt;&lt;/span&gt; Perlの動作に従って、&lt;code&gt;\B&lt;/code&gt;を&lt;code&gt;\b&lt;/code&gt;の反対になるよう変更&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;w32_regex_traits.hpp&lt;/code&gt;で&lt;code&gt;windows.h&lt;/code&gt;をインクルードしないよう変更&lt;/li&gt;
-&lt;li&gt;以下の問題を修正&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/regex/issues/151&#34; target=&#34;_blank&#34;&gt;GitHub #151&lt;/a&gt; 大文字・小文字変更グループの繰り返しを、アサーション失敗からエラーに変更&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/regex/issues/152&#34; target=&#34;_blank&#34;&gt;GitHub #152&lt;/a&gt; &lt;a href=&#34;https://github.com/boostorg/regex/issues/156&#34; target=&#34;_blank&#34;&gt;GitHub #156&lt;/a&gt; &lt;code&gt;(*SKIP)&lt;/code&gt;で見る際の再帰内のスタック巻き戻しを正しく修正&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/regex/issues/153&#34; target=&#34;_blank&#34;&gt;GitHub #153&lt;/a&gt; &lt;code&gt;boost::regex_match&lt;/code&gt;のメモリリークを修正&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#system&#34; id=&#34;system&#34;&gt;System&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;error_code&lt;/code&gt;のsource locationサポートを追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;error_code::to_string&lt;/code&gt;, &lt;code&gt;error_condition::to_string&lt;/code&gt;, &lt;code&gt;error_code::what&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;source locationをもつ場合に&lt;code&gt;system_error::what()&lt;/code&gt;にその情報が含まれるようにした&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;boost/system/result.hpp&amp;gt;&lt;/code&gt;に、値かエラーのいずれかを保持する&lt;code&gt;result&amp;lt;T, E = error_code&amp;gt;&lt;/code&gt;クラスを追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#utility&#34; id=&#34;utility&#34;&gt;Utility&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/boostorg/utility/pull/79&#34; target=&#34;_blank&#34;&gt;GitHub #79&lt;/a&gt; ライブラリドキュメントをQuickBookに変換 (Alan de Freitas氏に感謝)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#variant2&#34; id=&#34;variant2&#34;&gt;Variant2&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;&amp;lt;boost/variant2.hpp&amp;gt;&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;unsafe_get&amp;lt;I&amp;gt;&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;visit_by_index&lt;/code&gt;を追加&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;operator&amp;lt;&amp;lt;&lt;/code&gt;を追加&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;&lt;a href=&#34;https://boostjp.github.io/document/version/1_78_0.html#build&#34; id=&#34;build&#34;&gt;Build&lt;/a&gt;&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;B2 version 4.7.2をリリース&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;テスト済みコンパイラ&lt;/h2&gt;
-&lt;p&gt;主要なテストコンパイラ:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux:&lt;ul&gt;
-&lt;li&gt;Clang: 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 12.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++11: 3.4, 11.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++14: 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 5.0, 12.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++17: 6.0.1, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0, 12.0.0&lt;/li&gt;
-&lt;li&gt;Clang, C++20: 11.0.0, 12.0.0, 13.0.0&lt;/li&gt;
-&lt;li&gt;GCC: 4.6.3, 11&lt;/li&gt;
-&lt;li&gt;GCC, C++11: 4.7.3, 4.8.5, 11&lt;/li&gt;
-&lt;li&gt;GCC, C++14: 5.4.0, 6.4.0, 7.3.0, 8.0.1, 9.1.0, 11&lt;/li&gt;
-&lt;li&gt;GCC, C++17: 7.3.0, 8.0.1, 9.1.0, 11&lt;/li&gt;
-&lt;li&gt;GCC, C++20: 8.0.1, 9.1.0, 10, 11&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;OS X:&lt;ul&gt;
-&lt;li&gt;Apple Clang: 11.0.3&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++11: 11.0.3&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++14: 11.0.3&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++17: 11.0.3&lt;/li&gt;
-&lt;li&gt;Apple Clang, C++20: 11.0.3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Windows:&lt;ul&gt;
-&lt;li&gt;Visual C++: 10.0, 11.0, 12.0, 14.0, 14.1, 14.2&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2&gt;翻訳&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&#34;https://github.com/faithandbrave&#34; target=&#34;_blank&#34;&gt;Akira Takahashi&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</content>
       
       <author>
         <name>Akira Takahashi</name>
