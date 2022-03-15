@@ -2,9 +2,80 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2022-03-15T14:42:03.664773</updated>
-  <id>71081869-2204-4061-bbf4-e843894f2fb9</id>
+  <updated>2022-03-15T22:19:28.949156</updated>
+  <id>17d21ddf-5c4a-43c2-81c7-b80fadd0d52e</id>
 
+  
+    <entry>
+      <title>文字列操作 -- iter_split の例を追加</title>
+      <link href="https://boostjp.github.io/tips/string_algo.html"/>
+      <id>addf56b24788b45f929159270726e2ee6a40d519:tips/string_algo.md</id>
+      <updated>2022-03-16T07:17:35+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/string_algo.md b/tips/string_algo.md
+index 710285c..71f7f48 100644
+--- a/tips/string_algo.md
++++ b/tips/string_algo.md
+@@ -7,6 +7,7 @@
+ - [左のスペースを削除する](#trim-left)
+ - [右のスペースを削除する](#trim-right)
+ - [区切り文字で文字列を分割する](#split)
++- [区切り文字列で文字列を分割する](#iter_split)
+ - [区切り文字を指定して、コンテナを文字列化する](#join)
+ - [拡張子を判定する](#iends-with)
+ - [全て置き換える](#replace-all)
+@@ -159,6 +160,44 @@ abc
+ xyz
+ ```
+ 
++## &amp;lt;a id=&amp;#34;iter_split&amp;#34; href=&amp;#34;#iter_split&amp;#34;&amp;gt;区切り文字列で文字列を分割する&amp;lt;/a&amp;gt;
++
++`boost::algorithm::split()` は単体の文字でしか分割できない。
++文字列で分割するには [`boost::algorithms::iter_split()`](https://www.boost.org/doc/libs/1_78_0/doc/html/boost/algorithm/iter_split.html) 関数を使用する。
++
++第1引数には、分割された文字列の結果を受け取るコンテナ、第2引数には対象となる文字列、第3引数には `find_iterator` と呼ばれる検索用のイテレータを指定する。
++このイテレータを作成するための関数はいくつかあるが、ここでは [`boost::algorithm::first_finder()`](https://www.boost.org/doc/libs/1_78_0/doc/html/boost/algorithm/first_finder.html) を利用する。
++
++```cpp example
++#include &amp;lt;iostream&amp;gt;
++#include &amp;lt;string&amp;gt;
++#include &amp;lt;vector&amp;gt;
++#include &amp;lt;boost/algorithm/string/iter_find.hpp&amp;gt;
++#include &amp;lt;boost/algorithm/string/finder.hpp&amp;gt;
++#include &amp;lt;boost/range/algorithm/for_each.hpp&amp;gt;
++
++void disp(const std::string&amp;amp; s)
++{
++    std::cout &amp;lt;&amp;lt; s &amp;lt;&amp;lt; std::endl;
++}
++
++int main()
++{
++    const std::string s = &amp;#34;abc\r\n123\r\nxyz&amp;#34;;
++
++    std::vector&amp;lt;std::string&amp;gt; result;
++    boost::algorithm::iter_split(result, s, boost::algorithm::first_finder(&amp;#34;\r\n&amp;#34;)); // \r\nで分割
++
++    boost::for_each(result, disp);
++}
++```
++
++実行結果：
++```
++abc
++123
++xyz
++```
+ 
+ ## &amp;lt;a id=&amp;#34;join&amp;#34; href=&amp;#34;#join&amp;#34;&amp;gt;区切り文字を指定して、コンテナを文字列化する&amp;lt;/a&amp;gt;
+ 区切り文字を指定してコンテナを文字列化するには、[`boost::algorithm::join()`](http://www.boost.org/doc/libs/release/doc/html/boost/algorithm/join.html)関数を使用する。
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>melpon</name>
+        <email>shigemasa7watanabe+github@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>コミュニティ -- Merge pull request #563 from boostjp/h-sao/fix00</title>
@@ -157,33 +228,6 @@ index 49a2312..278ac9a 100644
       <author>
         <name>Akira Takahashi</name>
         <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>型特性 -- typo修正 (`boost::is_referece` -&gt; `boost::is_reference`)</title>
-      <link href="https://boostjp.github.io/tips/type_traits.html"/>
-      <id>cc2343d74b2602f9f558dad1d8d03cb378ac8ae7:tips/type_traits.md</id>
-      <updated>2022-02-20T02:57:05+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/type_traits.md b/tips/type_traits.md
-index 49a2312..278ac9a 100644
---- a/tips/type_traits.md
-+++ b/tips/type_traits.md
-@@ -436,7 +436,7 @@ is_object&amp;lt;const void&amp;gt;::value == false // void型はオブジェクトではな
- 
- 
- ### &amp;lt;a id=&amp;#34;is-reference&amp;#34; href=&amp;#34;#is-reference&amp;#34;&amp;gt;参照型かどうかを判定する&amp;lt;/a&amp;gt;
--`boost::is_referece&amp;lt;T&amp;gt;`メタ関数を使用する。
-+`boost::is_reference&amp;lt;T&amp;gt;`メタ関数を使用する。
- 
- インクルード：
- 
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Ken Matsui</name>
-        <email>26405363+ken-matsui@users.noreply.github.com</email>
       </author>
     </entry>
   
