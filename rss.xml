@@ -2,9 +2,152 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2023-11-24T14:32:32.403592</updated>
-  <id>a4fd0922-e594-48dc-b1bc-d262d691203b</id>
+  <updated>2023-11-25T13:38:52.750359</updated>
+  <id>485475aa-ba65-4651-92c7-c1e08dc27a33</id>
 
+  
+    <entry>
+      <title>Boost 1.84.0リリースノート -- 1.84.0 : デフォルトWindowsバージョンの更新、Atomic、Core、Filesystem、Logを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_84_0.html"/>
+      <id>5153ad74e84dc6ddd921fd13fcef5acdb731fce6:document/version/1_84_0.md</id>
+      <updated>2023-11-25T22:37:35+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_84_0.md b/document/version/1_84_0.md
+index e8dc2bd..f72fe54 100644
+--- a/document/version/1_84_0.md
++++ b/document/version/1_84_0.md
+@@ -16,6 +16,40 @@
+ - 「[Modularized Boost（GitHubへ移行したリポジトリ）を使用する](http://dev.activebasic.com/egtra/2013/12/03/620/)」
+ 
+ 
++## デフォルトのターゲットWindowsバージョンを更新
++
++Windows SDKコンポーネントを定義するために他のBoostライブラリが内部的に使用するライブラリであるBoost.WinAPIが更新され、可能な限りデフォルトでWindows 10 APIをターゲットにするようになった。これは、BoostライブラリがデフォルトでWindows 10をターゲットとし、古いWindowsバージョンでは動作しない可能性があることを意味する。これには、Boostによって配布されるビルド済みバイナリも含まれる。
++
++影響を受けるライブラリは以下の通り：
++
++- Boost.Atomic
++- Boost.Beast
++- Boost.Chrono
++- Boost.DateTime
++- Boost.DLL
++- Boost.Filesystem
++- Boost.Interprocess
++- Boost.Log
++- Boost.Pool
++- Boost.Process
++- Boost.System
++- Boost.Stacktrace
++- Boost.Thread
++- Boost.UUID
++
++これらに依存するライブラリも同様である。
++
++ユーザーは、Boostをビルドして使用する際に、`BOOST_USE_WINAPI_VERSION`または`_WIN32_WINNT`を必要なバージョン番号に定義することで、デフォルトを変更することができる。例として、Windows 7をターゲットにBoostをビルドするには、次のようなコマンドラインを使用することができる：
++
++```bash
++b2 variant=release define=BOOST_USE_WINAPI_VERSION=0x0601 stage
++```
++
++ただし、個々のライブラリが、サポートされるWindowsの最小バージョンについて独自の要件を持っている可能性があることに注意すること。
++
++Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINNT`](https://msdn.microsoft.com/en-us/library/6sehtctf.aspx)ページで確認できる。
++
++
+ ## 新ライブラリ
+ 
+ - [Cobalt](https://boost.org/libs/cobalt)
+@@ -27,18 +61,22 @@
+ ## 更新ライブラリ
+ 
+ - [Any](#any)
++- [Atomic](#atomic)
+ - [Beast](#beast)
+ - [Chrono](#chrono)
+ - [ContainerHash](#container-hash)
+ - [Conversion](#conversion)
++- [Core](#core)
+ - [CRC](#crc)
+ - [DLL](#dll)
+ - [Endian](#endian)
++- [Filesystem](#filesystem)
+ - [Heap](#heap)
+ - [LEAF](#leaf)
+ - [LexicalCast](#lexical-cast)
+ - [Locale](#locale)
+ - [Lockfree](#lockfree)
++- [Log](#log)
+ - [Multi-index](#multi-index)
+ - [MySQL](#mysql)
+ - [PFR](#pfr)
+@@ -60,6 +98,13 @@
+ - リファレンスのドキュメント生成を修正。これにより、Boost.PFRのリファレンスによって上書きされないようになった。Peter Dimov氏のデバッグに感謝
+ 
+ 
++## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
++
++- C++03のサポートを終了。新たな要求はC++11以上となる
++- [GitHUb #14](https://github.com/boostorg/atomic/issues/14) FreeBSDとOpenBSDで使用されている、精度を下げたx87拡張`double`のサポートを追加
++- Windows 10より古いWindowsバージョンのサポートは非推奨であり、Boost 1.87で削除される予定。
++
++
+ ## &amp;lt;a id=&amp;#34;beast&amp;#34; href=&amp;#34;#beast&amp;#34;&amp;gt;Beast&amp;lt;/a&amp;gt;
+ 
+ - `immediate_executor`をサポート
+@@ -86,6 +131,15 @@
+ - [GitHub #27](https://github.com/boostorg/conversion/pull/27) C++03のサポートを終了
+ 
+ 
++## &amp;lt;a id=&amp;#34;core&amp;#34; href=&amp;#34;#core&amp;#34;&amp;gt;Core&amp;lt;/a&amp;gt;
++
++- [GitHub #148](https://github.com/boostorg/core/issues/148) ユーティリティ関数 `boost::swap` は `boost::core::invoke_swap` に名前が変更された
++    - 新しい関数は `boost/core/invoke_swap.hpp` で定義されており、機能的には `boost::swap` と等価である。古い `boost::swap` という名前は後方互換性のために残されているが、非推奨であり、将来のリリースで削除される予定である。`noexcept` の指定は、コンパイル時の再帰によるコンパイルエラーを避けるために削除された
++    - `BOOST_ALLOW_DEPRECATED_SYMBOLS` または `BOOST_ALLOW_DEPRECATED` を定義することで、移行期間中の非推奨の警告を抑制することができる
++- ヘッダ `boost/swap.hpp`、`boost/utility/swap.hpp`、`boost/core/swap.hpp` は非推奨であり、削除される予定である。`boost/core/invoke_swap.hpp`に切り替えること
++    - `BOOST_ALLOW_DEPRECATED_HEADERS` または `BOOST_ALLOW_DEPRECATED` を定義すると、非推奨の警告を抑制することができる
++
++
+ ## &amp;lt;a id=&amp;#34;crc&amp;#34; href=&amp;#34;#crc&amp;#34;&amp;gt;CRC&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを非推奨化した。Boost 1.86.0で削除予定
+@@ -101,6 +155,16 @@
+ - C++03のサポートを終了
+ 
+ 
++## &amp;lt;a id=&amp;#34;filesystem&amp;#34; href=&amp;#34;#filesystem&amp;#34;&amp;gt;Filesystem&amp;lt;/a&amp;gt;
++
++- Boost 1.82.0でアナウンスされたように、C++03のサポートは終了した。C++11以降のコンパイラが必要となる
++- [GitHub #291](https://github.com/boostorg/filesystem/issues/291) `error_code&amp;amp; ec`引数をとる一部の `directory_entry` オブザーバが、正常に戻ったときにエラーコードをクリアしていなかったのを修正した
++- [GitHub #293](https://github.com/boostorg/filesystem/issues/293) Windowsで日付と時刻の変換の堅牢性を改善し、1970年1月1日より前の日付のサポートを追加した
++- Boost.Filesystem 1.79.0以降で非推奨となっていたWindows CEへの対応を削除
++- `boost/filesystem/string_file.hpp` ヘッダを削除。このヘッダはBoost.Filesystem 1.79.0以降で非推奨となっていた
++- **非推奨化:** Windows 10より古いWindowsバージョンのサポートは非推奨であり、Boost 1.87で削除される予定
++
++
+ ## &amp;lt;a id=&amp;#34;heap&amp;#34; href=&amp;#34;#heap&amp;#34;&amp;gt;Heap&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを非推奨化した。Boost 1.86.0で削除予定。新たな要求はC++14以上となる
+@@ -136,6 +200,13 @@
+ - C++03のサポートを非推奨化した。Boost 1.86.0で削除予定。新たな要求はC++14以上となる
+ 
+ 
++## &amp;lt;a id=&amp;#34;log&amp;#34; href=&amp;#34;#log&amp;#34;&amp;gt;Log&amp;lt;/a&amp;gt;
++
++- C++03のサポートを終了。C++11以降のコンパイラが必要となる
++- Boost.Regex v5を使用するのに十分な適合性を持つC++11コンパイラでビルドした場合、Boost.Regex v5はヘッダのみであるため、Boost.LogはBoost.Regex組み込み済みライブラリとリンクしなくなった
++- Windows 10より古いWindowsバージョンのサポートは非推奨であり、Boost 1.87で削除される予定
++
++
+ ## &amp;lt;a id=&amp;#34;multi-index&amp;#34; href=&amp;#34;#multi-index&amp;#34;&amp;gt;Multi-index&amp;lt;/a&amp;gt;
+ 
+ - [GitHub #70](https://github.com/boostorg/multi_index/issues/70) ADLをサポートしていない古いコンパイラにおけるシリアライズ関連のコンパイル時バグを修正
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>リリースノート -- 1.84.0 : リリースノートを追加</title>
@@ -408,43 +551,6 @@ index ff446ae..5d0ba38 100644
  
 +## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
 +- [コンパイル時アサート](https://cpprefjp.github.io/lang/cpp11/static_assert.html)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>ROCKTAKEY</name>
-        <email>rocktakey@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>for each文 -- `std::for_each`などへのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/foreach.html"/>
-      <id>3b69175def18230615ea6c19bf63ac2427baae60:tips/foreach.md</id>
-      <updated>2023-11-08T23:36:01+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/foreach.md b/tips/foreach.md
-index 05db0db..c241f97 100644
---- a/tips/foreach.md
-+++ b/tips/foreach.md
-@@ -10,6 +10,7 @@
- - [逆順にループする](#reverse-iteration)
- - [配列に対して使用する](#apply-multi-array)
- - [C++11 範囲`for`文との違い](#difference-cpp11-range-for)
-+- [C++の国際標準規格上の類似する機能](#cpp-standard)
- 
- 
- ## &amp;lt;a id=&amp;#34;boost-foreach-macro&amp;#34; href=&amp;#34;#boost-foreach-macro&amp;#34;&amp;gt;BOOST_FOREACHマクロ&amp;lt;/a&amp;gt;
-@@ -379,3 +380,10 @@ for (int x : v) {}
- 
- `BOOST_FOREACH`マクロには、このような制限はないため、定義済みの変数を要素として使用できる。
- 
-+## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`BOOST_FOREACH`マクロ](#boost-foreach-macro)
-+  - [`std::for_each`](https://cpprefjp.github.io/reference/algorithm/for_each.html)
-+- [逆順にループする](#reverse-iteration)
-+  - [`std::ranges::reverse_view`、`std::ranges::views::reverse`](https://cpprefjp.github.io/reference/ranges/reverse_view.html)
-+- [C++11 範囲`for`文との違い](#difference-cpp11-range-for)
-+  - [範囲for文](https://cpprefjp.github.io/lang/cpp11/range_based_for.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
