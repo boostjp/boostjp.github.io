@@ -2,9 +2,41 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2023-12-05T10:41:27.560239</updated>
-  <id>9e363782-8b53-401c-94cd-d45bfec43536</id>
+  <updated>2023-12-05T12:16:11.165985</updated>
+  <id>de77193d-71b7-498c-a317-5c764754b1f3</id>
 
+  
+    <entry>
+      <title>文字列フォーマット -- `std::format`へのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/format.html"/>
+      <id>c7cf8fb156c051966711e3baecf1c5777de77c98:tips/format.md</id>
+      <updated>2023-12-05T21:14:36+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/format.md b/tips/format.md
+index 45af1d4..2aeb8d5 100644
+--- a/tips/format.md
++++ b/tips/format.md
+@@ -9,6 +9,7 @@ C言語では、`sprintf`を使用して`char`配列としての文字列をフ
+ - [基本的な使い方](#basic-usage)
+ - [`printf`風に書式を設定する](#printf-like-format)
+ - [フォーマット設定された`std::string`を作成する](#make-formatted-string)
++- [C++の国際標準規格上の類似する機能](#cpp-standard)
+ 
+ 
+ ## &amp;lt;a id=&amp;#34;basic-usage&amp;#34; href=&amp;#34;#basic-usage&amp;#34;&amp;gt;基本的な使い方&amp;lt;/a&amp;gt;
+@@ -93,3 +94,5 @@ int main()
+ Hello 3
+ ```
+ 
++## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
++- [`std::format`](https://cpprefjp.github.io/reference/format/format.html)
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>ROCKTAKEY</name>
+        <email>rocktakey@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>ファイル／ディレクトリ操作 -- `&lt;filesystem&gt;`へのリンクを追加</title>
@@ -131,105 +163,6 @@ index 609b004..c33434f 100644
       <author>
         <name>ROCKTAKEY</name>
         <email>rocktakey@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.84.0リリースノート -- 1.84.0 : Math, Multiprecision, Random, Testを追加</title>
-      <link href="https://boostjp.github.io/document/version/1_84_0.html"/>
-      <id>e9ebe52d33bb0a8fca76ec53cb62950d4b7ef21c:document/version/1_84_0.md</id>
-      <updated>2023-11-27T18:42:33+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_84_0.md b/document/version/1_84_0.md
-index f72fe54..8295b48 100644
---- a/document/version/1_84_0.md
-+++ b/document/version/1_84_0.md
-@@ -77,13 +77,17 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
- - [Locale](#locale)
- - [Lockfree](#lockfree)
- - [Log](#log)
-+- [Math](#math)
- - [Multi-index](#multi-index)
-+- [Multiprecision](#multiprecision)
- - [MySQL](#mysql)
- - [PFR](#pfr)
- - [Predef](#predef)
- - [Ratio](#ratio)
-+- [Random](#random)
- - [Stacktrace](#stacktrace)
- - [System](#system)
-+- [Test](#test)
- - [Thread](#thread)
- - [TypeIndex](#type-index)
- - [TypeOf](#typeof)
-@@ -207,11 +211,35 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
- - Windows 10より古いWindowsバージョンのサポートは非推奨であり、Boost 1.87で削除される予定
- 
- 
-+## &amp;lt;a id=&amp;#34;math&amp;#34; href=&amp;#34;#math&amp;#34;&amp;gt;Math&amp;lt;/a&amp;gt;
-+
-+- ccmath のエラー検出を改善
-+- [GitHub #1028](https://github.com/boostorg/math/issues/1028) 非推奨になった `std::numeric_limits&amp;lt;&amp;gt;::has_denorm` の使用を削除
-+- [GitHub #1035](https://github.com/boostorg/math/issues/1035) 非心t分布 (non-central-t distribution) が収束しないバグを修正
-+- [GitHub #1034](https://github.com/boostorg/math/issues/1034) `tgamma` が負の整数にならないように &amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt;F&amp;lt;sub&amp;gt;1&amp;lt;/sub&amp;gt; の Bessel 関数近似を調整
-+- [GitHub #1006](https://github.com/boostorg/math/issues/1006) `ibeta` の偽 (spurious) のオーバーフローとゼロによる除算を回避
-+- Sterling の tgamma の近似を使用する際の精度の改善。[GitHub #1007](https://github.com/boostorg/math/pull/1007)で開始された作業を完了
-+- [GitHub #1007](https://github.com/boostorg/math/pull/1007) 大きな初期推測に対する `inverse_discrete_quantile` の修正
-+- [GitHub #1000](https://github.com/boostorg/math/pull/1000) ニュートン法による平方根探索を改善
-+- [GitHub #997](https://github.com/boostorg/math/pull/997) 中央値が0でない場合の`median_absolute_deviation`を修正した
-+- `cstdfloat.hpp`をgcc-14向けに修正
-+- `&amp;lt;stdfloat&amp;gt;` で宣言された新しい型が動作するように更新
-+- 不必要なオーバーフローや使用上の制限を避けるため、`hypergeometric_distribution`を32ビットではなく64ビットの整数を使用するように変更
-+
-+
- ## &amp;lt;a id=&amp;#34;multi-index&amp;#34; href=&amp;#34;#multi-index&amp;#34;&amp;gt;Multi-index&amp;lt;/a&amp;gt;
- 
- - [GitHub #70](https://github.com/boostorg/multi_index/issues/70) ADLをサポートしていない古いコンパイラにおけるシリアライズ関連のコンパイル時バグを修正
- 
- 
-+## &amp;lt;a id=&amp;#34;multiprecision&amp;#34; href=&amp;#34;#multiprecision&amp;#34;&amp;gt;Multiprecision&amp;lt;/a&amp;gt;
-+
-+- [GitHub #567](https://github.com/boostorg/multiprecision/issues/567) テストコード中の `boost::array` を `std::array` に変更した
-+- [GitHub #553](https://github.com/boostorg/multiprecision/issues/553) `cpp_int::eval_convert_to` が `noexcept` になるように修正
-+- グローバルの精度を変更すると、現在のスレッドの精度も変更されるようにした
-+- [GitHub #540](https://github.com/boostorg/multiprecision/issues/540) `rational_adaptor` の構築のバグを修正
-+
-+
- ## &amp;lt;a id=&amp;#34;mysql&amp;#34; href=&amp;#34;#mysql&amp;#34;&amp;gt;MySQL&amp;lt;/a&amp;gt;
- 
- - `connection::reset_connection`と`connection::async_reset_connection`を追加。これらの関数は、接続を閉じたり再度開いたりすることなく、セッションの状態 (プリペアドステートメント、変数、ロックなどを含む) をクリーンアップする
-@@ -237,6 +265,12 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
- - `BOOST_RATIO_EXTENSIONS`のサポートを削除。Ratioは現在、標準`&amp;lt;ratio&amp;gt;`ヘッダで実装される
- 
- 
-+## &amp;lt;a id=&amp;#34;random&amp;#34; href=&amp;#34;#random&amp;#34;&amp;gt;Random&amp;lt;/a&amp;gt;
-+
-+- C++03のサポートを終了
-+- Boost.Multiprecisionを使用したテストでのオーバーフローを修正
-+
-+
- ## &amp;lt;a id=&amp;#34;stacktrace&amp;#34; href=&amp;#34;#stacktrace&amp;#34;&amp;gt;Stacktrace&amp;lt;/a&amp;gt;
- 
- - [GitHub #139](https://github.com/boostorg/stacktrace/pull/139) C++03のサポートを終了。[Alex氏](https://github.com/leha-bot)のPRに感謝
-@@ -253,6 +287,13 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
- - `result`に`operator&amp;amp;=`を追加
- 
- 
-+## &amp;lt;a id=&amp;#34;test&amp;#34; href=&amp;#34;#test&amp;#34;&amp;gt;Test&amp;lt;/a&amp;gt;
-+
-+- C++03のサポートを終了
-+- [GitHub #392](https://github.com/boostorg/test/pull/392) glibc 2.2 - 2.17でのPRIxPTRの使い方を修正
-+- [GitHub #390](https://github.com/boostorg/test/pull/390) MSVCの警告C5263「一時オブジェクトに`std::move`を呼び出すとコピー省略が発生する」を修正
-+
-+
- ## &amp;lt;a id=&amp;#34;thread&amp;#34; href=&amp;#34;#thread&amp;#34;&amp;gt;Thread&amp;lt;/a&amp;gt;
- 
- - C++03のサポートを終了
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
       </author>
     </entry>
   
