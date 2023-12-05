@@ -2,34 +2,34 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2023-12-05T12:16:11.165985</updated>
-  <id>de77193d-71b7-498c-a317-5c764754b1f3</id>
+  <updated>2023-12-05T13:01:40.956898</updated>
+  <id>eee2a9ba-7048-422c-8824-fb7a63e4a966</id>
 
   
     <entry>
-      <title>文字列フォーマット -- `std::format`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/format.html"/>
-      <id>c7cf8fb156c051966711e3baecf1c5777de77c98:tips/format.md</id>
-      <updated>2023-12-05T21:14:36+09:00</updated>
+      <title>型特性 -- `&lt;type_traits&gt;`へのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/type_traits.html"/>
+      <id>cd17af6081b5b4ba636e6c8c72b491547c1b70c3:tips/type_traits.md</id>
+      <updated>2023-12-05T21:59:22+09:00</updated>
       
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/format.md b/tips/format.md
-index 45af1d4..2aeb8d5 100644
---- a/tips/format.md
-+++ b/tips/format.md
-@@ -9,6 +9,7 @@ C言語では、`sprintf`を使用して`char`配列としての文字列をフ
- - [基本的な使い方](#basic-usage)
- - [`printf`風に書式を設定する](#printf-like-format)
- - [フォーマット設定された`std::string`を作成する](#make-formatted-string)
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/type_traits.md b/tips/type_traits.md
+index 278ac9a..449e779 100644
+--- a/tips/type_traits.md
++++ b/tips/type_traits.md
+@@ -78,6 +78,7 @@
+ - [特定アライメントを持った型の合成](#synthesizing-types-with-specific-alignments)
+     - [特定のアライメントを持つ型の取得する](#type-with-alignment)
+     - [適切にアライメントされた型を作成する](#aligned-storage)
 +- [C++の国際標準規格上の類似する機能](#cpp-standard)
  
  
- ## &amp;lt;a id=&amp;#34;basic-usage&amp;#34; href=&amp;#34;#basic-usage&amp;#34;&amp;gt;基本的な使い方&amp;lt;/a&amp;gt;
-@@ -93,3 +94,5 @@ int main()
- Hello 3
+ ### &amp;lt;a id=&amp;#34;type-category&amp;#34; href=&amp;#34;#type-category&amp;#34;&amp;gt;型の分類を判定する&amp;lt;/a&amp;gt;
+@@ -1383,3 +1384,5 @@ int main()
+ }
  ```
  
 +## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`std::format`](https://cpprefjp.github.io/reference/format/format.html)
++- [`&amp;lt;type_traits&amp;gt;`](https://cpprefjp.github.io/reference/type_traits.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
@@ -39,29 +39,29 @@ index 45af1d4..2aeb8d5 100644
     </entry>
   
     <entry>
-      <title>ファイル／ディレクトリ操作 -- `&lt;filesystem&gt;`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/filesystem.html"/>
-      <id>b264472eb24183c9f77305a6a27040947dde40f9:tips/filesystem.md</id>
-      <updated>2023-12-05T19:39:29+09:00</updated>
+      <title>スレッド -- `std::thread`へのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/thread.html"/>
+      <id>f75e7b572e89faf589841a468a0413be58f61d4f:tips/thread.md</id>
+      <updated>2023-12-05T21:57:50+09:00</updated>
       
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/filesystem.md b/tips/filesystem.md
-index 915ec37..9f1059b 100644
---- a/tips/filesystem.md
-+++ b/tips/filesystem.md
-@@ -16,6 +16,7 @@
- - [ディレクトリを作成する](#create-directory)
- - [ディレクトリ内のファイルを列挙する](#enumerate-file)
- - [ディレクトリ内の全てのファイルを再帰的に列挙](#recursive-enumerate-file)
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/thread.md b/tips/thread.md
+index 8baec32..ee0d661 100644
+--- a/tips/thread.md
++++ b/tips/thread.md
+@@ -15,6 +15,7 @@
+ - [自スレッドの実行を他スレッドに譲る](#yield)
+ - [スレッドのハンドルを取得する](#thread-handle)
+ - [ハードウェアの並列度を取得する](#hardware-concurrency)
 +- [C++の国際標準規格上の類似する機能](#cpp-standard)
  
  
- 
-@@ -491,3 +492,5 @@ int main()
- 
+ ## &amp;lt;a id=&amp;#34;create-thread&amp;#34; href=&amp;#34;#create-thread&amp;#34;&amp;gt;スレッドを生成(開始)する&amp;lt;/a&amp;gt;
+@@ -170,3 +171,5 @@ void f4() {
+ `boost::thread::hardware_concurrency()`静的メンバ関数を使用することで、(たとえばCPUの数やコアの数やhyperthreading unitの数などから)現在のシステムで利用可能なhardware threadの数を取得することが出来る。
  
  
 +## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`&amp;lt;filesystem&amp;gt;`](https://cpprefjp.github.io/reference/filesystem.html)
++- [`std::thread`](https://cpprefjp.github.io/reference/thread/thread.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
@@ -71,29 +71,68 @@ index 915ec37..9f1059b 100644
     </entry>
   
     <entry>
-      <title>関数ポインタと関数オブジェクトを統一的に扱う -- `std::function`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/function.html"/>
-      <id>37e7f7425023439a0efca59eae71047a358ceae6:tips/function.md</id>
-      <updated>2023-12-05T19:36:33+09:00</updated>
+      <title>リソースを自動的に解放する -- C++11で追加されたスマートポインタへのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/smart_ptr.html"/>
+      <id>cb4363ba2ae58ea4854132ecc7e4a3f26854b715:tips/smart_ptr.md</id>
+      <updated>2023-12-05T21:54:36+09:00</updated>
       
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/function.md b/tips/function.md
-index 66ced46..bab19d3 100644
---- a/tips/function.md
-+++ b/tips/function.md
-@@ -4,6 +4,7 @@
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/smart_ptr.md b/tips/smart_ptr.md
+index db18d7e..0402b6b 100644
+--- a/tips/smart_ptr.md
++++ b/tips/smart_ptr.md
+@@ -11,6 +11,7 @@
+     - [解放の方法を自分で決める](#customize-release-behavior-shared-ptr)
+     - [弱い参照](#weak-reference)
+ - [侵入型参照カウント方式のスマートポインタ](#intrusive-pointer)
++- [C++の国際標準規格上の類似する機能](#cpp-standard)
+ 
+ 
+ ## &amp;lt;a id=&amp;#34;no-share-smart-pointer&amp;#34; href=&amp;#34;#no-share-smart-pointer&amp;#34;&amp;gt;共有しないオブジェクトのスマートポインタ&amp;lt;/a&amp;gt;
+@@ -334,3 +335,10 @@ exist
+ destroy
+ ```
+ 
++## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
++- [`std::unique_ptr`](https://cpprefjp.github.io/reference/memory/unique_ptr.html)
++  - `boost::scoped_ptr`相当
++- [`std::shared_ptr`](https://cpprefjp.github.io/reference/memory/shared_ptr.html)
++  - `boost::shared_ptr`相当
++- [`std::weak_ptr`](https://cpprefjp.github.io/reference/memory/weak_ptr.html)
++  - `boost::weak_ptr`相当
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>ROCKTAKEY</name>
+        <email>rocktakey@gmail.com</email>
+      </author>
+    </entry>
+  
+    <entry>
+      <title>乱数 -- C++11で追加された乱数ライブラリへのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/random.html"/>
+      <id>eab43a6093cb59c676755031a5392db3a132f8d4:tips/random.md</id>
+      <updated>2023-12-05T21:48:47+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/random.md b/tips/random.md
+index b51919f..0954910 100644
+--- a/tips/random.md
++++ b/tips/random.md
+@@ -5,6 +5,7 @@
  ## インデックス
- 
  - [基本的な使い方](#basic-usage)
+ - [シードを再設定する](#set-seed)
 +- [C++の国際標準規格上の類似する機能](#cpp-standard)
  
  
  ## &amp;lt;a id=&amp;#34;basic-usage&amp;#34; href=&amp;#34;#basic-usage&amp;#34;&amp;gt;基本的な使い方&amp;lt;/a&amp;gt;
-@@ -75,3 +76,5 @@ int main()
- 5
- ```
+@@ -132,3 +133,7 @@ int main()
+ 
+ なお、シードを取得する機能はないので、シードの管理自体はユーザーが行う必要がある。
  
 +## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`std::function`](https://cpprefjp.github.io/reference/functional/function.html)
++- [`&amp;lt;random&amp;gt;`](https://cpprefjp.github.io/reference/random.html)
++- [`std::mt19937`](https://cpprefjp.github.io/reference/random/mt19937.html)
++- [`std::uniform_int_distribution`](https://cpprefjp.github.io/reference/random/uniform_int_distribution.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
@@ -103,61 +142,29 @@ index 66ced46..bab19d3 100644
     </entry>
   
     <entry>
-      <title>配列 -- `std::array`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/array.html"/>
-      <id>aad03ea526252ae1773f8444e0a6cb416fdecdfa:tips/array.md</id>
-      <updated>2023-11-09T19:17:15+09:00</updated>
+      <title>カリー化／部分適用 -- `std::bind`へのリンクを追加</title>
+      <link href="https://boostjp.github.io/tips/partial_eval.html"/>
+      <id>b6e143721b2f9433513a32c239ddbee25503b11a:tips/partial_eval.md</id>
+      <updated>2023-12-05T21:44:39+09:00</updated>
       
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/array.md b/tips/array.md
-index 03a8b75..0e13e86 100644
---- a/tips/array.md
-+++ b/tips/array.md
-@@ -9,6 +9,7 @@ Boostでは、標準コンテナのインタフェースで使用できる固定
- - [配列の要素数を取得する](#size)
- - [添字による要素アクセス](#at)
- - [イテレータを取得する](#iterator)
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/partial_eval.md b/tips/partial_eval.md
+index 605888b..9c2624f 100644
+--- a/tips/partial_eval.md
++++ b/tips/partial_eval.md
+@@ -6,6 +6,7 @@
+ - [部分適用(partial application)](#partial-application)
+ - [カリー化(currying)+適用(applying)](#currying)
+ - [メンバ関数のレシーバを部分適用する](#receiver-partial-application)
 +- [C++の国際標準規格上の類似する機能](#cpp-standard)
  
  
- ## &amp;lt;a id=&amp;#34;overview&amp;#34; href=&amp;#34;#overview&amp;#34;&amp;gt;概要&amp;lt;/a&amp;gt;
-@@ -175,3 +176,5 @@ int main()
- ```
- 
- 
-+## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`std::array`](https://cpprefjp.github.io/reference/array/array.html)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>ROCKTAKEY</name>
-        <email>rocktakey@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>タプル -- `std::tuple`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/tuple.html"/>
-      <id>cde7074d82383215c861a6e13366ef87f63ff797:tips/tuple.md</id>
-      <updated>2023-11-09T19:13:45+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/tuple.md b/tips/tuple.md
-index 609b004..c33434f 100644
---- a/tips/tuple.md
-+++ b/tips/tuple.md
-@@ -9,6 +9,7 @@
- - [全ての要素に関数を適用する](#for-each)
- - [ユーザー定義型をタプルとして扱う](#user-defined-type-as-tuple)
- - [要素をまとめて取り出す](#tie)
-+- [C++の国際標準規格上の類似する機能](#cpp-standard)
- 
- 
- ## &amp;lt;a id=&amp;#34;basic-usage&amp;#34; href=&amp;#34;#basic-usage&amp;#34;&amp;gt;基本的な使い方&amp;lt;/a&amp;gt;
-@@ -259,3 +260,5 @@ int main()
- Hello
+ ## &amp;lt;a id=&amp;#34;partial-application&amp;#34; href=&amp;#34;#partial-application&amp;#34;&amp;gt;部分適用(partial application)&amp;lt;/a&amp;gt;
+@@ -126,3 +127,5 @@ int main()
+ B::print()
  ```
  
 +## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`std::tuple`](https://cpprefjp.github.io/reference/tuple/tuple.html)
++- [`std::bind`](https://cpprefjp.github.io/reference/functional/bind.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
