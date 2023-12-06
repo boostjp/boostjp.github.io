@@ -2,9 +2,99 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2023-12-05T14:34:14.195792</updated>
-  <id>6ac3bf20-1d8b-442b-b889-b3829c890289</id>
+  <updated>2023-12-06T04:10:52.902427</updated>
+  <id>520c8ed5-c938-462b-8072-19373597538e</id>
 
+  
+    <entry>
+      <title>Boost 1.84.0リリースノート -- 1.84.0 : 順番を整理、GeometryとJSONを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_84_0.html"/>
+      <id>402cf12280805556a8ca0223a6f136dce5ba9032:document/version/1_84_0.md</id>
+      <updated>2023-12-06T13:09:12+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_84_0.md b/document/version/1_84_0.md
+index 8295b48..a141246 100644
+--- a/document/version/1_84_0.md
++++ b/document/version/1_84_0.md
+@@ -71,7 +71,9 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ - [DLL](#dll)
+ - [Endian](#endian)
+ - [Filesystem](#filesystem)
++- [Geometry](#geometry)
+ - [Heap](#heap)
++- [JSON](#json)
+ - [LEAF](#leaf)
+ - [LexicalCast](#lexical-cast)
+ - [Locale](#locale)
+@@ -83,8 +85,8 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ - [MySQL](#mysql)
+ - [PFR](#pfr)
+ - [Predef](#predef)
+-- [Ratio](#ratio)
+ - [Random](#random)
++- [Ratio](#ratio)
+ - [Stacktrace](#stacktrace)
+ - [System](#system)
+ - [Test](#test)
+@@ -169,11 +171,30 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ - **非推奨化:** Windows 10より古いWindowsバージョンのサポートは非推奨であり、Boost 1.87で削除される予定
+ 
+ 
++## &amp;lt;a id=&amp;#34;geometry&amp;#34; href=&amp;#34;#geometry&amp;#34;&amp;gt;Geometry&amp;lt;/a&amp;gt;
++
++- 解決したIssue
++    - [GitHub #1138](https://github.com/boostorg/geometry/issues/1138) 2つの`polygon`の`difference`を修正
++    - [GitHub #1183](https://github.com/boostorg/geometry/issues/1183) `union_`の結果となる`polgon`が不完全になる問題を修正
++    - [GitHub #1184](https://github.com/boostorg/geometry/issues/1184) `intersection`を修正
++    - [GitHub #1186](https://github.com/boostorg/geometry/issues/1186) `union_`の不適切なinner ringの代入を修正
++    - さまざまなエラーと警告を修正
++
++
+ ## &amp;lt;a id=&amp;#34;heap&amp;#34; href=&amp;#34;#heap&amp;#34;&amp;gt;Heap&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを非推奨化した。Boost 1.86.0で削除予定。新たな要求はC++14以上となる
+ 
+ 
++## &amp;lt;a id=&amp;#34;json&amp;#34; href=&amp;#34;#json&amp;#34;&amp;gt;JSON&amp;lt;/a&amp;gt;
++
++- ユーザー型に直接パースする機能を実装
++- `optional`と`variant`の変換カテゴリを追加
++- イテレータの組からのコンストラクタのイテレータ要件を緩和
++- 入力バッファを超える読み込みを修正
++- 初期化子リストのコンストラクタの一貫性がない選択を修正
++
++
+ ## &amp;lt;a id=&amp;#34;leaf&amp;#34; href=&amp;#34;#leaf&amp;#34;&amp;gt;LEAF&amp;lt;/a&amp;gt;
+ 
+ - `result&amp;lt;T&amp;gt;`クラスをnodiscard指定
+@@ -259,16 +280,16 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ - Microsoft STLの検出を追加 (Henrik Gaßmann氏)
+ 
+ 
+-## &amp;lt;a id=&amp;#34;ratio&amp;#34; href=&amp;#34;#ratio&amp;#34;&amp;gt;Ratio&amp;lt;/a&amp;gt;
++## &amp;lt;a id=&amp;#34;random&amp;#34; href=&amp;#34;#random&amp;#34;&amp;gt;Random&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを終了
+-- `BOOST_RATIO_EXTENSIONS`のサポートを削除。Ratioは現在、標準`&amp;lt;ratio&amp;gt;`ヘッダで実装される
++- Boost.Multiprecisionを使用したテストでのオーバーフローを修正
+ 
+ 
+-## &amp;lt;a id=&amp;#34;random&amp;#34; href=&amp;#34;#random&amp;#34;&amp;gt;Random&amp;lt;/a&amp;gt;
++## &amp;lt;a id=&amp;#34;ratio&amp;#34; href=&amp;#34;#ratio&amp;#34;&amp;gt;Ratio&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを終了
+-- Boost.Multiprecisionを使用したテストでのオーバーフローを修正
++- `BOOST_RATIO_EXTENSIONS`のサポートを削除。Ratioは現在、標準`&amp;lt;ratio&amp;gt;`ヘッダで実装される
+ 
+ 
+ ## &amp;lt;a id=&amp;#34;stacktrace&amp;#34; href=&amp;#34;#stacktrace&amp;#34;&amp;gt;Stacktrace&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>型特性 -- `&lt;type_traits&gt;`へのリンクを追加</title>
@@ -133,38 +223,6 @@ index b51919f..0954910 100644
 +- [`&amp;lt;random&amp;gt;`](https://cpprefjp.github.io/reference/random.html)
 +- [`std::mt19937`](https://cpprefjp.github.io/reference/random/mt19937.html)
 +- [`std::uniform_int_distribution`](https://cpprefjp.github.io/reference/random/uniform_int_distribution.html)
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>ROCKTAKEY</name>
-        <email>rocktakey@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>カリー化／部分適用 -- `std::bind`へのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/partial_eval.html"/>
-      <id>b6e143721b2f9433513a32c239ddbee25503b11a:tips/partial_eval.md</id>
-      <updated>2023-12-05T21:44:39+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/partial_eval.md b/tips/partial_eval.md
-index 605888b..9c2624f 100644
---- a/tips/partial_eval.md
-+++ b/tips/partial_eval.md
-@@ -6,6 +6,7 @@
- - [部分適用(partial application)](#partial-application)
- - [カリー化(currying)+適用(applying)](#currying)
- - [メンバ関数のレシーバを部分適用する](#receiver-partial-application)
-+- [C++の国際標準規格上の類似する機能](#cpp-standard)
- 
- 
- ## &amp;lt;a id=&amp;#34;partial-application&amp;#34; href=&amp;#34;#partial-application&amp;#34;&amp;gt;部分適用(partial application)&amp;lt;/a&amp;gt;
-@@ -126,3 +127,5 @@ int main()
- B::print()
- ```
- 
-+## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`std::bind`](https://cpprefjp.github.io/reference/functional/bind.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
