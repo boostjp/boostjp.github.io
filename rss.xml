@@ -2,9 +2,59 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2023-12-12T14:33:35.666364</updated>
-  <id>7386ff5c-3635-4747-b945-71f6799afb97</id>
+  <updated>2023-12-13T03:14:24.131788</updated>
+  <id>f9ffbe83-419d-44cb-833c-f791d2f209be</id>
 
+  
+    <entry>
+      <title>Boost 1.84.0リリースノート -- 1.84.0 : Asioを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_84_0.html"/>
+      <id>d2b17aee545c57bfb0fbbfc4de789af7c494b320:document/version/1_84_0.md</id>
+      <updated>2023-12-13T12:13:06+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_84_0.md b/document/version/1_84_0.md
+index a141246..a3663d4 100644
+--- a/document/version/1_84_0.md
++++ b/document/version/1_84_0.md
+@@ -61,6 +61,7 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ ## 更新ライブラリ
+ 
+ - [Any](#any)
++- [Asio](#asio)
+ - [Atomic](#atomic)
+ - [Beast](#beast)
+ - [Chrono](#chrono)
+@@ -104,6 +105,23 @@ Windows APIバージョン番号のリストは[Update `WINVER` and `_WIN32_WINN
+ - リファレンスのドキュメント生成を修正。これにより、Boost.PFRのリファレンスによって上書きされないようになった。Peter Dimov氏のデバッグに感謝
+ 
+ 
++## &amp;lt;a id=&amp;#34;asio&amp;#34; href=&amp;#34;#asio&amp;#34;&amp;gt;Asio&amp;lt;/a&amp;gt;
++
++- 最低言語標準として C++11 を要求するように変更。C++03のサポートを終了
++- 非推奨の機能を `boost::asio::execution` 名前空間から削除
++- 非推奨の呼び出しフック (invocation hook) とアロケーションフック (allocation hook) を削除
++- `channel`に `try_send_via_dispatch` と `try_send_n_via_dispatch` 関数を追加
++- Asio のプレースホルダと `std::bind` の互換性を追加
++- 複数の完了シグネチャを持つチャネルの C++11 サポートを改善した。
++- `channel`の非同期操作と `any_completion_handler` の互換性を修正
++- `BOOST_ASIO_USE_TS_EXECUTOR_AS_DEFAULT` を使用したコンパイルと `any_completion_handler` の互換性を修正
++- 同じカテゴリに属する混合されたexecutorのプロパティ型を比較するために不足していた等号演算子を追加
++- `std::exception_ptr`で始まる完了シグネチャを持つ非同期操作で `spawn` ベースのスタックフルコルーチンを使用するとプログラムが終了してしまう問題を修正
++- デフォルト構築された `any_completion_handler` オブジェクトのassociatorにアクセスしようとするとクラッシュする問題を修正
++- デフォルトの完了トークンで動作するように `ssl::stream&amp;lt;&amp;gt;` クラスの `async_handshake` 操作を修正
++- C++11 を最小言語標準として使用するようにすべてのサンプルコードを更新
++
++
+ ## &amp;lt;a id=&amp;#34;atomic&amp;#34; href=&amp;#34;#atomic&amp;#34;&amp;gt;Atomic&amp;lt;/a&amp;gt;
+ 
+ - C++03のサポートを終了。新たな要求はC++11以上となる
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.84.0リリースノート -- 1.84.0 : 順番を整理、GeometryとJSONを追加</title>
@@ -189,40 +239,6 @@ index db18d7e..0402b6b 100644
 +  - `boost::shared_ptr`相当
 +- [`std::weak_ptr`](https://cpprefjp.github.io/reference/memory/weak_ptr.html)
 +  - `boost::weak_ptr`相当
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>ROCKTAKEY</name>
-        <email>rocktakey@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>乱数 -- C++11で追加された乱数ライブラリへのリンクを追加</title>
-      <link href="https://boostjp.github.io/tips/random.html"/>
-      <id>eab43a6093cb59c676755031a5392db3a132f8d4:tips/random.md</id>
-      <updated>2023-12-05T21:48:47+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/tips/random.md b/tips/random.md
-index b51919f..0954910 100644
---- a/tips/random.md
-+++ b/tips/random.md
-@@ -5,6 +5,7 @@
- ## インデックス
- - [基本的な使い方](#basic-usage)
- - [シードを再設定する](#set-seed)
-+- [C++の国際標準規格上の類似する機能](#cpp-standard)
- 
- 
- ## &amp;lt;a id=&amp;#34;basic-usage&amp;#34; href=&amp;#34;#basic-usage&amp;#34;&amp;gt;基本的な使い方&amp;lt;/a&amp;gt;
-@@ -132,3 +133,7 @@ int main()
- 
- なお、シードを取得する機能はないので、シードの管理自体はユーザーが行う必要がある。
- 
-+## &amp;lt;a id=&amp;#34;cpp-standard&amp;#34; href=&amp;#34;#cpp-standard&amp;#34;&amp;gt;C++の国際標準規格上の類似する機能&amp;lt;/a&amp;gt;
-+- [`&amp;lt;random&amp;gt;`](https://cpprefjp.github.io/reference/random.html)
-+- [`std::mt19937`](https://cpprefjp.github.io/reference/random/mt19937.html)
-+- [`std::uniform_int_distribution`](https://cpprefjp.github.io/reference/random/uniform_int_distribution.html)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
