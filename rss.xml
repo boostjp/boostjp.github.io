@@ -2,9 +2,89 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>boostjp : Boost日本語情報サイト</title>
   <link href="https://boostjp.github.io" />
-  <updated>2026-04-22T15:51:56.211883</updated>
-  <id>812c5c0f-e265-43f3-8eb0-bd6420ff1879</id>
+  <updated>2026-04-23T00:25:30.548799</updated>
+  <id>9e48d9fd-ac38-4e75-b285-70ec4787fef6</id>
 
+  
+    <entry>
+      <title>Boost 1.91.0リリースノート -- 1.91.0 : URLとOpenMethodを追加</title>
+      <link href="https://boostjp.github.io/document/version/1_91_0.html"/>
+      <id>cdc94f74963e43a188a089670dc86ab9ada97de9:document/version/1_91_0.md</id>
+      <updated>2026-04-23T09:24:13+09:00</updated>
+      
+        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_91_0.md b/document/version/1_91_0.md
+index 5c9bb91..c5305c3 100644
+--- a/document/version/1_91_0.md
++++ b/document/version/1_91_0.md
+@@ -46,6 +46,7 @@
+ - [Math](#math)
+ - [MultiIndex](#multiindex)
+ - [MSM](#msm)
++- [OpenMethod](#openmethod)
+ - [Optional](#optional)
+ - [PFR](#pfr)
+ - [Random](#random)
+@@ -55,6 +56,7 @@
+ - [Test](#test)
+ - [TypeIndex](#typeindex)
+ - [Unordered](#unordered)
++- [URL](#url)
+ - [UUID](#uuid)
+ - [Variant2](#variant2)
+ 
+@@ -203,6 +205,11 @@
+ - **破壊的変更 (`backmp11`)**: イベントプールへの直接アクセスを `public` から `protected` に変更。ライブラリコード外からの操作は未定義動作を引き起こす可能性があるため
+ 
+ 
++## &amp;lt;a id=&amp;#34;openmethod&amp;#34; href=&amp;#34;#openmethod&amp;#34;&amp;gt;OpenMethod&amp;lt;/a&amp;gt;
++
++- `boost::intrusive_ptr` との相互運用
++
++
+ ## &amp;lt;a id=&amp;#34;optional&amp;#34; href=&amp;#34;#optional&amp;#34;&amp;gt;Optional&amp;lt;/a&amp;gt;
+ 
+ - 完全な C++11 サポート（「制限なし共用体 (unrestricted unions)」と参照修飾子を含む）を持つコンパイラにおいて、実装をaligned storageからunion storageに変更。これにより段階的な `constexpr` サポートが可能になった:
+@@ -293,6 +300,33 @@
+ - [GitHub #344](https://github.com/boostorg/unordered/pull/344) 並行コンテナにおける範囲挿入の戻り値を修正
+ 
+ 
++## &amp;lt;a id=&amp;#34;url&amp;#34; href=&amp;#34;#url&amp;#34;&amp;gt;URL&amp;lt;/a&amp;gt;
++
++- 機能追加:
++    - [GitHub #976](https://github.com/boostorg/url/pull/976) すべてのパース関数が C++20 で `constexpr` になり、コンパイル時の URL パースおよび検証が可能になった
++    - [GitHub #953](https://github.com/boostorg/url/pull/953) クエリコンテナに `get_or` を追加。キーが存在しない場合にデフォルト値を返す
++    - [GitHub #952](https://github.com/boostorg/url/pull/952) スタンドアロンの `decode` および `decoded_size` フリー関数を追加
++    - [GitHub #950](https://github.com/boostorg/url/pull/950) `grammar::range` に対するユーザー提供の `RangeRule` サポートを追加。カスタム文法規則を利用可能
++    - [GitHub #966](https://github.com/boostorg/url/pull/966) すべてのビュー型に対して `std::ranges::enable_borrowed_range` を特殊化
++    - [GitHub #964](https://github.com/boostorg/url/pull/964) `token_rule_t` に EBO およびデフォルト構築を追加
++    - [GitHub #962](https://github.com/boostorg/url/pull/962) セグメント用の natvis ビジュアライザーを追加
++- パフォーマンス:
++    - [GitHub #969](https://github.com/boostorg/url/pull/969) 内部 URL オフセットを `size_t` から `uint32_t` に変更。64 ビットプラットフォームでのオブジェクトサイズを削減
++- 修正:
++    - [GitHub #986](https://github.com/boostorg/url/pull/986) `..`解決による `normalize_path` のあいまいさを修正
++    - [GitHub #949](https://github.com/boostorg/url/pull/949) 空の `string_view` 入力に対する `parse_query` のガード追加
++    - [GitHub #978](https://github.com/boostorg/url/pull/978) `=` を含む値に対する `params_iter_impl::decrement()` のデコード後サイズを修正
++    - [GitHub #978](https://github.com/boostorg/url/pull/978) `decode_view::remove_prefix` / `remove_suffix` のアサーションを修正
++    - [GitHub #963](https://github.com/boostorg/url/pull/963) `pct_string_view::operator*()` に対する `decode_view` の完全性を修正
++    - [GitHub #959](https://github.com/boostorg/url/pull/959) サンプルのルーターをムーブ専用に変更
++    - [GitHub #981](https://github.com/boostorg/url/pull/981) `tuple_rule` における GCC の偽陽性 `-Wmaybe-uninitialized` を修正
++    - [GitHub #982](https://github.com/boostorg/url/pull/982), [GitHub #988](https://github.com/boostorg/url/pull/988) Laurel Lye Systems Engineering によるセキュリティレビュー: 3 ラウンドの評価、21 件の確認済み修正、パブリックインタフェース境界テストおよび fuzz テストを追加
++- ドキュメント:
++    - [GitHub #987](https://github.com/boostorg/url/pull/987) 設計根拠のページを追加
++    - [GitHub #970](https://github.com/boostorg/url/pull/970) プラススキーム規約をドキュメント化
++    - レガシーの QuickBook ドキュメントを削除
++
++
+ ## &amp;lt;a id=&amp;#34;uuid&amp;#34; href=&amp;#34;#uuid&amp;#34;&amp;gt;UUID&amp;lt;/a&amp;gt;
+ 
+ - `boost/uuid/uuid_io.hpp` に `from_chars` を追加
+&lt;/code&gt;&lt;/pre&gt;</summary>
+      
+      <author>
+        <name>Akira Takahashi</name>
+        <email>faithandbrave@gmail.com</email>
+      </author>
+    </entry>
   
     <entry>
       <title>Boost 1.91.0リリースノート -- 1.91.0 : Asio, Charconv, Math, Random, Testを追加</title>
@@ -320,319 +400,6 @@ index e945fef..5a0fd2c 100644
  ## &amp;lt;a id=&amp;#34;stacktrace&amp;#34; href=&amp;#34;#stacktrace&amp;#34;&amp;gt;Stacktrace&amp;lt;/a&amp;gt;
  
  - 互換性のないランタイムに対するコンパイル時チェックを削除。これにより誤検知がなくなり、`from_exception` 機能がそのまま動作するようになった。互換性のない/リークするランタイムのまれなケースはランタイムで報告されるようになった
-&lt;/code&gt;&lt;/pre&gt;</summary>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>リリースノート -- 1.91.0 リリースノート翻訳を追加</title>
-      <link href="https://boostjp.github.io/document/version.html"/>
-      <id>30468b313e87571400c4a41e19d01cfa109cf588:document/version.md</id>
-      <updated>2026-03-18T14:43:33+09:00</updated>
-      
-        <content type="html">&lt;h1 itemprop=&#34;name&#34;&gt;&lt;span class=&#34;token&#34;&gt;リリースノート&lt;/span&gt;&lt;/h1&gt;
-&lt;div itemprop=&#34;articleBody&#34;&gt;&lt;p&gt;以下は、Boostの各バージョンのリリースノートを翻訳、情報補完したドキュメントです。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;version/template.html&#34;&gt;雛形ページ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr /&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_91_0.html&#34;&gt;1.91.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_90_0.html&#34;&gt;1.90.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_89_0.html&#34;&gt;1.89.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_88_0.html&#34;&gt;1.88.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_87_0.html&#34;&gt;1.87.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_86_0.html&#34;&gt;1.86.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_85_0.html&#34;&gt;1.85.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_84_0.html&#34;&gt;1.84.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_83_0.html&#34;&gt;1.83.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_82_0.html&#34;&gt;1.82.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_81_0.html&#34;&gt;1.81.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_80_0.html&#34;&gt;1.80.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_79_0.html&#34;&gt;1.79.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_78_0.html&#34;&gt;1.78.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_77_0.html&#34;&gt;1.77.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_76_0.html&#34;&gt;1.76.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_75_0.html&#34;&gt;1.75.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_74_0.html&#34;&gt;1.74.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_73_0.html&#34;&gt;1.73.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_72_0.html&#34;&gt;1.72.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_71_0.html&#34;&gt;1.71.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_70_0.html&#34;&gt;1.70.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_69_0.html&#34;&gt;1.69.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_68_0.html&#34;&gt;1.68.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_67_0.html&#34;&gt;1.67.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_66_0.html&#34;&gt;1.66.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_65_1.html&#34;&gt;1.65.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_65_0.html&#34;&gt;1.65.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_64_0.html&#34;&gt;1.64.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_63_0.html&#34;&gt;1.63.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_62_0.html&#34;&gt;1.62.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_61_0.html&#34;&gt;1.61.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_60_0.html&#34;&gt;1.60.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_59_0.html&#34;&gt;1.59.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_58_0.html&#34;&gt;1.58.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_57_0.html&#34;&gt;1.57.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_56_0.html&#34;&gt;1.56.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_55_0.html&#34;&gt;1.55.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_54_0.html&#34;&gt;1.54.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_53_0.html&#34;&gt;1.53.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_52_0.html&#34;&gt;1.52.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_51_0.html&#34;&gt;1.51.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_50_0.html&#34;&gt;1.50.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_49_0.html&#34;&gt;1.49.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_48_0.html&#34;&gt;1.48.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_47_0.html&#34;&gt;1.47.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_46_1.html&#34;&gt;1.46.1&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_46_0.html&#34;&gt;1.46.0&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;version/1_45_0.html&#34;&gt;1.45.0&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/div&gt;</content>
-      
-      <author>
-        <name>Akira Takahashi</name>
-        <email>faithandbrave@gmail.com</email>
-      </author>
-    </entry>
-  
-    <entry>
-      <title>Boost 1.91.0リリースノート -- 1.91.0 リリースノート翻訳を追加</title>
-      <link href="https://boostjp.github.io/document/version/1_91_0.html"/>
-      <id>30468b313e87571400c4a41e19d01cfa109cf588:document/version/1_91_0.md</id>
-      <updated>2026-03-18T14:43:33+09:00</updated>
-      
-        <summary type="html">&lt;pre&gt;&lt;code&gt;diff --git a/document/version/1_91_0.md b/document/version/1_91_0.md
-new file mode 100644
-index 0000000..e945fef
---- /dev/null
-+++ b/document/version/1_91_0.md
-@@ -0,0 +1,223 @@
-+# Boost 1.91.0リリースノート
-+
-+本家リリースノート：
-+
-+- &amp;lt;https://github.com/boostorg/website-v2-docs/blob/develop/release-notes/boost_1_91_0.adoc&amp;gt;
-+- &amp;lt;https://www.boost.org/releases/1.91.0/&amp;gt;
-+
-+
-+リポジトリは以下：
-+
-+- &amp;lt;https://github.com/boostorg/&amp;gt;
-+
-+
-+リポジトリからのビルド方法は、egtraさんのブログを参照：
-+
-+- 「[Modularized Boost（GitHubへ移行したリポジトリ）を使用する](http://dev.activebasic.com/egtra/2013/12/03/620/)」
-+
-+
-+## 新ライブラリ
-+
-+- [Decimal](https://boost.org/libs/decimal)
-+    - IEEE754 10進浮動小数点数の実装。作者Matt Borland氏、Christopher Kormanyos氏
-+
-+
-+## 更新ライブラリ
-+
-+- [Any](#any)
-+- [Core](#core)
-+- [Describe](#describe)
-+- [DynamicBitset](#dynamicbitset)
-+- [Exception](#exception)
-+- [JSON](#json)
-+- [LEAF](#leaf)
-+- [LexicalCast](#lexicalcast)
-+- [MultiIndex](#multiindex)
-+- [MSM](#msm)
-+- [Optional](#optional)
-+- [PFR](#pfr)
-+- [Stacktrace](#stacktrace)
-+- [System](#system)
-+- [TypeIndex](#typeindex)
-+- [Unordered](#unordered)
-+- [UUID](#uuid)
-+- [Variant2](#variant2)
-+
-+
-+## &amp;lt;a id=&amp;#34;any&amp;#34; href=&amp;#34;#any&amp;#34;&amp;gt;Any&amp;lt;/a&amp;gt;
-+
-+- CMake における `import std` の検出を修正
-+- `boost::anys::basic_any` の実装を簡素化
-+
-+
-+## &amp;lt;a id=&amp;#34;core&amp;#34; href=&amp;#34;#core&amp;#34;&amp;gt;Core&amp;lt;/a&amp;gt;
-+
-+- [GitHub #90](https://github.com/boostorg/core/issues/90) ヘッダ `boost/is_placeholder.hpp` を Bind から Core へ移動
-+
-+
-+## &amp;lt;a id=&amp;#34;describe&amp;#34; href=&amp;#34;#describe&amp;#34;&amp;gt;Describe&amp;lt;/a&amp;gt;
-+
-+- C++20 において、囲むクラスがまだ不完全な場合でも、記述されたネストされた列挙型が動作するようになった（Julien Blanc氏の貢献）
-+- `enum_to_string` を `constexpr` 化（Julien Blanc氏の貢献）
-+
-+
-+## &amp;lt;a id=&amp;#34;dynamicbitset&amp;#34; href=&amp;#34;#dynamicbitset&amp;#34;&amp;gt;DynamicBitset&amp;lt;/a&amp;gt;
-+
-+- `operator-( const bit_iterator_base&amp;lt; Iter &amp;gt; &amp;amp; lhs, const bit_iterator_base&amp;lt; Iter &amp;gt; &amp;amp; rhs )` に対する不足していた friend 宣言を追加
-+- 生ポインタをイテレータとして使用する標準ライブラリ実装でのコンパイルを修正
-+- `from_block_range()` がビットセットの未使用部分にビットを設定しないよう修正
-+
-+
-+## &amp;lt;a id=&amp;#34;exception&amp;#34; href=&amp;#34;#exception&amp;#34;&amp;gt;Exception&amp;lt;/a&amp;gt;
-+
-+- カスタマイズ可能なシリアライゼーション API を追加。Boost.JSON および nlohmann/json の組み込みサポート付き
-+
-+
-+## &amp;lt;a id=&amp;#34;json&amp;#34; href=&amp;#34;#json&amp;#34;&amp;gt;JSON&amp;lt;/a&amp;gt;
-+
-+- `std::initializer_list` からの `value` の構築を `value_from` を使用するよう変更
-+
-+
-+## &amp;lt;a id=&amp;#34;leaf&amp;#34; href=&amp;#34;#leaf&amp;#34;&amp;gt;LEAF&amp;lt;/a&amp;gt;
-+
-+- カスタマイズ可能なシリアライゼーション API を追加。Boost.JSON および nlohmann/json の組み込みサポート付き
-+- Windows 上で DLL 境界を越えた LEAF エラーオブジェクトの使用をサポート（デフォルトでは無効）
-+- 内部 TLS API の改善（例: Win32、組み込み）
-+- 診断システムおよび `on_error` 実装の改善
-+- 実装品質の改善（例: `noexcept` のより正確な使用）
-+- 非推奨の `verbose_diagnostic_info` を削除（`diagnostic_details` に置換済み）
-+
-+
-+## &amp;lt;a id=&amp;#34;lexicalcast&amp;#34; href=&amp;#34;#lexicalcast&amp;#34;&amp;gt;LexicalCast&amp;lt;/a&amp;gt;
-+
-+- C++20 モジュール `boost.lexical_cast` の初期バージョンを実装
-+
-+
-+## &amp;lt;a id=&amp;#34;multiindex&amp;#34; href=&amp;#34;#multiindex&amp;#34;&amp;gt;MultiIndex&amp;lt;/a&amp;gt;
-+
-+- **破壊的変更:** ライブラリが受け入れまたは提供するすべての型リスト（`indexed_by`、`tag`、ネストされた typedef `index_specifier_type_list`、`index_type_list`、`iterator_type_list`、`const_iterator_type_list`）が [Boost.MPL](https://boost.org/libs/mpl) ベースではなくなり、[Boost.Mp11 リスト](https://boost.org/libs/mp11/doc/html/mp11.html#definitions)に変更された。これにより、Boost.MultiIndex は Boost.MPL に依存しなくなった。ほとんどのユーザーコードには影響しないと考えられるが、マクロ `BOOST_MULTI_INDEX_ENABLE_MPL_SUPPORT` をグローバルに定義することで従来の動作を復元可能。Boost.MPL のレガシーサポートは将来的に非推奨化および削除される可能性がある
-+- **破壊的変更:** `composite_key` および関連クラステンプレート（`composite_key_equal_to`、`composite_key_compare`、`composite_key_hash`）が可変引数テンプレートに変更された（従来はテンプレート引数の最大数が `BOOST_MULTI_INDEX_LIMIT_COMPOSITE_KEY_SIZE` で制限されていた）。この変更はユーザーに対して透過的であるべきだが、`composite_key::key_extractors` が `boost::tuple` ではなく `std::tuple` を返すようになった点が例外である（影響を受ける他のクラステンプレートも同様）
-+- C++11 以前のコンパイラをサポートするための内部回避策とフォールバックを削除
-+
-+
-+## &amp;lt;a id=&amp;#34;msm&amp;#34; href=&amp;#34;#msm&amp;#34;&amp;gt;MSM&amp;lt;/a&amp;gt;
-+
-+- 新機能 (`backmp11`):
-+    - [GitHub #173](https://github.com/boostorg/msm/issues/173): 階層的ステートマシンにおける `deferred_events` プロパティのサポートを改善
-+    - [GitHub #155](https://github.com/boostorg/msm/issues/155): `deferred_events` プロパティによる条件付き遅延をサポート
-+    - [GitHub #175](https://github.com/boostorg/msm/issues/175): 関数オブジェクトのシグネチャを簡素化
-+    - [GitHub #168](https://github.com/boostorg/msm/issues/168): キューイングされたイベントと遅延イベントを単一のイベントプールに統合
-+    - [GitHub #172](https://github.com/boostorg/msm/issues/172): イベントプール内のイベントに対する小オブジェクト最適化
-+    - [GitHub #180](https://github.com/boostorg/msm/issues/180): `flat_fold` ディスパッチ戦略による実行時パフォーマンスの改善
-+    - バージョン 1.90 と比較して、最大 25% のコンパイル時間短縮と RAM 消費量の削減をさらに最適化
-+- バグ修正 (`backmp11`):
-+    - [GitHub #167](https://github.com/boostorg/msm/issues/167): `on_entry(...)` および `on_exit(...)` 呼び出し時の不正な `FSM` 型を修正
-+    - [GitHub #166](https://github.com/boostorg/msm/issues/166): 完了イベントが過剰に発火する問題を修正
-+- **破壊的変更 (`backmp11`)**: イベントプールへの直接アクセスを `public` から `protected` に変更。ライブラリコード外からの操作は未定義動作を引き起こす可能性があるため
-+
-+
-+## &amp;lt;a id=&amp;#34;optional&amp;#34; href=&amp;#34;#optional&amp;#34;&amp;gt;Optional&amp;lt;/a&amp;gt;
-+
-+- 完全な C++11 サポート（「制限なし共用体 (unrestricted unions)」と参照修飾子を含む）を持つコンパイラにおいて、実装をaligned storageからunion storageに変更。これにより段階的な `constexpr` サポートが可能になった:
-+    - C++11 では、一定の制約を満たす型に対し、一部のコンストラクタおよび `const` 修飾付きアクセッサがコンパイル時コンテキストで使用可能になった（コア定数式）
-+    - C++14 では、一部の変更操作もコア定数式になった（`optional` の状態を「値なし」から「値あり」に変更する操作を除く）。これは協調型に対して適用される
-+    - C++17 では、すべてのコンストラクタ（コピーおよびムーブを含む）が協調型に対してコア定数式になった
-+    - これは [GitHub #132](https://github.com/boostorg/optional/issues/132) および [GitHub #143](https://github.com/boostorg/optional/issues/143) に対応する
-+- **破壊的変更:** `swap` のカスタマイズ機構を廃止。このメカニズムはほとんど知られておらず、ドキュメント化もされていなかった
-+- `std::optional` のインタフェースに近づけるための小さな変更:
-+    - optional オブジェクトを「値なし」状態にするための構文 `o = {}` を有効化
-+    - デフォルト構築された `T` を使用する構文 `o.value_or({})` を有効化
-+    - `o = u` (`o` は `optional&amp;lt;T&amp;gt;` 型、`u` は `T` に変換可能な `U` 型) の構築において一時的な `T` を生成しないよう変更
-+- [GitHub #142](https://github.com/boostorg/optional/issues/142) `optional&amp;lt;T&amp;gt;&amp;amp;` から `optional&amp;lt;T&amp;amp;&amp;gt;` への変換を追加
-+- `none_t` が `std::equality_comparable` になり、`none_t` と `optional&amp;lt;T&amp;gt;` が `std::equality_comparable_with` コンセプトをモデル化するようになった（`std::equality_comparable` な `T` に対して）。これにより、optional オブジェクトの範囲に対して `std::ranges::find(rng, boost::none)` が使用可能になった
-+- **警告:** 将来のリリースで `optional` にRangeインタフェースを導入する予定であり、`std::ranges::range&amp;lt;optional&amp;lt;T&amp;gt;&amp;gt;` が `true` になる。これは `std::ranges::range` などの述語に基づいて判断するプログラムのオーバーロード解決に影響する
-+    ```cpp
-+    template &amp;lt;typename T&amp;gt;
-+    void serialize(T const&amp;amp; v)
-+    {
-+      if constexpr (std::ranges::range&amp;lt;T&amp;gt;)
-+        serialize_as_range(v);
-+      else if constexpr (custom::is_optional_like&amp;lt;T&amp;gt;)
-+        serialize_as_optional(v);
-+      else
-+        serialize_as_value(v);
-+    }
-+    ```
-+
-+## &amp;lt;a id=&amp;#34;pfr&amp;#34; href=&amp;#34;#pfr&amp;#34;&amp;gt;PFR&amp;lt;/a&amp;gt;
-+
-+- 実験的な C++26 リフレクションベースの実装を追加。有効にするにはマクロ `BOOST_PFR_USE_CPP26_REFLECTION` を `1` に定義する
-+- `boost::pfr::for_each_field*()` 関数が状態をもつビジターで正しく動作するようになった
-+
-+
-+## &amp;lt;a id=&amp;#34;stacktrace&amp;#34; href=&amp;#34;#stacktrace&amp;#34;&amp;gt;Stacktrace&amp;lt;/a&amp;gt;
-+
-+- 互換性のないランタイムに対するコンパイル時チェックを削除。これにより誤検知がなくなり、`from_exception` 機能がそのまま動作するようになった。互換性のない/リークするランタイムのまれなケースはランタイムで報告されるようになった
-+- [GitHub #219](https://github.com/boostorg/stacktrace/pull/219) cygwin で `from_exception` を無効化。David McFarland氏の PR に感謝
-+- `has_addr2line` の C++ 標準ライブラリとのリンクを削除し、システムデフォルトでない `libstdc++.so` でのビルドを簡素化
-+
-+
-+## &amp;lt;a id=&amp;#34;system&amp;#34; href=&amp;#34;#system&amp;#34;&amp;gt;System&amp;lt;/a&amp;gt;
-+
-+- `operator|(result&amp;lt;T&amp;amp;&amp;gt;, U)` の戻り値型を非参照に変更
-+- `r &amp;amp; f` でメンバへのポインタをサポート（`boost::compat::invoke` を使用）
-+- ライブラリがヘッダオンリーであるにもかかわらず、CMake config ファイルをインストールするようになった。これは `find_package(Boost COMPONENTS system ...)` を含むサードパーティの `CMakeLists.txt` ファイルの破壊を回避するため
-+- C++20 以降で `error_code` がさらに `constexpr` 化
-+- `result` に `unsafe_value` を追加
-+- `result&amp;lt;&amp;gt;::operator*` および `result&amp;lt;&amp;gt;::operator-&amp;gt;` が `!has_value()` の場合に例外をスローするよう変更（従来は事前条件）。従来の動作は `unsafe_value()` で記述
-+- `boost/system/unwrap_and_invoke.hpp` を追加
-+
-+
-+## &amp;lt;a id=&amp;#34;typeindex&amp;#34; href=&amp;#34;#typeindex&amp;#34;&amp;gt;TypeIndex&amp;lt;/a&amp;gt;
-+
-+- C++20 以降の CTTI 型比較を最適化
-+- `ctti_type_index::name()` が C++14 以降のモダンな C++ 標準でデフォルトで整形された値を返すよう変更。ライブラリバイナリのサイズを削減
-+
-+
-+## &amp;lt;a id=&amp;#34;unordered&amp;#34; href=&amp;#34;#unordered&amp;#34;&amp;gt;Unordered&amp;lt;/a&amp;gt;
-+
-+- [GitHub #344](https://github.com/boostorg/unordered/pull/344) 並行コンテナにおける範囲挿入の戻り値を修正
-+
-+
-+## &amp;lt;a id=&amp;#34;uuid&amp;#34; href=&amp;#34;#uuid&amp;#34;&amp;gt;UUID&amp;lt;/a&amp;gt;
-+
-+- `boost/uuid/uuid_io.hpp` に `from_chars` を追加
-+- `string_generator` に `noexcept` な `operator()` オーバーロードを追加
-+- `string_generator` が `char` と `wchar_t` に加えて Unicode 文字型をサポート
-+- C++14 以降かつ最近のコンパイラにおいて、ほとんどの `uuid` アクセサ・操作・`to_chars` が可能な限り `constexpr` になった
-+- `to_chars` の SIMD 実装を追加。UUID のフォーマットで最大 5.5 倍のパフォーマンス改善（Andrey Semashev氏）
-+- `from_chars` の SIMD 実装を追加。UUID のパースで最大 13 倍のパフォーマンス改善（Andrey Semashev氏）
-+- `boost/uuid/uuid_io.hpp` に `uuid_from_string` を追加
-+- 後方互換性のために `std::runtime_error` から派生した専用の `invalid_uuid` 例外クラスを追加
-+
-+
-+## &amp;lt;a id=&amp;#34;variant2&amp;#34; href=&amp;#34;#variant2&amp;#34;&amp;gt;Variant2&amp;lt;/a&amp;gt;
-+
-+- `holds_alternative&amp;lt;T&amp;gt;` および `get&amp;lt;T&amp;gt;` が、`T` が代替型のリストに正確に1回出現する必要がなくなり、少なくとも1回出現すればよいよう緩和された
-+
-+
-+## テスト済みコンパイラ
-+主要なテストコンパイラ:
-+
-+- Linux:
-+    - Clang, C++03: 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 12.0.0, 13.0.0, 14.0.0, 15.0.0
-+    - Clang, C++11: 3.4, 11.0.0, 13.0.0, 14.0.0, 15.0.0
-+    - Clang, C++14: 3.5, 3.6, 3.7, 3.8, 3.9, 4.0, 5.0, 12.0.0, 13.0.0, 14.0.0, 15.0.0
-+    - Clang, C++17: 6.0.1, 7.0.0, 8.0.0, 9.0.0, 10.0.0, 11.0.0, 12.0.0, 13.0.0, 14.0.0, 15.0.0
-+    - Clang, C++20: 11.0.0, 12.0.0, 13.0.0, 14.0.0, 15.0.0
-+    - GCC, C++03: 4.6.3, 11, 12
-+    - GCC, C++11: 4.7.3, 4.8.5, 11, 12
-+    - GCC, C++14: 5.4.0, 6.4.0, 7.3.0, 8.0.1, 9.1.0, 11, 12
-+    - GCC, C++17: 7.3.0, 8.0.1, 9.1.0, 11, 12
-+    - GCC, C++20: 8.0.1, 9.1.0, 10, 11, 12
-+- OS X:
-+    - Apple Clang, C++03: 11.0.3
-+    - Apple Clang, C++11: 11.0.3
-+    - Apple Clang, C++14: 11.0.3
-+    - Apple Clang, C++17: 11.0.3
-+    - Apple Clang, C++20: 11.0.3
-+- Windows:
-+    - Visual C++: 10.0, 11.0, 12.0, 14.0, 14.1, 14.2, 14.3
-+
-+## 翻訳
-+[Akira Takahashi](https://github.com/faithandbrave)
 &lt;/code&gt;&lt;/pre&gt;</summary>
       
       <author>
